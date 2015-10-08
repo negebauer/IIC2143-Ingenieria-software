@@ -24,7 +24,7 @@ public final class Tools {
 		
 		if(d == Day.Monday) return "L";
 		else if(d == Day.Tuesday) return "M";
-		else if(d == Day.Wednesday) return "V";
+		else if(d == Day.Wednesday) return "W";
 		else if(d == Day.Thursday) return "J";
 		else if(d == Day.Friday) return "V";
 		else if(d == Day.Saturday) return "S";
