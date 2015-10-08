@@ -1,0 +1,38 @@
+package Tools.Enums;
+
+public enum School {
+
+	AdministrativeSciences,
+	Aesthetics,
+	Agriculture,
+	Architecture,
+	Arts,
+	Astrophysics,
+	BiologicalSciences,
+	Chemistry,
+	CivilConstruction,
+	College,
+	Communications,
+	Design,
+	Drama,
+	Economics,
+	Education,
+	Engeneering,
+	Forestry,
+	Geography,
+	History,
+	Law,
+	Letters,
+	Mathematics,
+	Medicine,
+	Music,
+	Nursing,
+	Philosofy,
+	Physics,
+	PoliticalSciences,
+	Psicología,
+	Socialogy,
+	SocialWork,
+	Theology,
+	UrbanStudies
+}
