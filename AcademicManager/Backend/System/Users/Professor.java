@@ -8,5 +8,7 @@ public class Professor extends User {
 
 	public Professor(String name, String lastname, String rut, Gender gender, int age) {
 		super(name, lastname, rut, Access.Professor);
+		this.setAge(age);
+		this.setGender(gender);
 	}
 }
