@@ -3,13 +3,13 @@ package System.Courses;
 import java.util.ArrayList;
 
 import System.Users.Student;
-import System.Users.Assistant;
 import System.Users.Professor;
 import Tools.Enums.School;
 import Tools.Enums.Semester;
+import Tools.Interfaces.ICourse;
 import Tools.Others.Const;
 
-public class Course {
+public class Course implements ICourse {
 
 	private String name;
 	private String initials;
@@ -17,39 +17,36 @@ public class Course {
 	
 	private int credits;
 	private boolean assistantship;
+	private boolean laboratory;
 
 	private School school;
 	private Semester semester;
 
 	private ArrayList<Professor> professors;
-	private int scheduleCathedra;	
-	private Classroom classroomCathedra;
-	
-	private ArrayList<Assistant> assistants;
-	private int scheduleAssistant;	
-	private Classroom classroomAssistant;
+	private Classroom classroom;
+	private Schedule schedule;	
 	
 	private ArrayList<Student> students;
 	private int size;
 
 	//Constructors
-	public Course(String name, String initials) {
+	public Course(String name, String initials, School school) {
 
-		initCourse(name, initials, Const.DEFAULT_CREDITS);
+		initCourse(name, initials, Const.DEFAULT_CREDITS, school);
 	}
 	public Course(String name, String initials, int credits, School school) {
 		
-		initCourse(name, initials, credits);
-		this.school = school;
+		initCourse(name, initials, credits, school);
 	}
-	public void initCourse(String nombre, String sigla, int creditos) {
+	public void initCourse(String nombre, String sigla, int creditos, School school) {
 		
 		this.name = nombre;
 		this.initials = sigla;
 		this.credits = creditos;
+		this.school = school;
 		this.assistantship = false;
+		this.laboratory = false;
 		this.professors = new ArrayList<Professor>();
-		this.assistants = new ArrayList<Assistant>();
 		this.students = new ArrayList<Student>();
 		this.size = Const.DEFAULT_SIZE;
 		this.semester = Const.DEFAULT_SEMESTER;
@@ -67,20 +64,6 @@ public class Course {
 	}
 	public Professor getProfessor(int index) {		
 		return this.professors.get(index);
-	}
-	
-	//Assistant
-	public void addAssistant(Assistant assistant) {		
-		this.assistants.add(assistant);
-	}
-	public void removeAssistant(Assistant assistant) {
-		this.assistants.remove(assistant);
-	}
-	public ArrayList<Assistant> getAssistants() {
-		return this.assistants;
-	}
-	public Assistant getAssistant(int index) {
-		return this.assistants.get(index);
 	}
 	
 	//Students
@@ -128,12 +111,19 @@ public class Course {
 		this.credits = credits;
 	}
 	
-	public boolean getThereAssistantship() {
+	public boolean isAssistantship() {
 		return assistantship;
 	}
-	public void setThereAssistantship(boolean assistantship) {
+	public void isAssistantship(boolean assistantship) {
 		this.assistantship = assistantship;
 	}
+	
+	public boolean isLaboratory() {
+		return laboratory;
+	}
+	public void setLaboratory(boolean laboratory) {
+		this.laboratory = laboratory;
+	}	
 		
 	public School getSchool() {
 		return school;
@@ -149,38 +139,28 @@ public class Course {
 		this.semester = semester;
 	}
 	
-	public int getScheduleCathedra() {
-		return scheduleCathedra;
-	}
-	public void setScheduleCathedra(int scheduleCathedra) {
-		this.scheduleCathedra = scheduleCathedra;
-	}
-	
-	public Classroom getClassroomCathedra() {
-		return classroomCathedra;
-	}
-	public void setClassroomCathedra(Classroom classroomCathedra) {
-		this.classroomCathedra = classroomCathedra;
-	}
-	
-	public int getHoraryAssistant() {
-		return scheduleAssistant;
-	}
-	public void setScheduleAssistant(int scheduleAssistant) {
-		this.scheduleAssistant = scheduleAssistant;
-	}
-	
-	public Classroom getClassroomAssistant() {
-		return classroomAssistant;
-	}
-	public void setClassroomAssistant(Classroom classroomAssistant) {
-		this.classroomAssistant = classroomAssistant;
-	}
-	
 	public int getSize() {
 		return size;
 	}
 	public void setSize(int size) {
 		this.size = size;
-	}	
+	}
+
+	@Override
+	public Classroom getClassroom() {
+		return classroom;
+	}
+	@Override
+	public void setClassroom(Classroom classroom) {
+		this.classroom = classroom;
+	}
+
+	@Override
+	public Schedule getSchedule() {
+		return schedule;
+	}
+	@Override
+	public void setSchedule(Schedule schedule) {
+		this.schedule = schedule;
+	}
 }
