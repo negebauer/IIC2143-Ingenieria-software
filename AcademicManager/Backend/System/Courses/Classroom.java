@@ -9,6 +9,18 @@ public class Classroom {
 	private int size = Const.DEFAULT_SIZE;
 	private School school;
 	
+	public Classroom(String initials, School school) {
+	
+		this.initials = initials;
+		this.school = school;
+	}
+	public Classroom(String initials, School school, int size) {
+	
+		this.initials = initials;
+		this.school = school;
+		this.size = size;
+	}
+	
 	public String getInitials() {
 		return initials;
 	}

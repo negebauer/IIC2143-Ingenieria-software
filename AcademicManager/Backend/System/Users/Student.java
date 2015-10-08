@@ -4,6 +4,7 @@ import System.Courses.Curriculum;
 import System.Courses.StudyProgram;
 import System.Users.Users.User;
 import Tools.Enums.Access;
+import Tools.Enums.School;
 
 public class Student extends User {
 
@@ -13,11 +14,22 @@ public class Student extends User {
 	private boolean regularStudent;
 	private Curriculum curriculum;
 	private StudyProgram program;
+	private School school;
 	
-	public Student(String name, String lastname, String rut, int entry) {
-		super(name, lastname, rut, Access.Student);
+	//Constructor
+	public Student(String name, String lastname, String rut, int entry, School school) {
+		super(name, lastname, rut, Access.ReadOnly);
+		
+		this.school = school;
 	}
-
+	
+	public void newCurriculum(StudyProgram program) {
+		
+		this.curriculum = new Curriculum(program);
+		this.program = program;
+	}
+	
+	//Getters and Setters	
 	public int getId() {
 		return id;
 	}
@@ -60,5 +72,10 @@ public class Student extends User {
 		this.program = program;
 	}
 
-	
+	public School getSchool() {
+		return school;
+	}
+	public void setSchool(School school) {
+		this.school = school;
+	}	
 }
