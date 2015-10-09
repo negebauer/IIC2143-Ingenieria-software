@@ -34,7 +34,7 @@ public class Course {
 		this.details = details != null ? details : "DetailsNil";
 		this.school = school != null ? school : null;
 		this.semester = semester != null ? semester : Const.DEFAULT_SEMESTER;
-		this.courses = courses != null ? courses : null;
+		this.courses = courses != null ? courses : new ArrayList<ICourse>();
 	}
 	
 	//Getters and Setters
