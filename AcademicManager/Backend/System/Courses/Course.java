@@ -2,7 +2,6 @@ package System.Courses;
 
 import java.util.ArrayList;
 
-import System.Users.Student;
 import System.Users.Professor;
 import Tools.Enums.School;
 import Tools.Enums.Semester;
@@ -26,7 +25,6 @@ public class Course implements ICourse {
 	private Classroom classroom;
 	private Schedule schedule;	
 	
-	private ArrayList<Student> students;
 	private int size;
 
 	//Constructors
@@ -47,7 +45,6 @@ public class Course implements ICourse {
 		this.assistantship = false;
 		this.laboratory = false;
 		this.professors = new ArrayList<Professor>();
-		this.students = new ArrayList<Student>();
 		this.size = Const.DEFAULT_SIZE;
 		this.semester = Const.DEFAULT_SEMESTER;
 	}
@@ -64,20 +61,6 @@ public class Course implements ICourse {
 	}
 	public Professor getProfessor(int index) {		
 		return this.professors.get(index);
-	}
-	
-	//Students
-	public void addStudent(Student student) {
-		this.students.add(student);
-	}
-	public void removeStudent(Student student) {
-		this.students.remove(student);
-	}
-	public ArrayList<Student> getStudents() {
-		return this.students;
-	}
-	public Student getStudent(int index) {
-		return this.students.get(index);
 	}
 	
 	//Getters and Setters		

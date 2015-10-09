@@ -5,6 +5,6 @@ public enum Campus {
 	CasaCentral,
 	LoContador,
 	Oriente,
-	SanJoaquín,
+	SanJoaquin,
 	Villarrica
 }

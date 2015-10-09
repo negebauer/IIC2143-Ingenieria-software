@@ -30,7 +30,7 @@ public enum School {
 	Philosofy,
 	Physics,
 	PoliticalSciences,
-	Psicología,
+	Psicologia,
 	Socialogy,
 	SocialWork,
 	Theology,

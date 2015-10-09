@@ -10,7 +10,7 @@ public class Evaluacion {
 	private Classroom sala;
 	private int dia;
 	private int mes;
-	private int año;
+	private int ano;
 	private int hora;
 	
 	public EvaluationTypes getTipo() {
@@ -31,7 +31,7 @@ public class Evaluacion {
 	
 	public String getFecha(){
 		
-		return (Integer.toString(this.dia) + "/" + Integer.toString(this.mes) + "/" + Integer.toString(this.año));	
+		return (Integer.toString(this.dia) + "/" + Integer.toString(this.mes) + "/" + Integer.toString(this.ano));	
 	
 	}
 	
@@ -39,7 +39,7 @@ public class Evaluacion {
 		
 		this.dia = day;
 		this.mes = month;
-		this.año = year;
+		this.ano = year;
 	}
 	
 
