@@ -1,18 +1,18 @@
 package System.Courses;
 
 import java.util.ArrayList;
-import Tools.Enums.Semester;
+import Tools.Enums.AcademicSemester;
 
-public class Semestre {
+public class Semester {
 	
-	private Semester semester;
-	private ArrayList<Course> cursos;
+	private AcademicSemester semester;
+	private ArrayList<Course> courses;
 	private int year;
 	
-	public void AgregarCurso(Course Curso) {
+	public void AgregarCurso(Course course) {
 		
-		if (Curso.getSemester() == Semester.BOTH || Curso.getSemester() == this.semester){
-			cursos.add(Curso);
+		if (course.getSemester() == AcademicSemester.BOTH || course.getSemester() == this.semester){
+			courses.add(course);
 		}
 		
 		else {
@@ -22,20 +22,20 @@ public class Semestre {
 	}
 	
 	//getters and setters
-	public Semester getSemester() {
+	public AcademicSemester getSemester() {
 		return semester;
 	}
 	
-	public void setSemester(Semester semester) {
+	public void setSemester(AcademicSemester semester) {
 		this.semester = semester;
 	}
 	
 	public ArrayList<Course> getCursos() {
-		return cursos;
+		return courses;
 	}
 	
 	public void setCursos(ArrayList<Course> courses) {
-		cursos = courses;
+		this.courses = courses;
 	}
 
 	public int getYear() {

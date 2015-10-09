@@ -7,20 +7,30 @@ import Tools.Others.Const;
  * Class that represents a Classroom.
  */
 public class Classroom {
+	
+	public enum Campus {
+		CASACENTRAL,
+		LOCONTADOR,
+		ORIENTE,
+		SANJOAQUIN,
+		VILLARRICA
+	}
 
 	private String initials;
 	private int size = Const.DEFAULT_SIZE;
 	private School school;
+	private Campus campus;
 	
 	/**
 	 * Creates an instance of Classroom.
 	 * @param initials The initials that identify this Classroom.
 	 * @param school The school to which this Classroom belongs.
+	 * @param campus The campus in which this Classroom is located.
 	 */
-	public Classroom(String initials, School school) {
-	
+	public Classroom(String initials, School school, Campus campus) {
 		this.initials = initials;
 		this.school = school;
+		this.setCampus(campus);
 	}
 	
 	/**
@@ -79,5 +89,20 @@ public class Classroom {
 	 */
 	public void setSchool(School school) {
 		this.school = school;
+	}
+
+	/**
+	 * @return The campus in which this Classroom is located.
+	 */
+	public Campus getCampus() {
+		return campus;
+	}
+
+	/**
+	 * Modifies this Classroom's campus.
+	 * @param school The new campus in which this Classroom will be located.
+	 */
+	public void setCampus(Campus campus) {
+		this.campus = campus;
 	}
 }

@@ -2,8 +2,6 @@ package System.Users;
 
 import System.Courses.Curriculum;
 import System.Courses.StudyProgram;
-import System.Users.User;
-import Tools.Enums.Access;
 import Tools.Enums.School;
 
 public class Student extends User {

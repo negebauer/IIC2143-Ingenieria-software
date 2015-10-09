@@ -2,11 +2,47 @@ package System.Courses;
 
 import java.util.ArrayList;
 
-import Tools.Enums.Day;
-import Tools.Enums.Module;
-
 public class Schedule {
 
+	public enum Day {
+		MONDAY ("L"),
+		TUESDAY ("M"),
+		WEDNESDAY ("W"),
+		THURSDAY ("J"),
+		FRIDAY ("V"),
+		SATURDAY ("S"),
+		SUNDAY ("D");
+		
+		private final String day;
+		Day(String day) {
+	        this.day = day;
+		}
+		
+		public String getDay() {
+			return this.day;
+		}
+	}
+	
+	public enum Module {
+		_1 ("1"), //08:30-09:50
+		_2 ("2"), //10:00-11:20
+		_3 ("3"), //11:30-12:50
+		_4 ("4"), //14:00-15:20
+		_5 ("5"), //15:30-16:50
+		_6 ("6"), //17:00-18:20
+		_7 ("7"), //18:00-19:20
+		_8 ("8");  //20:00-21:20
+		
+		private final String module;
+		Module(String module) {
+	        this.module = module;
+		}
+		
+		public String getModule() {
+			return this.module;
+		}
+	}
+	
 	private ArrayList<Tuple> modules = new ArrayList<Tuple>();
 	
 	public Schedule() {
@@ -31,6 +67,16 @@ public class Schedule {
 		this.modules.remove(index);
 	}
 
+	public String getSchedule() {
+		String schedule = "";
+		
+		for(int i = 0; i < modules.size(); i++) {
+			Tuple t = modules.get(i);
+			schedule += t.getDay().getDay() + t.getModule().getModule() + " ";
+		}					
+		return schedule;
+	}
+	
 	public class Tuple {
 
 		private Day day;

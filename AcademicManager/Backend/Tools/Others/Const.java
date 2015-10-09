@@ -1,15 +1,11 @@
 package Tools.Others;
 
-import Tools.Enums.Semester;
-
 public class Const {
 
 	public final static int DEFAULT_SIZE = 100;
 
 	public final static int DEFAULT_CREDITS = 10;
-	
-	public final static Semester DEFAULT_SEMESTER = Semester.BOTH;
-	
+		
 	public final static String JAXP_SCHEMA_LANGUAGE = "http://java.sun.com/xml/jaxp/properties/schemaLanguage";
 
 	public final static String JAXP_SCHEMA_SOURCE = "http://java.sun.com/xml/jaxp/properties/schemaSource";

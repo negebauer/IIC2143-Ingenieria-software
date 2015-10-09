@@ -3,7 +3,7 @@ package System.Courses;
 import java.util.ArrayList;
 
 import Tools.Enums.School;
-import Tools.Enums.Semester;
+import Tools.Enums.AcademicSemester;
 import Tools.Interfaces.ICourse;
 import Tools.Others.Const;
 
@@ -17,7 +17,7 @@ public class Course {
 	private int credits;
 	private String details;
 	private School school;
-	private Semester semester;
+	private AcademicSemester semester;
 	private ArrayList<ICourse> courses;
 	
 	/**
@@ -27,13 +27,23 @@ public class Course {
 	 * @param credits How much credits this Course represents.
 	 * @param school The school to which this Course belongs.
 	 */
-	public void initCourse(String name, String initials, int credits, String details, School school, Semester semester, ArrayList<ICourse> courses) {
+	/**
+	 * Creates an instance of Course.
+	 * @param name The name of the Course.
+	 * @param initials The initials of the Course.
+	 * @param credits How much credits this Course is worth.
+	 * @param details The details of this Course.
+	 * @param school The school to which this Course belongs.
+	 * @param semester The semester in which this Course is dictated.
+	 * @param courses The courses (physical classes) of this Course.
+	 */
+	public void initCourse(String name, String initials, int credits, String details, School school, AcademicSemester semester, ArrayList<ICourse> courses) {
 		this.name = name != null ? name : "NameNil";
 		this.initials = initials != null ? initials : "InitialsNil";
 		this.credits = credits > -1 ? credits : Const.DEFAULT_CREDITS;
 		this.details = details != null ? details : "DetailsNil";
 		this.school = school != null ? school : null;
-		this.semester = semester != null ? semester : Const.DEFAULT_SEMESTER;
+		this.semester = semester != null ? semester : AcademicSemester.defaultSemester();
 		this.courses = courses != null ? courses : new ArrayList<ICourse>();
 	}
 	
@@ -116,7 +126,7 @@ public class Course {
 	/**
 	 * @return The semester in which this Course is dictated.
 	 */
-	public Semester getSemester() {		
+	public AcademicSemester getSemester() {		
 		return this.semester;
 	}	
 	
@@ -124,7 +134,7 @@ public class Course {
 	 * Modifies the semester in which this Course is dictated.
 	 * @param credits The new semester in which this Course will be dictated.
 	 */
-	public void setSemester(Semester semester) {
+	public void setSemester(AcademicSemester semester) {
 		this.semester = semester;
 	}
 

@@ -1,21 +1,34 @@
 package System.Courses;
 
-import Tools.Enums.EvaluationTypes;
-
 public class Evaluation {
 	
-	private EvaluationTypes tipo;
+	public enum CourseEvaluation {
+		INTERROGATION ("I"),
+		EXAM ("E"),
+		CONTROL ("C");
+		
+		private final String evaluation;
+		CourseEvaluation(String evaluation) {
+	        this.evaluation = evaluation;
+		}
+		
+		public String getEvaluation() {
+			return this.evaluation;
+		}
+	}
+	
+	private CourseEvaluation tipo;
 	private Classroom sala;
 	private int dia;
 	private int mes;
 	private int ano;
 	private int hora;
 	
-	public EvaluationTypes getTipo() {
+	public CourseEvaluation getTipo() {
 		return tipo;
 	}
 
-	public void setTipo(EvaluationTypes tipo) {
+	public void setTipo(CourseEvaluation tipo) {
 		this.tipo = tipo;
 	}
 

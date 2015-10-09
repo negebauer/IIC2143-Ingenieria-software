@@ -1,9 +1,17 @@
 package System.Users;
 
-import Tools.Enums.Access;
-import Tools.Enums.Gender;
-
 public abstract class User {
+	
+	public enum Access {
+		ADMIN,
+		EDITOR,
+		READONLY
+	}
+	
+	public enum Gender {
+		MALE,
+		FEMALE
+	}
 	
 	private String rut;
 	private String name;
