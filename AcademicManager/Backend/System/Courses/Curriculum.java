@@ -32,21 +32,40 @@ public class Curriculum {
 		this.coursedCourses.add(new Coursed(course, approved, gpa, semester));
 	}
 	
+	/**
+	 * @return The list of all the coursed Courses.
+	 */
 	public ArrayList<Coursed> getCurriculum() {
 		return this.coursedCourses;
 	}
+	
+	/**
+	 * @return The list of all the study programs being coursed.
+	 */
 	public ArrayList<StudyProgram> getStudyPrograms() {
 		return this.studyPrograms;
 	}
 	
+	/**
+	 * Adds a study program to this Curriculum.
+	 * @param program The study program to be added.
+	 */
 	public void addStudyProgram(StudyProgram program) {
 		this.studyPrograms.add(program);
 	}
 	
+	/**
+	 * Removes a study program from this Curriculum.
+	 * @param program The study program to be removed.
+	 */
 	public void removeStudyProgram(StudyProgram program) {
 		this.studyPrograms.remove(program);
 	}
 	
+	/**
+	 * Calculates the amount of approved credits in a curriculum.
+	 * @return The amount of approved credits.
+	 */
 	public int getApprovedCredits() {
 		
 		int credits = 0;
@@ -57,6 +76,9 @@ public class Curriculum {
 		return credits;		
 	}
 		
+	/**
+	 * Class that represents a Course that was already Coursed.
+	 */
 	public class Coursed {
 
 		private String name;

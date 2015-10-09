@@ -8,7 +8,7 @@ public class StudyProgram {
 
 	private School school;
 	private int anoIngreso;
-	private ArrayList<Semestre> semestres;
+	private ArrayList<Semester> semestres;
 	
 	/**
 	 * Creates an instance of StudyProgram
@@ -16,7 +16,7 @@ public class StudyProgram {
 	 * @param s semesters in the Study Program
 	 * @param scho school to which this Study Program belongs
 	 */
-	public StudyProgram(int anoIn, ArrayList<Semestre> s, School scho){
+	public StudyProgram(int anoIn, ArrayList<Semester> s, School scho){
 		this.anoIngreso = anoIn;
 		this.setSemestres(s);
 		this.setSchool(scho);
@@ -52,11 +52,11 @@ public class StudyProgram {
 		this.school = school;
 	}
 
-	public ArrayList<Semestre> getSemestres() {
+	public ArrayList<Semester> getSemestres() {
 		return semestres;
 	}
 
-	public void setSemestres(ArrayList<Semestre> semestres) {
+	public void setSemestres(ArrayList<Semester> semestres) {
 		this.semestres = semestres;
 	}
 	
