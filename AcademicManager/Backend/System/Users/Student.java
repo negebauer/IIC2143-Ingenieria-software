@@ -2,7 +2,7 @@ package System.Users;
 
 import System.Courses.Curriculum;
 import System.Courses.StudyProgram;
-import System.Users.Users.User;
+import System.Users.User;
 import Tools.Enums.Access;
 import Tools.Enums.School;
 
@@ -18,7 +18,7 @@ public class Student extends User {
 	
 	//Constructor
 	public Student(String name, String lastname, String rut, int entry, School school) {
-		super(name, lastname, rut, Access.ReadOnly);
+		super(name, lastname, rut, Access.READONLY);
 		
 		this.school = school;
 	}

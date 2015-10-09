@@ -4,15 +4,16 @@ import java.util.ArrayList;
 
 import System.Users.Assistant;
 import Tools.Interfaces.ICourse;
+import Tools.Interfaces.IAssistants;
 
 /**
- * Class that manages the assistants of a classroom
+ * Class that represents an Assistantship that is dictated.
  */
-public class Assistantship implements ICourse {
+public class Assistantship implements ICourse, IAssistants {
 	
 	private ArrayList<Assistant> assistants; 
 	private Classroom classroom;
-	private Schedule schedule;	
+	private Schedule schedule;
 	
 	/**
 	 * Creates an instance of Assistantship
@@ -21,57 +22,48 @@ public class Assistantship implements ICourse {
 	 * @param schedule The schedule in which this assistantship is made
 	 */
 	public Assistantship(ArrayList<Assistant> assistants, Classroom classroom, Schedule schedule) {
-		
 		this.assistants = assistants;
 		this.classroom = classroom;
 		this.schedule = schedule;
 	}
 		
-	/**
-	 * Adds an assistant to this Assistantship
-	 * @param assistant The assistant to be added to this Assistantship
-	 */
+	// IAssistants methods
+	@Override
 	public void addAssistant(Assistant assistant) {		
 		this.assistants.add(assistant);
 	}
 	
-	/**
-	 * Removes an assistant from this Assistantship
-	 * @param assistant The assistant to be removed from this Assistantship
-	 */
+	@Override
 	public void removeAssistant(Assistant assistant) {
 		this.assistants.remove(assistant);
 	}
-	
-	/**
-	 * @return The Array of assistants of this Assistantship
-	 */
+	@Override
 	public ArrayList<Assistant> getAssistants() {
 		return this.assistants;
 	}
 
-	/**
-	 * Returns the assistant from the assistants list that corresponds to the given index
-	 * @param index The index of the assistant to be returned 
-	 * @return The requested assistant
-	 */
+	@Override
 	public Assistant getAssistant(int index) {
 		return this.assistants.get(index);
 	}
 
 	// ICourse methods
+	@Override
 	public Classroom getClassroom() {
 		return classroom;
 	}
 
+	@Override
 	public void setClassroom(Classroom classroom) {
 		this.classroom = classroom;
 	}
 	
+	@Override
 	public Schedule getSchedule() {
 		return schedule;
 	}
 
+	@Override
 	public void setSchedule(Schedule schedule) {
 		this.schedule = schedule;
 	}

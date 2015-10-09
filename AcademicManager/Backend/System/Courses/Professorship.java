@@ -4,15 +4,21 @@ import java.util.ArrayList;
 
 import System.Users.Professor;
 import Tools.Interfaces.ICourse;
-import Tools.Interfaces.IProfessors;
+import Tools.Interfaces.IProfessors;;
 
-public class Laboratory implements ICourse, IProfessors {
-	
+public class Professorship implements ICourse, IProfessors {
+
 	private ArrayList<Professor> professors;
 	private Classroom classroom;
 	private Schedule schedule;	
 	
-	public Laboratory(ArrayList<Professor> professors, Classroom classroom, Schedule schedule) {
+	/**
+	 * Creates an instance of Professorship
+	 * @param professors The professors of this Professorship
+	 * @param classroom The classroom where this Professorship is made
+	 * @param schedule The schedule in which this Professorship is made
+	 */
+	public Professorship(ArrayList<Professor> professors, Classroom classroom, Schedule schedule) {
 		this.professors = professors;
 		this.classroom = classroom;
 		this.schedule = schedule;
@@ -59,4 +65,5 @@ public class Laboratory implements ICourse, IProfessors {
 	public void setSchedule(Schedule schedule) {
 		this.schedule = schedule;
 	}
+
 }

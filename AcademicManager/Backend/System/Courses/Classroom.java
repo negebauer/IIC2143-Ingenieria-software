@@ -37,28 +37,46 @@ public class Classroom {
 	}
 	
 	/**
-	 * @return This Classroom initials
+	 * @return This Classroom initials.
 	 */
 	public String getInitials() {
 		return initials;
 	}
 	
 	/**
-	 * Modifies this Classroom initials
-	 * @param initials The new initials of this Classroom
+	 * Modifies this Classroom's initials.
+	 * @param initials The new initials of this Classroom.
 	 */
 	public void setInitials(String initials) {
 		this.initials = initials;
 	}
+	
+	/**
+	 * @return The size of this Classroom.
+	 */
 	public int getSize() {
 		return size;
 	}
+	
+	/**
+	 * Modifies this Classroom's size.
+	 * @param size The new size of this Classroom.
+	 */
 	public void setSize(int size) {
 		this.size = size;
 	}
+	
+	/**
+	 * @return The School to which this Classroom belongs.
+	 */
 	public School getSchool() {
 		return school;
 	}
+	
+	/**
+	 * Modifies this Classroom's school.
+	 * @param school The new school of this Classroom.
+	 */
 	public void setSchool(School school) {
 		this.school = school;
 	}

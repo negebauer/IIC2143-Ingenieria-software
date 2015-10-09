@@ -11,7 +11,7 @@ public class Semestre {
 	
 	public void AgregarCurso(Course Curso) {
 		
-		if (Curso.getSemester() == Semester.Both || Curso.getSemester() == this.semester){
+		if (Curso.getSemester() == Semester.BOTH || Curso.getSemester() == this.semester){
 			cursos.add(Curso);
 		}
 		

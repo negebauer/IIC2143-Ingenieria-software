@@ -1,12 +1,12 @@
 package System.Users;
 
-import System.Users.Users.User;
+import System.Users.User;
 import Tools.Enums.Access;
 import Tools.Enums.Gender;
 
 public class Professor extends User {
 	
 	public Professor(String name, String lastname, String rut, Gender gender, int age) {
-		super(name, lastname, rut, Access.Editor);
+		super(name, lastname, rut, Access.EDITOR);
 	}
 }

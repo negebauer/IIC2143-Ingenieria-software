@@ -4,7 +4,8 @@ import System.Courses.Classroom;
 import System.Courses.Schedule;
 
 /**
- * Protocol used to define a class as a Course which has a Classroom and a Schedule.
+ * Protocol used to define a class as an ICourse, which represents an actual (physical) class that
+ * is made in a classroom in a certain schedule.
  */
 public interface ICourse {
 	

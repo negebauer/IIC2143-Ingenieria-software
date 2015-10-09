@@ -1,8 +1,7 @@
 package Tools.Enums;
 
 public enum Access {
-
-	Admin,
-	Editor,
-	ReadOnly
+	ADMIN,
+	EDITOR,
+	READONLY
 }

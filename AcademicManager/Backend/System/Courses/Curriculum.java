@@ -2,7 +2,7 @@ package System.Courses;
 
 import java.util.ArrayList;
 import System.Users.Professor;
-import Tools.Interfaces.ICourse;
+import Tools.Interfaces.*;
 
 public class Curriculum {
 
@@ -37,15 +37,15 @@ public class Curriculum {
 		return credits;		
 	}
 		
-	public class Coursed implements ICourse {
+	public class Coursed {
 
 		private String name;
 		private String initials;
 		private int credits;
 		
 		private ArrayList<Professor> professors;
-		private Classroom classroom;
-		private Schedule schedule;	
+		private ArrayList<Classroom> classrooms;
+		private ArrayList<Schedule> schedules;	
 		
 		private boolean approved;
 		private double gpaStudent;
@@ -57,9 +57,27 @@ public class Curriculum {
 			this.initials = course.getInitials();
 			this.credits = course.getCredits();	
 			
-			this.professors = course.getProfessors();
-			this.classroom = course.getClassroom();
-			this.schedule = course.getSchedule();
+			ArrayList<Professor> professors = new ArrayList<Professor>();
+			for(ICourse icourse : course.getCourses()) {
+				if (icourse instanceof IProfessors) {
+					for (Professor professor : ((IProfessors) icourse).getProfessors()) {
+						professors.add(professor);
+					}
+				}
+			}
+			this.professors = professors;
+			
+			ArrayList<Classroom> classrooms = new ArrayList<Classroom>();
+			for(ICourse icourse : course.getCourses()) {
+				classrooms.add(icourse.getClassroom());
+			}
+			this.classrooms = classrooms;
+			
+			ArrayList<Schedule> schedules = new ArrayList<Schedule>();
+			for(ICourse icourse : course.getCourses()) {
+				schedules.add(icourse.getSchedule());
+			}
+			this.schedules = schedules;
 			
 			this.setApproved(approved);
 			this.setSemester(semester);
@@ -82,22 +100,31 @@ public class Curriculum {
 			return this.professors;
 		}
 		
-		@Override
-		public Classroom getClassroom() {
-			return classroom;
-		}
-		@Override
-		public void setClassroom(Classroom classroom) {
-			this.classroom = classroom;
+//		@Override
+//		public Classroom getClassroom() {
+//			return classroom;
+//		}
+//		@Override
+//		public void setClassroom(Classroom classroom) {
+//			this.classroom = classroom;
+//		}
+//
+//		@Override
+//		public Schedule getSchedule() {
+//			return schedule;
+//		}
+//		@Override
+//		public void setSchedule(Schedule schedule) {
+//			this.schedule = schedule;
+//		}
+		// TODO Update this
+		public ArrayList<Classroom> getClassroom() {
+			return classrooms;
 		}
 
-		@Override
-		public Schedule getSchedule() {
-			return schedule;
-		}
-		@Override
-		public void setSchedule(Schedule schedule) {
-			this.schedule = schedule;
+		// TODO Update this
+		public ArrayList<Schedule> getSchedule() {
+			return schedules;
 		}
 
 		public boolean isApproved() {

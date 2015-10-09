@@ -1,10 +1,8 @@
 package System.Courses;
 
-
-
 import Tools.Enums.EvaluationTypes;
 
-public class Evaluacion {
+public class Evaluation {
 	
 	private EvaluationTypes tipo;
 	private Classroom sala;

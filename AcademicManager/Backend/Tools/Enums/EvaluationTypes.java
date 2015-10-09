@@ -1,12 +1,9 @@
 package Tools.Enums;
 
 public enum EvaluationTypes {
-	
-	Interrogacion1,
-	Interrogacion2,
-	Interrogacion3,
-	Examen,
-	Control
-	
-	
+	INTERROGACION1,
+	INTERROGACION2,
+	INTERROGACION3,
+	EXAMEN,
+	CONTROL
 }
