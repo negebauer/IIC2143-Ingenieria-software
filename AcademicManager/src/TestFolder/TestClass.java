@@ -1,7 +1,8 @@
 package TestFolder;
 
-import System.Users.*;
-import Tools.Enums.*;
+import System.Courses.Schedule;
+import System.Users.Admin;
+import System.Users.User;
 
 public class TestClass {
 
@@ -11,7 +12,7 @@ public class TestClass {
 		User usuario = new Admin("Admin", "Bacan", "1", User.Gender.MALE, 22);
 		System.out.println(usuario.getName());
 		
-		Day day = Day.MONDAY;
+		Schedule.Day day = Schedule.Day.MONDAY;
 		System.out.println(day.getDay());
 	}
 } 

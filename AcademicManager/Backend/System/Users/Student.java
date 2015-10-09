@@ -1,5 +1,7 @@
 package System.Users;
 
+import java.util.ArrayList;
+
 import System.Courses.Curriculum;
 import System.Courses.StudyProgram;
 import Tools.Enums.School;
@@ -11,7 +13,6 @@ public class Student extends User {
 	private int egress;	
 	private boolean regularStudent;
 	private Curriculum curriculum;
-	private StudyProgram program;
 	private School school;
 	
 	//Constructor
@@ -21,10 +22,8 @@ public class Student extends User {
 		this.school = school;
 	}
 	
-	public void newCurriculum(StudyProgram program) {
-		
-		this.curriculum = new Curriculum(program);
-		this.program = program;
+	public void newCurriculum(ArrayList<StudyProgram> programs) {
+		this.curriculum = new Curriculum(programs);
 	}
 	
 	//Getters and Setters	
@@ -61,13 +60,6 @@ public class Student extends User {
 	}
 	public void setCurriculum(Curriculum curriculum) {
 		this.curriculum = curriculum;
-	}
-
-	public StudyProgram getProgram() {
-		return program;
-	}
-	public void setProgram(StudyProgram program) {
-		this.program = program;
 	}
 
 	public School getSchool() {

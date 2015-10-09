@@ -24,13 +24,6 @@ public class Course {
 	 * Creates an instance of Course.
 	 * @param name The name of the Course.
 	 * @param initials The initials of the Course.
-	 * @param credits How much credits this Course represents.
-	 * @param school The school to which this Course belongs.
-	 */
-	/**
-	 * Creates an instance of Course.
-	 * @param name The name of the Course.
-	 * @param initials The initials of the Course.
 	 * @param credits How much credits this Course is worth.
 	 * @param details The details of this Course.
 	 * @param school The school to which this Course belongs.

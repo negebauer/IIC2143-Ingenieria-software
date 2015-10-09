@@ -4,35 +4,55 @@ import java.util.ArrayList;
 import System.Users.Professor;
 import Tools.Interfaces.*;
 
+/**
+ * Class that represents the students' Curriculum.
+ */
 public class Curriculum {
 
-	private ArrayList<Coursed> curriculum;
-	private StudyProgram studyProgram;
+	private ArrayList<Coursed> coursedCourses;
+	private ArrayList<StudyProgram> studyPrograms;
 	
-	public Curriculum(StudyProgram program) {
-		
-		this.curriculum = new ArrayList<Coursed>();
-		this.studyProgram = program;
+	/**
+	 * Creates a new instance of Curriculum.
+	 * @param program An ArrayList containing the study programs that the student is coursing in the University.
+	 */
+	public Curriculum(ArrayList<StudyProgram> programs) {
+		this.coursedCourses = new ArrayList<Coursed>();
+		this.studyPrograms = programs;
 	}
 	
+	/**
+	 * Adds a Coursed course to the curriculum.
+	 * @param course The course that was coursed.
+	 * @param approved Whether the course was approved or not.
+	 * @param gpa The grade obtained in the course.
+	 * @param semester The semester in which the course was coursed.
+	 */
 	public void addCoursed(Course course, boolean approved, double gpa, String semester) {
-		
-		this.curriculum.add(new Coursed(course, approved, gpa, semester));
+		this.coursedCourses.add(new Coursed(course, approved, gpa, semester));
 	}
 	
 	public ArrayList<Coursed> getCurriculum() {
-		return this.curriculum;
+		return this.coursedCourses;
 	}
-	public StudyProgram getStudyProgram() {
-		return this.studyProgram;
+	public ArrayList<StudyProgram> getStudyPrograms() {
+		return this.studyPrograms;
+	}
+	
+	public void addStudyProgram(StudyProgram program) {
+		this.studyPrograms.add(program);
+	}
+	
+	public void removeStudyProgram(StudyProgram program) {
+		this.studyPrograms.remove(program);
 	}
 	
 	public int getApprovedCredits() {
 		
 		int credits = 0;
-		for (int i = 0; i < curriculum.size(); i++)
-			if(curriculum.get(i).isApproved())
-				credits += curriculum.get(i).getCredits();
+		for (int i = 0; i < coursedCourses.size(); i++)
+			if(coursedCourses.get(i).isApproved())
+				credits += coursedCourses.get(i).getCredits();
 		
 		return credits;		
 	}
@@ -48,10 +68,10 @@ public class Curriculum {
 		private ArrayList<Schedule> schedules;	
 		
 		private boolean approved;
-		private double gpaStudent;
+		private double grade;
 		private String semester;
 		
-		public Coursed(Course course, boolean approved, double gpa, String semester) {
+		public Coursed(Course course, boolean approved, double grade, String semester) {
 			
 			this.name = course.getName();
 			this.initials = course.getInitials();
@@ -81,7 +101,7 @@ public class Curriculum {
 			
 			this.setApproved(approved);
 			this.setSemester(semester);
-			this.setGpaStudent(gpa);
+			this.setGrade(grade);
 		}
 
 		public String getName() {
@@ -142,12 +162,12 @@ public class Curriculum {
 		}
 
 		
-		public double getGpaStudent() {
-			return gpaStudent;
+		public double getGrade() {
+			return grade;
 		}
 
-		public void setGpaStudent(double gpaStudent) {
-			this.gpaStudent = gpaStudent;
+		public void setGrade(double grade) {
+			this.grade = grade;
 		}	
 	}
 }
