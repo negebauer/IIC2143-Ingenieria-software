@@ -2,6 +2,8 @@ package System.Courses;
 
 import java.util.ArrayList;
 import Tools.Enums.AcademicSemester;
+import Tools.Others.Messages;
+import Tools.Others.Messages.Message;
 
 /**
  * Class that represents a Semester to be coursed.
@@ -30,12 +32,12 @@ public class Semester {
 	public AddCourseResponse addCourse(Course course) {
 		AddCourseResponse response;
 		if (courses.contains(course)) {
-			response = new AddCourseResponse(false, "Course is already registered in this semester");
+			response = new AddCourseResponse(false, Messages.getMessage(Message.COURSE_WASNT_ADDED_TO_SEMESTER_REPEATED.index()));
 		} else if (course.getSemester() != AcademicSemester.BOTH && course.getSemester() != semester) {
-			response = new AddCourseResponse(false, "The course isn't dictated in this semester");
+			response = new AddCourseResponse(false, Messages.getMessage(Message.COURSE_WASNT_ADDED_TO_SEMESTER_REPEATED.index()));
 		} else {
-			response = new AddCourseResponse(true, "The course was added");
 			addCourse(course);
+			response = new AddCourseResponse(true, Messages.getMessage(Message.COURSE_WAS_ADDED_TO_SEMESTER.index()));
 		}
 		return response;
 	}

@@ -15,7 +15,7 @@ public class TestClass {
 		System.out.println(usuario.getName());
 		
 		Schedule.Day day = Schedule.Day.MONDAY;
-		System.out.println(day.getDay());
+		System.out.println(day.getDayString());
 		
 		Date date;
 		date = Utilities.getDateFromString("10.09.1993 18:58");
