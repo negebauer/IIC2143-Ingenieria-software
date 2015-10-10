@@ -6,51 +6,61 @@ import System.Courses.Curriculum;
 import System.Courses.StudyProgram;
 import Tools.Enums.School;
 
+/**
+ * Class that represents a student.
+ */
 public class Student extends User {
 
 	private int id;
-	private int entry;
-	private int egress;	
+	private int yearEntrance;
+	private int yearGraduation;	
 	private boolean regularStudent;
 	private Curriculum curriculum;
-	private School school;
 	
-	//Constructor
-	public Student(String name, String lastname, String rut, int entry, School school) {
-		super(name, lastname, rut, Access.READONLY);
-		
-		this.school = school;
+//	TODO Write java doc
+	/**
+	 * Creates an instance of Student.
+	 * Supports default values for every parameter (except studyPrograms), therefore null is a valid value for every parameter.
+	 * @param id
+	 * @param yearEntrance
+	 * @param studyPrograms
+	 * @param rut
+	 * @param name
+	 * @param lastnameFather
+	 * @param lastnameMother
+	 * @param address
+	 * @param gender
+	 * @param phone
+	 * @param birthdayString
+	 */
+	public Student(int id, int yearEntrance, ArrayList<StudyProgram> studyPrograms, String rut, String name, String lastnameFather, String lastnameMother, String address, Gender gender, int phone, String birthdayString) {
+		super(rut, name, lastnameFather, lastnameMother, address, gender, Access.USER, phone, birthdayString);
+		this.id = id > 0 ? id : 0;
+		this.yearEntrance = yearEntrance > 0 ? yearEntrance : 0;
+		this.curriculum = new Curriculum(studyPrograms);
 	}
-	
-	public void newCurriculum(ArrayList<StudyProgram> programs) {
-		this.curriculum = new Curriculum(programs);
-	}
-	
-	//Getters and Setters	
+
+//	TODO Write java doc for all getters and setters
 	public int getId() {
 		return id;
 	}
-	public void setId(int id) {
-		this.id = id;
+
+	public int getYearEntrance() {
+		return yearEntrance;
 	}
 	
-	public int getEntry() {
-		return entry;
-	}
-	public void setEntry(int entry) {
-		this.entry = entry;
+	public int getYearGraduation() {
+		return yearGraduation;
 	}
 
-	public int getEgress() {
-		return egress;
-	}
-	public void setEgress(int egress) {
-		this.egress = egress;
+	public void setYearGraduation(int yearGraduation) {
+		this.yearGraduation = yearGraduation;
 	}
 
 	public boolean isRegularStudent() {
 		return regularStudent;
 	}
+
 	public void setRegularStudent(boolean regularStudent) {
 		this.regularStudent = regularStudent;
 	}
@@ -58,14 +68,16 @@ public class Student extends User {
 	public Curriculum getCurriculum() {
 		return curriculum;
 	}
+
 	public void setCurriculum(Curriculum curriculum) {
 		this.curriculum = curriculum;
 	}
 
-	public School getSchool() {
-		return school;
+	public ArrayList<School> getSchools() {
+		ArrayList<School> schools = new ArrayList<School>();
+		for (StudyProgram studyProgram : curriculum.getStudyPrograms()) {
+			schools.add(studyProgram.getSchool());
+		}
+		return schools;
 	}
-	public void setSchool(School school) {
-		this.school = school;
-	}	
 }

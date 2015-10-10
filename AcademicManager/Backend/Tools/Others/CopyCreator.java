@@ -107,7 +107,7 @@ public class CopyCreator {
 	public static ArrayList<Professor> copyProfessors(ArrayList<Professor> original) {
 		ArrayList<Professor> copiedProfessors = new ArrayList<Professor>();
 		for (Professor originalProfessor : original) {
-			Professor copiedProfessor = new Professor(originalProfessor.getName(), originalProfessor.getLastname(), originalProfessor.getRut(), originalProfessor.getGender(), originalProfessor.getAge());
+			Professor copiedProfessor = new Professor(null, originalProfessor.getName(), originalProfessor.getLastnameFather(), originalProfessor.getLastnameMother(), null, null, 0, null);
 			copiedProfessors.add(copiedProfessor);
 		}
 		return copiedProfessors;
@@ -121,7 +121,7 @@ public class CopyCreator {
 	public static ArrayList<Assistant> copyAssistants(ArrayList<Assistant> original) {
 		ArrayList<Assistant> copiedAssistants = new ArrayList<Assistant>();
 		for (Assistant originalAssistant : original) {
-			Assistant copiedAssistant = new Assistant(originalAssistant.getName(), originalAssistant.getLastname(), originalAssistant.getRut(), originalAssistant.getGender(), originalAssistant.getAge());
+			Assistant copiedAssistant = new Assistant(null, originalAssistant.getName(), originalAssistant.getLastnameFather(), originalAssistant.getLastnameMother(), null, null, 0, null);
 			copiedAssistants.add(copiedAssistant);
 		}
 		return copiedAssistants;

@@ -24,8 +24,8 @@ Administrador:
 - Agregar curso......................................................DONE
 - Eliminar Curso_____________________________________________________
 - Modificar curso....................................................DONE
-- Fijar límite de ramos reprobados___________________________________
-- Fijar máximo de créditos por semestre..............................
+- Fijar limite de ramos reprobados___________________________________
+- Fijar maximo de creditos por semestre..............................
 - Controlar topes de salas usadas a la misma hora____________________
 - Controlar topes de profesores con dos clases a la misma hora.......
 - Cambio de modo_____________________________________________________
