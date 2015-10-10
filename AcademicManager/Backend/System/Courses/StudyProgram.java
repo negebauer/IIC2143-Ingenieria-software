@@ -4,73 +4,63 @@ import java.util.ArrayList;
 
 import Tools.Enums.School;
 
+/**
+ * Class that represents a StudyProgram.
+ */
 public class StudyProgram {
 
 	private School school;
-	private int anoIngreso;
-	private ArrayList<Semester> semestres;
+	private int yearEntrance;
+	private ArrayList<Semester> semesters;
 	
 	/**
 	 * Creates an instance of StudyProgram
-	 * @param anoIn studies start year
-	 * @param s semesters in the Study Program
-	 * @param scho school to which this Study Program belongs
+	 * @param yearEntrance Year in which this StudyProgram started.
+	 * @param semesters The semesters of the StudyProgram.
+	 * @param school The school to which this StudyProgram belongs.
 	 */
-	public StudyProgram(int anoIn, ArrayList<Semester> s, School scho){
-		this.anoIngreso = anoIn;
-		this.setSemestres(s);
-		this.setSchool(scho);
+	public StudyProgram(int yearEntrance, ArrayList<Semester> semesters, School school){
+		this.yearEntrance = yearEntrance;
+		this.semesters = semesters;
+		this.school = school;
 	}
 
 	//Getters and Setters
-	
 	/**
-	 * returns the studies start year
-	 * @return
+	 * @return The year in which the StudyProgram started.
 	 */
-	public int getAnoIngreso() {
-		return anoIngreso;
+	public int getyearEntrance() {
+		return yearEntrance;
 	}
 	
 	/**
-	 * set the studies start year
-	 * @param anoIngreso studies start year
-	 */
-	public void setAnoIngreso(int anoIngreso) {
-		this.anoIngreso = anoIngreso;
-	}
-	
-	/**
-	 * returns the school to which this study program belongs
-	 * @return
+	 * @return The school to which this StudyProgram belongs.
 	 */
 	public School getSchool() {
 		return school;
 	}
 	
 	/**
-	 * set the school to which this study program belongs
-	 * @param school the school to which this study program belong
+	 * Modifies the school to which this StudyProgram belongs.
+	 * @param school The new school to which this StudyProgram will belong.
 	 */
 	public void setSchool(School school) {
 		this.school = school;
 	}
 
 	/**
-	 * return the semesters that are in this study program
-	 * @return
+	 * @return The semesters of this StudyProgram.
 	 */
-	public ArrayList<Semester> getSemestres() {
-		return semestres;
+	public ArrayList<Semester> getSemesters() {
+		return semesters;
 	}
 	
 	/**
-	 * set the semesters that are in this study program
-	 * @param semestres
+	 * Modifies the semesters of this StudyProgram.
+	 * @param semestres The new semesters of this StudyProgram.
 	 */
-	public void setSemestres(ArrayList<Semester> semestres) {
-		this.semestres = semestres;
+	public void setSemesters(ArrayList<Semester> semesters) {
+		this.semesters = semesters;
 	}
-	
 	
 }
