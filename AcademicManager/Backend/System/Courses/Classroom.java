@@ -13,37 +13,32 @@ public class Classroom {
 		LOCONTADOR,
 		ORIENTE,
 		SANJOAQUIN,
-		VILLARRICA
+		VILLARRICA,
+		UNKNOWN;
+		
+		public static Campus defaultCampus() {
+			return Campus.UNKNOWN;
+		}
 	}
 
 	private String initials;
-	private int size = Const.DEFAULT_SIZE;
 	private School school;
 	private Campus campus;
+	private int size;
 	
 	/**
 	 * Creates an instance of Classroom.
+	 * Supports default values for every parameter, therefore null is a valid value for every parameter.
 	 * @param initials The initials that identify this Classroom.
 	 * @param school The school to which this Classroom belongs.
 	 * @param campus The campus in which this Classroom is located.
-	 */
-	public Classroom(String initials, School school, Campus campus) {
-		this.initials = initials;
-		this.school = school;
-		this.setCampus(campus);
-	}
-	
-	/**
-	 * Creates an instance of Classroom.
-	 * @param initials The initials that identify this Classroom.
-	 * @param school The school to which this Classroom belongs.
 	 * @param size How many students fit in the Classroom.
 	 */
-	public Classroom(String initials, School school, int size) {
-	
-		this.initials = initials;
-		this.school = school;
-		this.size = size;
+	public Classroom(String initials, School school, Campus campus, int size) {
+		this.initials = initials != null ? initials : "InitialsNil";
+		this.school = school != null ? school : School.defaultSchool();
+		this.campus = campus != null ? campus : Classroom.Campus.defaultCampus();
+		this.size = size > 0 ? null : Const.DEFAULT_CLASSROOM_SIZE;
 	}
 	
 	/**

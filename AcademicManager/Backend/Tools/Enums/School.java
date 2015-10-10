@@ -33,5 +33,10 @@ public enum School {
 	SOCIALOGY,
 	SOCIALWORK,
 	THEOLOGY,
-	URBANSTUDIES
+	URBANSTUDIES,
+	UNKNOWN;
+	
+	public static School defaultSchool() {
+		return School.UNKNOWN;
+	}
 }

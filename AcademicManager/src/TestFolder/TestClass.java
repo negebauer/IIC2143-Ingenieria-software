@@ -1,8 +1,10 @@
 package TestFolder;
 
+import java.util.Date;
 import System.Courses.Schedule;
 import System.Users.Admin;
 import System.Users.User;
+import Tools.Others.Utilities;
 
 public class TestClass {
 
@@ -14,5 +16,9 @@ public class TestClass {
 		
 		Schedule.Day day = Schedule.Day.MONDAY;
 		System.out.println(day.getDay());
+		
+		Date date;
+		date = Utilities.getDateFromString("10.09.1993 18:58");
+		System.out.println(Utilities.getStringFromDate(date));
 	}
 } 

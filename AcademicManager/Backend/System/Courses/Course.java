@@ -19,9 +19,11 @@ public class Course {
 	private School school;
 	private AcademicSemester semester;
 	private ArrayList<ICourse> courses;
+	private ArrayList<Evaluation> evaluations;
 	
 	/**
 	 * Creates an instance of Course.
+	 * Supports default values for every parameter, therefore null is a valid value for every parameter.
 	 * @param name The name of the Course.
 	 * @param initials The initials of the Course.
 	 * @param credits How much credits this Course is worth.
@@ -30,14 +32,15 @@ public class Course {
 	 * @param semester The semester in which this Course is dictated.
 	 * @param courses The courses (physical classes) of this Course.
 	 */
-	public void initCourse(String name, String initials, int credits, String details, School school, AcademicSemester semester, ArrayList<ICourse> courses) {
+	public void initCourse(String name, String initials, int credits, String details, School school, AcademicSemester semester, ArrayList<ICourse> courses, ArrayList<Evaluation> evaluations) {
 		this.name = name != null ? name : "NameNil";
 		this.initials = initials != null ? initials : "InitialsNil";
 		this.credits = credits > -1 ? credits : Const.DEFAULT_CREDITS;
 		this.details = details != null ? details : "DetailsNil";
-		this.school = school != null ? school : null;
+		this.school = school != null ? school : School.defaultSchool();
 		this.semester = semester != null ? semester : AcademicSemester.defaultSemester();
 		this.courses = courses != null ? courses : new ArrayList<ICourse>();
+		this.evaluations = evaluations != null ? evaluations : new ArrayList<Evaluation>();
 	}
 	
 	//Getters and Setters
@@ -144,5 +147,36 @@ public class Course {
 	 */
 	public void setCourses(ArrayList<ICourse> courses) {
 		this.courses = courses;
+	}
+
+	/**
+	 * @return The evaluations of this Course.
+	 */
+	public ArrayList<Evaluation> getEvaluations() {
+		return evaluations;
+	}
+	
+	/**
+	 * Adds a new evaluation to this Course.
+	 * @param evaluation The new evaluation to be added.
+	 */
+	public void addEvaluation(Evaluation evaluation) {
+		this.evaluations.add(evaluation);
+	}
+	
+	/**
+	 * Removes a new evaluation to this Course.
+	 * @param evaluation The new evaluation to be removed.
+	 */
+	public void removeEvaluation(Evaluation evaluation) {
+		this.evaluations.remove(evaluation);
+	}
+
+	/**
+	 * Modifies the evaluations of this Course.
+	 * @param credits The new evaluations of this Course.
+	 */
+	public void setEvaluations(ArrayList<Evaluation> evaluations) {
+		this.evaluations = evaluations;
 	}
 }

@@ -91,6 +91,7 @@ public class Curriculum {
 		private School school;
 		private AcademicSemester semester;
 		private ArrayList<ICourse> courses;
+		private ArrayList<Evaluation> evaluations;
 		private boolean approved;
 		private double grade;
 		
@@ -109,6 +110,7 @@ public class Curriculum {
 			this.school = course.getSchool();
 			this.semester = semester;
 			this.courses = CopyCreator.copyICourses(course.getCourses());
+			this.evaluations = CopyCreator.copyEvaluations(course.getEvaluations());
 			this.approved = approved;
 			this.grade = grade;
 		}
@@ -160,6 +162,13 @@ public class Curriculum {
 		 */
 		public ArrayList<ICourse> getCourses() {
 			return courses;
+		}
+
+		/**
+		 * @return The evaluations that took place in the course.
+		 */
+		public ArrayList<Evaluation> getEvaluations() {
+			return evaluations;
 		}
 
 		/**

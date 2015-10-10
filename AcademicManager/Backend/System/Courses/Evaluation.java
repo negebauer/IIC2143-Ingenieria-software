@@ -1,5 +1,12 @@
 package System.Courses;
 
+import java.util.Date;
+
+import Tools.Others.Utilities;
+
+/**
+ * Class that represents an Evaluation of a Course.
+ */
 public class Evaluation {
 	
 	public enum CourseEvaluation {
@@ -17,50 +24,56 @@ public class Evaluation {
 		}
 	}
 	
-	private CourseEvaluation tipo;
-	private Classroom sala;
-	private int dia;
-	private int mes;
-	private int ano;
-	private int hora;
-	
-	public CourseEvaluation getTipo() {
-		return tipo;
+	private CourseEvaluation courseEvaluation;
+	private Classroom classroom;
+	private Date date;
+
+	/**
+	 * 
+	 * @param courseEvaluation
+	 * @param classroom
+	 * @param dateString
+	 */
+	public Evaluation(CourseEvaluation courseEvaluation, Classroom classroom, String dateString) {
+		this.courseEvaluation = courseEvaluation;
+		this.classroom = classroom;
+		this.date = Utilities.getDateFromString(dateString);
 	}
 
-	public void setTipo(CourseEvaluation tipo) {
-		this.tipo = tipo;
+	/**
+	 * @return The type of course evaluation of this Evaluation.
+	 */
+	public CourseEvaluation getCourseEvaluation() {
+		return courseEvaluation;
 	}
 
-	public Classroom getSala() {
-		return sala;
+	/**
+	 * @return The classroom where the Evaluation will take place.
+	 */
+	public Classroom getClassroom() {
+		return classroom;
 	}
 
-	public void setSala(Classroom sala) {
-		this.sala = sala;
+	/**
+	 * Modifies the classroom in which the Evaluation will take place.
+	 * @param classroom The new classroom for the Evaluation.
+	 */
+	public void setClassroom(Classroom classroom) {
+		this.classroom = classroom;
 	}
-	
-	public String getFecha(){
-		
-		return (Integer.toString(this.dia) + "/" + Integer.toString(this.mes) + "/" + Integer.toString(this.ano));	
-	
-	}
-	
-	public void setFecha(int day, int month, int year){
-		
-		this.dia = day;
-		this.mes = month;
-		this.ano = year;
-	}
-	
 
-	public int getHora() {
-
-		return hora;
+	/**
+	 * @return The date in which the Evaluation will take place.
+	 */
+	public Date getDate() {
+		return date;
 	}
-	
 
-	public void setHora(int hora) {
-		this.hora = hora;
+	/**
+	 * Modifies the date in which the Evaluation will take place.
+	 * @param classroom The new date for the Evaluation.
+	 */
+	public void setDate(Date date) {
+		this.date = date;
 	}
 }

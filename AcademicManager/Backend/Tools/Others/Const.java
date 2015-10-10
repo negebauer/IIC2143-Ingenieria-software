@@ -2,7 +2,7 @@ package Tools.Others;
 
 public class Const {
 
-	public final static int DEFAULT_SIZE = 100;
+	public final static int DEFAULT_CLASSROOM_SIZE = 100;
 
 	public final static int DEFAULT_CREDITS = 10;
 		
