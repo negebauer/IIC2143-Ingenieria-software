@@ -1,0 +1,34 @@
+Alumno:
+- Ingreso de alumno__________________________________________________
+- Registro de almumno................................................DONE
+- Reconocer carrera automaticamente__________________________________
+- Seleccionar Malla..................................................
+- Crear Semestre_____________________________________________________DONE
+- Guardar Semestre...................................................
+- Agregar Curso al semestre__________________________________________DONE
+- Eliminar Curso del semestre
+........................................
+- Calificar Semestre_________________________________________________
+- Recibir avisos de topes de horario.................................
+- Recibir avisos de topes de evaluaciones____________________________
+- Recibir avisos de requisitos para cursos...........................
+- Recibir avisos de exceso de creditos_______________________________
+- Mostrar avance curricular..........................................DONE
+- Historial Curricular_______________________________________________DONE
+- Ver Horario........................................................
+- Cambio de modo_____________________________________________________
+
+Administrador:
+- Ingreso de administrador___________________________________________
+- Registro de administador
+...........................................DONE
+- Agregar malla nueva________________________________________________DONE
+- Agregar curso......................................................DONE
+- Eliminar Curso_____________________________________________________
+- Modificar curso
+....................................................DONE
+- Fijar límite de ramos reprobados___________________________________
+- Fijar máximo de créditos por semestre..............................
+- Controlar topes de salas usadas a la misma hora____________________
+- Controlar topes de profesores con dos clases a la misma hora.......
+- Cambio de modo_____________________________________________________
