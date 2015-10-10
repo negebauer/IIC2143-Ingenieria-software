@@ -1,8 +1,11 @@
 package System.Courses;
 
 import java.util.ArrayList;
-import System.Users.Professor;
+
 import Tools.Interfaces.*;
+import Tools.Others.CopyCreator;
+import Tools.Enums.AcademicSemester;
+import Tools.Enums.School;
 
 /**
  * Class that represents the students' Curriculum.
@@ -28,14 +31,14 @@ public class Curriculum {
 	 * @param gpa The grade obtained in the course.
 	 * @param semester The semester in which the course was coursed.
 	 */
-	public void addCoursed(Course course, boolean approved, double gpa, String semester) {
-		this.coursedCourses.add(new Coursed(course, approved, gpa, semester));
+	public void addCoursedCourse(Course course, boolean approved, double grade, AcademicSemester semester) {
+		this.coursedCourses.add(new Coursed(course, approved, grade, semester));
 	}
 	
 	/**
 	 * @return The list of all the coursed Courses.
 	 */
-	public ArrayList<Coursed> getCurriculum() {
+	public ArrayList<Coursed> getCoursedCourses() {
 		return this.coursedCourses;
 	}
 	
@@ -84,112 +87,66 @@ public class Curriculum {
 		private String name;
 		private String initials;
 		private int credits;
-		
-		private ArrayList<Professor> professors;
-		private ArrayList<Classroom> classrooms;
-		private ArrayList<Schedule> schedules;	
-		
+		private String details;
+		private School school;
+		private AcademicSemester semester;
+		private ArrayList<ICourse> courses;
 		private boolean approved;
 		private double grade;
-		private String semester;
 		
-		public Coursed(Course course, boolean approved, double grade, String semester) {
-			
+		/**
+		 * Creates a new Coursed instance from a coursed Course.
+		 * @param course The Course that was coursed.
+		 * @param approved Whether the Course was approved or not.
+		 * @param grade The grade obtained in the Course.
+		 * @param semester The semester in which the Course was taken.
+		 */
+		public Coursed(Course course, boolean approved, double grade, AcademicSemester semester) {
 			this.name = course.getName();
 			this.initials = course.getInitials();
-			this.credits = course.getCredits();	
-			
-			ArrayList<Professor> professors = new ArrayList<Professor>();
-			for(ICourse icourse : course.getCourses()) {
-				if (icourse instanceof IProfessors) {
-					for (Professor professor : ((IProfessors) icourse).getProfessors()) {
-						professors.add(professor);
-					}
-				}
-			}
-			this.professors = professors;
-			
-			ArrayList<Classroom> classrooms = new ArrayList<Classroom>();
-			for(ICourse icourse : course.getCourses()) {
-				classrooms.add(icourse.getClassroom());
-			}
-			this.classrooms = classrooms;
-			
-			ArrayList<Schedule> schedules = new ArrayList<Schedule>();
-			for(ICourse icourse : course.getCourses()) {
-				schedules.add(icourse.getSchedule());
-			}
-			this.schedules = schedules;
-			
-			this.setApproved(approved);
-			this.setSemester(semester);
-			this.setGrade(grade);
+			this.credits = course.getCredits();
+			this.details = course.getDetails();
+			this.school = course.getSchool();
+			this.semester = semester;
+			this.courses = CopyCreator.copyICourses(course.getCourses());
+			this.approved = approved;
+			this.grade = grade;
 		}
 
 		public String getName() {
-			return this.name;
+			return name;
 		}
 		
 		public String getInitials() {
-			return this.initials;
+			return initials;
 		}
 		
 		public int getCredits() {
-			return this.credits;
+			return credits;
 		}
 		
-		public ArrayList<Professor> getProfessors() {
-			return this.professors;
+		public String getDetails() {
+			return details;
 		}
 		
-//		@Override
-//		public Classroom getClassroom() {
-//			return classroom;
-//		}
-//		@Override
-//		public void setClassroom(Classroom classroom) {
-//			this.classroom = classroom;
-//		}
-//
-//		@Override
-//		public Schedule getSchedule() {
-//			return schedule;
-//		}
-//		@Override
-//		public void setSchedule(Schedule schedule) {
-//			this.schedule = schedule;
-//		}
-		// TODO Update this
-		public ArrayList<Classroom> getClassroom() {
-			return classrooms;
+		public School getSchool() {
+			return school;
 		}
-
-		// TODO Update this
-		public ArrayList<Schedule> getSchedule() {
-			return schedules;
+		
+		public AcademicSemester getSemester() {
+			return semester;
 		}
-
+		
+		public ArrayList<ICourse> getCourses() {
+			return courses;
+		}
+		
 		public boolean isApproved() {
 			return approved;
 		}
-		public void setApproved(boolean approved) {
-			this.approved = approved;
-		}
-
-		public String getSemester() {
-			return semester;
-		}
-		public void setSemester(String semester) {
-			this.semester = semester;
-		}
-
 		
 		public double getGrade() {
 			return grade;
 		}
-
-		public void setGrade(double grade) {
-			this.grade = grade;
-		}	
 	}
 }

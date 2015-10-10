@@ -31,4 +31,5 @@ public interface ICourse {
 	 * @param schedule This Course's new Schedule.
 	 */
 	public void setSchedule(Schedule schedule);
+	
 }

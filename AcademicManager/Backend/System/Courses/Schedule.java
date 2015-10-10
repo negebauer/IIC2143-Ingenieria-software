@@ -43,27 +43,27 @@ public class Schedule {
 		}
 	}
 	
-	private ArrayList<Tuple> modules = new ArrayList<Tuple>();
+	private ArrayList<DayModuleTuple> modules = new ArrayList<DayModuleTuple>();
 	
 	public Schedule() {
 		
 	}
-	public Schedule(Tuple module) {
-		
+	
+	public Schedule(DayModuleTuple module) {
 		this.modules.add(module);
 	}
-	public Schedule(ArrayList<Tuple> modules) {
-		
+	
+	public Schedule(ArrayList<DayModuleTuple> modules) {
 		this.modules = modules;
 	}
 	
-	public ArrayList<Tuple> getModules() {
+	public ArrayList<DayModuleTuple> getModules() {
 		return modules;
 	}
-	public void addModule(Tuple module) {
+	public void addModule(DayModuleTuple module) {
 		this.modules.add(module);
 	}
-	public void removeModule(Tuple index) {
+	public void removeModule(DayModuleTuple index) {
 		this.modules.remove(index);
 	}
 
@@ -71,19 +71,18 @@ public class Schedule {
 		String schedule = "";
 		
 		for(int i = 0; i < modules.size(); i++) {
-			Tuple t = modules.get(i);
+			DayModuleTuple t = modules.get(i);
 			schedule += t.getDay().getDay() + t.getModule().getModule() + " ";
 		}					
 		return schedule;
 	}
 	
-	public class Tuple {
+	public class DayModuleTuple {
 
 		private Day day;
 		private Module module;
 		
-		public Tuple(Day day, Module module) {
-			
+		public DayModuleTuple(Day day, Module module) {
 			this.day = day;
 			this.module = module;
 		}

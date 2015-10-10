@@ -3,13 +3,12 @@ package System.Courses;
 import java.util.ArrayList;
 
 import System.Users.Assistant;
-import Tools.Interfaces.ICourse;
 import Tools.Interfaces.IAssistants;
 
 /**
  * Class that represents an Assistantship that is dictated.
  */
-public class Assistantship implements ICourse, IAssistants {
+public class Assistantship implements IAssistants {
 	
 	private ArrayList<Assistant> assistants; 
 	private Classroom classroom;
@@ -67,4 +66,5 @@ public class Assistantship implements ICourse, IAssistants {
 	public void setSchedule(Schedule schedule) {
 		this.schedule = schedule;
 	}
+
 }

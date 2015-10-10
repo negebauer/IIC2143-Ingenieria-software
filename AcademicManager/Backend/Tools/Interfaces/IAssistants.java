@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import System.Users.Assistant;
 
 /**
- * Protocol used to define a ICourse class that has assistants.
+ * Protocol used to define an ICourse class that has assistants.
  */
 public interface IAssistants extends ICourse {
 
@@ -23,6 +23,7 @@ public interface IAssistants extends ICourse {
 	/**
 	 * @return The Array of assistants of this Assistantship
 	 */
+	
 	public ArrayList<Assistant> getAssistants();
 	/**
 	 * Returns the assistant from the assistants list that corresponds to the given index

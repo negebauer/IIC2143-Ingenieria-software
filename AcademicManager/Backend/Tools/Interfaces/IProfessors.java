@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import System.Users.Professor;
 
 /**
- * Protocol used to define a ICourse class that has professors.
+ * Protocol used to define an ICourse class that has professors.
  */
 public interface IProfessors extends ICourse {
 	

@@ -3,10 +3,9 @@ package System.Courses;
 import java.util.ArrayList;
 
 import System.Users.Professor;
-import Tools.Interfaces.ICourse;
 import Tools.Interfaces.IProfessors;;
 
-public class Professorship implements ICourse, IProfessors {
+public class Professorship implements IProfessors {
 
 	private ArrayList<Professor> professors;
 	private Classroom classroom;
