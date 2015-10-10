@@ -41,21 +41,33 @@ public class StudyProgram {
 	}
 	
 	/**
-	 * 
+	 * returns the school to which this study program belongs
 	 * @return
 	 */
 	public School getSchool() {
 		return school;
 	}
-
+	
+	/**
+	 * set the school to which this study program belongs
+	 * @param school the school to which this study program belong
+	 */
 	public void setSchool(School school) {
 		this.school = school;
 	}
 
+	/**
+	 * return the semesters that are in this study program
+	 * @return
+	 */
 	public ArrayList<Semester> getSemestres() {
 		return semestres;
 	}
-
+	
+	/**
+	 * set the semesters that are in this study program
+	 * @param semestres
+	 */
 	public void setSemestres(ArrayList<Semester> semestres) {
 		this.semestres = semestres;
 	}
