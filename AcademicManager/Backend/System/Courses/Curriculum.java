@@ -113,38 +113,65 @@ public class Curriculum {
 			this.grade = grade;
 		}
 
+		/**
+		 * @return The name of the coursed course.
+		 */
 		public String getName() {
 			return name;
 		}
-		
+
+		/**
+		 * @return The initials of the coursed course.
+		 */
 		public String getInitials() {
 			return initials;
 		}
-		
+
+		/**
+		 * @return The credits that the coursed course is worth.
+		 */
 		public int getCredits() {
 			return credits;
 		}
-		
+
+		/**
+		 * @return The details of the coursed course.
+		 */
 		public String getDetails() {
 			return details;
 		}
-		
+
+		/**
+		 * @return The school to which the coursed course belongs.
+		 */
 		public School getSchool() {
 			return school;
 		}
-		
+
+		/**
+		 * @return The semester in which the course was coursed.
+		 */
 		public AcademicSemester getSemester() {
 			return semester;
 		}
-		
+
+		/**
+		 * @return The courses of the coursed course.
+		 */
 		public ArrayList<ICourse> getCourses() {
 			return courses;
 		}
-		
+
+		/**
+		 * @return Whether the course was approved or not.
+		 */
 		public boolean isApproved() {
 			return approved;
 		}
-		
+
+		/**
+		 * @return The grade obtained in the course.
+		 */
 		public double getGrade() {
 			return grade;
 		}
