@@ -6,21 +6,21 @@ import System.Users.Professor;
 import Tools.Interfaces.IProfessors;;
 
 /**
- * Class that represents a Professorship that is dictated.
+ * Class that represents a Lecture that is dictated.
  */
-public class Professorship implements IProfessors {
+public class Lecture implements IProfessors {
 
 	private ArrayList<Professor> professors;
 	private Classroom classroom;
 	private Schedule schedule;	
 	
 	/**
-	 * Creates an instance of Professorship.
-	 * @param professors The professors of this Professorship.
-	 * @param classroom The classroom where the Professorship takes place.
-	 * @param schedule The schedule in which the Professorship takes place.
+	 * Creates an instance of Lecture.
+	 * @param professors The professors of this Lecture.
+	 * @param classroom The classroom where the Lecture takes place.
+	 * @param schedule The schedule in which the Lecture takes place.
 	 */
-	public Professorship(ArrayList<Professor> professors, Classroom classroom, Schedule schedule) {
+	public Lecture(ArrayList<Professor> professors, Classroom classroom, Schedule schedule) {
 		this.professors = professors;
 		this.classroom = classroom;
 		this.schedule = schedule;

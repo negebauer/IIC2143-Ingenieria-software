@@ -10,19 +10,19 @@ import System.Users.Professor;
 public interface IProfessors extends ICourse {
 	
 	/**
-	 * Adds a professor to this Professorship
-	 * @param professor The professor to be added to this Professorship
+	 * Adds a professor to this Lecture
+	 * @param professor The professor to be added to this Lecture
 	 */
 	public void addProfessor(Professor professor);
 	
 	/**
-	 * Removes a professor from this Professorship
-	 * @param professor The professor to be removed from this Professorship
+	 * Removes a professor from this Lecture
+	 * @param professor The professor to be removed from this Lecture
 	 */
 	public void removeProfessor(Professor professor);
 	
 	/**
-	 * @return The Array of professors of this Professorship
+	 * @return The Array of professors of this Lecture
 	 */
 	public ArrayList<Professor> getProfessors();
 

@@ -6,7 +6,7 @@ import System.Courses.Assistantship;
 import System.Courses.Classroom;
 import System.Courses.Evaluation;
 import System.Courses.Laboratory;
-import System.Courses.Professorship;
+import System.Courses.Lecture;
 import System.Courses.Schedule;
 import System.Courses.Schedule.DayModuleTuple;
 import System.Users.Assistant;
@@ -35,9 +35,9 @@ public class CopyCreator {
 			} else if (course instanceof Laboratory) {
 				Laboratory copiedLaboratory = copyLaboratory((Laboratory) course);
 				copiedCourses.add(copiedLaboratory);
-			} else if (course instanceof Professorship) {
-				Professorship copiedProfessorship = copyProfessorship((Professorship) course);
-				copiedCourses.add(copiedProfessorship);
+			} else if (course instanceof Lecture) {
+				Lecture copiedLecture = copyLecture((Lecture) course);
+				copiedCourses.add(copiedLecture);
 			}
 		}
 		return copiedCourses;
@@ -70,16 +70,16 @@ public class CopyCreator {
 	}
 	
 	/**
-	 * Copies all the data from a professorship into a new instance of Professorship.
-	 * @param original The original Professorship.
-	 * @return The copy of the original Professorship.
+	 * Copies all the data from a Lecture into a new instance of Lecture.
+	 * @param original The original Lecture.
+	 * @return The copy of the original Lecture.
 	 */
-	public static Professorship copyProfessorship(Professorship original) {
+	public static Lecture copyLecture(Lecture original) {
 		ArrayList<Professor> copiedProfessors = copyProfessors(original.getProfessors());
 		Classroom copiedClassroom = copyClassroom(original.getClassroom());
 		Schedule copiedSchedule = copySchedule(original.getSchedule());
 		
-		return new Professorship(copiedProfessors, copiedClassroom, copiedSchedule);
+		return new Lecture(copiedProfessors, copiedClassroom, copiedSchedule);
 	}
 	
 	// Copying evaluations methods

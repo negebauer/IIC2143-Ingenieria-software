@@ -3,49 +3,46 @@ package System.Courses;
 import java.util.ArrayList;
 import Tools.Enums.AcademicSemester;
 
+/**
+ * Class that represents a Semester to be coursed.
+ */
 public class Semester {
 	
 	private AcademicSemester semester;
-	private ArrayList<Course> courses;
 	private int year;
+	private ArrayList<Course> courses;
 	
 	/**
-	 * Add a course to the semester
+	 * Creates a new instance of Semester.
+	 * @param semester The academic semester in which this Semester takes place.
+	 * @param year The year in which this Semester takes place.
+	 */
+	public Semester(AcademicSemester semester, int year) {
+		this.semester = semester;
+		this.year = year;
+		this.courses = new ArrayList<Course>();
+	}
+	
+	/**
+	 * Adds a course to the semester
 	 * @param course course that wants to be added to the semester
 	 */
-	public void AgregarCurso(Course course) {
-		
-		if ((!courses.contains(course)) && (course.getSemester() == AcademicSemester.BOTH || course.getSemester() == this.semester)){
-			courses.add(course);
+	public AddCourseResponse addCourse(Course course) {
+		AddCourseResponse response;
+		if (courses.contains(course)) {
+			response = new AddCourseResponse(false, "Course is already registered in this semester");
+		} else if (course.getSemester() != AcademicSemester.BOTH && course.getSemester() != semester) {
+			response = new AddCourseResponse(false, "The course isn't dictated in this semester");
+		} else {
+			response = new AddCourseResponse(true, "The course was added");
+			addCourse(course);
 		}
-		
-		else {
-			// error, you can't add a course of the first semester in the second and backwards.
-		}
-		
+		return response;
 	}
 	
-	//getters and setters
-	
+	// Getters and Setters
 	/**
-	 *returns the number of semester of this semester
-	 * @return
-	 */
-	public AcademicSemester getSemester() {
-		return semester;
-	}
-	
-	/**
-	 * set the number of semester of this semester
-	 * @param semester
-	 */
-	public void setSemester(AcademicSemester semester) {
-		this.semester = semester;
-	}
-	
-	/**
-	 * returns the courses in the semester
-	 * @return
+	 * @return The courses registered in this semester.
 	 */
 	public ArrayList<Course> getCursos() {
 		return courses;
@@ -60,19 +57,27 @@ public class Semester {
 	}
 	
 	/**
-	 * returns the year of the semester
-	 * @return
+	 * @return The year in which this Semester took place.
 	 */
 	public int getYear() {
 		return year;
 	}
 	
 	/**
-	 * sets the year of this semester
-	 * @param year
+	 * Class used as a data container for answering an add course call.
 	 */
-	public void setYear(int year) {
-		this.year = year;
+	public class AddCourseResponse {
+		public boolean success;
+		public String response;
+		
+		/**
+		 * Creates a new instance of AddCourseResponse.
+		 * @param success Whether the course was added or not.
+		 * @param response A String containing a User friendly response specifying the result of the addCourse call.
+		 */
+		public AddCourseResponse(boolean success, String response) {
+			this.success = success;
+			this.response = response;
+		}
 	}
-	
 }
