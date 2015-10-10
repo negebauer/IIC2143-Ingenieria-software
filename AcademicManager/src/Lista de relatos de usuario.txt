@@ -6,8 +6,7 @@ Alumno:
 - Crear Semestre_____________________________________________________DONE
 - Guardar Semestre...................................................
 - Agregar Curso al semestre__________________________________________DONE
-- Eliminar Curso del semestre
-........................................
+- Eliminar Curso del semestre........................................
 - Calificar Semestre_________________________________________________
 - Recibir avisos de topes de horario.................................
 - Recibir avisos de topes de evaluaciones____________________________
@@ -20,13 +19,11 @@ Alumno:
 
 Administrador:
 - Ingreso de administrador___________________________________________
-- Registro de administador
-...........................................DONE
+- Registro de administador...........................................DONE
 - Agregar malla nueva________________________________________________DONE
 - Agregar curso......................................................DONE
 - Eliminar Curso_____________________________________________________
-- Modificar curso
-....................................................DONE
+- Modificar curso....................................................DONE
 - Fijar límite de ramos reprobados___________________________________
 - Fijar máximo de créditos por semestre..............................
 - Controlar topes de salas usadas a la misma hora____________________
