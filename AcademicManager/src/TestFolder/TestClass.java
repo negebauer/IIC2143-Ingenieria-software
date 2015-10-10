@@ -1,10 +1,13 @@
 package TestFolder;
 
 import java.util.Date;
+
 import System.Courses.Schedule;
 import System.Users.Admin;
 import System.Users.User;
+import Tools.Others.Messages;
 import Tools.Others.Utilities;
+import Tools.Others.Messages.Message;
 
 public class TestClass {
 
@@ -20,5 +23,7 @@ public class TestClass {
 		Date date;
 		date = Utilities.getDateFromString("10.09.1993 18:58");
 		System.out.println(Utilities.getStringFromDate(date));
+	
+		System.out.println(Messages.getMessage(Message.COURSE_WASNT_ADDED_TO_SEMESTER_REPEATED.index()));
 	}
 } 

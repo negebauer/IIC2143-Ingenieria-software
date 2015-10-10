@@ -2,6 +2,7 @@ package System.Users;
 
 import java.util.ArrayList;
 
+// TODO Should this really be a class? Better if users is an attribute of Manager
 public class Users {
 
 	private ArrayList<User> users = new ArrayList<User>();

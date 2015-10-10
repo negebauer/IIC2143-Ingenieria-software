@@ -1,25 +1,21 @@
 package System.Courses;
 
 import java.util.ArrayList;
+import Tools.Others.Messages;
 
 public class Schedule {
 
 	public enum Day {
-		MONDAY ("L"),
-		TUESDAY ("M"),
-		WEDNESDAY ("W"),
-		THURSDAY ("J"),
-		FRIDAY ("V"),
-		SATURDAY ("S"),
-		SUNDAY ("D");
-		
-		private final String day;
-		Day(String day) {
-	        this.day = day;
-		}
+		MONDAY,
+		TUESDAY,
+		WEDNESDAY,
+		THURSDAY,
+		FRIDAY,
+		SATURDAY,
+		SUNDAY;
 		
 		public String getDayString() {
-			return this.day;
+			return Messages.getDay(this);
 		}
 	}
 	
