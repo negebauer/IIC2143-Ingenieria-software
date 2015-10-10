@@ -15,10 +15,10 @@ public class Assistantship implements IAssistants {
 	private Schedule schedule;
 	
 	/**
-	 * Creates an instance of Assistantship
-	 * @param assistants The assistants of this assistantship
-	 * @param classroom The classroom where this assistantship is made
-	 * @param schedule The schedule in which this assistantship is made
+	 * Creates an instance of Assistantship.
+	 * @param assistants The assistants of this Assistantship.
+	 * @param classroom The classroom where the Assistantship takes place.
+	 * @param schedule The schedule in which the Assistantship takes place.
 	 */
 	public Assistantship(ArrayList<Assistant> assistants, Classroom classroom, Schedule schedule) {
 		this.assistants = assistants;

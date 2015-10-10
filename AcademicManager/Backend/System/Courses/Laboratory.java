@@ -5,12 +5,21 @@ import java.util.ArrayList;
 import System.Users.Professor;
 import Tools.Interfaces.IProfessors;
 
+/**
+ * Class that represents a Laboratory that is dictated.
+ */
 public class Laboratory implements IProfessors {
 	
 	private ArrayList<Professor> professors;
 	private Classroom classroom;
-	private Schedule schedule;	
+	private Schedule schedule;
 	
+	/**
+	 * Creates an instance of Laboratory.
+	 * @param professors The professors in charge of the Laboratory.
+	 * @param classroom The classroom where the Laboratory takes place.
+	 * @param schedule The schedule in which the Laboratory takes place.
+	 */
 	public Laboratory(ArrayList<Professor> professors, Classroom classroom, Schedule schedule) {
 		this.professors = professors;
 		this.classroom = classroom;

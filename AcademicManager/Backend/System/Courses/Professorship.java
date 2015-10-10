@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import System.Users.Professor;
 import Tools.Interfaces.IProfessors;;
 
+/**
+ * Class that represents a Professorship that is dictated.
+ */
 public class Professorship implements IProfessors {
 
 	private ArrayList<Professor> professors;
@@ -12,10 +15,10 @@ public class Professorship implements IProfessors {
 	private Schedule schedule;	
 	
 	/**
-	 * Creates an instance of Professorship
-	 * @param professors The professors of this Professorship
-	 * @param classroom The classroom where this Professorship is made
-	 * @param schedule The schedule in which this Professorship is made
+	 * Creates an instance of Professorship.
+	 * @param professors The professors of this Professorship.
+	 * @param classroom The classroom where the Professorship takes place.
+	 * @param schedule The schedule in which the Professorship takes place.
 	 */
 	public Professorship(ArrayList<Professor> professors, Classroom classroom, Schedule schedule) {
 		this.professors = professors;
