@@ -8,8 +8,8 @@ Alumno:
 - Agregar Curso al semestre__________________________________________DONE
 - Eliminar Curso del semestre........................................DONE
 - Calificar Semestre_________________________________________________DONE
-- Recibir avisos de topes de horario.................................
-- Recibir avisos de topes de evaluaciones____________________________
+- Recibir avisos de topes de horario.................................DONE
+- Recibir avisos de topes de evaluaciones____________________________DONE
 - Recibir avisos de requisitos para cursos...........................DONE
 - Recibir avisos de exceso de creditos_______________________________DONE
 - Mostrar avance curricular..........................................DONE
