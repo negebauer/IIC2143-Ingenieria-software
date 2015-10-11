@@ -4,18 +4,18 @@ Alumno:
 - Reconocer carrera automaticamente__________________________________
 - Seleccionar Malla..................................................
 - Crear Semestre_____________________________________________________DONE
-- Guardar Semestre...................................................
+- Guardar Semestre...................................................DONE
 - Agregar Curso al semestre__________________________________________DONE
-- Eliminar Curso del semestre........................................
-- Calificar Semestre_________________________________________________
+- Eliminar Curso del semestre........................................DONE
+- Calificar Semestre_________________________________________________DONE
 - Recibir avisos de topes de horario.................................
 - Recibir avisos de topes de evaluaciones____________________________
-- Recibir avisos de requisitos para cursos...........................
-- Recibir avisos de exceso de creditos_______________________________
+- Recibir avisos de requisitos para cursos...........................DONE
+- Recibir avisos de exceso de creditos_______________________________DONE
 - Mostrar avance curricular..........................................DONE
 - Historial Curricular_______________________________________________DONE
-- Ver Horario........................................................
-- Cambio de modo_____________________________________________________
+- Ver Horario........................................................DONE
+- Cambio de modo_____________________________________________________DONE
 
 Administrador:
 - Ingreso de administrador___________________________________________
@@ -25,7 +25,7 @@ Administrador:
 - Eliminar Curso_____________________________________________________
 - Modificar curso....................................................DONE
 - Fijar limite de ramos reprobados___________________________________
-- Fijar maximo de creditos por semestre..............................
+- Fijar maximo de creditos por semestre..............................DONE
 - Controlar topes de salas usadas a la misma hora____________________
 - Controlar topes de profesores con dos clases a la misma hora.......
-- Cambio de modo_____________________________________________________
+- Cambio de modo_____________________________________________________DONE

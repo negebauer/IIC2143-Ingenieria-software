@@ -6,6 +6,8 @@ import Tools.Enums.School;
 import Tools.Enums.AcademicSemester;
 import Tools.Interfaces.ICourse;
 import Tools.Others.Const;
+import Tools.Others.Messages;
+import Tools.Others.Messages.Message;
 
 /**
  * Class that represents a Course that is dictated.
@@ -20,6 +22,7 @@ public class Course {
 	private AcademicSemester semester;
 	private ArrayList<ICourse> courses;
 	private ArrayList<Evaluation> evaluations;
+	private ArrayList<Course> requirements;
 	
 	/**
 	 * Creates an instance of Course.
@@ -42,6 +45,45 @@ public class Course {
 		this.courses = courses != null ? courses : new ArrayList<ICourse>();
 		this.evaluations = evaluations != null ? evaluations : new ArrayList<Evaluation>();
 	}
+	
+	/**
+	 * Adds a course as a requirement of this course.
+	 * @param course The course that wan to be added as a requirement.
+	 */
+	public AddOrRemoveRequirementResponse addRequirement(Course course){
+		AddOrRemoveRequirementResponse response;
+		
+		if (this.requirements.contains(course)){
+			response = new AddOrRemoveRequirementResponse(false, Messages.getMessage(Message.REQUIREMENT_WASNT_ADDED_TO_REQUIREMENTS_REPEATED.index()));
+		}
+		else if (this == course){
+			response = new AddOrRemoveRequirementResponse(false, Messages.getMessage(Message.REQUIREMENT_WASNT_ADDED_TO_REQUIREMENTS_SAME_COURSE.index()));
+		}
+		else {
+			response = new AddOrRemoveRequirementResponse(true, Messages.getMessage(Message.REQUIREMENT_WAS_ADDED_TO_REQUIREMENTS.index()));
+			this.requirements.add(course);
+		}
+		
+		return response;
+	}
+	
+	/**
+	 * Removes a course of the requirements of this course.
+	 * @param course The course that want to be removed of the requirements.
+	 */
+	public AddOrRemoveRequirementResponse removeRequirement(Course course){
+		AddOrRemoveRequirementResponse response;
+		
+		if (this.requirements.contains(course)){
+			response = new AddOrRemoveRequirementResponse(false, Messages.getMessage(Message.REQUIREMENT_WAS_REMOVED_OF_REQUIREMENTS.index()));
+			this.requirements.remove(course);
+		}
+		else {
+			response = new AddOrRemoveRequirementResponse(false, Messages.getMessage(Message.REQUIREMENT_WASNT_REMOVED_OF_REQUIREMENTS_NOT_IN_REQUIREMENTS.index()));
+		}
+		return response;
+	}
+	
 	
 	//Getters and Setters
 	/**
@@ -178,5 +220,27 @@ public class Course {
 	 */
 	public void setEvaluations(ArrayList<Evaluation> evaluations) {
 		this.evaluations = evaluations;
+	}
+	
+	/**
+	 * @return The requirements of this course.
+	 */
+	public ArrayList<Course> getRequirements(){
+		return requirements;
+	}
+	
+	public class AddOrRemoveRequirementResponse {
+		public boolean success;
+		public String response;
+		
+		/**
+		 * Creates a new instance of AddOrRemoveRequirementResponse.
+		 * @param success Whether the requirement was added/removed or not.
+		 * @param response A String containing a User friendly response specifying the result of the addOrRemoveRequirement call.
+		 */
+		public AddOrRemoveRequirementResponse(boolean success, String response) {
+			this.success = success;
+			this.response = response;
+		}
 	}
 }

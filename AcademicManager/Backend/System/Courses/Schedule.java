@@ -123,6 +123,22 @@ public class Schedule {
 	}
 	
 	/**
+	 * Checks whether a schedule have any same module that this schedule.
+	 * @param schedule The schedule that wants to be ckecked.
+	 */
+	public boolean scheduleClash(Schedule schedule){
+		
+		for (DayModuleTuple dayModuleTupleA : this.getModules()){
+			for (DayModuleTuple dayModuleTupleB : schedule.getModules()){
+				if (dayModuleTupleA.getDay() == dayModuleTupleB.getDay() && dayModuleTupleA.getModule() == dayModuleTupleB.getModule()){
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
+	/**
 	 * Class that represents a Tuple containing a Day and a Module in which a (physical) class takes place.
 	 */
 	public class DayModuleTuple {

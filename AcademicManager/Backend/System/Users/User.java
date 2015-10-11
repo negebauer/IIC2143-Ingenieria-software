@@ -101,73 +101,97 @@ public abstract class User {
 	}
 
 	/**
-	 * @return The unique role identifier of the User.
+	 * @return The last name from the father of the user
 	 */
 	public String getLastnameFather() {
 		return lastnameFather;
 	}
 
+	/**
+	 * Modifies the last name from the father of the user.
+	 * @param lastnameFather The new last name from the father of the user.
+	 */
 	public void setLastnameFather(String lastnameFather) {
 		this.lastnameFather = lastnameFather;
 	}
 
 	/**
-	 * @return The unique role identifier of the User.
+	 * @return The last name from the mother of the user.
 	 */
 	public String getLastnameMother() {
 		return lastnameMother;
 	}
-
+	
+	/**
+	 * Modifies last name from the mother of the user.
+	 * @param lastnameFather The new last name from the mother of the user.
+	 */
 	public void setLastnameMother(String lastnameMother) {
 		this.lastnameMother = lastnameMother;
 	}
 
 	/**
-	 * @return The unique role identifier of the User.
+	 * @return The address of the user.
 	 */
 	public String getAddress() {
 		return address;
 	}
-
+	
+	/**
+	 * Modifies the address of the user.
+	 * @param address The new address of the user.
+	 */
 	public void setAddress(String address) {
 		this.address = address;
 	}
 
 	/**
-	 * @return The unique role identifier of the User.
+	 * @return The gender of the user.
 	 */
 	public Gender getGender() {
 		return gender;
 	}
 
+	/**
+	 * Modifies the gender of the user.
+	 * @param gender The new gender of the user.
+	 */
 	public void setGender(Gender gender) {
 		this.gender = gender;
 	}
 
 	/**
-	 * @return The unique role identifier of the User.
+	 * @return The access mode of the user.
 	 */
 	public Access getAccess() {
 		return access;
 	}
-
+	
+	/**
+	 * Modifies the access mode of the user.
+	 * @param access The new access mode of the user.
+	 */
 	public void setAccess(Access access) {
 		this.access = access;
 	}
 
 	/**
-	 * @return The unique role identifier of the User.
+	 * @return The phone of the User.
 	 */
 	public int getPhone() {
 		return phone;
 	}
 
+	/**
+	 * Modifies the phone of the user.
+	 * @param phone The new phone of the user.
+	 */
 	public void setPhone(int phone) {
 		this.phone = phone;
 	}
 
 	/**
-	 * @return The unique role identifier of the User.
+	 * @return The birthday of the user.
 	 */
 	public Date getBirthday() {
 		return birthday;

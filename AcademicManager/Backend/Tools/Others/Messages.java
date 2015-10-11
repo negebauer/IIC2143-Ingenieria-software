@@ -19,7 +19,19 @@ public class Messages {
 	public enum Message {
 		COURSE_WASNT_ADDED_TO_SEMESTER_REPEATED 						(0),
 		COURSE_WASNT_ADDED_TO_SEMESTER_NOT_COURSED_IN_SEMESTER 			(1),
-		COURSE_WAS_ADDED_TO_SEMESTER 									(2);
+		COURSE_WASNT_ADDED_TO_SEMESTER_MAX_CREDITS_EXCEEDED				(2),
+		COURSE_WASNT_ADDED_TO_SEMESTER_REQUIREMENTS						(3),
+		COURSES_WERE_ADDED_TO_SEMESTER									(4),
+		COURSE_WAS_ADDED_TO_SEMESTER 									(5),
+		COURSE_WAS_ADDED_TO_SEMESTER_EVALUATION_CLASH					(6),
+		COURSE_WAS_ADDED_TO_SEMESTER_SCHEDULE_CLASH						(7),
+		COURSE_WAS_REMOVED_OF_SEMESTER									(8),
+		COURSE_WASNT_REMOVED_OF_SEMESTER_NOT_IN_SEMESTER				(9),
+		REQUIREMENT_WAS_ADDED_TO_REQUIREMENTS							(10),
+		REQUIREMENT_WASNT_ADDED_TO_REQUIREMENTS_REPEATED				(11),
+		REQUIREMENT_WASNT_ADDED_TO_REQUIREMENTS_SAME_COURSE				(12),
+		REQUIREMENT_WAS_REMOVED_OF_REQUIREMENTS							(13),
+		REQUIREMENT_WASNT_REMOVED_OF_REQUIREMENTS_NOT_IN_REQUIREMENTS	(14);
 		
 		private final int messageIndex;
 		Message(int messageIndex) {
@@ -45,6 +57,17 @@ public class Messages {
 		}
 	}
 	
+	public static String getMessage(Integer index, String additionalInfo) {
+		switch (LANGUAGE) {
+		case ENGLISH:
+			return ENGLISH.get(index) + additionalInfo;
+		case SPANISH:
+			return SPANISH.get(index) + additionalInfo;
+		default:
+			return "ERROR GETTING MESSAGE (404)";
+		}
+	}
+	
 	public static final HashMap<Integer, String> ENGLISH = createMapEnglish();
 	public static final HashMap<Integer, String> SPANISH = createMapSpanish();
 	
@@ -52,7 +75,19 @@ public class Messages {
     	HashMap<Integer, String> result = new HashMap<Integer, String>();
         result.put(0, "Course is already registered in this semester");
         result.put(1, "The course isn't dictated in this semester");
-        result.put(2, "The course was correctly added to the semester");
+        result.put(2, "The maximum of credits of this semester is exceeded");
+        result.put(3, "You do not have approved all requirements:");
+        result.put(4, "The courses were succsessfully added to the semester");
+        result.put(5, "The course was correctly added to the semester");
+        result.put(6, "The course was correctly added to the semester, but the evaluations of the course are in conflict with others:");
+        result.put(7, "The course was correctly added to the semester, but the schedule of the course has trouble with other course's shedule");
+        result.put(8, "The course was correctly removed of the semester");
+        result.put(9, "The course is not in the semester");
+        result.put(10, "The course was succsessfully added as a requirement");
+        result.put(11, "This course is already a requirement");
+        result.put(12, "You can't add a course as a requirement of itself");
+        result.put(13, "The course was succsessfully removed from requirements");
+        result.put(14, "This is not a requirement of the course");
         return result;
     }
     
@@ -60,7 +95,19 @@ public class Messages {
     	HashMap<Integer, String> result = new HashMap<Integer, String>();
         result.put(0, "Este curso ya esta ingresado en el semestre");
         result.put(1, "Este curso no se dicta en este semestre");
-        result.put(2, "El curso fue agregado correctamente al semestre");
+        result.put(2, "El maximo de creditos de este semestre sobrepasa el limite");
+        result.put(3, "No cumple con los requisitos, falta(n):");
+        result.put(4, "Los cursos fueron agregados al semestre satisfactoriamente");
+        result.put(5, "El curso fue agregado correctamente al semestre");
+        result.put(6, "El curso fue agregado correctamente al semestre, pero las evaluaciones del curso topan con otras del semestre:");
+        result.put(7, "El curso fue agregado correctamente al semestre, pero el horario del curso topa con el de otro curso");
+        result.put(8, "El curso fue removido correctamente del semestre");
+        result.put(9, "Este curso no se encuentra en el semestre");
+        result.put(10, "El curso fue agregado como requisito exitosamente");
+        result.put(11, "Este curso ya esta ingresado como requisito");
+        result.put(12, "No se puede agregar un curso como requisito de el mismo");
+        result.put(13, "El curso fue removido exitosamente de los requisitos");
+        result.put(14, "Este curso no es un requisito");
         return result;
     }
     

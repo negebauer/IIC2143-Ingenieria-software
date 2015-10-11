@@ -3,6 +3,7 @@ package System.Courses;
 import java.util.ArrayList;
 
 import Tools.Enums.School;
+import Tools.Others.Const;
 
 /**
  * Class that represents a StudyProgram.
@@ -12,6 +13,7 @@ public class StudyProgram {
 	private School school;
 	private int yearEntrance;
 	private ArrayList<Semester> semesters;
+	private int maxCreditsPerSemester = Const.DEFAULT_CREDITS_PER_SEMESTER;
 	
 	/**
 	 * Creates an instance of StudyProgram
@@ -61,6 +63,21 @@ public class StudyProgram {
 	 */
 	public void setSemesters(ArrayList<Semester> semesters) {
 		this.semesters = semesters;
+	}
+	
+	/** 
+	 * @return The maximum of credits that one semester can have.
+	 */
+	public int getMaxCreditsPerSemester() {
+		return maxCreditsPerSemester;
+	}
+	
+	/**
+	 * Modifies the maximum of credits that one semester can have.
+	 * @param maxCreditsPerSemester The new maximum of credits for each semester.
+	 */
+	public void setMaxCreditsPerSemester(int maxCreditsPerSemester) {
+		this.maxCreditsPerSemester = maxCreditsPerSemester;
 	}
 	
 }
