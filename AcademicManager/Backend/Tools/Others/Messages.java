@@ -35,7 +35,9 @@ public class Messages {
 		COURSE_WASNT_CREATED_EVALUATION_CLASH							(15),
 		COURSE_WASNT_CREATED_PROFESSOR_CLASH							(16),
 		COURSE_WASNT_CREATED_CLASSROOM_CLASH							(17),
-		COURSE_WAS_CREATED												(18);
+		COURSE_WAS_CREATED												(18),
+		COURSE_WASNT_DELETED_REQUIRED_FOR_COURSE						(19),
+		COURSE_WAS_DELETED												(20);
 		
 		private final int messageIndex;
 		Message(int messageIndex) {
@@ -50,10 +52,21 @@ public class Messages {
 	// TODO Get this value from a configuration file.
 	public static SupportedLanguage LANGUAGE = SupportedLanguage.defaultLanguage();
 	
+	/**
+	 * Returns the message to be displayed in the language specified in the configuration file.
+	 * @param index The index of the message to be returned (obtained from enum Message).
+	 * @return A string containing the requested message in the current language.
+	 */
 	public static String getMessage(Integer index) {
 		return getMessage(index, null);
 	}
 	
+	/**
+	 * Returns the message to be displayed in the language specified in the configuration file.
+	 * @param index The index of the message to be returned (obtained from enum Message).
+	 * @param additionalInfo Optional additional info to be displayed.
+	 * @return A string containing the requested message in the current language + "\n" + the additionalInfo string.
+	 */
 	public static String getMessage(Integer index, String additionalInfo) {
 		additionalInfo = "\n" + additionalInfo != null ? additionalInfo : "";
 		switch (LANGUAGE) {
@@ -90,6 +103,8 @@ public class Messages {
         result.put(16, "Course wasn't created due to a clash with the professors of the course");
         result.put(17, "Course wasn't created due to a clash with the course classrooms of the course");
         result.put(18, "Course was successfully created");
+        result.put(19, "The course couldn't be deleted because it's a prerequisite for another coures");
+        result.put(20, "The course was successfully deleted");
         return result;
     }
     
@@ -114,6 +129,8 @@ public class Messages {
         result.put(16, "El curso no pudo crearse ya que hay un tope de profesores");
         result.put(17, "El curso no pudo crearse ya que hay un tope de salas");
         result.put(18, "El curso fue creado correctamente");
+        result.put(19, "El curso no pudo ser eliminado ya que es requisitos para otros cursos");
+        result.put(20, "El curso fue eliminado correctamente");
         return result;
     }
     

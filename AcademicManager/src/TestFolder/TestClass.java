@@ -40,11 +40,9 @@ public class TestClass {
 	public static String cleanNewLineCharExcessFromString(String stringToClean) {
 		ArrayList<String> cleanedString = new ArrayList<String>();
 		for (String character : stringToClean.split("\n")) {
-//			System.out.println("AH: " + character);
 			if (cleanedString.size() == 0 && !character.isEmpty()) {
 				cleanedString.add(character);
 			} else if (cleanedString.size() > 0 && !(cleanedString.get(cleanedString.size() - 1).isEmpty() && character.isEmpty())) {
-//				System.out.println("AH: " + character);
 				cleanedString.add(character);
 			}
 		}

@@ -78,6 +78,14 @@ public class CourseModificationChecker {
 				requisites = requisites + course.getInitials() + "\n";
 			}
  		}
+		
+		if (requisites != "") {
+			success = false;
+			response = Messages.getMessage(Message.COURSE_WASNT_DELETED_REQUIRED_FOR_COURSE.index(), requisites);
+		} else {
+			success = true;
+			response = Messages.getMessage(Message.COURSE_WAS_DELETED.index());
+		}
 		return new CourseModificationChecker().new ModifyCourseResponse(success, response);
 	}
 	
