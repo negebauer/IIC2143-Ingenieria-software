@@ -24,6 +24,7 @@ public class Course {
 	private ArrayList<ICourse> courses;
 	private ArrayList<Evaluation> evaluations;
 	private ArrayList<Course> requirements;
+	private ArrayList<Course> coRequirements;
 	
 	/**
 	 * Creates an instance of Course.
@@ -78,8 +79,46 @@ public class Course {
 		AddOrRemoveRequirementResponse response;
 		
 		if (this.requirements.contains(course)){
-			response = new AddOrRemoveRequirementResponse(false, Messages.getMessage(Message.REQUIREMENT_WAS_REMOVED_OF_REQUIREMENTS.index()));
+			response = new AddOrRemoveRequirementResponse(false, Messages.getMessage(Message.COREQUIREMENT_WAS_REMOVED_OF_COREQUIREMENTS.index()));
 			this.requirements.remove(course);
+		}
+		else {
+			response = new AddOrRemoveRequirementResponse(false, Messages.getMessage(Message.COREQUIREMENT_WASNT_REMOVED_OF_COREQUIREMENTS_NOT_IN_COREQUIREMENTS.index()));
+		}
+		return response;
+	}
+	
+	/**
+	 * Adds a course as a requirement of this course.
+	 * @param course The course that wan to be added as a requirement.
+	 */
+	public AddOrRemoveRequirementResponse addCoRequirement(Course course){
+		AddOrRemoveRequirementResponse response;
+		
+		if (this.coRequirements.contains(course)){
+			response = new AddOrRemoveRequirementResponse(false, Messages.getMessage(Message.COREQUIREMENT_WASNT_ADDED_TO_COREQUIREMENTS_REPEATED.index()));
+		}
+		else if (this == course){
+			response = new AddOrRemoveRequirementResponse(false, Messages.getMessage(Message.COREQUIREMENT_WASNT_ADDED_TO_COREQUIREMENTS_SAME_COURSE.index()));
+		}
+		else {
+			response = new AddOrRemoveRequirementResponse(true, Messages.getMessage(Message.COREQUIREMENT_WAS_ADDED_TO_COREQUIREMENTS.index()));
+			this.coRequirements.add(course);
+		}
+		
+		return response;
+	}	
+	
+	/**
+	 * Removes a course of the coRequirements of this course.
+	 * @param course The course that want to be removed of the coRequirements.
+	 */
+	public AddOrRemoveRequirementResponse removeCoRequirement(Course course){
+		AddOrRemoveRequirementResponse response;
+		
+		if (this.coRequirements.contains(course)){
+			response = new AddOrRemoveRequirementResponse(false, Messages.getMessage(Message.REQUIREMENT_WAS_REMOVED_OF_REQUIREMENTS.index()));
+			this.coRequirements.remove(course);
 		}
 		else {
 			response = new AddOrRemoveRequirementResponse(false, Messages.getMessage(Message.REQUIREMENT_WASNT_REMOVED_OF_REQUIREMENTS_NOT_IN_REQUIREMENTS.index()));
@@ -245,6 +284,13 @@ public class Course {
 	 */
 	public ArrayList<Course> getRequirements(){
 		return requirements;
+	}
+	
+	/**
+	 * @return The coRequirements of this course.
+	 */
+	public ArrayList<Course> getCoRequirements(){
+		return coRequirements;
 	}
 	
 	public class AddOrRemoveRequirementResponse {

@@ -42,7 +42,8 @@ public class Semester {
 	 */
 	public AddOrRemoveCourseResponse addCourse(Course course) {
 		AddOrRemoveCourseResponse response;
-		ArrayList<String> requisitosNoAprobados = verifyRequirements(course);
+		ArrayList<String> notApprovedRequirements = verifyRequirements(course);
+		ArrayList<String> notValidatedCoRequirements = verifyCoRequirements(course);
 		int Eclashes = evaluationClashes(course);
 		
 		if (courses.contains(course)) {
@@ -54,13 +55,13 @@ public class Semester {
 		} else if (actualCredits + course.getCredits() > maxCredits) {
 			response = new AddOrRemoveCourseResponse(false, Messages.getMessage(Message.COURSE_WASNT_ADDED_TO_SEMESTER_MAX_CREDITS_EXCEEDED.index()));
 		
-		} else if (requisitosNoAprobados.size() > 0) {
-			String cursosNoAprobados = "";
-			for (String requisito : requisitosNoAprobados) {
-				cursosNoAprobados += requisito + ", \n";
+		} else if (notApprovedRequirements.size() > 0) {
+			String notApprovedCourses = "";
+			for (String requisito : notApprovedRequirements) {
+				notApprovedCourses += requisito + ", \n";
 			}
-			cursosNoAprobados = cursosNoAprobados.substring(0, cursosNoAprobados.length() - 2) + ".";
-			response = new AddOrRemoveCourseResponse(false, Messages.getMessage(Message.COURSE_WASNT_ADDED_TO_SEMESTER_REQUIREMENTS.index(), cursosNoAprobados));
+			notApprovedCourses = notApprovedCourses.substring(0, notApprovedCourses.length() - 2) + ".";
+			response = new AddOrRemoveCourseResponse(false, Messages.getMessage(Message.COURSE_WASNT_ADDED_TO_SEMESTER_REQUIREMENTS.index(), notApprovedCourses));
 		
 		} else if (Eclashes > 0) {
 			response = new AddOrRemoveCourseResponse(false, Messages.getMessage(Message.COURSE_WASNT_ADDED_TO_SEMESTER_EVALUATION_CLASH.index(), Integer.toString(Eclashes)));
@@ -68,13 +69,32 @@ public class Semester {
 		} else if (scheduleClash(course)) {
 			response = new AddOrRemoveCourseResponse(false, Messages.getMessage(Message.COURSE_WASNT_ADDED_TO_SEMESTER_SCHEDULE_CLASH.index())); 
 		
-		} else {
+		} else if (notValidatedCoRequirements.size() > 0) {
+			String notValidatedCourses = "";
+			for (String coRequisito : notValidatedCoRequirements) {
+				notValidatedCourses += coRequisito + ", \n";
+			}
+			notValidatedCourses = notValidatedCourses.substring(0, notValidatedCourses.length() - 2) + ".";
+			response = new AddOrRemoveCourseResponse(false, Messages.getMessage(Message.COURSE_WASNT_ADDED_TO_SEMESTER_COREQUIREMENTS.index(), notValidatedCourses));
+					
+		} else{
 			response = new AddOrRemoveCourseResponse(true, Messages.getMessage(Message.COURSE_WAS_ADDED_TO_SEMESTER.index()));
 			addCourseToSemester(course);
 		}
 		return response;
 	}
 	
+	private ArrayList<String> verifyCoRequirements(Course course) {
+		ArrayList<String> nonValidCoRequirements = new ArrayList<String>();
+		for (Course coRequirement : course.getCoRequirements()){
+			if (!this.getCourses().contains(coRequirement) && !this.approvedCourses.contains(coRequirement.getInitials())){
+				nonValidCoRequirements.add(coRequirement.getInitials());
+			}
+		}
+		
+		return nonValidCoRequirements;
+	}
+
 	/**
 	 * Actually adds the course to this semester courses.
 	 * @param course The course to be added.
