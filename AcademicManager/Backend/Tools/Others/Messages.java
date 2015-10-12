@@ -24,7 +24,7 @@ public class Messages {
 		COURSES_WERE_ADDED_TO_SEMESTER									(4),
 		COURSE_WAS_ADDED_TO_SEMESTER 									(5),
 		COURSE_WASNT_ADDED_TO_SEMESTER_EVALUATION_CLASH					(6),
-		COURSE_WAS_ADDED_TO_SEMESTER_SCHEDULE_CLASH						(7),
+		COURSE_WASNT_ADDED_TO_SEMESTER_SCHEDULE_CLASH					(7),
 		COURSE_WAS_REMOVED_OF_SEMESTER									(8),
 		COURSE_WASNT_REMOVED_OF_SEMESTER_NOT_IN_SEMESTER				(9),
 		REQUIREMENT_WAS_ADDED_TO_REQUIREMENTS							(10),
@@ -47,17 +47,11 @@ public class Messages {
 	public static SupportedLanguage LANGUAGE = SupportedLanguage.defaultLanguage();
 	
 	public static String getMessage(Integer index) {
-		switch (LANGUAGE) {
-		case ENGLISH:
-			return ENGLISH.get(index);
-		case SPANISH:
-			return SPANISH.get(index);
-		default:
-			return "ERROR GETTING MESSAGE (404)";
-		}
+		return getMessage(index, null);
 	}
 	
 	public static String getMessage(Integer index, String additionalInfo) {
+		additionalInfo = "\n" + additionalInfo != null ? additionalInfo : "";
 		switch (LANGUAGE) {
 		case ENGLISH:
 			return ENGLISH.get(index) + additionalInfo;
@@ -79,8 +73,8 @@ public class Messages {
         result.put(3, "You do not have approved all requirements:");
         result.put(4, "The courses were succsessfully added to the semester");
         result.put(5, "The course was correctly added to the semester");
-        result.put(6, "Some evaluations of this course have troubles:");
-        result.put(7, "The course was correctly added to the semester, but the schedule of the course has trouble with other course's shedule");
+        result.put(6, "The course wasn't added due to an evaluation date conflict with another course's evaluation date");
+        result.put(7, "The course wasn't added due to a conflict between this course's schedule and another course's schedule");
         result.put(8, "The course was correctly removed of the semester");
         result.put(9, "The course is not in the semester");
         result.put(10, "The course was succsessfully added as a requirement");
@@ -99,8 +93,8 @@ public class Messages {
         result.put(3, "No cumple con los requisitos, falta(n):");
         result.put(4, "Los cursos fueron agregados al semestre satisfactoriamente");
         result.put(5, "El curso fue agregado correctamente al semestre");
-        result.put(6, "Algunas evaluaciones del curso topan con otras del semestre:");
-        result.put(7, "El curso fue agregado correctamente al semestre, pero el horario del curso topa con el de otro curso");
+        result.put(6, "No se pudo agregar el curso debido a un tope de una evaluacion con la evaluacion de otro curso");
+        result.put(7, "No se pudo agregar el curso debido a un tope de horario con otro curso");
         result.put(8, "El curso fue removido correctamente del semestre");
         result.put(9, "Este curso no se encuentra en el semestre");
         result.put(10, "El curso fue agregado como requisito exitosamente");

@@ -37,7 +37,7 @@ public class Semester {
 	}
 	
 	/**
-	 * Adds a course to the semester.
+	 * Adds a course to the semester if the conditions for doing so are met.
 	 * @param course The course that wants to be added to the semester
 	 */
 	public AddOrRemoveCourseResponse addCourse(Course course) {
@@ -49,30 +49,33 @@ public class Semester {
 			response = new AddOrRemoveCourseResponse(false, Messages.getMessage(Message.COURSE_WASNT_ADDED_TO_SEMESTER_REPEATED.index()));
 		} else if (course.getSemester() != AcademicSemester.BOTH && course.getSemester() != semester) {
 			response = new AddOrRemoveCourseResponse(false, Messages.getMessage(Message.COURSE_WASNT_ADDED_TO_SEMESTER_NOT_COURSED_IN_SEMESTER.index()));
-		} else if (actualCredits + course.getCredits() > maxCredits){
+		} else if (actualCredits + course.getCredits() > maxCredits) {
 			response = new AddOrRemoveCourseResponse(false, Messages.getMessage(Message.COURSE_WASNT_ADDED_TO_SEMESTER_MAX_CREDITS_EXCEEDED.index()));
-		} else if (requisitosNoAprobados.size() > 0){
+		} else if (requisitosNoAprobados.size() > 0) {
 			String cursosNoAprobados = "";
-			for (String requisito : requisitosNoAprobados){
+			for (String requisito : requisitosNoAprobados) {
 				cursosNoAprobados += requisito + ", ";
 			}
 			cursosNoAprobados = cursosNoAprobados.substring(0, cursosNoAprobados.length() - 2) + ".";
 			response = new AddOrRemoveCourseResponse(false, Messages.getMessage(Message.COURSE_WASNT_ADDED_TO_SEMESTER_REQUIREMENTS.index(), cursosNoAprobados));
-		} else if (Eclashes > 0){
-			response = new AddOrRemoveCourseResponse(true, Messages.getMessage(Message.COURSE_WASNT_ADDED_TO_SEMESTER_EVALUATION_CLASH.index(), Integer.toString(Eclashes))); 
-			addCourse(course);
-			actualCredits += course.getCredits();
-		} else if (scheduleClash(course)){
-			response = new AddOrRemoveCourseResponse(true, Messages.getMessage(Message.COURSE_WAS_ADDED_TO_SEMESTER_SCHEDULE_CLASH.index())); 
-			addCourse(course);
-			actualCredits += course.getCredits();
+		} else if (Eclashes > 0) {
+			response = new AddOrRemoveCourseResponse(false, Messages.getMessage(Message.COURSE_WASNT_ADDED_TO_SEMESTER_EVALUATION_CLASH.index(), Integer.toString(Eclashes)));
+		} else if (scheduleClash(course)) {
+			response = new AddOrRemoveCourseResponse(false, Messages.getMessage(Message.COURSE_WASNT_ADDED_TO_SEMESTER_SCHEDULE_CLASH.index())); 
 		} else {
 			response = new AddOrRemoveCourseResponse(true, Messages.getMessage(Message.COURSE_WAS_ADDED_TO_SEMESTER.index()));
-			addCourse(course);
-			actualCredits += course.getCredits();
+			addCourseToSemester(course);
 		}
-		
 		return response;
+	}
+	
+	/**
+	 * Actually adds the course to this semester courses.
+	 * @param course The course to be added.
+	 */
+	private void addCourseToSemester(Course course) {
+		courses.add(course);
+		actualCredits += course.getCredits();
 	}
 	
 	/**
@@ -80,7 +83,7 @@ public class Semester {
 	 * @param course The course that wants to be checked.
 	 */
 	public boolean scheduleClash(Course course){
-		for (Course courseInSemester : this.getCursos()){
+		for (Course courseInSemester : this.getCourses()){
 			for (ICourse iCourseInSemester : courseInSemester.getCourses()){
 				for (ICourse iCourse : course.getCourses()){
 					if (iCourse.getSchedule().scheduleClash(iCourseInSemester.getSchedule())){
@@ -100,7 +103,7 @@ public class Semester {
 	public int evaluationClashes(Course course){
 		int clashes = 0;
 		
-		for (Course courseInSemester : this.getCursos()){
+		for (Course courseInSemester : this.getCourses()){
 			for (Evaluation evaluationInSemester : courseInSemester.getEvaluations()){
 				for (Evaluation evaluation : course.getEvaluations()){
 					if (evaluationInSemester.getDate() == evaluation.getDate()){
@@ -109,7 +112,6 @@ public class Semester {
 				}
 			}
 		}
-		
 		return clashes;
 	}
 	
@@ -150,7 +152,7 @@ public class Semester {
 	/**
 	 * @return The courses registered in this semester.
 	 */
-	public ArrayList<Course> getCursos() {
+	public ArrayList<Course> getCourses() {
 		return courses;
 	}
 	
@@ -158,7 +160,7 @@ public class Semester {
 	 * Set the courses of this semester.
 	 * @param courses The courses that will be in the semester.
 	 */
-	public AddOrRemoveCourseResponse setCursos(ArrayList<Course> courses) {
+	public AddOrRemoveCourseResponse setCourses(ArrayList<Course> courses) {
 		AddOrRemoveCourseResponse response;
 		int credits = 0;
 		
