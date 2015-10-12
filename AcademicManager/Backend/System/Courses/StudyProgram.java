@@ -23,7 +23,7 @@ public class StudyProgram {
 	 */
 	public StudyProgram(int yearEntrance, ArrayList<Semester> semesters, School school){
 		this.yearEntrance = yearEntrance;
-		this.semesters = semesters;
+		this.semesters = semesters != null ? semesters : new ArrayList<Semester>();
 		this.school = school;
 	}
 

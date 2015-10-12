@@ -40,7 +40,7 @@ public class Course {
 	 * @param evaluations The evaluations of the Course.
 	 * @param requirements The requirements of this Course.
 	 */
-	public Course(String name, String initials, int section, int credits, String details, School school, AcademicSemester semester, ArrayList<ICourse> courses, ArrayList<Evaluation> evaluations, ArrayList<Course> requirements) {
+	public Course(String name, String initials, int section, int credits, String details, School school, AcademicSemester semester, ArrayList<ICourse> courses, ArrayList<Evaluation> evaluations, ArrayList<Course> requirements, ArrayList<Course> coRequirements) {
 		this.name = name != null ? name : "NameNil";
 		this.initials = initials != null ? initials : "InitialsNil";
 		this.section = section > 0 ? section : 0;
@@ -51,6 +51,7 @@ public class Course {
 		this.courses = courses != null ? courses : new ArrayList<ICourse>();
 		this.evaluations = evaluations != null ? evaluations : new ArrayList<Evaluation>();
 		this.requirements = requirements != null ? requirements : new ArrayList<Course>();
+		this.coRequirements = coRequirements != null ? coRequirements : new ArrayList<Course>();
 	}
 	
 	/**
