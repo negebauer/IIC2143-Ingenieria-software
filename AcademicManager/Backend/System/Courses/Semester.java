@@ -47,21 +47,28 @@ public class Semester {
 		
 		if (courses.contains(course)) {
 			response = new AddOrRemoveCourseResponse(false, Messages.getMessage(Message.COURSE_WASNT_ADDED_TO_SEMESTER_REPEATED.index()));
+		
 		} else if (course.getSemester() != AcademicSemester.BOTH && course.getSemester() != semester) {
 			response = new AddOrRemoveCourseResponse(false, Messages.getMessage(Message.COURSE_WASNT_ADDED_TO_SEMESTER_NOT_COURSED_IN_SEMESTER.index()));
+		
 		} else if (actualCredits + course.getCredits() > maxCredits) {
 			response = new AddOrRemoveCourseResponse(false, Messages.getMessage(Message.COURSE_WASNT_ADDED_TO_SEMESTER_MAX_CREDITS_EXCEEDED.index()));
+		
 		} else if (requisitosNoAprobados.size() > 0) {
+		
 			String cursosNoAprobados = "";
 			for (String requisito : requisitosNoAprobados) {
 				cursosNoAprobados += requisito + ", \n";
 			}
 			cursosNoAprobados = cursosNoAprobados.substring(0, cursosNoAprobados.length() - 2) + ".";
 			response = new AddOrRemoveCourseResponse(false, Messages.getMessage(Message.COURSE_WASNT_ADDED_TO_SEMESTER_REQUIREMENTS.index(), cursosNoAprobados));
+		
 		} else if (Eclashes > 0) {
 			response = new AddOrRemoveCourseResponse(false, Messages.getMessage(Message.COURSE_WASNT_ADDED_TO_SEMESTER_EVALUATION_CLASH.index(), Integer.toString(Eclashes)));
+		
 		} else if (scheduleClash(course)) {
 			response = new AddOrRemoveCourseResponse(false, Messages.getMessage(Message.COURSE_WASNT_ADDED_TO_SEMESTER_SCHEDULE_CLASH.index())); 
+		
 		} else {
 			response = new AddOrRemoveCourseResponse(true, Messages.getMessage(Message.COURSE_WAS_ADDED_TO_SEMESTER.index()));
 			addCourseToSemester(course);
