@@ -1,8 +1,8 @@
 Alumno:
-- Ingreso de alumno__________________________________________________
+- Ingreso de alumno__________________________________________________INTERFACE
 - Registro de almumno................................................DONE
-- Reconocer carrera automaticamente__________________________________
-- Seleccionar Malla..................................................
+- Reconocer carrera automaticamente__________________________________DONE
+- Seleccionar Malla..................................................INTERFACE
 - Crear Semestre_____________________________________________________DONE
 - Guardar Semestre...................................................DONE
 - Agregar Curso al semestre__________________________________________DONE
@@ -22,9 +22,9 @@ Administrador:
 - Registro de administador...........................................DONE
 - Agregar malla nueva________________________________________________DONE
 - Agregar curso......................................................DONE
-- Eliminar Curso_____________________________________________________
+- Eliminar Curso_____________________________________________________DONE
 - Modificar curso....................................................DONE
-- Fijar limite de ramos reprobados___________________________________
+- Fijar limite de ramos reprobados___________________________________DONE
 - Fijar maximo de creditos por semestre..............................DONE
 - Controlar topes de salas usadas a la misma hora____________________DONE
 - Controlar topes de profesores con dos clases a la misma hora.......DONE
