@@ -16,6 +16,7 @@ public class Course {
 
 	private String name;
 	private String initials;
+	private int section;
 	private int credits;
 	private String details;
 	private School school;
@@ -29,15 +30,17 @@ public class Course {
 	 * Supports default values for every parameter, therefore null is a valid value for every parameter.
 	 * @param name The name of the Course.
 	 * @param initials The initials of the Course.
+	 * @param section The section of the Course.
 	 * @param credits How much credits this Course is worth.
 	 * @param details The details of this Course.
 	 * @param school The school to which this Course belongs.
 	 * @param semester The semester in which this Course is dictated.
 	 * @param courses The courses (physical classes) of this Course.
 	 */
-	public void initCourse(String name, String initials, int credits, String details, School school, AcademicSemester semester, ArrayList<ICourse> courses, ArrayList<Evaluation> evaluations) {
+	public void initCourse(String name, String initials, int section, int credits, String details, School school, AcademicSemester semester, ArrayList<ICourse> courses, ArrayList<Evaluation> evaluations) {
 		this.name = name != null ? name : "NameNil";
 		this.initials = initials != null ? initials : "InitialsNil";
+		this.section = section > 0 ? section : 0;
 		this.credits = credits > -1 ? credits : Const.DEFAULT_CREDITS;
 		this.details = details != null ? details : "DetailsNil";
 		this.school = school != null ? school : School.defaultSchool();
@@ -116,6 +119,21 @@ public class Course {
 		this.initials = initials;
 	}
 	
+	/**
+	 * @return The section of this Course.
+	 */
+	public int getSection() {
+		return section;
+	}
+
+	/**
+	 * Modifies this Course's section.
+	 * @param initials The new section of this Course.
+	 */
+	public void setSection(int section) {
+		this.section = section;
+	}
+
 	/**
 	 * @return The details of this Course.
 	 */

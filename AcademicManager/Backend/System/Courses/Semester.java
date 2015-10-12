@@ -42,7 +42,7 @@ public class Semester {
 	 */
 	public AddOrRemoveCourseResponse addCourse(Course course) {
 		AddOrRemoveCourseResponse response;
-		ArrayList<String> requisitosNoAprobados = requirementsVerify(course);
+		ArrayList<String> requisitosNoAprobados = verifyRequirements(course);
 		int Eclashes = evaluationClashes(course);
 		
 		if (courses.contains(course)) {
@@ -54,7 +54,7 @@ public class Semester {
 		} else if (requisitosNoAprobados.size() > 0) {
 			String cursosNoAprobados = "";
 			for (String requisito : requisitosNoAprobados) {
-				cursosNoAprobados += requisito + ", ";
+				cursosNoAprobados += requisito + ", \n";
 			}
 			cursosNoAprobados = cursosNoAprobados.substring(0, cursosNoAprobados.length() - 2) + ".";
 			response = new AddOrRemoveCourseResponse(false, Messages.getMessage(Message.COURSE_WASNT_ADDED_TO_SEMESTER_REQUIREMENTS.index(), cursosNoAprobados));
@@ -92,7 +92,6 @@ public class Semester {
 				}
 			}
 		}
-		
 		return false;
 	}
 	
@@ -102,7 +101,6 @@ public class Semester {
 	 */
 	public int evaluationClashes(Course course){
 		int clashes = 0;
-		
 		for (Course courseInSemester : this.getCourses()){
 			for (Evaluation evaluationInSemester : courseInSemester.getEvaluations()){
 				for (Evaluation evaluation : course.getEvaluations()){
@@ -120,7 +118,7 @@ public class Semester {
 	 * @param course The course that will need to be reviewed the requirements.
 	 * @return The requirements that have not been approved.
 	 */
-	public ArrayList<String> requirementsVerify(Course course){
+	public ArrayList<String> verifyRequirements(Course course){
 		ArrayList<String> response = new ArrayList<String>();
 		
 		for (Course requirement : course.getRequirements()){

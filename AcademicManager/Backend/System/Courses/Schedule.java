@@ -124,7 +124,7 @@ public class Schedule {
 	
 	/**
 	 * Checks whether a schedule have any same module that this schedule.
-	 * @param schedule The schedule that wants to be ckecked.
+	 * @param schedule The schedule that wants to be checked.
 	 */
 	public boolean scheduleClash(Schedule schedule){
 		
