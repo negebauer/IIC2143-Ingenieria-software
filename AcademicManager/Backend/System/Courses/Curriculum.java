@@ -33,28 +33,26 @@ public class Curriculum {
 	}
 	
 	public ApprovedUnapprovedCoursesTuple getCurricularAdvance(StudyProgram studyProgram){
-		if (studyPrograms.contains(studyProgram)){
-			ArrayList<Coursed> approvedCourses = new ArrayList<Coursed>();
-			ArrayList<Course> unapprovedCourses = new ArrayList<Course>();
-			
-			for (Semester semester : studyProgram.getSemesters()){
-				for (Course course : semester.getCourses()){
-					unapprovedCourses.add(course);
-					for (Coursed coursed : coursedCourses){
-						if (coursed.getInitials() == course.getInitials()){
-							if (coursed.isApproved()){
-								approvedCourses.add(coursed);
-								unapprovedCourses.remove(course);
-							}
-						}
+		ArrayList<Course> unapprovedCourses = new ArrayList<Course>();
+		ArrayList<Coursed> approvedCourses = new ArrayList<Coursed>();
+		
+		for (Semester semester : studyProgram.getSemesters()){
+			for (Course course : semester.getCourses()){
+				unapprovedCourses.add(course);
+				for (Coursed coursed : coursedCourses){
+					if (coursed.getInitials() == course.getInitials() && coursed.isApproved()){
+							approvedCourses.add(coursed);
+							unapprovedCourses.remove(course);
 					}
 				}
 			}
+		}
+			
+		if (studyPrograms.contains(studyProgram)){
 			return new ApprovedUnapprovedCoursesTuple(approvedCourses, unapprovedCourses);
 		} else {
-			return null;
+			return new ApprovedUnapprovedCoursesTuple(new ArrayList<Coursed>(), unapprovedCourses);
 		}
-		
 	}
 	
 	public class ApprovedUnapprovedCoursesTuple {
