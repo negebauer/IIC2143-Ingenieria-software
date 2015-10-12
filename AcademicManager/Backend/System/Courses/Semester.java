@@ -55,7 +55,6 @@ public class Semester {
 			response = new AddOrRemoveCourseResponse(false, Messages.getMessage(Message.COURSE_WASNT_ADDED_TO_SEMESTER_MAX_CREDITS_EXCEEDED.index()));
 		
 		} else if (requisitosNoAprobados.size() > 0) {
-		
 			String cursosNoAprobados = "";
 			for (String requisito : requisitosNoAprobados) {
 				cursosNoAprobados += requisito + ", \n";

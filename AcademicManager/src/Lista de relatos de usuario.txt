@@ -15,10 +15,10 @@ Alumno:
 - Mostrar avance curricular..........................................DONE
 - Historial Curricular_______________________________________________DONE
 - Ver Horario........................................................DONE
-- Cambio de modo_____________________________________________________DONE
+- Cambio de modo_____________________________________________________INTERFACE
 
 Administrador:
-- Ingreso de administrador___________________________________________
+- Ingreso de administrador___________________________________________INTERFACE
 - Registro de administador...........................................DONE
 - Agregar malla nueva________________________________________________DONE
 - Agregar curso......................................................DONE
@@ -26,6 +26,6 @@ Administrador:
 - Modificar curso....................................................DONE
 - Fijar limite de ramos reprobados___________________________________
 - Fijar maximo de creditos por semestre..............................DONE
-- Controlar topes de salas usadas a la misma hora____________________
-- Controlar topes de profesores con dos clases a la misma hora.......
-- Cambio de modo_____________________________________________________DONE
+- Controlar topes de salas usadas a la misma hora____________________DONE
+- Controlar topes de profesores con dos clases a la misma hora.......DONE
+- Cambio de modo_____________________________________________________INTERFACE
