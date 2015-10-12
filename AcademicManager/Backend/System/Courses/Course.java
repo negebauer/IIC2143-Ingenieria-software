@@ -63,11 +63,9 @@ public class Course {
 		
 		if (this.requirements.contains(course)){
 			response = new AddOrRemoveRequirementResponse(false, Messages.getMessage(Message.REQUIREMENT_WASNT_ADDED_TO_REQUIREMENTS_REPEATED.index()));
-		}
-		else if (this == course){
+		} else if (this == course){
 			response = new AddOrRemoveRequirementResponse(false, Messages.getMessage(Message.REQUIREMENT_WASNT_ADDED_TO_REQUIREMENTS_SAME_COURSE.index()));
-		}
-		else {
+		} else {
 			response = new AddOrRemoveRequirementResponse(true, Messages.getMessage(Message.REQUIREMENT_WAS_ADDED_TO_REQUIREMENTS.index()));
 			this.requirements.add(course);
 		}
@@ -85,8 +83,7 @@ public class Course {
 		if (this.requirements.contains(course)){
 			response = new AddOrRemoveRequirementResponse(false, Messages.getMessage(Message.COREQUIREMENT_WAS_REMOVED_OF_COREQUIREMENTS.index()));
 			this.requirements.remove(course);
-		}
-		else {
+		} else {
 			response = new AddOrRemoveRequirementResponse(false, Messages.getMessage(Message.COREQUIREMENT_WASNT_REMOVED_OF_COREQUIREMENTS_NOT_IN_COREQUIREMENTS.index()));
 		}
 		return response;
@@ -101,15 +98,12 @@ public class Course {
 		
 		if (this.coRequirements.contains(course)){
 			response = new AddOrRemoveRequirementResponse(false, Messages.getMessage(Message.COREQUIREMENT_WASNT_ADDED_TO_COREQUIREMENTS_REPEATED.index()));
-		}
-		else if (this == course){
+		} else if (this == course){
 			response = new AddOrRemoveRequirementResponse(false, Messages.getMessage(Message.COREQUIREMENT_WASNT_ADDED_TO_COREQUIREMENTS_SAME_COURSE.index()));
-		}
-		else {
+		} else {
 			response = new AddOrRemoveRequirementResponse(true, Messages.getMessage(Message.COREQUIREMENT_WAS_ADDED_TO_COREQUIREMENTS.index()));
 			this.coRequirements.add(course);
 		}
-		
 		return response;
 	}	
 	
@@ -123,8 +117,7 @@ public class Course {
 		if (this.coRequirements.contains(course)){
 			response = new AddOrRemoveRequirementResponse(false, Messages.getMessage(Message.REQUIREMENT_WAS_REMOVED_OF_REQUIREMENTS.index()));
 			this.coRequirements.remove(course);
-		}
-		else {
+		} else {
 			response = new AddOrRemoveRequirementResponse(false, Messages.getMessage(Message.REQUIREMENT_WASNT_REMOVED_OF_REQUIREMENTS_NOT_IN_REQUIREMENTS.index()));
 		}
 		return response;

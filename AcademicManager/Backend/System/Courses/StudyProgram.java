@@ -14,6 +14,7 @@ public class StudyProgram {
 	private int yearEntrance;
 	private ArrayList<Semester> semesters;
 	private int maxCreditsPerSemester = Const.DEFAULT_CREDITS_PER_SEMESTER;
+	private int maxFailedCredits = Const.DEFAULT_MAX_FAILED_CREDITS;
 	
 	/**
 	 * Creates an instance of StudyProgram
@@ -21,10 +22,12 @@ public class StudyProgram {
 	 * @param semesters The semesters of the StudyProgram.
 	 * @param school The school to which this StudyProgram belongs.
 	 */
-	public StudyProgram(int yearEntrance, ArrayList<Semester> semesters, School school){
+	public StudyProgram(int yearEntrance, ArrayList<Semester> semesters, School school, int maxCreditsPerSemester, int maxFailedCredits){
 		this.yearEntrance = yearEntrance;
 		this.semesters = semesters != null ? semesters : new ArrayList<Semester>();
 		this.school = school;
+		this.maxCreditsPerSemester = maxCreditsPerSemester;
+		this.maxFailedCredits = maxFailedCredits; 
 	}
 
 	//Getters and Setters
@@ -78,6 +81,21 @@ public class StudyProgram {
 	 */
 	public void setMaxCreditsPerSemester(int maxCreditsPerSemester) {
 		this.maxCreditsPerSemester = maxCreditsPerSemester;
+	}
+
+	/** 
+	 * @return The maximum number of credits that can be failed in this study program.
+	 */
+	public int getMaxFailedCredits() {
+		return maxFailedCredits;
+	}
+
+	/**
+	 * Modifies the maximum number of credits that can be failed in this study program.
+	 * @param maxFailedCredits The new maximum of of credits that can be failed in this study program.
+	 */
+	public void setMaxFailedCredits(int maxFailedCredits) {
+		this.maxFailedCredits = maxFailedCredits;
 	}
 	
 }
