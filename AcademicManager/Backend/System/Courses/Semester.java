@@ -191,7 +191,7 @@ public class Semester {
 	}
 	
 	/**
-	 * Class used as a data container for answering an add course call.
+	 * Class used as a data container for answering an add or remove course call.
 	 */
 	public class AddOrRemoveCourseResponse {
 		public boolean success;

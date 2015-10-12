@@ -32,6 +32,53 @@ public class Curriculum {
 		this.coursedCourses.add(new Coursed(course, approved, grade, semester));
 	}
 	
+	public CurricularTuple getCurricularAdvance(StudyProgram studyProgram){
+		if (studyPrograms.contains(studyProgram)){
+			ArrayList<Coursed> approvedCourses = new ArrayList<Coursed>();
+			ArrayList<Course> unapprovedCourses = new ArrayList<Course>();
+			
+			for (Semester semester : studyProgram.getSemesters()){
+				for (Course course : semester.getCourses()){
+					unapprovedCourses.add(course);
+					for (Coursed coursed : coursedCourses){
+						if (coursed.getInitials() == course.getInitials()){
+							if (coursed.isApproved()){
+								approvedCourses.add(coursed);
+								unapprovedCourses.remove(course);
+							}
+						}
+
+					}
+				}
+			}
+			
+			return new CurricularTuple(approvedCourses, unapprovedCourses);
+			
+		}
+		else {
+			return null;
+		}
+		
+	}
+	
+	public class CurricularTuple {
+		private ArrayList<Coursed> approvedCourses;
+		private ArrayList<Course> unapprovedCourses;
+		
+		public CurricularTuple(ArrayList<Coursed> approvedCourses, ArrayList<Course> unapprovedCourses){
+			this.approvedCourses = approvedCourses;
+			this.unapprovedCourses = unapprovedCourses;
+		}
+		
+		public ArrayList<Coursed> getApprovedCourses(){
+			return this.approvedCourses;
+		}
+		
+		public ArrayList<Course> getUnapprovedCourses(){
+			return this.unapprovedCourses;
+		}
+	}
+	
 	/**
 	 * @return The list of all the coursed Courses.
 	 */
