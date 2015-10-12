@@ -59,7 +59,7 @@ public class Semester {
 			cursosNoAprobados = cursosNoAprobados.substring(0, cursosNoAprobados.length() - 2) + ".";
 			response = new AddOrRemoveCourseResponse(false, Messages.getMessage(Message.COURSE_WASNT_ADDED_TO_SEMESTER_REQUIREMENTS.index(), cursosNoAprobados));
 		} else if (Eclashes > 0){
-			response = new AddOrRemoveCourseResponse(true, Messages.getMessage(Message.COURSE_WAS_ADDED_TO_SEMESTER_EVALUATION_CLASH.index(), Integer.toString(Eclashes))); 
+			response = new AddOrRemoveCourseResponse(true, Messages.getMessage(Message.COURSE_WASNT_ADDED_TO_SEMESTER_EVALUATION_CLASH.index(), Integer.toString(Eclashes))); 
 			addCourse(course);
 			actualCredits += course.getCredits();
 		} else if (scheduleClash(course)){

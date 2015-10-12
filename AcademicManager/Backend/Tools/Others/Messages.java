@@ -23,7 +23,7 @@ public class Messages {
 		COURSE_WASNT_ADDED_TO_SEMESTER_REQUIREMENTS						(3),
 		COURSES_WERE_ADDED_TO_SEMESTER									(4),
 		COURSE_WAS_ADDED_TO_SEMESTER 									(5),
-		COURSE_WAS_ADDED_TO_SEMESTER_EVALUATION_CLASH					(6),
+		COURSE_WASNT_ADDED_TO_SEMESTER_EVALUATION_CLASH					(6),
 		COURSE_WAS_ADDED_TO_SEMESTER_SCHEDULE_CLASH						(7),
 		COURSE_WAS_REMOVED_OF_SEMESTER									(8),
 		COURSE_WASNT_REMOVED_OF_SEMESTER_NOT_IN_SEMESTER				(9),
@@ -79,7 +79,7 @@ public class Messages {
         result.put(3, "You do not have approved all requirements:");
         result.put(4, "The courses were succsessfully added to the semester");
         result.put(5, "The course was correctly added to the semester");
-        result.put(6, "The course was correctly added to the semester, but the evaluations of the course are in conflict with others:");
+        result.put(6, "Some evaluations of this course have troubles:");
         result.put(7, "The course was correctly added to the semester, but the schedule of the course has trouble with other course's shedule");
         result.put(8, "The course was correctly removed of the semester");
         result.put(9, "The course is not in the semester");
@@ -99,7 +99,7 @@ public class Messages {
         result.put(3, "No cumple con los requisitos, falta(n):");
         result.put(4, "Los cursos fueron agregados al semestre satisfactoriamente");
         result.put(5, "El curso fue agregado correctamente al semestre");
-        result.put(6, "El curso fue agregado correctamente al semestre, pero las evaluaciones del curso topan con otras del semestre:");
+        result.put(6, "Algunas evaluaciones del curso topan con otras del semestre:");
         result.put(7, "El curso fue agregado correctamente al semestre, pero el horario del curso topa con el de otro curso");
         result.put(8, "El curso fue removido correctamente del semestre");
         result.put(9, "Este curso no se encuentra en el semestre");
