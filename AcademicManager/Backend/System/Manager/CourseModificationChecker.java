@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import System.Courses.Course;
 import System.Courses.Evaluation;
 import System.Users.Professor;
+import Tools.Enums.AcademicSemester;
+import Tools.Enums.School;
 import Tools.Interfaces.ICourse;
 import Tools.Interfaces.IProfessors;
 import Tools.Others.Messages;
@@ -17,14 +19,14 @@ import Tools.Others.Messages.Message;
 public class CourseModificationChecker {
 
 //	TODO Connect to manager when Admin tries to create a new course
-	public static ModifyCourseResponse courseCanBeCreated(ArrayList<Course> courses, Course newCourse) {
+	public static ModifyCourseResponse courseCanBeCreated(ArrayList<Course> currentCourses, Course newCourse) {
 		String evaluationClassRoomClash = "";
 		String courseClassRoomClash = "";
 		String courseProfessorClash = "";
 		boolean success = false;
 		String response = "NoResponse";
 		
-		for (Course course : courses) {
+		for (Course course : currentCourses) {
 			for (Evaluation evaluation : course.getEvaluations()) {
 				for (Evaluation newEvaluation : newCourse.getEvaluations()) {
 					if (evaluation.getDate() == newEvaluation.getDate() && evaluation.getClassroom() == newEvaluation.getClassroom()) {
@@ -55,25 +57,27 @@ public class CourseModificationChecker {
 			success = true;
 			response = Messages.getMessage(Message.COURSE_WAS_CREATED.index());
 		}
-		return new CourseModificationChecker().new ModifyCourseResponse(success, response);
+		return new CourseModificationChecker().new ModifyCourseResponse(success, response, newCourse);
 	}
 	
-//	TODO Check if a modification to a course can be made	
-//	public static ModifyCourseResponse courseCanBeModified(ArrayList<Course> courses, Course modifiedCourse) {
-//		String classRoomClash = "";
-//		String professorClash = "";
-//		boolean success = false;
-//		String response = "NoResponse";
-//		
-//		return new CourseModificationChecker().new CreateCourseResponse(success, response);
-//	}
+	public static ModifyCourseResponse courseCanBeModified(ArrayList<Course> currentCourses, Course courseToModify, String name, String initials, int section, int credits, String details, School school, AcademicSemester semester, ArrayList<ICourse> courses, ArrayList<Evaluation> evaluations, ArrayList<Course> requirements) {
+		Course modifiedCourse = new Course(name, initials, section, credits, details, school, semester, courses, evaluations, requirements);
+		currentCourses.remove(courseToModify);
+		ModifyCourseResponse modifyCourseResponse = courseCanBeCreated(currentCourses, modifiedCourse);
+		if (modifyCourseResponse.success) {
+			modifyCourseResponse.course = modifiedCourse;
+		} else {
+			modifyCourseResponse.course = courseToModify;
+		}
+		return modifyCourseResponse;
+	}
 	
-	public static ModifyCourseResponse courseCanBeDeleted(ArrayList<Course> courses, Course deleteCourse) {
+	public static ModifyCourseResponse courseCanBeDeleted(ArrayList<Course> currentCourses, Course deleteCourse) {
 		String requisites = "";
 		boolean success = false;
 		String response = "NoResponse";
 		
-		for (Course course : courses) {
+		for (Course course : currentCourses) {
 			if (course.getRequirements().contains(deleteCourse)) {
 				requisites = requisites + course.getInitials() + "\n";
 			}
@@ -86,7 +90,7 @@ public class CourseModificationChecker {
 			success = true;
 			response = Messages.getMessage(Message.COURSE_WAS_DELETED.index());
 		}
-		return new CourseModificationChecker().new ModifyCourseResponse(success, response);
+		return new CourseModificationChecker().new ModifyCourseResponse(success, response, deleteCourse);
 	}
 	
 	public static String getClassroomClash(ICourse icourse, ICourse newICourse, String courseInitials) {
@@ -125,13 +129,15 @@ public class CourseModificationChecker {
 	public class ModifyCourseResponse {
 		public boolean success;
 		public String response;
+		public Course course;
 		
 		/**
 		 * Creates a new instance of CreateCourseResponse.
 		 * @param success Whether the course can be created or no.
 		 * @param response A String containing a User friendly response specifying the result of the createCourse call.
+		 * @param course The course that was modified, created or deleted.
 		 */
-		public ModifyCourseResponse(boolean success, String response) {
+		public ModifyCourseResponse(boolean success, String response, Course course) {
 			this.success = success;
 			this.response = response;
 		}

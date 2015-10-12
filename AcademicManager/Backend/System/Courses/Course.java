@@ -36,8 +36,10 @@ public class Course {
 	 * @param school The school to which this Course belongs.
 	 * @param semester The semester in which this Course is dictated.
 	 * @param courses The courses (physical classes) of this Course.
+	 * @param evaluations The evaluations of the Course.
+	 * @param requirements The requirements of this Course.
 	 */
-	public void initCourse(String name, String initials, int section, int credits, String details, School school, AcademicSemester semester, ArrayList<ICourse> courses, ArrayList<Evaluation> evaluations) {
+	public Course(String name, String initials, int section, int credits, String details, School school, AcademicSemester semester, ArrayList<ICourse> courses, ArrayList<Evaluation> evaluations, ArrayList<Course> requirements) {
 		this.name = name != null ? name : "NameNil";
 		this.initials = initials != null ? initials : "InitialsNil";
 		this.section = section > 0 ? section : 0;
@@ -47,6 +49,7 @@ public class Course {
 		this.semester = semester != null ? semester : AcademicSemester.defaultSemester();
 		this.courses = courses != null ? courses : new ArrayList<ICourse>();
 		this.evaluations = evaluations != null ? evaluations : new ArrayList<Evaluation>();
+		this.requirements = requirements != null ? requirements : new ArrayList<Course>();
 	}
 	
 	/**
@@ -195,7 +198,7 @@ public class Course {
 	}
 
 	/**
-	 * @return The courses (Professorship, Assistantship, Laboratory, etc.) of this Course.
+	 * @return The courses (Lecture, Assistantship, Laboratory, etc.) of this Course.
 	 */
 	public ArrayList<ICourse> getCourses() {
 		return courses;
