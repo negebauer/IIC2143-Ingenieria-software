@@ -117,7 +117,7 @@ public class Schedule {
 		String schedule = "";
 		// TODO Better processing to emulate the Banner format ¿?
 		for (DayModuleTuple module : getModules()) {
-			schedule += module.getDay().getDayString() + ":" + module.getModule().getModuleString() + "\n";
+			schedule += module.day.getDayString() + ":" + module.module.getModuleString() + "\n";
 		}
 		return schedule;
 	}
@@ -130,7 +130,7 @@ public class Schedule {
 		
 		for (DayModuleTuple dayModuleTupleA : this.getModules()){
 			for (DayModuleTuple dayModuleTupleB : schedule.getModules()){
-				if (dayModuleTupleA.getDay() == dayModuleTupleB.getDay() && dayModuleTupleA.getModule() == dayModuleTupleB.getModule()){
+				if (dayModuleTupleA.day == dayModuleTupleB.day && dayModuleTupleA.module == dayModuleTupleB.module){
 					return true;
 				}
 			}
@@ -143,8 +143,8 @@ public class Schedule {
 	 */
 	public class DayModuleTuple {
 
-		private Day day;
-		private Module module;
+		public Day day;
+		public Module module;
 		
 		/**
 		 * Creates a new instance of DayModuleTuple.
@@ -153,36 +153,6 @@ public class Schedule {
 		 */
 		public DayModuleTuple(Day day, Module module) {
 			this.day = day;
-			this.module = module;
-		}
-
-		/**
-		 * @return The day in which the (physical) class takes place.
-		 */
-		public Day getDay() {
-			return day;
-		}
-		
-		/**
-		 * Modifies the day in which the (physical) class takes place.
-		 * @param day The new day in which the (physical) class will take place. 
-		 */
-		public void setDay(Day day) {
-			this.day = day;
-		}
-
-		/**
-		 * @return The module in which the (physical) class takes place.
-		 */
-		public Module getModule() {
-			return module;
-		}
-		
-		/**
-		 * Modifies the module during which the (physical) class takes place.
-		 * @param module The new module during which the (physical) class will take place. 
-		 */
-		public void setModule(Module module) {
 			this.module = module;
 		}
 	}

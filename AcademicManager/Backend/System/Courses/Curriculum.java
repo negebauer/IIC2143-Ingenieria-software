@@ -32,7 +32,7 @@ public class Curriculum {
 		this.coursedCourses.add(new Coursed(course, approved, grade, semester));
 	}
 	
-	public CurricularTuple getCurricularAdvance(StudyProgram studyProgram){
+	public ApprovedUnapprovedCoursesTuple getCurricularAdvance(StudyProgram studyProgram){
 		if (studyPrograms.contains(studyProgram)){
 			ArrayList<Coursed> approvedCourses = new ArrayList<Coursed>();
 			ArrayList<Course> unapprovedCourses = new ArrayList<Course>();
@@ -47,35 +47,23 @@ public class Curriculum {
 								unapprovedCourses.remove(course);
 							}
 						}
-
 					}
 				}
 			}
-			
-			return new CurricularTuple(approvedCourses, unapprovedCourses);
-			
-		}
-		else {
+			return new ApprovedUnapprovedCoursesTuple(approvedCourses, unapprovedCourses);
+		} else {
 			return null;
 		}
 		
 	}
 	
-	public class CurricularTuple {
-		private ArrayList<Coursed> approvedCourses;
-		private ArrayList<Course> unapprovedCourses;
+	public class ApprovedUnapprovedCoursesTuple {
+		public ArrayList<Coursed> approvedCourses;
+		public ArrayList<Course> unapprovedCourses;
 		
-		public CurricularTuple(ArrayList<Coursed> approvedCourses, ArrayList<Course> unapprovedCourses){
+		public ApprovedUnapprovedCoursesTuple(ArrayList<Coursed> approvedCourses, ArrayList<Course> unapprovedCourses){
 			this.approvedCourses = approvedCourses;
 			this.unapprovedCourses = unapprovedCourses;
-		}
-		
-		public ArrayList<Coursed> getApprovedCourses(){
-			return this.approvedCourses;
-		}
-		
-		public ArrayList<Course> getUnapprovedCourses(){
-			return this.unapprovedCourses;
 		}
 	}
 	

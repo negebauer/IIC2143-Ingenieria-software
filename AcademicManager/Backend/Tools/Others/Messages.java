@@ -32,7 +32,7 @@ public class Messages {
 		REQUIREMENT_WASNT_ADDED_TO_REQUIREMENTS_SAME_COURSE				(12),
 		REQUIREMENT_WAS_REMOVED_OF_REQUIREMENTS							(13),
 		REQUIREMENT_WASNT_REMOVED_OF_REQUIREMENTS_NOT_IN_REQUIREMENTS	(14),
-		COURSE_WASNT_CREATED_PROFESSOR_AND_CLASSROOM_CLASH				(15),
+		COURSE_WASNT_CREATED_EVALUATION_CLASH							(15),
 		COURSE_WASNT_CREATED_PROFESSOR_CLASH							(16),
 		COURSE_WASNT_CREATED_CLASSROOM_CLASH							(17),
 		COURSE_WAS_CREATED												(18);
@@ -86,9 +86,9 @@ public class Messages {
         result.put(12, "You can't add a course as a requirement of itself");
         result.put(13, "The course was succsessfully removed from requirements");
         result.put(14, "This is not a requirement of the course");
-        result.put(15, "Course wasn't created due to a clash with the professors of the course and the classrooms of the course");
+        result.put(15, "Course wasn't created due to a clash with the evaluations classroom of the course");
         result.put(16, "Course wasn't created due to a clash with the professors of the course");
-        result.put(17, "Course wasn't created due to a clash with the classrooms of the course");
+        result.put(17, "Course wasn't created due to a clash with the course classrooms of the course");
         result.put(18, "Course was successfully created");
         return result;
     }
@@ -110,7 +110,7 @@ public class Messages {
         result.put(12, "No se puede agregar un curso como requisito de el mismo");
         result.put(13, "El curso fue removido exitosamente de los requisitos");
         result.put(14, "Este curso no es un requisito");
-        result.put(15, "El curso no pudo crearse ya que hay un tope de profesores y un tope de salas");
+        result.put(15, "El curso no pudo crearse ya que hay un tope de sala para evaluaciones");
         result.put(16, "El curso no pudo crearse ya que hay un tope de profesores");
         result.put(17, "El curso no pudo crearse ya que hay un tope de salas");
         result.put(18, "El curso fue creado correctamente");

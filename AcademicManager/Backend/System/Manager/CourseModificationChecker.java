@@ -17,7 +17,7 @@ import Tools.Others.Messages.Message;
 public class CourseModificationChecker {
 
 //	TODO Connect to manager when Admin tries to create a new course
-	public static ModifyCourseResponse courseCanBeAdded(ArrayList<Course> courses, Course newCourse) {
+	public static ModifyCourseResponse courseCanBeCreated(ArrayList<Course> courses, Course newCourse) {
 		String evaluationClassRoomClash = "";
 		String courseClassRoomClash = "";
 		String courseProfessorClash = "";
@@ -27,7 +27,9 @@ public class CourseModificationChecker {
 		for (Course course : courses) {
 			for (Evaluation evaluation : course.getEvaluations()) {
 				for (Evaluation newEvaluation : newCourse.getEvaluations()) {
-					
+					if (evaluation.getDate() == newEvaluation.getDate() && evaluation.getClassroom() == newEvaluation.getClassroom()) {
+						evaluationClassRoomClash = evaluationClassRoomClash + course.getInitials() + " " + evaluation.getCourseEvaluation() + "\n";
+					}
 				}
 			}
 			for (ICourse icourse : course.getCourses()) {
@@ -41,12 +43,14 @@ public class CourseModificationChecker {
 				}
 			}
 		}
-		if (courseClassRoomClash != "" && courseProfessorClash != "") {
-			response = Messages.getMessage(Message.COURSE_WASNT_CREATED_PROFESSOR_AND_CLASSROOM_CLASH.index());
-		} else if (courseClassRoomClash != "") {
-			response = Messages.getMessage(Message.COURSE_WASNT_CREATED_CLASSROOM_CLASH.index());
-		} else if (courseProfessorClash != "") {
-			response = Messages.getMessage(Message.COURSE_WASNT_CREATED_PROFESSOR_CLASH.index());
+		
+		if (evaluationClassRoomClash != "" || courseClassRoomClash != "" || courseProfessorClash != "") {
+			success = false;
+			String messageEvaluationClassRoomClash = evaluationClassRoomClash != null ? Messages.getMessage(Message.COURSE_WASNT_CREATED_EVALUATION_CLASH.index(), evaluationClassRoomClash) : "";
+			String messageCourseClassRoomClash = evaluationClassRoomClash != null ? Messages.getMessage(Message.COURSE_WASNT_CREATED_CLASSROOM_CLASH.index(), courseClassRoomClash) : "";
+			String messageCourseProfessorClash = evaluationClassRoomClash != null ? Messages.getMessage(Message.COURSE_WASNT_CREATED_PROFESSOR_CLASH.index(), courseProfessorClash) : "";
+			response = messageEvaluationClassRoomClash +"\n" + messageCourseClassRoomClash +"\n" + messageCourseProfessorClash;
+			response = cleanNewLineCharExcessFromString(response);
 		} else {
 			success = true;
 			response = Messages.getMessage(Message.COURSE_WAS_CREATED.index());
@@ -64,7 +68,18 @@ public class CourseModificationChecker {
 //		return new CourseModificationChecker().new CreateCourseResponse(success, response);
 //	}
 	
-	public static 
+	public static ModifyCourseResponse courseCanBeDeleted(ArrayList<Course> courses, Course deleteCourse) {
+		String requisites = "";
+		boolean success = false;
+		String response = "NoResponse";
+		
+		for (Course course : courses) {
+			if (course.getRequirements().contains(deleteCourse)) {
+				requisites = requisites + course.getInitials() + "\n";
+			}
+ 		}
+		return new CourseModificationChecker().new ModifyCourseResponse(success, response);
+	}
 	
 	public static String getClassroomClash(ICourse icourse, ICourse newICourse, String courseInitials) {
 		String classRoomClash = "";
@@ -82,6 +97,18 @@ public class CourseModificationChecker {
 			}
 		}
 		return professorClash;
+	}
+	
+	public static String cleanNewLineCharExcessFromString(String stringToClean) {
+		ArrayList<String> cleanedString = new ArrayList<String>();
+		for (String character : stringToClean.split("\n")) {
+			if (cleanedString.size() == 0 && !character.isEmpty()) {
+				cleanedString.add(character);
+			} else if (cleanedString.size() > 0 && !(cleanedString.get(cleanedString.size() - 1).isEmpty() && character.isEmpty())) {
+				cleanedString.add(character);
+			}
+		}
+		return String.join("\n", cleanedString);
 	}
 	
 	/**

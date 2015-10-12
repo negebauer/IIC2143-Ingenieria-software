@@ -145,7 +145,7 @@ public class CopyCreator {
 	public static Schedule copySchedule(Schedule original) {
 		Schedule copiedSchedule = new Schedule();
 		for (DayModuleTuple originalDayModuleTuple : original.getModules()){
-			DayModuleTuple copiedDayModuleTuple = copiedSchedule.new DayModuleTuple(originalDayModuleTuple.getDay(), originalDayModuleTuple.getModule());
+			DayModuleTuple copiedDayModuleTuple = copiedSchedule.new DayModuleTuple(originalDayModuleTuple.day, originalDayModuleTuple.module);
 			copiedSchedule.addModule(copiedDayModuleTuple);
 		}
 		return copiedSchedule;
