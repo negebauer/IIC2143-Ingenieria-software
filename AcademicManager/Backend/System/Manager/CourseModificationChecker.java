@@ -59,8 +59,8 @@ public class CourseModificationChecker {
 		return new CourseModificationChecker().new ModifyCourseResponse(success, response, newCourse);
 	}
 	
-	public static ModifyCourseResponse courseCanBeModified(ArrayList<Course> currentCourses, Course courseToModify, String name, String initials, int section, int credits, String details, School school, AcademicSemester semester, ArrayList<ICourse> courses, ArrayList<Evaluation> evaluations, ArrayList<Course> requirements) {
-		Course modifiedCourse = new Course(name, initials, section, credits, details, school, semester, courses, evaluations, requirements);
+	public static ModifyCourseResponse courseCanBeModified(ArrayList<Course> currentCourses, Course courseToModify, String name, String initials, int section, int credits, String details, School school, AcademicSemester semester, ArrayList<ICourse> courses, ArrayList<Evaluation> evaluations, ArrayList<Course> requirements, ArrayList<Course> coRequirements) {
+		Course modifiedCourse = new Course(name, initials, section, credits, details, school, semester, courses, evaluations, requirements, coRequirements);
 		currentCourses.remove(courseToModify);
 		ModifyCourseResponse modifyCourseResponse = courseCanBeCreated(currentCourses, modifiedCourse);
 		if (modifyCourseResponse.success) {

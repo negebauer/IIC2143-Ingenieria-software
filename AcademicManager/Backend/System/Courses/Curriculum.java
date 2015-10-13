@@ -32,6 +32,11 @@ public class Curriculum {
 		this.coursedCourses.add(new Coursed(course, approved, grade, semester));
 	}
 	
+	/**
+	 * Calculates the curricular advance of a specific study program.
+	 * @param studyProgram The study program you want to see it's curricular advance.
+	 * @return The approved and unapproved courses, separately.
+	 */
 	public ApprovedUnapprovedCoursesTuple getCurricularAdvance(StudyProgram studyProgram){
 		ArrayList<Course> unapprovedCourses = new ArrayList<Course>();
 		ArrayList<Coursed> approvedCourses = new ArrayList<Coursed>();
@@ -55,10 +60,18 @@ public class Curriculum {
 		}
 	}
 	
+	/**
+	 * Class used as a data container for the curricular advance response.
+	 */
 	public class ApprovedUnapprovedCoursesTuple {
 		public ArrayList<Coursed> approvedCourses;
 		public ArrayList<Course> unapprovedCourses;
 		
+		/**
+		 * Creates a new instance of ApprovedUnapprovedCoursesTuple.
+		 * @param approvedCourses The ArrayList that contains all the Coursed courses that have been approved.
+		 * @param unapprovedCourses The ArrayList that contains all the courses that haven't been approved yet.
+		 */
 		public ApprovedUnapprovedCoursesTuple(ArrayList<Coursed> approvedCourses, ArrayList<Course> unapprovedCourses){
 			this.approvedCourses = approvedCourses;
 			this.unapprovedCourses = unapprovedCourses;

@@ -21,7 +21,7 @@ public class Lecture implements IProfessors {
 	 * @param schedule The schedule in which the Lecture takes place.
 	 */
 	public Lecture(ArrayList<Professor> professors, Classroom classroom, Schedule schedule) {
-		this.professors = professors;
+		this.professors = professors != null ? professors : new ArrayList<Professor>();
 		this.classroom = classroom;
 		this.schedule = schedule;
 	}

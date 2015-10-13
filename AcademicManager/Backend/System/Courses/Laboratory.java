@@ -21,7 +21,7 @@ public class Laboratory implements IProfessors {
 	 * @param schedule The schedule in which the Laboratory takes place.
 	 */
 	public Laboratory(ArrayList<Professor> professors, Classroom classroom, Schedule schedule) {
-		this.professors = professors;
+		this.professors = professors != null ? professors : new ArrayList<Professor>();
 		this.classroom = classroom;
 		this.schedule = schedule;
 	}

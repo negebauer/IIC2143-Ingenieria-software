@@ -21,7 +21,7 @@ public class Assistantship implements IAssistants {
 	 * @param schedule The schedule in which the Assistantship takes place.
 	 */
 	public Assistantship(ArrayList<Assistant> assistants, Classroom classroom, Schedule schedule) {
-		this.assistants = assistants;
+		this.assistants = assistants != null ? assistants : new ArrayList<Assistant>();
 		this.classroom = classroom;
 		this.schedule = schedule;
 	}

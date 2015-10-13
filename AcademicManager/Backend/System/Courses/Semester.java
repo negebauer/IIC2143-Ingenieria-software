@@ -1,10 +1,12 @@
 package System.Courses;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Set;
 
 import Tools.Enums.AcademicSemester;
 import Tools.Interfaces.ICourse;
+import Tools.Others.Const;
 import Tools.Others.Messages;
 import Tools.Others.Messages.Message;
 
@@ -16,7 +18,7 @@ public class Semester {
 	private AcademicSemester semester;
 	private int year;
 	private ArrayList<Course> courses;
-	private int maxCredits;
+	private int maxCredits = Const.DEFAULT_CREDITS_PER_SEMESTER;
 	private int actualCredits = 0;
 	private Set<String> approvedCourses;
 
@@ -25,14 +27,17 @@ public class Semester {
 	 * @param semester The academic semester in which this Semester takes place.
 	 * @param year The year in which this Semester takes place.
 	 */
-	public Semester(AcademicSemester semester, int year, int maxCredits, ArrayList<Course> aproovedCourses) {
+	public Semester(AcademicSemester semester, int year, int maxCredits, ArrayList<Course> approvedCourses, ArrayList<Course> courses) {
 		this.semester = semester;
 		this.year = year;
-		this.courses = new ArrayList<Course>();
+		this.courses = courses != null ? courses : new ArrayList<Course>();
 		this.maxCredits = maxCredits;
-
-		for (Course course : aproovedCourses){
-			this.approvedCourses.add(course.getInitials());
+		if (approvedCourses != null){
+			for (Course course : approvedCourses){
+				this.approvedCourses.add(course.getInitials());
+			}
+		} else {
+			this.approvedCourses = new HashSet<String>();
 		}
 	}
 
@@ -84,6 +89,11 @@ public class Semester {
 		return response;
 	}
 
+	/**
+	 * Verify the coRequirements for a course.
+	 * @param course The course to be checked.
+	 * @return The initials of the coRequirements that haven't been coursed, or aren't cursed in this semester.
+	 */
 	private ArrayList<String> verifyCoRequirements(Course course) {
 		ArrayList<String> nonValidCoRequirements = new ArrayList<String>();
 		for (Course coRequirement : course.getCoRequirements()){
