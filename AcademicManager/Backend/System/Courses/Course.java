@@ -39,6 +39,7 @@ public class Course {
 	 * @param courses The courses (physical classes) of this Course.
 	 * @param evaluations The evaluations of the Course.
 	 * @param requirements The requirements of this Course.
+	 * @param coRequirements The co requirements of this Course.
 	 */
 	public Course(String name, String initials, int section, int credits, String details, School school, AcademicSemester semester, ArrayList<ICourse> courses, ArrayList<Evaluation> evaluations, ArrayList<Course> requirements, ArrayList<Course> coRequirements) {
 		this.name = name != null ? name : "NameNil";

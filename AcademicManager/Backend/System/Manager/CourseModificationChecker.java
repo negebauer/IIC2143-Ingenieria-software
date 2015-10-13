@@ -12,12 +12,23 @@ import Tools.Interfaces.IProfessors;
 import Tools.Others.Messages;
 import Tools.Others.Messages.Message;
 
+// TODO Connect to Manager when Admin working with Courses
 /**
  * Class that checks if a course modification can be done.
  */
 public class CourseModificationChecker {
 
-//	TODO Connect to manager when Admin tries to create a new course
+	/**
+	 * Checks if a Course can be created by checking the following situations:
+	 * <ul>
+	 * <li>If there is an evaluation classroom clash (two evaluations at the same date in same classroom).
+	 * <li>If there is a course classroom clash (two (physical) courses at the same day:module in same classroom).
+	 * <li>If there is a professor clash (two professors assigned at the same day:module to different courses).
+	 * </ul>
+	 * @param currentCourses The courses that already exist.
+	 * @param newCourse The course that wants to be created.
+	 * @return A ModifyCourseResponse detailing if the creation can be done.
+	 */
 	public static ModifyCourseResponse courseCanBeCreated(ArrayList<Course> currentCourses, Course newCourse) {
 		String evaluationClassRoomClash = "";
 		String courseClassRoomClash = "";
@@ -48,8 +59,8 @@ public class CourseModificationChecker {
 		if (evaluationClassRoomClash != "" || courseClassRoomClash != "" || courseProfessorClash != "") {
 			success = false;
 			String messageEvaluationClassRoomClash = evaluationClassRoomClash != null ? Messages.getMessage(Message.COURSE_WASNT_CREATED_EVALUATION_CLASH.index(), evaluationClassRoomClash) : "";
-			String messageCourseClassRoomClash = evaluationClassRoomClash != null ? Messages.getMessage(Message.COURSE_WASNT_CREATED_CLASSROOM_CLASH.index(), courseClassRoomClash) : "";
-			String messageCourseProfessorClash = evaluationClassRoomClash != null ? Messages.getMessage(Message.COURSE_WASNT_CREATED_PROFESSOR_CLASH.index(), courseProfessorClash) : "";
+			String messageCourseClassRoomClash = courseClassRoomClash != null ? Messages.getMessage(Message.COURSE_WASNT_CREATED_CLASSROOM_CLASH.index(), courseClassRoomClash) : "";
+			String messageCourseProfessorClash = courseProfessorClash != null ? Messages.getMessage(Message.COURSE_WASNT_CREATED_PROFESSOR_CLASH.index(), courseProfessorClash) : "";
 			response = messageEvaluationClassRoomClash +"\n" + messageCourseClassRoomClash +"\n" + messageCourseProfessorClash;
 			response = cleanNewLineCharExcessFromString(response);
 		} else {
@@ -59,8 +70,30 @@ public class CourseModificationChecker {
 		return new CourseModificationChecker().new ModifyCourseResponse(success, response, newCourse);
 	}
 	
-	public static ModifyCourseResponse courseCanBeModified(ArrayList<Course> currentCourses, Course courseToModify, String name, String initials, int section, int credits, String details, School school, AcademicSemester semester, ArrayList<ICourse> courses, ArrayList<Evaluation> evaluations, ArrayList<Course> requirements, ArrayList<Course> coRequirements) {
-		Course modifiedCourse = new Course(name, initials, section, credits, details, school, semester, courses, evaluations, requirements, coRequirements);
+	/**
+	 * Checks if a Course can be modified by checking the following situations:
+	 * <ul>
+	 * <li>If there is an evaluation classroom clash (two evaluations at the same date in same classroom).
+	 * <li>If there is a course classroom clash (two (physical) courses at the same day:module in same classroom).
+	 * <li>If there is a professor clash (two professors assigned at the same day:module to different courses).
+	 * </ul>
+	 * @param currentCourses The courses that already exist.
+	 * @param courseToModify The course that's going to be modified.
+	 * @param name The name of the Course.
+	 * @param initials The initials of the Course.
+	 * @param section The section of the Course.
+	 * @param credits How much credits this Course is worth.
+	 * @param details The details of this Course.
+	 * @param school The school to which this Course belongs.
+	 * @param semester The semester in which this Course is dictated.
+	 * @param courses The courses (physical classes) of this Course.
+	 * @param evaluations The evaluations of the Course.
+	 * @param requisites The requisites of this Course.
+	 * @param coRequirements The coRequisites of this Course.
+	 * @return A ModifyCourseResponse detailing if the modification can be done containing the modified Course.
+	 */
+	public static ModifyCourseResponse courseCanBeModified(ArrayList<Course> currentCourses, Course courseToModify, String name, String initials, int section, int credits, String details, School school, AcademicSemester semester, ArrayList<ICourse> courses, ArrayList<Evaluation> evaluations, ArrayList<Course> requisites, ArrayList<Course> coRequisites) {
+		Course modifiedCourse = new Course(name, initials, section, credits, details, school, semester, courses, evaluations, requisites, coRequisites);
 		currentCourses.remove(courseToModify);
 		ModifyCourseResponse modifyCourseResponse = courseCanBeCreated(currentCourses, modifiedCourse);
 		if (modifyCourseResponse.success) {
@@ -71,20 +104,36 @@ public class CourseModificationChecker {
 		return modifyCourseResponse;
 	}
 	
+	/**
+	 * Checks if a Course can be modified by checking the following situations:
+	 * <ul>
+	 * <li>The course is a requisite of another Course.
+	 * <li>The course is a coRequisite of another Course.
+	 * </ul>
+	 * @param currentCourses
+	 * @param deleteCourse
+	 * @return A ModifyCourseResponse detailing if the deletion can be done.
+	 */
 	public static ModifyCourseResponse courseCanBeDeleted(ArrayList<Course> currentCourses, Course deleteCourse) {
 		String requisites = "";
+		String coRequisites = "";
 		boolean success = false;
 		String response = "NoResponse";
 		
 		for (Course course : currentCourses) {
 			if (course.getRequirements().contains(deleteCourse)) {
 				requisites = requisites + course.getInitials() + "\n";
+			} else if (course.getCoRequirements().contains(deleteCourse)) {
+				coRequisites = coRequisites + course.getInitials() + "\n";
 			}
  		}
 		
-		if (requisites != "") {
+		if (requisites != "" || coRequisites != "") {
 			success = false;
-			response = Messages.getMessage(Message.COURSE_WASNT_DELETED_REQUIRED_FOR_COURSE.index(), requisites);
+			String messageRequisite = requisites != null ? Messages.getMessage(Message.COURSE_WASNT_DELETED_REQUIRED_FOR_COURSE.index(), requisites) : "";
+			String messageCoRequisite = coRequisites != null ? Messages.getMessage(Message.COURSE_WASNT_DELETED_REQUIRED_FOR_COURSE.index(), coRequisites) : "";
+			response = messageRequisite +"\n" + messageCoRequisite;
+			response = cleanNewLineCharExcessFromString(response);			
 		} else {
 			success = true;
 			response = Messages.getMessage(Message.COURSE_WAS_DELETED.index());
@@ -92,6 +141,13 @@ public class CourseModificationChecker {
 		return new CourseModificationChecker().new ModifyCourseResponse(success, response, deleteCourse);
 	}
 	
+	/**
+	 * Checks for classroom clash (a classroom being used by two classes at the same day:module).
+	 * @param icourse The courses to be checked against.
+	 * @param newICourse The courses that wants to use classrooms.
+	 * @param courseInitials The initials of the course passed as iCourse.
+	 * @return A string detailing the courses that clash in a classroom.
+	 */
 	public static String getClassroomClash(ICourse icourse, ICourse newICourse, String courseInitials) {
 		String classRoomClash = "";
 		if (icourse.getClassroom() == newICourse.getClassroom()) {
@@ -100,6 +156,13 @@ public class CourseModificationChecker {
 		return classRoomClash;
 	}
 	
+	/**
+	 * Checks for professor clash (a professor doing two classes at the same day:module).
+	 * @param iprofessors The courses that contains professors to be checked.
+	 * @param newIProfessors The new course that contains professors to be checked.
+	 * @param courseInitials The initials of the course passed as iprofessors.
+	 * @return A string detailing the professors that clash.
+	 */
 	public static String getProfessorClash(IProfessors iprofessors, IProfessors newIProfessors, String courseInitials) {
 		String professorClash = "";
 		for (Professor professor : newIProfessors.getProfessors()) {
@@ -110,6 +173,11 @@ public class CourseModificationChecker {
 		return professorClash;
 	}
 	
+	/**
+	 * Cleans the extra new line characters (\n) from a String.
+	 * @param stringToClean The string to be cleaned.
+	 * @return The cleaned string.
+	 */
 	public static String cleanNewLineCharExcessFromString(String stringToClean) {
 		ArrayList<String> cleanedString = new ArrayList<String>();
 		for (String character : stringToClean.split("\n")) {
@@ -124,6 +192,7 @@ public class CourseModificationChecker {
 	
 	/**
 	 * Class used as a data container for answering create course call.
+	 * Contains the Course that is trying to be created, deleted or modified.
 	 */
 	public class ModifyCourseResponse {
 		public boolean success;
