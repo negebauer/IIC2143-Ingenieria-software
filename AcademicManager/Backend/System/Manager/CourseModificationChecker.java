@@ -12,9 +12,8 @@ import Tools.Interfaces.IProfessors;
 import Tools.Others.Messages;
 import Tools.Others.Messages.Message;
 
-// TODO Write java doc
 /**
- * Manages the Course database
+ * Class that checks if a course modification can be done.
  */
 public class CourseModificationChecker {
 
