@@ -2,6 +2,7 @@ package Tools.Others;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
@@ -39,5 +40,22 @@ public class Utilities {
 	public static String getStringFromDate(Date date) {
 		SimpleDateFormat dateFormat =  new SimpleDateFormat ("EEEE dd.MM.yyyy 'at' HH:mm", Locale.ENGLISH);
 		return dateFormat.format(date);
+	}
+	
+	/**
+	 * Cleans the extra new line characters (\n) from a String.
+	 * @param stringToClean The string to be cleaned.
+	 * @return The cleaned string.
+	 */
+	public static String cleanNewLineCharExcessFromString(String stringToClean) {
+		ArrayList<String> cleanedString = new ArrayList<String>();
+		for (String character : stringToClean.split("\n")) {
+			if (cleanedString.size() == 0 && !character.isEmpty()) {
+				cleanedString.add(character);
+			} else if (cleanedString.size() > 0 && !(cleanedString.get(cleanedString.size() - 1).isEmpty() && character.isEmpty())) {
+				cleanedString.add(character);
+			}
+		}
+		return String.join("\n", cleanedString);
 	}
 }

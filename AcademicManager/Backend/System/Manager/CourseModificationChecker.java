@@ -11,6 +11,7 @@ import Tools.Interfaces.ICourse;
 import Tools.Interfaces.IProfessors;
 import Tools.Others.Messages;
 import Tools.Others.Messages.Message;
+import Tools.Others.Utilities;
 
 // TODO Connect to Manager when Admin working with Courses
 /**
@@ -62,7 +63,7 @@ public class CourseModificationChecker {
 			String messageCourseClassRoomClash = courseClassRoomClash != null ? Messages.getMessage(Message.COURSE_WASNT_CREATED_CLASSROOM_CLASH.index(), courseClassRoomClash) : "";
 			String messageCourseProfessorClash = courseProfessorClash != null ? Messages.getMessage(Message.COURSE_WASNT_CREATED_PROFESSOR_CLASH.index(), courseProfessorClash) : "";
 			response = messageEvaluationClassRoomClash +"\n" + messageCourseClassRoomClash +"\n" + messageCourseProfessorClash;
-			response = cleanNewLineCharExcessFromString(response);
+			response = Utilities.cleanNewLineCharExcessFromString(response);
 		} else {
 			success = true;
 			response = Messages.getMessage(Message.COURSE_WAS_CREATED.index());
@@ -133,7 +134,7 @@ public class CourseModificationChecker {
 			String messageRequisite = requisites != null ? Messages.getMessage(Message.COURSE_WASNT_DELETED_REQUIRED_FOR_COURSE.index(), requisites) : "";
 			String messageCoRequisite = coRequisites != null ? Messages.getMessage(Message.COURSE_WASNT_DELETED_REQUIRED_FOR_COURSE.index(), coRequisites) : "";
 			response = messageRequisite +"\n" + messageCoRequisite;
-			response = cleanNewLineCharExcessFromString(response);			
+			response = Utilities.cleanNewLineCharExcessFromString(response);			
 		} else {
 			success = true;
 			response = Messages.getMessage(Message.COURSE_WAS_DELETED.index());
@@ -171,23 +172,6 @@ public class CourseModificationChecker {
 			}
 		}
 		return professorClash;
-	}
-	
-	/**
-	 * Cleans the extra new line characters (\n) from a String.
-	 * @param stringToClean The string to be cleaned.
-	 * @return The cleaned string.
-	 */
-	public static String cleanNewLineCharExcessFromString(String stringToClean) {
-		ArrayList<String> cleanedString = new ArrayList<String>();
-		for (String character : stringToClean.split("\n")) {
-			if (cleanedString.size() == 0 && !character.isEmpty()) {
-				cleanedString.add(character);
-			} else if (cleanedString.size() > 0 && !(cleanedString.get(cleanedString.size() - 1).isEmpty() && character.isEmpty())) {
-				cleanedString.add(character);
-			}
-		}
-		return String.join("\n", cleanedString);
 	}
 	
 	/**
