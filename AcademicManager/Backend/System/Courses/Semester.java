@@ -88,6 +88,11 @@ public class Semester {
 		return response;
 	}
 	
+	/**
+	 * Verify the coRequirements for a course.
+	 * @param course The course to be checked.
+	 * @return The initials of the coRequirements that haven't been coursed, or aren't cursed in this semester.
+	 */
 	private ArrayList<String> verifyCoRequirements(Course course) {
 		ArrayList<String> nonValidCoRequirements = new ArrayList<String>();
 		for (Course coRequirement : course.getCoRequirements()){
