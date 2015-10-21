@@ -5,6 +5,7 @@ import java.util.Date;
 import System.Courses.Schedule;
 import Tools.Others.Messages;
 import Tools.Others.Utilities;
+import javafx.fxml.FXMLLoader;
 import Tools.Others.Messages.Message;
 
 public class TestClass {
@@ -32,6 +33,17 @@ public class TestClass {
 			System.out.println(s + "awdawdawdaw");
 		}
 		response = String.join("\n", response.split("\n"));
+		
+		public void initTestView() {
+			try {
+				FXMLLoader loader = new FXMLLoader();
+				
+			} catch {
+				
+			} finally {
+				
+			}
+		}
 		System.out.println(response);
 	}
 } 

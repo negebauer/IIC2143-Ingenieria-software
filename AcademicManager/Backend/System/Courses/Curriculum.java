@@ -44,11 +44,14 @@ public class Curriculum {
 		for (Semester semester : studyProgram.getSemesters()){
 			for (Course course : semester.getCourses()){
 				unapprovedCourses.add(course);
-				for (Coursed coursed : coursedCourses){
-					if (coursed.getInitials() == course.getInitials() && coursed.isApproved()){
-							approvedCourses.add(coursed);
-							unapprovedCourses.remove(course);
-					}
+			}
+		}
+		
+		for (Course course : unapprovedCourses){
+			for (Coursed coursed : coursedCourses){
+				if (coursed.getInitials() == course.getInitials() && coursed.isApproved()){
+						approvedCourses.add(coursed);
+						unapprovedCourses.remove(course);
 				}
 			}
 		}
