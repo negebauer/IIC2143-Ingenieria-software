@@ -230,7 +230,7 @@ public class Messages {
         result.put(UILabel.CHANGE_MODE_ADMIN_TO_STUDENT,	"Cambiar a modo Estudiante");
         result.put(UILabel.CHANGE_MODE_STUDENT_TO_ADMIN,	"Cambiar a modo Administrador");
         result.put(UILabel.WELCOME_MESSAGE,					"BIENVENIDO A ACADEMIC TOOL MANAGER PROFESSIONAL!!!");
-        result.put(UILabel.WHAT_TO_DO_NEXT_QUESTION,		"¿Qué deseas hacer ahora?");
+        result.put(UILabel.WHAT_TO_DO_NEXT_QUESTION,		"�Que deseas hacer ahora?");
         return Collections.unmodifiableMap(result);
     }
 }
