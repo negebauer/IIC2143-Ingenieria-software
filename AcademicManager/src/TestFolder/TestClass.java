@@ -1,12 +1,6 @@
 package TestFolder;
 
-import java.util.Date;
-
-import System.Courses.Schedule;
-import Tools.Others.Messages;
-import Tools.Others.Utilities;
-import javafx.fxml.FXMLLoader;
-import Tools.Others.Messages.Message;
+import java.io.*;
 
 public class TestClass {
 
@@ -14,36 +8,47 @@ public class TestClass {
 		System.out.println("Hello, World");
 		
 //		TODO Delete this class
-		
-		Schedule.Day day = Schedule.Day.MONDAY;
-		System.out.println(day.getDayString());
-		
-		Date date;
-		date = Utilities.getDateFromString("10.09.1993 18:58");
-		System.out.println(Utilities.getStringFromDate(date));
-	
-		System.out.println(Messages.getMessage(Message.COURSE_WASNT_ADDED_TO_SEMESTER_REPEATED.index()));
-		
-		System.out.println(Utilities.getDateFromString("10.09.1993" + " 00:00"));
-		
-		String response = "\n\nHola\nque\ntal\n\nhay dos lineas antes?\n\n\n3?\nfunciono?";
-		response = Utilities.cleanNewLineCharExcessFromString(response);
-		System.out.println(response);
-		for (String s : response.split("\n")) {
-			System.out.println(s + "awdawdawdaw");
+
+		// Stream to write file
+		FileOutputStream fout;		
+
+		try
+		{
+			// Open an output stream
+			fout = new FileOutputStream ("myfile.txt");
+
+			// Print a line of text
+			new PrintStream(fout).println ("hello world!");
+
+			// Close our output stream
+			fout.close();		
 		}
-		response = String.join("\n", response.split("\n"));
-		
-		public void initTestView() {
-			try {
-				FXMLLoader loader = new FXMLLoader();
-								
-			} catch {
-				
-			} finally {
-				
-			}
+		// Catches any error conditions
+		catch (IOException e)
+		{
+			System.err.println ("Unable to write to file");
+			System.exit(-1);
 		}
-		System.out.println(response);
+		
+		// Stream to read file
+		FileInputStream fin;		
+
+		try
+		{
+			// Open an input stream
+			fin = new FileInputStream ("myfile.txt");
+
+			// Read a line of text
+			System.out.println( new BufferedReader(new InputStreamReader(fin)).readLine());
+
+			// Close our input stream
+			fin.close();		
+		}
+		// Catches any error conditions
+		catch (IOException e)
+		{
+			System.err.println ("Unable to read from file");
+			System.exit(-1);
+		}
 	}
 } 
