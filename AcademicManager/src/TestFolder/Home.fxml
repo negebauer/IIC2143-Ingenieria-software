@@ -9,7 +9,7 @@
 
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
    <children>
-      <Pane prefHeight="312.0" prefWidth="445.0">
+      <Pane prefHeight="300.0" prefWidth="450.0">
          <children>
             <Label layoutX="14.0" layoutY="24.0" prefHeight="17.0" prefWidth="421.0" text="BIENVENIDO A ACADEMIC TOOL MANAGER PROFESSIONAL!!! " />
             <Label layoutX="14.0" layoutY="41.0" prefHeight="17.0" prefWidth="211.0" text="Qué deseas hacer ahora?" />
@@ -17,7 +17,7 @@
             <Button fx:id="btnCurricularAdvance" layoutX="14.0" layoutY="112.0" mnemonicParsing="false" style="-fx-background-radius: 0 0 0 0;" text="Ver avance Curricular" textAlignment="CENTER" />
             <Button fx:id="btnCreateNewSemester" layoutX="14.0" layoutY="81.0" mnemonicParsing="false" onAction="#btnCreateNewSemester_Pressed" style="-fx-background-radius: 0 0 0 0;" text="Crear nuevo Semestre" textAlignment="CENTER" />
             <Button fx:id="btnShowSchedule" layoutX="14.0" layoutY="178.0" mnemonicParsing="false" style="-fx-background-radius: 0 0 0 0;" text="Ver mi Horario" textAlignment="CENTER" />
-            <Button fx:id="btnChangeModeToAdmin" layoutX="14.0" layoutY="279.0" mnemonicParsing="false" style="-fx-background-radius: 0 0 0 0;" text="Cambiar a modo Administrador " textAlignment="CENTER">
+            <Button fx:id="btnChangeModeToAdmin" layoutX="14.0" layoutY="267.0" mnemonicParsing="false" style="-fx-background-radius: 0 0 0 0;" text="Cambiar a modo Administrador " textAlignment="CENTER">
                <font>
                   <Font size="9.0" />
                </font>

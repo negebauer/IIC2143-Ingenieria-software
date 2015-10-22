@@ -33,7 +33,7 @@ public class TestClass extends Application{
 		    e.printStackTrace();
 		  }
 		  
-		  Scene scene = new Scene(root,800,600);
+		  Scene scene = new Scene(root,450,300);
 		  primaryStage.setScene(scene);
 		  primaryStage.show();
 		}
