@@ -59,13 +59,13 @@ public class Semester {
 		int Eclashes = evaluationClashes(course);
 
 		if (courses.contains(course)) {
-			response = new AddOrRemoveCourseResponse(false, Messages.getMessage(Message.COURSE_WASNT_ADDED_TO_SEMESTER_REPEATED.index()));
+			response = new AddOrRemoveCourseResponse(false, Messages.getMessage(Message.COURSE_WASNT_ADDED_TO_SEMESTER_REPEATED));
 
 		} else if (course.getSemester() != AcademicSemester.BOTH && course.getSemester() != semester) {
-			response = new AddOrRemoveCourseResponse(false, Messages.getMessage(Message.COURSE_WASNT_ADDED_TO_SEMESTER_NOT_COURSED_IN_SEMESTER.index()));
+			response = new AddOrRemoveCourseResponse(false, Messages.getMessage(Message.COURSE_WASNT_ADDED_TO_SEMESTER_NOT_COURSED_IN_SEMESTER));
 
 		} else if (actualCredits + course.getCredits() > maxCredits) {
-			response = new AddOrRemoveCourseResponse(false, Messages.getMessage(Message.COURSE_WASNT_ADDED_TO_SEMESTER_MAX_CREDITS_EXCEEDED.index()));
+			response = new AddOrRemoveCourseResponse(false, Messages.getMessage(Message.COURSE_WASNT_ADDED_TO_SEMESTER_MAX_CREDITS_EXCEEDED));
 
 		} else if (notApprovedRequirements.size() > 0) {
 			String notApprovedCourses = "";
@@ -73,13 +73,13 @@ public class Semester {
 				notApprovedCourses += requisito + ", \n";
 			}
 			notApprovedCourses = notApprovedCourses.substring(0, notApprovedCourses.length() - 2) + ".";
-			response = new AddOrRemoveCourseResponse(false, Messages.getMessage(Message.COURSE_WASNT_ADDED_TO_SEMESTER_REQUIREMENTS.index(), notApprovedCourses));
+			response = new AddOrRemoveCourseResponse(false, Messages.getMessage(Message.COURSE_WASNT_ADDED_TO_SEMESTER_REQUIREMENTS, notApprovedCourses));
 
 		} else if (Eclashes > 0) {
-			response = new AddOrRemoveCourseResponse(false, Messages.getMessage(Message.COURSE_WASNT_ADDED_TO_SEMESTER_EVALUATION_CLASH.index(), Integer.toString(Eclashes)));
+			response = new AddOrRemoveCourseResponse(false, Messages.getMessage(Message.COURSE_WASNT_ADDED_TO_SEMESTER_EVALUATION_CLASH, Integer.toString(Eclashes)));
 
 		} else if (scheduleClash(course)) {
-			response = new AddOrRemoveCourseResponse(false, Messages.getMessage(Message.COURSE_WASNT_ADDED_TO_SEMESTER_SCHEDULE_CLASH.index()));
+			response = new AddOrRemoveCourseResponse(false, Messages.getMessage(Message.COURSE_WASNT_ADDED_TO_SEMESTER_SCHEDULE_CLASH));
 
 		} else if (notValidatedCoRequirements.size() > 0) {
 			String notValidatedCourses = "";
@@ -87,10 +87,10 @@ public class Semester {
 				notValidatedCourses += coRequisito + ", \n";
 			}
 			notValidatedCourses = notValidatedCourses.substring(0, notValidatedCourses.length() - 2) + ".";
-			response = new AddOrRemoveCourseResponse(false, Messages.getMessage(Message.COURSE_WASNT_ADDED_TO_SEMESTER_COREQUIREMENTS.index(), notValidatedCourses));
+			response = new AddOrRemoveCourseResponse(false, Messages.getMessage(Message.COURSE_WASNT_ADDED_TO_SEMESTER_COREQUIREMENTS, notValidatedCourses));
 
 		} else{
-			response = new AddOrRemoveCourseResponse(true, Messages.getMessage(Message.COURSE_WAS_ADDED_TO_SEMESTER.index()));
+			response = new AddOrRemoveCourseResponse(true, Messages.getMessage(Message.COURSE_WAS_ADDED_TO_SEMESTER));
 			addCourseToSemester(course);
 		}
 		return response;
@@ -181,9 +181,9 @@ public class Semester {
 		AddOrRemoveCourseResponse response;
 
 		if (courses.contains(course)){
-			response = new AddOrRemoveCourseResponse(true, Messages.getMessage(Message.COURSE_WAS_REMOVED_OF_SEMESTER.index()));
+			response = new AddOrRemoveCourseResponse(true, Messages.getMessage(Message.COURSE_WAS_REMOVED_OF_SEMESTER));
 		} else {
-			response = new AddOrRemoveCourseResponse(false, Messages.getMessage(Message.COURSE_WASNT_REMOVED_OF_SEMESTER_NOT_IN_SEMESTER.index()));
+			response = new AddOrRemoveCourseResponse(false, Messages.getMessage(Message.COURSE_WASNT_REMOVED_OF_SEMESTER_NOT_IN_SEMESTER));
 		}
 		return response;
 	}
@@ -209,11 +209,11 @@ public class Semester {
 		}
 
 		if (credits <= maxCredits){
-			response = new AddOrRemoveCourseResponse(true, Messages.getMessage(Message.COURSES_WERE_ADDED_TO_SEMESTER.index()));
+			response = new AddOrRemoveCourseResponse(true, Messages.getMessage(Message.COURSES_WERE_ADDED_TO_SEMESTER));
 			this.courses = courses;
 		}
 		else {
-			response = new AddOrRemoveCourseResponse(false, Messages.getMessage(Message.COURSE_WASNT_ADDED_TO_SEMESTER_MAX_CREDITS_EXCEEDED.index()));
+			response = new AddOrRemoveCourseResponse(false, Messages.getMessage(Message.COURSE_WASNT_ADDED_TO_SEMESTER_MAX_CREDITS_EXCEEDED));
 		}
 
 		return response;

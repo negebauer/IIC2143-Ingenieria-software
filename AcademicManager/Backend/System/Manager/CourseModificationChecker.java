@@ -59,14 +59,14 @@ public class CourseModificationChecker {
 		
 		if (evaluationClassRoomClash != "" || courseClassRoomClash != "" || courseProfessorClash != "") {
 			success = false;
-			String messageEvaluationClassRoomClash = evaluationClassRoomClash != null ? Messages.getMessage(Message.COURSE_WASNT_CREATED_EVALUATION_CLASH.index(), evaluationClassRoomClash) : "";
-			String messageCourseClassRoomClash = courseClassRoomClash != null ? Messages.getMessage(Message.COURSE_WASNT_CREATED_CLASSROOM_CLASH.index(), courseClassRoomClash) : "";
-			String messageCourseProfessorClash = courseProfessorClash != null ? Messages.getMessage(Message.COURSE_WASNT_CREATED_PROFESSOR_CLASH.index(), courseProfessorClash) : "";
+			String messageEvaluationClassRoomClash = evaluationClassRoomClash != null ? Messages.getMessage(Message.COURSE_WASNT_CREATED_EVALUATION_CLASH, evaluationClassRoomClash) : "";
+			String messageCourseClassRoomClash = courseClassRoomClash != null ? Messages.getMessage(Message.COURSE_WASNT_CREATED_CLASSROOM_CLASH, courseClassRoomClash) : "";
+			String messageCourseProfessorClash = courseProfessorClash != null ? Messages.getMessage(Message.COURSE_WASNT_CREATED_PROFESSOR_CLASH, courseProfessorClash) : "";
 			response = messageEvaluationClassRoomClash +"\n" + messageCourseClassRoomClash +"\n" + messageCourseProfessorClash;
 			response = Utilities.cleanNewLineCharExcessFromString(response);
 		} else {
 			success = true;
-			response = Messages.getMessage(Message.COURSE_WAS_CREATED.index());
+			response = Messages.getMessage(Message.COURSE_WAS_CREATED);
 		}
 		return new CourseModificationChecker().new ModifyCourseResponse(success, response, newCourse);
 	}
@@ -131,13 +131,13 @@ public class CourseModificationChecker {
 		
 		if (requisites != "" || coRequisites != "") {
 			success = false;
-			String messageRequisite = requisites != null ? Messages.getMessage(Message.COURSE_WASNT_DELETED_REQUIRED_FOR_COURSE.index(), requisites) : "";
-			String messageCoRequisite = coRequisites != null ? Messages.getMessage(Message.COURSE_WASNT_DELETED_REQUIRED_FOR_COURSE.index(), coRequisites) : "";
+			String messageRequisite = requisites != null ? Messages.getMessage(Message.COURSE_WASNT_DELETED_REQUIRED_FOR_COURSE, requisites) : "";
+			String messageCoRequisite = coRequisites != null ? Messages.getMessage(Message.COURSE_WASNT_DELETED_REQUIRED_FOR_COURSE, coRequisites) : "";
 			response = messageRequisite +"\n" + messageCoRequisite;
 			response = Utilities.cleanNewLineCharExcessFromString(response);			
 		} else {
 			success = true;
-			response = Messages.getMessage(Message.COURSE_WAS_DELETED.index());
+			response = Messages.getMessage(Message.COURSE_WAS_DELETED);
 		}
 		return new CourseModificationChecker().new ModifyCourseResponse(success, response, deleteCourse);
 	}

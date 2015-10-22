@@ -24,7 +24,7 @@ public class Manager {
 	 * Creates the instance of manager.
 	 */
 	private Manager() {
-//		TODO Load files and stuff.
+		//TODO Load files and stuff.
 	}
 	
 	/**
