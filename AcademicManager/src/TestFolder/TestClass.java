@@ -64,48 +64,4 @@ public class TestClass extends Application{
 		primaryStage.show();
 	}
 	
-
-	public static void writeAndRead() {
-		// Stream to write file
-		FileOutputStream fout;		
-
-		try
-		{
-			// Open an output stream
-			fout = new FileOutputStream ("myfile.txt");
-
-			// Print a line of text
-			new PrintStream(fout).println ("hello world! adwadasdasd");
-
-			// Close our output stream
-			fout.close();		
-		}
-		// Catches any error conditions
-		catch (IOException e)
-		{
-			System.err.println ("Unable to write to file");
-			System.exit(-1);
-		}
-
-		// Stream to read file
-		FileInputStream fin;		
-
-		try
-		{
-			// Open an input stream
-			fin = new FileInputStream ("myfile2.txt");
-
-			// Read a line of text
-			System.out.println( new BufferedReader(new InputStreamReader(fin)).readLine());
-
-			// Close our input stream
-			fin.close();		
-		}
-		// Catches any error conditions
-		catch (IOException e)
-		{
-			System.err.println ("Unable to read from file");
-			System.exit(-1);
-		}
-	}
 } 
