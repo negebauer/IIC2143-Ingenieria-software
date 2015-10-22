@@ -37,7 +37,7 @@ public class TestClass {
 		public void initTestView() {
 			try {
 				FXMLLoader loader = new FXMLLoader();
-				
+								
 			} catch {
 				
 			} finally {
