@@ -1,14 +1,39 @@
 package TestFolder;
 
 import java.io.*;
+import java.io.IOException;
+import java.net.URL;
 
-public class TestClass {
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.stage.Stage;
+import javafx.scene.Scene;
+import javafx.scene.layout.*;
+
+public class TestClass extends Application{
 
 	public static void main(String [ ] args) {
-		System.out.println("Hello, World");
-		
-//		TODO Delete this class
+		Application.launch(TestClass.class, args);
+	}
 
+	@Override
+	public void start(Stage primaryStage){
+		URL location = getClass().getResource("Home.fxml");
+		FXMLLoader fxmlLoader = new FXMLLoader(location);
+		fxmlLoader.setController(new HomeController());
+		Pane root = null;
+		try {
+			root = (Pane)fxmlLoader.load();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		Scene scene = new Scene(root,800,600);
+		primaryStage.setScene(scene);
+		primaryStage.show();
+	}
+
+	public void writeAndRead() {
 		// Stream to write file
 		FileOutputStream fout;		
 
@@ -29,7 +54,7 @@ public class TestClass {
 			System.err.println ("Unable to write to file");
 			System.exit(-1);
 		}
-		
+
 		// Stream to read file
 		FileInputStream fin;		
 
