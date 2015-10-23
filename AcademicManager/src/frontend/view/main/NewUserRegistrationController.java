@@ -4,7 +4,6 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import backend.others.Messages;
-import backend.others.Messages.Message;
 import backend.others.Messages.UILabel;
 
 public class NewUserRegistrationController {

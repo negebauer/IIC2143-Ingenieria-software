@@ -21,11 +21,6 @@
             		<Font size="9.0"/>
             	</font>
             </Button>
-            <!--<Button fx:id="btnChangeModeToAdmin" layoutX="14.0" layoutY="267.0" mnemonicParsing="false" style="-fx-background-radius: 0 0 0 0;" text="Cambiar a modo Administrador " textAlignment="CENTER">
-               <font>
-                  <Font size="9.0" />
-               </font>
-            </Button>-->
          </children>
       </Pane>
    </children>
