@@ -19,6 +19,7 @@ public class Coursed {
 	private String details;
 	private School school;
 	private AcademicSemester semester;
+	private int year;
 	private ArrayList<ICourse> courses;
 	private ArrayList<Evaluation> evaluations;
 	private boolean approved;
@@ -30,8 +31,9 @@ public class Coursed {
 	 * @param approved Whether the Course was approved or not.
 	 * @param grade The grade obtained in the Course.
 	 * @param semester The semester in which the Course was taken.
+	 * @param year The year in which this Course was taken.
 	 */
-	public Coursed(Course course, boolean approved, double grade, AcademicSemester semester) {
+	public Coursed(Course course, boolean approved, double grade, AcademicSemester semester, int year) {
 		this.name = course.getName();
 		this.initials = course.getInitials();
 		this.section = course.getSection();
@@ -39,6 +41,7 @@ public class Coursed {
 		this.details = course.getDetails();
 		this.school = course.getSchool();
 		this.semester = semester;
+		this.year = year;
 		this.courses = CopyCreator.copyICourses(course.getCourses());
 		this.evaluations = CopyCreator.copyEvaluations(course.getEvaluations());
 		this.approved = approved;
@@ -92,6 +95,10 @@ public class Coursed {
 	 */
 	public AcademicSemester getSemester() {
 		return semester;
+	}
+	
+	public int getYear() {
+		return year;
 	}
 
 	/**

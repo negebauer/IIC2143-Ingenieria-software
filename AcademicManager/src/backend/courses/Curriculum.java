@@ -28,8 +28,8 @@ public class Curriculum {
 	 * @param gpa The grade obtained in the course.
 	 * @param semester The semester in which the course was coursed.
 	 */
-	public void addCoursedCourse(Course course, boolean approved, double grade, AcademicSemester semester) {
-		this.coursedCourses.add(new Coursed(course, approved, grade, semester));
+	public void addCoursedCourse(Course course, boolean approved, double grade, AcademicSemester semester, int year) {
+		this.coursedCourses.add(new Coursed(course, approved, grade, semester, year));
 	}
 	
 	/**

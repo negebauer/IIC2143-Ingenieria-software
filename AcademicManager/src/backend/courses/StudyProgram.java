@@ -12,20 +12,20 @@ public class StudyProgram {
 
 	private String name;
 	private School school;
-	private int yearEntrance;
+	private int yearProgram;
 	private ArrayList<Semester> semesters;
 	private int maxCreditsPerSemester = Const.DEFAULT_CREDITS_PER_SEMESTER;
 	private int maxFailedCredits = Const.DEFAULT_MAX_FAILED_CREDITS;
 	
 	/**
 	 * Creates an instance of StudyProgram
-	 * @param yearEntrance Year in which this StudyProgram started.
+	 * @param yearProgram Year in which this StudyProgram started (example: engineering 2009 and engineering 2013).
 	 * @param semesters The semesters of the StudyProgram.
 	 * @param school The school to which this StudyProgram belongs.
 	 */
-	public StudyProgram(String name, int yearEntrance, ArrayList<Semester> semesters, School school, int maxCreditsPerSemester, int maxFailedCredits){
+	public StudyProgram(String name, int yearProgram, ArrayList<Semester> semesters, School school, int maxCreditsPerSemester, int maxFailedCredits){
 		this.name = name;
-		this.yearEntrance = yearEntrance;
+		this.yearProgram = yearProgram;
 		this.semesters = semesters != null ? semesters : new ArrayList<Semester>();
 		this.school = school;
 		this.maxCreditsPerSemester = maxCreditsPerSemester;
@@ -44,8 +44,8 @@ public class StudyProgram {
 	/**
 	 * @return The year in which the StudyProgram started.
 	 */
-	public int getyearEntrance() {
-		return yearEntrance;
+	public int getyearProgram() {
+		return yearProgram;
 	}
 	
 	/**

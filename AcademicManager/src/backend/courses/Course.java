@@ -25,6 +25,7 @@ public class Course {
 	private ArrayList<Evaluation> evaluations;
 	private ArrayList<Course> requirements;
 	private ArrayList<Course> coRequirements;
+	private Boolean coordinated;
 	
 	/**
 	 * Creates an instance of Course.
@@ -40,8 +41,9 @@ public class Course {
 	 * @param evaluations The evaluations of the Course.
 	 * @param requirements The requirements of this Course.
 	 * @param coRequirements The co requirements of this Course.
+	 * @param coordinated If the Course is coordinated or not.
 	 */
-	public Course(String name, String initials, int section, int credits, String details, School school, AcademicSemester semester, ArrayList<ICourse> courses, ArrayList<Evaluation> evaluations, ArrayList<Course> requirements, ArrayList<Course> coRequirements) {
+	public Course(String name, String initials, int section, int credits, String details, School school, AcademicSemester semester, ArrayList<ICourse> courses, ArrayList<Evaluation> evaluations, ArrayList<Course> requirements, ArrayList<Course> coRequirements, Boolean coordinated) {
 		this.name = name != null ? name : "NameNil";
 		this.initials = initials != null ? initials : "InitialsNil";
 		this.section = section > 0 ? section : 0;
@@ -53,6 +55,7 @@ public class Course {
 		this.evaluations = evaluations != null ? evaluations : new ArrayList<Evaluation>();
 		this.requirements = requirements != null ? requirements : new ArrayList<Course>();
 		this.coRequirements = coRequirements != null ? coRequirements : new ArrayList<Course>();
+		this.coordinated = coordinated != null ? coordinated : false;
 	}
 	
 	/**
@@ -291,6 +294,14 @@ public class Course {
 		return coRequirements;
 	}
 	
+	public Boolean getCoordinated() {
+		return coordinated;
+	}
+
+	public void setCoordinated(Boolean coordinated) {
+		this.coordinated = coordinated;
+	}
+
 	public class AddOrRemoveRequirementResponse {
 		public boolean success;
 		public String response;
