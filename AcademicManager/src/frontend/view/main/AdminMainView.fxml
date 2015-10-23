@@ -5,18 +5,17 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="frontend.view.main.AdminMainViewController">
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.view.main.AdminMainViewController">
    <children>
       <Pane prefHeight="400.0" prefWidth="600.0">
          <children>
             <Label fx:id="labelWelcomeMessage" layoutX="14.0" layoutY="24.0" prefHeight="17.0" prefWidth="421.0" text="BIENVENIDO A ACADEMIC TOOL MANAGER PROFESSIONAL [ADMIN]" />
             <Label fx:id="labelWhatDoNext" layoutX="14.0" layoutY="41.0" prefHeight="17.0" prefWidth="211.0" text="Qué deseas hacer ahora?" />
-            <Button fx:id="btnCreateNewStudyProgram" layoutX="14.0" layoutY="81.0" mnemonicParsing="false" style="-fx-background-radius: 0 0 0 0;" text="Crear una nueva Malla" textAlignment="CENTER" />
-            <Button fx:id="btnEditStudyProgram" layoutX="14.0" layoutY="112.0" mnemonicParsing="false" style="-fx-background-radius: 0 0 0 0;" text="Editar una Malla existente" textAlignment="CENTER" />
-            <Button fx:id="btnLogOut" layoutX="14.0" layoutY="267.0" mnemonicParsing="false" style="-fx-background-radius: 0 0 0 0;" text="Cerrar Sesion" textAlignment="CENTER" >
+            <Button fx:id="btnCreateNewStudyProgram" layoutX="14.0" layoutY="81.0" mnemonicParsing="false" onAction="#btnCreateNewStudyProgram_Pressed" style="-fx-background-radius: 0 0 0 0;" text="Crear una nueva Malla" textAlignment="CENTER" />
+            <Button fx:id="btnEditStudyProgram" layoutX="14.0" layoutY="112.0" mnemonicParsing="false" onAction="#btnEditStudyProgram_Pressed" style="-fx-background-radius: 0 0 0 0;" text="Editar una Malla existente" textAlignment="CENTER" />
+            <Button fx:id="btnLogOut" layoutX="14.0" layoutY="267.0" mnemonicParsing="false" onAction="#btnLogOut_Pressed" style="-fx-background-radius: 0 0 0 0;" text="Cerrar Sesion" textAlignment="CENTER">
             	<font>
-            		<Font size="9.0"/>
+            		<Font size="9.0" />
             	</font>
             </Button>
          </children>

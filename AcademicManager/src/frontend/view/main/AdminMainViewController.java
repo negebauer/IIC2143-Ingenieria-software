@@ -18,7 +18,7 @@ public class AdminMainViewController {
 	@FXML
 	Button btnLogOut;
 	
-	public void setUp(){
+	public void setUp() {
 		labelWelcomeMessage.setText(Messages.getUILabel(UILabel.WELCOME_MESSAGE_ADMIN));
 		labelWhatDoNext.setText(Messages.getUILabel(UILabel.WHAT_TO_DO_NEXT_QUESTION));
 		btnCreateNewStudyProgram.setText(Messages.getUILabel(UILabel.CREATE_NEW_STUDY_PROGRAM));
@@ -26,4 +26,15 @@ public class AdminMainViewController {
 		btnLogOut.setText(Messages.getUILabel(UILabel.LOGOUT));
 	}
 	
+	public void btnCreateNewStudyProgram_Pressed() {
+		
+	}
+	
+	public void btnEditStudyProgram_Pressed() {
+		
+	}
+	
+	public void btnLogOut_Pressed() {
+		
+	}
 }

@@ -27,9 +27,9 @@ public class NewUserRegistrationController {
 	@FXML
 	TextField txBxCellPhone;
 	@FXML
-	ChoiceBox<String> cbxAccess;
+	ChoiceBox<String> chBxAccess;
 	@FXML
-	ChoiceBox<String> cbxSex;
+	ChoiceBox<String> chBxSex;
 	@FXML
 	Label labelName;
 	@FXML
@@ -85,11 +85,21 @@ public class NewUserRegistrationController {
 		
 		//listCarreers
 		
-		cbxAccess.setItems(FXCollections.observableArrayList(Messages.getUILabel(UILabel.STUDENT), Messages.getUILabel(UILabel.PROFFESOR), Messages.getUILabel(UILabel.ADMINISTRATOR)));
-		cbxSex.setItems(FXCollections.observableArrayList(Messages.getUILabel(UILabel.MALE), Messages.getUILabel(UILabel.FEMALE)));
+		chBxAccess.setItems(FXCollections.observableArrayList(Messages.getUILabel(UILabel.STUDENT), Messages.getUILabel(UILabel.PROFFESOR), Messages.getUILabel(UILabel.ADMINISTRATOR)));
+		chBxSex.setItems(FXCollections.observableArrayList(Messages.getUILabel(UILabel.MALE), Messages.getUILabel(UILabel.FEMALE)));
 		
 	}
 	
+	public void btnContinue_Pressed() {
+		
+	}
 	
+	public void showStudentFields() {
+		if (chBxAccess.getSelectionModel().getSelectedItem() == Messages.getUILabel(UILabel.STUDENT)) {
+			labelPickCarreer.setVisible(true);
+			chBxCarreers.setVisible(true);
+			listCarreers.setVisible(true);
+		}
+	}
 	
 }

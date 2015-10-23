@@ -26,6 +26,13 @@ public class LogInController {
 		labelSignIn.setText(Messages.getUILabel(UILabel.SIGN_IN_AS_USER));
 		labelRegistration.setText(Messages.getUILabel(UILabel.DONT_HAVE_ACCOUNT_REGISTER));
 		labelLogIn.setText(Messages.getUILabel(UILabel.LOG_IN));
+	}
+	
+	public void btnSignIn_Pressed(){
+		
+	}
+	
+	public void btnRegister_Pressed(){
 		
 	}
 }

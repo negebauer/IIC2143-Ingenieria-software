@@ -8,7 +8,7 @@ import javafx.scene.control.*;
 public class MainViewController {
 	
 	@FXML
-	Button btnQualifySemester;
+	Button btnEditSemester;
 	@FXML
 	Button btnCurricularAdvance;
 	@FXML
@@ -24,7 +24,7 @@ public class MainViewController {
 	
 	public void setUp() {
 		btnCreateNewSemester.setText(Messages.getUILabel(UILabel.STUDENT_CREATE_NEW_SEMESTER));
-		btnQualifySemester.setText(Messages.getUILabel(UILabel.STUDENT_QUALIFY_SEMESTER));
+		btnEditSemester.setText(Messages.getUILabel(UILabel.STUDENT_EDIT_SEMESTER));
 		btnCurricularAdvance.setText(Messages.getUILabel(UILabel.STUDENT_SEE_CURRICULAR_ADVANCE));
 		btnCreateNewSemester.setText(Messages.getUILabel(UILabel.STUDENT_CREATE_NEW_SEMESTER));
 		btnShowSchedule.setText(Messages.getUILabel(UILabel.STUDENT_SEE_SCHEDULE));
@@ -35,7 +35,23 @@ public class MainViewController {
 		
 	}
 	
+	public void btnEditSemester_Pressed() {
+		
+	}
+	
+	public void btnCurricularAdvance_Pressed() {
+		
+	}
+	
 	public void btnCreateNewSemester_Pressed() {
-		System.out.println("hola si funciona");
+		
+	}
+	
+	public void btnShowSchedule_Pressed() {
+		
+	}
+	
+	public void btnCloseSession_Pressed(){
+		
 	}
 }
