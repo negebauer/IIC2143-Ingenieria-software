@@ -1,10 +1,16 @@
 package backend.others;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
 import backend.courses.Schedule.Day;
+import backend.manager.FolderFileManager;
 
 public class Messages {
 
@@ -48,8 +54,25 @@ public class Messages {
 		
 	}
 	
-	// TODO Get this value from a configuration file.
-	public static SupportedLanguage LANGUAGE = SupportedLanguage.defaultLanguage();
+	public static SupportedLanguage LANGUAGE = getSessionLanguage();
+	
+	public static SupportedLanguage getSessionLanguage() {
+		try {
+		FileInputStream fileInputStream = new FileInputStream (FolderFileManager.language);
+		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(fileInputStream));
+		String languageString = bufferedReader.readLine();
+		SupportedLanguage language = SupportedLanguage.valueOf(languageString);
+		bufferedReader.close();
+		return language;
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return SupportedLanguage.defaultLanguage();
+	}
 	
 	/**
 	 * Returns the message to be displayed in the language specified in the configuration file.
@@ -292,11 +315,11 @@ public class Messages {
         result.put(UILabel.CHANGE_MODE_ADMIN_TO_STUDENT,	"Cambiar a modo Estudiante");
         result.put(UILabel.CHANGE_MODE_STUDENT_TO_ADMIN,	"Cambiar a modo Administrador");
         result.put(UILabel.WELCOME_MESSAGE,					"BIENVENIDO A ACADEMIC TOOL MANAGER PROFESSIONAL!!!");
-        result.put(UILabel.WHAT_TO_DO_NEXT_QUESTION,		"¿Que deseas hacer ahora?");
+        result.put(UILabel.WHAT_TO_DO_NEXT_QUESTION,		"ï¿½Que deseas hacer ahora?");
         result.put(UILabel.SIGN_IN, 						"Iniciar Sesion");
         result.put(UILabel.REGISTER, 						"Registrarse");
         result.put(UILabel.SIGN_IN_AS_USER, 				"Iniciar como usuario");
-        result.put(UILabel.DONT_HAVE_ACCOUNT_REGISTER, 		"¿No tienes una cuenta?, Registrate!");
+        result.put(UILabel.DONT_HAVE_ACCOUNT_REGISTER, 		"ï¿½No tienes una cuenta?, Registrate!");
         result.put(UILabel.LOG_IN, 							"INICIO DE SESION");
         result.put(UILabel.TO_USE_ATM_MUST_REGISTER, 		"Para poder usar Academic Tool Manager Professional debes registrarte pimero:");
         result.put(UILabel.CONTINUE, 						"Continuar");

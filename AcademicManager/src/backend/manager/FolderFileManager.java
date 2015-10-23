@@ -13,6 +13,7 @@ public class FolderFileManager {
 
 	/* Folder system
 		Documents
+		|-> language.txt						Contiene el lenguaje del sistema
 		|-> Admin
 			|-> admins.txt						Contiene informacion de todos los administradores
 			|-> assistants.txt					Contiene inforamcion de todos los ayudantes
@@ -49,6 +50,9 @@ public class FolderFileManager {
 	public static String rootAdmin 					= rootFolder + "/Admin";
 	public static String rootStudent 				= rootFolder + "/Student";
 
+	// Main files
+	public static String language	 				= rootFolder + "/language.txt";
+	
 	// Admin folders
 	public static String adminStudyPrograms 		= rootAdmin + "/StudyPrograms";
 
@@ -122,6 +126,7 @@ public class FolderFileManager {
 //		}
 
 		ArrayList<String> files = new ArrayList<String>();
+		files.add(language);
 		files.add(admins);
 		files.add(adminAssistants);
 		files.add(adminClassrooms);

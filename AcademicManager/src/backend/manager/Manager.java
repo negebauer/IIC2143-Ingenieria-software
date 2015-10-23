@@ -36,7 +36,7 @@ public class Manager {
 	 * Creates the instance of manager.
 	 */
 	private Manager() {
-		//TODO Load files and stuff.
+		
 	}
 
 	/**
@@ -48,7 +48,8 @@ public class Manager {
 		classrooms = ClassroomReaderWriter.readClasrooms();
 		courses = CoursesReaderWriter.readCourses();
 		professors = ProfessorsReaderWriter.readProfessors();
-		
+//		TODO
+//		studyPrograms = StudyProgramsReaderWriter.readStudyPrograms();
 	}
 	
 	/**
@@ -56,8 +57,12 @@ public class Manager {
 	 */
 	public void saveData() {
 		AdminReaderWriter.writeAdmins(admins);
+		AssistantsReaderWriter.writeAssistants(assistants);
 		ClassroomReaderWriter.writeClassrooms(classrooms);
 		CoursesReaderWriter.writeCourses(courses);
+		ProfessorsReaderWriter.writeProfessors(professors);
+//		TODO
+//		StudyProgramsReaderWriter.writerStudyPrograms(studyPrograms);
 	}
 
 }
