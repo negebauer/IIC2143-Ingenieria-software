@@ -44,7 +44,7 @@ public class MainViewController {
 	}
 	
 	public void btnCreateNewSemester_Pressed() {
-		
+
 	}
 	
 	public void btnShowSchedule_Pressed() {
