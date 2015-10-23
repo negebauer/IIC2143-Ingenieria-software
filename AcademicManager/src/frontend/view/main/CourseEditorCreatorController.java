@@ -1,5 +1,10 @@
 package frontend.view.main;
 
-public class CourseEditorCreatorController {
+import backend.others.Messages;
+import backend.others.Messages.UILabel;
+import javafx.fxml.FXML;
+import javafx.scene.control.*;
 
+public class CourseEditorCreatorController {
+	
 }
