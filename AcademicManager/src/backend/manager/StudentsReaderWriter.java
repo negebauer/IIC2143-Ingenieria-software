@@ -24,6 +24,9 @@ import backend.courses.Semester;
 import backend.courses.StudyProgram;
 import backend.enums.AcademicSemester;
 import backend.enums.School;
+import backend.interfaces.IAssistants;
+import backend.interfaces.ICourse;
+import backend.interfaces.IProfessors;
 import backend.users.Assistant;
 import backend.users.Professor;
 import backend.users.Student;
@@ -55,13 +58,113 @@ public class StudentsReaderWriter {
 	 */
 	public static void writeStudents(ArrayList<Student> students) {
 		try {
-			FileOutputStream fileOutputStream = new FileOutputStream (FolderFileManager.adminProfessors);
-			PrintStream printStream = new PrintStream(fileOutputStream);
 			for (Student student : students) {
-				// TODO Save students
-				printStream.println("SOMETHING");
+				String studentFolder = FolderFileManager.rootStudent + "/" + student.getId() + "_" + student.getName() + "_" + student.getLastnameFather();
+				
+				FileOutputStream coursedFile 		= new FileOutputStream(studentFolder + FolderFileManager.studentCoursed);
+				FileOutputStream coursedCourses 	= new FileOutputStream(studentFolder + FolderFileManager.studentCoursedCourses);
+				FileOutputStream courses 			= new FileOutputStream(studentFolder + FolderFileManager.studentCourses);
+				FileOutputStream info 				= new FileOutputStream(studentFolder + FolderFileManager.studentInfo);
+				FileOutputStream studyPrograms 		= new FileOutputStream(studentFolder + FolderFileManager.studentStudyPrograms);
+				
+				PrintStream coursedFileStream 		= new PrintStream(coursedFile);
+				PrintStream coursedCoursesStream 	= new PrintStream(coursedCourses);
+				PrintStream coursesStream 			= new PrintStream(courses);
+				PrintStream infoStream 				= new PrintStream(info);
+				PrintStream studyProgramsStream 	= new PrintStream(studyPrograms);
+				
+				// name&initials&section&credits&details&school&semester&year&approved&grade
+				for (Coursed coursed : student.getCurriculum().getCoursedCourses()) {
+					coursedFileStream.print(coursed.getName());
+					coursedFileStream.print("&");
+					coursedFileStream.print(coursed.getInitials());
+					coursedFileStream.print("&");
+					coursedFileStream.print(coursed.getSection());
+					coursedFileStream.print("&");
+					coursedFileStream.print(coursed.getCredits());
+					coursedFileStream.print("&");
+					coursedFileStream.print(coursed.getDetails());
+					coursedFileStream.print("&");
+					coursedFileStream.print(coursed.getSchool());
+					coursedFileStream.print("&");
+					coursedFileStream.print(coursed.getSemester());
+					coursedFileStream.print("&");
+					coursedFileStream.print(coursed.getYear());
+					coursedFileStream.print("&");
+					coursedFileStream.print(coursed.isApproved());
+					coursedFileStream.print("&");
+					coursedFileStream.print(coursed.getGrade());
+					coursedFileStream.println("");
+				}
+				
+				// initials&section&year&semester&ASSISTANTSHIP&name:lastNameFather:lastNameMother;name:lastNameFather:lastNameMother&initials;school;campus;size&dia1:modulo1;dia2:modulo2
+				for (Coursed coursed : student.getCurriculum().getCoursedCourses()) {
+					for (ICourse icourse : coursed.getCourses()) {
+						coursedCoursesStream.print(coursed.getInitials());
+						coursedFileStream.print("&");
+						coursedCoursesStream.print(coursed.getSection());
+						coursedFileStream.print("&");
+						coursedCoursesStream.print(coursed.getYear());
+						coursedFileStream.print("&");
+						if (icourse instanceof Assistantship) {
+							coursedCoursesStream.print("ASSISTANTSHIP");
+						} else if (icourse instanceof Lecture) {
+							coursedCoursesStream.print("LECTURE");
+						} else if (icourse instanceof Laboratory) {
+							coursedCoursesStream.print("LABORATORY");
+						}
+ 						coursedFileStream.print("&");
+ 						Boolean moreThanOneProfessorAsisstants = false;
+ 						if (icourse instanceof IAssistants) {
+ 							for (Assistant assistant : ((IAssistants) icourse).getAssistants()) {
+ 								if (moreThanOneProfessorAsisstants) {
+ 									coursedFileStream.print(";");
+ 								}
+ 								coursedFileStream.print(assistant.getName());
+ 								coursedFileStream.print(":");
+ 								coursedFileStream.print(assistant.getLastnameFather());
+ 								coursedFileStream.print(":");
+ 								coursedFileStream.print(assistant.getLastnameMother());
+ 								moreThanOneProfessorAsisstants = true;
+ 							}
+ 						} else if (icourse instanceof IProfessors) {
+ 							for (Professor professor : ((IProfessors) icourse).getProfessors()) {
+ 								if (moreThanOneProfessorAsisstants) {
+ 									coursedFileStream.print(";");
+ 								}
+ 								coursedFileStream.print(professor.getName());
+ 								coursedFileStream.print(":");
+ 								coursedFileStream.print(professor.getLastnameFather());
+ 								coursedFileStream.print(":");
+ 								coursedFileStream.print(professor.getLastnameMother());
+ 								moreThanOneProfessorAsisstants = true;
+ 							}
+ 						}
+						coursedFileStream.print("&");
+						coursedCoursesStream.print(icourse.getClassroom().getInitials());
+						coursedFileStream.print(";");
+						coursedCoursesStream.print(icourse.getClassroom().getSchool());
+						coursedFileStream.print(";");
+						coursedCoursesStream.print(icourse.getClassroom().getCampus());
+						coursedFileStream.print(";");
+						coursedCoursesStream.print(icourse.getClassroom().getSize());
+						coursedFileStream.print("&");
+						for (ArrayList<Schedule> schedule : icourse.getSchedule()) {
+							
+						}
+						coursedCoursesStream.print(icourse);
+						coursedFileStream.print("&");
+						coursedCoursesStream.print(icourse);
+						coursedFileStream.println("");
+					}
+				}
+				
+				coursedFileStream.close();
+				coursedCoursesStream.close();
+				coursesStream.close();
+				infoStream.close();
+				studyProgramsStream.close();
 			}
-			fileOutputStream.close();		
 		} catch (IOException ioException) {
 			System.err.println ("Unable to write to file");
 			System.out.println(ioException);
@@ -82,6 +185,7 @@ public class StudentsReaderWriter {
 	 * @return The students list.
 	 */
 	public static ArrayList<Student> readStudents(ArrayList<Course> allCourses, ArrayList<StudyProgram> allStudyPrograms, ArrayList<Classroom> allClassrooms, Semester currentSemester) {
+		// TODO Dude, this function is way to complex and big.
 		ArrayList<Student> students = new ArrayList<Student>();
 		try {
 			File studentRootFolder = new File(FolderFileManager.rootStudent);
@@ -91,11 +195,11 @@ public class StudentsReaderWriter {
 					break;
 				}
 				try {
-					FileInputStream coursed 					= new FileInputStream(FolderFileManager.studentCoursed);
-					FileInputStream coursedCourses 				= new FileInputStream(FolderFileManager.studentCoursedCourses);
-					FileInputStream courses 					= new FileInputStream(FolderFileManager.studentCourses);
-					FileInputStream student 					= new FileInputStream(FolderFileManager.studentInfo);
-					FileInputStream studyPrograms 				= new FileInputStream(FolderFileManager.studentStudyPrograms);
+					FileInputStream coursed 					= new FileInputStream(studentFolderString + FolderFileManager.studentCoursed);
+					FileInputStream coursedCourses 				= new FileInputStream(studentFolderString + FolderFileManager.studentCoursedCourses);
+					FileInputStream courses 					= new FileInputStream(studentFolderString + FolderFileManager.studentCourses);
+					FileInputStream student 					= new FileInputStream(studentFolderString + FolderFileManager.studentInfo);
+					FileInputStream studyPrograms 				= new FileInputStream(studentFolderString + FolderFileManager.studentStudyPrograms);
 
 					BufferedReader coursedReader 				= new BufferedReader(new InputStreamReader(coursed));
 					BufferedReader coursedCoursesReader			= new BufferedReader(new InputStreamReader(coursedCourses));
