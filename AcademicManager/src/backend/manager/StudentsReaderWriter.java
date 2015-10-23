@@ -285,7 +285,7 @@ public class StudentsReaderWriter {
 						String classroomInitials = arguments[6];
 						Classroom classroom = new Classroom(null, null, null, -1);
 						for (Classroom possibleClassroom : allClassrooms) {
-							if (possibleClassroom.getInitials() == classroomInitials) {
+							if (possibleClassroom.getInitials().equals(classroomInitials)) {
 								classroom = possibleClassroom;
 							}
 						}
@@ -309,7 +309,7 @@ public class StudentsReaderWriter {
 							}
 							Assistantship assistantship = new Assistantship(assistants, classroom, schedule);
 							for (Coursed possibleCoursed : coursedList) {
-								if (possibleCoursed.getInitials() == initials && possibleCoursed.getSection() == section && possibleCoursed.getYear() == year && possibleCoursed.getSemester() == semester) {
+								if (possibleCoursed.getInitials().equals(initials) && possibleCoursed.getSection() == section && possibleCoursed.getYear() == year && possibleCoursed.getSemester() == semester) {
 									possibleCoursed.addICourse(assistantship);
 								}
 							}
@@ -325,7 +325,7 @@ public class StudentsReaderWriter {
 							}
 							Laboratory laboratory = new Laboratory(professors, classroom, schedule);
 							for (Coursed possibleCoursed : coursedList) {
-								if (possibleCoursed.getInitials() == initials && possibleCoursed.getSection() == section && possibleCoursed.getYear() == year && possibleCoursed.getSemester() == semester) {
+								if (possibleCoursed.getInitials().equals(initials) && possibleCoursed.getSection() == section && possibleCoursed.getYear() == year && possibleCoursed.getSemester() == semester) {
 									possibleCoursed.addICourse(laboratory);
 								}
 							}
@@ -341,7 +341,7 @@ public class StudentsReaderWriter {
 							}
 							Lecture lecture = new Lecture(professors2, classroom, schedule);
 							for (Coursed possibleCoursed : coursedList) {
-								if (possibleCoursed.getInitials() == initials && possibleCoursed.getSection() == section && possibleCoursed.getYear() == year && possibleCoursed.getSemester() == semester) {
+								if (possibleCoursed.getInitials().equals(initials) && possibleCoursed.getSection() == section && possibleCoursed.getYear() == year && possibleCoursed.getSemester() == semester) {
 									possibleCoursed.addICourse(lecture);
 								}
 							}
@@ -354,7 +354,7 @@ public class StudentsReaderWriter {
 						String initials = arguments[0];
 						int section = Integer.parseInt(arguments[1]);
 						for (Course course : allCourses) {
-							if (course.getInitials() == initials && course.getSection() == section) {
+							if (course.getInitials().equals(initials) && course.getSection() == section) {
 								coursesList.add(course);
 							}
 						}
@@ -366,7 +366,7 @@ public class StudentsReaderWriter {
 						String name = arguments[0];
 						int year = Integer.parseInt(arguments[1]);
 						for (StudyProgram program : allStudyPrograms) {
-							if (program.getName() == name && program.getyearProgram() == year) {
+							if (program.getName().equals(name) && program.getyearProgram() == year) {
 								studyProgramsList.add(program);
 							}
 						}
@@ -409,8 +409,6 @@ public class StudentsReaderWriter {
 					
 				} catch (IOException iOException) {
 					iOException.printStackTrace();
-				} finally {
-					
 				}
 			}
 		} finally {

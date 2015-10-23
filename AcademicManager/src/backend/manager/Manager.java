@@ -4,8 +4,6 @@ import java.util.ArrayList;
 
 import backend.courses.Classroom;
 import backend.courses.Course;
-import backend.courses.Coursed;
-import backend.courses.Curriculum;
 import backend.courses.StudyProgram;
 import backend.users.Admin;
 import backend.users.Assistant;
@@ -23,8 +21,6 @@ public class Manager {
 	
 	public ArrayList<Classroom> classrooms = new ArrayList<Classroom>();
 	public ArrayList<Course> courses = new ArrayList<Course>();
-	public ArrayList<Coursed> courseds = new ArrayList<Coursed>();
-	public ArrayList<Curriculum> curriculums = new ArrayList<Curriculum>();
 	public ArrayList<StudyProgram> studyPrograms = new ArrayList<StudyProgram>();
 
 	public ArrayList<Admin> admins = new ArrayList<Admin>();

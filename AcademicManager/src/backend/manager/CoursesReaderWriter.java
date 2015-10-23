@@ -41,6 +41,8 @@ public class CoursesReaderWriter {
 				printStream.print(course.getSchool());
 				printStream.print("&");
 				printStream.print(course.getSemester());
+				printStream.print("&");
+				printStream.print(course.getCoordinated());
 				printStream.println();
 			}
 			fileOutputStream.close();		
@@ -70,12 +72,8 @@ public class CoursesReaderWriter {
 				String details = arguments[4];
 				School school = School.valueOf(arguments[5]);
 				AcademicSemester semester = AcademicSemester.valueOf(arguments[6]);
-				ArrayList<ICourse> coursesOfCourse = new ArrayList<ICourse>();
-				ArrayList<Evaluation> evaluations = new ArrayList<Evaluation>();
-				ArrayList<Course> requirements = new ArrayList<Course>();
-				ArrayList<Course> coRequirements = new ArrayList<Course>();
 				Boolean coordinated = Boolean.valueOf(arguments[7]);
-				Course course = new Course(name, initials, section, credits, details, school, semester, coursesOfCourse, evaluations, requirements, coRequirements, coordinated);
+				Course course = new Course(name, initials, section, credits, details, school, semester, null, null, null, null, coordinated);
 				courses.add(course);
 				courseString = bufferedReader.readLine();
 			}

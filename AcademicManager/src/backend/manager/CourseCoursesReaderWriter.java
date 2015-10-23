@@ -75,7 +75,7 @@ public class CourseCoursesReaderWriter {
 					} else if (icourse instanceof Lecture) {
 						printStream.print("LECTURE");
 						printStream.print("&");
-						for (Professor professor : ((Laboratory) icourse).getProfessors()) {
+						for (Professor professor : ((Lecture) icourse).getProfessors()) {
 							if (moreThanOneProfessorOrAssistant) {
 								printStream.print(";");
 							}
@@ -83,6 +83,7 @@ public class CourseCoursesReaderWriter {
 							moreThanOneProfessorOrAssistant = true;
 						}
 					}
+					printStream.print("&");
 					printStream.print(icourse.getClassroom().getInitials());
 					printStream.print("&");
 					Boolean moreThanOneDayModuleTuple = false;
@@ -117,16 +118,17 @@ public class CourseCoursesReaderWriter {
 			FileInputStream fileInputStream = new FileInputStream (FolderFileManager.adminCourseCourses);
 			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(fileInputStream));
 			String icourseString = bufferedReader.readLine();
+			System.out.print(icourseString);
 			while (icourseString != null ) {
 				String[] arguments = icourseString.split("&");
 				
 				String initials = arguments[0];
 				int section = Integer.parseInt(arguments[1]);
-				AcademicSemester semester = AcademicSemester.valueOf(arguments[3]);
-				String typeOfCourse = arguments[4];
-				String assitantsOrProfessorsString = arguments[5];
-				String classroomInitials = arguments[6];
-				String dayModuleStrings = arguments[7];
+				AcademicSemester semester = AcademicSemester.valueOf(arguments[2]);
+				String typeOfCourse = arguments[3];
+				String assitantsOrProfessorsString = arguments[4];
+				String classroomInitials = arguments[5];
+				String dayModuleStrings = arguments[6];
 				
 				Schedule schedule = new Schedule();
 				ArrayList<DayModuleTuple> dayModuleTuples = new ArrayList<DayModuleTuple>();
@@ -144,40 +146,41 @@ public class CourseCoursesReaderWriter {
 				
 				Classroom classroom = new Classroom(null, null, null, 0);
 				for (Classroom possibleClassroom : allClassroooms) {
-					if (possibleClassroom.getInitials() == classroomInitials) {
+					if (possibleClassroom.getInitials().equals(classroomInitials)) {
 						classroom = possibleClassroom;
 					}
 				}
 
 				ICourse icourse = new Assistantship(null, null, null);
 
-				if (typeOfCourse == "ASSISTANTSHIP") {
+				if (typeOfCourse.equals("ASSISTANTSHIP")) {
 					ArrayList<Assistant> assistants = new ArrayList<Assistant>();
 					for (String rut : assitantsOrProfessorsString.split(";")) {
 						for (Assistant assistant : allAssistants) {
-							if (assistant.getRut() == rut) {
+							if (assistant.getRut().equals(rut)) {
 								assistants.add(assistant);
 							}
 						}
 					}
 					Assistantship assistantship = new Assistantship(assistants, classroom, schedule);
 					icourse = assistantship;
-				} else if (typeOfCourse == "LABORATORY") {
+				} else if (typeOfCourse.equals("LABORATORY")) {
 					ArrayList<Professor> professors = new ArrayList<Professor>();
 					for (String rut : assitantsOrProfessorsString.split(";")) {
 						for (Professor professor : allProfessors) {
-							if (professor.getRut() == rut) {
+							if (professor.getRut().equals(rut)) {
 								professors.add(professor);
 							}
 						}
 					}
 					Laboratory laboratory = new Laboratory(professors, classroom, schedule);
 					icourse = laboratory;
-				} else if (typeOfCourse == "LECTURE") {
+				} else if (typeOfCourse.equals("LECTURE")) {
 					ArrayList<Professor> professors = new ArrayList<Professor>();
 					for (String rut : assitantsOrProfessorsString.split(";")) {
+						System.out.println(rut);
 						for (Professor professor : allProfessors) {
-							if (professor.getRut() == rut) {
+							if (professor.getRut().equals(rut)) {
 								professors.add(professor);
 							}
 						}
@@ -187,7 +190,8 @@ public class CourseCoursesReaderWriter {
 				}
 
 				for (Course possibleCourse : allCourses) {
-					if (possibleCourse.getInitials() == initials && possibleCourse.getSection() == section && possibleCourse.getSemester() == semester) {
+					if (possibleCourse.getInitials().equals(initials) && possibleCourse.getSection() == section && possibleCourse.getSemester() == semester) {
+						System.out.println("DONE");
 						possibleCourse.addCourse(icourse);
 					}
 				}

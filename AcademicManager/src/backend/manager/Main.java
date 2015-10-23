@@ -34,6 +34,10 @@ public class Main extends Application {
 //		Manager.INSTANCE.admins.add(admin2);
 //		System.out.print(Utilities.getStringFromDate(admin.getBirthday()));
 		
+//		for (Course course : Manager.INSTANCE.courses) {
+//			
+//		}
+		
 		for (Classroom classroom : Manager.INSTANCE.classrooms) {
 			System.out.print(classroom.getInitials());
 			System.out.print(" ");
