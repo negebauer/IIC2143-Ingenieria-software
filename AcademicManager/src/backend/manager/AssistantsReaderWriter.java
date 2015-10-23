@@ -19,7 +19,7 @@ public class AssistantsReaderWriter {
 
 	/**
 	 * Writes all the assistants to the assistants.txt file.
-	 * @param professors The assistants to be written.
+	 * @param assistants The assistants to be written.
 	 */
 	public static void writeAssistants(ArrayList<Assistant> assistants) {
 		try {
