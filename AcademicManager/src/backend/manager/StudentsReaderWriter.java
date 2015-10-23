@@ -27,6 +27,7 @@ import backend.enums.School;
 import backend.interfaces.IAssistants;
 import backend.interfaces.ICourse;
 import backend.interfaces.IProfessors;
+import backend.others.Utilities;
 import backend.users.Assistant;
 import backend.users.Professor;
 import backend.users.Student;
@@ -44,9 +45,9 @@ public class StudentsReaderWriter {
 			|-> Student2
 				|-> coursed.txt			Line format: name&initials&section&credits&details&school&semester&year&approved&grade
 				|-> coursedCourses.txt	Line format: 3 cases
-											- Assistantship:	initials&section&year&semester&ASSISTANTSHIP&name:lastNameFather:lastNameMother;name:lastNameFather:lastNameMother&initials;school;campus;size&dia1:modulo1;dia2:modulo2
-											- Laboratory:		initials&section&year&semester&LABORATORY&name:lastNameFather:lastNameMother;name:lastNameFather:lastNameMother&initials;school;campus;size&dia1:modulo1;dia2:modulo2
-											- Lecture:			initials&section&year&semester&LECTURE&name:lastNameFather:lastNameMother;name:lastNameFather:lastNameMother&initials;school;campus;size&dia1:modulo1;dia2:modulo2
+											- Assistantship:	initials&section&year&semester&ASSISTANTSHIP&name:lastNameFather:lastNameMother;name:lastNameFather:lastNameMother&classroomInitials&dia1:modulo1;dia2:modulo2
+											- Laboratory:		initials&section&year&semester&LABORATORY&name:lastNameFather:lastNameMother;name:lastNameFather:lastNameMother&classroomInitials&dia1:modulo1;dia2:modulo2
+											- Lecture:			initials&section&year&semester&LECTURE&name:lastNameFather:lastNameMother;name:lastNameFather:lastNameMother&classroomInitials&dia1:modulo1;dia2:modulo2
 				|-> courses.txt			Line format: initials&section
 				|-> student.txt			Line format: id&yearEntrance&yearGraduation&regularStudent&rut&name&lastnameFather&lastnameMother&address&gender&access&phone&birthdayString
 				|-> studyPrograms.txt	Line format: name&year
@@ -67,7 +68,7 @@ public class StudentsReaderWriter {
 				FileOutputStream info 				= new FileOutputStream(studentFolder + FolderFileManager.studentInfo);
 				FileOutputStream studyPrograms 		= new FileOutputStream(studentFolder + FolderFileManager.studentStudyPrograms);
 				
-				PrintStream coursedFileStream 		= new PrintStream(coursedFile);
+				PrintStream coursedStream 		= new PrintStream(coursedFile);
 				PrintStream coursedCoursesStream 	= new PrintStream(coursedCourses);
 				PrintStream coursesStream 			= new PrintStream(courses);
 				PrintStream infoStream 				= new PrintStream(info);
@@ -75,37 +76,37 @@ public class StudentsReaderWriter {
 				
 				// name&initials&section&credits&details&school&semester&year&approved&grade
 				for (Coursed coursed : student.getCurriculum().getCoursedCourses()) {
-					coursedFileStream.print(coursed.getName());
-					coursedFileStream.print("&");
-					coursedFileStream.print(coursed.getInitials());
-					coursedFileStream.print("&");
-					coursedFileStream.print(coursed.getSection());
-					coursedFileStream.print("&");
-					coursedFileStream.print(coursed.getCredits());
-					coursedFileStream.print("&");
-					coursedFileStream.print(coursed.getDetails());
-					coursedFileStream.print("&");
-					coursedFileStream.print(coursed.getSchool());
-					coursedFileStream.print("&");
-					coursedFileStream.print(coursed.getSemester());
-					coursedFileStream.print("&");
-					coursedFileStream.print(coursed.getYear());
-					coursedFileStream.print("&");
-					coursedFileStream.print(coursed.isApproved());
-					coursedFileStream.print("&");
-					coursedFileStream.print(coursed.getGrade());
-					coursedFileStream.println("");
+					coursedStream.print(coursed.getName());
+					coursedStream.print("&");
+					coursedStream.print(coursed.getInitials());
+					coursedStream.print("&");
+					coursedStream.print(coursed.getSection());
+					coursedStream.print("&");
+					coursedStream.print(coursed.getCredits());
+					coursedStream.print("&");
+					coursedStream.print(coursed.getDetails());
+					coursedStream.print("&");
+					coursedStream.print(coursed.getSchool());
+					coursedStream.print("&");
+					coursedStream.print(coursed.getSemester());
+					coursedStream.print("&");
+					coursedStream.print(coursed.getYear());
+					coursedStream.print("&");
+					coursedStream.print(coursed.isApproved());
+					coursedStream.print("&");
+					coursedStream.print(coursed.getGrade());
+					coursedStream.println("");
 				}
 				
 				// initials&section&year&semester&ASSISTANTSHIP&name:lastNameFather:lastNameMother;name:lastNameFather:lastNameMother&initials;school;campus;size&dia1:modulo1;dia2:modulo2
 				for (Coursed coursed : student.getCurriculum().getCoursedCourses()) {
 					for (ICourse icourse : coursed.getCourses()) {
 						coursedCoursesStream.print(coursed.getInitials());
-						coursedFileStream.print("&");
+						coursedStream.print("&");
 						coursedCoursesStream.print(coursed.getSection());
-						coursedFileStream.print("&");
+						coursedStream.print("&");
 						coursedCoursesStream.print(coursed.getYear());
-						coursedFileStream.print("&");
+						coursedStream.print("&");
 						if (icourse instanceof Assistantship) {
 							coursedCoursesStream.print("ASSISTANTSHIP");
 						} else if (icourse instanceof Lecture) {
@@ -113,53 +114,93 @@ public class StudentsReaderWriter {
 						} else if (icourse instanceof Laboratory) {
 							coursedCoursesStream.print("LABORATORY");
 						}
- 						coursedFileStream.print("&");
+ 						coursedStream.print("&");
  						Boolean moreThanOneProfessorAsisstants = false;
  						if (icourse instanceof IAssistants) {
  							for (Assistant assistant : ((IAssistants) icourse).getAssistants()) {
  								if (moreThanOneProfessorAsisstants) {
- 									coursedFileStream.print(";");
+ 									coursedStream.print(";");
  								}
- 								coursedFileStream.print(assistant.getName());
- 								coursedFileStream.print(":");
- 								coursedFileStream.print(assistant.getLastnameFather());
- 								coursedFileStream.print(":");
- 								coursedFileStream.print(assistant.getLastnameMother());
+ 								coursedStream.print(assistant.getName());
+ 								coursedStream.print(":");
+ 								coursedStream.print(assistant.getLastnameFather());
+ 								coursedStream.print(":");
+ 								coursedStream.print(assistant.getLastnameMother());
  								moreThanOneProfessorAsisstants = true;
  							}
  						} else if (icourse instanceof IProfessors) {
  							for (Professor professor : ((IProfessors) icourse).getProfessors()) {
  								if (moreThanOneProfessorAsisstants) {
- 									coursedFileStream.print(";");
+ 									coursedStream.print(";");
  								}
- 								coursedFileStream.print(professor.getName());
- 								coursedFileStream.print(":");
- 								coursedFileStream.print(professor.getLastnameFather());
- 								coursedFileStream.print(":");
- 								coursedFileStream.print(professor.getLastnameMother());
+ 								coursedStream.print(professor.getName());
+ 								coursedStream.print(":");
+ 								coursedStream.print(professor.getLastnameFather());
+ 								coursedStream.print(":");
+ 								coursedStream.print(professor.getLastnameMother());
  								moreThanOneProfessorAsisstants = true;
  							}
  						}
-						coursedFileStream.print("&");
+						coursedStream.print("&");
 						coursedCoursesStream.print(icourse.getClassroom().getInitials());
-						coursedFileStream.print(";");
-						coursedCoursesStream.print(icourse.getClassroom().getSchool());
-						coursedFileStream.print(";");
-						coursedCoursesStream.print(icourse.getClassroom().getCampus());
-						coursedFileStream.print(";");
-						coursedCoursesStream.print(icourse.getClassroom().getSize());
-						coursedFileStream.print("&");
-						for (ArrayList<Schedule> schedule : icourse.getSchedule()) {
-							
+						coursedStream.print("&");
+						Boolean moreThanOneDayModuleTuple = false;
+						for (DayModuleTuple dayModuleTuple : icourse.getSchedule().getModules()) {
+							if (moreThanOneDayModuleTuple) {
+									coursedStream.print(";");
+								}
+							coursedStream.print(dayModuleTuple.day.toString());
+							coursedStream.print(":");
+							coursedStream.print(dayModuleTuple.module.toString());
+							moreThanOneDayModuleTuple = true;
 						}
-						coursedCoursesStream.print(icourse);
-						coursedFileStream.print("&");
-						coursedCoursesStream.print(icourse);
-						coursedFileStream.println("");
 					}
 				}
+
+				// initials&section
+				for (Course course : student.getCurriculum().getCurrentSemester().getCourses()) {
+					coursesStream.print(course.getInitials());
+					coursesStream.print("&");
+					coursesStream.print(course.getSection());
+				}
+
+				// id&yearEntrance&yearGraduation&regularStudent&rut&name&lastnameFather&lastnameMother&address&gender&access&phone&birthdayString
+				infoStream.print(student.getId());
+				infoStream.print("&");
+				infoStream.print(student.getYearEntrance());
+				infoStream.print("&");
+				infoStream.print(student.getYearGraduation());
+				infoStream.print("&");
+				infoStream.print(student.isRegularStudent());
+				infoStream.print("&");
+				infoStream.print(student.getRut());
+				infoStream.print("&");
+				infoStream.print(student.getName());
+				infoStream.print("&");
+				infoStream.print(student.getLastnameFather());
+				infoStream.print("&");
+				infoStream.print(student.getLastnameMother());
+				infoStream.print("&");
+				infoStream.print(student.getAddress());
+				infoStream.print("&");
+				infoStream.print(student.getGender());
+				infoStream.print("&");
+				infoStream.print(student.getAccess().toString());
+				infoStream.print("&");
+				infoStream.print(student.getPhone());
+				infoStream.print("&");
+				infoStream.print(Utilities.getStringFromDate(student.getBirthday()));
+				infoStream.print("&");
+				infoStream.print(student);
+
+				// name&year
+				for (StudyProgram studyProgram : student.getCurriculum().getStudyPrograms()) {
+					studyProgramsStream.print(studyProgram.getName());
+					studyProgramsStream.print("&");
+					studyProgramsStream.print(studyProgram.getyearProgram());
+				}
 				
-				coursedFileStream.close();
+				coursedStream.close();
 				coursedCoursesStream.close();
 				coursesStream.close();
 				infoStream.close();
@@ -236,9 +277,6 @@ public class StudentsReaderWriter {
 					}
 
 					while (coursedCoursesString != null) {
-						// initials&section&year&semester&ASSISTANTSHIP&name:lastNameFather:lastNameMother;name:lastNameFather:lastNameMother&initials;school;campus;size&dia1:modulo1;dia2:modulo2
-						// initials&section&year&semester&LABORATORY&name:lastNameFather:lastNameMother;name:lastNameFather:lastNameMother&initials;school;campus;size&dia1:modulo1;dia2:modulo2
-						// initials&section&year&semester&LECTURE&name:lastNameFather:lastNameMother;name:lastNameFather:lastNameMother&initials;school;campus;size&dia1:modulo1;dia2:modulo2
 						String[] arguments = coursedCoursesString.split("&");
 						String initials = arguments[0];
 						int section = Integer.parseInt(arguments[1]);
