@@ -1,10 +1,9 @@
 package frontend.view.main;
 
-import backend.manager.Manager;
 import backend.others.Messages;
 import backend.others.Messages.UILabel;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
+import javafx.scene.control.*;
 
 public class MainViewController {
 	
@@ -18,6 +17,10 @@ public class MainViewController {
 	Button btnShowSchedule;
 	@FXML
 	Button btnChangeModeToAdmin;
+	@FXML
+	Label labelWhatDoNext;
+	@FXML
+	Label labelWelcomeMessage;
 	
 	public void setUp() {
 		btnCreateNewSemester.setText(Messages.getUILabel(UILabel.STUDENT_CREATE_NEW_SEMESTER));
@@ -26,6 +29,8 @@ public class MainViewController {
 		btnCreateNewSemester.setText(Messages.getUILabel(UILabel.STUDENT_CREATE_NEW_SEMESTER));
 		btnShowSchedule.setText(Messages.getUILabel(UILabel.STUDENT_SEE_SCHEDULE));
 		btnChangeModeToAdmin.setText(Messages.getUILabel(UILabel.CHANGE_MODE_STUDENT_TO_ADMIN));
+		labelWhatDoNext.setText(Messages.getUILabel(UILabel.WHAT_TO_DO_NEXT_QUESTION));
+		labelWelcomeMessage.setText(Messages.getUILabel(UILabel.WELCOME_MESSAGE));
 		
 	}
 	

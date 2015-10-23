@@ -191,7 +191,32 @@ public class Messages {
 		CHANGE_MODE_STUDENT_TO_ADMIN,
 		CHANGE_MODE_ADMIN_TO_STUDENT,
 		WELCOME_MESSAGE,
-		WHAT_TO_DO_NEXT_QUESTION
+		WHAT_TO_DO_NEXT_QUESTION,
+		SIGN_IN,
+		REGISTER,
+		SIGN_IN_AS_USER,
+		DONT_HAVE_ACCOUNT_REGISTER,
+		LOG_IN,
+		TO_USE_ATM_MUST_REGISTER,
+		CONTINUE,
+		ADMINISTRATOR,
+		STUDENT,
+		PROFFESOR,
+		MALE,
+		FEMALE,
+		NAME,
+		LAST_NAME_FATHER,
+		LAST_NAME_MOTHER,
+		ADDRESS,
+		CELL_PHONE,
+		RUT,
+		BIRTHDAY,
+		SEX,
+		ACCESS,
+		DAY,
+		MONTH,
+		YEAR,
+		PICK_CARREER
 		
 	}
 	
@@ -219,6 +244,31 @@ public class Messages {
         result.put(UILabel.CHANGE_MODE_STUDENT_TO_ADMIN,	"Change to Admin mode");
         result.put(UILabel.WELCOME_MESSAGE,					"WELCOME TO ACADEMIC TOOL MANAGER PROFESSIONAL!!!");
         result.put(UILabel.WHAT_TO_DO_NEXT_QUESTION,		"What do you want to do next?");
+        result.put(UILabel.SIGN_IN, 						"Sign In");
+        result.put(UILabel.REGISTER, 						"Register");
+        result.put(UILabel.SIGN_IN_AS_USER, 				"Sign In as User");
+        result.put(UILabel.DONT_HAVE_ACCOUNT_REGISTER, 		"Don't have an account?, Register!");
+        result.put(UILabel.LOG_IN, 							"LOG IN");
+        result.put(UILabel.TO_USE_ATM_MUST_REGISTER, 		"To use Academic Tool Manager Professional you must get registered first:");
+        result.put(UILabel.CONTINUE, 						"Continue");
+        result.put(UILabel.ADMINISTRATOR, 					"Administrator");
+        result.put(UILabel.STUDENT, 						"Student");
+        result.put(UILabel.PROFFESOR, 						"Proffesor");
+        result.put(UILabel.MALE, 							"Male");
+        result.put(UILabel.FEMALE, 							"Female");
+        result.put(UILabel.NAME, 							"Name");
+        result.put(UILabel.LAST_NAME_FATHER, 				"Mother's last name");
+        result.put(UILabel.LAST_NAME_MOTHER, 				"Father's last name");
+        result.put(UILabel.ADDRESS, 						"Adress");
+        result.put(UILabel.CELL_PHONE, 						"Cellphone number");
+        result.put(UILabel.RUT, 							"R.U.T.");
+        result.put(UILabel.BIRTHDAY, 						"Birth Date");
+        result.put(UILabel.SEX, 							"Sex");
+        result.put(UILabel.ACCESS, 							"Access type");
+        result.put(UILabel.DAY, 							"Day");
+        result.put(UILabel.MONTH, 							"Month");
+        result.put(UILabel.YEAR, 							"Year");
+        result.put(UILabel.PICK_CARREER, 					"Pick Carreer(s)");
         return Collections.unmodifiableMap(result);
     }
 	
@@ -231,7 +281,32 @@ public class Messages {
         result.put(UILabel.CHANGE_MODE_ADMIN_TO_STUDENT,	"Cambiar a modo Estudiante");
         result.put(UILabel.CHANGE_MODE_STUDENT_TO_ADMIN,	"Cambiar a modo Administrador");
         result.put(UILabel.WELCOME_MESSAGE,					"BIENVENIDO A ACADEMIC TOOL MANAGER PROFESSIONAL!!!");
-        result.put(UILabel.WHAT_TO_DO_NEXT_QUESTION,		"ï¿½Que deseas hacer ahora?");
+        result.put(UILabel.WHAT_TO_DO_NEXT_QUESTION,		"¿Que deseas hacer ahora?");
+        result.put(UILabel.SIGN_IN, 						"Iniciar Sesion");
+        result.put(UILabel.REGISTER, 						"Registrarse");
+        result.put(UILabel.SIGN_IN_AS_USER, 				"Iniciar como usuario");
+        result.put(UILabel.DONT_HAVE_ACCOUNT_REGISTER, 		"¿No tienes una cuenta?, Registrate!");
+        result.put(UILabel.LOG_IN, 							"INICIO DE SESION");
+        result.put(UILabel.TO_USE_ATM_MUST_REGISTER, 		"Para poder usar Academic Tool Manager Professional debes registrarte pimero:");
+        result.put(UILabel.CONTINUE, 						"Continuar");
+        result.put(UILabel.ADMINISTRATOR, 					"Administrador");
+        result.put(UILabel.STUDENT, 						"Alumno");
+        result.put(UILabel.PROFFESOR, 						"Profesor");
+        result.put(UILabel.MALE, 							"Masculino");
+        result.put(UILabel.FEMALE, 							"Femenino");
+        result.put(UILabel.NAME, 							"Nombre");
+        result.put(UILabel.LAST_NAME_FATHER, 				"Apellido Paterno");
+        result.put(UILabel.LAST_NAME_MOTHER, 				"Apellido Materno");
+        result.put(UILabel.ADDRESS, 						"Direccion");
+        result.put(UILabel.CELL_PHONE, 						"Numero de celular");
+        result.put(UILabel.RUT, 							"R.U.T.");
+        result.put(UILabel.BIRTHDAY, 						"Fecha de Nacimiento");
+        result.put(UILabel.SEX, 							"Sexo");
+        result.put(UILabel.ACCESS, 							"Tipo de Acceso");
+        result.put(UILabel.DAY, 							"Dia");
+        result.put(UILabel.MONTH, 							"Mes");
+        result.put(UILabel.YEAR, 							"Ano");
+        result.put(UILabel.PICK_CARREER, 					"Elegir Carrera(s)");
         return Collections.unmodifiableMap(result);
     }
 }
