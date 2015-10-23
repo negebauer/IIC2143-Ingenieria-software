@@ -9,6 +9,7 @@ import backend.enums.AcademicSemester;
  */
 public class Curriculum {
 
+	private Semester currentSemester;
 	private ArrayList<Coursed> coursedCourses;
 	private ArrayList<StudyProgram> studyPrograms;
 	
@@ -30,6 +31,10 @@ public class Curriculum {
 	 */
 	public void addCoursedCourse(Course course, boolean approved, double grade, AcademicSemester semester, int year) {
 		this.coursedCourses.add(new Coursed(course, approved, grade, semester, year));
+	}
+	
+	public void addCoursedCourse(Coursed course) {
+		coursedCourses.add(course);
 	}
 	
 	/**
@@ -63,6 +68,14 @@ public class Curriculum {
 		}
 	}
 	
+	public Semester getCurrentSemester() {
+		return currentSemester;
+	}
+
+	public void setCurrentSemester(Semester currentSemester) {
+		this.currentSemester = currentSemester;
+	}
+
 	/**
 	 * Class used as a data container for the curricular advance response.
 	 */

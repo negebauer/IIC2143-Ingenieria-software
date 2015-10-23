@@ -10,7 +10,7 @@ import backend.users.Assistant;
  */
 public class Assistantship implements IAssistants {
 	
-	private ArrayList<Assistant> assistants; 
+	private ArrayList<Assistant> assistants;
 	private Classroom classroom;
 	private Schedule schedule;
 	

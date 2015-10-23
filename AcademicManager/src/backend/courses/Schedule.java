@@ -18,6 +18,7 @@ public class Schedule {
 		public String getDayString() {
 			return Messages.getDay(this);
 		}
+		
 	}
 	
 	public enum Module {

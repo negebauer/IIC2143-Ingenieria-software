@@ -28,20 +28,20 @@ public class CoursesReaderWriter {
 			FileOutputStream fileOutputStream = new FileOutputStream (FolderFileManager.adminCourses);
 			PrintStream printStream = new PrintStream(fileOutputStream);
 			for (Course course : courses) {
-				printStream.println(course.getName());
-				printStream.println("&");
-				printStream.println(course.getInitials());
-				printStream.println("&");
-				printStream.println(course.getSection());
-				printStream.println("&");
-				printStream.println(course.getCredits());
-				printStream.println("&");
-				printStream.println(course.getDetails());
-				printStream.println("&");
-				printStream.println(course.getSchool());
-				printStream.println("&");
-				printStream.println(course.getSemester());
-				printStream.println("&");
+				printStream.print(course.getName());
+				printStream.print("&");
+				printStream.print(course.getInitials());
+				printStream.print("&");
+				printStream.print(course.getSection());
+				printStream.print("&");
+				printStream.print(course.getCredits());
+				printStream.print("&");
+				printStream.print(course.getDetails());
+				printStream.print("&");
+				printStream.print(course.getSchool());
+				printStream.print("&");
+				printStream.print(course.getSemester());
+				printStream.println();
 			}
 			fileOutputStream.close();		
 		} catch (IOException ioException) {
@@ -74,7 +74,8 @@ public class CoursesReaderWriter {
 				ArrayList<Evaluation> evaluations = new ArrayList<Evaluation>();
 				ArrayList<Course> requirements = new ArrayList<Course>();
 				ArrayList<Course> coRequirements = new ArrayList<Course>();
-				Course course = new Course(name, initials, section, credits, details, school, semester, coursesOfCourse, evaluations, requirements, coRequirements);
+				Boolean coordinated = Boolean.valueOf(arguments[7]);
+				Course course = new Course(name, initials, section, credits, details, school, semester, coursesOfCourse, evaluations, requirements, coRequirements, coordinated);
 				courses.add(course);
 				courseString = bufferedReader.readLine();
 			}

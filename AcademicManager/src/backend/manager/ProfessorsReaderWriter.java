@@ -26,21 +26,22 @@ public class ProfessorsReaderWriter {
 			FileOutputStream fileOutputStream = new FileOutputStream (FolderFileManager.adminProfessors);
 			PrintStream printStream = new PrintStream(fileOutputStream);
 			for (Professor professor : professors) {
-				printStream.println(professor.getRut());
-				printStream.println("&");
-				printStream.println(professor.getName());
-				printStream.println("&");
-				printStream.println(professor.getLastnameFather());
-				printStream.println("&");
-				printStream.println(professor.getLastnameMother());
-				printStream.println("&");
-				printStream.println(professor.getAddress());
-				printStream.println("&");
-				printStream.println(professor.getGender());
-				printStream.println("&");
-				printStream.println(professor.getPhone());
-				printStream.println("&");
-				printStream.println(Utilities.getStringFromDate(professor.getBirthday()));
+				printStream.print(professor.getRut());
+				printStream.print("&");
+				printStream.print(professor.getName());
+				printStream.print("&");
+				printStream.print(professor.getLastnameFather());
+				printStream.print("&");
+				printStream.print(professor.getLastnameMother());
+				printStream.print("&");
+				printStream.print(professor.getAddress());
+				printStream.print("&");
+				printStream.print(professor.getGender());
+				printStream.print("&");
+				printStream.print(professor.getPhone());
+				printStream.print("&");
+				printStream.print(Utilities.getStringFromDate(professor.getBirthday()));
+				printStream.println();
 			}
 			fileOutputStream.close();		
 		} catch (IOException ioException) {
@@ -55,7 +56,6 @@ public class ProfessorsReaderWriter {
 	 */
 	public static ArrayList<Professor> readProfessors() {
 		ArrayList<Professor> professors = new ArrayList<Professor>();
-		
 		try {
 			FileInputStream fileInputStream = new FileInputStream (FolderFileManager.adminProfessors);
 			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(fileInputStream));

@@ -187,6 +187,10 @@ public class Semester {
 		}
 		return response;
 	}
+	
+	public AcademicSemester getSemester() {
+		return semester;
+	}
 
 	// Getters and Setters
 	/**

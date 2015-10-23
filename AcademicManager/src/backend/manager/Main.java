@@ -5,7 +5,6 @@ import java.net.URL;
 import java.util.ArrayList;
 
 import backend.courses.StudyProgram;
-import backend.users.Student;
 import frontend.view.main.MainViewController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -36,17 +35,17 @@ public class Main extends Application {
 		ArrayList<StudyProgram> studyPrograms = new ArrayList<StudyProgram>();
 		StudyProgram studyProgram = new StudyProgram("Engineering Major Computers", 2013, null, null, 50, 100);
 		studyPrograms.add(studyProgram);
-		ArrayList<Student> students = StudentsReaderWriter.readStudents(studyPrograms);
-		for (Student student : students) {
-			System.out.println("getId: " + student.getId());
-			System.out.println("getYearEntrance: " + student.getYearEntrance());
-			System.out.println("getYearGraduation: " + student.getYearGraduation());
-			System.out.println("isRegularStudent: " + student.isRegularStudent());
-			System.out.println("id: " + student.getId());
-			System.out.println("id: " + student.getId());
-			System.out.println("id: " + student.getId());
-			System.out.println("id: " + student.getId());
-		}
+//		ArrayList<Student> students = StudentsReaderWriter.readStudents(studyPrograms);
+//		for (Student student : students) {
+//			System.out.println("getId: " + student.getId());
+//			System.out.println("getYearEntrance: " + student.getYearEntrance());
+//			System.out.println("getYearGraduation: " + student.getYearGraduation());
+//			System.out.println("isRegularStudent: " + student.isRegularStudent());
+//			System.out.println("id: " + student.getId());
+//			System.out.println("id: " + student.getId());
+//			System.out.println("id: " + student.getId());
+//			System.out.println("id: " + student.getId());
+//		}
 		// ----- 			To this line				  -----
 		
 		Application.launch(Main.class, args);

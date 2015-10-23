@@ -13,23 +13,32 @@ import backend.users.Professor;
 import backend.users.Student;
 
 /**
- * [Singleton] Main class that does what the application user requires. 
+ * [Singleton] Main class that does what the application user requires.
+ * Contains all the objects of the program.
+ * Data container.
  */
 public class Manager {
 
 	private final static Manager INSTANCE = new Manager();
 	
-	private ArrayList<Classroom> classrooms = new ArrayList<Classroom>();
-	private ArrayList<Course> courses = new ArrayList<Course>();
-	private ArrayList<Coursed> courseds = new ArrayList<Coursed>();
-	private ArrayList<Curriculum> curriculums = new ArrayList<Curriculum>();
-	private ArrayList<StudyProgram> studyPrograms = new ArrayList<StudyProgram>();
+	public ArrayList<Classroom> classrooms = new ArrayList<Classroom>();
+	public ArrayList<Course> courses = new ArrayList<Course>();
+	public ArrayList<Coursed> courseds = new ArrayList<Coursed>();
+	public ArrayList<Curriculum> curriculums = new ArrayList<Curriculum>();
+	public ArrayList<StudyProgram> studyPrograms = new ArrayList<StudyProgram>();
 
-	private ArrayList<Admin> admins = new ArrayList<Admin>();
-	private ArrayList<Assistant> assistants = new ArrayList<Assistant>();
-	private ArrayList<Professor> professors = new ArrayList<Professor>();
-	private ArrayList<Student> students = new ArrayList<Student>();
+	public ArrayList<Admin> admins = new ArrayList<Admin>();
+	public ArrayList<Assistant> assistants = new ArrayList<Assistant>();
+	public ArrayList<Professor> professors = new ArrayList<Professor>();
+	public ArrayList<Student> students = new ArrayList<Student>();
 	
+	/**
+	 * Creates the instance of manager.
+	 */
+	private Manager() {
+		//TODO Load files and stuff.
+	}
+
 	/**
 	 * Loads all the data from the `database`.
 	 */
@@ -48,15 +57,8 @@ public class Manager {
 	/**
 	 * Writes all the data to the `database`.
 	 */
-	public void writeData() {
+	public void saveData() {
 		CoursesReaderWriter.writeCourses(INSTANCE.courses);
 	}
 
-	/**
-	 * Creates the instance of manager.
-	 */
-	private Manager() {
-		//TODO Load files and stuff.
-	}
-	
 }

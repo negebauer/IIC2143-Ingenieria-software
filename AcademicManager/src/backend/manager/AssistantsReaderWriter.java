@@ -26,21 +26,22 @@ public class AssistantsReaderWriter {
 			FileOutputStream fileOutputStream = new FileOutputStream (FolderFileManager.adminAssistants);
 			PrintStream printStream = new PrintStream(fileOutputStream);
 			for (Assistant assistant : assistants) {
-				printStream.println(assistant.getRut());
-				printStream.println("&");
-				printStream.println(assistant.getName());
-				printStream.println("&");
-				printStream.println(assistant.getLastnameFather());
-				printStream.println("&");
-				printStream.println(assistant.getLastnameMother());
-				printStream.println("&");
-				printStream.println(assistant.getAddress());
-				printStream.println("&");
-				printStream.println(assistant.getGender());
-				printStream.println("&");
-				printStream.println(assistant.getPhone());
-				printStream.println("&");
-				printStream.println(Utilities.getStringFromDate(assistant.getBirthday()));
+				printStream.print(assistant.getRut());
+				printStream.print("&");
+				printStream.print(assistant.getName());
+				printStream.print("&");
+				printStream.print(assistant.getLastnameFather());
+				printStream.print("&");
+				printStream.print(assistant.getLastnameMother());
+				printStream.print("&");
+				printStream.print(assistant.getAddress());
+				printStream.print("&");
+				printStream.print(assistant.getGender());
+				printStream.print("&");
+				printStream.print(assistant.getPhone());
+				printStream.print("&");
+				printStream.print(Utilities.getStringFromDate(assistant.getBirthday()));
+				printStream.println();
 			}
 			fileOutputStream.close();		
 		} catch (IOException ioException) {
@@ -55,7 +56,6 @@ public class AssistantsReaderWriter {
 	 */
 	public static ArrayList<Assistant> readAssistants() {
 		ArrayList<Assistant> assistants = new ArrayList<Assistant>();
-		
 		try {
 			FileInputStream fileInputStream = new FileInputStream (FolderFileManager.adminAssistants);
 			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(fileInputStream));

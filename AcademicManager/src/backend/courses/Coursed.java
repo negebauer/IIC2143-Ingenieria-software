@@ -48,6 +48,20 @@ public class Coursed {
 		this.grade = grade;
 	}
 
+	// TODO Comment. This init is for loading from database
+	public Coursed(String name, String initials, int section, int credits, String details, School school, AcademicSemester semester, int year, boolean approved, double grade) {
+		this.name = name;
+		this.initials = initials;
+		this.section = section;
+		this.credits = credits;
+		this.details = details;
+		this.school = school;
+		this.semester = semester;
+		this.year = year;
+		this.approved = approved;
+		this.grade = grade;
+	}
+
 	/**
 	 * @return The name of the coursed course.
 	 */
@@ -106,6 +120,10 @@ public class Coursed {
 	 */
 	public ArrayList<ICourse> getCourses() {
 		return courses;
+	}
+	
+	public void addICourse(ICourse icourse) {
+		courses.add(icourse);
 	}
 
 	/**

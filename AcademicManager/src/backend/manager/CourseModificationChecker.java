@@ -93,8 +93,8 @@ public class CourseModificationChecker {
 	 * @param coRequirements The coRequisites of this Course.
 	 * @return A ModifyCourseResponse detailing if the modification can be done containing the modified Course.
 	 */
-	public static ModifyCourseResponse courseCanBeModified(ArrayList<Course> currentCourses, Course courseToModify, String name, String initials, int section, int credits, String details, School school, AcademicSemester semester, ArrayList<ICourse> courses, ArrayList<Evaluation> evaluations, ArrayList<Course> requisites, ArrayList<Course> coRequisites) {
-		Course modifiedCourse = new Course(name, initials, section, credits, details, school, semester, courses, evaluations, requisites, coRequisites);
+	public static ModifyCourseResponse courseCanBeModified(ArrayList<Course> currentCourses, Course courseToModify, String name, String initials, int section, int credits, String details, School school, AcademicSemester semester, ArrayList<ICourse> courses, ArrayList<Evaluation> evaluations, ArrayList<Course> requisites, ArrayList<Course> coRequisites, Boolean coordinated) {
+		Course modifiedCourse = new Course(name, initials, section, credits, details, school, semester, courses, evaluations, requisites, coRequisites, coordinated);
 		currentCourses.remove(courseToModify);
 		ModifyCourseResponse modifyCourseResponse = courseCanBeCreated(currentCourses, modifiedCourse);
 		if (modifyCourseResponse.success) {
