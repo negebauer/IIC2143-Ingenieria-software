@@ -191,6 +191,7 @@ public class Messages {
 		CHANGE_MODE_STUDENT_TO_ADMIN,
 		CHANGE_MODE_ADMIN_TO_STUDENT,
 		WELCOME_MESSAGE,
+		WELCOME_MESSAGE_ADMIN,
 		WHAT_TO_DO_NEXT_QUESTION,
 		SIGN_IN,
 		REGISTER,
@@ -216,7 +217,10 @@ public class Messages {
 		DAY,
 		MONTH,
 		YEAR,
-		PICK_CARREER
+		PICK_CARREER,
+		LOGOUT,
+		CREATE_NEW_STUDY_PROGRAM,
+		EDIT_STUDY_PROGRAM
 		
 	}
 	
@@ -243,6 +247,7 @@ public class Messages {
         result.put(UILabel.CHANGE_MODE_ADMIN_TO_STUDENT,	"Change to Student mode");
         result.put(UILabel.CHANGE_MODE_STUDENT_TO_ADMIN,	"Change to Admin mode");
         result.put(UILabel.WELCOME_MESSAGE,					"WELCOME TO ACADEMIC TOOL MANAGER PROFESSIONAL!!!");
+        result.put(UILabel.WELCOME_MESSAGE_ADMIN,			"WELCOME TO ACADEMIC TOOL MANAGER PROFESSIONAL [ADMIN]");
         result.put(UILabel.WHAT_TO_DO_NEXT_QUESTION,		"What do you want to do next?");
         result.put(UILabel.SIGN_IN, 						"Sign In");
         result.put(UILabel.REGISTER, 						"Register");
@@ -269,6 +274,9 @@ public class Messages {
         result.put(UILabel.MONTH, 							"Month");
         result.put(UILabel.YEAR, 							"Year");
         result.put(UILabel.PICK_CARREER, 					"Pick Carreer(s)");
+        result.put(UILabel.LOGOUT, 							"LogOut");
+        result.put(UILabel.CREATE_NEW_STUDY_PROGRAM, 		"Create new Study Program");
+        result.put(UILabel.EDIT_STUDY_PROGRAM, 				"Edit an existing Study Program");
         return Collections.unmodifiableMap(result);
     }
 	
@@ -307,6 +315,9 @@ public class Messages {
         result.put(UILabel.MONTH, 							"Mes");
         result.put(UILabel.YEAR, 							"Ano");
         result.put(UILabel.PICK_CARREER, 					"Elegir Carrera(s)");
+        result.put(UILabel.LOGOUT, 							"Cerrar Sesion");
+        result.put(UILabel.CREATE_NEW_STUDY_PROGRAM, 		"Crear una nueva Malla");
+        result.put(UILabel.EDIT_STUDY_PROGRAM, 				"Editar una Malla existente");
         return Collections.unmodifiableMap(result);
     }
 }

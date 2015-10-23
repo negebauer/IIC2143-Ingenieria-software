@@ -15,12 +15,14 @@ public class MainViewController {
 	Button btnCreateNewSemester;
 	@FXML
 	Button btnShowSchedule;
-	@FXML
-	Button btnChangeModeToAdmin;
+	//@FXML
+	//Button btnChangeModeToAdmin;
 	@FXML
 	Label labelWhatDoNext;
 	@FXML
 	Label labelWelcomeMessage;
+	@FXML
+	Button btnCloseSession;
 	
 	public void setUp() {
 		btnCreateNewSemester.setText(Messages.getUILabel(UILabel.STUDENT_CREATE_NEW_SEMESTER));
@@ -28,9 +30,11 @@ public class MainViewController {
 		btnCurricularAdvance.setText(Messages.getUILabel(UILabel.STUDENT_SEE_CURRICULAR_ADVANCE));
 		btnCreateNewSemester.setText(Messages.getUILabel(UILabel.STUDENT_CREATE_NEW_SEMESTER));
 		btnShowSchedule.setText(Messages.getUILabel(UILabel.STUDENT_SEE_SCHEDULE));
-		btnChangeModeToAdmin.setText(Messages.getUILabel(UILabel.CHANGE_MODE_STUDENT_TO_ADMIN));
+		//btnChangeModeToAdmin.setText(Messages.getUILabel(UILabel.CHANGE_MODE_STUDENT_TO_ADMIN));
+		btnCloseSession.setText(Messages.getUILabel(UILabel.LOGOUT));
 		labelWhatDoNext.setText(Messages.getUILabel(UILabel.WHAT_TO_DO_NEXT_QUESTION));
 		labelWelcomeMessage.setText(Messages.getUILabel(UILabel.WELCOME_MESSAGE));
+		
 		
 	}
 	
