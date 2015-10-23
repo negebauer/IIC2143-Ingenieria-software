@@ -38,7 +38,7 @@ public class Utilities {
 	 * @return
 	 */
 	public static String getStringFromDate(Date date) {
-		SimpleDateFormat dateFormat =  new SimpleDateFormat ("EEEE dd.MM.yyyy 'at' HH:mm", Locale.ENGLISH);
+		SimpleDateFormat dateFormat =  new SimpleDateFormat ("dd.MM.yyyy HH:mm", Locale.ENGLISH);
 		return dateFormat.format(date);
 	}
 	

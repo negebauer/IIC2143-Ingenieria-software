@@ -9,15 +9,14 @@ import backend.others.Const;
 public class Classroom {
 	
 	public enum Campus {
-		CASACENTRAL,
-		LOCONTADOR,
+		CASA_CENTRAL,
+		LO_CONTADOR,
 		ORIENTE,
-		SANJOAQUIN,
-		VILLARRICA,
-		UNKNOWN;
+		SAN_JOAQUIN,
+		VILLARRICA;
 		
 		public static Campus defaultCampus() {
-			return Campus.UNKNOWN;
+			return Campus.SAN_JOAQUIN;
 		}
 	}
 
@@ -38,7 +37,7 @@ public class Classroom {
 		this.initials = initials != null ? initials : "InitialsNil";
 		this.school = school != null ? school : School.defaultSchool();
 		this.campus = campus != null ? campus : Classroom.Campus.defaultCampus();
-		this.size = size > 0 ? null : Const.DEFAULT_CLASSROOM_SIZE;
+		this.size = size > 0 ? size : Const.DEFAULT_CLASSROOM_SIZE;
 	}
 	
 	/**

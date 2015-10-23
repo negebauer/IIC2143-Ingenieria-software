@@ -17,6 +17,10 @@ import backend.users.User.Gender;
  */
 public class ProfessorsReaderWriter {
 
+	/* File format
+		rut&name&lastnameFather&lastnameMother&address&gender&access&phone&birthdayString
+	*/
+
 	/**
 	 * Writes all the professors to the professors.txt file.
 	 * @param professors The professors to be written.

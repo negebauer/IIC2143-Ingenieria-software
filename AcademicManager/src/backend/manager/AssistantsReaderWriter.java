@@ -16,6 +16,10 @@ import backend.users.User.Gender;
  * Class that manages the reading and writing of all the assistants from the 'database'.
  */
 public class AssistantsReaderWriter {
+	
+	/* File format
+		rut&name&lastnameFather&lastnameMother&address&gender&access&phone&birthdayString
+	*/
 
 	/**
 	 * Writes all the assistants to the assistants.txt file.

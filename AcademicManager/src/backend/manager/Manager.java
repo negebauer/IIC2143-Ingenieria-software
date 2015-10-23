@@ -19,7 +19,7 @@ import backend.users.Student;
  */
 public class Manager {
 
-	private final static Manager INSTANCE = new Manager();
+	public final static Manager INSTANCE = new Manager();
 	
 	public ArrayList<Classroom> classrooms = new ArrayList<Classroom>();
 	public ArrayList<Course> courses = new ArrayList<Course>();
@@ -43,14 +43,11 @@ public class Manager {
 	 * Loads all the data from the `database`.
 	 */
 	public void loadData() {
-		//TODO AdminsReaderWriter
-//		INSTANCE.admins = AdminsReaderWriter
-		INSTANCE.assistants = AssistantsReaderWriter.readAssistants();
-		INSTANCE.professors = ProfessorsReaderWriter.readProfessors();
-		//TODO StudentsReaderWriter
-//		INSTANCE.students = StudentsReaderWriter
-		
-		INSTANCE.courses = CoursesReaderWriter.readCourses();
+		admins = AdminReaderWriter.readAdmins();
+		assistants = AssistantsReaderWriter.readAssistants();
+		classrooms = ClassroomReaderWriter.readClasrooms();
+		courses = CoursesReaderWriter.readCourses();
+		professors = ProfessorsReaderWriter.readProfessors();
 		
 	}
 	
@@ -58,7 +55,9 @@ public class Manager {
 	 * Writes all the data to the `database`.
 	 */
 	public void saveData() {
-		CoursesReaderWriter.writeCourses(INSTANCE.courses);
+		AdminReaderWriter.writeAdmins(admins);
+		ClassroomReaderWriter.writeClassrooms(classrooms);
+		CoursesReaderWriter.writeCourses(courses);
 	}
 
 }
