@@ -191,7 +191,6 @@ public class CourseCoursesReaderWriter {
 
 				for (Course possibleCourse : allCourses) {
 					if (possibleCourse.getInitials().equals(initials) && possibleCourse.getSection() == section && possibleCourse.getSemester() == semester) {
-						System.out.println("DONE");
 						possibleCourse.addCourse(icourse);
 					}
 				}
