@@ -240,6 +240,10 @@ public class Course {
 	public ArrayList<ICourse> getCourses() {
 		return courses;
 	}
+	
+	public void addCourse(ICourse icourse) {
+		this.courses.add(icourse);
+	}
 
 	/**
 	 * Modifies the courses of this Course.

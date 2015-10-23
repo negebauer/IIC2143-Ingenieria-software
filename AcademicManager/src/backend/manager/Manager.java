@@ -50,6 +50,7 @@ public class Manager {
 		professors = ProfessorsReaderWriter.readProfessors();
 //		TODO
 //		studyPrograms = StudyProgramsReaderWriter.readStudyPrograms();
+		CourseCoursesReaderWriter.readCourseCourses(courses, assistants, professors, classrooms);
 	}
 	
 	/**
@@ -63,6 +64,7 @@ public class Manager {
 		ProfessorsReaderWriter.writeProfessors(professors);
 //		TODO
 //		StudyProgramsReaderWriter.writerStudyPrograms(studyPrograms);
+		CourseCoursesReaderWriter.writeCoursesCourses(courses);
 	}
 
 }

@@ -2,13 +2,9 @@ package backend.manager;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 
 import backend.courses.Classroom;
-import backend.enums.School;
-import backend.others.Utilities;
 import backend.users.Admin;
-import backend.users.User.Gender;
 import frontend.view.main.MainViewController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
