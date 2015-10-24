@@ -7,4 +7,6 @@ public class ShowScheduleController {
 	
 	@FXML
 	Label labelShowScheduleWelcomeMessage;	
+	@FXML
+	ChoiceBox<?> chBxSemesters;
 }

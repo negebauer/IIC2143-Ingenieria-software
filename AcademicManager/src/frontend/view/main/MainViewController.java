@@ -28,8 +28,8 @@ public class MainViewController implements Initializable {
 	Button btnCloseSession;
 
 
-
 	public void setUp() {
+		
 		btnCreateNewSemester.setText(Messages.getUILabel(UILabel.STUDENT_CREATE_NEW_SEMESTER));
 		btnEditSemester.setText(Messages.getUILabel(UILabel.STUDENT_EDIT_SEMESTER));
 		btnCurricularAdvance.setText(Messages.getUILabel(UILabel.STUDENT_SEE_CURRICULAR_ADVANCE));
@@ -40,32 +40,33 @@ public class MainViewController implements Initializable {
 		labelWelcomeMessage.setText(Messages.getUILabel(UILabel.WELCOME_MESSAGE));		
 	}
 
-	public void btnEditSemester_Pressed() {
+	public void btnCreateNewSemester_Pressed() {
 
 		URL location = getClass().getResource(Const.SEMESTER_ADMIN);
-		Utilities.openView(location, "Edit Semester");
+		Util.openView(location, "Crear Semestre");
 	}
 
 	public void btnCurricularAdvance_Pressed() {
 
 		URL location = getClass().getResource(Const.CURRICULAR_ADVANCE);
-		Utilities.openView(location, "Curricular Advance");
+		Util.openView(location, "Avance Curricular");
 	}
 
-	public void btnCreateNewSemester_Pressed() {
+	public void btnEditSemester_Pressed() {
 
-		URL location = getClass().getResource(Const.COURSE_ADMIN);
-		Utilities.openView(location, "Edit Course");
+		URL location = getClass().getResource(Const.SEMESTER_ADMIN);
+		Util.openView(location, "Editar Semestre");
 	}
 
 	public void btnShowSchedule_Pressed() {
 
 		URL location = getClass().getResource(Const.SHOW_SCHEDULE);
-		Utilities.openView(location, "Show Schedule");
+		Util.openView(location, "Mostrar Horario");
 	}
 
-	public void btnCloseSession_Pressed(){
+	public void btnCloseSession_Pressed() {
 
+		System.exit(0);
 	}
 
 	@Override

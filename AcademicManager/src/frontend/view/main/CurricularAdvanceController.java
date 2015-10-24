@@ -7,4 +7,6 @@ public class CurricularAdvanceController {
 	
 	@FXML
 	Label labelCurricularAdvanceWelcomeMessage;	
+	@FXML
+	ChoiceBox<?> chBxStudyProgram;
 }
