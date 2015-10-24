@@ -1,12 +1,17 @@
 package frontend.view.main;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import backend.others.Const;
 import backend.others.Messages;
 import backend.others.Messages.UILabel;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
-public class MainViewController {
-	
+public class MainViewController implements Initializable {
+
 	@FXML
 	Button btnEditSemester;
 	@FXML
@@ -21,7 +26,9 @@ public class MainViewController {
 	Label labelWelcomeMessage;
 	@FXML
 	Button btnCloseSession;
-	
+
+
+
 	public void setUp() {
 		btnCreateNewSemester.setText(Messages.getUILabel(UILabel.STUDENT_CREATE_NEW_SEMESTER));
 		btnEditSemester.setText(Messages.getUILabel(UILabel.STUDENT_EDIT_SEMESTER));
@@ -30,28 +37,40 @@ public class MainViewController {
 		btnShowSchedule.setText(Messages.getUILabel(UILabel.STUDENT_SEE_SCHEDULE));
 		btnCloseSession.setText(Messages.getUILabel(UILabel.LOGOUT));
 		labelWhatDoNext.setText(Messages.getUILabel(UILabel.WHAT_TO_DO_NEXT_QUESTION));
-		labelWelcomeMessage.setText(Messages.getUILabel(UILabel.WELCOME_MESSAGE));
-		
-		
+		labelWelcomeMessage.setText(Messages.getUILabel(UILabel.WELCOME_MESSAGE));		
 	}
-	
+
 	public void btnEditSemester_Pressed() {
-		
+
+		URL location = getClass().getResource(Const.SEMESTER_ADMIN);
+		Utilities.openView(location, "Edit Semester");
 	}
-	
+
 	public void btnCurricularAdvance_Pressed() {
-		
+
+		URL location = getClass().getResource(Const.CURRICULAR_ADVANCE);
+		Utilities.openView(location, "Curricular Advance");
 	}
-	
+
 	public void btnCreateNewSemester_Pressed() {
 
+		URL location = getClass().getResource(Const.COURSE_ADMIN);
+		Utilities.openView(location, "Edit Course");
 	}
-	
+
 	public void btnShowSchedule_Pressed() {
-		
+
+		URL location = getClass().getResource(Const.SHOW_SCHEDULE);
+		Utilities.openView(location, "Show Schedule");
 	}
-	
+
 	public void btnCloseSession_Pressed(){
-		
+
+	}
+
+	@Override
+	public void initialize(URL url, ResourceBundle rb) {
+		// TODO Auto-generated method stub
+
 	}
 }

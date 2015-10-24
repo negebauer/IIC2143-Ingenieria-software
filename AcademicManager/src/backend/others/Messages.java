@@ -265,7 +265,7 @@ public class Messages {
 	private static Map<UILabel, String> createMapUILabelEnglish() {
         Map<UILabel, String> result = new HashMap<UILabel, String>();
         result.put(UILabel.STUDENT_CREATE_NEW_SEMESTER,		"Create new semester");
-        result.put(UILabel.STUDENT_EDIT_SEMESTER,		"Edit a semester");
+        result.put(UILabel.STUDENT_EDIT_SEMESTER,			"Edit a semester");
         result.put(UILabel.STUDENT_QUALIFY_SEMESTER,		"Qualify a semester");
         result.put(UILabel.STUDENT_SEE_CURRICULAR_ADVANCE,	"See curricular progress");
         result.put(UILabel.STUDENT_SEE_SCHEDULE,			"See my schedule");
@@ -308,7 +308,7 @@ public class Messages {
 	private static Map<UILabel, String> createMapUILabelSpanish() {
         Map<UILabel, String> result = new HashMap<UILabel, String>();
         result.put(UILabel.STUDENT_CREATE_NEW_SEMESTER,		"Crear nuevo semestre");
-        result.put(UILabel.STUDENT_EDIT_SEMESTER,		"Editar nuevo semestre");
+        result.put(UILabel.STUDENT_EDIT_SEMESTER,			"Editar nuevo semestre");
         result.put(UILabel.STUDENT_QUALIFY_SEMESTER,		"Calificar un semestre");
         result.put(UILabel.STUDENT_SEE_CURRICULAR_ADVANCE,	"Ver avance curricular");
         result.put(UILabel.STUDENT_SEE_SCHEDULE,			"Ver mi horario");

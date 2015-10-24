@@ -2,8 +2,6 @@ package frontend.view.main;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import backend.others.Messages;
-import backend.others.Messages.UILabel;
 
 public class EvaluationEditorCreatorController {
 	

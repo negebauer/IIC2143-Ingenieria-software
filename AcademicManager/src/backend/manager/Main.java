@@ -14,6 +14,9 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
+	private Stage primaryStage;
+	private Pane root;
+	
 	public static void main(String [ ] args) {
 		FolderFileManager.checkFolders();
 		Manager.INSTANCE.loadData();
@@ -60,10 +63,17 @@ public class Main extends Application {
 	}
 
 	@Override
-	public void start(Stage primaryStage){
+	public void start(Stage primaryStage) {
+		
+		this.primaryStage = primaryStage;
+		this.showMainView();		
+	}
+	
+	private void showMainView() {
+		
 		URL location = getClass().getResource("/frontend/view/main/MainView.fxml");
 		FXMLLoader fxmlLoader = new FXMLLoader(location);
-		Pane root = null;
+		
 		try {
 			root = (Pane)fxmlLoader.load();
 			((MainViewController) fxmlLoader.getController()).setUp();
@@ -73,6 +83,7 @@ public class Main extends Application {
 
 		Scene scene = new Scene(root,450,300);
 		primaryStage.setScene(scene);
+        primaryStage.setTitle("Academic Manager");
 		primaryStage.show();
 	}
 }

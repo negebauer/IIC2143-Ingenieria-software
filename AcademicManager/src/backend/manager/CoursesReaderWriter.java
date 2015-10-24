@@ -9,10 +9,8 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 
 import backend.courses.Course;
-import backend.courses.Evaluation;
 import backend.enums.AcademicSemester;
 import backend.enums.School;
-import backend.interfaces.ICourse;
 
 /**
  * Class that manages the reading and writing of all the courses from the 'database'.
