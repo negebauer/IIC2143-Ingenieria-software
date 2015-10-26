@@ -23,13 +23,16 @@ public class SemesterEditorCreatorController {
 	ChoiceBox<?> chBxCourses;
 	@FXML
 	ListView<?> listCoursesInSemester;
+	@FXML 
 	
 	public void btnCreateSemester_Pressed(){
 
+		this.createSemesterVisibility();
 	}
 
 	public void btnEditSemester_Pressed(){
 
+		this.createSemesterVisibility();
 	}
 
 	public void btnAddCourse_Pressed(){
@@ -46,6 +49,27 @@ public class SemesterEditorCreatorController {
 	
 	public SemesterEditorCreatorController(){
 	
+		System.out.println("Nueva Ventana");
+		System.out.println(Util.EDITOR);
 		
+		if(!Util.EDITOR)
+			createSemesterVisibility();
+	}
+	
+	public void createSemesterVisibility(){
+		
+		//Buttons
+		Util.changeOV(this.btnCreateSemester);
+		Util.changeOV(this.btnEditSemester);
+		Util.changeOV(this.btnSaveSemester);
+		Util.changeOV(this.btnAddCourse);
+		Util.changeOV(this.btnRemoveCourse);
+		
+		//ChoiceBoxes
+		Util.changeOV(this.chBxSemesters);
+		Util.changeOV(this.chBxCourses);
+		
+		//ListView
+		Util.changeOV(this.listCoursesInSemester);
 	}
 }

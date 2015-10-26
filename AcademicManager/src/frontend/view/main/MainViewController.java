@@ -8,7 +8,8 @@ import backend.others.Messages;
 import backend.others.Messages.UILabel;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 
 public class MainViewController implements Initializable {
 
@@ -26,7 +27,6 @@ public class MainViewController implements Initializable {
 	Label labelWelcomeMessage;
 	@FXML
 	Button btnCloseSession;
-
 
 	public void setUp() {
 		

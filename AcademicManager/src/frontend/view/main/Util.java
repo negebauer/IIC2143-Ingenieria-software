@@ -9,12 +9,15 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public final class Util {
 
+	public static boolean EDITOR = false;
+	
 	/***
 	 * Open a new windows view
 	 * @param location
@@ -26,11 +29,13 @@ public final class Util {
 		Parent root = null; 	
 		try 
 		{
+			EDITOR = title.contains("Edit");
 			root = (Parent) loader.load();
 			Stage stage = new Stage();
 			stage.setScene(new Scene(root));
 			stage.setTitle(title);  
-			stage.show();	
+			stage.show();
+			
 		} 
 		catch (IOException e) {
 			e.printStackTrace();
@@ -53,5 +58,7 @@ public final class Util {
 			((ChoiceBox<?>)o).visibleProperty().set(!((ChoiceBox<?>)o).visibleProperty().get());
 		else if(o instanceof TextArea)
 			((TextArea)o).visibleProperty().set(!((TextArea)o).visibleProperty().get());
+		else if(o instanceof ListView)
+			((ListView<?>)o).visibleProperty().set(!((ListView<?>)o).visibleProperty().get());
 	}
 }
