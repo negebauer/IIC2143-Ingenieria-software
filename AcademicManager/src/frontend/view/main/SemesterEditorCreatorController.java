@@ -1,7 +1,14 @@
 package frontend.view.main;
 
+import java.util.ArrayList;
+
+import backend.courses.Semester;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 
 public class SemesterEditorCreatorController {
 	
@@ -18,12 +25,14 @@ public class SemesterEditorCreatorController {
 	@FXML
 	Button btnSaveSemester;
 	@FXML
-	ChoiceBox<?> chBxSemesters;
+	ChoiceBox<String> chBxSemesters;
 	@FXML
-	ChoiceBox<?> chBxCourses;
+	ChoiceBox<String> chBxCourses;
 	@FXML
-	ListView<?> listCoursesInSemester;
-	@FXML 
+	ListView<String> listCoursesInSemester;
+	
+	private Semester actual;
+	private ArrayList<String> courses = new ArrayList<String>();
 	
 	public void btnCreateSemester_Pressed(){
 
@@ -37,21 +46,38 @@ public class SemesterEditorCreatorController {
 
 	public void btnAddCourse_Pressed(){
 
+		boolean exist = false;
+		String course = chBxCourses.getSelectionModel().getSelectedItem().toString();
+		
+		for(String str : courses)
+			if(str == course)
+				exist = true;
+		
+		if(exist)
+			courses.add(course);	
+
+		this.listCoursesInSemester.setItems(FXCollections.observableArrayList(courses));	
 	}
 
 	public void btnRemoveCourse_Pressed(){
 
+		String course = this.listCoursesInSemester.getSelectionModel().getSelectedItem();
+		
+		for(String str : courses)
+			if(str == course)
+				courses.remove(str);
+				
+		this.listCoursesInSemester.setItems(FXCollections.observableArrayList(courses));
 	}
 
 	public void btnSaveSemester_Pressed(){
 
+		//Save semester
+		//actual = new Semester(AcademicSemester.BOTH, 2015, 55, null, null);
 	}
 	
 	public SemesterEditorCreatorController(){
-	
-		System.out.println("Nueva Ventana");
-		System.out.println(Util.EDITOR);
-		
+			
 		if(!Util.EDITOR)
 			createSemesterVisibility();
 	}
