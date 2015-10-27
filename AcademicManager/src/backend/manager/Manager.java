@@ -68,8 +68,7 @@ public class Manager {
 		ClassroomReaderWriter.writeClassrooms(classrooms);
 		CoursesReaderWriter.writeCourses(courses);
 		ProfessorsReaderWriter.writeProfessors(professors);
-//		TODO
-//		StudyProgramsReaderWriter.writerStudyPrograms(studyPrograms);
+		StudyProgramsReaderWriter.writeStudyPrograms(studyPrograms);
 		CourseCoursesReaderWriter.writeCoursesCourses(courses);
 		EvaluationsReaderWriter.writeCoursesEvaluations(courses);
 		CourseCoRequirementsReaderWriter.writeCoursesCoRequirements(courses);
