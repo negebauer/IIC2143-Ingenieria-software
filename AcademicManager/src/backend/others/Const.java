@@ -28,7 +28,7 @@ public class Const {
 	
 	public final static String LOG_IN = "/frontend/view/main/LogIn.fxml";
 	
-	public final static String MAIN_MENU = "/frontend/view/main/MainViewController.fxml";
+	public final static String MAIN_MENU = "/frontend/view/main/MainView.fxml";
 	
 	public final static String COURSE_ADMIN = "/frontend/view/main/CourseEditorCreator.fxml";
 

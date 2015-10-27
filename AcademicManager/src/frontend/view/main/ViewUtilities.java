@@ -3,6 +3,7 @@ package frontend.view.main;
 import java.io.IOException;
 import java.net.URL;
 
+import backend.manager.Main;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -14,7 +15,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public final class Util {
+public final class ViewUtilities {
 
 	public static boolean EDITOR = false;
 	
@@ -31,9 +32,10 @@ public final class Util {
 		{
 			EDITOR = title.contains("Edit");
 			root = (Parent) loader.load();
-			Stage stage = new Stage();
+			((IController) loader.getController()).setUp();
+			Stage stage = CurrentViewHandler.INSTANCE.primaryStage;
 			stage.setScene(new Scene(root));
-			stage.setTitle(title);  
+			stage.setTitle(title);
 			stage.show();
 			
 		} 

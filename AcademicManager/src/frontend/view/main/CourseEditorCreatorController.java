@@ -11,7 +11,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Cursor;
 import javafx.scene.control.*;
 
-public class CourseEditorCreatorController {
+public class CourseEditorCreatorController implements IController {
 
 	@FXML
 	Label labelCourseEditorWelcomeMessage;
@@ -140,37 +140,43 @@ public class CourseEditorCreatorController {
 	public void createCourseVisibility() {
 		
 		//Buttons
-		Util.changeOV(this.btnEditCourse);
-		Util.changeOV(this.btnCreateCourse);
-		Util.changeOV(this.btnSaveCourse);
-		Util.changeOV(this.btnShowCourses);
-		Util.changeOV(this.btnShowEvaluations);
-		Util.changeOV(this.btnShowRequirements);
-		Util.changeOV(this.btnShowCoRequirements);
+		ViewUtilities.changeOV(this.btnEditCourse);
+		ViewUtilities.changeOV(this.btnCreateCourse);
+		ViewUtilities.changeOV(this.btnSaveCourse);
+		ViewUtilities.changeOV(this.btnShowCourses);
+		ViewUtilities.changeOV(this.btnShowEvaluations);
+		ViewUtilities.changeOV(this.btnShowRequirements);
+		ViewUtilities.changeOV(this.btnShowCoRequirements);
 		
 		//Labels
-		Util.changeOV(this.labelNameCourse);
-		Util.changeOV(this.labelCourseInitials);
-		Util.changeOV(this.labelCourseDetails);
-		Util.changeOV(this.labelCoordination);
-		Util.changeOV(this.labelCourseCredits);
-		Util.changeOV(this.labelCourseSchool);
-		Util.changeOV(this.labelCourseSection);
-		Util.changeOV(this.labelSemesterDictated);
+		ViewUtilities.changeOV(this.labelNameCourse);
+		ViewUtilities.changeOV(this.labelCourseInitials);
+		ViewUtilities.changeOV(this.labelCourseDetails);
+		ViewUtilities.changeOV(this.labelCoordination);
+		ViewUtilities.changeOV(this.labelCourseCredits);
+		ViewUtilities.changeOV(this.labelCourseSchool);
+		ViewUtilities.changeOV(this.labelCourseSection);
+		ViewUtilities.changeOV(this.labelSemesterDictated);
 		
 		//TextFields
-		Util.changeOV(this.txBxCourseName);
-		Util.changeOV(this.txBxInitialsCourse);
-		Util.changeOV(this.txBxCourseCredits);
-		Util.changeOV(this.txBxCourseSection);
+		ViewUtilities.changeOV(this.txBxCourseName);
+		ViewUtilities.changeOV(this.txBxInitialsCourse);
+		ViewUtilities.changeOV(this.txBxCourseCredits);
+		ViewUtilities.changeOV(this.txBxCourseSection);
 		
 		//ChoiceBoxes
-		Util.changeOV(this.chBxCourses);
-		Util.changeOV(this.chBxShcools);
-		Util.changeOV(this.chBxAcademicSemesters);
-		Util.changeOV(this.chBxCoordination);
+		ViewUtilities.changeOV(this.chBxCourses);
+		ViewUtilities.changeOV(this.chBxShcools);
+		ViewUtilities.changeOV(this.chBxAcademicSemesters);
+		ViewUtilities.changeOV(this.chBxCoordination);
 		
 		//TextAreas
-		Util.changeOV(this.txArCourseDetails);
+		ViewUtilities.changeOV(this.txArCourseDetails);
+	}
+
+	@Override
+	public void setUp() {
+		// TODO Auto-generated method stub
+		
 	}
 }

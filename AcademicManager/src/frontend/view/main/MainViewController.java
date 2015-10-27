@@ -1,17 +1,15 @@
 package frontend.view.main;
 
 import java.net.URL;
-import java.util.ResourceBundle;
 
 import backend.others.Const;
 import backend.others.Messages;
 import backend.others.Messages.UILabel;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
-public class MainViewController {
+public class MainViewController implements IController {
 
 	@FXML
 	Button btnEditSemester;
@@ -43,31 +41,31 @@ public class MainViewController {
 	public void btnCreateNewSemester_Pressed() {
 
 		URL location = getClass().getResource(Const.SEMESTER_ADMIN);
-		Util.openView(location, "Crear Semestre");
+		ViewUtilities.openView(location, "Crear Semestre");
 	}
 
 	public void btnCurricularAdvance_Pressed() {
 
 		URL location = getClass().getResource(Const.CURRICULAR_ADVANCE);
-		Util.openView(location, "Avance Curricular");
+		ViewUtilities.openView(location, "Avance Curricular");
 	}
 
 	public void btnEditSemester_Pressed() {
 
 		URL location = getClass().getResource(Const.SEMESTER_ADMIN);
-		Util.openView(location, "Editar Semestre");
+		ViewUtilities.openView(location, "Editar Semestre");
 	}
 
 	public void btnShowSchedule_Pressed() {
 
 		URL location = getClass().getResource(Const.SHOW_SCHEDULE);
-		Util.openView(location, "Mostrar Horario");
+		ViewUtilities.openView(location, "Mostrar Horario");
 	}
 
 	public void btnCloseSession_Pressed() {
 
 		URL location = getClass().getResource(Const.LOG_IN);
-		Util.openView(location, "Iniciar Sesion");
+		ViewUtilities.openView(location, "Iniciar Sesion");
 	}
 
 }

@@ -12,7 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 
-public class LogInController implements Initializable {
+public class LogInController implements Initializable, IController {
 	
 	@FXML
 	ChoiceBox<String> chBxUsers;
@@ -37,12 +37,12 @@ public class LogInController implements Initializable {
 	
 	public void btnSignIn_Pressed(){
 		URL location = getClass().getResource(Const.MAIN_MENU);
-		Util.openView(location, "Menu Principal");
+		ViewUtilities.openView(location, "Menu Principal");
 	}
 	
 	public void btnRegister_Pressed(){
 		URL location = getClass().getResource(Const.USER_REGISTRATION);
-		Util.openView(location, "Registro");
+		ViewUtilities.openView(location, "Registro");
 	}
 	
 	@Override

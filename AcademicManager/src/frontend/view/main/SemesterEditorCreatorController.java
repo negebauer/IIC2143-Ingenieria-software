@@ -10,7 +10,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 
-public class SemesterEditorCreatorController {
+public class SemesterEditorCreatorController implements IController {
 	
 	@FXML
 	Label labelSemesterEditorWelcomeMessage;
@@ -78,24 +78,30 @@ public class SemesterEditorCreatorController {
 	
 	public SemesterEditorCreatorController(){
 			
-		if(!Util.EDITOR)
+		if(!ViewUtilities.EDITOR)
 			createSemesterVisibility();
 	}
 	
 	public void createSemesterVisibility(){
 		
 		//Buttons
-		Util.changeOV(this.btnCreateSemester);
-		Util.changeOV(this.btnEditSemester);
-		Util.changeOV(this.btnSaveSemester);
-		Util.changeOV(this.btnAddCourse);
-		Util.changeOV(this.btnRemoveCourse);
+		ViewUtilities.changeOV(this.btnCreateSemester);
+		ViewUtilities.changeOV(this.btnEditSemester);
+		ViewUtilities.changeOV(this.btnSaveSemester);
+		ViewUtilities.changeOV(this.btnAddCourse);
+		ViewUtilities.changeOV(this.btnRemoveCourse);
 		
 		//ChoiceBoxes
-		Util.changeOV(this.chBxSemesters);
-		Util.changeOV(this.chBxCourses);
+		ViewUtilities.changeOV(this.chBxSemesters);
+		ViewUtilities.changeOV(this.chBxCourses);
 		
 		//ListView
-		Util.changeOV(this.listCoursesInSemester);
+		ViewUtilities.changeOV(this.listCoursesInSemester);
+	}
+
+	@Override
+	public void setUp() {
+		// TODO Auto-generated method stub
+		
 	}
 }
