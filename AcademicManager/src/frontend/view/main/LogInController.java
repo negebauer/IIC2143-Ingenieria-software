@@ -1,11 +1,15 @@
 package frontend.view.main;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import backend.manager.Manager;
 import backend.others.Const;
 import backend.others.Messages;
 import backend.others.Messages.UILabel;
+import backend.users.User;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -33,9 +37,24 @@ public class LogInController implements Initializable, IController {
 		labelSignIn.setText(Messages.getUILabel(UILabel.SIGN_IN_AS_USER));
 		labelRegistration.setText(Messages.getUILabel(UILabel.DONT_HAVE_ACCOUNT_REGISTER));
 		labelLogIn.setText(Messages.getUILabel(UILabel.LOG_IN));
+		
+		ArrayList<String> users = new ArrayList<String>();
+		for(User user : Manager.INSTANCE.students)
+			users.add(user.getRut());
+		
+		chBxUsers.setItems(FXCollections.observableArrayList(users));
 	}
 	
 	public void btnSignIn_Pressed(){
+			
+		User current = null;
+		for(User user : Manager.INSTANCE.students)
+			if(this.chBxUsers.getSelectionModel().getSelectedItem() == user.getRut()){
+				current = user;
+				break;
+			}		
+		Manager.INSTANCE.currentUser = current;
+		
 		URL location = getClass().getResource(Const.MAIN_MENU);
 		ViewUtilities.openView(location, "Menu Principal");
 	}
