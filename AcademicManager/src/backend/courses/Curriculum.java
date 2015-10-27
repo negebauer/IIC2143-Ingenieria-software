@@ -92,7 +92,7 @@ public class Curriculum {
 				}
 			}
 			if (shouldCreateNewCoursedSemester) {
-				CoursedSemester coursedSemester = new CoursedSemester(coursedCourse.getSemester(), coursedCourse.getYear());
+				CoursedSemester coursedSemester = new CoursedSemester(coursedCourse.getSemester(), coursedCourse.getYear(), coursedCourse.getCredits());
 				coursedSemester.addCoursedCourse(coursedCourse);
 			}
 		}

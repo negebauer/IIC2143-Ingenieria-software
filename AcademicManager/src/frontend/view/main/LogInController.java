@@ -8,6 +8,7 @@ import backend.manager.Manager;
 import backend.others.Const;
 import backend.others.Messages;
 import backend.others.Messages.UILabel;
+import backend.users.*;
 import backend.users.User;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -41,6 +42,27 @@ public class LogInController implements Initializable, IController {
 		labelLogIn.setText(Messages.getUILabel(UILabel.LOG_IN));
 		
 		ArrayList<String> users = new ArrayList<String>();
+		
+		for (Professor professor : Manager.INSTANCE.professors) {
+			users.add(professor.getName() + " " + professor.getLastnameFather() + " " + professor.getLastnameMother());
+		}
+		
+		for (Student student : Manager.INSTANCE.students) {
+			users.add(student.getName() + " " + student.getLastnameFather() + " " + student.getLastnameMother());
+		}
+		
+		for (Assistant assistant : Manager.INSTANCE.assistants) {
+			users.add(assistant.getName() + " " + assistant.getLastnameFather() + " " + assistant.getLastnameMother());
+		}
+		
+		for (Admin admin : Manager.INSTANCE.admins) {
+			users.add(admin.getName() + " " + admin.getLastnameFather() + " " + admin.getLastnameMother());
+		}
+		
+		chBxUsers.setItems(FXCollections.observableArrayList(users));
+		
+		
+
 		for(User user : Manager.INSTANCE.students)
 			users.add(user.getRut());
 		

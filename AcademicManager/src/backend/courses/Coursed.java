@@ -155,4 +155,5 @@ public class Coursed {
 	public void setGrade(int grade) {
 		this.grade = grade;
 	}
+
 }
