@@ -74,7 +74,7 @@ public class FolderFileManager {
 	public static String studentCoursed				= "/coursed.txt";
 	public static String studentCoursedCourses		= "/coursedCourses.txt";
 	public static String studentCourses 			= "/courses.txt";
-	public static String studentInfo				= "/students.txt";
+	public static String studentInfo				= "/student.txt";
 	public static String studentStudyPrograms		= "/studyPrograms.txt";
 
 	/**

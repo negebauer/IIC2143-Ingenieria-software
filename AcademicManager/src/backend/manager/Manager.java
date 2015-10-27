@@ -10,7 +10,9 @@ import java.util.ArrayList;
 
 import backend.courses.Classroom;
 import backend.courses.Course;
+import backend.courses.Semester;
 import backend.courses.StudyProgram;
+import backend.enums.AcademicSemester;
 import backend.others.Messages;
 import backend.others.Messages.SupportedLanguage;
 import backend.users.Admin;
@@ -52,6 +54,8 @@ public class Manager {
 	public void loadData() {
 		System.out.println("Loading data...");
 		
+		Semester currentSemester = new Semester(AcademicSemester.SECOND, 0, 0, null, null);
+		
 		admins = AdminReaderWriter.readAdmins();
 		assistants = AssistantsReaderWriter.readAssistants();
 		classrooms = ClassroomReaderWriter.readClasrooms();
@@ -62,6 +66,7 @@ public class Manager {
 		EvaluationsReaderWriter.readCoursesEvaluations(courses, classrooms);
 		CourseCoRequirementsReaderWriter.readCoursesCoRequirements(courses);
 		CourseRequirementsReaderWriter.readCoursesRequirements(courses);
+		students = StudentsReaderWriter.readStudents(courses, studyPrograms, classrooms, currentSemester, professors, assistants);
 		
 		System.out.println("Data loaded!");
 	}
@@ -82,6 +87,7 @@ public class Manager {
 		EvaluationsReaderWriter.writeCoursesEvaluations(courses);
 		CourseCoRequirementsReaderWriter.writeCoursesCoRequirements(courses);
 		CourseRequirementsReaderWriter.writeCoursesRequirements(courses);
+		StudentsReaderWriter.writeStudents(students);
 		
 		System.out.println("Data saved!");
 	}
