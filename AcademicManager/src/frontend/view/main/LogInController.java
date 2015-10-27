@@ -64,7 +64,11 @@ public class LogInController implements Initializable, IController {
 	}
 	
 	public void btnSignIn_Pressed() {
-		for (User user : Manager.INSTANCE.students) {
+		ArrayList<User> users = new ArrayList<User>();
+		users.addAll(Manager.INSTANCE.students);
+		users.addAll(Manager.INSTANCE.admins);
+		
+		for (User user : users) {
 			if (this.chBxUsers.getSelectionModel().getSelectedItem().split(" ")[0].equals(user.getRut())) {
 				Manager.INSTANCE.currentUser = user;
 				break;
@@ -77,6 +81,8 @@ public class LogInController implements Initializable, IController {
 		} else if (Manager.INSTANCE.currentUser instanceof Admin) {
 			URL location = getClass().getResource(Const.COURSE_ADMIN);
 			ViewUtilities.openView(location, "Menu Principal");
+		} else {
+			System.out.println("ASD");
 		}
 		
 	}
