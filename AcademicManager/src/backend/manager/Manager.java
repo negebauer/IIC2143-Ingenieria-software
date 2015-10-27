@@ -50,6 +50,8 @@ public class Manager {
 	 * Loads all the data from the `database`.
 	 */
 	public void loadData() {
+		System.out.println("Loading data...");
+		
 		admins = AdminReaderWriter.readAdmins();
 		assistants = AssistantsReaderWriter.readAssistants();
 		classrooms = ClassroomReaderWriter.readClasrooms();
@@ -60,12 +62,16 @@ public class Manager {
 		EvaluationsReaderWriter.readCoursesEvaluations(courses, classrooms);
 		CourseCoRequirementsReaderWriter.readCoursesCoRequirements(courses);
 		CourseRequirementsReaderWriter.readCoursesRequirements(courses);
+		
+		System.out.println("Data loaded!");
 	}
 	
 	/**
 	 * Writes all the data to the `database`.
 	 */
 	public void saveData() {
+		System.out.println("Starting to save data...");
+		
 		AdminReaderWriter.writeAdmins(admins);
 		AssistantsReaderWriter.writeAssistants(assistants);
 		ClassroomReaderWriter.writeClassrooms(classrooms);
@@ -76,6 +82,8 @@ public class Manager {
 		EvaluationsReaderWriter.writeCoursesEvaluations(courses);
 		CourseCoRequirementsReaderWriter.writeCoursesCoRequirements(courses);
 		CourseRequirementsReaderWriter.writeCoursesRequirements(courses);
+		
+		System.out.println("Data saved!");
 	}
 	
 	/**

@@ -27,14 +27,14 @@ public class Semester {
 	 * @param semester The academic semester in which this Semester takes place.
 	 * @param year The year in which this Semester takes place.
 	 */
-	public Semester(AcademicSemester semester, int year, int maxCredits, ArrayList<Course> approvedCourses, ArrayList<Course> courses) {
+	public Semester(AcademicSemester semester, int year, int maxCredits, ArrayList<Coursed> coursedCourses, ArrayList<Course> courses) {
 		this.semester = semester;
 		this.year = year;
 		this.courses = courses != null ? courses : new ArrayList<Course>();
 		this.maxCredits = maxCredits;
-		if (approvedCourses != null){
-			for (Course course : approvedCourses){
-				this.approvedCourses.add(course.getInitials());
+		if (coursedCourses != null){
+			for (Coursed coursedCourse : coursedCourses){
+				this.approvedCourses.add(coursedCourse.getInitials());
 			}
 		} else {
 			this.approvedCourses = new HashSet<String>();

@@ -17,7 +17,7 @@ import backend.enums.School;
 public class StudyProgramsReaderWriter {
 
 	/* File format
-	studyProgram.txt	=> name&school&max credits per semester&max failed credits&nº of semesters
+	studyProgram.txt	=> name&school&year program&max credits per semester&max failed credits&nº of semesters
 	semesterX.txt 		=> course initials
 	*/
 	
@@ -88,12 +88,18 @@ public class StudyProgramsReaderWriter {
 		try {
 			File studyProgramsFolder = new File(FolderFileManager.adminStudyPrograms);
 			for (File schoolFolder : studyProgramsFolder.listFiles()) {
+				if (schoolFolder.getName().equals(".DS_Store")) {
+					continue;
+				}
 				for (File studyProgramFolder : schoolFolder.listFiles()) {
+					if (studyProgramFolder.getName().equals(".DS_Store")) {
+						continue;
+					}
 					
 					ArrayList<Semester> studyProgramSemesters = new ArrayList<Semester>();
 					StudyProgram studyProgram = new StudyProgram(null, 0, null, null, 0, 0);
 					
-					FileInputStream studyProgramInfoFileInputStream = new FileInputStream (studyProgramFolder.getCanonicalFile() + FolderFileManager.adminStudyProgramInfo);
+					FileInputStream studyProgramInfoFileInputStream = new FileInputStream (studyProgramFolder.getPath() + FolderFileManager.adminStudyProgramInfo);
 					BufferedReader studyProgramInfoBufferedReader = new BufferedReader(new InputStreamReader(studyProgramInfoFileInputStream));
 					String[] arguments = studyProgramInfoBufferedReader.readLine().split("&");
 					
@@ -113,18 +119,17 @@ public class StudyProgramsReaderWriter {
 						
 					studyProgram = new StudyProgram(name, yearProgram, null, school, maxCreditsPerSemester, maxFailedCredits);
 					studyPrograms.add(studyProgram);
+					studyProgram.setSemesters(studyProgramSemesters);
 					studyProgramInfoBufferedReader.close();
 					
 					for (File studyProgramFile : studyProgramFolder.listFiles()) {
-						if (studyProgramFile.getName().equals(FolderFileManager.adminStudyProgramInfo)) {
+						if (studyProgramFile.getName().equals(FolderFileManager.adminStudyProgramInfo.split("/")[1])) {
 							continue;
 						} else {
 							ArrayList<Course> courses = new ArrayList<Course>();
 							String[] firstSplit = studyProgramFile.getName().split("semester");
 							String[] secondSplit = firstSplit[1].split(".txt");
-							int semesterNumber = Integer.valueOf(secondSplit[0]);
-							Semester semester = studyProgramSemesters.get(semesterNumber - 1);
-							semester.setCourses(courses);
+							int semesterNumber = Integer.valueOf(secondSplit[0]);							
 							
 							FileInputStream semesterInputStream = new FileInputStream (studyProgramFile.getCanonicalPath());
 							BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(semesterInputStream));
@@ -138,6 +143,8 @@ public class StudyProgramsReaderWriter {
 								}
 								courseInitials = bufferedReader.readLine();
 							}
+							Semester semester = new Semester(null, 0, 0, null, courses);
+							studyProgramSemesters.set(semesterNumber - 1, semester);
 							
 							bufferedReader.close();
 						}
