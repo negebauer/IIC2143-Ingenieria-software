@@ -11,7 +11,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Cursor;
 import javafx.scene.control.*;
 
-public class CourseEditorCreatorController {
+public class CourseEditorCreatorController implements IController {
 
 	@FXML
 	Label labelCourseEditorWelcomeMessage;
@@ -172,5 +172,11 @@ public class CourseEditorCreatorController {
 		
 		//TextAreas
 		Util.changeOV(this.txArCourseDetails);
+	}
+
+	@Override
+	public void setUp() {
+		// TODO Auto-generated method stub
+		
 	}
 }

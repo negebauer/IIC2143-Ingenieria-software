@@ -10,7 +10,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 
-public class SemesterEditorCreatorController {
+public class SemesterEditorCreatorController implements IController {
 	
 	@FXML
 	Label labelSemesterEditorWelcomeMessage;
@@ -97,5 +97,11 @@ public class SemesterEditorCreatorController {
 		
 		//ListView
 		Util.changeOV(this.listCoursesInSemester);
+	}
+
+	@Override
+	public void setUp() {
+		// TODO Auto-generated method stub
+		
 	}
 }

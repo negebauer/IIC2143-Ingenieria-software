@@ -11,7 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
-public class MainViewController {
+public class MainViewController implements IController {
 
 	@FXML
 	Button btnEditSemester;

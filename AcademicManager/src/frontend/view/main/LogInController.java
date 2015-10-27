@@ -12,7 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 
-public class LogInController implements Initializable {
+public class LogInController implements Initializable, IController {
 	
 	@FXML
 	ChoiceBox<String> chBxUsers;

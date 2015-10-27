@@ -244,7 +244,9 @@ public class Messages {
 		PICK_CARREER,
 		LOGOUT,
 		CREATE_NEW_STUDY_PROGRAM,
-		EDIT_STUDY_PROGRAM
+		EDIT_STUDY_PROGRAM, 
+		ADD_STUDY_PROGRAM,
+		REMOVE_STUDY_PROGRAM
 		
 	}
 	
@@ -302,6 +304,8 @@ public class Messages {
         result.put(UILabel.LOGOUT, 							"LogOut");
         result.put(UILabel.CREATE_NEW_STUDY_PROGRAM, 		"Create new Study Program");
         result.put(UILabel.EDIT_STUDY_PROGRAM, 				"Edit an existing Study Program");
+        result.put(UILabel.ADD_STUDY_PROGRAM, 				"Add Carreer");
+        result.put(UILabel.REMOVE_STUDY_PROGRAM, 			"Remove Carreer");
         return Collections.unmodifiableMap(result);
     }
 	
@@ -344,6 +348,8 @@ public class Messages {
         result.put(UILabel.LOGOUT, 							"Cerrar Sesion");
         result.put(UILabel.CREATE_NEW_STUDY_PROGRAM, 		"Crear una nueva Malla");
         result.put(UILabel.EDIT_STUDY_PROGRAM, 				"Editar una Malla existente");
+        result.put(UILabel.ADD_STUDY_PROGRAM, 				"Agregar Carrera");
+        result.put(UILabel.REMOVE_STUDY_PROGRAM, 			"Remover Carrera");
         return Collections.unmodifiableMap(result);
     }
 }

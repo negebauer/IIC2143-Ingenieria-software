@@ -1,12 +1,15 @@
 package frontend.view.main;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+
 import backend.others.Messages;
 import backend.others.Messages.UILabel;
 
-public class NewUserRegistrationController {
+public class NewUserRegistrationController implements IController{
 	
 	@FXML
 	Label labelToUseATMMustRegister;
@@ -64,7 +67,12 @@ public class NewUserRegistrationController {
 	ListView<String> listCarreers;
 	@FXML
 	Label labelPickCarreer;
-
+	@FXML
+	Button btnAddStudyPlan;
+	@FXML
+	Button btnRemoveStudyPlan;
+	
+	@Override
 	public void setUp(){
 		labelToUseATMMustRegister.setText(Messages.getUILabel(UILabel.TO_USE_ATM_MUST_REGISTER));
 		btnContinue.setText(Messages.getUILabel(UILabel.CONTINUE));
@@ -82,15 +90,51 @@ public class NewUserRegistrationController {
 		labelBirthMonth.setText(Messages.getUILabel(UILabel.MONTH));
 		labelBirthYear.setText(Messages.getUILabel(UILabel.YEAR));
 		labelPickCarreer.setText(Messages.getUILabel(UILabel.PICK_CARREER));
+		btnAddStudyPlan.setText(Messages.getUILabel(UILabel.ADD_STUDY_PROGRAM));
+		btnRemoveStudyPlan.setText(Messages.getUILabel(UILabel.REMOVE_STUDY_PROGRAM));
 		
-		//listCarreers
+		//TODO listCarreers
 		
-		chBxAccess.setItems(FXCollections.observableArrayList(Messages.getUILabel(UILabel.STUDENT), Messages.getUILabel(UILabel.PROFFESOR), Messages.getUILabel(UILabel.ADMINISTRATOR)));
+		
+		String[] accesos = new String[]{
+				Messages.getUILabel(UILabel.STUDENT), 
+				Messages.getUILabel(UILabel.PROFFESOR), 
+				Messages.getUILabel(UILabel.ADMINISTRATOR)
+		};
+		
+		chBxAccess.setItems(FXCollections.observableArrayList(accesos));
 		chBxSex.setItems(FXCollections.observableArrayList(Messages.getUILabel(UILabel.MALE), Messages.getUILabel(UILabel.FEMALE)));
+		
+		chBxAccess.getSelectionModel().selectedIndexProperty().addListener(
+				new ChangeListener<Number>() {
+					public void changed (ObservableValue<? extends Number> observableValue, Number value, Number newValue) {
+						if (accesos[newValue.intValue()] == Messages.getUILabel(UILabel.STUDENT)){
+							listCarreers.setVisible(true);
+							chBxCarreers.setVisible(true);
+							labelPickCarreer.setVisible(true);
+							btnAddStudyPlan.setVisible(true);
+							btnRemoveStudyPlan.setVisible(true);
+						} else {
+							listCarreers.setVisible(false);
+							chBxCarreers.setVisible(false);
+							labelPickCarreer.setVisible(false);
+							btnAddStudyPlan.setVisible(false);
+							btnRemoveStudyPlan.setVisible(false);
+							
+							listCarreers.setItems(FXCollections.observableArrayList());
+							//chBxCarreers.setItems(FXCollections.observableArrayList());
+						}
+			}
+		});
+		
 		
 	}
 	
 	public void btnContinue_Pressed() {
+		switch (chBxAccess.getSelectionModel().toString()){
+		case "hola": break;
+		default:
+		}
 		
 	}
 	

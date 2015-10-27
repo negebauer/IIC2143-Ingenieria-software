@@ -13,7 +13,8 @@ public final class Utilities {
 	public static void openView(URL location, String title) {
 
 		FXMLLoader loader = new FXMLLoader(location);
-		Parent root; 
+		((IController) loader.getController()).setUp();
+		Parent root;
 		
 		try 
 		{
