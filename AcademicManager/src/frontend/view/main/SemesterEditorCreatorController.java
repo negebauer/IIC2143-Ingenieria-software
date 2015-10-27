@@ -78,25 +78,25 @@ public class SemesterEditorCreatorController implements IController {
 	
 	public SemesterEditorCreatorController(){
 			
-		if(!Util.EDITOR)
+		if(!ViewUtilities.EDITOR)
 			createSemesterVisibility();
 	}
 	
 	public void createSemesterVisibility(){
 		
 		//Buttons
-		Util.changeOV(this.btnCreateSemester);
-		Util.changeOV(this.btnEditSemester);
-		Util.changeOV(this.btnSaveSemester);
-		Util.changeOV(this.btnAddCourse);
-		Util.changeOV(this.btnRemoveCourse);
+		ViewUtilities.changeOV(this.btnCreateSemester);
+		ViewUtilities.changeOV(this.btnEditSemester);
+		ViewUtilities.changeOV(this.btnSaveSemester);
+		ViewUtilities.changeOV(this.btnAddCourse);
+		ViewUtilities.changeOV(this.btnRemoveCourse);
 		
 		//ChoiceBoxes
-		Util.changeOV(this.chBxSemesters);
-		Util.changeOV(this.chBxCourses);
+		ViewUtilities.changeOV(this.chBxSemesters);
+		ViewUtilities.changeOV(this.chBxCourses);
 		
 		//ListView
-		Util.changeOV(this.listCoursesInSemester);
+		ViewUtilities.changeOV(this.listCoursesInSemester);
 	}
 
 	@Override
