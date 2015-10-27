@@ -37,7 +37,7 @@ public class Utilities {
 		}
 		return new Date();
 	}
-	
+
 	/**
 	 * 
 	 * @param date
@@ -47,7 +47,7 @@ public class Utilities {
 		SimpleDateFormat dateFormat =  new SimpleDateFormat ("dd.MM.yyyy HH:mm", Locale.ENGLISH);
 		return dateFormat.format(date);
 	}
-	
+
 	/**
 	 * Cleans the extra new line characters (\n) from a String.
 	 * @param stringToClean The string to be cleaned.
@@ -64,7 +64,7 @@ public class Utilities {
 		}
 		return String.join("\n", cleanedString);
 	}
-		
+
 	/**
 	 * Return approved courses or uncoursed courses depending of isFinished param
 	 * @param program
@@ -73,12 +73,12 @@ public class Utilities {
 	 * @return
 	 */
 	public static ArrayList<Course> getFinichedCourses(StudyProgram program, Curriculum curriculum, boolean isFinished) {
-		
+
 		ArrayList<Course> finished = new ArrayList<Course>();
-		
+
 		for(Semester semester : program.getSemesters())
 			for(Course course : semester.getCourses()) {
-				
+
 				boolean check = false;	
 				for(Coursed coursed : curriculum.getCoursedCourses())
 					if(course.getInitials() == coursed.getInitials() && coursed.isApproved()) {
@@ -89,5 +89,25 @@ public class Utilities {
 					finished.add(course);
 			}					
 		return finished;
+	}
+
+	public static ArrayList<String> getCoursesList(ArrayList<Course> courses) {
+
+		ArrayList<String> coursesList = new ArrayList<String>();	
+		for(Course course : courses)
+			coursesList.add(course.getInitials() + " " + course.getName());
+
+		return coursesList;
+	}
+
+	public static ArrayList<String> getCoursesList(StudyProgram program, Curriculum curriculum, boolean isFinished) {
+
+		ArrayList<Course> courses = getFinichedCourses(program, curriculum, isFinished);
+		
+		ArrayList<String> coursesList = new ArrayList<String>();	
+		for(Course course : courses)
+			coursesList.add(course.getInitials() + " " + course.getName());
+
+		return coursesList;
 	}
 }
