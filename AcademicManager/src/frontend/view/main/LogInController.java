@@ -63,21 +63,25 @@ public class LogInController implements Initializable, IController {
 		
 	}
 	
-	public void btnSignIn_Pressed(){
-			
-		User current = null;
-		for(User user : Manager.INSTANCE.students)
-			if(this.chBxUsers.getSelectionModel().getSelectedItem() == user.getRut()){
-				current = user;
+	public void btnSignIn_Pressed() {
+		for (User user : Manager.INSTANCE.students) {
+			if (this.chBxUsers.getSelectionModel().getSelectedItem().split(" ")[0].equals(user.getRut())) {
+				Manager.INSTANCE.currentUser = user;
 				break;
-			}		
-		Manager.INSTANCE.currentUser = current;
+			}
+		}
 		
-		URL location = getClass().getResource(Const.MAIN_MENU);
-		ViewUtilities.openView(location, "Menu Principal");
+		if (Manager.INSTANCE.currentUser instanceof Student) {
+			URL location = getClass().getResource(Const.MAIN_MENU);
+			ViewUtilities.openView(location, "Menu Principal");
+		} else if (Manager.INSTANCE.currentUser instanceof Admin) {
+			URL location = getClass().getResource(Const.COURSE_ADMIN);
+			ViewUtilities.openView(location, "Menu Principal");
+		}
+		
 	}
 	
-	public void btnRegister_Pressed(){
+	public void btnRegister_Pressed() {
 		URL location = getClass().getResource(Const.USER_REGISTRATION);
 		ViewUtilities.openView(location, "Registro");
 	}
