@@ -245,8 +245,8 @@ public class Messages {
 		LOGOUT,
 		CREATE_NEW_STUDY_PROGRAM,
 		EDIT_STUDY_PROGRAM, 
-		ADD_STUDY_PROGRAM,
-		REMOVE_STUDY_PROGRAM
+		ADD,
+		REMOVE
 		
 	}
 	
@@ -304,8 +304,8 @@ public class Messages {
         result.put(UILabel.LOGOUT, 							"LogOut");
         result.put(UILabel.CREATE_NEW_STUDY_PROGRAM, 		"Create new Study Program");
         result.put(UILabel.EDIT_STUDY_PROGRAM, 				"Edit an existing Study Program");
-        result.put(UILabel.ADD_STUDY_PROGRAM, 				"Add Carreer");
-        result.put(UILabel.REMOVE_STUDY_PROGRAM, 			"Remove Carreer");
+        result.put(UILabel.ADD, 							"Add Carreer");
+        result.put(UILabel.REMOVE,				 			"Remove Carreer");
         return Collections.unmodifiableMap(result);
     }
 	
@@ -319,11 +319,11 @@ public class Messages {
         result.put(UILabel.CHANGE_MODE_ADMIN_TO_STUDENT,	"Cambiar a modo Estudiante");
         result.put(UILabel.CHANGE_MODE_STUDENT_TO_ADMIN,	"Cambiar a modo Administrador");
         result.put(UILabel.WELCOME_MESSAGE,					"BIENVENIDO A ACADEMIC TOOL MANAGER PROFESSIONAL!!!");
-        result.put(UILabel.WHAT_TO_DO_NEXT_QUESTION,		"ï¿½Que deseas hacer ahora?");
+        result.put(UILabel.WHAT_TO_DO_NEXT_QUESTION,		"¿Que deseas hacer ahora?");
         result.put(UILabel.SIGN_IN, 						"Iniciar Sesion");
         result.put(UILabel.REGISTER, 						"Registrarse");
         result.put(UILabel.SIGN_IN_AS_USER, 				"Iniciar como usuario");
-        result.put(UILabel.DONT_HAVE_ACCOUNT_REGISTER, 		"ï¿½No tienes una cuenta?, Registrate!");
+        result.put(UILabel.DONT_HAVE_ACCOUNT_REGISTER, 		"¿No tienes una cuenta?, Registrate!");
         result.put(UILabel.LOG_IN, 							"INICIO DE SESION");
         result.put(UILabel.TO_USE_ATM_MUST_REGISTER, 		"Para poder usar Academic Tool Manager Professional debes registrarte pimero:");
         result.put(UILabel.CONTINUE, 						"Continuar");
@@ -348,8 +348,8 @@ public class Messages {
         result.put(UILabel.LOGOUT, 							"Cerrar Sesion");
         result.put(UILabel.CREATE_NEW_STUDY_PROGRAM, 		"Crear una nueva Malla");
         result.put(UILabel.EDIT_STUDY_PROGRAM, 				"Editar una Malla existente");
-        result.put(UILabel.ADD_STUDY_PROGRAM, 				"Agregar Carrera");
-        result.put(UILabel.REMOVE_STUDY_PROGRAM, 			"Remover Carrera");
+        result.put(UILabel.ADD, 							"Agregar");
+        result.put(UILabel.REMOVE, 							"Quitar");
         return Collections.unmodifiableMap(result);
     }
 }

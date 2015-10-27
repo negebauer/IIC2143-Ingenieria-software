@@ -90,6 +90,11 @@ public class Main extends Application {
 	}
 	
 	public Stage getPrimaryStage(){
-		return primaryStage;
+		if (primaryStage != null) {
+			return primaryStage;
+		}
+		else {
+			return new Stage();
+		}
 	}
 }

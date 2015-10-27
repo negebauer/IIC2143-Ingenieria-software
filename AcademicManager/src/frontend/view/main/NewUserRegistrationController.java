@@ -90,8 +90,8 @@ public class NewUserRegistrationController implements IController{
 		labelBirthMonth.setText(Messages.getUILabel(UILabel.MONTH));
 		labelBirthYear.setText(Messages.getUILabel(UILabel.YEAR));
 		labelPickCarreer.setText(Messages.getUILabel(UILabel.PICK_CARREER));
-		btnAddStudyPlan.setText(Messages.getUILabel(UILabel.ADD_STUDY_PROGRAM));
-		btnRemoveStudyPlan.setText(Messages.getUILabel(UILabel.REMOVE_STUDY_PROGRAM));
+		btnAddStudyPlan.setText(Messages.getUILabel(UILabel.ADD));
+		btnRemoveStudyPlan.setText(Messages.getUILabel(UILabel.REMOVE));
 		
 		//TODO listCarreers
 		
@@ -109,20 +109,10 @@ public class NewUserRegistrationController implements IController{
 				new ChangeListener<Number>() {
 					public void changed (ObservableValue<? extends Number> observableValue, Number value, Number newValue) {
 						if (accesos[newValue.intValue()] == Messages.getUILabel(UILabel.STUDENT)){
-							listCarreers.setVisible(true);
-							chBxCarreers.setVisible(true);
-							labelPickCarreer.setVisible(true);
-							btnAddStudyPlan.setVisible(true);
-							btnRemoveStudyPlan.setVisible(true);
+							showStudentFields();
 						} else {
-							listCarreers.setVisible(false);
-							chBxCarreers.setVisible(false);
-							labelPickCarreer.setVisible(false);
-							btnAddStudyPlan.setVisible(false);
-							btnRemoveStudyPlan.setVisible(false);
-							
+							hideStudentFields();
 							listCarreers.setItems(FXCollections.observableArrayList());
-							//chBxCarreers.setItems(FXCollections.observableArrayList());
 						}
 			}
 		});
@@ -131,7 +121,7 @@ public class NewUserRegistrationController implements IController{
 	}
 	
 	public void btnContinue_Pressed() {
-		switch (chBxAccess.getSelectionModel().toString()){
+		switch (chBxAccess.getSelectionModel().getSelectedItem()){
 		case "hola": break;
 		default:
 		}
@@ -139,11 +129,19 @@ public class NewUserRegistrationController implements IController{
 	}
 	
 	public void showStudentFields() {
-		if (chBxAccess.getSelectionModel().getSelectedItem() == Messages.getUILabel(UILabel.STUDENT)) {
-			labelPickCarreer.setVisible(true);
-			chBxCarreers.setVisible(true);
-			listCarreers.setVisible(true);
-		}
+		listCarreers.setVisible(true);
+		chBxCarreers.setVisible(true);
+		labelPickCarreer.setVisible(true);
+		btnAddStudyPlan.setVisible(true);
+		btnRemoveStudyPlan.setVisible(true);
+	}
+	
+	public void hideStudentFields(){
+		listCarreers.setVisible(false);
+		chBxCarreers.setVisible(false);
+		labelPickCarreer.setVisible(false);
+		btnAddStudyPlan.setVisible(false);
+		btnRemoveStudyPlan.setVisible(false);
 	}
 	
 }

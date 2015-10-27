@@ -39,6 +39,7 @@ public class EvaluationEditorCreatorController implements IController {
 	Label labelEvaluationType;
 	@FXML
 	Button btnSaveEvaluation;
+	
 	@Override
 	public void setUp() {
 		// TODO Auto-generated method stub

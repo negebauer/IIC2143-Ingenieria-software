@@ -35,7 +35,7 @@ public final class ViewUtilities {
 			((IController) loader.getController()).setUp();
 			Stage stage = Main.INSTANCE.getPrimaryStage();
 			stage.setScene(new Scene(root));
-			stage.setTitle(title);  
+			stage.setTitle(title);
 			stage.show();
 			
 		} 
