@@ -1,5 +1,6 @@
 package frontend.view.main;
 
+import java.net.URL;
 import java.util.ArrayList;
 
 import backend.courses.Course;
@@ -9,6 +10,7 @@ import backend.courses.Semester;
 import backend.courses.StudyProgram;
 import backend.enums.AcademicSemester;
 import backend.manager.Manager;
+import backend.others.Const;
 import backend.others.Messages;
 import backend.others.Messages.UILabel;
 import backend.users.*;
@@ -56,7 +58,6 @@ public class SemesterEditorCreatorController implements IController {
 	Label labelMaxCredits;
 	@FXML
 	Label labelSelectCourse;
-	
 	
 	private Semester actualSemester;
 	private CoursedSemester actualCoursedSemester;
@@ -119,8 +120,35 @@ public class SemesterEditorCreatorController implements IController {
 	}
 
 	public void btnSaveSemester_Pressed(){
-		//Save semester
-		//actual = new Semester(AcademicSemester.BOTH, 2015, 55, null, null);
+		ArrayList<Coursed> coursedCourses = ((Student)Manager.INSTANCE.currentUser).getCurriculum().getCoursedCourses();
+		ArrayList<Course> courses = new ArrayList<Course>();
+		
+		for (Course course : Manager.INSTANCE.courses) {
+			for (String initialCourse : listCoursesInSemester.getItems()) {
+				if (initialCourse == course.getInitials()) {
+					courses.add(course);
+				}
+			}
+		}
+		
+		Semester newSemester = new Semester(toAcademicSemester(chBxSemesterType.getSelectionModel().getSelectedItem()), Integer.valueOf(txBxYear.getText()), Integer.valueOf(txBxMaxCredits.getText()),coursedCourses, courses );
+		((Student)Manager.INSTANCE.currentUser).getCurriculum().setCurrentSemester(newSemester);
+		
+		URL location = getClass().getResource(Const.SEMESTER_ADMIN);
+		ViewUtilities.openView(location, "Editar Semestre");
+	}
+	
+	public AcademicSemester toAcademicSemester(String semesterString) {
+		switch (semesterString) {
+		case "BOTH":
+			return AcademicSemester.BOTH;
+		case "FIRST":
+			return AcademicSemester.FIRST;
+		case "SECOND":
+			return AcademicSemester.SECOND;
+		default:
+			return AcademicSemester.defaultSemester();
+		}
 	}
 	
 	public SemesterEditorCreatorController(){
@@ -192,9 +220,9 @@ public class SemesterEditorCreatorController implements IController {
 		labelSelectCourse.setVisible(true);
 		
 		chBxSemesterType.setItems(FXCollections.observableArrayList(
-				AcademicSemester.BOTH.toString(),
-				AcademicSemester.FIRST.toString(),
-				AcademicSemester.SECOND.toString()));
+				"BOTH",
+				"FIRST",
+				"SECOND"));
 		
 		ArrayList<String> courses = new ArrayList<String>();
 		for (Course course : Manager.INSTANCE.courses) {
