@@ -99,32 +99,6 @@ public class FolderFileManager {
 			}
 		}
 
-//		File folderStudyPrograms = new File(adminStudyPrograms);
-//		String[] schoolsString = folderStudyPrograms.list();
-
-//		for (String schoolString : schoolsString) {
-//			File schoolFolder = new File(schoolString);
-//			if (schoolFolder.isDirectory()) {
-//				String[] studyProgramsString = schoolFolder.list();
-//				for (String studyProgramString : studyProgramsString) {
-//					File studyProgramFolder = new File(studyProgramString);
-//					if (studyProgramFolder.isDirectory()) {
-//						File studyProgramFile = new File(adminStudyProgramInfo);
-//						if (!studyProgramFile.exists()) {
-//							try {
-//								FileOutputStream fileOutputStream = new FileOutputStream(studyProgramFile);
-//								fileOutputStream.close();
-//							} catch (FileNotFoundException fileNotFoundException) {
-//								System.out.println(fileNotFoundException);
-//							} catch (IOException iOException) {
-//								System.out.println(iOException);
-//							}
-//						}
-//					}
-//				}
-//			}
-//		}
-
 		ArrayList<String> files = new ArrayList<String>();
 		files.add(language);
 		files.add(admins);
@@ -150,34 +124,5 @@ public class FolderFileManager {
 				}
 			}
 		}
-
-//		ArrayList<String> studentsFiles = new ArrayList<String>();
-//		studentsFiles.add(studentCoursed);
-//		studentsFiles.add(studentCoursedCourses);
-//		studentsFiles.add(studentCourses);
-//		studentsFiles.add(studentInfo);
-//		studentsFiles.add(studentStudyPrograms);
-//
-//		File folderStudents = new File(rootStudent);
-//		String[] studentsFolders = folderStudents.list();
-//
-//		for (String studentFolderString : studentsFolders) {
-//			File studentFolder = new File(studentFolderString);
-//			if (studentFolder.isDirectory()) {
-//				for (String studentFileString : studentsFiles) {
-//					File studentFile = new File(studentFileString);
-//					if (!studentFile.exists()) {
-//						try {
-//							FileOutputStream fileOutputStream = new FileOutputStream(studentFile);
-//							fileOutputStream.close();
-//						} catch (FileNotFoundException fileNotFoundException) {
-//							System.out.println(fileNotFoundException);
-//						} catch (IOException iOException) {
-//							System.out.println(iOException);
-//						}
-//					}
-//				}
-//			}
-//		}
 	}
 }

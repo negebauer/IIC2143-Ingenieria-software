@@ -17,6 +17,7 @@ import backend.users.Admin;
 import backend.users.Assistant;
 import backend.users.Professor;
 import backend.users.Student;
+import backend.users.User;
 
 /**
  * [Singleton] Main class that does what the application user requires.
@@ -26,6 +27,8 @@ import backend.users.Student;
 public class Manager {
 
 	public final static Manager INSTANCE = new Manager();
+	
+	public User currentUser;
 	
 	public ArrayList<Classroom> classrooms = new ArrayList<Classroom>();
 	public ArrayList<Course> courses = new ArrayList<Course>();

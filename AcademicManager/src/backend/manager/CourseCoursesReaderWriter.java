@@ -177,7 +177,6 @@ public class CourseCoursesReaderWriter {
 				} else if (typeOfCourse.equals("LECTURE")) {
 					ArrayList<Professor> professors = new ArrayList<Professor>();
 					for (String rut : assitantsOrProfessorsString.split(";")) {
-						System.out.println(rut);
 						for (Professor professor : allProfessors) {
 							if (professor.getRut().equals(rut)) {
 								professors.add(professor);

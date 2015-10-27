@@ -6,6 +6,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
+import backend.courses.Course;
+import backend.courses.Coursed;
+import backend.courses.Curriculum;
+import backend.courses.Semester;
+import backend.courses.StudyProgram;
+
 public class Utilities {
 
 	/**
@@ -57,5 +63,31 @@ public class Utilities {
 			}
 		}
 		return String.join("\n", cleanedString);
+	}
+		
+	/**
+	 * Return approved courses or uncoursed courses depending of isFinished param
+	 * @param program
+	 * @param curriculum
+	 * @param isFinished
+	 * @return
+	 */
+	public static ArrayList<Course> getFinichedCourses(StudyProgram program, Curriculum curriculum, boolean isFinished) {
+		
+		ArrayList<Course> finished = new ArrayList<Course>();
+		
+		for(Semester semester : program.getSemesters())
+			for(Course course : semester.getCourses()) {
+				
+				boolean check = false;	
+				for(Coursed coursed : curriculum.getCoursedCourses())
+					if(course.getInitials() == coursed.getInitials() && coursed.isApproved()) {
+						check = true;
+						break;
+					}					
+				if(check == isFinished)
+					finished.add(course);
+			}					
+		return finished;
 	}
 }

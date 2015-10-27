@@ -121,9 +121,11 @@ public class NewUserRegistrationController implements IController{
 	}
 	
 	public void btnContinue_Pressed() {
-		switch (chBxAccess.getSelectionModel().getSelectedItem()){
-		case "hola": break;
+		switch (chBxAccess.getSelectionModel().getSelectedItem()) {
+		case "hola":
+			break;
 		default:
+			break;
 		}
 		
 	}
