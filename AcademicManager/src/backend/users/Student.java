@@ -32,7 +32,7 @@ public class Student extends User {
 	 * @param phone The cell phone number of the student.
 	 * @param birthdayString The birthday of the student in the format dd.MM.yyyy. 
 	 */
-	public Student(int id, int yearEntrance, ArrayList<StudyProgram> studyPrograms, String rut, String name, String lastnameFather, String lastnameMother, String address, Gender gender, int phone, String birthdayString) {
+	public Student(int id, int yearEntrance, ArrayList<StudyProgram> studyPrograms, String rut, String name, String lastnameFather, String lastnameMother, String address, Gender gender, String phone, String birthdayString) {
 		super(rut, name, lastnameFather, lastnameMother, address, gender, Access.USER, phone, birthdayString);
 		this.id = id > 0 ? id : 0;
 		this.yearEntrance = yearEntrance > 0 ? yearEntrance : 0;

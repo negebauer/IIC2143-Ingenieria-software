@@ -18,7 +18,7 @@ public class Professor extends User {
 	 * @param phone The cell phone of the Professor.
 	 * @param birthdayString The birthday of the Professor in the format dd.MM.yyyy
 	 */
-	public Professor(String rut, String name, String lastnameFather, String lastnameMother, String address, Gender gender, int phone, String birthdayString) {
+	public Professor(String rut, String name, String lastnameFather, String lastnameMother, String address, Gender gender, String phone, String birthdayString) {
 		super(rut, name, lastnameFather, lastnameMother, address, gender, Access.EDITOR, phone, birthdayString);
 	}
 }

@@ -40,7 +40,7 @@ public abstract class User {
 	private String address;
 	private Gender gender;
 	private Access access;
-	private int phone;
+	private String phone;
 	private Date birthday;
 	
 	/**
@@ -56,7 +56,7 @@ public abstract class User {
 	 * @param phone The cell phone of the User.
 	 * @param birthdayString The birthday of the User in the format dd.MM.yyyy
 	 */
-	public User(String rut, String name, String lastnameFather, String lastnameMother, String address, Gender gender, Access access, int phone, String birthdayString) {
+	public User(String rut, String name, String lastnameFather, String lastnameMother, String address, Gender gender, Access access, String phone, String birthdayString) {
 		this.rut = rut != null ? rut : "RUTNil";
 		this.name = name != null ? name : "NameNil";
 		this.lastnameFather = lastnameFather != null ? lastnameFather : "";
@@ -64,7 +64,7 @@ public abstract class User {
 		this.address = address != null ? address : "" ;
 		this.gender = gender != null ? gender : Gender.defaultGender();
 		this.access = access != null ? access : Access.defaultAccess();
-		this.phone = phone > 0 ? phone : 0;
+		this.phone = phone != null ? phone : "";
 		this.birthday = birthdayString != null ? Utilities.getDateFromString(birthdayString + " 00:00") : new Date();
 	}
 	
@@ -178,7 +178,7 @@ public abstract class User {
 	/**
 	 * @return The phone of the User.
 	 */
-	public int getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 
@@ -186,7 +186,7 @@ public abstract class User {
 	 * Modifies the phone of the user.
 	 * @param phone The new phone of the user.
 	 */
-	public void setPhone(int phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 

@@ -72,7 +72,7 @@ public class AssistantsReaderWriter {
 				String lastnameMother = arguments[3];
 				String address = arguments[4];
 				Gender gender = Gender.valueOf(arguments[5]);
-				int phone = Integer.parseInt(arguments[6]);
+				String phone = arguments[6];
 				String birthdayString = arguments[7];
 				Assistant assistant = new Assistant(rut, name, lastnameFather, lastnameMother, address, gender, phone, birthdayString);
 				assistants.add(assistant);

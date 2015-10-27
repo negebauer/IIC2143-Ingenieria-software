@@ -72,7 +72,7 @@ public class AdminReaderWriter {
 				String lastnameMother = arguments[3];
 				String address = arguments[4];
 				Gender gender = Gender.valueOf(arguments[5]);
-				int phone = Integer.parseInt(arguments[6]);
+				String phone = arguments[6];
 				String birthdayString = arguments[7];
 				Admin admin = new Admin(rut, name, lastnameFather, lastnameMother, address, gender, phone, birthdayString);
 				admins.add(admin);

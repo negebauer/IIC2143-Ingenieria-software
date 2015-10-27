@@ -18,7 +18,7 @@ public class Assistant extends User {
 	 * @param phone The cell phone of the Assistant.
 	 * @param birthdayString The birthday of the Assistant in the format dd.MM.yyyy
 	 */
-	public Assistant(String rut, String name, String lastnameFather, String lastnameMother, String address, Gender gender, int phone, String birthdayString) {
+	public Assistant(String rut, String name, String lastnameFather, String lastnameMother, String address, Gender gender, String phone, String birthdayString) {
 		super(rut, name, lastnameFather, lastnameMother, address, gender, Access.READONLY, phone, birthdayString);
 	}
 }

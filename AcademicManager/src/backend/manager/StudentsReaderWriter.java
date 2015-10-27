@@ -245,7 +245,7 @@ public class StudentsReaderWriter {
 
 					ArrayList<Coursed> coursedList 				= new ArrayList<Coursed>();
 					ArrayList<Course> coursesList 				= new ArrayList<Course>();
-					Student student1							= new Student(0, 0, null, null, null, null, null, null, null, 0, null);
+					Student student1							= new Student(0, 0, null, null, null, null, null, null, null, null, null);
 					ArrayList<StudyProgram> studyProgramsList 	= new ArrayList<StudyProgram>();
 
 					String coursedString 						= coursedReader.readLine();
@@ -381,7 +381,7 @@ public class StudentsReaderWriter {
 					String address = studentArguments[8];
 					Gender gender = Gender.valueOf(studentArguments[9]);
 //					Access access = 
-					int phone = Integer.parseInt(studentArguments[11]);
+					String phone = studentArguments[11];
 					String birthdayString = studentArguments[12];
 					student1 = new Student(id, yearEntrance, null, rut, name, lastnameFather, lastnameMother, address, gender, phone, birthdayString);
 					students.add(student1);

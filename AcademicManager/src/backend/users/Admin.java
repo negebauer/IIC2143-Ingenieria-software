@@ -18,7 +18,7 @@ public class Admin extends User {
 	 * @param phone The cell phone of the Admin.
 	 * @param birthdayString The birthday of the Admin in the format dd.MM.yyyy
 	 */
-	public Admin(String rut, String name, String lastnameFather, String lastnameMother, String address, Gender gender, int phone, String birthdayString) {
+	public Admin(String rut, String name, String lastnameFather, String lastnameMother, String address, Gender gender, String phone, String birthdayString) {
 		super(rut, name, lastnameFather, lastnameMother, address, gender, Access.ADMIN, phone, birthdayString);
 	}
 }
