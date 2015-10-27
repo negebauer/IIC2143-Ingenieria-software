@@ -8,7 +8,11 @@ import backend.manager.Manager;
 import backend.others.Const;
 import backend.others.Messages;
 import backend.others.Messages.UILabel;
+<<<<<<< HEAD
 import backend.users.*;
+=======
+import backend.users.User;
+>>>>>>> 39e80aff411e4fe9cfafcd28d1db5463b9c01db4
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -30,6 +34,8 @@ public class LogInController implements Initializable, IController {
 	Label labelRegistration;
 	@FXML
 	Label labelLogIn;
+	@FXML
+	Button btnLenguage;
 	
 	public void setUp(){
 		btnSignIn.setText(Messages.getUILabel(UILabel.SIGN_IN));
@@ -39,6 +45,7 @@ public class LogInController implements Initializable, IController {
 		labelLogIn.setText(Messages.getUILabel(UILabel.LOG_IN));
 		
 		ArrayList<String> users = new ArrayList<String>();
+<<<<<<< HEAD
 		
 		for (Professor professor : Manager.INSTANCE.professors) {
 			users.add(professor.getName() + " " + professor.getLastnameFather() + " " + professor.getLastnameMother());
@@ -59,9 +66,24 @@ public class LogInController implements Initializable, IController {
 		chBxUsers.setItems(FXCollections.observableArrayList(users));
 		
 		
+=======
+		for(User user : Manager.INSTANCE.students)
+			users.add(user.getRut());
+		
+		chBxUsers.setItems(FXCollections.observableArrayList(users));
+>>>>>>> 39e80aff411e4fe9cfafcd28d1db5463b9c01db4
 	}
 	
 	public void btnSignIn_Pressed(){
+			
+		User current = null;
+		for(User user : Manager.INSTANCE.students)
+			if(this.chBxUsers.getSelectionModel().getSelectedItem() == user.getRut()){
+				current = user;
+				break;
+			}		
+		Manager.INSTANCE.currentUser = current;
+		
 		URL location = getClass().getResource(Const.MAIN_MENU);
 		ViewUtilities.openView(location, "Menu Principal");
 	}
@@ -69,6 +91,10 @@ public class LogInController implements Initializable, IController {
 	public void btnRegister_Pressed(){
 		URL location = getClass().getResource(Const.USER_REGISTRATION);
 		ViewUtilities.openView(location, "Registro");
+	}
+	
+	public void btnLenguage_Pressed(){
+		Manager.INSTANCE.changeLanguage();
 	}
 	
 	@Override

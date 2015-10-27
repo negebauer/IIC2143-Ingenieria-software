@@ -3,6 +3,7 @@ package backend.manager;
 import java.io.IOException;
 import java.net.URL;
 
+import backend.users.Student;
 import frontend.view.main.CurrentViewHandler;
 import frontend.view.main.LogInController;
 import javafx.application.Application;
@@ -23,6 +24,11 @@ public class Main extends Application {
 		Manager.INSTANCE.loadData();
 		
 		// ----- TODO Delete any test code from this line -----
+		
+		for (Student student : Manager.INSTANCE.students) {
+			String info = student.getName() + " " + student.getLastnameFather() + " " + student.getAge();
+			System.out.println(info);
+		}
 		
 		Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
 

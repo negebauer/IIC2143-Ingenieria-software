@@ -11,6 +11,9 @@
          <children>
             <Label fx:id="labelCurricularAdvanceWelcomeMessage" layoutX="14.0" layoutY="14.0" prefHeight="42.0" prefWidth="299.0" text="Este es tu avance curricular, selecciona otra malla curricular para ver tu avance" wrapText="true" />
             <ChoiceBox fx:id="chBxStudyProgram" layoutX="52.0" layoutY="60.0" prefHeight="25.0" prefWidth="172.0" style="-fx-background-radius: 0;" />
+            <ListView fx:id="listAdvance" layoutX="222.0" layoutY="100.0" prefHeight="200.0" prefWidth="162.0" visible="false" />
+            <ListView fx:id="listUnfinished" layoutX="362.0" layoutY="100.0" prefHeight="200.0" prefWidth="162.0" visible="false" />
+            <Button fx:id="btnShowAdvance" layoutX="454.0" layoutY="347.0" mnemonicParsing="false" onAction="#btnShowAdvance_Pressed" style="-fx-background-radius: 0;" text="Guardar Semestre" />
          </children>
       </Pane>
    </children>

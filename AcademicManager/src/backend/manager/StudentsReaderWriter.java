@@ -225,22 +225,21 @@ public class StudentsReaderWriter {
 	 * @param currentSemester Just a current semester object to extract the semester and year.
 	 * @return The students list.
 	 */
-	public static ArrayList<Student> readStudents(ArrayList<Course> allCourses, ArrayList<StudyProgram> allStudyPrograms, ArrayList<Classroom> allClassrooms, Semester currentSemester) {
+	public static ArrayList<Student> readStudents(ArrayList<Course> allCourses, ArrayList<StudyProgram> allStudyPrograms, ArrayList<Classroom> allClassrooms, Semester currentSemester, ArrayList<Professor> allProfessors, ArrayList<Assistant> allAssistants) {
 		// TODO Dude, this function is way to complex and big.
 		ArrayList<Student> students = new ArrayList<Student>();
 		try {
 			File studentRootFolder = new File(FolderFileManager.rootStudent);
-			String[] studentsFolderString = studentRootFolder.list();
-			for (String studentFolderString : studentsFolderString) {
-				if (studentFolderString == null) {
-					break;
+			for (File studentFolderFile : studentRootFolder.listFiles()) {
+				if (studentFolderFile == null || studentFolderFile.getName().equals(".DS_Store")) {
+					continue;
 				}
 				try {
-					FileInputStream coursed 					= new FileInputStream(studentFolderString + FolderFileManager.studentCoursed);
-					FileInputStream coursedCourses 				= new FileInputStream(studentFolderString + FolderFileManager.studentCoursedCourses);
-					FileInputStream courses 					= new FileInputStream(studentFolderString + FolderFileManager.studentCourses);
-					FileInputStream student 					= new FileInputStream(studentFolderString + FolderFileManager.studentInfo);
-					FileInputStream studyPrograms 				= new FileInputStream(studentFolderString + FolderFileManager.studentStudyPrograms);
+					FileInputStream coursed 					= new FileInputStream(studentFolderFile.getPath() + FolderFileManager.studentCoursed);
+					FileInputStream coursedCourses 				= new FileInputStream(studentFolderFile.getPath() + FolderFileManager.studentCoursedCourses);
+					FileInputStream courses 					= new FileInputStream(studentFolderFile.getPath() + FolderFileManager.studentCourses);
+					FileInputStream student 					= new FileInputStream(studentFolderFile.getPath() + FolderFileManager.studentInfo);
+					FileInputStream studyPrograms 				= new FileInputStream(studentFolderFile.getPath() + FolderFileManager.studentStudyPrograms);
 
 					BufferedReader coursedReader 				= new BufferedReader(new InputStreamReader(coursed));
 					BufferedReader coursedCoursesReader			= new BufferedReader(new InputStreamReader(coursedCourses));
@@ -300,12 +299,12 @@ public class StudentsReaderWriter {
 						case "ASSISTANTSHIP":
 							ArrayList<Assistant> assistants = new ArrayList<Assistant>();
 							for (String assistantString : arguments[5].split(";")) {
-								String[] assistantArguments = assistantString.split(":");
-								String name = assistantArguments[0];
-								String lastnameFather = assistantArguments[1];
-								String lastnameMother = assistantArguments[2];
-								Assistant assistant = new Assistant(null, name, lastnameFather, lastnameMother, null, null, -1, null);
-								assistants.add(assistant);
+								String rut = assistantString;
+								for (Assistant assistant : allAssistants) {
+									if (assistant.getRut().equals(rut)) {
+										assistants.add(assistant);
+									}
+								}
 							}
 							Assistantship assistantship = new Assistantship(assistants, classroom, schedule);
 							for (Coursed possibleCoursed : coursedList) {
@@ -316,12 +315,12 @@ public class StudentsReaderWriter {
 						case "LABORATORY":
 							ArrayList<Professor> professors = new ArrayList<Professor>();
 							for (String professorString : arguments[5].split(";")) {
-								String[] professorArguments = professorString.split(":");
-								String name = professorArguments[0];
-								String lastnameFather = professorArguments[1];
-								String lastnameMother = professorArguments[2];
-								Professor professor = new Professor(null, name, lastnameFather, lastnameMother, null, null, -1, null);
-								professors.add(professor);
+								String rut = professorString;
+								for (Professor professor : allProfessors) {
+									if (professor.getRut().equals(rut)) {
+										professors.add(professor);
+									}
+								}
 							}
 							Laboratory laboratory = new Laboratory(professors, classroom, schedule);
 							for (Coursed possibleCoursed : coursedList) {
@@ -332,12 +331,12 @@ public class StudentsReaderWriter {
 						case "LECTURE":
 							ArrayList<Professor> professors2 = new ArrayList<Professor>();
 							for (String professorString : arguments[5].split(";")) {
-								String[] professorArguments = professorString.split(":");
-								String name = professorArguments[0];
-								String lastnameFather = professorArguments[1];
-								String lastnameMother = professorArguments[2];
-								Professor professor = new Professor(null, name, lastnameFather, lastnameMother, null, null, -1, null);
-								professors2.add(professor);
+								String rut = professorString;
+								for (Professor professor : allProfessors) {
+									if (professor.getRut().equals(rut)) {
+										professors2.add(professor);
+									}
+								}
 							}
 							Lecture lecture = new Lecture(professors2, classroom, schedule);
 							for (Coursed possibleCoursed : coursedList) {
@@ -385,8 +384,9 @@ public class StudentsReaderWriter {
 					String lastnameMother = studentArguments[7];
 					String address = studentArguments[8];
 					Gender gender = Gender.valueOf(studentArguments[9]);
-					int phone = Integer.parseInt(studentArguments[10]);
-					String birthdayString = studentArguments[11];
+//					Access access = 
+					int phone = Integer.parseInt(studentArguments[11]);
+					String birthdayString = studentArguments[12];
 					student1 = new Student(id, yearEntrance, null, rut, name, lastnameFather, lastnameMother, address, gender, phone, birthdayString);
 					students.add(student1);
 					

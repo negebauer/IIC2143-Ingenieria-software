@@ -18,6 +18,13 @@
             <ListView fx:id="listCoursesInSemester" layoutX="362.0" layoutY="100.0" prefHeight="200.0" prefWidth="162.0" visible="false" />
             <Button fx:id="btnRemoveCourse" layoutX="246.0" layoutY="192.0" mnemonicParsing="false" onAction="#btnRemoveCourse_Pressed" prefHeight="25.0" prefWidth="92.0" style="-fx-background-radius: 0;" text="Quitar Curso" visible="false" />
             <Button fx:id="btnSaveSemester" layoutX="454.0" layoutY="347.0" mnemonicParsing="false" onAction="#btnSaveSemester_Pressed" style="-fx-background-radius: 0;" text="Guardar Semestre" visible="false" />
+            <ChoiceBox fx:id="chBxSemesterType" layoutX="52.0" layoutY="88.0" prefHeight="25.0" prefWidth="172.0" style="-fx-background-radius: 0;" visible="false" />
+            <TextField fx:id="txBxYear" layoutX="53.0" layoutY="258.0" style="-fx-background-radius: 0;" visible="false" />
+            <TextField fx:id="txBxMaxCredits" layoutX="53.0" layoutY="322.0" style="-fx-background-radius: 0;" visible="false" />
+            <Label fx:id="labelSelectSemester" layoutX="53.0" layoutY="71.0" text="Selecciona el semestre (primero, segundo)" visible="false" />
+            <Label fx:id="labelYear" layoutX="53.0" layoutY="241.0" text="Año" visible="false" />
+            <Label fx:id="labelMaxCredits" layoutX="53.0" layoutY="305.0" text="Maximo de creditos" visible="false" />
+            <Label fx:id= "labelSelectCourse" layoutX="53.0" layoutY="158.0" text="Selecciona un Curso" visible="false" />
          </children>
       </Pane>
    </children>
