@@ -30,6 +30,8 @@ public class LogInController implements Initializable, IController {
 	Label labelRegistration;
 	@FXML
 	Label labelLogIn;
+	@FXML
+	Button btnLenguage;
 	
 	public void setUp(){
 		btnSignIn.setText(Messages.getUILabel(UILabel.SIGN_IN));
@@ -62,6 +64,10 @@ public class LogInController implements Initializable, IController {
 	public void btnRegister_Pressed(){
 		URL location = getClass().getResource(Const.USER_REGISTRATION);
 		ViewUtilities.openView(location, "Registro");
+	}
+	
+	public void btnLenguage_Pressed(){
+		Manager.INSTANCE.changeLanguage();
 	}
 	
 	@Override
