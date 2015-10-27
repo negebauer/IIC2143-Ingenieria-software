@@ -61,12 +61,6 @@ public class LogInController implements Initializable, IController {
 		
 		chBxUsers.setItems(FXCollections.observableArrayList(users));
 		
-		
-
-		for(User user : Manager.INSTANCE.students)
-			users.add(user.getRut());
-		
-		chBxUsers.setItems(FXCollections.observableArrayList(users));
 	}
 	
 	public void btnSignIn_Pressed(){
