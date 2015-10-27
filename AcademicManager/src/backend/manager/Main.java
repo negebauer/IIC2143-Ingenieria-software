@@ -5,6 +5,7 @@ import java.net.URL;
 
 import backend.courses.Classroom;
 import backend.users.Admin;
+import frontend.view.main.CurrentViewHandler;
 import frontend.view.main.LogInController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -87,14 +88,6 @@ public class Main extends Application {
 		primaryStage.setScene(scene);
         primaryStage.setTitle("Academic Manager");
 		primaryStage.show();
-	}
-	
-	public Stage getPrimaryStage(){
-		if (primaryStage != null) {
-			return primaryStage;
-		}
-		else {
-			return new Stage();
-		}
+		CurrentViewHandler.INSTANCE.primaryStage = primaryStage;
 	}
 }

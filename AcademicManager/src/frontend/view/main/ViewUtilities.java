@@ -33,7 +33,7 @@ public final class ViewUtilities {
 			EDITOR = title.contains("Edit");
 			root = (Parent) loader.load();
 			((IController) loader.getController()).setUp();
-			Stage stage = Main.INSTANCE.getPrimaryStage();
+			Stage stage = CurrentViewHandler.INSTANCE.primaryStage;
 			stage.setScene(new Scene(root));
 			stage.setTitle(title);
 			stage.show();
