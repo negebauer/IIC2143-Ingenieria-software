@@ -49,6 +49,7 @@ public class ICourseEditorCreatorController implements IController {
 	Label labelClassTypeChoose;
 	@FXML
 	ChoiceBox<String> chBxClassesTypes;
+	
 	@Override
 	public void setUp() {
 		// TODO Auto-generated method stub
