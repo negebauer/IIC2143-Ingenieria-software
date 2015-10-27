@@ -29,10 +29,7 @@ public class Main extends Application {
 	    }));
 		// ----- TODO Delete any test code from this line -----
 		
-		for (Student student : Manager.INSTANCE.students) {
-			String info = student.getName() + " " + student.getLastnameFather() + " " + student.getAge();
-			System.out.println(info);
-		}
+		
 		
 		// ----- 			To this line				  -----
 		

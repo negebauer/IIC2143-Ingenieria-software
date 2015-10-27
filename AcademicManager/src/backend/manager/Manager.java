@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Random;
 
 import backend.courses.Classroom;
 import backend.courses.Course;
@@ -126,4 +127,22 @@ public class Manager {
 		return returnString;
 	}
 
+	public int getNewStudentID() {
+		int maxID = 0;
+		for (Student student : students) {
+			if (student.getId() > maxID) {
+				maxID = student.getId();
+			}
+		}
+		return maxID + 1;
+	}
+	
+	public StudyProgram getStudyProgramForName(String name) {
+		for (StudyProgram studyProgram : studyPrograms) {
+			if (studyProgram.getName().equals(name)) {
+				return studyProgram;
+			}
+		}
+		return null;
+	}
 }
