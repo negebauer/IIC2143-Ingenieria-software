@@ -108,11 +108,11 @@ public class Manager {
 
 			switch (language) {
 			case ENGLISH:
-				returnString =  "ES";
-				printStream.println("SPANISH");
+				returnString =  SupportedLanguage.SPANISH.toString().substring(0, 2);
+				printStream.println(SupportedLanguage.SPANISH.toString());
 			case SPANISH:
-				returnString =  "EN";
-				printStream.println("ENGLISH");
+				returnString = SupportedLanguage.ENGLISH.toString().substring(0, 2);
+				printStream.println(SupportedLanguage.ENGLISH.toString());
 			default:
 				returnString =  "44";
 			}

@@ -9,7 +9,6 @@ import javafx.scene.control.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 
 import backend.courses.StudyProgram;
 import backend.manager.Manager;
@@ -149,15 +148,15 @@ public class NewUserRegistrationController implements IController{
 	
 	public void btnContinue_Pressed() {
 		if (isAdmin) {
-			Manager.INSTANCE.admins.add(new Admin(txBxRUT.getText(), txBxName.getText(), txBxLastFather.getText(), txBxLastMother.getText(), txBxAdress.getText(), Gender.valueOf(chBxSex.getSelectionModel().getSelectedItem()) , Integer.valueOf(txBxCellPhone.getText().split("+")[1]), txBxBirthDay.getText() + "." + txBxBirthMonth.getText() + "." + txBxBirthYear.getText()));
+			Manager.INSTANCE.admins.add(new Admin(txBxRUT.getText(), txBxName.getText(), txBxLastFather.getText(), txBxLastMother.getText(), txBxAdress.getText(), Gender.valueOf(chBxSex.getSelectionModel().getSelectedItem()), txBxCellPhone.getText().split("+")[1], txBxBirthDay.getText() + "." + txBxBirthMonth.getText() + "." + txBxBirthYear.getText()));
 		} else if (isProfessor) {
-			Manager.INSTANCE.professors.add(new Professor(txBxRUT.getText(), txBxName.getText(), txBxLastFather.getText(), txBxLastMother.getText(), txBxAdress.getText(), Gender.valueOf(chBxSex.getSelectionModel().getSelectedItem()) , Integer.valueOf(txBxCellPhone.getText().split("+")[1]), txBxBirthDay.getText() + "." + txBxBirthMonth.getText() + "." + txBxBirthYear.getText()));
+			Manager.INSTANCE.professors.add(new Professor(txBxRUT.getText(), txBxName.getText(), txBxLastFather.getText(), txBxLastMother.getText(), txBxAdress.getText(), Gender.valueOf(chBxSex.getSelectionModel().getSelectedItem()), txBxCellPhone.getText().split("+")[1], txBxBirthDay.getText() + "." + txBxBirthMonth.getText() + "." + txBxBirthYear.getText()));
 		} else if (isStudent) {
 			ArrayList<StudyProgram> studyPrograms = new ArrayList<StudyProgram>();
 			for (String carreer : chBxCarreers.getItems()) {
 				studyPrograms.add(Manager.INSTANCE.getStudyProgramForName(carreer));
 			}
-			Manager.INSTANCE.students.add(new Student(Manager.INSTANCE.getNewStudentID(), Calendar.YEAR, studyPrograms, txBxRUT.getText(), txBxName.getText(), txBxLastFather.getText(), txBxLastMother.getText(), txBxAdress.getText(), Gender.valueOf(chBxSex.getSelectionModel().getSelectedItem()) , Integer.valueOf(txBxCellPhone.getText().split("+")[1]), txBxBirthDay.getText() + "." + txBxBirthMonth.getText() + "." + txBxBirthYear.getText()));
+			Manager.INSTANCE.students.add(new Student(Manager.INSTANCE.getNewStudentID(), Calendar.YEAR, studyPrograms, txBxRUT.getText(), txBxName.getText(), txBxLastFather.getText(), txBxLastMother.getText(), txBxAdress.getText(), Gender.valueOf(chBxSex.getSelectionModel().getSelectedItem()), txBxCellPhone.getText().split("+")[1], txBxBirthDay.getText() + "." + txBxBirthMonth.getText() + "." + txBxBirthYear.getText()));
 		}
 		
 		URL location = getClass().getResource(Const.LOG_IN);
