@@ -3,6 +3,7 @@ package frontend.view.main;
 import java.io.IOException;
 import java.net.URL;
 
+import backend.manager.Main;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -26,13 +27,13 @@ public final class ViewUtilities {
 	public static void openView(URL location, String title) {
 
 		FXMLLoader loader = new FXMLLoader(location);
-		((IController) loader.getController()).setUp();
 		Parent root = null; 	
 		try 
 		{
 			EDITOR = title.contains("Edit");
 			root = (Parent) loader.load();
-			Stage stage = new Stage();
+			((IController) loader.getController()).setUp();
+			Stage stage = Main.INSTANCE.getPrimaryStage();
 			stage.setScene(new Scene(root));
 			stage.setTitle(title);  
 			stage.show();

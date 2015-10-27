@@ -14,6 +14,8 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
+	public final static Main INSTANCE = new Main();
+	
 	private Stage primaryStage;
 	private Pane root;
 	
@@ -22,14 +24,14 @@ public class Main extends Application {
 		Manager.INSTANCE.loadData();
 		
 		// ----- TODO Delete any test code from this line -----
-		for (Admin admin : Manager.INSTANCE.admins) {
-			System.out.print(admin.getRut());
-			System.out.print(" ");
-			System.out.print(admin.getName());
-			System.out.print(" ");
-			System.out.print(admin.getLastnameFather());
-			System.out.println("");
-		}
+		//for (Admin admin : Manager.INSTANCE.admins) {
+		//	System.out.print(admin.getRut());
+		//	System.out.print(" ");
+		//	System.out.print(admin.getName());
+		//	System.out.print(" ");
+		//	System.out.print(admin.getLastnameFather());
+		//	System.out.println("");
+		//}
 			// WORKS
 //		Admin admin = new Admin("111", "Nombre falso2", "Apellido falso", "str", "str", Gender.MALE, 0, "10.09.1993");
 //		Admin admin2 = new Admin("222", "Nombre falso2", "Apellido falso", "str", "str", Gender.MALE, 0, "10.09.1993");
@@ -41,16 +43,16 @@ public class Main extends Application {
 //			
 //		}
 		
-		for (Classroom classroom : Manager.INSTANCE.classrooms) {
-			System.out.print(classroom.getInitials());
-			System.out.print(" ");
-			System.out.print(classroom.getSchool());
-			System.out.print(" ");
-			System.out.print(classroom.getCampus());
-			System.out.print(" ");
-			System.out.print(classroom.getSize());
-			System.out.println("");
-		}
+		//for (Classroom classroom : Manager.INSTANCE.classrooms) {
+		//	System.out.print(classroom.getInitials());
+		//	System.out.print(" ");
+		//	System.out.print(classroom.getSchool());
+		//	System.out.print(" ");
+		//	System.out.print(classroom.getCampus());
+		//	System.out.print(" ");
+		//	System.out.print(classroom.getSize());
+		//	System.out.println("");
+		//}
 			// WORKS
 //		Classroom classroom = new Classroom("test", School.ENGINEERING, Classroom.Campus.SAN_JOAQUIN, 100);
 //		Manager.INSTANCE.classrooms.add(classroom);
@@ -85,5 +87,9 @@ public class Main extends Application {
 		primaryStage.setScene(scene);
         primaryStage.setTitle("Academic Manager");
 		primaryStage.show();
+	}
+	
+	public Stage getPrimaryStage(){
+		return primaryStage;
 	}
 }
