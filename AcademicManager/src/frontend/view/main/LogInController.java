@@ -44,19 +44,19 @@ public class LogInController implements Initializable, IController {
 		ArrayList<String> users = new ArrayList<String>();
 		
 		for (Professor professor : Manager.INSTANCE.professors) {
-			users.add(professor.getName() + " " + professor.getLastnameFather() + " " + professor.getLastnameMother());
+			users.add(professor.getRut() + " " + professor.getName() + " " + professor.getLastnameFather() + " " + professor.getLastnameMother());
 		}
 		
 		for (Student student : Manager.INSTANCE.students) {
-			users.add(student.getName() + " " + student.getLastnameFather() + " " + student.getLastnameMother());
+			users.add(student.getRut() + " " + student.getName() + " " + student.getLastnameFather() + " " + student.getLastnameMother());
 		}
 		
 		for (Assistant assistant : Manager.INSTANCE.assistants) {
-			users.add(assistant.getName() + " " + assistant.getLastnameFather() + " " + assistant.getLastnameMother());
+			users.add(assistant.getRut() + " " + assistant.getName() + " " + assistant.getLastnameFather() + " " + assistant.getLastnameMother());
 		}
 		
 		for (Admin admin : Manager.INSTANCE.admins) {
-			users.add(admin.getName() + " " + admin.getLastnameFather() + " " + admin.getLastnameMother());
+			users.add(admin.getRut() + " " + admin.getName() + " " + admin.getLastnameFather() + " " + admin.getLastnameMother());
 		}
 		
 		chBxUsers.setItems(FXCollections.observableArrayList(users));
