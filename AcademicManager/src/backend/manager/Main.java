@@ -5,7 +5,7 @@ import java.net.URL;
 
 import backend.courses.Classroom;
 import backend.users.Admin;
-import frontend.view.main.MainViewController;
+import frontend.view.main.LogInController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -66,22 +66,22 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		
 		this.primaryStage = primaryStage;
-		this.showMainView();		
+		this.showLogInView();		
 	}
 	
-	private void showMainView() {
+	private void showLogInView() {
 		
-		URL location = getClass().getResource("/frontend/view/main/MainView.fxml");
+		URL location = getClass().getResource("/frontend/view/main/LogIn.fxml");
 		FXMLLoader fxmlLoader = new FXMLLoader(location);
 		
 		try {
 			root = (Pane)fxmlLoader.load();
-			((MainViewController) fxmlLoader.getController()).setUp();
+			((LogInController) fxmlLoader.getController()).setUp();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
-		Scene scene = new Scene(root,450,300);
+		Scene scene = new Scene(root,600,400);
 		primaryStage.setScene(scene);
         primaryStage.setTitle("Academic Manager");
 		primaryStage.show();

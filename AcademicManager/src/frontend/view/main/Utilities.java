@@ -19,6 +19,9 @@ public final class Utilities {
 		{
 			root = (Parent) loader.load();
 			Stage stage = new Stage();
+			// TODO Bring the primaryStage from the Main here.
+			// Stage stage = Main.primaryStage
+			
 			stage.setScene(new Scene(root));
 			stage.setTitle(title);  
 			stage.show();	
