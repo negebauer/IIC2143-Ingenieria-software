@@ -11,7 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
-public class MainViewController implements Initializable {
+public class MainViewController {
 
 	@FXML
 	Button btnEditSemester;
@@ -66,12 +66,8 @@ public class MainViewController implements Initializable {
 
 	public void btnCloseSession_Pressed() {
 
-		System.exit(0);
+		URL location = getClass().getResource(Const.LOG_IN);
+		Util.openView(location, "Iniciar Sesion");
 	}
 
-	@Override
-	public void initialize(URL url, ResourceBundle rb) {
-		// TODO Auto-generated method stub
-
-	}
 }

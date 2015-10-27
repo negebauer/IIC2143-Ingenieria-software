@@ -23,6 +23,12 @@ public class Const {
 	public final static String[] SIZE = new String[] { "8", "9", "10", "12", "14", "16", "18", "20", "24", "28", "32", "36", "40" };
 	
 	public final static String SEMESTER_ADMIN = "/frontend/view/main/SemesterEditorCreator.fxml";
+
+	public final static String USER_REGISTRATION = "/frontend/view/main/NewUserRegistration.fxml";
+	
+	public final static String LOG_IN = "/frontend/view/main/LogIn.fxml";
+	
+	public final static String MAIN_MENU = "/frontend/view/main/MainViewController.fxml";
 	
 	public final static String COURSE_ADMIN = "/frontend/view/main/CourseEditorCreator.fxml";
 

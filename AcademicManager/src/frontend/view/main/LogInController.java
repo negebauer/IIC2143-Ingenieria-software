@@ -1,11 +1,18 @@
 package frontend.view.main;
 
-import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import backend.others.Const;
 import backend.others.Messages;
 import backend.others.Messages.UILabel;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 
-public class LogInController {
+public class LogInController implements Initializable {
 	
 	@FXML
 	ChoiceBox<String> chBxUsers;
@@ -29,10 +36,18 @@ public class LogInController {
 	}
 	
 	public void btnSignIn_Pressed(){
-		
+		URL location = getClass().getResource(Const.MAIN_MENU);
+		Util.openView(location, "Menu Principal");
 	}
 	
 	public void btnRegister_Pressed(){
-		
+		URL location = getClass().getResource(Const.USER_REGISTRATION);
+		Util.openView(location, "Registro");
+	}
+	
+	@Override
+	public void initialize(URL url, ResourceBundle rb) {
+		// TODO Auto-generated method stub
+
 	}
 }

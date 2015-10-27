@@ -50,6 +50,14 @@ public class Manager {
 	}
 	
 	/**
+	 * Switches language between Spanish and English for the software.
+	 */
+	public String changeLanguage() {
+		
+		return "";
+	}
+	
+	/**
 	 * Writes all the data to the `database`.
 	 */
 	public void saveData() {
