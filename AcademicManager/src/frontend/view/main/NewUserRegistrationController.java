@@ -6,12 +6,14 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
 import backend.courses.StudyProgram;
 import backend.manager.Manager;
+import backend.others.Const;
 import backend.others.Messages;
 import backend.others.Messages.UILabel;
 import backend.users.Admin;
@@ -158,6 +160,8 @@ public class NewUserRegistrationController implements IController{
 			Manager.INSTANCE.students.add(new Student(Manager.INSTANCE.getNewStudentID(), Calendar.YEAR, studyPrograms, txBxRUT.getText(), txBxName.getText(), txBxLastFather.getText(), txBxLastMother.getText(), txBxAdress.getText(), Gender.valueOf(chBxSex.getSelectionModel().getSelectedItem()) , Integer.valueOf(txBxCellPhone.getText().split("+")[1]), txBxBirthDay.getText() + "." + txBxBirthMonth.getText() + "." + txBxBirthYear.getText()));
 		}
 		
+		URL location = getClass().getResource(Const.LOG_IN);
+		ViewUtilities.openView(location, "Iniciar Sesion");
 	}
 	
 	public void showStudentFields() {
