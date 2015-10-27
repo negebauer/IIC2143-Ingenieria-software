@@ -6,8 +6,20 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+
+import backend.courses.StudyProgram;
+import backend.manager.Manager;
+import backend.others.Const;
 import backend.others.Messages;
 import backend.others.Messages.UILabel;
+import backend.users.Admin;
+import backend.users.Professor;
+import backend.users.Student;
+import backend.users.User.Gender;
 
 public class NewUserRegistrationController implements IController{
 	
@@ -72,6 +84,10 @@ public class NewUserRegistrationController implements IController{
 	@FXML
 	Button btnRemoveStudyPlan;
 	
+	boolean isStudent;
+	boolean isProfessor;
+	boolean isAdmin;
+	
 	@Override
 	public void setUp(){
 		labelToUseATMMustRegister.setText(Messages.getUILabel(UILabel.TO_USE_ATM_MUST_REGISTER));
@@ -95,7 +111,6 @@ public class NewUserRegistrationController implements IController{
 		
 		//TODO listCarreers
 		
-		
 		String[] accesos = new String[]{
 				Messages.getUILabel(UILabel.STUDENT), 
 				Messages.getUILabel(UILabel.PROFFESOR), 
@@ -110,8 +125,20 @@ public class NewUserRegistrationController implements IController{
 					public void changed (ObservableValue<? extends Number> observableValue, Number value, Number newValue) {
 						if (accesos[newValue.intValue()] == Messages.getUILabel(UILabel.STUDENT)){
 							showStudentFields();
-						} else {
+							isAdmin = false;
+							isProfessor = false;
+							isStudent = true;
+						} else if (accesos[newValue.intValue()] == Messages.getUILabel(UILabel.PROFFESOR)) {
 							hideStudentFields();
+							isAdmin = false;
+							isProfessor = true;
+							isStudent = false;
+							listCarreers.setItems(FXCollections.observableArrayList());
+						} else if (accesos[newValue.intValue()] == Messages.getUILabel(UILabel.ADMINISTRATOR)) {
+							hideStudentFields();
+							isAdmin = true;
+							isProfessor = false;
+							isStudent = false;
 							listCarreers.setItems(FXCollections.observableArrayList());
 						}
 			}
@@ -121,13 +148,20 @@ public class NewUserRegistrationController implements IController{
 	}
 	
 	public void btnContinue_Pressed() {
-		switch (chBxAccess.getSelectionModel().getSelectedItem()) {
-		case "hola":
-			break;
-		default:
-			break;
+		if (isAdmin) {
+			Manager.INSTANCE.admins.add(new Admin(txBxRUT.getText(), txBxName.getText(), txBxLastFather.getText(), txBxLastMother.getText(), txBxAdress.getText(), Gender.valueOf(chBxSex.getSelectionModel().getSelectedItem()) , Integer.valueOf(txBxCellPhone.getText().split("+")[1]), txBxBirthDay.getText() + "." + txBxBirthMonth.getText() + "." + txBxBirthYear.getText()));
+		} else if (isProfessor) {
+			Manager.INSTANCE.professors.add(new Professor(txBxRUT.getText(), txBxName.getText(), txBxLastFather.getText(), txBxLastMother.getText(), txBxAdress.getText(), Gender.valueOf(chBxSex.getSelectionModel().getSelectedItem()) , Integer.valueOf(txBxCellPhone.getText().split("+")[1]), txBxBirthDay.getText() + "." + txBxBirthMonth.getText() + "." + txBxBirthYear.getText()));
+		} else if (isStudent) {
+			ArrayList<StudyProgram> studyPrograms = new ArrayList<StudyProgram>();
+			for (String carreer : chBxCarreers.getItems()) {
+				studyPrograms.add(Manager.INSTANCE.getStudyProgramForName(carreer));
+			}
+			Manager.INSTANCE.students.add(new Student(Manager.INSTANCE.getNewStudentID(), Calendar.YEAR, studyPrograms, txBxRUT.getText(), txBxName.getText(), txBxLastFather.getText(), txBxLastMother.getText(), txBxAdress.getText(), Gender.valueOf(chBxSex.getSelectionModel().getSelectedItem()) , Integer.valueOf(txBxCellPhone.getText().split("+")[1]), txBxBirthDay.getText() + "." + txBxBirthMonth.getText() + "." + txBxBirthYear.getText()));
 		}
 		
+		URL location = getClass().getResource(Const.LOG_IN);
+		ViewUtilities.openView(location, "Iniciar Sesion");
 	}
 	
 	public void showStudentFields() {
