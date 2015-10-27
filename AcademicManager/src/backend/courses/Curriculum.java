@@ -2,8 +2,6 @@ package backend.courses;
 
 import java.util.ArrayList;
 
-import backend.enums.AcademicSemester;
-
 /**
  * Class that represents the students' Curriculum.
  */
@@ -29,8 +27,8 @@ public class Curriculum {
 	 * @param gpa The grade obtained in the course.
 	 * @param semester The semester in which the course was coursed.
 	 */
-	public void addCoursedCourse(Course course, boolean approved, double grade, AcademicSemester semester, int year) {
-		this.coursedCourses.add(new Coursed(course, approved, grade, semester, year));
+	public void addCoursedCourse(Course course, boolean approved, double grade, int year) {
+		this.coursedCourses.add(new Coursed(course, approved, grade, currentSemester.getSemester(), year));
 	}
 	
 	public void addCoursedCourse(Coursed course) {
@@ -74,6 +72,31 @@ public class Curriculum {
 
 	public void setCurrentSemester(Semester currentSemester) {
 		this.currentSemester = currentSemester;
+	}
+	
+	/**
+	 * Returns all the coursed semesters of this curriculum.
+	 * @return A list of CoursedSemester objetcs.
+	 */
+	public ArrayList<CoursedSemester> getCoursedSemesters() {
+		ArrayList<CoursedSemester> coursedSemesters = new ArrayList<CoursedSemester>();
+		for (Coursed coursedCourse : coursedCourses) {
+			Boolean shouldCreateNewCoursedSemester = false;
+			for (CoursedSemester coursedSemester : coursedSemesters) {
+				if (coursedSemester.getYear() == coursedCourse.getYear() && coursedCourse.getSemester() == coursedSemester.getSemester()) {
+					coursedSemester.addCoursedCourse(coursedCourse);
+					shouldCreateNewCoursedSemester = false;
+					break;
+				} else {
+					shouldCreateNewCoursedSemester = true;
+				}
+			}
+			if (shouldCreateNewCoursedSemester) {
+				CoursedSemester coursedSemester = new CoursedSemester(coursedCourse.getSemester(), coursedCourse.getYear());
+				coursedSemester.addCoursedCourse(coursedCourse);
+			}
+		}
+		return coursedSemesters;
 	}
 
 	/**
@@ -137,4 +160,5 @@ public class Curriculum {
 		}
 		return credits;		
 	}
+	
 }
