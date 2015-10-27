@@ -22,20 +22,17 @@ public class Main extends Application {
 	public static void main(String [ ] args) {
 		FolderFileManager.checkFolders();
 		Manager.INSTANCE.loadData();
-		
+		Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+	        public void run() {
+	        	Manager.INSTANCE.saveData();
+	        }
+	    }));
 		// ----- TODO Delete any test code from this line -----
 		
 		for (Student student : Manager.INSTANCE.students) {
 			String info = student.getName() + " " + student.getLastnameFather() + " " + student.getAge();
 			System.out.println(info);
 		}
-		
-		Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
-
-	        public void run() {
-	        	Manager.INSTANCE.saveData();
-	        }
-	    }));
 		
 		// ----- 			To this line				  -----
 		

@@ -68,7 +68,7 @@ public class StudentsReaderWriter {
 				FileOutputStream info 				= new FileOutputStream(studentFolder + FolderFileManager.studentInfo);
 				FileOutputStream studyPrograms 		= new FileOutputStream(studentFolder + FolderFileManager.studentStudyPrograms);
 				
-				PrintStream coursedStream 		= new PrintStream(coursedFile);
+				PrintStream coursedStream 			= new PrintStream(coursedFile);
 				PrintStream coursedCoursesStream 	= new PrintStream(coursedCourses);
 				PrintStream coursesStream 			= new PrintStream(courses);
 				PrintStream infoStream 				= new PrintStream(info);
@@ -102,11 +102,13 @@ public class StudentsReaderWriter {
 				for (Coursed coursed : student.getCurriculum().getCoursedCourses()) {
 					for (ICourse icourse : coursed.getCourses()) {
 						coursedCoursesStream.print(coursed.getInitials());
-						coursedStream.print("&");
+						coursedCoursesStream.print("&");
 						coursedCoursesStream.print(coursed.getSection());
-						coursedStream.print("&");
+						coursedCoursesStream.print("&");
 						coursedCoursesStream.print(coursed.getYear());
-						coursedStream.print("&");
+						coursedCoursesStream.print("&");
+						coursedCoursesStream.print(coursed.getSemester().toString());
+						coursedCoursesStream.print("&");
 						if (icourse instanceof Assistantship) {
 							coursedCoursesStream.print("ASSISTANTSHIP");
 						} else if (icourse instanceof Lecture) {
@@ -114,46 +116,39 @@ public class StudentsReaderWriter {
 						} else if (icourse instanceof Laboratory) {
 							coursedCoursesStream.print("LABORATORY");
 						}
- 						coursedStream.print("&");
+						coursedCoursesStream.print("&");
  						Boolean moreThanOneProfessorAsisstants = false;
  						if (icourse instanceof IAssistants) {
  							for (Assistant assistant : ((IAssistants) icourse).getAssistants()) {
  								if (moreThanOneProfessorAsisstants) {
- 									coursedStream.print(";");
+ 									coursedCoursesStream.print(";");
  								}
- 								coursedStream.print(assistant.getName());
- 								coursedStream.print(":");
- 								coursedStream.print(assistant.getLastnameFather());
- 								coursedStream.print(":");
- 								coursedStream.print(assistant.getLastnameMother());
+ 								coursedCoursesStream.print(assistant.getRut());
  								moreThanOneProfessorAsisstants = true;
  							}
  						} else if (icourse instanceof IProfessors) {
  							for (Professor professor : ((IProfessors) icourse).getProfessors()) {
  								if (moreThanOneProfessorAsisstants) {
- 									coursedStream.print(";");
+ 									coursedCoursesStream.print(";");
  								}
- 								coursedStream.print(professor.getName());
- 								coursedStream.print(":");
- 								coursedStream.print(professor.getLastnameFather());
- 								coursedStream.print(":");
- 								coursedStream.print(professor.getLastnameMother());
+ 								coursedCoursesStream.print(professor.getRut());
  								moreThanOneProfessorAsisstants = true;
  							}
  						}
-						coursedStream.print("&");
+ 						coursedCoursesStream.print("&");
 						coursedCoursesStream.print(icourse.getClassroom().getInitials());
-						coursedStream.print("&");
+						coursedCoursesStream.print("&");
 						Boolean moreThanOneDayModuleTuple = false;
 						for (DayModuleTuple dayModuleTuple : icourse.getSchedule().getModules()) {
 							if (moreThanOneDayModuleTuple) {
-									coursedStream.print(";");
+									coursedCoursesStream.print(";");
 								}
-							coursedStream.print(dayModuleTuple.day.toString());
-							coursedStream.print(":");
-							coursedStream.print(dayModuleTuple.module.toString());
+							coursedCoursesStream.print(dayModuleTuple.day.toString());
+							coursedCoursesStream.print(":");
+							coursedCoursesStream.print(dayModuleTuple.module.toString());
 							moreThanOneDayModuleTuple = true;
 						}
+						coursedCoursesStream.println("");
 					}
 				}
 
@@ -162,6 +157,7 @@ public class StudentsReaderWriter {
 					coursesStream.print(course.getInitials());
 					coursesStream.print("&");
 					coursesStream.print(course.getSection());
+					coursesStream.println("");
 				}
 
 				// id&yearEntrance&yearGraduation&regularStudent&rut&name&lastnameFather&lastnameMother&address&gender&access&phone&birthdayString
@@ -190,14 +186,14 @@ public class StudentsReaderWriter {
 				infoStream.print(student.getPhone());
 				infoStream.print("&");
 				infoStream.print(Utilities.getStringFromDate(student.getBirthday()));
-				infoStream.print("&");
-				infoStream.print(student);
+				infoStream.println("");
 
 				// name&year
 				for (StudyProgram studyProgram : student.getCurriculum().getStudyPrograms()) {
 					studyProgramsStream.print(studyProgram.getName());
 					studyProgramsStream.print("&");
 					studyProgramsStream.print(studyProgram.getyearProgram());
+					studyProgramsStream.println("");
 				}
 				
 				coursedStream.close();
@@ -357,7 +353,7 @@ public class StudentsReaderWriter {
 								coursesList.add(course);
 							}
 						}
-						coursesString = coursedReader.readLine();
+						coursesString = coursesReader.readLine();
 					}
 					
 					while (studyProgramsString != null) {

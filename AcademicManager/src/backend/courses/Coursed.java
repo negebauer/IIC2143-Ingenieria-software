@@ -60,6 +60,7 @@ public class Coursed {
 		this.year = year;
 		this.approved = approved;
 		this.grade = grade;
+		this.courses = new ArrayList<ICourse>();
 	}
 
 	/**
