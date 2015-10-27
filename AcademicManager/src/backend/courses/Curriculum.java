@@ -76,7 +76,7 @@ public class Curriculum {
 	
 	/**
 	 * Returns all the coursed semesters of this curriculum.
-	 * @return A list of CoursedSemester objetcs.
+	 * @return A list of CoursedSemester objects.
 	 */
 	public ArrayList<CoursedSemester> getCoursedSemesters() {
 		ArrayList<CoursedSemester> coursedSemesters = new ArrayList<CoursedSemester>();

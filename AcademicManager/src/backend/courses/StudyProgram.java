@@ -64,6 +64,7 @@ public class StudyProgram {
 	}
 
 	/**
+	 * The semesters must be sorted in ascending order [semester 1, semester 2, ...].
 	 * @return The semesters of this StudyProgram.
 	 */
 	public ArrayList<Semester> getSemesters() {

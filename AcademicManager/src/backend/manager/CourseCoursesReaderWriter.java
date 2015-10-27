@@ -118,7 +118,6 @@ public class CourseCoursesReaderWriter {
 			FileInputStream fileInputStream = new FileInputStream (FolderFileManager.adminCourseCourses);
 			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(fileInputStream));
 			String icourseString = bufferedReader.readLine();
-			System.out.print(icourseString);
 			while (icourseString != null ) {
 				String[] arguments = icourseString.split("&");
 				

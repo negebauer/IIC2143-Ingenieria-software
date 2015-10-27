@@ -65,10 +65,8 @@ public class Messages {
 		bufferedReader.close();
 		return language;
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return SupportedLanguage.defaultLanguage();

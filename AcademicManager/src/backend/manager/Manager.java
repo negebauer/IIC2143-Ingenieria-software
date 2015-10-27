@@ -1,10 +1,18 @@
 package backend.manager;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintStream;
 import java.util.ArrayList;
 
 import backend.courses.Classroom;
 import backend.courses.Course;
 import backend.courses.StudyProgram;
+import backend.others.Messages;
+import backend.others.Messages.SupportedLanguage;
 import backend.users.Admin;
 import backend.users.Assistant;
 import backend.users.Professor;
@@ -44,17 +52,11 @@ public class Manager {
 		classrooms = ClassroomReaderWriter.readClasrooms();
 		courses = CoursesReaderWriter.readCourses();
 		professors = ProfessorsReaderWriter.readProfessors();
-//		TODO
-//		studyPrograms = StudyProgramsReaderWriter.readStudyPrograms();
+		studyPrograms = StudyProgramsReaderWriter.readStudyPrograms(courses);
 		CourseCoursesReaderWriter.readCourseCourses(courses, assistants, professors, classrooms);
-	}
-	
-	/**
-	 * Switches language between Spanish and English for the software.
-	 */
-	public String changeLanguage() {
-		
-		return "";
+		EvaluationsReaderWriter.readCoursesEvaluations(courses, classrooms);
+		CourseCoRequirementsReaderWriter.readCoursesCoRequirements(courses);
+		CourseRequirementsReaderWriter.readCoursesRequirements(courses);
 	}
 	
 	/**
@@ -69,6 +71,43 @@ public class Manager {
 //		TODO
 //		StudyProgramsReaderWriter.writerStudyPrograms(studyPrograms);
 		CourseCoursesReaderWriter.writeCoursesCourses(courses);
+		EvaluationsReaderWriter.writeCoursesEvaluations(courses);
+		CourseCoRequirementsReaderWriter.writeCoursesCoRequirements(courses);
+		CourseRequirementsReaderWriter.writeCoursesRequirements(courses);
+	}
+	
+	/**
+	 * Switches language between Spanish and English for the software.
+	 */
+	public String changeLanguage() {
+		String returnString = "44";
+		try {
+			FileInputStream fileInputStream = new FileInputStream (FolderFileManager.language);
+			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(fileInputStream));
+			SupportedLanguage language = Messages.SupportedLanguage.valueOf(bufferedReader.readLine());
+			fileInputStream.close();
+
+			FileOutputStream fileOutputStream = new FileOutputStream (FolderFileManager.language);
+			PrintStream printStream = new PrintStream(fileOutputStream);
+
+			switch (language) {
+			case ENGLISH:
+				returnString =  "ES";
+				printStream.println("SPANISH");
+			case SPANISH:
+				returnString =  "EN";
+				printStream.println("ENGLISH");
+			default:
+				returnString =  "44";
+			}
+
+			fileOutputStream.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+
+		}
+		return returnString;
 	}
 
 }
