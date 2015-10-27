@@ -32,7 +32,7 @@ public class LogInController implements Initializable, IController {
 	@FXML
 	Label labelLogIn;
 	@FXML
-	Button btnLenguage;
+	Button btnLanguage;
 	
 	public void setUp(){
 		btnSignIn.setText(Messages.getUILabel(UILabel.SIGN_IN));
@@ -40,23 +40,24 @@ public class LogInController implements Initializable, IController {
 		labelSignIn.setText(Messages.getUILabel(UILabel.SIGN_IN_AS_USER));
 		labelRegistration.setText(Messages.getUILabel(UILabel.DONT_HAVE_ACCOUNT_REGISTER));
 		labelLogIn.setText(Messages.getUILabel(UILabel.LOG_IN));
+		btnLanguage.setText(Messages.LANGUAGE().toString().substring(0, 2));
 		
 		ArrayList<String> users = new ArrayList<String>();
 		
 		for (Professor professor : Manager.INSTANCE.professors) {
-			users.add(professor.getRut() + " " + professor.getName() + " " + professor.getLastnameFather() + " " + professor.getLastnameMother());
+			users.add(Messages.getUILabel(UILabel.PROFESSOR) + " " + professor.getRut() + " " + professor.getName() + " " + professor.getLastnameFather() + " " + professor.getLastnameMother());
 		}
 		
 		for (Student student : Manager.INSTANCE.students) {
-			users.add(student.getRut() + " " + student.getName() + " " + student.getLastnameFather() + " " + student.getLastnameMother());
+			users.add(Messages.getUILabel(UILabel.STUDENT) + " " + student.getRut() + " " + student.getName() + " " + student.getLastnameFather() + " " + student.getLastnameMother());
 		}
 		
 		for (Assistant assistant : Manager.INSTANCE.assistants) {
-			users.add(assistant.getRut() + " " + assistant.getName() + " " + assistant.getLastnameFather() + " " + assistant.getLastnameMother());
+			users.add(Messages.getUILabel(UILabel.ASSISTANT) + " " + assistant.getRut() + " " + assistant.getName() + " " + assistant.getLastnameFather() + " " + assistant.getLastnameMother());
 		}
 		
 		for (Admin admin : Manager.INSTANCE.admins) {
-			users.add(admin.getRut() + " " + admin.getName() + " " + admin.getLastnameFather() + " " + admin.getLastnameMother());
+			users.add(Messages.getUILabel(UILabel.ADMINISTRATOR) + " " + admin.getRut() + " " + admin.getName() + " " + admin.getLastnameFather() + " " + admin.getLastnameMother());
 		}
 		
 		chBxUsers.setItems(FXCollections.observableArrayList(users));
@@ -69,7 +70,7 @@ public class LogInController implements Initializable, IController {
 		users.addAll(Manager.INSTANCE.admins);
 		
 		for (User user : users) {
-			if (this.chBxUsers.getSelectionModel().getSelectedItem().split(" ")[0].equals(user.getRut())) {
+			if (this.chBxUsers.getSelectionModel().getSelectedItem().split(" ")[1].equals(user.getRut())) {
 				Manager.INSTANCE.currentUser = user;
 				break;
 			}
@@ -92,8 +93,9 @@ public class LogInController implements Initializable, IController {
 		ViewUtilities.openView(location, "Registro");
 	}
 	
-	public void btnLenguage_Pressed(){
+	public void btnLanguage_Pressed(){
 		Manager.INSTANCE.changeLanguage();
+		setUp();
 	}
 	
 	@Override

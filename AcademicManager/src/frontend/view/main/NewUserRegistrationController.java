@@ -112,7 +112,7 @@ public class NewUserRegistrationController implements IController{
 		
 		String[] accesos = new String[]{
 				Messages.getUILabel(UILabel.STUDENT), 
-				Messages.getUILabel(UILabel.PROFFESOR), 
+				Messages.getUILabel(UILabel.PROFESSOR), 
 				Messages.getUILabel(UILabel.ADMINISTRATOR)
 		};
 		
@@ -127,7 +127,7 @@ public class NewUserRegistrationController implements IController{
 							isAdmin = false;
 							isProfessor = false;
 							isStudent = true;
-						} else if (accesos[newValue.intValue()] == Messages.getUILabel(UILabel.PROFFESOR)) {
+						} else if (accesos[newValue.intValue()] == Messages.getUILabel(UILabel.PROFESSOR)) {
 							hideStudentFields();
 							isAdmin = false;
 							isProfessor = true;
@@ -147,16 +147,19 @@ public class NewUserRegistrationController implements IController{
 	}
 	
 	public void btnContinue_Pressed() {
+		// TODO Clean text boxes and selectiones BEFORE creating Users.
+		Gender gender = chBxSex.getSelectionModel().getSelectedItem().equals(Messages.getUILabel(UILabel.MALE)) ? Gender.MALE : Gender.FEMALE;
+		
 		if (isAdmin) {
-			Manager.INSTANCE.admins.add(new Admin(txBxRUT.getText(), txBxName.getText(), txBxLastFather.getText(), txBxLastMother.getText(), txBxAdress.getText(), Gender.valueOf(chBxSex.getSelectionModel().getSelectedItem()), txBxCellPhone.getText().split("+")[1], txBxBirthDay.getText() + "." + txBxBirthMonth.getText() + "." + txBxBirthYear.getText()));
+			Manager.INSTANCE.admins.add(new Admin(txBxRUT.getText(), txBxName.getText(), txBxLastFather.getText(), txBxLastMother.getText(), txBxAdress.getText(), gender, txBxCellPhone.getText().split("+")[1], txBxBirthDay.getText() + "." + txBxBirthMonth.getText() + "." + txBxBirthYear.getText()));
 		} else if (isProfessor) {
-			Manager.INSTANCE.professors.add(new Professor(txBxRUT.getText(), txBxName.getText(), txBxLastFather.getText(), txBxLastMother.getText(), txBxAdress.getText(), Gender.valueOf(chBxSex.getSelectionModel().getSelectedItem()), txBxCellPhone.getText().split("+")[1], txBxBirthDay.getText() + "." + txBxBirthMonth.getText() + "." + txBxBirthYear.getText()));
+			Manager.INSTANCE.professors.add(new Professor(txBxRUT.getText(), txBxName.getText(), txBxLastFather.getText(), txBxLastMother.getText(), txBxAdress.getText(), gender, txBxCellPhone.getText().split("+")[1], txBxBirthDay.getText() + "." + txBxBirthMonth.getText() + "." + txBxBirthYear.getText()));
 		} else if (isStudent) {
 			ArrayList<StudyProgram> studyPrograms = new ArrayList<StudyProgram>();
 			for (String carreer : chBxCarreers.getItems()) {
 				studyPrograms.add(Manager.INSTANCE.getStudyProgramForName(carreer));
 			}
-			Manager.INSTANCE.students.add(new Student(Manager.INSTANCE.getNewStudentID(), Calendar.YEAR, studyPrograms, txBxRUT.getText(), txBxName.getText(), txBxLastFather.getText(), txBxLastMother.getText(), txBxAdress.getText(), Gender.valueOf(chBxSex.getSelectionModel().getSelectedItem()), txBxCellPhone.getText().split("+")[1], txBxBirthDay.getText() + "." + txBxBirthMonth.getText() + "." + txBxBirthYear.getText()));
+			Manager.INSTANCE.students.add(new Student(Manager.INSTANCE.getNewStudentID(), Calendar.YEAR, studyPrograms, txBxRUT.getText(), txBxName.getText(), txBxLastFather.getText(), txBxLastMother.getText(), txBxAdress.getText(), gender, txBxCellPhone.getText().split("+")[1], txBxBirthDay.getText() + "." + txBxBirthMonth.getText() + "." + txBxBirthYear.getText()));
 		}
 		
 		URL location = getClass().getResource(Const.LOG_IN);

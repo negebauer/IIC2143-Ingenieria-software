@@ -53,10 +53,8 @@ public class Messages {
 		COURSE_WAS_DELETED
 		
 	}
-	
-	public static SupportedLanguage LANGUAGE = getSessionLanguage();
-	
-	public static SupportedLanguage getSessionLanguage() {
+		
+	public static SupportedLanguage LANGUAGE() {
 		try {
 		FileInputStream fileInputStream = new FileInputStream (FolderFileManager.language);
 		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(fileInputStream));
@@ -89,7 +87,7 @@ public class Messages {
 	 */
 	public static String getMessage(Message message, String additionalInfo) {
 		additionalInfo = "\n" + additionalInfo != null ? additionalInfo : "";
-		switch (LANGUAGE) {
+		switch (LANGUAGE()) {
 		case ENGLISH:
 			return ENGLISH.get(message) + additionalInfo;
 		case SPANISH:
@@ -167,7 +165,7 @@ public class Messages {
     }
     
     public static String getDay(Day day) {
-    	switch (LANGUAGE) {
+    	switch (LANGUAGE()) {
 		case ENGLISH:
 			return DAY_ENGLISH.get(day);
 		case SPANISH:
@@ -224,7 +222,7 @@ public class Messages {
 		CONTINUE,
 		ADMINISTRATOR,
 		STUDENT,
-		PROFFESOR,
+		PROFESSOR,
 		MALE,
 		FEMALE,
 		NAME,
@@ -244,12 +242,13 @@ public class Messages {
 		CREATE_NEW_STUDY_PROGRAM,
 		EDIT_STUDY_PROGRAM, 
 		ADD,
-		REMOVE
+		REMOVE,
+		ASSISTANT
 		
 	}
 	
 	public static String getUILabel(UILabel label) {
-		switch (LANGUAGE) {
+		switch (LANGUAGE()) {
 		case ENGLISH:
 			return UI_LABEL_ENGLISH.get(label);
 		case SPANISH:
@@ -283,7 +282,7 @@ public class Messages {
         result.put(UILabel.CONTINUE, 						"Continue");
         result.put(UILabel.ADMINISTRATOR, 					"Administrator");
         result.put(UILabel.STUDENT, 						"Student");
-        result.put(UILabel.PROFFESOR, 						"Proffesor");
+        result.put(UILabel.PROFESSOR, 						"Professor");
         result.put(UILabel.MALE, 							"Male");
         result.put(UILabel.FEMALE, 							"Female");
         result.put(UILabel.NAME, 							"Name");
@@ -304,6 +303,7 @@ public class Messages {
         result.put(UILabel.EDIT_STUDY_PROGRAM, 				"Edit an existing Study Program");
         result.put(UILabel.ADD, 							"Add Carreer");
         result.put(UILabel.REMOVE,				 			"Remove Carreer");
+        result.put(UILabel.ASSISTANT,			 			"Assistant");
         return Collections.unmodifiableMap(result);
     }
 	
@@ -317,17 +317,17 @@ public class Messages {
         result.put(UILabel.CHANGE_MODE_ADMIN_TO_STUDENT,	"Cambiar a modo Estudiante");
         result.put(UILabel.CHANGE_MODE_STUDENT_TO_ADMIN,	"Cambiar a modo Administrador");
         result.put(UILabel.WELCOME_MESSAGE,					"BIENVENIDO A ACADEMIC TOOL MANAGER PROFESSIONAL!!!");
-        result.put(UILabel.WHAT_TO_DO_NEXT_QUESTION,		"�Que deseas hacer ahora?");
+        result.put(UILabel.WHAT_TO_DO_NEXT_QUESTION,		"¿Que deseas hacer ahora?");
         result.put(UILabel.SIGN_IN, 						"Iniciar Sesion");
         result.put(UILabel.REGISTER, 						"Registrarse");
         result.put(UILabel.SIGN_IN_AS_USER, 				"Iniciar como usuario");
-        result.put(UILabel.DONT_HAVE_ACCOUNT_REGISTER, 		"�No tienes una cuenta?, Registrate!");
+        result.put(UILabel.DONT_HAVE_ACCOUNT_REGISTER, 		"¿No tienes una cuenta?, Registrate!");
         result.put(UILabel.LOG_IN, 							"INICIO DE SESION");
         result.put(UILabel.TO_USE_ATM_MUST_REGISTER, 		"Para poder usar Academic Tool Manager Professional debes registrarte pimero:");
         result.put(UILabel.CONTINUE, 						"Continuar");
         result.put(UILabel.ADMINISTRATOR, 					"Administrador");
         result.put(UILabel.STUDENT, 						"Alumno");
-        result.put(UILabel.PROFFESOR, 						"Profesor");
+        result.put(UILabel.PROFESSOR, 						"Profesor");
         result.put(UILabel.MALE, 							"Masculino");
         result.put(UILabel.FEMALE, 							"Femenino");
         result.put(UILabel.NAME, 							"Nombre");
@@ -348,6 +348,7 @@ public class Messages {
         result.put(UILabel.EDIT_STUDY_PROGRAM, 				"Editar una Malla existente");
         result.put(UILabel.ADD, 							"Agregar");
         result.put(UILabel.REMOVE, 							"Quitar");
+        result.put(UILabel.ASSISTANT,			 			"Ayudante");
         return Collections.unmodifiableMap(result);
     }
 }

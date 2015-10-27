@@ -15,8 +15,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public final class ViewUtilities {
-
-	public static boolean EDITOR = false;
 	
 	/***
 	 * Open a new windows view
@@ -29,7 +27,6 @@ public final class ViewUtilities {
 		Parent root = null; 	
 		try 
 		{
-			EDITOR = title.contains("Edit");
 			root = (Parent) loader.load();
 			((IController) loader.getController()).setUp();
 			Stage stage = CurrentViewHandler.INSTANCE.primaryStage;

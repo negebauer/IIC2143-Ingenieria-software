@@ -95,8 +95,7 @@ public class Manager {
 	/**
 	 * Switches language between Spanish and English for the software.
 	 */
-	public String changeLanguage() {
-		String returnString = "44";
+	public void changeLanguage() {
 		try {
 			FileInputStream fileInputStream = new FileInputStream (FolderFileManager.language);
 			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(fileInputStream));
@@ -108,13 +107,11 @@ public class Manager {
 
 			switch (language) {
 			case ENGLISH:
-				returnString =  SupportedLanguage.SPANISH.toString().substring(0, 2);
 				printStream.println(SupportedLanguage.SPANISH.toString());
 			case SPANISH:
-				returnString = SupportedLanguage.ENGLISH.toString().substring(0, 2);
 				printStream.println(SupportedLanguage.ENGLISH.toString());
 			default:
-				returnString =  "44";
+				break;
 			}
 
 			fileOutputStream.close();
@@ -123,7 +120,6 @@ public class Manager {
 		} finally {
 
 		}
-		return returnString;
 	}
 
 	public int getNewStudentID() {
