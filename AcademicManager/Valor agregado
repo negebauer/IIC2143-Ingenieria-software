@@ -7,7 +7,26 @@ Valor agregado:
 	
 Sugeridos:
 
-	- Soporte online
-	- Recomendar ramos en base a historial de ramos, malla
-	- Interfaz gráfica amigable
+	- Soporte online <= ESTE TENEMOS QUE HACER
+	- Recomendar ramos  en base a historial de ramos, malla <= Mas complicado, muy bacan
+	- Interfaz gráfica amigable <=  Seria choro
 	- 
+	
+	
+
+Pedidos para entrega 5:
+	
+Se debe poder agregar a los cursos una descripci ́on de los mismos y los contenidos que se ver ́an. El alumno al crear su semestre debe poder ver esta descripci ́on.
+La descripcion ya es un atributo que manejamos (details) no deberia costarnos
+
+Debe incorporar un nuevo tipo de usuario: el profesor, quien podr ́a acceder a la plataforma para calificar a los alumnos en los distintos ramos que  ́el dicta y los alumnos hayan tomado.
+Tenemos el usuario, no lo de calificar ramos (cambio mas grande)
+
+Dado que el alumno ya no controla la evaluaci ́on de su semestre, se debe poder archivar autom ́atica- mente cuando todos sus ramos hayan sido calificados por sus profesores respectivos.
+Mismo que arriba
+
+Debe poder soportar una especie de foro, en el cual los alumnos pueden dejar la opini ́on del ramo, as ́ı como compartir apuntes u otro material que crean que ser ́a de utilidad al resto.
+Dificil
+
+Debe manejar el concepto de carreras paralelas. Un alumno puede tener semestres distintos para cada carrera que est ́a cursando.
+Ya lo tenemos
