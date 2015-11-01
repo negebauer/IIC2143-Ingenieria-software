@@ -20,7 +20,7 @@ import backend.users.Professor;
 import backend.users.Student;
 import backend.users.User.Gender;
 
-public class NewUserRegistrationController implements IController{
+public class NewUserRegistrationController extends UIViewController {
 	
 	@FXML
 	Label labelToUseATMMustRegister;
@@ -89,6 +89,7 @@ public class NewUserRegistrationController implements IController{
 	
 	@Override
 	public void setUp(){
+		super.setUp();
 		labelToUseATMMustRegister.setText(Messages.getUILabel(UILabel.TO_USE_ATM_MUST_REGISTER));
 		btnContinue.setText(Messages.getUILabel(UILabel.CONTINUE));
 		
@@ -121,6 +122,7 @@ public class NewUserRegistrationController implements IController{
 		
 		chBxAccess.getSelectionModel().selectedIndexProperty().addListener(
 				new ChangeListener<Number>() {
+					@Override
 					public void changed (ObservableValue<? extends Number> observableValue, Number value, Number newValue) {
 						if (accesos[newValue.intValue()] == Messages.getUILabel(UILabel.STUDENT)){
 							showStudentFields();
@@ -162,8 +164,8 @@ public class NewUserRegistrationController implements IController{
 			Manager.INSTANCE.students.add(new Student(Manager.INSTANCE.getNewStudentID(), Calendar.YEAR, studyPrograms, txBxRUT.getText(), txBxName.getText(), txBxLastFather.getText(), txBxLastMother.getText(), txBxAdress.getText(), gender, txBxCellPhone.getText().split("+")[1], txBxBirthDay.getText() + "." + txBxBirthMonth.getText() + "." + txBxBirthYear.getText()));
 		}
 		
-		URL location = getClass().getResource(Const.LOG_IN);
-		ViewUtilities.openView(location, "Iniciar Sesion");
+		URL location = getClass().getResource(UIConst.LOG_IN);
+		ViewUtilities.openView(location);
 	}
 	
 	public void showStudentFields() {

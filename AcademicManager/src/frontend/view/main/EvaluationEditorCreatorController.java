@@ -3,7 +3,7 @@ package frontend.view.main;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-public class EvaluationEditorCreatorController implements IController {
+public class EvaluationEditorCreatorController extends UIViewController {
 	
 	@FXML
 	Label labelEvaluationsEditor;
@@ -42,7 +42,7 @@ public class EvaluationEditorCreatorController implements IController {
 	
 	@Override
 	public void setUp() {
-		// TODO Auto-generated method stub
+		super.setUp();
 		
 	}
 	

@@ -3,7 +3,7 @@ package frontend.view.main;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-public class ICourseEditorCreatorController implements IController {
+public class ICourseEditorCreatorController extends UIViewController {
 	
 	@FXML
 	ChoiceBox<String> chBxICourses;
@@ -52,7 +52,7 @@ public class ICourseEditorCreatorController implements IController {
 	
 	@Override
 	public void setUp() {
-		// TODO Auto-generated method stub
+		super.setUp();
 		
 	}
 

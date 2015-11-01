@@ -5,6 +5,7 @@ import java.net.URL;
 
 import frontend.view.main.CurrentViewHandler;
 import frontend.view.main.LogInController;
+import frontend.view.main.UIConst;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -22,7 +23,8 @@ public class Main extends Application {
 		FolderFileManager.checkFolders();
 		Manager.INSTANCE.loadData();
 		Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
-	        public void run() {
+	        @Override
+			public void run() {
 	        	Manager.INSTANCE.saveData();
 	        }
 	    }));
@@ -38,14 +40,12 @@ public class Main extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {
-		
 		this.primaryStage = primaryStage;
 		this.showLogInView();		
 	}
 	
 	private void showLogInView() {
-		
-		URL location = getClass().getResource("/frontend/view/main/LogIn.fxml");
+		URL location = getClass().getResource(UIConst.LOG_IN);
 		FXMLLoader fxmlLoader = new FXMLLoader(location);
 		
 		try {

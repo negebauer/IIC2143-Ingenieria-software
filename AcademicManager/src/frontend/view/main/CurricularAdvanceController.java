@@ -14,7 +14,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 
-public class CurricularAdvanceController implements IController {
+public class CurricularAdvanceController extends UIViewController {
 	
 	@FXML
 	Label labelCurricularAdvanceWelcomeMessage;	
@@ -30,7 +30,7 @@ public class CurricularAdvanceController implements IController {
 	
 	@Override
 	public void setUp() {
-		// TODO Auto-generated method stub
+		super.setUp();
 		
 	}
 	

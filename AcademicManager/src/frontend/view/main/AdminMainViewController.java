@@ -5,7 +5,7 @@ import backend.others.Messages.UILabel;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-public class AdminMainViewController implements IController {
+public class AdminMainViewController extends UIViewController {
 	
 	@FXML
 	Label labelWelcomeMessage;
@@ -19,6 +19,7 @@ public class AdminMainViewController implements IController {
 	Button btnLogOut;
 	
 	public void setUp() {
+		super.setUp();
 		labelWelcomeMessage.setText(Messages.getUILabel(UILabel.WELCOME_MESSAGE_ADMIN));
 		labelWhatDoNext.setText(Messages.getUILabel(UILabel.WHAT_TO_DO_NEXT_QUESTION));
 		btnCreateNewStudyProgram.setText(Messages.getUILabel(UILabel.CREATE_NEW_STUDY_PROGRAM));

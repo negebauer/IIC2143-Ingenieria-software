@@ -16,28 +16,32 @@ import javafx.stage.Stage;
 
 public final class ViewUtilities {
 	
-	/***
-	 * Open a new windows view
+	/**
+	 * Open a new window view
 	 * @param location
-	 * @param title
 	 */
-	public static void openView(URL location, String title) {
+	public static void openView(URL location) {
 
 		FXMLLoader loader = new FXMLLoader(location);
 		Parent root = null; 	
-		try 
-		{
+		try {
 			root = (Parent) loader.load();
-			((IController) loader.getController()).setUp();
+			((UIViewController) loader.getController()).setUp();
 			Stage stage = CurrentViewHandler.INSTANCE.primaryStage;
 			stage.setScene(new Scene(root));
-			stage.setTitle(title);
+			stage.setTitle("RENNAB");
 			stage.show();
 			
-		} 
-		catch (IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	/**
+	 * Changes the view title
+	 */
+	public static void setTitle(UIViewController view, String title) {
+		
 	}
 	
 	/***
@@ -45,7 +49,6 @@ public final class ViewUtilities {
 	 * @param o
 	 */
 	public static void changeOV(Object o) {
-		
 		if(o instanceof Button)
 			((Button)o).visibleProperty().set(!((Button)o).visibleProperty().get());
 		else if(o instanceof Label)

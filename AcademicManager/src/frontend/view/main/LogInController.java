@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import backend.manager.Manager;
-import backend.others.Const;
 import backend.others.Messages;
 import backend.others.Messages.UILabel;
 import backend.users.*;
@@ -17,7 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 
-public class LogInController implements Initializable, IController {
+public class LogInController extends UIViewController implements Initializable {
 	
 	@FXML
 	ChoiceBox<String> chBxUsers;
@@ -31,16 +30,15 @@ public class LogInController implements Initializable, IController {
 	Label labelRegistration;
 	@FXML
 	Label labelLogIn;
-	@FXML
-	Button btnLanguage;
 	
+	@Override
 	public void setUp(){
+		super.setUp();
 		btnSignIn.setText(Messages.getUILabel(UILabel.SIGN_IN));
 		btnRegister.setText(Messages.getUILabel(UILabel.REGISTER));
 		labelSignIn.setText(Messages.getUILabel(UILabel.SIGN_IN_AS_USER));
 		labelRegistration.setText(Messages.getUILabel(UILabel.DONT_HAVE_ACCOUNT_REGISTER));
 		labelLogIn.setText(Messages.getUILabel(UILabel.LOG_IN));
-		btnLanguage.setText(Messages.LANGUAGE().toString().substring(0, 2));
 		
 		ArrayList<String> users = new ArrayList<String>();
 		
@@ -77,11 +75,11 @@ public class LogInController implements Initializable, IController {
 		}
 		
 		if (Manager.INSTANCE.currentUser instanceof Student) {
-			URL location = getClass().getResource(Const.MAIN_MENU);
-			ViewUtilities.openView(location, "Menu Principal");
+			URL location = getClass().getResource(UIConst.MAIN_MENU);
+			ViewUtilities.openView(location);
 		} else if (Manager.INSTANCE.currentUser instanceof Admin) {
-			URL location = getClass().getResource(Const.COURSE_ADMIN);
-			ViewUtilities.openView(location, "Menu Principal");
+			URL location = getClass().getResource(UIConst.COURSE_ADMIN);
+			ViewUtilities.openView(location);
 		} else {
 			System.out.println("ASD");
 		}
@@ -89,14 +87,10 @@ public class LogInController implements Initializable, IController {
 	}
 	
 	public void btnRegister_Pressed() {
-		URL location = getClass().getResource(Const.USER_REGISTRATION);
-		ViewUtilities.openView(location, "Registro");
+		URL location = getClass().getResource(UIConst.USER_REGISTRATION);
+		ViewUtilities.openView(location);
 	}
 	
-	public void btnLanguage_Pressed(){
-		Manager.INSTANCE.changeLanguage();
-		setUp();
-	}
 	
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {

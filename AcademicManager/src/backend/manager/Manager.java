@@ -47,6 +47,13 @@ public class Manager {
 	private Manager() {
 		
 	}
+	
+	/**
+	 * Reloads all the data from the server
+	 */
+	public void reloadData() {
+		// TODO Implement
+	}
 
 	/**
 	 * Loads all the data from the `database`.

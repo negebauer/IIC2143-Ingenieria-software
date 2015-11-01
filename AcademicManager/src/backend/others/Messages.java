@@ -243,7 +243,8 @@ public class Messages {
 		EDIT_STUDY_PROGRAM, 
 		ADD,
 		REMOVE,
-		ASSISTANT
+		ASSISTANT,
+		BACK
 		
 	}
 	
@@ -298,12 +299,13 @@ public class Messages {
         result.put(UILabel.MONTH, 							"Month");
         result.put(UILabel.YEAR, 							"Year");
         result.put(UILabel.PICK_CARREER, 					"Pick Carreer(s)");
-        result.put(UILabel.LOGOUT, 							"LogOut");
+        result.put(UILabel.LOGOUT, 							"Logout");
         result.put(UILabel.CREATE_NEW_STUDY_PROGRAM, 		"Create new Study Program");
         result.put(UILabel.EDIT_STUDY_PROGRAM, 				"Edit an existing Study Program");
         result.put(UILabel.ADD, 							"Add Carreer");
         result.put(UILabel.REMOVE,				 			"Remove Carreer");
         result.put(UILabel.ASSISTANT,			 			"Assistant");
+        result.put(UILabel.BACK,			 				"Back");
         return Collections.unmodifiableMap(result);
     }
 	
@@ -349,6 +351,7 @@ public class Messages {
         result.put(UILabel.ADD, 							"Agregar");
         result.put(UILabel.REMOVE, 							"Quitar");
         result.put(UILabel.ASSISTANT,			 			"Ayudante");
+        result.put(UILabel.BACK,			 				"Atras");
         return Collections.unmodifiableMap(result);
     }
 }

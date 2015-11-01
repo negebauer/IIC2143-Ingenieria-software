@@ -10,7 +10,6 @@ import backend.courses.Semester;
 import backend.courses.StudyProgram;
 import backend.enums.AcademicSemester;
 import backend.manager.Manager;
-import backend.others.Const;
 import backend.users.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -22,7 +21,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
-public class SemesterEditorCreatorController implements IController {
+public class SemesterEditorCreatorController extends UIViewController {
 	
 	@FXML
 	Label labelSemesterEditorWelcomeMessage;
@@ -132,8 +131,8 @@ public class SemesterEditorCreatorController implements IController {
 		Semester newSemester = new Semester(toAcademicSemester(chBxSemesterType.getSelectionModel().getSelectedItem()), Integer.valueOf(txBxYear.getText()), Integer.valueOf(txBxMaxCredits.getText()),coursedCourses, courses );
 		((Student)Manager.INSTANCE.currentUser).getCurriculum().setCurrentSemester(newSemester);
 		
-		URL location = getClass().getResource(Const.SEMESTER_ADMIN);
-		ViewUtilities.openView(location, "Editar Semestre");
+		URL location = getClass().getResource(UIConst.SEMESTER_ADMIN);
+		ViewUtilities.openView(location);
 	}
 	
 	public AcademicSemester toAcademicSemester(String semesterString) {
@@ -178,6 +177,7 @@ public class SemesterEditorCreatorController implements IController {
 		
 		chBxSemesters.getSelectionModel().selectedIndexProperty().addListener(
 				new ChangeListener<Number>() {
+					@Override
 					public void changed (ObservableValue<? extends Number> observableValue, Number value, Number newValue) {
 						if (stringSemesters.get(newValue.intValue()) != null){
 							btnEditSemester.setVisible(true);
@@ -233,7 +233,7 @@ public class SemesterEditorCreatorController implements IController {
 	
 	@Override
 	public void setUp() {
-		// TODO Make language stuff
+		super.setUp();
 		
 	}
 }

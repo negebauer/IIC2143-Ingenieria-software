@@ -3,7 +3,7 @@ package frontend.view.main;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-public class ShowScheduleController implements IController {
+public class ShowScheduleController extends UIViewController {
 	
 	@FXML
 	Label labelShowScheduleWelcomeMessage;	
@@ -11,7 +11,7 @@ public class ShowScheduleController implements IController {
 	ChoiceBox<?> chBxSemesters;
 	@Override
 	public void setUp() {
-		// TODO Auto-generated method stub
+		super.setUp();
 		
 	}
 }

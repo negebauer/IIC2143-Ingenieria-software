@@ -9,7 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
-public class MainViewController implements IController {
+public class MainViewController extends UIViewController {
 
 	@FXML
 	Button btnEditSemester;
@@ -27,7 +27,7 @@ public class MainViewController implements IController {
 	Button btnCloseSession;
 
 	public void setUp() {
-		
+		super.setUp();
 		btnCreateNewSemester.setText(Messages.getUILabel(UILabel.STUDENT_CREATE_NEW_SEMESTER));
 		btnEditSemester.setText(Messages.getUILabel(UILabel.STUDENT_EDIT_SEMESTER));
 		btnCurricularAdvance.setText(Messages.getUILabel(UILabel.STUDENT_SEE_CURRICULAR_ADVANCE));
@@ -40,32 +40,32 @@ public class MainViewController implements IController {
 
 	public void btnCreateNewSemester_Pressed() {
 
-		URL location = getClass().getResource(Const.SEMESTER_ADMIN);
-		ViewUtilities.openView(location, "Crear Semestre");
+		URL location = getClass().getResource(UIConst.SEMESTER_ADMIN);
+		ViewUtilities.openView(location);
 	}
 
 	public void btnCurricularAdvance_Pressed() {
 
-		URL location = getClass().getResource(Const.CURRICULAR_ADVANCE);
-		ViewUtilities.openView(location, "Avance Curricular");
+		URL location = getClass().getResource(UIConst.CURRICULAR_ADVANCE);
+		ViewUtilities.openView(location);
 	}
 
 	public void btnEditSemester_Pressed() {
 
-		URL location = getClass().getResource(Const.SEMESTER_ADMIN);
-		ViewUtilities.openView(location, "Editar Semestre");
+		URL location = getClass().getResource(UIConst.SEMESTER_ADMIN);
+		ViewUtilities.openView(location);
 	}
 
 	public void btnShowSchedule_Pressed() {
 
-		URL location = getClass().getResource(Const.SHOW_SCHEDULE);
-		ViewUtilities.openView(location, "Mostrar Horario");
+		URL location = getClass().getResource(UIConst.SHOW_SCHEDULE);
+		ViewUtilities.openView(location);
 	}
 
 	public void btnCloseSession_Pressed() {
 
-		URL location = getClass().getResource(Const.LOG_IN);
-		ViewUtilities.openView(location, "Iniciar Sesion");
+		URL location = getClass().getResource(UIConst.LOG_IN);
+		ViewUtilities.openView(location);
 	}
 
 }
