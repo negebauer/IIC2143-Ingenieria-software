@@ -76,7 +76,6 @@ public class Manager {
 	 */
 	public void saveData() {
 		System.out.println("Starting to save data...");
-		
 		AdminReaderWriter.writeAdmins(admins);
 		AssistantsReaderWriter.writeAssistants(assistants);
 		ClassroomReaderWriter.writeClassrooms(classrooms);
