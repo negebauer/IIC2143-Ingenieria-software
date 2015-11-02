@@ -21,6 +21,11 @@ public final class ViewUtilities {
 	 * @param location
 	 */
 	public static void openView(URL location, URL sender) {
+		
+		if (location == null) {
+			System.out.println("ADJAWAWDWD");
+		}
+		
 		FXMLLoader loader = new FXMLLoader(location);
 		Parent root = null; 	
 		try {

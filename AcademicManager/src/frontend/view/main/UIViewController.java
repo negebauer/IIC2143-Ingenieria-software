@@ -5,7 +5,6 @@ import java.net.URL;
 import backend.manager.Manager;
 import backend.others.Messages;
 import backend.others.Messages.UILabel;
-import backend.users.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 

@@ -71,6 +71,7 @@ public class LogInController extends UIViewController implements Initializable {
 		ArrayList<User> users = new ArrayList<User>();
 		users.addAll(Manager.INSTANCE.students);
 		users.addAll(Manager.INSTANCE.admins);
+		users.addAll(Manager.INSTANCE.professors);
 		
 		for (User user : users) {
 			if (this.chBxUsers.getSelectionModel().getSelectedItem().split(" ")[1].equals(user.getRut())) {
