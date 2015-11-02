@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.view.main.SemesterEditorCreatorController">
+   <children>
+      <Pane prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <Label fx:id="labelSemesterEditorWelcomeMessage" layoutX="24.0" layoutY="67.0" prefHeight="42.0" prefWidth="299.0" text="Este es el editor de Semestres, para comenzar selecciona un semestre a editar o elige crear uno nuevo" wrapText="true" />
+            <Button fx:id="btnCreateSemester" layoutX="52.0" layoutY="347.0" mnemonicParsing="false" onAction="#btnCreateSemester_Pressed" style="-fx-background-radius: 0;" text="Crear Semestre" />
+            <ChoiceBox fx:id="chBxSemesters" layoutX="52.0" layoutY="127.0" prefHeight="25.0" prefWidth="172.0" style="-fx-background-radius: 0;" />
+            <Button fx:id="btnEditSemester" layoutX="53.0" layoutY="154.0" mnemonicParsing="false" onAction="#btnEditSemester_Pressed" style="-fx-background-radius: 0;" text="Editar Semestre" visible="false" />
+            <ChoiceBox fx:id="chBxCourses" layoutX="52.0" layoutY="179.0" prefHeight="25.0" prefWidth="172.0" style="-fx-background-radius: 0;" visible="false" />
+            <Button fx:id="btnAddCourse" layoutX="246.0" layoutY="154.0" mnemonicParsing="false" onAction="#btnAddCourse_Pressed" style="-fx-background-radius: 0;" text="Agregar Curso" visible="false" />
+            <ListView fx:id="listCoursesInSemester" layoutX="362.0" layoutY="100.0" prefHeight="200.0" prefWidth="162.0" visible="false" />
+            <Button fx:id="btnRemoveCourse" layoutX="246.0" layoutY="192.0" mnemonicParsing="false" onAction="#btnRemoveCourse_Pressed" prefHeight="25.0" prefWidth="92.0" style="-fx-background-radius: 0;" text="Quitar Curso" visible="false" />
+            <Button fx:id="btnSaveSemester" layoutX="454.0" layoutY="347.0" mnemonicParsing="false" onAction="#btnSaveSemester_Pressed" style="-fx-background-radius: 0;" text="Guardar Semestre" visible="false" />
+            <ChoiceBox fx:id="chBxSemesterType" layoutX="52.0" layoutY="88.0" prefHeight="25.0" prefWidth="172.0" style="-fx-background-radius: 0;" visible="false" />
+            <TextField fx:id="txBxYear" layoutX="53.0" layoutY="258.0" style="-fx-background-radius: 0;" visible="false" />
+            <TextField fx:id="txBxMaxCredits" layoutX="53.0" layoutY="322.0" style="-fx-background-radius: 0;" visible="false" />
+            <Label fx:id="labelSelectSemester" layoutX="53.0" layoutY="71.0" text="Selecciona el semestre (primero, segundo)" visible="false" />
+            <Label fx:id="labelYear" layoutX="53.0" layoutY="241.0" text="Año" visible="false" />
+            <Label fx:id="labelMaxCredits" layoutX="53.0" layoutY="305.0" text="Maximo de creditos" visible="false" />
+            <Label fx:id="labelSelectCourse" layoutX="53.0" layoutY="158.0" text="Selecciona un Curso" visible="false" />
+         </children>
+      </Pane>
+      <Button fx:id="btnLogout" layoutX="531.0" layoutY="369.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
+      <Button fx:id="btnBack" layoutX="24.0" layoutY="28.0" mnemonicParsing="false" onAction="#btnBack_Pressed" style="-fx-background-radius: 0;" text="Back" />
+      <Button fx:id="btnReload" layoutX="518.0" layoutY="28.0" mnemonicParsing="false" onAction="#btnReload_Pressed" style="-fx-background-radius: 0;" text="R" />
+      <Button fx:id="btnLanguage" layoutX="561.0" layoutY="28.0" mnemonicParsing="false" onAction="#btnLanguage_Pressed" style="-fx-background-radius: 0;" text="ES" />
+   </children>
+</AnchorPane>

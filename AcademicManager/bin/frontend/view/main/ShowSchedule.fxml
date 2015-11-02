@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.view.main.ShowScheduleController">
+   <children>
+      <Pane prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <Label fx:id="labelShowScheduleWelcomeMessage" layoutX="30.0" layoutY="63.0" prefHeight="42.0" prefWidth="231.0" text="Este es el horario actual, selecciona un semestre para ver uno anterior" wrapText="true" />
+            <ChoiceBox fx:id="chBxSemesters" layoutX="60.0" layoutY="105.0" prefHeight="25.0" prefWidth="172.0" style="-fx-background-radius: 0;" />
+         </children>
+      </Pane>
+      <Button fx:id="btnBack" layoutX="24.0" layoutY="28.0" mnemonicParsing="false" onAction="#btnBack_Pressed" style="-fx-background-radius: 0;" text="Back" />
+      <Button fx:id="btnLogout" layoutX="531.0" layoutY="369.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
+      <Button fx:id="btnReload" layoutX="518.0" layoutY="28.0" mnemonicParsing="false" onAction="#btnReload_Pressed" style="-fx-background-radius: 0;" text="R" />
+      <Button fx:id="btnLanguage" layoutX="561.0" layoutY="28.0" mnemonicParsing="false" onAction="#btnLanguage_Pressed" style="-fx-background-radius: 0;" text="ES" />
+   </children>
+</AnchorPane>
