@@ -8,7 +8,6 @@ import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.parse4j.ParseObject;
 import org.parse4j.util.ParseDecoder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -76,6 +75,7 @@ public class ParseFieldOperations {
 			}
 		});
 		registerDecoder("AddRelation", new ParseFieldOperationFactory() {
+			@SuppressWarnings({ "rawtypes", "unchecked" })
 			public ParseFieldOperation decode(JSONObject object) throws JSONException {
 				JSONArray objectsArray = object.optJSONArray("objects");
 				List objectsList = (List) ParseDecoder.decode(objectsArray);
@@ -84,6 +84,7 @@ public class ParseFieldOperations {
 			}
 		});
 		registerDecoder("RemoveRelation", new ParseFieldOperationFactory() {
+			@SuppressWarnings({ "rawtypes", "unchecked" })
 			public ParseFieldOperation decode(JSONObject object) throws JSONException {
 				JSONArray objectsArray = object.optJSONArray("objects");
 				List objectsList = (List) ParseDecoder.decode(objectsArray);

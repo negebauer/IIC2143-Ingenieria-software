@@ -2,7 +2,6 @@ package frontend.view.main;
 
 import java.net.URL;
 
-import backend.others.Const;
 import backend.others.Messages;
 import backend.others.Messages.UILabel;
 import javafx.fxml.FXML;

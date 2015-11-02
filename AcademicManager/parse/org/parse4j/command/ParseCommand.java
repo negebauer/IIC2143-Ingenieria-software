@@ -8,6 +8,7 @@ import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.parse4j.Parse;
 import org.parse4j.ParseException;
@@ -75,38 +76,66 @@ public abstract class ParseCommand {
 			requestBase.addHeader(HEADER_CONTENT_TYPE, CONTENT_TYPE_JSON);
 		}
 
-		if (data.has(FIELD_SESSION_TOKEN)) {
-			requestBase.addHeader(HEADER_SESSION_TOKEN,
-					data.getString(FIELD_SESSION_TOKEN));
-		} else if (ParseUser.currentUser != null) {
-			// if we are logged in, pass the session token
-			requestBase.addHeader(HEADER_SESSION_TOKEN,
-					ParseUser.currentUser.getSessionToken());
+		try {
+			if (data.has(FIELD_SESSION_TOKEN)) {
+				requestBase.addHeader(HEADER_SESSION_TOKEN,
+						data.getString(FIELD_SESSION_TOKEN));
+			} else if (ParseUser.currentUser != null) {
+				// if we are logged in, pass the session token
+				requestBase.addHeader(HEADER_SESSION_TOKEN,
+						ParseUser.currentUser.getSessionToken());
+			}
+		} catch (JSONException e) {
+			e.printStackTrace();
 		}
 	}
 
 	public void setData(JSONObject data) {
-		this.data.put("data", data);
+		try {
+			this.data.put("data", data);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void put(String key, String value) {
-		this.data.put(key, value);
+		try {
+			this.data.put(key, value);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void put(String key, int value) {
-		this.data.put(key, value);
+		try {
+			this.data.put(key, value);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void put(String key, long value) {
-		this.data.put(key, value);
+		try {
+			this.data.put(key, value);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void put(String key, JSONObject value) {
-		this.data.put(key, value);
+		try {
+			this.data.put(key, value);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void put(String key, JSONArray value) {
-		this.data.put(key, value);
+		try {
+			this.data.put(key, value);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

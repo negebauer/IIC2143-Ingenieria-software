@@ -1,6 +1,7 @@
 package org.parse4j;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 import org.parse4j.command.ParseBatchCommand;
@@ -20,31 +21,43 @@ public class ParseBatch {
 	private static Logger LOGGER = LoggerFactory.getLogger(ParseBatch.class);
 
 	public void deleteObject(ParseObject obj) {
-		if (obj.getObjectId() == null)
-			throw new IllegalArgumentException("for delete operation your object should provide objectId");
-		JSONObject inner = new JSONObject();
-		inner.put("path", path + obj.getClassName() + "/" + obj.getObjectId());
-		inner.put("method", "DELETE");
-		inner.put("body", obj.getParseData());
-		data.put(inner);
+		try {
+			if (obj.getObjectId() == null)
+				throw new IllegalArgumentException("for delete operation your object should provide objectId");
+			JSONObject inner = new JSONObject();
+			inner.put("path", path + obj.getClassName() + "/" + obj.getObjectId());
+			inner.put("method", "DELETE");
+			inner.put("body", obj.getParseData());
+			data.put(inner);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void createObject(ParseObject obj) {
 		JSONObject inner = new JSONObject();
-		inner.put("path", path + obj.getClassName());
-		inner.put("method", "POST");
-		inner.put("body", obj.getParseData());
-		data.put(inner);
+		try {
+			inner.put("path", path + obj.getClassName());
+			inner.put("method", "POST");
+			inner.put("body", obj.getParseData());
+			data.put(inner);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
 	}
-	
+
 	public void updateObject(ParseObject obj) {
-		if (obj.getObjectId() == null)
-			throw new IllegalArgumentException("for update operation your object should provide objectId");
-		JSONObject inner = new JSONObject();
-		inner.put("path", path + obj.getClassName() + "/" + obj.getObjectId());
-		inner.put("method", "PUT");
-		inner.put("body", obj.getParseData());
-		data.put(inner);
+		try {
+			if (obj.getObjectId() == null)
+				throw new IllegalArgumentException("for update operation your object should provide objectId");
+			JSONObject inner = new JSONObject();
+			inner.put("path", path + obj.getClassName() + "/" + obj.getObjectId());
+			inner.put("method", "PUT");
+			inner.put("body", obj.getParseData());
+			data.put(inner);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
 	}
 	/**
 	 * from Parse.com->
@@ -52,17 +65,22 @@ public class ParseBatch {
 	 * Each item in the list with be a dictionary with either the success or error field set. 
 	 * @return array of json objects corresponding to every passed object if it is successfully created
 	 * @throws ParseException
+	 * @throws JSONException 
 	 */
-	public JSONArray batch() throws ParseException {
+	public JSONArray batch() throws ParseException, JSONException {
 		ParseCommand command = new ParseBatchCommand();
 		command.put("requests", data);
 		ParseResponse response = command.perform();
 		if (!response.isFailed()) {
-			Object json = new JSONTokener(response.getRawResponseBody()).nextValue();
-			if (json instanceof JSONArray) {
-				JSONArray jsonResponse = (JSONArray) json;
-				LOGGER.info("response is " + jsonResponse);
-				return jsonResponse;
+			try {
+				Object json = new JSONTokener(response.getRawResponseBody()).nextValue();
+				if (json instanceof JSONArray) {
+					JSONArray jsonResponse = (JSONArray) json;
+					LOGGER.info("response is " + jsonResponse);
+					return jsonResponse;
+				}
+			} catch (JSONException e) {
+				e.printStackTrace();
 			}
 			//if the response is not array there is an error
 			LOGGER.error("Error response");

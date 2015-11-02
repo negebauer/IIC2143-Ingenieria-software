@@ -10,6 +10,7 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.parse4j.callback.GetDataCallback;
 import org.parse4j.callback.ProgressCallback;
@@ -22,7 +23,7 @@ import org.slf4j.LoggerFactory;
 
 @SuppressWarnings("deprecation")
 public class ParseFile {	
-	
+
 	private static Logger LOGGER = LoggerFactory.getLogger(ParseFile.class);
 
 	private String endPoint;
@@ -36,10 +37,10 @@ public class ParseFile {
 	public ParseFile(String name, byte[] data, String contentType) {
 		if (data.length > ParseConstants.MAX_PARSE_FILE_SIZE) {
 			LOGGER.error(String.format(
-							"ParseFile must be less than %i bytes, current %i",
-							new Object[] {
-									Integer.valueOf(ParseConstants.MAX_PARSE_FILE_SIZE),
-									data.length }));
+					"ParseFile must be less than %i bytes, current %i",
+					new Object[] {
+							Integer.valueOf(ParseConstants.MAX_PARSE_FILE_SIZE),
+							data.length }));
 			throw new IllegalArgumentException(
 					String.format(
 							"ParseFile must be less than %i bytes, current %i",
@@ -66,7 +67,7 @@ public class ParseFile {
 	public ParseFile(byte[] data, String contentType) {
 		this(null, data, contentType);
 	}
-	
+
 	public ParseFile(String name, String url) {
 		this.name = name;
 		this.url = url;
@@ -107,11 +108,11 @@ public class ParseFile {
 	public void setData(byte[] data) {
 		this.data = data;
 	}
-	
+
 	protected String getEndPoint() {
 		return this.endPoint;
 	}
-	
+
 	public boolean isUploaded() {
 		return uplodated;
 	}
@@ -130,9 +131,9 @@ public class ParseFile {
 
 	public void save(SaveCallback saveCallback,
 			ProgressCallback progressCallback) throws ParseException {
-		
+
 		if(!isDirty() || data == null) return;
-		
+
 		ParseUploadCommand command = new ParseUploadCommand(getEndPoint());
 		command.setProgressCallback(progressCallback);
 		command.setData(data);
@@ -145,25 +146,28 @@ public class ParseFile {
 			command.setContentType(getContentType());
 		}
 		ParseResponse response = command.perform();
-		if(!response.isFailed()) {
-			JSONObject jsonResponse = response.getJsonObject();
-			if (jsonResponse == null) {
-				LOGGER.error("Empty response.");
+		try {
+			if(!response.isFailed()) {
+				JSONObject jsonResponse = response.getJsonObject();
+				if (jsonResponse == null) {
+					LOGGER.error("Empty response.");
+					throw response.getException();
+				}
+				LOGGER.info(jsonResponse.toString());
+
+				this.name = jsonResponse.getString("name");
+				this.url = jsonResponse.getString("url");
+				this.dirty = false;
+				this.uplodated = true;
+
+			}
+			else {
+				LOGGER.error("Request failed.");
 				throw response.getException();
 			}
-			LOGGER.info(jsonResponse.toString());
-			
-			this.name = jsonResponse.getString("name");
-			this.url = jsonResponse.getString("url");
-			this.dirty = false;
-			this.uplodated = true;
-			
+		} catch (JSONException e) {
+			e.printStackTrace();
 		}
-		else {
-			LOGGER.error("Request failed.");
-			throw response.getException();
-		}
-
 	}
 
 	public void saveInBackground() {
@@ -186,12 +190,13 @@ public class ParseFile {
 		ParseExecutor.runInBackground(task);
 
 	}
-	
+
 	public byte[] getData() throws ParseException {
-		
+
 		HttpGet get = new HttpGet(url);
+		@SuppressWarnings("resource")
 		HttpClient client = new DefaultHttpClient();
-		
+
 		HttpResponse response;
 		try {
 			response = client.execute(get);
@@ -200,36 +205,33 @@ public class ParseFile {
 					.getHeaders("Content-Length");
 			if (contentLengthHeader.length > 0) {
 				totalSize = Integer.parseInt(contentLengthHeader[0].getValue());
-	             LOGGER.debug("File size: {}", totalSize);
+				LOGGER.debug("File size: {}", totalSize);
 			}
 			int downloadedSize = 0;
-            InputStream responseStream = response.getEntity().getContent();
-            ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+			InputStream responseStream = response.getEntity().getContent();
+			ByteArrayOutputStream buffer = new ByteArrayOutputStream();
 			byte[] data = new byte[32768];
-            int nRead;
-            while ((nRead = responseStream.read(data, 0, data.length)) != -1) {
-              buffer.write(data, 0, nRead);
-              downloadedSize += nRead;
-              LOGGER.debug("Downloaded: {}", downloadedSize);
-            }
-            
-            responseStream.close();
-            buffer.close();
-            return buffer.toByteArray();			
+			int nRead;
+			while ((nRead = responseStream.read(data, 0, data.length)) != -1) {
+				buffer.write(data, 0, nRead);
+				downloadedSize += nRead;
+				LOGGER.debug("Downloaded: {}", downloadedSize);
+			}
+
+			responseStream.close();
+			buffer.close();
+			return buffer.toByteArray();			
 		}
 		catch(ClientProtocolException cpe) {
 			throw new ParseException(100, "bad protocol: " + cpe.getClass().getName() + ": " + cpe.getMessage());
 		} catch (IOException e) {
 			throw new ParseException(100, "i/o failure: " + e.getClass().getName() + ": " + e.getMessage());
 		}
-		finally {
-			//client.close();
-		}
 		
 	}
-	
+
 	public void getData(GetDataCallback dataCallback) throws ParseException {
-		
+
 		try {
 			byte[] result = getData();
 			dataCallback.done(result, null);
@@ -237,7 +239,7 @@ public class ParseFile {
 		catch(ParseException pe) {
 			dataCallback.done(null, pe);
 		}
-		
+
 	}	
 
 	public void getDataInBackground() {
@@ -272,7 +274,7 @@ public class ParseFile {
 			}
 		}
 	}
-	
+
 	class GetDataInBackgroundThread extends Thread {
 		GetDataCallback getDataCallback;
 		byte[] data;

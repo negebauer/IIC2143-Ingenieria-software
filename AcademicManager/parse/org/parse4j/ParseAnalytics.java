@@ -3,6 +3,7 @@ package org.parse4j;
 import java.util.Date;
 import java.util.Map;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.parse4j.command.ParsePostCommand;
 import org.parse4j.command.ParseResponse;
@@ -44,9 +45,13 @@ public class ParseAnalytics {
 			public void run() {
 				ParsePostCommand command = new ParsePostCommand("events", event);
 				JSONObject data = new JSONObject();
-				data.put("at", ParseEncoder.encode(new Date(), null));
-				if(dimensions != null && dimensions.size() > 0) {
-					data.put("dimentions", ParseEncoder.encode(dimensions, null));
+				try {
+					data.put("at", ParseEncoder.encode(new Date(), null));
+					if(dimensions != null && dimensions.size() > 0) {
+						data.put("dimentions", ParseEncoder.encode(dimensions, null));
+					}
+				} catch (JSONException e) {
+					e.printStackTrace();
 				}
 				command.setData(data);
 				try {
@@ -57,7 +62,7 @@ public class ParseAnalytics {
 					else {
 						System.out.println("done");
 					}
-				} catch (ParseException pe) {
+				} catch (ParseException | JSONException pe) {
 					System.out.println(pe);
 				}
 			}

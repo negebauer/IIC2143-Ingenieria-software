@@ -43,6 +43,8 @@ public class ParseGetCommand extends ParseCommand {
 			}
 			catch(UnsupportedEncodingException e) {
 				LOGGER.error("Error while building request url", e);
+			} catch (JSONException e) {
+				e.printStackTrace();
 			}
 		}
 		
@@ -51,7 +53,8 @@ public class ParseGetCommand extends ParseCommand {
 				JSONObject query = (JSONObject) data.get("data");
 				try {
 					
-					Iterator it = query.keySet().iterator();
+					Iterator it = query.keys();
+//					Iterator it = query.keySet().iterator();
 					if(it.hasNext()) {
 						url += "?";
 					}

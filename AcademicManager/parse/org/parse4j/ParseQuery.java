@@ -23,7 +23,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class ParseQuery<T extends ParseObject> {
-	
+
 	private static Logger LOGGER = LoggerFactory.getLogger(ParseQuery.class);
 
 	private String className;
@@ -34,7 +34,7 @@ public class ParseQuery<T extends ParseObject> {
 	private int limit;
 	private int skip;
 	private String order;
-	
+
 	private boolean trace;
 	private boolean caseSensitive = true;
 	private String strTrace;
@@ -52,7 +52,7 @@ public class ParseQuery<T extends ParseObject> {
 		this.trace = false;
 		this.extraOptions = new HashMap<String, Object>();
 	}
-	
+
 	public static <T extends ParseObject> ParseQuery<T> getQuery(
 			Class<T> subclass) {
 		return new ParseQuery<T>(subclass);
@@ -62,7 +62,7 @@ public class ParseQuery<T extends ParseObject> {
 			String className) {
 		return new ParseQuery<T>(className);
 	}
-	
+
 	private void addCondition(String key, String condition, Object value) {
 		KeyConstraints whereValue = null;
 
@@ -79,13 +79,13 @@ public class ParseQuery<T extends ParseObject> {
 		whereValue.put(condition, value);
 		this.where.put(key, whereValue);
 	}
-	
-	
+
+
 	public ParseQuery<T> whereEqualTo(String key, Object value) {
 		this.where.put(key, value);
 		return this;
 	}
-	
+
 	public ParseQuery<T> whereLessThan(String key, Object value) {
 		addCondition(key, "$lt", value);
 		return this;
@@ -116,7 +116,7 @@ public class ParseQuery<T extends ParseObject> {
 		addCondition(key, "$in", new ArrayList(values));
 		return this;
 	}
-	
+
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public ParseQuery<T> whereContainsAll(String key, Collection<?> values) {
 		addCondition(key, "$all", new ArrayList(values));
@@ -156,7 +156,7 @@ public class ParseQuery<T extends ParseObject> {
 		addCondition(key, "$dontSelect", condition);
 		return this;
 	}
-	
+
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public ParseQuery<T> whereNotContainedIn(String key, Collection<? extends Object> values) {
 		addCondition(key, "$nin", new ArrayList(values));
@@ -206,7 +206,7 @@ public class ParseQuery<T extends ParseObject> {
 		}
 		return this;
 	}
-	
+
 	public ParseQuery<T> whereContains(String key, String substring) {
 		whereMatches(key, new StringBuilder(caseSensitive?"":"(?i)").
 				append(Pattern.quote(substring)).toString());
@@ -225,7 +225,7 @@ public class ParseQuery<T extends ParseObject> {
 				append(Pattern.quote(suffix)).append("$").toString());
 		return this;
 	}
-	
+
 	public ParseQuery<T> whereExists(String key) {
 		addCondition(key, "$exists", Boolean.valueOf(true));
 		return this;
@@ -245,7 +245,7 @@ public class ParseQuery<T extends ParseObject> {
 		this.extraOptions.put("redirectClassNameForKey", key);
 		return this;
 	}
-	
+
 	public void include(String key) {
 		this.include.add(key);
 	}	
@@ -277,7 +277,7 @@ public class ParseQuery<T extends ParseObject> {
 		}
 		return this;
 	}
-	
+
 	public void limit(int newLimit) {
 		this.limit = newLimit;
 	}
@@ -301,11 +301,11 @@ public class ParseQuery<T extends ParseObject> {
 	public int getSkip() {
 		return this.skip;
 	}
-	
+
 	public String getClassName() {
 		return this.className;
 	}
-	
+
 	String[] sortKeys() {
 		if (this.order == null) {
 			return new String[0];
@@ -323,13 +323,13 @@ public class ParseQuery<T extends ParseObject> {
 		}
 		this.selectedKeys.addAll(keys);
 	}
-	
-	
+
+
 	public JSONObject toREST() {
 		JSONObject params = new JSONObject();
 		try {
 			params.put("className", this.className);
-			
+
 			if(this.where.size() > 0) {
 				params.put("where", ParseEncoder.encode(this.where, PointerEncodingStrategy.get()));
 			}
@@ -337,30 +337,30 @@ public class ParseQuery<T extends ParseObject> {
 			if (this.limit >= 0) {
 				params.put("limit", this.limit);
 			}
-			
+
 			if (this.skip > 0) {
 				params.put("skip", this.skip);
 			}
-			
+
 			if (this.order != null) {
 				params.put("order", this.order);
 			}
-			
+
 			if (!this.include.isEmpty()) {
 				params.put("include", Parse.join(this.include, ","));
 			}
-			
+
 			if (this.selectedKeys != null) {
 				params.put("keys", Parse.join(this.selectedKeys, ","));
 			}
-			
+
 			if (this.trace) {
 				params.put("trace", "1");
 			}
 
 			for (String key : this.extraOptions.keySet())
 				params.put(key, ParseEncoder.encode(this.extraOptions.get(key), PointerEncodingStrategy.get()));
-		
+
 		} catch (JSONException e) {
 			LOGGER.error("Error parsing json", e);
 			throw new RuntimeException(e);
@@ -368,20 +368,20 @@ public class ParseQuery<T extends ParseObject> {
 
 		return params;
 	}
-	
-	
-	
-	public T get(String objectId) throws ParseException {
-		
+
+
+
+	public T get(String objectId) throws ParseException, JSONException {
+
 		whereEqualTo("objectId", objectId);
-		
+
 		List<T> results = find();
 		if(results != null && results.size() > 0 ) {
 			return results.get(0);
 		}
-		
+
 		return null;
-		
+
 		/*
 		String endPoint;
 		if(!"users".equals(getClassName()) && !"roles".equals(getClassName())) {
@@ -390,7 +390,7 @@ public class ParseQuery<T extends ParseObject> {
 		else {
 			endPoint = getClassName();
 		}
-		
+
 
 		ParseGetCommand command = new ParseGetCommand(endPoint);
 		JSONObject query = whereEqualTo("objectId", objectId).toREST();
@@ -408,7 +408,7 @@ public class ParseQuery<T extends ParseObject> {
 				if(objs.length() == 0) {
 					return null;
 				}
-				
+
 				ParseObject po = new ParseObject(getClassName());
 				JSONObject obj = (JSONObject) objs.get(0);
 				po.setData(obj);
@@ -428,7 +428,7 @@ public class ParseQuery<T extends ParseObject> {
 			LOGGER.debug("Request failed.");
 			throw response.getException();
 		}
-		*/
+		 */
 
 	}
 
@@ -436,7 +436,7 @@ public class ParseQuery<T extends ParseObject> {
 		GetInBackgroundThread task = new GetInBackgroundThread(objectId, callback);
 		ParseExecutor.runInBackground(task);
 	}
-	
+
 	class GetInBackgroundThread extends Thread {
 		GetCallback<T> callback;
 		String objectId;
@@ -453,6 +453,8 @@ public class ParseQuery<T extends ParseObject> {
 				object = get(objectId);
 			} catch (ParseException e) {
 				exception = e;
+			} catch (JSONException e) {
+				e.printStackTrace();
 			}
 			if (callback != null) {
 				callback.done(object, exception);
@@ -464,11 +466,12 @@ public class ParseQuery<T extends ParseObject> {
 	 * 
 	 * @return
 	 * @throws ParseException
+	 * @throws JSONException 
 	 */
-	public List<T> find() throws ParseException {
-		
+	public List<T> find() throws ParseException, JSONException {
+
 		return find(toREST());
-		
+
 	}
 
 	/**
@@ -476,16 +479,15 @@ public class ParseQuery<T extends ParseObject> {
 	 * @param json
 	 * @return
 	 * @throws ParseException
+	 * @throws JSONException 
 	 */
-	public List<T> find(String json) throws ParseException {
-		
+	public List<T> find(String json) throws ParseException, JSONException {
 		return find(new JSONObject(json));
-		
 	}
-		
+
 	@SuppressWarnings("unchecked")
-	public List<T> find(JSONObject query) throws ParseException {
-		
+	public List<T> find(JSONObject query) throws ParseException, JSONException {
+
 		String endPoint;
 		if(!"users".equals(getClassName()) && !"roles".equals(getClassName())) {
 			endPoint = "classes/" + getClassName();
@@ -510,26 +512,26 @@ public class ParseQuery<T extends ParseObject> {
 				if(objs.length() == 0) {
 					return null;
 				}
-				
+
 				if(trace) {
 					strTrace = json.getString("trace");
 					if(LOGGER.isDebugEnabled()) {
 						LOGGER.debug(strTrace);
 					}
 				}
-				
+
 				results = new ArrayList<T>();
 				for(int i = 0; i < objs.length(); i++) {
 					Class<?> clazz = ParseRegistry.getParseClass(getClassName());
 					if(clazz != null) {
 						T po = (T) clazz.newInstance();
 						JSONObject obj = (JSONObject) objs.get(i);
-						 
+
 						/*
 						We disable some checks while setting data in objects during fetch because
 						those checks are useful only when setting data from client
 						code. The "true" argument disables such checks.
-						*/
+						 */
 						po.setData(obj, true);
 						results.add((T) po);
 					}
@@ -555,15 +557,15 @@ public class ParseQuery<T extends ParseObject> {
 			} catch (InstantiationException e) {
 				LOGGER.error("Error while instantiating class. Did you register your subclass?", e);
 				throw new ParseException(
-					ParseException.INVALID_JSON,
-					"Although Parse reports object successfully saved, the response was invalid.",
-					e);
+						ParseException.INVALID_JSON,
+						"Although Parse reports object successfully saved, the response was invalid.",
+						e);
 			} catch (IllegalAccessException e) {
 				LOGGER.error("Error while instantiating class. Did you register your subclass?",e);
 				throw new ParseException(
-					ParseException.INVALID_JSON,
-					"Although Parse reports object successfully saved, the response was invalid.",
-					e);
+						ParseException.INVALID_JSON,
+						"Although Parse reports object successfully saved, the response was invalid.",
+						e);
 			}
 		}
 		else {
@@ -576,7 +578,7 @@ public class ParseQuery<T extends ParseObject> {
 		FindInBackgroundThread task = new FindInBackgroundThread(callback);
 		ParseExecutor.runInBackground(task);
 	}
-	
+
 	class FindInBackgroundThread extends Thread {
 		FindCallback<T> callback;
 
@@ -591,6 +593,8 @@ public class ParseQuery<T extends ParseObject> {
 				object = find();
 			} catch (ParseException e) {
 				exception = e;
+			} catch (JSONException e) {
+				e.printStackTrace();
 			}
 			if (callback != null) {
 				callback.done(object, exception);
@@ -598,8 +602,8 @@ public class ParseQuery<T extends ParseObject> {
 		}
 	}
 
-	public int count() throws ParseException {
-		
+	public int count() throws ParseException, JSONException {
+
 		String endPoint;
 		if(!"users".equals(getClassName()) && !"roles".equals(getClassName())) {
 			endPoint = "classes/" + getClassName();
@@ -610,8 +614,12 @@ public class ParseQuery<T extends ParseObject> {
 
 		ParseGetCommand command = new ParseGetCommand(endPoint);
 		JSONObject query = toREST();
-		query.put("count", 1);
-		query.put("limit", 0);
+		try {
+			query.put("count", 1);
+			query.put("limit", 0);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
 		query.remove("className");
 		command.setData(query);
 		ParseResponse response = command.perform();
@@ -639,14 +647,14 @@ public class ParseQuery<T extends ParseObject> {
 			LOGGER.debug("Request failed.");
 			throw response.getException();
 		}
-		
+
 	}
 
 	public void countInBackground(CountCallback countCallback) {
 		CountInBackgroundThread task = new CountInBackgroundThread(countCallback);
 		ParseExecutor.runInBackground(task);
 	}
-	
+
 	class CountInBackgroundThread extends Thread {
 		CountCallback callback;
 
@@ -661,6 +669,8 @@ public class ParseQuery<T extends ParseObject> {
 				count = count();
 			} catch (ParseException e) {
 				exception = e;
+			} catch (JSONException e) {
+				e.printStackTrace();
 			}
 			if (callback != null) {
 				callback.done(count, exception);
@@ -673,7 +683,7 @@ public class ParseQuery<T extends ParseObject> {
 
 	@SuppressWarnings("serial")
 	static class QueryConstraints extends HashMap<String, Object> { }
-	
+
 
 	public class RelationConstraint {
 		private String key;

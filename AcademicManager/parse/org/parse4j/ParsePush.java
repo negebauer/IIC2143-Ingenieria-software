@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.parse4j.command.ParsePostCommand;
 import org.parse4j.command.ParseResponse;
@@ -17,7 +18,9 @@ public class ParsePush {
 	private Date expirationTime = null;
 	private Date pushTime = null;
 	private Long expirationTimeInterval = null;
+	@SuppressWarnings("unused")
 	private Boolean pushToIOS = null;
+	@SuppressWarnings("unused")
 	private Boolean pushToAndroid = null;
 	private JSONObject pushData = new JSONObject();
 
@@ -30,7 +33,7 @@ public class ParsePush {
 		this.channelSet = new ArrayList<String>();
 		this.channelSet.addAll(channels);
 	}
-	
+
 	public void setPushTime(Date time) {
 		this.pushTime = time;
 	}	
@@ -51,38 +54,58 @@ public class ParsePush {
 	}
 
 	public void setMessage(String message) {
-		this.pushData.put("alert", message);
+		try {
+			this.pushData.put("alert", message);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
 	}
-        
-        public void setBadge(String badge) {
-                if(badge == null || badge.length() == 0) {
-                    badge = "Increment";
-                }
-                this.pushData.put("badge", badge);
-        }
-        
-        public void setSound(String sound) {
-                this.pushData.put("sound", sound);
-        }
-        
-        public void setTitle(String title) {
-                this.pushData.put("title", title);
-        }
-        
-        public void setData(String key, String value) {
-                this.pushData.put(key, value);
-        }
-	
-	public void send() throws ParseException {
+
+	public void setBadge(String badge) {
+		if(badge == null || badge.length() == 0) {
+			badge = "Increment";
+		}
+		try {
+			this.pushData.put("badge", badge);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void setSound(String sound) {
+		try {
+			this.pushData.put("sound", sound);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void setTitle(String title) {
+		try {
+			this.pushData.put("title", title);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void setData(String key, String value) {
+		try {
+			this.pushData.put(key, value);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void send() throws ParseException, JSONException {
 		ParsePostCommand command = new ParsePostCommand("push");
-                JSONObject requestData = getJSONData();
+		JSONObject requestData = getJSONData();
 		command.setData(requestData);
 		ParseResponse response = command.perform();
 		if(response.isFailed()) {
 			throw response.getException();
 		}	
 	}	
-	
+
 	public void sendInBackground(String message, List<String> channels) {
 		SendPushInBackgroundThread event = new SendPushInBackgroundThread();
 		ParseExecutor.runInBackground(event);
@@ -94,33 +117,37 @@ public class ParsePush {
 			try {
 				send();
 			} catch (ParseException e) {
-				//TODO
+			} catch (JSONException e) {
+				e.printStackTrace();
 			}
 		}
 	}
 
 	private JSONObject getJSONData() {
-                JSONObject data = new JSONObject();
-                data.put("data", this.pushData);
+		JSONObject data = new JSONObject();
+		try {
+			data.put("data", this.pushData);
 
-		if (this.channelSet == null) {
-			data.put("channel", "");
-		} else {
-			data.put("channels", new JSONArray(this.channelSet));
+			if (this.channelSet == null) {
+				data.put("channel", "");
+			} else {
+				data.put("channels", new JSONArray(this.channelSet));
+			}
+
+			if(pushTime != null) {
+				data.put("push_time", Parse.encodeDate(pushTime));
+			}
+
+			if(expirationTimeInterval != null) {
+				data.put("expiration_interval", expirationTimeInterval);
+			}
+
+			if(expirationTime != null) {
+				data.put("expiration_time", expirationTime);
+			}
+		} catch (JSONException e) {
+			e.printStackTrace();
 		}
-		
-		if(pushTime != null) {
-			data.put("push_time", Parse.encodeDate(pushTime));
-		}
-		
-		if(expirationTimeInterval != null) {
-			data.put("expiration_interval", expirationTimeInterval);
-		}
-		
-		if(expirationTime != null) {
-			data.put("expiration_time", expirationTime);
-		}
-		
 		return data;
 
 	}

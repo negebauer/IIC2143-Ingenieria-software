@@ -56,7 +56,7 @@ public class ParseResponse {
 		return getConnectionFailedException(e.getMessage());
 	}
 	
-	public ParseException getException() {
+	public ParseException getException() throws JSONException {
 
 		if (hasConnectionFailed()) {
 			return new ParseException(ParseException.CONNECTION_FAILED,
@@ -78,7 +78,7 @@ public class ParseResponse {
 		return getParseError(response);
 	}
 	
-	public JSONObject getJsonObject() {
+	public JSONObject getJsonObject() throws JSONException {
 		
 		return new JSONObject(responseBody);
 		/*

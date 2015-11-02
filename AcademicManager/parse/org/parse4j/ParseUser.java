@@ -115,6 +115,7 @@ public class ParseUser extends ParseObject {
 		
 		ParsePostCommand command = new ParsePostCommand(getClassName());
 		JSONObject parseData = getParseData();
+		try {
 		parseData.put("password", password);
 		command.setData(parseData);
 		ParseResponse response = command.perform();
@@ -142,10 +143,13 @@ public class ParseUser extends ParseObject {
 			LOGGER.error("Request failed.");
 			throw response.getException();
 		}
+		} catch (JSONException e1) {
+			e1.printStackTrace();
+		}
 		
 	}
 	
-	public static ParseUser login(String username, String password) throws ParseException {
+	public static ParseUser login(String username, String password) throws ParseException, JSONException {
 		
 		currentUser = null;
 		ParseGetCommand command = new ParseGetCommand("login");
@@ -190,11 +194,15 @@ public class ParseUser extends ParseObject {
 		
 	}
 	
-	public static void requestPasswordReset(String email) throws ParseException {
+	public static void requestPasswordReset(String email) throws ParseException, JSONException {
 
 		ParsePostCommand command = new ParsePostCommand("requestPasswordReset");
 		JSONObject data = new JSONObject();
+		try {
 		data.put("email", email);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
 		command.setData(data);
 		ParseResponse response = command.perform();
 		if (!response.isFailed()) {
@@ -211,7 +219,7 @@ public class ParseUser extends ParseObject {
 	}
 
 	@Override
-	public void delete() throws ParseException {
+	public void delete() throws ParseException, JSONException {
 		if(getObjectId() == null) return;
 
 		ParseCommand command = new ParseDeleteCommand(getEndPoint(), getObjectId());
