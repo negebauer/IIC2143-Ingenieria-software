@@ -1,11 +1,9 @@
 package backend.manager;
 
 import java.io.IOException;
-import java.net.URL;
 
 import frontend.view.main.CurrentViewHandler;
 import frontend.view.main.LogInController;
-import frontend.view.main.UIConst;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -45,8 +43,7 @@ public class Main extends Application {
 	}
 	
 	private void showLogInView() {
-		URL location = getClass().getResource(UIConst.LOG_IN);
-		FXMLLoader fxmlLoader = new FXMLLoader(location);
+		FXMLLoader fxmlLoader = new FXMLLoader(LogInController.getView());
 		
 		try {
 			root = (Pane)fxmlLoader.load();

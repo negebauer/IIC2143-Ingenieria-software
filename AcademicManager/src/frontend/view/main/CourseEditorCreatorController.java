@@ -1,5 +1,6 @@
 package frontend.view.main;
 
+import java.net.URL;
 import java.util.ArrayList;
 
 import backend.courses.Course;
@@ -73,9 +74,10 @@ public class CourseEditorCreatorController extends UIViewController {
 	Button btnRemoveRequirement;
 	@FXML
 	Label labelSelectCourseAsRequirement;
+	
+	static URL view = Object.class.getResource("/frontend/view/main/CourseEditorCreator.fxml");
 
 	public CourseEditorCreatorController() {
-
 		this.chBxCourses = new ChoiceBox<String>();
 		this.chBxCourses.setTooltip(new Tooltip("Selecciona un curso"));
 		this.chBxCourses.setCursor(Cursor.HAND);
@@ -92,7 +94,6 @@ public class CourseEditorCreatorController extends UIViewController {
 		this.chBxCourses.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
 			@Override
 			public void changed(ObservableValue<? extends Number> ov, Number value, Number newValue) {
-				// TODO Auto-generated method stub
 
 			}
 		});
@@ -100,7 +101,6 @@ public class CourseEditorCreatorController extends UIViewController {
 	}
 	
 	public void btnCreateCourse_Pressed() {
-
 		this.createCourseVisibility();
 	}
 	
@@ -109,7 +109,6 @@ public class CourseEditorCreatorController extends UIViewController {
 	}
 	
 	public void btnSaveCourse_Pressed() {
-		
 		this.createCourseVisibility();
 	}
 	
@@ -138,7 +137,6 @@ public class CourseEditorCreatorController extends UIViewController {
 	}
 	
 	public void createCourseVisibility() {
-		
 		//Buttons
 		ViewUtilities.changeOV(this.btnEditCourse);
 		ViewUtilities.changeOV(this.btnCreateCourse);

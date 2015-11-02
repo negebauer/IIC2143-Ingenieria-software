@@ -56,6 +56,8 @@ public class SemesterEditorCreatorController extends UIViewController {
 	@FXML
 	Label labelSelectCourse;
 	
+	static URL view = Object.class.getResource("/frontend/view/main/SemesterEditorCreator.fxml");
+	
 	private Semester actualSemester;
 	private CoursedSemester actualCoursedSemester;
 	private ArrayList<String> courses = new ArrayList<String>();
@@ -130,9 +132,8 @@ public class SemesterEditorCreatorController extends UIViewController {
 		
 		Semester newSemester = new Semester(toAcademicSemester(chBxSemesterType.getSelectionModel().getSelectedItem()), Integer.valueOf(txBxYear.getText()), Integer.valueOf(txBxMaxCredits.getText()),coursedCourses, courses );
 		((Student)Manager.INSTANCE.currentUser).getCurriculum().setCurrentSemester(newSemester);
-		
-		URL location = getClass().getResource(UIConst.SEMESTER_ADMIN);
-		ViewUtilities.openView(location);
+	
+		ViewUtilities.openView(view, view);
 	}
 	
 	public AcademicSemester toAcademicSemester(String semesterString) {

@@ -19,10 +19,12 @@ public class UIViewController {
 	Button btnBack;
 	@FXML
 	Button btnLogout;
-	
-	User currentUser;
-	URL parentView;
-	
+
+	/**
+	 * Use this variable to define the URL of the view represented by the ViewController. MUST OVERRIDE
+	 */
+	static URL view = Object.class.getResource("/frontend/view/main/UIView.fxml");
+
 	/**
 	 * You must override this function to setUp all the
 	 * buttons and labels of the View to the current language.
@@ -33,7 +35,7 @@ public class UIViewController {
 		btnReload.setText("R");
 		btnBack.setText(Messages.getUILabel(UILabel.BACK));
 		btnLogout.setText(Messages.getUILabel(UILabel.LOGOUT));
-		
+
 		//Stage stage = CurrentViewHandler.INSTANCE.primaryStage;
 		//stage.setTitle("RENNAB asdadwsads");
 	}
@@ -45,21 +47,38 @@ public class UIViewController {
 		Manager.INSTANCE.changeLanguage();
 		setUp();
 	}
-	
+
 	public void btnReload_Pressed() {
 		Manager.INSTANCE.reloadData();
 	}
-	
+
 	public void btnBack_Pressed() {
-		if (parentView != null ) {
+		URL parentView = CurrentViewHandler.INSTANCE.getParentView();
+		if (parentView != null) {
 			ViewUtilities.openView(parentView);
 		}
 	}
 
 	public void btnLogout_Pressed() {
 		Manager.INSTANCE.currentUser = null;
-		URL location = getClass().getResource(UIConst.LOG_IN);
-		ViewUtilities.openView(location);
+		CurrentViewHandler.INSTANCE.clearParentView();
+		ViewUtilities.openView(LogInController.view);
 	}
-	
+
+	public void hideLanguage() {
+		btnLanguage.setVisible(false);
+	}
+
+	public void hideReload() {
+		btnReload.setVisible(false);
+	}
+
+	public void hideBack() {
+		btnBack.setVisible(false);
+	}
+
+	public void hideLogout() {
+		btnLogout.setVisible(false);
+	}
+
 }

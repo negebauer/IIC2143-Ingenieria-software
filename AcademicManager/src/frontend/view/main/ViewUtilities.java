@@ -21,14 +21,15 @@ public final class ViewUtilities {
 	 * @param location
 	 */
 	public static void openView(URL location, URL sender) {
-
 		FXMLLoader loader = new FXMLLoader(location);
 		Parent root = null; 	
 		try {
 			root = (Parent) loader.load();
 			((UIViewController) loader.getController()).setUp();
-			((UIViewController) loader.getController()).parentView = sender;
 			Stage stage = CurrentViewHandler.INSTANCE.primaryStage;
+			if (sender != null) {
+				CurrentViewHandler.INSTANCE.addNewParentView(sender);
+			}
 			stage.setScene(new Scene(root));
 			stage.setTitle("RENNAB");
 			stage.show();
@@ -36,6 +37,10 @@ public final class ViewUtilities {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public static void openView(URL location) {
+		openView(location, null);
 	}
 	
 	/**

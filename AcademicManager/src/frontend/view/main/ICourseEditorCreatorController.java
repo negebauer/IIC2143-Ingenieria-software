@@ -1,5 +1,7 @@
 package frontend.view.main;
 
+import java.net.URL;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
@@ -49,6 +51,8 @@ public class ICourseEditorCreatorController extends UIViewController {
 	Label labelClassTypeChoose;
 	@FXML
 	ChoiceBox<String> chBxClassesTypes;
+	
+	static URL view = Object.class.getResource("/frontend/view/main/ICourseEditorCreator.fxml");
 	
 	@Override
 	public void setUp() {

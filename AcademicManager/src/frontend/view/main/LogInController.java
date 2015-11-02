@@ -31,9 +31,14 @@ public class LogInController extends UIViewController implements Initializable {
 	@FXML
 	Label labelLogIn;
 	
+	static URL view = Object.class.getResource("/frontend/view/main/LogIn.fxml");
+	
 	@Override
 	public void setUp(){
 		super.setUp();
+		hideBack();
+		hideLogout();
+		
 		btnSignIn.setText(Messages.getUILabel(UILabel.SIGN_IN));
 		btnRegister.setText(Messages.getUILabel(UILabel.REGISTER));
 		labelSignIn.setText(Messages.getUILabel(UILabel.SIGN_IN_AS_USER));
@@ -75,11 +80,9 @@ public class LogInController extends UIViewController implements Initializable {
 		}
 		
 		if (Manager.INSTANCE.currentUser instanceof Student) {
-			URL location = getClass().getResource(UIConst.MAIN_MENU);
-			ViewUtilities.openView(location);
+			ViewUtilities.openView(StudentMainViewController.view, view);
 		} else if (Manager.INSTANCE.currentUser instanceof Admin) {
-			URL location = getClass().getResource(UIConst.COURSE_ADMIN);
-			ViewUtilities.openView(location);
+			ViewUtilities.openView(CourseEditorCreatorController.view, view);
 		} else {
 			System.out.println("ASD");
 		}
@@ -87,8 +90,7 @@ public class LogInController extends UIViewController implements Initializable {
 	}
 	
 	public void btnRegister_Pressed() {
-		URL location = getClass().getResource(UIConst.USER_REGISTRATION);
-		ViewUtilities.openView(location);
+		ViewUtilities.openView(NewUserRegistrationController.view, view);
 	}
 	
 	
@@ -96,5 +98,9 @@ public class LogInController extends UIViewController implements Initializable {
 	public void initialize(URL url, ResourceBundle rb) {
 		// TODO Auto-generated method stub
 
+	}
+
+	public static URL getView() {
+		return view;
 	}
 }

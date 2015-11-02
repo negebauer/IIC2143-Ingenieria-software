@@ -86,9 +86,13 @@ public class NewUserRegistrationController extends UIViewController {
 	boolean isProfessor;
 	boolean isAdmin;
 	
+	static URL view = Object.class.getResource("/frontend/view/main/NewUserRegistration.fxml");
+	
 	@Override
 	public void setUp(){
 		super.setUp();
+		hideLogout();
+		
 		labelToUseATMMustRegister.setText(Messages.getUILabel(UILabel.TO_USE_ATM_MUST_REGISTER));
 		btnContinue.setText(Messages.getUILabel(UILabel.CONTINUE));
 		
@@ -162,9 +166,7 @@ public class NewUserRegistrationController extends UIViewController {
 			}
 			Manager.INSTANCE.students.add(new Student(Manager.INSTANCE.getNewStudentID(), Calendar.YEAR, studyPrograms, txBxRUT.getText(), txBxName.getText(), txBxLastFather.getText(), txBxLastMother.getText(), txBxAdress.getText(), gender, txBxCellPhone.getText().split("+")[1], txBxBirthDay.getText() + "." + txBxBirthMonth.getText() + "." + txBxBirthYear.getText()));
 		}
-		
-		URL location = getClass().getResource(UIConst.LOG_IN);
-		ViewUtilities.openView(location);
+		ViewUtilities.openView(LogInController.view, null);
 	}
 	
 	public void showStudentFields() {

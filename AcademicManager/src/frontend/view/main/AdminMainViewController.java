@@ -1,5 +1,7 @@
 package frontend.view.main;
 
+import java.net.URL;
+
 import backend.others.Messages;
 import backend.others.Messages.UILabel;
 import javafx.fxml.FXML;
@@ -15,8 +17,8 @@ public class AdminMainViewController extends UIViewController {
 	Button btnCreateNewStudyProgram;
 	@FXML
 	Button btnEditStudyProgram;
-	@FXML
-	Button btnLogOut;
+	
+	static URL view = Object.class.getResource("/frontend/view/main/AdminMainView.fxml");
 	
 	public void setUp() {
 		super.setUp();
@@ -24,7 +26,6 @@ public class AdminMainViewController extends UIViewController {
 		labelWhatDoNext.setText(Messages.getUILabel(UILabel.WHAT_TO_DO_NEXT_QUESTION));
 		btnCreateNewStudyProgram.setText(Messages.getUILabel(UILabel.CREATE_NEW_STUDY_PROGRAM));
 		btnEditStudyProgram.setText(Messages.getUILabel(UILabel.EDIT_STUDY_PROGRAM));
-		btnLogOut.setText(Messages.getUILabel(UILabel.LOGOUT));
 	}
 	
 	public void btnCreateNewStudyProgram_Pressed() {

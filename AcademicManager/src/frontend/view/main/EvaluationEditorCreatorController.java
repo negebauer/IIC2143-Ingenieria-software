@@ -1,5 +1,7 @@
 package frontend.view.main;
 
+import java.net.URL;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
@@ -39,6 +41,8 @@ public class EvaluationEditorCreatorController extends UIViewController {
 	Label labelEvaluationType;
 	@FXML
 	Button btnSaveEvaluation;
+	
+	static URL view = Object.class.getResource("/frontend/view/main/EvaluationEditorCreator.fxml");
 	
 	@Override
 	public void setUp() {

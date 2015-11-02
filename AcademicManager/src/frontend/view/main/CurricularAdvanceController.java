@@ -1,5 +1,6 @@
 package frontend.view.main;
 
+import java.net.URL;
 import java.util.ArrayList;
 
 import backend.courses.Curriculum;
@@ -27,6 +28,7 @@ public class CurricularAdvanceController extends UIViewController {
 	@FXML
 	Button btnShowAdvance;
 	
+	static URL view = Object.class.getResource("/frontend/view/main/CurricularAdvance.fxml");
 	
 	@Override
 	public void setUp() {
@@ -35,7 +37,6 @@ public class CurricularAdvanceController extends UIViewController {
 	}
 	
 	public void btnShowAdvance_Pressed(){
-	
 		String name = chBxStudyProgram.getSelectionModel().getSelectedItem().toString();
 		
 		Curriculum curriculum = null; //CURRICULUM ALUMNO
