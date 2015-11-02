@@ -51,11 +51,15 @@ public class UIViewController {
 	}
 	
 	public void btnBack_Pressed() {
-		ViewUtilities.openView(parentView);
+		if (parentView != null ) {
+			ViewUtilities.openView(parentView);
+		}
 	}
 
 	public void btnLogout_Pressed() {
-	
+		Manager.INSTANCE.currentUser = null;
+		URL location = getClass().getResource(UIConst.LOG_IN);
+		ViewUtilities.openView(location);
 	}
 	
 }

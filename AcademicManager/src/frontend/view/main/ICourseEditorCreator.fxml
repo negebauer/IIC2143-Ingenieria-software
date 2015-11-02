@@ -12,7 +12,7 @@
             <ChoiceBox fx:id="chBxICourses" layoutX="100.0" layoutY="142.0" prefWidth="150.0" style="-fx-background-radius: 0;" />
             <Button fx:id="btnEditICourse" layoutX="100.0" layoutY="188.0" mnemonicParsing="false" style="-fx-background-radius: 0;" text="Editar Clase" visible="false" />
             <Button fx:id="btnCreateNewICourse" layoutX="100.0" layoutY="332.0" mnemonicParsing="false" style="-fx-background-radius: 0;" text="Crear Clase" />
-            <Label layoutX="41.0" layoutY="34.0" prefHeight="36.0" prefWidth="248.0" text="Editor de Clases, selecciona una para editar o presiona para crear una nueva" wrapText="true" />
+            <Label layoutX="41.0" layoutY="76.0" prefHeight="36.0" prefWidth="248.0" text="Editor de Clases, selecciona una para editar o presiona para crear una nueva" wrapText="true" />
             <ListView fx:id="listAssistantsOrProfessors" layoutX="395.0" layoutY="102.0" prefHeight="80.0" prefWidth="184.0" visible="false" />
             <ChoiceBox fx:id="chBxAssistantsOrProfessors" layoutX="41.0" layoutY="130.0" prefWidth="150.0" style="-fx-background-radius: 0;" visible="false" />
             <Button fx:id="btnAddAssistantOrProfessor" layoutX="221.0" layoutY="111.0" mnemonicParsing="false" style="-fx-background-radius: 0;" text="Agrega Ayudante/Profesor" visible="false" />
@@ -42,5 +42,9 @@
             <ChoiceBox fx:id="chBxClassesTypes" layoutX="299.0" layoutY="211.0" prefWidth="150.0" style="-fx-background-radius: 0;" visible="false" />
          </children>
       </Pane>
+      <Button fx:id="btnLogout" layoutX="531.0" layoutY="369.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
+      <Button fx:id="btnBack" layoutX="24.0" layoutY="28.0" mnemonicParsing="false" onAction="#btnBack_Pressed" style="-fx-background-radius: 0;" text="Back" />
+      <Button fx:id="btnReload" layoutX="518.0" layoutY="28.0" mnemonicParsing="false" onAction="#btnReload_Pressed" style="-fx-background-radius: 0;" text="R" />
+      <Button fx:id="btnLanguage" layoutX="561.0" layoutY="28.0" mnemonicParsing="false" onAction="#btnLanguage_Pressed" style="-fx-background-radius: 0;" text="ES" />
    </children>
 </AnchorPane>

@@ -20,13 +20,14 @@ public final class ViewUtilities {
 	 * Open a new window view
 	 * @param location
 	 */
-	public static void openView(URL location) {
+	public static void openView(URL location, URL sender) {
 
 		FXMLLoader loader = new FXMLLoader(location);
 		Parent root = null; 	
 		try {
 			root = (Parent) loader.load();
 			((UIViewController) loader.getController()).setUp();
+			((UIViewController) loader.getController()).parentView = sender;
 			Stage stage = CurrentViewHandler.INSTANCE.primaryStage;
 			stage.setScene(new Scene(root));
 			stage.setTitle("RENNAB");

@@ -34,8 +34,5 @@ public class AdminMainViewController extends UIViewController {
 	public void btnEditStudyProgram_Pressed() {
 		
 	}
-	
-	public void btnLogOut_Pressed() {
-		
-	}
+
 }
