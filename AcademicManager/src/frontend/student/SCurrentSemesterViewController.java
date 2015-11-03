@@ -57,6 +57,7 @@ public class SCurrentSemesterViewController extends MViewController {
 		labelCurrentCourses.setText(Messages.getUILabel(UILabel.SEMESTER_CURRENT_SEMESTER_CURRENT_COURSES));
 		btnCreateNewSemester.setText(Messages.getUILabel(UILabel.SEMESTER_CURRENT_SEMESTER_CREATE_NEW));
 		labelSearchCourse.setText(Messages.getUILabel(UILabel.SEMESTER_CURRENT_SEMESTER_SEARCH_COURSE));
+		// TODO Set text values in Messages
 //		labelSelectCoure.setText(value);
 //		labelModification.setText(value);
 //		labelModificationResult.setText(value);
