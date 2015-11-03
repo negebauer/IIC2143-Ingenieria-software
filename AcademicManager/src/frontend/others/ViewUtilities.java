@@ -18,8 +18,8 @@ import javafx.stage.Stage;
 public final class ViewUtilities {
 	
 	/**
-	 * Open a new window view
-	 * @param location
+	 * Open a new window view while keeping the view hierarchy.
+	 * Allows the operation of the back button.
 	 */
 	public static void openView(URL location, URL sender) {
 		FXMLLoader loader = new FXMLLoader(location);
@@ -40,6 +40,9 @@ public final class ViewUtilities {
 		}
 	}
 	
+	/**
+	 * Opens a new window without adding it to the view hierarchy.
+	 */
 	public static void openView(URL location) {
 		openView(location, null);
 	}
