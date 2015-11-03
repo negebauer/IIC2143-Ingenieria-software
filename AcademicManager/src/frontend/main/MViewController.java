@@ -32,7 +32,9 @@ public class MViewController {
 	 * Override and call super.setUp() ALWAYS.
 	 */
 	public void setUp() {
+		Manager.INSTANCE.changeLanguage();
 		btnLanguage.setText(Messages.LANGUAGE().toString().substring(0, 2));
+		Manager.INSTANCE.changeLanguage();
 		btnReload.setText("R");
 		btnBack.setText(Messages.getUILabel(UILabel.BACK));
 		btnLogout.setText(Messages.getUILabel(UILabel.LOGOUT));
@@ -79,4 +81,29 @@ public class MViewController {
 	public void hideLogout() {
 		btnLogout.setVisible(false);
 	}
+	
+	/**
+	 * Transform the nice course info string into an easy access String[].
+	 * [initials, section, name]
+	 */
+	public String[] getParsedInitialsSectionName(String raw) {
+		String[] split1 = raw.split(" - ");
+		String[] split2 = split1[0].split("-");
+		String initials = split2[0];
+		int section = Integer.valueOf(split2[1]);
+		String name = split1[1];
+		String complete = initials + "&" + section + "&" + name;
+		return complete.split("&");
+		
+	}
+	
+	/**
+	 * Returns the course info in a nice string for the user.
+	 * Initials-Section - Name
+	 */
+	public String getParsedCourse(String initials, int section, String name) {
+		String parsed = initials + "-" + section + " - " + name;
+		return parsed;
+	}
+
 }

@@ -66,23 +66,7 @@ public class MCourseSearcherSelectorViewController extends MViewController {
 			}
 		}
 	}
-	
-	public String[] getParsedInitialsSectionName(String raw) {
-		String[] split1 = raw.split(" - ");
-		String[] split2 = split1[0].split("-");
-		String initials = split2[0];
-		int section = Integer.valueOf(split2[1]);
-		String name = split1[1];
-		String complete = initials + "&" + section + "&" + name;
-		return complete.split("&");
 		
-	}
-	
-	public String getParsedCourse(String initials, int section, String name) {
-		String parsed = initials + "-" + section + " - " + name;
-		return parsed;
-	}
-	
 	public void hideCourseSearcher() {
 		labelSearchCourse.setVisible(false);
 		
