@@ -3,6 +3,7 @@ package frontend.main;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
@@ -92,6 +93,7 @@ public class MNewUserRegistrationController extends MViewController {
 	public void setUp(){
 		super.setUp();
 		hideLogout();
+		hideStudentFields();
 		
 		labelToUseATMMustRegister.setText(Messages.getUILabel(UILabel.TO_USE_ATM_MUST_REGISTER));
 		btnContinue.setText(Messages.getUILabel(UILabel.CONTINUE));
@@ -112,7 +114,11 @@ public class MNewUserRegistrationController extends MViewController {
 		btnAddStudyPlan.setText(Messages.getUILabel(UILabel.ADD));
 		btnRemoveStudyPlan.setText(Messages.getUILabel(UILabel.REMOVE));
 		
-		//TODO listCarreers
+		ArrayList<String> studyProgramsNames = new ArrayList<String>();
+		for (StudyProgram studyProgram : Manager.INSTANCE.studyPrograms) {
+			studyProgramsNames.add(studyProgram.getName());
+		}
+		chBxCarreers.setItems(FXCollections.observableArrayList(studyProgramsNames));
 		
 		String[] accesos = new String[]{
 				Messages.getUILabel(UILabel.STUDENT), 
@@ -122,7 +128,7 @@ public class MNewUserRegistrationController extends MViewController {
 		
 		chBxAccess.setItems(FXCollections.observableArrayList(accesos));
 		chBxSex.setItems(FXCollections.observableArrayList(Messages.getUILabel(UILabel.MALE), Messages.getUILabel(UILabel.FEMALE)));
-		
+
 		chBxAccess.getSelectionModel().selectedIndexProperty().addListener(
 				new ChangeListener<Number>() {
 					@Override
@@ -145,28 +151,82 @@ public class MNewUserRegistrationController extends MViewController {
 							isStudent = false;
 							listCarreers.setItems(FXCollections.observableArrayList());
 						}
-			}
-		});
-		
+					}
+				});
 		
 	}
 	
 	public void btnContinue_Pressed() {
 		// TODO Clean text boxes and selectiones BEFORE creating Users.
+		cleanInfo();
+		Boolean valid = checkValid();
+		
+		if (!valid) {
+			return;
+		}
+		
+		String name = txBxName.getText();
+		String lastFather = txBxLastFather.getText();
+		String lastMother = txBxLastMother.getText();
+		String number = txBxCellPhone.getText();
+		String address = txBxAdress.getText();
+		String rut = txBxRUT.getText();
+		String birthday = txBxBirthDay.getText() + "." + txBxBirthMonth.getText() + "." + txBxBirthYear.getText();
 		Gender gender = chBxSex.getSelectionModel().getSelectedItem().equals(Messages.getUILabel(UILabel.MALE)) ? Gender.MALE : Gender.FEMALE;
 		
 		if (isAdmin) {
-			Manager.INSTANCE.admins.add(new Admin(txBxRUT.getText(), txBxName.getText(), txBxLastFather.getText(), txBxLastMother.getText(), txBxAdress.getText(), gender, txBxCellPhone.getText().split("+")[1], txBxBirthDay.getText() + "." + txBxBirthMonth.getText() + "." + txBxBirthYear.getText()));
+			Admin newAdmin = new Admin(rut, name, lastFather, lastMother, address, gender, number, birthday);
+			Manager.INSTANCE.admins.add(newAdmin);
 		} else if (isProfessor) {
-			Manager.INSTANCE.professors.add(new Professor(txBxRUT.getText(), txBxName.getText(), txBxLastFather.getText(), txBxLastMother.getText(), txBxAdress.getText(), gender, txBxCellPhone.getText().split("+")[1], txBxBirthDay.getText() + "." + txBxBirthMonth.getText() + "." + txBxBirthYear.getText()));
+			Professor newProfessor = new Professor(rut, name, lastFather, lastMother, address, gender, number, birthday);
+			Manager.INSTANCE.professors.add(newProfessor);
 		} else if (isStudent) {
 			ArrayList<StudyProgram> studyPrograms = new ArrayList<StudyProgram>();
-			for (String carreer : chBxCarreers.getItems()) {
-				studyPrograms.add(Manager.INSTANCE.getStudyProgramForName(carreer));
+			for (String studyProgram : chBxCarreers.getItems()) {
+				studyPrograms.add(Manager.INSTANCE.getStudyProgramForName(studyProgram));
 			}
-			Manager.INSTANCE.students.add(new Student(Manager.INSTANCE.getNewStudentID(), Calendar.YEAR, studyPrograms, txBxRUT.getText(), txBxName.getText(), txBxLastFather.getText(), txBxLastMother.getText(), txBxAdress.getText(), gender, txBxCellPhone.getText().split("+")[1], txBxBirthDay.getText() + "." + txBxBirthMonth.getText() + "." + txBxBirthYear.getText()));
+			int id = Manager.INSTANCE.getNewStudentID();
+			int year = Calendar.YEAR;
+			Student newStudent = new Student(id, year, studyPrograms, rut, name, lastFather, lastMother, address, gender, number, birthday);
+			Manager.INSTANCE.students.add(newStudent);
 		}
-		MViewUtilities.openView(MLogInController.view, null);
+		MViewUtilities.openView(MLogInController.view);
+	}
+	
+	public void cleanInfo() {
+		if (txBxRUT.getText().contains(".") || txBxRUT.getText().contains("-")) {
+			String raw = txBxRUT.getText();
+			String clean = "";
+			for (char character : raw.toCharArray()) {
+				if (character == ".".charAt(0) || character == "-".charAt(0)) {
+					continue;
+				} else {
+					clean = clean + character;
+				}
+			}
+			txBxRUT.setText(clean);
+		}
+		
+		if (txBxCellPhone.getText().contains("+")) {
+			String raw = txBxCellPhone.getText();
+			String clean = "";
+			for (char character : raw.toCharArray()) {
+				if (character == "+".charAt(0)) {
+					continue;
+				} else {
+					clean = clean + character;
+				}
+			}
+			txBxCellPhone.setText(clean);
+		}
+		
+	}
+	
+	public Boolean checkValid() {
+		if (txBxRUT.getText().length() < "12.345.678-9".length() - 3) {
+			return false;
+		}
+		return true;
 	}
 	
 	public void showStudentFields() {
@@ -185,4 +245,21 @@ public class MNewUserRegistrationController extends MViewController {
 		btnRemoveStudyPlan.setVisible(false);
 	}
 	
+	public void btnAddStudyPlan_Pressed() {
+		String studyProgramName = chBxCarreers.getSelectionModel().getSelectedItem();
+		if (!listCarreers.getItems().contains(studyProgramName) && studyProgramName != null) {
+			ObservableList<String> currentCarrers = listCarreers.getItems();
+			currentCarrers.add(studyProgramName);
+			listCarreers.setItems(FXCollections.observableArrayList(currentCarrers));
+		}
+	}
+	
+	public void btnRemoveStudyPlan_Pressed() {
+		String studyProgramName = chBxCarreers.getSelectionModel().getSelectedItem();
+		if (listCarreers.getItems().contains(studyProgramName) && studyProgramName != null) {
+			ObservableList<String> currentCarrers = listCarreers.getItems();
+			currentCarrers.remove(studyProgramName);
+			listCarreers.setItems(FXCollections.observableArrayList(currentCarrers));
+		}
+	}
 }

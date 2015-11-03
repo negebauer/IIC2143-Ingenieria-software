@@ -61,6 +61,10 @@ public class StudentsReaderWriter {
 		try {
 			for (Student student : students) {
 				String studentFolder = FolderFileManager.rootStudent + "/" + student.getId() + "_" + student.getName() + "_" + student.getLastnameFather();
+				File studentRealFolder = new File(studentFolder);
+				if (!studentRealFolder.exists()) {
+					studentRealFolder.mkdir();
+				}
 				
 				FileOutputStream coursedFile 		= new FileOutputStream(studentFolder + FolderFileManager.studentCoursed);
 				FileOutputStream coursedCourses 	= new FileOutputStream(studentFolder + FolderFileManager.studentCoursedCourses);
@@ -151,13 +155,15 @@ public class StudentsReaderWriter {
 						coursedCoursesStream.println("");
 					}
 				}
-
-				// initials&section
-				for (Course course : student.getCurriculum().getCurrentSemester().getCourses()) {
-					coursesStream.print(course.getInitials());
-					coursesStream.print("&");
-					coursesStream.print(course.getSection());
-					coursesStream.println("");
+				
+				if (student.getCurriculum().getCurrentSemester() != null) {
+					// initials&section
+					for (Course course : student.getCurriculum().getCurrentSemester().getCourses()) {
+						coursesStream.print(course.getInitials());
+						coursesStream.print("&");
+						coursesStream.print(course.getSection());
+						coursesStream.println("");
+					}
 				}
 
 				// id&yearEntrance&yearGraduation&regularStudent&rut&name&lastnameFather&lastnameMother&address&gender&access&phone&birthdayString
