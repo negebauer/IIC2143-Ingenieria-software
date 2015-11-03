@@ -105,5 +105,4 @@ public class MViewController {
 		String parsed = initials + "-" + section + " - " + name;
 		return parsed;
 	}
-
 }
