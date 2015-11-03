@@ -10,12 +10,10 @@ import backend.others.Messages;
 import backend.others.Messages.UILabel;
 import frontend.others.ViewUtilities;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
 public class MCourseSearcherSelectorViewController extends MViewController {
@@ -25,21 +23,15 @@ public class MCourseSearcherSelectorViewController extends MViewController {
 	@FXML
 	Label labelSelectCoure;
 	@FXML
-	Button btnAddCourse;
-	@FXML
-	Button btnRemoveCourse;
-	@FXML
 	Button btnSearchCourse;
 	@FXML
 	Button btnDetails;
 	@FXML
 	TextField txBxCourseToSearch;
 	@FXML
-	ChoiceBox<String> chBxSelectedCourse;
-	@FXML
-	ListView<String> listSelectedCourses; 
+	protected ChoiceBox<String> chBxSelectedCourse;
 	
-	ArrayList<Course> coursesToShow = Manager.INSTANCE.courses;
+	protected ArrayList<Course> coursesToShow = Manager.INSTANCE.courses;
 	public static URL view = Object.class.getResource("/frontend/main/MCourseSearcherSelectorView.fxml");
 	
 	@Override
@@ -60,46 +52,12 @@ public class MCourseSearcherSelectorViewController extends MViewController {
 		setUp();
 	}
 	
-	public void btnAddCourse_Pressed() {
-		String rawCourseInfo = chBxSelectedCourse.getSelectionModel().getSelectedItem();
-		String[] parsed = getParsedInitialsSectionName(rawCourseInfo);
-		String initials = parsed[0];
-		int section = Integer.valueOf(parsed[1]);
-		String name = parsed[1];
-		for (Course course : coursesToShow) {
-			if (course.getInitials().equals(initials) && course.getSection() == section && course.getName().equals(name)) {
-				ObservableList<String> currentCourses = listSelectedCourses.getItems();
-				currentCourses.add(getParsedCourse(initials, section, name));
-				listSelectedCourses.setItems(FXCollections.observableArrayList(currentCourses));
-			}
-		}
-	}
-	
-	public void btnRemoveCourse_Pressed() {
-		String rawCourseInfo = chBxSelectedCourse.getSelectionModel().getSelectedItem();
-		String[] parsed = getParsedInitialsSectionName(rawCourseInfo);
-		String initials = parsed[0];
-		int section = Integer.valueOf(parsed[1]);
-		String name = parsed[1];
-		ObservableList<String> currentCourses = listSelectedCourses.getItems();
-		for (String courseInfo : listSelectedCourses.getItems()) {
-			String[] courseParsed = getParsedInitialsSectionName(courseInfo);
-			String courseInitials = courseParsed[0];
-			int courseSection = Integer.valueOf(courseParsed[1]);
-			String courseName = courseParsed[2];
-			if (initials.equals(courseInitials) && section == courseSection && name.equals(courseName)) {
-				currentCourses.remove(courseInfo);
-			}
-		}
-		listSelectedCourses.setItems(FXCollections.observableArrayList(currentCourses));
-	}
-	
 	public void btnDetails_Pressed() {
 		String rawCourseInfo = chBxSelectedCourse.getSelectionModel().getSelectedItem();
 		String[] parsed = getParsedInitialsSectionName(rawCourseInfo);
 		String initials = parsed[0];
 		int section = Integer.valueOf(parsed[1]);
-		String name = parsed[1];
+		String name = parsed[2];
 		for (Course course : coursesToShow) {
 			if (course.getInitials().equals(initials) && course.getSection() == section && course.getName().equals(name)) {
 				Manager.INSTANCE.courseDetailsToShow = course.getDetails();
@@ -133,12 +91,10 @@ public class MCourseSearcherSelectorViewController extends MViewController {
 	public void hideCourseSelector() {
 		labelSelectCoure.setVisible(false);
 		btnSearchCourse.setVisible(false);
+		txBxCourseToSearch.setVisible(false);
+		btnDetails.setVisible(false);
+		chBxSelectedCourse.setVisible(false);
 		
-	}
-	
-	public void hideSelectionCourses() {
-		btnAddCourse.setVisible(false);
-		btnRemoveCourse.setVisible(false);
 	}
 	
 	public void showCourseSearcher() {
@@ -148,15 +104,11 @@ public class MCourseSearcherSelectorViewController extends MViewController {
 	
 	public void showCourseSelector() {
 		labelSelectCoure.setVisible(true);
-		btnAddCourse.setVisible(true);
-		btnRemoveCourse.setVisible(true);
 		btnSearchCourse.setVisible(true);
+		txBxCourseToSearch.setVisible(true);
+		btnDetails.setVisible(true);
+		chBxSelectedCourse.setVisible(true);
 		
-	}
-	
-	public void showSelectionCourses() {
-		btnAddCourse.setVisible(true);
-		btnRemoveCourse.setVisible(true);
 	}
 	
 }

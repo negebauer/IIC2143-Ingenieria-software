@@ -44,6 +44,7 @@ public class Manager {
 	public ArrayList<Student> students = new ArrayList<Student>();
 	
 	public String courseDetailsToShow;
+	public Semester currentSemester;
 	
 	/**
 	 * Creates the instance of manager.
@@ -65,7 +66,6 @@ public class Manager {
 	public void loadData() {
 		System.out.println("Loading data...");
 		
-		Semester currentSemester;
 		if (getMonth() <= 6 && getDay() <= 19) {
 			currentSemester = new Semester(AcademicSemester.FIRST, getYear(), 0, null, null);
 		} else {

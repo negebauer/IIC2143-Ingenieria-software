@@ -20,7 +20,7 @@ public class Semester {
 	private ArrayList<Course> courses;
 	private int maxCredits = Const.DEFAULT_CREDITS_PER_SEMESTER;
 	private int actualCredits = 0;
-	private Set<String> approvedCourses;
+	private Set<String> approvedCourses = new HashSet<String>();
 
 	/**
 	 * Creates a new instance of Semester.
@@ -173,12 +173,22 @@ public class Semester {
 	public AddOrRemoveCourseResponse removeCourse(Course course){
 		AddOrRemoveCourseResponse response;
 
-		if (courses.contains(course)){
+		if (courses.contains(course) && courseNotCorequirement(course)){
 			response = new AddOrRemoveCourseResponse(true, Messages.getMessage(Message.COURSE_WAS_REMOVED_OF_SEMESTER));
+			courses.remove(course);
 		} else {
 			response = new AddOrRemoveCourseResponse(false, Messages.getMessage(Message.COURSE_WASNT_REMOVED_OF_SEMESTER_NOT_IN_SEMESTER));
 		}
 		return response;
+	}
+	
+	private Boolean courseNotCorequirement(Course possibleCorequirement) {
+		for (Course course : courses) {
+			if (course.getCoRequirements().contains(possibleCorequirement)) {
+				return false;
+			}
+		}
+		return true;
 	}
 	
 	public AcademicSemester getSemester() {

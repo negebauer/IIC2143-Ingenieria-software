@@ -161,4 +161,23 @@ public class Curriculum {
 		return credits;		
 	}
 	
+	public int getMaxSemesterCredits() {
+		int max = 0;
+		for (StudyProgram studyProgram : studyPrograms) {
+			if (studyProgram.getMaxCreditsPerSemester() > max) {
+				max = studyProgram.getMaxCreditsPerSemester();
+			}
+		}
+		return max;
+	}
+	
+	public int getMaxFailedCredits() {
+		int max = 0;
+		for (StudyProgram studyProgram : studyPrograms) {
+			if (studyProgram.getMaxFailedCredits() > max) {
+				max = studyProgram.getMaxFailedCredits();
+			}
+		}
+		return max;
+	}
 }
