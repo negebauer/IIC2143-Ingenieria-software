@@ -18,7 +18,7 @@ import backend.users.User.Gender;
 public class ProfessorsReaderWriter {
 
 	/* File format
-		rut&name&lastnameFather&lastnameMother&address&gender&access&phone&birthdayString
+		rut&name&lastnameFather&lastnameMother&address&gender&phone&birthdayString
 	*/
 
 	/**
@@ -64,9 +64,8 @@ public class ProfessorsReaderWriter {
 			FileInputStream fileInputStream = new FileInputStream (FolderFileManager.adminProfessors);
 			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(fileInputStream));
 			String professorString = bufferedReader.readLine();
-			while (professorString != null ) {
+			while (professorString != null ) {				
 				String[] arguments = professorString.split("&");
-				System.out.print(professorString);
 				String rut = arguments[0];
 				String name = arguments[1];
 				String lastnameFather = arguments[2];
