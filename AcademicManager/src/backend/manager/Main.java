@@ -2,8 +2,8 @@ package backend.manager;
 
 import java.io.IOException;
 
-import frontend.view.main.CurrentViewHandler;
-import frontend.view.main.LogInController;
+import frontend.main.MCurrentViewHandler;
+import frontend.main.MLogInController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -43,11 +43,11 @@ public class Main extends Application {
 	}
 	
 	private void showLogInView() {
-		FXMLLoader fxmlLoader = new FXMLLoader(LogInController.getView());
+		FXMLLoader fxmlLoader = new FXMLLoader(MLogInController.getView());
 		
 		try {
 			root = (Pane)fxmlLoader.load();
-			((LogInController) fxmlLoader.getController()).setUp();
+			((MLogInController) fxmlLoader.getController()).setUp();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -56,6 +56,6 @@ public class Main extends Application {
 		primaryStage.setScene(scene);
         primaryStage.setTitle("Academic Manager");
 		primaryStage.show();
-		CurrentViewHandler.INSTANCE.primaryStage = primaryStage;
+		MCurrentViewHandler.INSTANCE.primaryStage = primaryStage;
 	}
 }
