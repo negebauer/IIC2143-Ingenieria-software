@@ -10,4 +10,3 @@
 00000010&Miguel&Nussbaum&UC&Casa Nussbaum 10&MALE&10&20.09.1990 00:00
 00000011&Cristian&Tejos&UC&Casa Tejos 11&MALE&11&21.09.1990 00:00
 00000012&Yordi&Norero&UC&Casa Yordi 12&MALE&12&22.09.1990 00:00
-

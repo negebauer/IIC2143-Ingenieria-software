@@ -66,6 +66,7 @@ public class ProfessorsReaderWriter {
 			String professorString = bufferedReader.readLine();
 			while (professorString != null ) {
 				String[] arguments = professorString.split("&");
+				System.out.print(professorString);
 				String rut = arguments[0];
 				String name = arguments[1];
 				String lastnameFather = arguments[2];
