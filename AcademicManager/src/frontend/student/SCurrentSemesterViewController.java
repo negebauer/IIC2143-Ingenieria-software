@@ -16,6 +16,7 @@ import javafx.scene.control.Label;
 /* TODO Connect choicebox
  * TODO Connect courses list
  * TODO Implement all buttons
+ * TODO Button and choicebox to show a course details
  */
 public class SCurrentSemesterViewController extends MViewController {
 
