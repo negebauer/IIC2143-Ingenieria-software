@@ -64,8 +64,12 @@ public class ProfessorsReaderWriter {
 			FileInputStream fileInputStream = new FileInputStream (FolderFileManager.adminProfessors);
 			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(fileInputStream));
 			String professorString = bufferedReader.readLine();
-			while (professorString != null ) {
+			System.out.println(professorString);
+			while (professorString != null ) {				
 				String[] arguments = professorString.split("&");
+				for (String a : arguments) {
+					System.out.println(a);
+				}
 				String rut = arguments[0];
 				String name = arguments[1];
 				String lastnameFather = arguments[2];
