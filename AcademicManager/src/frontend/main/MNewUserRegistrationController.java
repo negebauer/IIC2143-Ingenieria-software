@@ -9,7 +9,6 @@ import javafx.scene.control.*;
 
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Calendar;
 
 import backend.courses.StudyProgram;
 import backend.manager.Manager;
@@ -185,7 +184,7 @@ public class MNewUserRegistrationController extends MViewController {
 				studyPrograms.add(Manager.INSTANCE.getStudyProgramForName(studyProgram));
 			}
 			int id = Manager.INSTANCE.getNewStudentID();
-			int year = Calendar.YEAR;
+			int year = Manager.getYear();
 			Student newStudent = new Student(id, year, studyPrograms, rut, name, lastFather, lastMother, address, gender, number, birthday);
 			Manager.INSTANCE.students.add(newStudent);
 		}

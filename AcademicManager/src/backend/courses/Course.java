@@ -298,7 +298,7 @@ public class Course {
 		return coRequirements;
 	}
 	
-	public Boolean getCoordinated() {
+	public Boolean isCoordinated() {
 		return coordinated;
 	}
 

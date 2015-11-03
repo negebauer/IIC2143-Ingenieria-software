@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.student.SCurrentSemesterViewController">
+   <children>
+      <Pane layoutX="5.0" layoutY="5.0" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <Button fx:id="btnLanguage" layoutX="564.0" layoutY="1.0" mnemonicParsing="false" onAction="#btnLanguage_Pressed" style="-fx-background-radius: 0;" text="ES" />
+            <Button fx:id="btnReload" layoutX="524.0" layoutY="1.0" mnemonicParsing="false" onAction="#btnReload_Pressed" style="-fx-background-radius: 0;" text="R" />
+            <Button fx:id="btnBack" layoutY="1.0" mnemonicParsing="false" onAction="#btnBack_Pressed" style="-fx-background-radius: 0;" text="Back" />
+            <Button fx:id="btnLogout" layoutX="537.0" layoutY="373.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
+            <Label fx:id="labelMainMessage" layoutX="24.0" layoutY="46.0" prefHeight="51.0" prefWidth="165.0" text="Aqui puedes ver tu semestre actual y editarlo" wrapText="true" />
+            <Label fx:id="labelCurrentSemester" layoutX="24.0" layoutY="97.0" text="Current semester: 2015-2" />
+            <Label fx:id="labelCurrentCourses" layoutX="24.0" layoutY="124.0" text="Cursos actuales:" />
+            <Label fx:id="labelCurrentCoursesNames" alignment="TOP_LEFT" layoutX="24.0" layoutY="154.0" prefHeight="226.0" prefWidth="165.0" text="Curso 1: adbwadbwakd" />
+            <Button fx:id="btnCreateNewSemester" layoutX="74.0" layoutY="128.0" mnemonicParsing="false" onAction="#btnCreateNewSemester_Pressed" text="Button" />
+            <Label fx:id="labelSelectCoure" layoutX="276.0" layoutY="116.0" text="Elige ramos" />
+            <ListView layoutX="215.0" layoutY="207.0" prefHeight="146.0" prefWidth="193.0" />
+            <Button fx:id="btnContinue" layoutX="272.0" layoutY="367.0" mnemonicParsing="false" onAction="#btnContinue_Pressed" style="-fx-background-radius: 0;" text="Continuar" />
+            <Button fx:id="btnRemoveCourse" layoutX="313.0" layoutY="173.0" mnemonicParsing="false" onAction="#btnRemoveCourse_Pressed" text="Remover" />
+            <Button fx:id="btnAddCourse" layoutX="232.0" layoutY="173.0" mnemonicParsing="false" onAction="#btnAddCourse_Pressed" text="Agregar" />
+            <ChoiceBox layoutX="211.0" layoutY="139.0" prefHeight="27.0" prefWidth="193.0" />
+            <Label fx:id="labelSearchCourse" layoutX="272.0" layoutY="28.0" text="Buscar ramo" />
+            <TextField layoutX="214.0" layoutY="46.0" prefHeight="27.0" prefWidth="193.0" />
+            <Label fx:id="labelModification" layoutX="431.0" layoutY="89.0" text="Resultado modificacion" />
+            <Label fx:id="labelModificationResult" alignment="TOP_CENTER" layoutX="431.0" layoutY="125.0" prefHeight="82.0" prefWidth="143.0" text="Resultado modificacion" wrapText="true" />
+            <Button fx:id="btnSearchCourse" layoutX="257.0" layoutY="76.0" mnemonicParsing="false" onAction="#btnSearchCourse_Pressed" prefHeight="27.0" prefWidth="102.0" text="Button" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

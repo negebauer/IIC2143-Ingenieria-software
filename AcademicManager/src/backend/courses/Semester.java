@@ -41,13 +41,6 @@ public class Semester {
 		}
 	}
 	
-	public double getAverageGrade(){
-		double total = 0;
-			//TODO calculate average , i don't know how (Diego)
-		return total/this.courses.size();
-	}
-	
-	
 	/**
 	 * Adds a course to the semester if the conditions for doing so are met.
 	 * @param course The course that wants to be added to the semester

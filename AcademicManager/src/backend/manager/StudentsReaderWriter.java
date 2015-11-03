@@ -43,7 +43,7 @@ public class StudentsReaderWriter {
 		|-> Student
 			|-> Student1
 			|-> Student2
-				|-> coursed.txt			Line format: name&initials&section&credits&details&school&semester&year&approved&grade
+				|-> coursed.txt			Line format: name&initials&section&credits&school&semester&year&approved&grade
 				|-> coursedCourses.txt	Line format: 3 cases
 											- Assistantship:	initials&section&year&semester&ASSISTANTSHIP&name:lastNameFather:lastNameMother;name:lastNameFather:lastNameMother&classroomInitials&dia1:modulo1;dia2:modulo2
 											- Laboratory:		initials&section&year&semester&LABORATORY&name:lastNameFather:lastNameMother;name:lastNameFather:lastNameMother&classroomInitials&dia1:modulo1;dia2:modulo2
@@ -78,7 +78,7 @@ public class StudentsReaderWriter {
 				PrintStream infoStream 				= new PrintStream(info);
 				PrintStream studyProgramsStream 	= new PrintStream(studyPrograms);
 				
-				// name&initials&section&credits&details&school&semester&year&approved&grade
+				// name&initials&section&credits&school&semester&year&approved&grade
 				for (Coursed coursed : student.getCurriculum().getCoursedCourses()) {
 					coursedStream.print(coursed.getName());
 					coursedStream.print("&");
@@ -87,8 +87,6 @@ public class StudentsReaderWriter {
 					coursedStream.print(coursed.getSection());
 					coursedStream.print("&");
 					coursedStream.print(coursed.getCredits());
-					coursedStream.print("&");
-					coursedStream.print(coursed.getDetails());
 					coursedStream.print("&");
 					coursedStream.print(coursed.getSchool());
 					coursedStream.print("&");
@@ -266,13 +264,12 @@ public class StudentsReaderWriter {
 						String initials = arguments[1];
 						int section = Integer.parseInt(arguments[2]);
 						int credits = Integer.parseInt(arguments[3]);
-						String details = arguments[4];
-						School school = School.valueOf(arguments[5]);
-						AcademicSemester semester = AcademicSemester.valueOf(arguments[6]);
-						int year = Integer.parseInt(arguments[7]);
-						boolean approved = Boolean.valueOf(arguments[8]);
-						double grade = Double.parseDouble(arguments[9]);
-						Coursed coursedLoaded = new Coursed(name, initials, section, credits, details, school, semester, year, approved, grade);
+						School school = School.valueOf(arguments[4]);
+						AcademicSemester semester = AcademicSemester.valueOf(arguments[5]);
+						int year = Integer.parseInt(arguments[6]);
+						boolean approved = Boolean.valueOf(arguments[7]);
+						double grade = Double.parseDouble(arguments[8]);
+						Coursed coursedLoaded = new Coursed(name, initials, section, credits, "", school, semester, year, approved, grade);
 						coursedList.add(coursedLoaded);
 						coursedString = coursedReader.readLine();
 					}
@@ -408,6 +405,14 @@ public class StudentsReaderWriter {
 					curriculum.setCurrentSemester(semester);
 					
 					student1.setCurriculum(curriculum);
+					
+					for (Course course : allCourses) {
+						for (Coursed coursed2 : coursedList) {
+							if (course.getInitials().equals(coursed2.getInitials())) {
+								coursed2.setDetails(course.getDetails());
+							}
+						}
+					}
 					
 				} catch (IOException iOException) {
 					iOException.printStackTrace();

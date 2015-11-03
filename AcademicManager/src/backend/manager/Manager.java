@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import backend.courses.Classroom;
 import backend.courses.Course;
@@ -28,6 +29,7 @@ import backend.users.User;
  */
 public class Manager {
 
+	public final static Calendar CALENDAR = Calendar.getInstance();
 	public final static Manager INSTANCE = new Manager();
 	
 	public User currentUser;
@@ -52,7 +54,7 @@ public class Manager {
 	 * Reloads all the data from the server
 	 */
 	public void reloadData() {
-		// TODO Implement
+		// TODO Implement server first
 	}
 
 	/**
@@ -61,7 +63,12 @@ public class Manager {
 	public void loadData() {
 		System.out.println("Loading data...");
 		
-		Semester currentSemester = new Semester(AcademicSemester.SECOND, 0, 0, null, null);
+		Semester currentSemester;
+		if (getMonth() <= 6 && getDay() <= 19) {
+			currentSemester = new Semester(AcademicSemester.FIRST, getYear(), 0, null, null);
+		} else {
+			currentSemester = new Semester(AcademicSemester.SECOND, getYear(), 0, null, null);
+		}
 		
 		admins = AdminReaderWriter.readAdmins();
 		assistants = AssistantsReaderWriter.readAssistants();
@@ -73,6 +80,7 @@ public class Manager {
 		EvaluationsReaderWriter.readCoursesEvaluations(courses, classrooms);
 		CourseCoRequirementsReaderWriter.readCoursesCoRequirements(courses);
 		CourseRequirementsReaderWriter.readCoursesRequirements(courses);
+		DetailsReaderWriter.readDetails(courses);
 		students = StudentsReaderWriter.readStudents(courses, studyPrograms, classrooms, currentSemester, professors, assistants);
 		
 		System.out.println("Data loaded!");
@@ -93,6 +101,7 @@ public class Manager {
 		EvaluationsReaderWriter.writeCoursesEvaluations(courses);
 		CourseCoRequirementsReaderWriter.writeCoursesCoRequirements(courses);
 		CourseRequirementsReaderWriter.writeCoursesRequirements(courses);
+		DetailsReaderWriter.writeDetails(courses);
 		StudentsReaderWriter.writeStudents(students);
 		
 		System.out.println("Data saved!");
@@ -145,5 +154,17 @@ public class Manager {
 			}
 		}
 		return null;
+	}
+	
+	public static int getYear() {
+		return CALENDAR.get(Calendar.YEAR);
+	}
+	
+	public static int getMonth() {
+		return CALENDAR.get(Calendar.MONTH);
+	}
+	
+	public static int getDay() {
+		return CALENDAR.get(Calendar.DAY_OF_MONTH);
 	}
 }

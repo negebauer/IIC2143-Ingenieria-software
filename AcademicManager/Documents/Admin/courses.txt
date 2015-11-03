@@ -1,7 +1,7 @@
-Curso ficticio0&IIC2000&1&10&Curso que uso para probar&ENGINEERING&BOTH&true
-Curso ficticio1&IIC2001&1&10&Curso que uso para probar&ENGINEERING&BOTH&true
-Curso ficticio2&IIC2002&1&10&Curso que uso para probar&ENGINEERING&BOTH&true
-Curso ficticio3&IIC2003&1&10&Curso que uso para probar&ENGINEERING&BOTH&true
-Curso ficticio4&IIC2004&1&10&Curso que uso para probar&ENGINEERING&BOTH&true
-Curso ficticio5&IIC2005&1&10&Curso que uso para probar&ENGINEERING&BOTH&true
-Curso ficticio6&IIC2006&1&10&Curso que uso para probar&ENGINEERING&BOTH&true
+Curso ficticio0&IIC2000&1&10&ENGINEERING&BOTH&true
+Curso ficticio1&IIC2001&1&10&ENGINEERING&BOTH&true
+Curso ficticio2&IIC2002&1&10&ENGINEERING&BOTH&true
+Curso ficticio3&IIC2003&1&10&ENGINEERING&BOTH&true
+Curso ficticio4&IIC2004&1&10&ENGINEERING&BOTH&true
+Curso ficticio5&IIC2005&1&10&ENGINEERING&BOTH&true
+Curso ficticio6&IIC2006&1&10&ENGINEERING&BOTH&true

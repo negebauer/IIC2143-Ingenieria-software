@@ -4,7 +4,6 @@ import java.net.URL;
 
 import backend.others.Messages;
 import backend.others.Messages.UILabel;
-import frontend.admin.ASemesterEditorCreatorController;
 import frontend.main.MViewController;
 import frontend.others.ViewUtilities;
 import javafx.fxml.FXML;
@@ -23,6 +22,9 @@ public class SMainViewController extends MViewController {
 	Label labelWhatDoNext;
 	@FXML
 	Label labelWelcomeMessage;
+	@FXML
+	Button btnCoursedSemesters;
+	
 	
 	public static URL view = Object.class.getResource("/frontend/student/SMainView.fxml");
 
@@ -32,7 +34,8 @@ public class SMainViewController extends MViewController {
 		btnCurricularAdvance.setText(Messages.getUILabel(UILabel.STUDENT_SEE_CURRICULAR_ADVANCE));
 		btnShowSchedule.setText(Messages.getUILabel(UILabel.STUDENT_SEE_SCHEDULE));
 		labelWhatDoNext.setText(Messages.getUILabel(UILabel.WHAT_TO_DO_NEXT_QUESTION));
-		labelWelcomeMessage.setText(Messages.getUILabel(UILabel.WELCOME_MESSAGE));		
+		labelWelcomeMessage.setText(Messages.getUILabel(UILabel.WELCOME_MESSAGE));	
+		btnCoursedSemesters.setText(Messages.getUILabel(UILabel.COURSED_SEMESTERS));
 	}
 
 	public void btnCurricularAdvance_Pressed() {
@@ -40,11 +43,15 @@ public class SMainViewController extends MViewController {
 	}
 
 	public void btnEditSemester_Pressed() {
-		ViewUtilities.openView(ASemesterEditorCreatorController.view, view);
+		ViewUtilities.openView(SCurrentSemesterViewController.view, view);
 	}
 
 	public void btnShowSchedule_Pressed() {
 		ViewUtilities.openView(SShowScheduleController.view, view);
+	}
+	
+	public void btnCoursedSemesters_Pressed() {
+		
 	}
 
 }

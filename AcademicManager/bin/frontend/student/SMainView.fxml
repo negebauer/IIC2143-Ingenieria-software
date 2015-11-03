@@ -12,10 +12,11 @@
          <children>
             <Label fx:id="labelWelcomeMessage" layoutX="56.0" layoutY="24.0" prefHeight="17.0" prefWidth="421.0" text="BIENVENIDO A ACADEMIC TOOL MANAGER PROFESSIONAL!!! " />
             <Label fx:id="labelWhatDoNext" layoutX="56.0" layoutY="41.0" prefHeight="17.0" prefWidth="211.0" text="Qué deseas hacer ahora?" />
-            <Button fx:id="btnEditSemester" layoutX="56.0" layoutY="144.0" mnemonicParsing="false" onAction="#btnEditSemester_Pressed" style="-fx-background-radius: 0 0 0 0;" text="Editar un Semestre" textAlignment="CENTER" />
-            <Button fx:id="btnCurricularAdvance" layoutX="56.0" layoutY="112.0" mnemonicParsing="false" onAction="#btnCurricularAdvance_Pressed" style="-fx-background-radius: 0 0 0 0;" text="Ver avance Curricular" textAlignment="CENTER" />
-            <Button fx:id="btnShowSchedule" layoutX="56.0" layoutY="178.0" mnemonicParsing="false" onAction="#btnShowSchedule_Pressed" style="-fx-background-radius: 0 0 0 0;" text="Ver mi Horario" textAlignment="CENTER" />
+            <Button fx:id="btnEditSemester" layoutX="56.0" layoutY="115.0" mnemonicParsing="false" onAction="#btnEditSemester_Pressed" style="-fx-background-radius: 0 0 0 0;" text="Editor semestre" textAlignment="CENTER" />
+            <Button fx:id="btnCurricularAdvance" layoutX="56.0" layoutY="187.0" mnemonicParsing="false" onAction="#btnCurricularAdvance_Pressed" style="-fx-background-radius: 0 0 0 0;" text="Ver avance Curricular" textAlignment="CENTER" />
+            <Button fx:id="btnShowSchedule" layoutX="56.0" layoutY="78.0" mnemonicParsing="false" onAction="#btnShowSchedule_Pressed" style="-fx-background-radius: 0 0 0 0;" text="Ver mi Horario" textAlignment="CENTER" />
             <Button fx:id="btnBack" layoutY="1.0" mnemonicParsing="false" onAction="#btnBack_Pressed" style="-fx-background-radius: 0;" text="Back" />
+            <Button fx:id="btnCoursedSemesters" layoutX="56.0" layoutY="152.0" mnemonicParsing="false" onAction="#btnCoursedSemesters_Pressed" style="-fx-background-radius: 0 0 0 0;" text="Semestres anteriores" textAlignment="CENTER" />
          </children>
       </Pane>
       <Button fx:id="btnLogout" layoutX="531.0" layoutY="369.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />

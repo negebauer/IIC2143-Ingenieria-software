@@ -24,6 +24,9 @@ public class FolderFileManager {
 			|-> courses.txt						Todos los cursos con su informacion directa (sigla, seccion, creditos)
 			|-> evaluations.txt					Todas las evaluaciones con su informacion mas prefijo: sigla curso&seccion
 			|-> professors.txt					Contiene informacion de todos los profesores
+			|-> CourseDetails					Contiene los detalles de todos los cursos
+				|-> course_1.txt				Contiene los detalles del curso con sigla course y seccion 1
+				|-> course_2.txt
 			|-> StudyPrograms					Todos los programas de estudio
 				|-> Escuela1					Una escuela de la universidad. Llamar carpeta con el nombre de la escuela
 				|-> Escuela2
@@ -42,9 +45,6 @@ public class FolderFileManager {
 				|-> studyPrograms.txt			Los programas de estudio del alumno (nombres)
 	 */
 
-	// TODO Check that all required folders and files are present
-	// TODO Check that all information is accesible
-
 	// Main folders
 	public static String rootFolder 				= "Documents";
 	public static String rootAdmin 					= rootFolder + "/Admin";
@@ -54,6 +54,7 @@ public class FolderFileManager {
 	public static String language	 				= rootFolder + "/language.txt";
 	
 	// Admin folders
+	public static String adminCourseDetails			= rootAdmin + "/CourseDetails";
 	public static String adminStudyPrograms 		= rootAdmin + "/StudyPrograms";
 
 	// Required files for each study program
@@ -86,6 +87,7 @@ public class FolderFileManager {
 		folders.add(rootFolder);
 		folders.add(rootAdmin);
 		folders.add(rootStudent);
+		folders.add(adminCourseDetails);
 		folders.add(adminStudyPrograms);
 
 		for (String folderString : folders) {

@@ -19,7 +19,7 @@ public class CoursesReaderWriter {
 
 	/**
 	 * Writes all the courses to the courses.txt file.
-	 * @param professors The courses to be written.
+	 * @param courses The courses to be written.
 	 */
 	public static void writeCourses(ArrayList<Course> courses) {
 		try {
@@ -34,13 +34,11 @@ public class CoursesReaderWriter {
 				printStream.print("&");
 				printStream.print(course.getCredits());
 				printStream.print("&");
-				printStream.print(course.getDetails());
-				printStream.print("&");
 				printStream.print(course.getSchool());
 				printStream.print("&");
 				printStream.print(course.getSemester());
 				printStream.print("&");
-				printStream.print(course.getCoordinated());
+				printStream.print(course.isCoordinated());
 				printStream.println();
 			}
 			fileOutputStream.close();		
@@ -67,11 +65,10 @@ public class CoursesReaderWriter {
 				String initials = arguments[1];
 				int section = Integer.parseInt(arguments[2]);
 				int credits = Integer.parseInt(arguments[3]);
-				String details = arguments[4];
-				School school = School.valueOf(arguments[5]);
-				AcademicSemester semester = AcademicSemester.valueOf(arguments[6]);
-				Boolean coordinated = Boolean.valueOf(arguments[7]);
-				Course course = new Course(name, initials, section, credits, details, school, semester, null, null, null, null, coordinated);
+				School school = School.valueOf(arguments[4]);
+				AcademicSemester semester = AcademicSemester.valueOf(arguments[5]);
+				Boolean coordinated = Boolean.valueOf(arguments[6]);
+				Course course = new Course(name, initials, section, credits, "", school, semester, null, null, null, null, coordinated);
 				courses.add(course);
 				courseString = bufferedReader.readLine();
 			}

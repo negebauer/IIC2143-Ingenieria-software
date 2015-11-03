@@ -2,8 +2,6 @@ package frontend.main;
 
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.ResourceBundle;
-
 import backend.manager.Manager;
 import backend.others.Messages;
 import backend.others.Messages.UILabel;
@@ -14,12 +12,11 @@ import frontend.others.ViewUtilities;
 import frontend.student.SMainViewController;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 
-public class MLogInController extends MViewController implements Initializable {
+public class MLogInController extends MViewController {
 	
 	@FXML
 	ChoiceBox<String> chBxUsers;
@@ -95,13 +92,6 @@ public class MLogInController extends MViewController implements Initializable {
 	
 	public void btnRegister_Pressed() {
 		ViewUtilities.openView(MNewUserRegistrationController.view, view);
-	}
-	
-	
-	@Override
-	public void initialize(URL url, ResourceBundle rb) {
-		// TODO Auto-generated method stub
-
 	}
 
 	public static URL getView() {

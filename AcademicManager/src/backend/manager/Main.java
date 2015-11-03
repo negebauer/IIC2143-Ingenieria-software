@@ -26,9 +26,10 @@ public class Main extends Application {
 	        	Manager.INSTANCE.saveData();
 	        }
 	    }));
-		// ----- TODO Delete any test code from this line -----
+		// -----    Delete any test code from this line   -----
 		
-		
+		System.out.println("Year: " + Manager.getYear());
+		System.out.println("Month: " + Manager.getMonth());
 		
 		// ----- 			To this line				  -----
 		

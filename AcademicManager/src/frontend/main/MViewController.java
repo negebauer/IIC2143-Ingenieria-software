@@ -24,7 +24,7 @@ public class MViewController {
 	/**
 	 * Use this variable to define the URL of the view represented by the ViewController. MUST OVERRIDE
 	 */
-	public static URL view = Object.class.getResource("/frontend/main/UIView.fxml");
+	public static URL view = Object.class.getResource("/frontend/main/MView.fxml");
 
 	/**
 	 * You must override this function to setUp all the
@@ -36,9 +36,7 @@ public class MViewController {
 		btnReload.setText("R");
 		btnBack.setText(Messages.getUILabel(UILabel.BACK));
 		btnLogout.setText(Messages.getUILabel(UILabel.LOGOUT));
-
-		//Stage stage = CurrentViewHandler.INSTANCE.primaryStage;
-		//stage.setTitle("RENNAB asdadwsads");
+		
 	}
 
 	/**

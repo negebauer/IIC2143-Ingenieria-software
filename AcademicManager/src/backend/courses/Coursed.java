@@ -48,7 +48,9 @@ public class Coursed {
 		this.grade = grade;
 	}
 
-	// TODO Comment. This init is for loading from database
+	/**
+	 * This method is used internally to load Coursed from the database.
+	 */
 	public Coursed(String name, String initials, int section, int credits, String details, School school, AcademicSemester semester, int year, boolean approved, double grade) {
 		this.name = name;
 		this.initials = initials;
@@ -156,4 +158,8 @@ public class Coursed {
 		this.grade = grade;
 	}
 
+	public void setDetails(String details) {
+		this.details = details;
+	}
+	
 }

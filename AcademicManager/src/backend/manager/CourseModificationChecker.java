@@ -13,7 +13,6 @@ import backend.others.Utilities;
 import backend.others.Messages.Message;
 import backend.users.Professor;
 
-// TODO Connect to Manager when Admin working with Courses
 /**
  * Class that checks if a course modification can be done.
  */
