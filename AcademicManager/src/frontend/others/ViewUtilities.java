@@ -1,8 +1,9 @@
-package frontend.main;
+package frontend.others;
 
 import java.io.IOException;
 import java.net.URL;
 
+import frontend.main.MViewController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -14,7 +15,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public final class MViewUtilities {
+public final class ViewUtilities {
 	
 	/**
 	 * Open a new window view
@@ -31,9 +32,9 @@ public final class MViewUtilities {
 		try {
 			root = (Parent) loader.load();
 			((MViewController) loader.getController()).setUp();
-			Stage stage = MCurrentViewHandler.INSTANCE.primaryStage;
+			Stage stage = CurrentViewHandler.INSTANCE.primaryStage;
 			if (sender != null) {
-				MCurrentViewHandler.INSTANCE.addNewParentView(sender);
+				CurrentViewHandler.INSTANCE.addNewParentView(sender);
 			}
 			stage.setScene(new Scene(root));
 			stage.setTitle("RENNAB");

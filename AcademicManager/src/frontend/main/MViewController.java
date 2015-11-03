@@ -5,6 +5,8 @@ import java.net.URL;
 import backend.manager.Manager;
 import backend.others.Messages;
 import backend.others.Messages.UILabel;
+import frontend.others.CurrentViewHandler;
+import frontend.others.ViewUtilities;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
@@ -52,16 +54,16 @@ public class MViewController {
 	}
 
 	public void btnBack_Pressed() {
-		URL parentView = MCurrentViewHandler.INSTANCE.getParentView();
+		URL parentView = CurrentViewHandler.INSTANCE.getParentView();
 		if (parentView != null) {
-			MViewUtilities.openView(parentView);
+			ViewUtilities.openView(parentView);
 		}
 	}
 
 	public void btnLogout_Pressed() {
 		Manager.INSTANCE.currentUser = null;
-		MCurrentViewHandler.INSTANCE.clearParentView();
-		MViewUtilities.openView(MLogInController.view);
+		CurrentViewHandler.INSTANCE.clearParentView();
+		ViewUtilities.openView(MLogInController.view);
 	}
 
 	public void hideLanguage() {

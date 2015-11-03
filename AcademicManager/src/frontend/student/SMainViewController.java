@@ -6,7 +6,7 @@ import backend.others.Messages;
 import backend.others.Messages.UILabel;
 import frontend.admin.ASemesterEditorCreatorController;
 import frontend.main.MViewController;
-import frontend.main.MViewUtilities;
+import frontend.others.ViewUtilities;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -36,15 +36,15 @@ public class SMainViewController extends MViewController {
 	}
 
 	public void btnCurricularAdvance_Pressed() {
-		MViewUtilities.openView(SCurricularAdvanceController.view, view);
+		ViewUtilities.openView(SCurricularAdvanceController.view, view);
 	}
 
 	public void btnEditSemester_Pressed() {
-		MViewUtilities.openView(ASemesterEditorCreatorController.view, view);
+		ViewUtilities.openView(ASemesterEditorCreatorController.view, view);
 	}
 
 	public void btnShowSchedule_Pressed() {
-		MViewUtilities.openView(SShowScheduleController.view, view);
+		ViewUtilities.openView(SShowScheduleController.view, view);
 	}
 
 }

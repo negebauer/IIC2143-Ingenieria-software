@@ -1,6 +1,6 @@
-package frontend.main;
+package frontend.others;
 
-public class MConst {
+public class Const {
 
 	public final static String JAXP_SCHEMA_LANGUAGE = "http://java.sun.com/xml/jaxp/properties/schemaLanguage";
 

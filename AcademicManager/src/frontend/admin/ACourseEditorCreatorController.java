@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import backend.courses.Course;
 import backend.manager.Manager;
 import frontend.main.MViewController;
-import frontend.main.MViewUtilities;
+import frontend.others.ViewUtilities;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -140,38 +140,38 @@ public class ACourseEditorCreatorController extends MViewController {
 	
 	public void createCourseVisibility() {
 		//Buttons
-		MViewUtilities.changeOV(this.btnEditCourse);
-		MViewUtilities.changeOV(this.btnCreateCourse);
-		MViewUtilities.changeOV(this.btnSaveCourse);
-		MViewUtilities.changeOV(this.btnShowCourses);
-		MViewUtilities.changeOV(this.btnShowEvaluations);
-		MViewUtilities.changeOV(this.btnShowRequirements);
-		MViewUtilities.changeOV(this.btnShowCoRequirements);
+		ViewUtilities.changeOV(this.btnEditCourse);
+		ViewUtilities.changeOV(this.btnCreateCourse);
+		ViewUtilities.changeOV(this.btnSaveCourse);
+		ViewUtilities.changeOV(this.btnShowCourses);
+		ViewUtilities.changeOV(this.btnShowEvaluations);
+		ViewUtilities.changeOV(this.btnShowRequirements);
+		ViewUtilities.changeOV(this.btnShowCoRequirements);
 		
 		//Labels
-		MViewUtilities.changeOV(this.labelNameCourse);
-		MViewUtilities.changeOV(this.labelCourseInitials);
-		MViewUtilities.changeOV(this.labelCourseDetails);
-		MViewUtilities.changeOV(this.labelCoordination);
-		MViewUtilities.changeOV(this.labelCourseCredits);
-		MViewUtilities.changeOV(this.labelCourseSchool);
-		MViewUtilities.changeOV(this.labelCourseSection);
-		MViewUtilities.changeOV(this.labelSemesterDictated);
+		ViewUtilities.changeOV(this.labelNameCourse);
+		ViewUtilities.changeOV(this.labelCourseInitials);
+		ViewUtilities.changeOV(this.labelCourseDetails);
+		ViewUtilities.changeOV(this.labelCoordination);
+		ViewUtilities.changeOV(this.labelCourseCredits);
+		ViewUtilities.changeOV(this.labelCourseSchool);
+		ViewUtilities.changeOV(this.labelCourseSection);
+		ViewUtilities.changeOV(this.labelSemesterDictated);
 		
 		//TextFields
-		MViewUtilities.changeOV(this.txBxCourseName);
-		MViewUtilities.changeOV(this.txBxInitialsCourse);
-		MViewUtilities.changeOV(this.txBxCourseCredits);
-		MViewUtilities.changeOV(this.txBxCourseSection);
+		ViewUtilities.changeOV(this.txBxCourseName);
+		ViewUtilities.changeOV(this.txBxInitialsCourse);
+		ViewUtilities.changeOV(this.txBxCourseCredits);
+		ViewUtilities.changeOV(this.txBxCourseSection);
 		
 		//ChoiceBoxes
-		MViewUtilities.changeOV(this.chBxCourses);
-		MViewUtilities.changeOV(this.chBxShcools);
-		MViewUtilities.changeOV(this.chBxAcademicSemesters);
-		MViewUtilities.changeOV(this.chBxCoordination);
+		ViewUtilities.changeOV(this.chBxCourses);
+		ViewUtilities.changeOV(this.chBxShcools);
+		ViewUtilities.changeOV(this.chBxAcademicSemesters);
+		ViewUtilities.changeOV(this.chBxCoordination);
 		
 		//TextAreas
-		MViewUtilities.changeOV(this.txArCourseDetails);
+		ViewUtilities.changeOV(this.txArCourseDetails);
 	}
 
 	@Override

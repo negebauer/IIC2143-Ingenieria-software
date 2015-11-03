@@ -19,6 +19,7 @@ import backend.users.Admin;
 import backend.users.Professor;
 import backend.users.Student;
 import backend.users.User.Gender;
+import frontend.others.ViewUtilities;
 
 public class MNewUserRegistrationController extends MViewController {
 	
@@ -157,10 +158,8 @@ public class MNewUserRegistrationController extends MViewController {
 	}
 	
 	public void btnContinue_Pressed() {
-		// TODO Clean text boxes and selectiones BEFORE creating Users.
 		cleanInfo();
 		Boolean valid = checkValid();
-		
 		if (!valid) {
 			return;
 		}
@@ -190,7 +189,7 @@ public class MNewUserRegistrationController extends MViewController {
 			Student newStudent = new Student(id, year, studyPrograms, rut, name, lastFather, lastMother, address, gender, number, birthday);
 			Manager.INSTANCE.students.add(newStudent);
 		}
-		MViewUtilities.openView(MLogInController.view);
+		ViewUtilities.openView(MLogInController.view);
 	}
 	
 	public void cleanInfo() {

@@ -2,8 +2,8 @@ package backend.manager;
 
 import java.io.IOException;
 
-import frontend.main.MCurrentViewHandler;
 import frontend.main.MLogInController;
+import frontend.others.CurrentViewHandler;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -56,6 +56,6 @@ public class Main extends Application {
 		primaryStage.setScene(scene);
         primaryStage.setTitle("Academic Manager");
 		primaryStage.show();
-		MCurrentViewHandler.INSTANCE.primaryStage = primaryStage;
+		CurrentViewHandler.INSTANCE.primaryStage = primaryStage;
 	}
 }

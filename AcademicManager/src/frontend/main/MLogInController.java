@@ -10,6 +10,7 @@ import backend.others.Messages.UILabel;
 import backend.users.*;
 import backend.users.User;
 import frontend.admin.AMainViewController;
+import frontend.others.ViewUtilities;
 import frontend.student.SMainViewController;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -83,9 +84,9 @@ public class MLogInController extends MViewController implements Initializable {
 		}
 		
 		if (Manager.INSTANCE.currentUser instanceof Student) {
-			MViewUtilities.openView(SMainViewController.view, view);
+			ViewUtilities.openView(SMainViewController.view, view);
 		} else if (Manager.INSTANCE.currentUser instanceof Admin) {
-			MViewUtilities.openView(AMainViewController.view, view);
+			ViewUtilities.openView(AMainViewController.view, view);
 		} else {
 			System.out.println("ASD");
 		}
@@ -93,7 +94,7 @@ public class MLogInController extends MViewController implements Initializable {
 	}
 	
 	public void btnRegister_Pressed() {
-		MViewUtilities.openView(MNewUserRegistrationController.view, view);
+		ViewUtilities.openView(MNewUserRegistrationController.view, view);
 	}
 	
 	

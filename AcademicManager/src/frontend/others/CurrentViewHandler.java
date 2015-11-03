@@ -1,16 +1,16 @@
-package frontend.main;
+package frontend.others;
 
 import java.net.URL;
 import java.util.ArrayList;
 
 import javafx.stage.Stage;
 
-public class MCurrentViewHandler {
-	public final static MCurrentViewHandler INSTANCE = new MCurrentViewHandler();
+public class CurrentViewHandler {
+	public final static CurrentViewHandler INSTANCE = new CurrentViewHandler();
 	
 	public Stage primaryStage;
 	
-	private MCurrentViewHandler() {
+	private CurrentViewHandler() {
 		
 	}
 

@@ -12,7 +12,7 @@ import backend.enums.AcademicSemester;
 import backend.manager.Manager;
 import backend.users.*;
 import frontend.main.MViewController;
-import frontend.main.MViewUtilities;
+import frontend.others.ViewUtilities;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -135,7 +135,7 @@ public class ASemesterEditorCreatorController extends MViewController {
 		Semester newSemester = new Semester(toAcademicSemester(chBxSemesterType.getSelectionModel().getSelectedItem()), Integer.valueOf(txBxYear.getText()), Integer.valueOf(txBxMaxCredits.getText()),coursedCourses, courses );
 		((Student)Manager.INSTANCE.currentUser).getCurriculum().setCurrentSemester(newSemester);
 	
-		MViewUtilities.openView(view, view);
+		ViewUtilities.openView(view, view);
 	}
 	
 	public AcademicSemester toAcademicSemester(String semesterString) {
