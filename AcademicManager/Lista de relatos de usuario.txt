@@ -1,31 +1,36 @@
 Alumno:
-- Ingreso de alumno__________________________________________________INTERFACE
+- Ingreso de alumno__________________________________________________DONE
 - Registro de almumno................................................DONE
-- Reconocer carrera automaticamente__________________________________DONE
-- Seleccionar Malla..................................................INTERFACE
-- Crear Semestre_____________________________________________________DONE
-- Guardar Semestre...................................................DONE
+- Seleccionar Malla..................................................
+- Crear Semestre_____________________________________________________
+- Guardar Semestre...................................................
 - Agregar Curso al semestre__________________________________________DONE
 - Eliminar Curso del semestre........................................DONE
-- Calificar Semestre_________________________________________________DONE
+- Calificar Semestre_________________________________________________
 - Recibir avisos de topes de horario.................................DONE
 - Recibir avisos de topes de evaluaciones____________________________DONE
 - Recibir avisos de requisitos para cursos...........................DONE
 - Recibir avisos de exceso de creditos_______________________________DONE
-- Mostrar avance curricular..........................................DONE
-- Historial Curricular_______________________________________________DONE
-- Ver Horario........................................................DONE
-- Cambio de modo_____________________________________________________INTERFACE
+- Mostrar avance curricular..........................................
+- Historial Curricular_______________________________________________
+- Ver Horario........................................................
+- Cambio de modo_____________________________________________________DONE
 
 Administrador:
-- Ingreso de administrador___________________________________________INTERFACE
+- Ingreso de administrador___________________________________________DONE
 - Registro de administador...........................................DONE
-- Agregar malla nueva________________________________________________DONE
-- Agregar curso......................................................DONE
-- Eliminar Curso_____________________________________________________DONE
-- Modificar curso....................................................DONE
-- Fijar limite de ramos reprobados___________________________________DONE
-- Fijar maximo de creditos por semestre..............................DONE
-- Controlar topes de salas usadas a la misma hora____________________DONE
-- Controlar topes de profesores con dos clases a la misma hora.......DONE
-- Cambio de modo_____________________________________________________INTERFACE
+- Agregar malla nueva________________________________________________
+- Agregar curso......................................................
+- Eliminar Curso_____________________________________________________
+- Modificar curso....................................................
+- Fijar limite de ramos reprobados___________________________________
+- Fijar maximo de creditos por semestre..............................
+- Controlar topes de salas usadas a la misma hora____________________
+- Controlar topes de profesores con dos clases a la misma hora.......
+- Cambio de modo_____________________________________________________DONE
+
+Profesor:
+- Ingreso de profesor________________________________________________
+- Registro de profesor...............................................
+- Ver cursos dictados________________________________________________
+- Calificar cursos dictados..........................................
