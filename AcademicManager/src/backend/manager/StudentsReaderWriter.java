@@ -406,6 +406,10 @@ public class StudentsReaderWriter {
 					
 					student1.setCurriculum(curriculum);
 					
+					if (student1.getCurriculum().getCurrentSemester().getCourses().size() == 0) {
+						student1.getCurriculum().setCurrentSemester(null);
+					}
+					
 					for (Course course : allCourses) {
 						for (Coursed coursed2 : coursedList) {
 							if (course.getInitials().equals(coursed2.getInitials())) {

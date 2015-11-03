@@ -43,6 +43,8 @@ public class Manager {
 	public ArrayList<Professor> professors = new ArrayList<Professor>();
 	public ArrayList<Student> students = new ArrayList<Student>();
 	
+	public String courseDetailsToShow;
+	
 	/**
 	 * Creates the instance of manager.
 	 */

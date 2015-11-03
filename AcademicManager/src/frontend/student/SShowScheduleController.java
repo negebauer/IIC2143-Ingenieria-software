@@ -15,7 +15,6 @@ public class SShowScheduleController extends MViewController {
 	
 	public static URL view = Object.class.getResource("/frontend/student/SShowSchedule.fxml");
 	
-	@Override
 	public void setUp() {
 		super.setUp();
 		

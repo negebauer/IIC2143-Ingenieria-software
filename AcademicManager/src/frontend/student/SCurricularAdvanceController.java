@@ -31,7 +31,6 @@ public class SCurricularAdvanceController extends MViewController {
 	
 	public static URL view = Object.class.getResource("/frontend/student/SCurricularAdvance.fxml");
 	
-	@Override
 	public void setUp() {
 		super.setUp();
 		

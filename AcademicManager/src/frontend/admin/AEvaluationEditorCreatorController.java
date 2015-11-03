@@ -45,7 +45,6 @@ public class AEvaluationEditorCreatorController extends MViewController {
 	
 	static URL view = Object.class.getResource("/frontend/admin/AEvaluationEditorCreator.fxml");
 	
-	@Override
 	public void setUp() {
 		super.setUp();
 		

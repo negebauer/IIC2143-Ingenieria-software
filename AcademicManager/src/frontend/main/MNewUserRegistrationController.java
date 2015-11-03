@@ -89,7 +89,6 @@ public class MNewUserRegistrationController extends MViewController {
 	
 	static URL view = Object.class.getResource("/frontend/main/MNewUserRegistration.fxml");
 	
-	@Override
 	public void setUp(){
 		super.setUp();
 		hideLogout();

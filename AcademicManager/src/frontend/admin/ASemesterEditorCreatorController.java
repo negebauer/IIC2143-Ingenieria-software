@@ -234,7 +234,6 @@ public class ASemesterEditorCreatorController extends MViewController {
 		
 	}
 	
-	@Override
 	public void setUp() {
 		super.setUp();
 		

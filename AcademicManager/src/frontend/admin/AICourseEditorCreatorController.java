@@ -55,7 +55,6 @@ public class AICourseEditorCreatorController extends MViewController {
 	
 	static URL view = Object.class.getResource("/frontend/admin/AICourseEditorCreator.fxml");
 	
-	@Override
 	public void setUp() {
 		super.setUp();
 		

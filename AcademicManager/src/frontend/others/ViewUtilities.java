@@ -22,11 +22,6 @@ public final class ViewUtilities {
 	 * @param location
 	 */
 	public static void openView(URL location, URL sender) {
-		
-		if (location == null) {
-			System.out.println("ADJAWAWDWD");
-		}
-		
 		FXMLLoader loader = new FXMLLoader(location);
 		Parent root = null; 	
 		try {
@@ -50,10 +45,23 @@ public final class ViewUtilities {
 	}
 	
 	/**
-	 * Changes the view title
+	 * Opens a new window
+	 * @param location
 	 */
-	public static void setTitle(MViewController view, String title) {
-		
+	public static void openNewView(URL location) {
+		FXMLLoader loader = new FXMLLoader(location);
+		Parent root = null; 	
+		try {
+			root = (Parent) loader.load();
+			((MViewController) loader.getController()).setUp();
+			Stage stage = new Stage();
+			stage.setScene(new Scene(root));
+			stage.setTitle("RENNAB");
+			stage.show();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	/***

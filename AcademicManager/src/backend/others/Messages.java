@@ -373,7 +373,6 @@ public class Messages {
         result.put(UILabel.SEMESTER_CURRENT_SEMESTER_CURRENT_COURSES,		"Curso actuales:");
         result.put(UILabel.SEMESTER_CURRENT_SEMESTER_CREATE_NEW,			"Crear nuevo semestre");
         result.put(UILabel.SEMESTER_CURRENT_SEMESTER_SEARCH_COURSE,			"Buscar curso");
-        
         return Collections.unmodifiableMap(result);
     }
 	

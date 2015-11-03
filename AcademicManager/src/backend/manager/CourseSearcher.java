@@ -15,12 +15,13 @@ public class CourseSearcher {
 	 * @param name
 	 * @return
 	 */
-	public static ArrayList<Course> searchCourses(String initials, String name) {
+	public static ArrayList<Course> searchCourses(String searchParam) {
 		ArrayList<Course> courses = new ArrayList<Course>();
-		initials = initials != null ? initials : "";
-		name = name != null ? name : "";
+		if (searchParam == "" || searchParam == null) {
+			return Manager.INSTANCE.courses;
+		}
 		for (Course course : Manager.INSTANCE.courses) {
-			if (course.getInitials().contains(initials) || course.getName().contains(name)) {
+			if (course.getInitials().contains(searchParam) || course.getName().contains(searchParam)) {
 				courses.add(course);
 			}
 		}
