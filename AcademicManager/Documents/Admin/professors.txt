@@ -1,1 +1,13 @@
-11222333&Profesor&Ficticio&Total&Su casa ficticia&MALE&0&10.09.1990 00:00
+00000001&Felipe&Reyes&UC&Casa Reyes 01&MALE&01&11.09.1990 00:00
+00000002&Cristian&Ruz&UC&Casa Ruz 02&MALE&02&12.09.1990 00:00
+00000003&Marcelo&Arenas&UC&Casa Arenas 03&MALE&03&13.09.1990 00:00
+00000004&Carlos&Vizcaya&UC&Casa Carlos 04&MALE&04&14.09.1990 00:00
+00000005&Yadran&Eterovic&UC&Casa Yadran 05&MALE&05&15.09.1990 00:00
+00000006&Pedro&Gazmuri&UC&Casa Gazmuri 06&MALE&06&16.09.1990 00:00
+00000007&Matias&Tapia&UC&Casa Tapia 07&MALE&07&17.09.1990 00:00
+00000008&Claudia&Arqueros&UC&Casa Arqueros 08&FEMALE&08&18.09.1990 00:00
+00000009&Francisco&Unda&UC&Casa Unda 09&MALE&09&19.09.1990 00:00
+00000010&Miguel&Nussbaum&UC&Casa Nussbaum 10&MALE&10&20.09.1990 00:00
+00000011&Cristian&Tejos&UC&Casa Tejos 11&MALE&11&21.09.1990 00:00
+00000012&Yordi&Norero&UC&Casa Yordi 12&MALE&12&22.09.1990 00:00
+

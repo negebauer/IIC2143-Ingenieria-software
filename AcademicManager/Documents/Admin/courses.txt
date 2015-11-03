@@ -1,7 +1,13 @@
-Curso ficticio0&IIC2000&1&10&ENGINEERING&BOTH&true
-Curso ficticio1&IIC2001&1&10&ENGINEERING&BOTH&true
-Curso ficticio2&IIC2002&1&10&ENGINEERING&BOTH&true
-Curso ficticio3&IIC2003&1&10&ENGINEERING&BOTH&true
-Curso ficticio4&IIC2004&1&10&ENGINEERING&BOTH&true
-Curso ficticio5&IIC2005&1&10&ENGINEERING&BOTH&true
-Curso ficticio6&IIC2006&1&10&ENGINEERING&BOTH&true
+Finanzas&ICS3532&3&10&ENGINEERING&BOTH&true
+Sistemas Operativos y Redes&IIC2333&1&10&ENGINEERING&BOTH&true
+Matematicas Discretas&IIC1253&1&10&ENGINEERING&BOTH&true
+Estrategias y Tecnologias de Informacion&IIC3743&1&10&ENGINEERING&FIRST&true
+Ingenieria de Software&IIC2143&1&10&ENGINEERING&BOTH&true
+Modelos Estocasticos&ICS2123&2&10&ENGINEERING&BOTH&true
+Simulacion&ICS3723&1&10&ENGINEERING&FIRST&true
+Taller de Integracion&IIC3103&1&10&ENGINEERING&SECOND&true
+Gestion de Operaciones TI&IIC3703&1&10&ENGINEERING&FIRST&true
+Marketing&ICS3313&3&10&ENGINEERING&BOTH&true
+Conocimiento Cultura y Tecnologia&IIC2764&1&10&ENGINEERING&FIRST&true
+Sistemas Digitales&IEE2713&1&10&ENGINEERING&BOTH&true
+Mecanizacion&AGC204&1&10&AGRICULTURE&BOTH&true
