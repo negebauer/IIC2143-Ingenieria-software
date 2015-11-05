@@ -57,8 +57,7 @@ public class AStudyProgramManagerViewController extends MViewController {
 	Button btnSaveStudyProgram;
 	
 	
-	
-	public static URL view = Object.class.getResource("/frontend/main/AStudyProgramManagerView.fxml");
+	public static URL view = Object.class.getResource("/frontend/admin/AStudyProgramManagerView.fxml");
 	
 	public void setUp() {
 		super.setUp();
@@ -72,30 +71,44 @@ public class AStudyProgramManagerViewController extends MViewController {
 		labelMaxFailedCredits.setText(Messages.getUILabel(UILabel.MAXIMUM_OF_FAILED_CREDITS));
 		labelSchool.setText(Messages.getUILabel(UILabel.SCHOOL));
 		btnEditSemesters.setText(Messages.getUILabel(UILabel.SEMESTER_CURRENT_SEMESTER_CREATE_NEW));
-		btnEditSemesters.setText(Messages.getUILabel(UILabel.EDIT_SEMESTERS));
+		btnEditSemesters.setText(Messages.getUILabel(UILabel.EDIT_SEMESTERS));		
 		
-		labelName.setVisible(false);
-		labelYear.setVisible(false);
-		labelMaxCreditsPerSemester.setVisible(false);
-		labelMaxFailedCredits.setVisible(false);
-		labelSchool.setVisible(false);
-		txBxNameStudyProgram.setVisible(false);
-		txBxYearStudyProgram.setVisible(false);
-		txBxMaxCreditsPerSemester.setVisible(false);
-		txBxMaxFailedCredits.setVisible(false);
-		chBxSchoolStudyProgram.setVisible(false);
-		btnEditSemesters.setVisible(false);
-		btnCreateSemesters.setVisible(false);
-		btnSaveStudyProgram.setVisible(false);
-		
-		
-		ArrayList<String> studyProgramNames = new ArrayList<String>();
-		
-		for (StudyProgram studyProgram : Manager.INSTANCE.studyPrograms) {
-			studyProgramNames.add(studyProgram.getName());
+		ArrayList<String> schools = new ArrayList<String>();
+		for (School school : School.values()) {
+			schools.add(school.toString());
 		}
-		chBxStudyProgramsList.setItems(FXCollections.observableArrayList(studyProgramNames));
+		chBxSchoolStudyProgram.setItems(FXCollections.observableArrayList(schools));
 		
+		if (Manager.INSTANCE.currentEditingStudyProgram == null) {
+			labelName.setVisible(false);
+			labelYear.setVisible(false);
+			labelMaxCreditsPerSemester.setVisible(false);
+			labelMaxFailedCredits.setVisible(false);
+			labelSchool.setVisible(false);
+			txBxNameStudyProgram.setVisible(false);
+			txBxYearStudyProgram.setVisible(false);
+			txBxMaxCreditsPerSemester.setVisible(false);
+			txBxMaxFailedCredits.setVisible(false);
+			chBxSchoolStudyProgram.setVisible(false);
+			btnEditSemesters.setVisible(false);
+			btnCreateSemesters.setVisible(false);
+			btnSaveStudyProgram.setVisible(false);
+			
+			ArrayList<String> studyProgramNames = new ArrayList<String>();
+			
+			for (StudyProgram studyProgram : Manager.INSTANCE.studyPrograms) {
+				studyProgramNames.add(studyProgram.getName());
+			}
+			
+			chBxStudyProgramsList.setItems(FXCollections.observableArrayList(studyProgramNames));
+			
+		} else {
+			changeToEditMode();
+			btnEditSemesters.setVisible(true);
+			fillFields(Manager.INSTANCE.currentEditingStudyProgram);
+			
+		}
+			
 	}
 	
 	public void changeToEditMode() {
@@ -110,26 +123,28 @@ public class AStudyProgramManagerViewController extends MViewController {
 		txBxMaxFailedCredits.setVisible(true);
 		chBxSchoolStudyProgram.setVisible(true);
 		btnSaveStudyProgram.setVisible(true);
+		
+		
+		labelCreateStudyProgram.setVisible(false);
+		labelEditStudyProgram.setVisible(false);
+		btnCreateStudyProgram.setVisible(false);
+		btnEditStudyProgram.setVisible(false);
+		chBxStudyProgramsList.setVisible(false);
+		
 	}
 
 	public void btnCreateStudyProgram_Pressed() {
-		ViewUtilities.openView(ASemesterManagerViewController.view, view);
 		changeToEditMode();
 		btnCreateSemesters.setVisible(true);
-		ArrayList<String> schools = new ArrayList<String>();
-		for (School school : School.values()) {
-			schools.add(school.toString());
-		}
-		chBxSchoolStudyProgram.setItems(FXCollections.observableArrayList(schools));
+		
 	}
 	
 	public void btnEditStudyProgram_Pressed() {
-		ViewUtilities.openView(ASemesterManagerViewController.view, view);
 		changeToEditMode();
 		btnEditSemesters.setVisible(true);
 		String studyProgramSelected = chBxStudyProgramsList.getSelectionModel().getSelectedItem();
 		fillFields(Manager.INSTANCE.getStudyProgramForName(studyProgramSelected));
-		
+		Manager.INSTANCE.currentEditingStudyProgram = Manager.INSTANCE.getStudyProgramForName(studyProgramSelected);
 	}
 	
 	public void fillFields(StudyProgram studyProgram) {
@@ -146,18 +161,38 @@ public class AStudyProgramManagerViewController extends MViewController {
 		int maxCreditsPerSemester = Integer.parseInt(txBxMaxCreditsPerSemester.getText());
 		int maxFailedCredits = Integer.parseInt(txBxMaxFailedCredits.getText());
 		School school = School.valueOf(chBxSchoolStudyProgram.getSelectionModel().getSelectedItem());
-		Manager.INSTANCE.currentEditingStudyProgram = new StudyProgram(name, year, null, school, maxCreditsPerSemester, maxFailedCredits);
+		StudyProgram newStudyProgram = new StudyProgram(name, year, null, school, maxCreditsPerSemester, maxFailedCredits);
+		Manager.INSTANCE.currentEditingStudyProgram = newStudyProgram;
+		Manager.INSTANCE.studyPrograms.add(newStudyProgram);
+		
+		btnSaveStudyProgram_Pressed();
+		ViewUtilities.openView(ASemesterManagerViewController.view, view);
 	}
 	
 	public void btnEditSemesters_Pressed() {
-		 
+		btnSaveStudyProgram_Pressed();
+		ViewUtilities.openView(ASemesterManagerViewController.view, view);
 	}
 	
 	public void btnSaveStudyProgram_Pressed() {
 		StudyProgram currentProgram = Manager.INSTANCE.currentEditingStudyProgram;
-		// set the values of the boxes, to this current program.
+		
+		String name = txBxNameStudyProgram.getText();
+		int year = Integer.parseInt(txBxYearStudyProgram.getText());
+		int maxCreditsPerSemester = Integer.parseInt(txBxMaxCreditsPerSemester.getText());
+		int maxFailedCredits = Integer.parseInt(txBxMaxFailedCredits.getText());
+		School school = School.valueOf(chBxSchoolStudyProgram.getSelectionModel().getSelectedItem());
+		
+		currentProgram.setName(name);
+		currentProgram.setMaxCreditsPerSemester(maxCreditsPerSemester);
+		currentProgram.setMaxFailedCredits(maxFailedCredits);
+		currentProgram.setSchool(school);
+		currentProgram.setYearProgram(year);
 		
 	}
-	
-	
+		
+	public void btnBack_Pressed() {
+		super.btnBack_Pressed();
+		Manager.INSTANCE.currentEditingStudyProgram = null;
+	}
 }

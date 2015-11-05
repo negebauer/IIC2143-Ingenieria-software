@@ -64,6 +64,10 @@ public class ASemesterManagerViewController extends MViewController {
 	private CoursedSemester actualCoursedSemester;
 	private ArrayList<String> courses = new ArrayList<String>();
 	
+	public void setUp() {
+		super.setUp();
+	}
+	
 	public void btnCreateSemester_Pressed(){
 		changeToEditionMode();
 	}
@@ -234,9 +238,5 @@ public class ASemesterManagerViewController extends MViewController {
 		
 	}
 	
-	public void setUp() {
-		super.setUp();
-		
-		
-	}
+	
 }

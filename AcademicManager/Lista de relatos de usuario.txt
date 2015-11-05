@@ -19,14 +19,14 @@ Alumno:
 Administrador:
 - Ingreso de administrador___________________________________________DONE
 - Registro de administador...........................................DONE
-- Agregar malla nueva________________________________________________
+- Agregar malla nueva________________________________________________DONE
 - Agregar curso......................................................
 - Eliminar Curso_____________________________________________________
 - Modificar curso....................................................
-- Fijar limite de ramos reprobados___________________________________
-- Fijar maximo de creditos por semestre..............................
-- Controlar topes de salas usadas a la misma hora____________________
-- Controlar topes de profesores con dos clases a la misma hora.......
+- Fijar limite de ramos reprobados___________________________________DONE
+- Fijar maximo de creditos por semestre..............................DONE
+- Controlar topes de salas usadas a la misma hora____________________DONE
+- Controlar topes de profesores con dos clases a la misma hora.......DONE
 - Cambio de modo_____________________________________________________DONE
 
 Profesor:

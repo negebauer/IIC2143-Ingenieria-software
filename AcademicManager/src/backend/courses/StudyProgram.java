@@ -49,6 +49,14 @@ public class StudyProgram {
 	}
 	
 	/**
+	 * Modifies the year of the study program.
+	 * @param year The new year of this study program.
+	 */
+	public void setYearProgram(int year) {
+		this.yearProgram = year;
+	}
+	
+	/**
 	 * @return The school to which this StudyProgram belongs.
 	 */
 	public School getSchool() {

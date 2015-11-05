@@ -257,7 +257,10 @@ public class Messages {
 		EDIT_SEMESTERS,
 		SCHOOL,
 		MAXIMUM_OF_CREDITS_PER_SEMESTER,
-		MAXIMUM_OF_FAILED_CREDITS
+		MAXIMUM_OF_FAILED_CREDITS,
+		STUDY_PROGRAM_MANAGER,
+		COURSE_MANAGER,
+		BACK_TO_PROGRAM_STUDY_SELECTION
 		
 	}
 	
@@ -331,6 +334,9 @@ public class Messages {
         result.put(UILabel.EDIT_SEMESTERS,									"Edit Semesters");
         result.put(UILabel.MAXIMUM_OF_CREDITS_PER_SEMESTER,					"Maximum of credits per semester");
         result.put(UILabel.MAXIMUM_OF_FAILED_CREDITS,						"Maximum of failed credits");
+        result.put(UILabel.STUDY_PROGRAM_MANAGER,							"Study Program Manager");
+        result.put(UILabel.COURSE_MANAGER,									"Course Manager");
+        result.put(UILabel.BACK_TO_PROGRAM_STUDY_SELECTION,					"Back to Program Study Selection");
         return Collections.unmodifiableMap(result);
     }
 	
@@ -387,6 +393,9 @@ public class Messages {
         result.put(UILabel.EDIT_SEMESTERS,									"Editar Semestres");
         result.put(UILabel.MAXIMUM_OF_CREDITS_PER_SEMESTER,					"Maximo de creditos por semestre");
         result.put(UILabel.MAXIMUM_OF_FAILED_CREDITS,						"Maximo de creditos reprobados");
+        result.put(UILabel.STUDY_PROGRAM_MANAGER,							"Editor de Mallas");
+        result.put(UILabel.COURSE_MANAGER,									"Editor de Cursos");
+        result.put(UILabel.BACK_TO_PROGRAM_STUDY_SELECTION,					"Volver a la Seleccion de Malla");
         return Collections.unmodifiableMap(result);
     }
 	

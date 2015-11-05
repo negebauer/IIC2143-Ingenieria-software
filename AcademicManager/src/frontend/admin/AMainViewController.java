@@ -16,7 +16,7 @@ public class AMainViewController extends MViewController {
 	@FXML
 	Label labelWhatDoNext;
 	@FXML
-	Button btnStyduProgramManager;
+	Button btnStudyProgramManager;
 	@FXML
 	Button btnCourseManager;
 	
@@ -26,11 +26,11 @@ public class AMainViewController extends MViewController {
 		super.setUp();
 		labelWelcomeMessage.setText(Messages.getUILabel(UILabel.WELCOME_MESSAGE_ADMIN));
 		labelWhatDoNext.setText(Messages.getUILabel(UILabel.WHAT_TO_DO_NEXT_QUESTION));
-		btnStyduProgramManager.setText(Messages.getUILabel(UILabel.CREATE_NEW_STUDY_PROGRAM));
-		btnCourseManager.setText(Messages.getUILabel(UILabel.EDIT_STUDY_PROGRAM));
+		btnStudyProgramManager.setText(Messages.getUILabel(UILabel.STUDY_PROGRAM_MANAGER));
+		btnCourseManager.setText(Messages.getUILabel(UILabel.COURSE_MANAGER));
 	}
 	
-	public void btnStyduProgramManager_Pressed() {
+	public void btnStudyProgramManager_Pressed() {
 		ViewUtilities.openView(AStudyProgramManagerViewController.view, view);
 	}
 	
