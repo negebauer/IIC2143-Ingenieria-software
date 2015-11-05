@@ -23,7 +23,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
-public class ASemesterEditorCreatorController extends MViewController {
+public class ASemesterManagerViewController extends MViewController {
 	
 	@FXML
 	Label labelSemesterEditorWelcomeMessage;
@@ -151,7 +151,7 @@ public class ASemesterEditorCreatorController extends MViewController {
 		}
 	}
 	
-	public ASemesterEditorCreatorController(){
+	public ASemesterManagerViewController(){
 		ArrayList<String> stringSemesters = new ArrayList<String>();
 		ArrayList<Semester> semesters = new ArrayList<Semester>();
 		ArrayList<CoursedSemester> coursedSemesters = new ArrayList<CoursedSemester>();
@@ -236,6 +236,7 @@ public class ASemesterEditorCreatorController extends MViewController {
 	
 	public void setUp() {
 		super.setUp();
+		
 		
 	}
 }

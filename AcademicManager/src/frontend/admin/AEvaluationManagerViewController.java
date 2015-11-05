@@ -6,7 +6,7 @@ import frontend.main.MViewController;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-public class AEvaluationEditorCreatorController extends MViewController {
+public class AEvaluationManagerViewController extends MViewController {
 	
 	@FXML
 	Label labelEvaluationsEditor;

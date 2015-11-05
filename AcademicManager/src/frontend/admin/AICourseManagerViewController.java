@@ -6,7 +6,7 @@ import frontend.main.MViewController;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-public class AICourseEditorCreatorController extends MViewController {
+public class AICourseManagerViewController extends MViewController {
 	
 	@FXML
 	ChoiceBox<String> chBxICourses;

@@ -251,7 +251,9 @@ public class Messages {
 		SEMESTER_CURRENT_SEMESTER_NO_CURRENT_SEMESTER,
 		SEMESTER_CURRENT_SEMESTER_CURRENT_COURSES,
 		SEMESTER_CURRENT_SEMESTER_CREATE_NEW,
-		SEMESTER_CURRENT_SEMESTER_SEARCH_COURSE
+		SEMESTER_CURRENT_SEMESTER_SEARCH_COURSE,
+		STUDY_PROGRAM_CREATE_LABEL,
+		STUDY_PROGRAM_EDIT_LABEL
 		
 	}
 	
@@ -306,8 +308,10 @@ public class Messages {
         result.put(UILabel.YEAR, 											"Year");
         result.put(UILabel.PICK_CARREER, 									"Pick Carreer(s)");
         result.put(UILabel.LOGOUT, 											"Logout");
-        result.put(UILabel.CREATE_NEW_STUDY_PROGRAM, 						"Create new Study Program");
-        result.put(UILabel.EDIT_STUDY_PROGRAM, 								"Edit an existing Study Program");
+        result.put(UILabel.CREATE_NEW_STUDY_PROGRAM, 						"Create Study Program");
+        result.put(UILabel.STUDY_PROGRAM_CREATE_LABEL, 						"If you want to create a new Stuty Program, press in Create Study Program");
+        result.put(UILabel.EDIT_STUDY_PROGRAM, 								"Edit Study Program");
+        result.put(UILabel.STUDY_PROGRAM_EDIT_LABEL, 						"If you want to edit an old Study Program, select one from the list below");
         result.put(UILabel.ADD, 											"Add Carreer");
         result.put(UILabel.REMOVE,				 							"Remove Carreer");
         result.put(UILabel.ASSISTANT,			 							"Assistant");
@@ -359,8 +363,8 @@ public class Messages {
         result.put(UILabel.YEAR, 											"Ano");
         result.put(UILabel.PICK_CARREER, 									"Elegir Carrera(s)");
         result.put(UILabel.LOGOUT, 											"Cerrar Sesion");
-        result.put(UILabel.CREATE_NEW_STUDY_PROGRAM, 						"Crear una nueva Malla");
-        result.put(UILabel.EDIT_STUDY_PROGRAM, 								"Editar una Malla existente");
+        result.put(UILabel.CREATE_NEW_STUDY_PROGRAM, 						"Crear Malla Nueva");
+        result.put(UILabel.EDIT_STUDY_PROGRAM, 								"Editar Malla");
         result.put(UILabel.ADD, 											"Agregar");
         result.put(UILabel.REMOVE, 											"Quitar");
         result.put(UILabel.ASSISTANT,			 							"Ayudante");
