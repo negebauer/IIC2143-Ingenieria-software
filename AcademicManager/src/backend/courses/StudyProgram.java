@@ -87,6 +87,10 @@ public class StudyProgram {
 		this.semesters = semesters;
 	}
 	
+	public void addSemester(Semester semester) {
+		this.semesters.add(semester);
+	}
+	
 	/** 
 	 * @return The maximum of credits that one semester can have.
 	 */
