@@ -27,7 +27,9 @@
             <Label fx:id="labelMaxCreditsPerSemester" layoutX="64.0" layoutY="277.0" text="Maximum of Credits per Semester" />
             <Label fx:id="labelMaxFailedCredits" layoutX="286.0" layoutY="109.0" text="Maximum of failed Credits" />
             <Label fx:id="labelSchool" layoutX="286.0" layoutY="183.0" text="School" />
-            <Button fx:id="btnEditSemesters" layoutX="288.0" layoutY="295.0" mnemonicParsing="false" text="Edit Semesters" />
+            <Button fx:id="btnEditSemesters" layoutX="288.0" layoutY="295.0" mnemonicParsing="false" onAction="#btnEditSemesters_Pressed" text="Edit Semesters" />
+            <Button fx:id="btnCreateSemesters" layoutX="288.0" layoutY="295.0" mnemonicParsing="false" onAction="#btnCreateSemesters_Pressed" text="Create Semesters" />
+            <Button fx:id="btnSaveStudyProgram" layoutX="425.0" layoutY="320.0" mnemonicParsing="false" onAction="#btnSaveStudyProgram_Pressed" text="Save Study Program" />
          </children>
       </Pane>
    </children>

@@ -46,6 +46,9 @@ public class Manager {
 	public String courseDetailsToShow;
 	public Semester currentSemester;
 	
+	public StudyProgram currentEditingStudyProgram;
+	public Course currentEditignCourse;
+	
 	/**
 	 * Creates the instance of manager.
 	 */

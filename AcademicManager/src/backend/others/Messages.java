@@ -253,7 +253,11 @@ public class Messages {
 		SEMESTER_CURRENT_SEMESTER_CREATE_NEW,
 		SEMESTER_CURRENT_SEMESTER_SEARCH_COURSE,
 		STUDY_PROGRAM_CREATE_LABEL,
-		STUDY_PROGRAM_EDIT_LABEL
+		STUDY_PROGRAM_EDIT_LABEL,
+		EDIT_SEMESTERS,
+		SCHOOL,
+		MAXIMUM_OF_CREDITS_PER_SEMESTER,
+		MAXIMUM_OF_FAILED_CREDITS
 		
 	}
 	
@@ -324,6 +328,9 @@ public class Messages {
         result.put(UILabel.SEMESTER_CURRENT_SEMESTER_CURRENT_COURSES,		"Current courses:");
         result.put(UILabel.SEMESTER_CURRENT_SEMESTER_CREATE_NEW,			"Create new semester");
         result.put(UILabel.SEMESTER_CURRENT_SEMESTER_SEARCH_COURSE,			"Search course");
+        result.put(UILabel.EDIT_SEMESTERS,									"Edit Semesters");
+        result.put(UILabel.MAXIMUM_OF_CREDITS_PER_SEMESTER,					"Maximum of credits per semester");
+        result.put(UILabel.MAXIMUM_OF_FAILED_CREDITS,						"Maximum of failed credits");
         return Collections.unmodifiableMap(result);
     }
 	
@@ -377,6 +384,9 @@ public class Messages {
         result.put(UILabel.SEMESTER_CURRENT_SEMESTER_CURRENT_COURSES,		"Curso actuales:");
         result.put(UILabel.SEMESTER_CURRENT_SEMESTER_CREATE_NEW,			"Crear nuevo semestre");
         result.put(UILabel.SEMESTER_CURRENT_SEMESTER_SEARCH_COURSE,			"Buscar curso");
+        result.put(UILabel.EDIT_SEMESTERS,									"Editar Semestres");
+        result.put(UILabel.MAXIMUM_OF_CREDITS_PER_SEMESTER,					"Maximo de creditos por semestre");
+        result.put(UILabel.MAXIMUM_OF_FAILED_CREDITS,						"Maximo de creditos reprobados");
         return Collections.unmodifiableMap(result);
     }
 	
