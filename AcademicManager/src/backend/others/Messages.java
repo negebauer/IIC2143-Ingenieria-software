@@ -396,6 +396,7 @@ public class Messages {
         result.put(UILabel.STUDY_PROGRAM_MANAGER,							"Editor de Mallas");
         result.put(UILabel.COURSE_MANAGER,									"Editor de Cursos");
         result.put(UILabel.BACK_TO_PROGRAM_STUDY_SELECTION,					"Volver a la Seleccion de Malla");
+        
         return Collections.unmodifiableMap(result);
     }
 	

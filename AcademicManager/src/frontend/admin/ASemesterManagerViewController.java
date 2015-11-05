@@ -11,7 +11,7 @@ import backend.courses.StudyProgram;
 import backend.enums.AcademicSemester;
 import backend.manager.Manager;
 import backend.users.*;
-import frontend.main.MViewController;
+import frontend.main.MCourseSearcherSelectorViewController;
 import frontend.others.ViewUtilities;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -21,9 +21,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
 
-public class ASemesterManagerViewController extends MViewController {
+public class ASemesterManagerViewController extends MCourseSearcherSelectorViewController {
 	
 	@FXML
 	Label labelSemesterEditorWelcomeMessage;
@@ -36,206 +35,118 @@ public class ASemesterManagerViewController extends MViewController {
 	@FXML
 	Button btnRemoveCourse;
 	@FXML
-	Button btnSaveSemester;
+	Button btnAddSemester;
 	@FXML
 	ChoiceBox<String> chBxSemesters;
-	@FXML
-	ChoiceBox<String> chBxCourses;
 	@FXML
 	ListView<String> listCoursesInSemester;
 	@FXML
 	ChoiceBox<String> chBxSemesterType;
 	@FXML
-	TextField txBxYear;
-	@FXML
-	TextField txBxMaxCredits;
-	@FXML
 	Label labelSelectSemester;
 	@FXML
-	Label labelYear;
+	Button btnSaveSemester;
 	@FXML
-	Label labelMaxCredits;
-	@FXML
-	Label labelSelectCourse;
+	Button btnBackToStudyProgramManager;
 	
 	public static URL view = Object.class.getResource("/frontend/admin/ASemesterManagerView.fxml");
-	
-	private Semester actualSemester;
-	private CoursedSemester actualCoursedSemester;
-	private ArrayList<String> courses = new ArrayList<String>();
+		
 	
 	public void setUp() {
 		super.setUp();
-	}
-	
-	public void btnCreateSemester_Pressed(){
-		changeToEditionMode();
-	}
+		super.hideCourseSelector();
+		super.hideCourseSearcher();
 
-	public void btnEditSemester_Pressed(){
-		changeToEditionMode();
-		chBxCourses.setItems(FXCollections.observableArrayList(courses));
+		btnAddCourse.setVisible(false);
+		btnRemoveCourse.setVisible(false);
+		btnAddSemester.setVisible(false);
+		listCoursesInSemester.setVisible(false);
+		chBxSemesterType.setVisible(false);
+		labelSelectSemester.setVisible(false);
+		btnSaveSemester.setVisible(false);
 		
-		ArrayList<String> coursesString = new ArrayList<String>();
-		if (actualSemester != null) {
-			for (Course course : actualSemester.getCourses()) {
-				coursesString.add(course.getInitials());
-			}
-			chBxSemesterType.setValue(actualSemester.getSemester().toString());
-			txBxYear.setText(Integer.toString(actualSemester.getYear()));
-			txBxMaxCredits.setText(Integer.toString(actualSemester.getMaxCredits()));
-		} else if (actualCoursedSemester != null) {
-			for (Coursed coursed : actualCoursedSemester.getCoursedCourses()) {
-				coursesString.add(coursed.getInitials());
-			}
-			chBxSemesterType.setValue(actualCoursedSemester.getSemester().toString());
-			txBxYear.setText(Integer.toString(actualCoursedSemester.getYear()));
-			txBxMaxCredits.setText(Integer.toString(actualCoursedSemester.getMaxCredits()));
-		}
-		
-		listCoursesInSemester.setItems(FXCollections.observableArrayList(coursesString));
-		
-		
-	}
-
-	public void btnAddCourse_Pressed(){
-
-		boolean exist = false;
-		String course = chBxCourses.getSelectionModel().getSelectedItem().toString();
-		
-		for(String str : courses)
-			if(str == course)
-				exist = true;
-		
-		if(exist)
-			courses.add(course);	
-
-		this.listCoursesInSemester.setItems(FXCollections.observableArrayList(courses));	
-	}
-
-	public void btnRemoveCourse_Pressed(){
-
-		String course = this.listCoursesInSemester.getSelectionModel().getSelectedItem();
-		
-		for(String str : courses)
-			if(str == course)
-				courses.remove(str);
-				
-		this.listCoursesInSemester.setItems(FXCollections.observableArrayList(courses));
-	}
-
-	public void btnSaveSemester_Pressed(){
-		ArrayList<Coursed> coursedCourses = ((Student)Manager.INSTANCE.currentUser).getCurriculum().getCoursedCourses();
-		ArrayList<Course> courses = new ArrayList<Course>();
-		
-		for (Course course : Manager.INSTANCE.courses) {
-			for (String initialCourse : listCoursesInSemester.getItems()) {
-				if (initialCourse == course.getInitials()) {
-					courses.add(course);
+		if (Manager.INSTANCE.currentEditingStudyProgram != null) {
+			StudyProgram currentProgram = Manager.INSTANCE.currentEditingStudyProgram;
+			int size = currentProgram.getSemesters().size();
+			if (size > 0) {
+				ArrayList<String> semesters = new ArrayList<String>();
+				for (int i = 1; i <= size; i++) {
+					semesters.add(i + "");
 				}
+				chBxSemesters.setItems(FXCollections.observableArrayList(semesters));
 			}
 		}
 		
-		Semester newSemester = new Semester(toAcademicSemester(chBxSemesterType.getSelectionModel().getSelectedItem()), Integer.valueOf(txBxYear.getText()), Integer.valueOf(txBxMaxCredits.getText()),coursedCourses, courses );
-		((Student)Manager.INSTANCE.currentUser).getCurriculum().setCurrentSemester(newSemester);
+	}
 	
+	public void btnCreateSemester_Pressed() {
+		changeToEditionMode();
+		btnAddSemester.setVisible(true);
+	}
+
+	public void btnBackToStudyProgramManager_Pressed() {
+		ViewUtilities.openView(AStudyProgramManagerViewController.view, view);
+	}
+
+	public void btnEditSemester_Pressed() {
+		changeToEditionMode();
+		btnSaveSemester.setVisible(true);
+		int indexChoosed = Integer.parseInt(chBxSemesters.getSelectionModel().getSelectedItem());
+		Semester semesterSelected = Manager.INSTANCE.currentEditingStudyProgram.getSemesters().get(indexChoosed);
+		
+		ArrayList<String> semesterCourses = new ArrayList<String>();
+		for (Course course : semesterSelected.getCourses()) {
+			semesterCourses.add(course.getInitials());
+		}
+		listCoursesInSemester.setItems(FXCollections.observableArrayList(semesterCourses));
+		
+		chBxSemesterType.getSelectionModel().select(semesterSelected.getSemester().toString());
+		
+	}
+
+	public void btnAddCourse_Pressed() {
+		
+		
+	}
+
+	public void btnRemoveCourse_Pressed() {
+		
+		
+	}
+
+	public void btnAddSemester_Pressed() {
+		// create new semester with the data of the fields
+		
+		ViewUtilities.openView(view, view);
+	}
+
+	public void btnSaveSemester_Pressed() {
+		// set data from the fields to the semester selected
+		
+		
 		ViewUtilities.openView(view, view);
 	}
 	
-	public AcademicSemester toAcademicSemester(String semesterString) {
-		switch (semesterString) {
-		case "BOTH":
-			return AcademicSemester.BOTH;
-		case "FIRST":
-			return AcademicSemester.FIRST;
-		case "SECOND":
-			return AcademicSemester.SECOND;
-		default:
-			return AcademicSemester.defaultSemester();
-		}
-	}
-	
-	public ASemesterManagerViewController(){
-		ArrayList<String> stringSemesters = new ArrayList<String>();
-		ArrayList<Semester> semesters = new ArrayList<Semester>();
-		ArrayList<CoursedSemester> coursedSemesters = new ArrayList<CoursedSemester>();
-		boolean isStudent = Manager.INSTANCE.currentUser instanceof Student;
-		boolean isAdmin = Manager.INSTANCE.currentUser instanceof Admin;
-		
-		if (isStudent) {
-			for (CoursedSemester coursedSemester : ((Student)Manager.INSTANCE.currentUser).getCurriculum().getCoursedSemesters()) {
-				stringSemesters.add(coursedSemester.getYear() + "-" + coursedSemester.getSemester());
-				coursedSemesters.add(coursedSemester);
-			}
-			Semester semester = ((Student)Manager.INSTANCE.currentUser).getCurriculum().getCurrentSemester();
-			stringSemesters.add(semester.getYear() + "-" + semester.getSemester());
-			semesters.add(semester);
-			
-		} else if (isAdmin) {
-			for (StudyProgram studyProgram : Manager.INSTANCE.studyPrograms) {
-				for (Semester semester : studyProgram.getSemesters()) {
-					stringSemesters.add(studyProgram.getName() + "-" + semester.getYear() + "-" + semester.getSemester());
-					semesters.add(semester);
-				}
-			}
-		}
-		
-		chBxSemesters.setItems(FXCollections.observableArrayList(stringSemesters));
-		
-		chBxSemesters.getSelectionModel().selectedIndexProperty().addListener(
-				new ChangeListener<Number>() {
-					@Override
-					public void changed (ObservableValue<? extends Number> observableValue, Number value, Number newValue) {
-						if (stringSemesters.get(newValue.intValue()) != null){
-							btnEditSemester.setVisible(true);
-							if (isAdmin) {
-								actualSemester = semesters.get(newValue.intValue());
-								actualCoursedSemester = null;
-							} else if (isStudent) {
-								if (newValue.intValue() == coursedSemesters.size()){
-									actualSemester = semesters.get(0);
-									actualCoursedSemester = null;
-								} else {
-									actualCoursedSemester = coursedSemesters.get(newValue.intValue());
-									actualSemester = null;
-								}
-							}
-						}
-			}
-		});
-			
-	}
-
 	public void changeToEditionMode() {
 		chBxSemesters.setVisible(false);
 		btnCreateSemester.setVisible(false);
 		btnEditSemester.setVisible(false);
-		chBxCourses.setVisible(true);
-		labelSemesterEditorWelcomeMessage.setText("Agrega o elimina cursos al semestre");
-		listCoursesInSemester.setVisible(true);
 		btnRemoveCourse.setVisible(true);
 		btnAddCourse.setVisible(true);
-		btnSaveSemester.setVisible(true);
 		chBxSemesterType.setVisible(true);
-		txBxYear.setVisible(true);
-		txBxMaxCredits.setVisible(true);
 		labelSelectSemester.setVisible(true);
-		labelYear.setVisible(true);
-		labelMaxCredits.setVisible(true);
-		labelSelectCourse.setVisible(true);
+		listCoursesInSemester.setVisible(true);
 		
-		chBxSemesterType.setItems(FXCollections.observableArrayList(
-				"BOTH",
-				"FIRST",
-				"SECOND"));
 		
-		ArrayList<String> courses = new ArrayList<String>();
-		for (Course course : Manager.INSTANCE.courses) {
-			courses.add(course.getInitials());
+		super.showCourseSearcher();
+		super.showCourseSelector();
+		
+		ArrayList<String> academicSemesters = new ArrayList<String>();
+		for (AcademicSemester academicSemester : AcademicSemester.values()) {
+			academicSemesters.add(academicSemester.toString());
 		}
 		
-		chBxCourses.setItems(FXCollections.observableArrayList(courses));
-		
+		chBxSemesterType.setItems(FXCollections.observableArrayList(academicSemesters));
 	}
 	
 	

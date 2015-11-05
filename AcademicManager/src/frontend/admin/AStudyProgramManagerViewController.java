@@ -189,6 +189,8 @@ public class AStudyProgramManagerViewController extends MViewController {
 		currentProgram.setSchool(school);
 		currentProgram.setYearProgram(year);
 		
+		
+		
 	}
 		
 	public void btnBack_Pressed() {
