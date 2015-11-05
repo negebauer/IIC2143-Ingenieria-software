@@ -53,7 +53,7 @@ public class AICourseManagerViewController extends MViewController {
 	@FXML
 	ChoiceBox<String> chBxClassesTypes;
 	
-	static URL view = Object.class.getResource("/frontend/admin/AICourseEditorCreator.fxml");
+	static URL view = Object.class.getResource("/frontend/admin/AICourseManagerView.fxml");
 	
 	public void setUp() {
 		super.setUp();

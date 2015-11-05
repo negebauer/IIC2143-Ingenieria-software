@@ -58,7 +58,7 @@ public class ASemesterManagerViewController extends MViewController {
 	@FXML
 	Label labelSelectCourse;
 	
-	public static URL view = Object.class.getResource("/frontend/admin/ASemesterEditorCreator.fxml");
+	public static URL view = Object.class.getResource("/frontend/admin/ASemesterManagerView.fxml");
 	
 	private Semester actualSemester;
 	private CoursedSemester actualCoursedSemester;

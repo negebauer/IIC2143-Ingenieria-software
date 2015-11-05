@@ -3,8 +3,6 @@
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.admin.AStudyProgramManagerViewController">
    <children>
@@ -16,9 +14,20 @@
             <Button fx:id="btnLogout" layoutX="527.0" layoutY="373.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
             <Label fx:id="labelEditStudyProgram" layoutX="64.0" layoutY="38.0" text="Si deseas editar una malla anterior, seleccionala de la lista." />
             <Label fx:id="labelCreateStudyProgram" layoutX="64.0" layoutY="55.0" text="Si deseas crear una malla nueva, presiona en crear nueva malla" />
-            <Button fx:id="btnEditStudyProgram" layoutX="64.0" layoutY="148.0" mnemonicParsing="false" onAction="#btnEditStudyProgram_Pressed" text="Editar Malla" />
-            <Button fx:id="btnCreateStudyProgram" layoutX="64.0" layoutY="260.0" mnemonicParsing="false" onAction="#btnCreateStudyProgram_Pressed" text="Crear Malla Nueva" />
+            <Button fx:id="btnEditStudyProgram" layoutX="64.0" layoutY="148.0" mnemonicParsing="false" onAction="#btnEditStudyProgram_Pressed" text="Edit Stuty Program" />
+            <Button fx:id="btnCreateStudyProgram" layoutX="64.0" layoutY="260.0" mnemonicParsing="false" onAction="#btnCreateStudyProgram_Pressed" text="Ceate New Study Program" />
             <ChoiceBox fx:id="chBxStudyProgramsList" layoutX="64.0" layoutY="103.0" prefHeight="25.0" prefWidth="288.0" />
+            <TextField fx:id="txBxNameStudyProgram" layoutX="64.0" layoutY="128.0" promptText="ej. Ingenieria Civil" />
+            <TextField fx:id="txBxYearStudyProgram" layoutX="64.0" layoutY="201.0" promptText="ej. 2013" />
+            <TextField fx:id="txBxMaxCreditsPerSemester" layoutX="68.0" layoutY="295.0" promptText="ej. 50" />
+            <TextField fx:id="txBxMaxFailedCredits" layoutX="288.0" layoutY="128.0" promptText="ej. 60" />
+            <ChoiceBox fx:id="chBxSchoolStudyProgram" layoutX="287.0" layoutY="201.0" prefHeight="25.0" prefWidth="288.0" />
+            <Label fx:id="labelName" layoutX="64.0" layoutY="107.0" text="Name" />
+            <Label fx:id="labelYear" layoutX="64.0" layoutY="183.0" text="Year" />
+            <Label fx:id="labelMaxCreditsPerSemester" layoutX="64.0" layoutY="277.0" text="Maximum of Credits per Semester" />
+            <Label fx:id="labelMaxFailedCredits" layoutX="286.0" layoutY="109.0" text="Maximum of failed Credits" />
+            <Label fx:id="labelSchool" layoutX="286.0" layoutY="183.0" text="School" />
+            <Button fx:id="btnEditSemesters" layoutX="288.0" layoutY="295.0" mnemonicParsing="false" text="Edit Semesters" />
          </children>
       </Pane>
    </children>

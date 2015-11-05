@@ -43,7 +43,7 @@ public class AEvaluationManagerViewController extends MViewController {
 	@FXML
 	Button btnSaveEvaluation;
 	
-	static URL view = Object.class.getResource("/frontend/admin/AEvaluationEditorCreator.fxml");
+	static URL view = Object.class.getResource("/frontend/admin/AEvaluationManagerView.fxml");
 	
 	public void setUp() {
 		super.setUp();
