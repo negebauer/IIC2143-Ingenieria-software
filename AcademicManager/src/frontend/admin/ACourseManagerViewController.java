@@ -1,8 +1,17 @@
 package frontend.admin;
 
 import java.net.URL;
+import java.util.ArrayList;
 
+import backend.courses.Course;
+import backend.courses.Evaluation;
+import backend.enums.AcademicSemester;
+import backend.enums.School;
+import backend.interfaces.ICourse;
+import backend.manager.Manager;
 import frontend.main.MCourseSearcherSelectorViewController;
+import frontend.others.ViewUtilities;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -77,7 +86,240 @@ public class ACourseManagerViewController extends MCourseSearcherSelectorViewCon
 	public static URL view = Object.class.getResource("/frontend/admin/ACourseManagerView.fxml");
 	
 	public void setUp() {
-		super.setUp();
+		// TODO Make the messages for every component and set their text to them.
+		
+		if (Manager.INSTANCE.currentEditignCourse != null) {
+			changeToEditCourseMode();
+			
+			txBxCourseName.setText(Manager.INSTANCE.currentEditignCourse.getName());
+			txBxInitialsCourse.setText(Manager.INSTANCE.currentEditignCourse.getInitials());
+			txBxCourseCredits.setText(Manager.INSTANCE.currentEditignCourse.getCredits() + "");
+			txBxCourseSection.setText(Manager.INSTANCE.currentEditignCourse.getSection() + "");
+			chBxShcools.getSelectionModel().select(Manager.INSTANCE.currentEditignCourse.getSchool().toString());
+			chBxAcademicSemesters.getSelectionModel().select(Manager.INSTANCE.currentEditignCourse.getSemester().toString());
+			txArCourseDetails.setText(Manager.INSTANCE.currentEditignCourse.getDetails());
+			
+			btnSaveCourse.setVisible(true);
+			
+		} else {
+		
+			txBxCourseName.setVisible(false);
+			txBxInitialsCourse.setVisible(false);
+			txBxCourseCredits.setVisible(false);
+			txBxCourseSection.setVisible(false);
+			chBxShcools.setVisible(false);
+			chBxAcademicSemesters.setVisible(false);
+			txArCourseDetails.setVisible(false);
+			labelNameCourse.setVisible(false);
+			labelCourseInitials.setVisible(false);
+			labelCourseCredits.setVisible(false);
+			labelCourseSection.setVisible(false);
+			labelCourseSchool.setVisible(false);
+			labelSemesterDictated.setVisible(false);
+			labelCourseDetails.setVisible(false);
+			chBxCoordination.setVisible(false);
+			labelCoordination.setVisible(false);
+			btnShowCourses.setVisible(false);
+			btnShowEvaluations.setVisible(false);
+			btnShowRequirements.setVisible(false);
+			btnShowCoRequirements.setVisible(false);
+			
+			btnCreateCourse.setVisible(false);
+			btnSaveCourse.setVisible(false);
+			
+			listRequirements.setVisible(false);
+			chBxCoursesAsRequirements.setVisible(false);
+			btnAddRequirement.setVisible(false);
+			btnRemoveRequirement.setVisible(false);
+			labelSelectCourseAsRequirement.setVisible(false);
+			super.setUp();
+		}
+	}
+
+	public void btnEditCourse_Pressed() {
+		if (!super.chBxSelectedCourse.getSelectionModel().isEmpty()) {
+			changeToEditCourseMode();
+			
+			String rawCourseInfo = chBxSelectedCourse.getSelectionModel().getSelectedItem();
+			String[] parsed = getParsedInitialsSectionName(rawCourseInfo);
+			String initials = parsed[0];
+			int section = Integer.valueOf(parsed[1]);
+			String name = parsed[2];
+			for (Course course : coursesToShow) {
+				if (course.getInitials().equals(initials) && course.getSection() == section && course.getName().equals(name)) {
+					Manager.INSTANCE.currentEditignCourse = course;
+				}
+			}
+			Manager.INSTANCE.courses.remove(Manager.INSTANCE.currentEditignCourse);
+			
+			txBxCourseName.setText(Manager.INSTANCE.currentEditignCourse.getName());
+			txBxInitialsCourse.setText(Manager.INSTANCE.currentEditignCourse.getInitials());
+			txBxCourseCredits.setText(Manager.INSTANCE.currentEditignCourse.getCredits() + "");
+			txBxCourseSection.setText(Manager.INSTANCE.currentEditignCourse.getSection() + "");
+			chBxShcools.getSelectionModel().select(Manager.INSTANCE.currentEditignCourse.getSchool().toString());
+			chBxAcademicSemesters.getSelectionModel().select(Manager.INSTANCE.currentEditignCourse.getSemester().toString());
+			txArCourseDetails.setText(Manager.INSTANCE.currentEditignCourse.getDetails());
+			chBxCoordination.getSelectionModel().select(Manager.INSTANCE.currentEditignCourse.isCoordinated().toString());
+			
+			btnSaveCourse.setVisible(true);
+		}
+	}
+	
+	public void changeToEditCourseMode() {
+		
+		txBxCourseName.setVisible(true);
+		txBxInitialsCourse.setVisible(true);
+		txBxCourseCredits.setVisible(true);
+		txBxCourseSection.setVisible(true);
+		chBxShcools.setVisible(true);
+		chBxAcademicSemesters.setVisible(true);
+		txArCourseDetails.setVisible(true);
+		labelNameCourse.setVisible(true);
+		labelCourseInitials.setVisible(true);
+		labelCourseCredits.setVisible(true);
+		labelCourseSection.setVisible(true);
+		labelCourseSchool.setVisible(true);
+		labelSemesterDictated.setVisible(true);
+		labelCourseDetails.setVisible(true);
+		chBxCoordination.setVisible(true);
+		labelCoordination.setVisible(true);
+		btnShowCourses.setVisible(true);
+		btnShowEvaluations.setVisible(true);
+		btnShowRequirements.setVisible(true);
+		btnShowCoRequirements.setVisible(true);
+		
+		hideCourseSelectionView();
+		
+		ArrayList<String> schools = new ArrayList<String>();
+		for (School school : School.values()) {
+			schools.add(school.toString());
+		}
+		chBxShcools.setItems(FXCollections.observableArrayList(schools));
+		
+		ArrayList<String> academicSemesters = new ArrayList<String>();
+		for (AcademicSemester academicSemester : AcademicSemester.values()) {
+			academicSemesters.add(academicSemester.toString());
+		}
+		chBxAcademicSemesters.setItems(FXCollections.observableArrayList(academicSemesters));
+		chBxCoordination.setItems(FXCollections.observableArrayList("true", "false"));
+	}
+
+	public void showRequirementsView() {
+		listRequirements.setVisible(true);
+		chBxCoursesAsRequirements.setVisible(true);
+		btnAddRequirement.setVisible(true);
+		btnRemoveRequirement.setVisible(true);
+		labelSelectCourseAsRequirement.setVisible(true);
+	}
+	
+	public void hideRequirementsView() {
+		listRequirements.setVisible(false);
+		chBxCoursesAsRequirements.setVisible(false);
+		btnAddRequirement.setVisible(false);
+		btnRemoveRequirement.setVisible(false);
+		labelSelectCourseAsRequirement.setVisible(false);
+	}
+	
+	public void btnCreateNewCourse_Pressed() {
+		changeToEditCourseMode();		
+		btnCreateCourse.setVisible(true);
+		Manager.INSTANCE.currentEditignCourse = new Course(null, null, 0, -1, null, null, null, null, null, null, null, null);
+	}
+
+	public void btnSaveCourse_Pressed() {
+		
+		String name = txBxCourseName.getText();
+		String initials = txBxInitialsCourse.getText();
+		int credits = Integer.parseInt(txBxCourseCredits.getText());
+		int section = Integer.parseInt(txBxCourseSection.getText());
+		School school = School.valueOf(chBxShcools.getSelectionModel().getSelectedItem());
+		AcademicSemester semester = AcademicSemester.valueOf(chBxAcademicSemesters.getSelectionModel().getSelectedItem());
+		String details = txArCourseDetails.getText();
+		
+		Course course = Manager.INSTANCE.currentEditignCourse;
+		course.setName(name);
+		course.setInitials(initials);
+		course.setCredits(credits);
+		course.setSection(section);
+		course.setSchool(school);
+		course.setSemester(semester);
+		course.setDetails(details);
+		
+		Manager.INSTANCE.courses.add(Manager.INSTANCE.currentEditignCourse);
+		Manager.INSTANCE.currentEditignCourse = null;
+		ViewUtilities.openView(view, AMainViewController.view);
+	}
+	
+	public void btnBack_Pressed() {
+		if (Manager.INSTANCE.currentEditignCourse != null) {
+			ViewUtilities.openView(view, AMainViewController.view);
+		} else {
+			super.btnBack_Pressed();
+		}
+	}
+	
+	// ICourses Stuff
+	public void btnShowCourses_Pressed() {
+		ViewUtilities.openView(AICourseManagerViewController.view, view);
+	}
+
+	// Evaluations Stuff
+	public void btnShowEvaluations_Pressed() {
+		ViewUtilities.openView(AEvaluationManagerViewController.view, view);
+	}
+
+	// Requirements Stuff
+	public void btnShowRequirements_Pressed() {
+		showRequirementsView();
+		hideCourseEditingView();
+		hideCourseSelectionView();
+		
+	}
+
+	public void hideCourseEditingView() {
+		txBxCourseName.setVisible(false);
+		txBxInitialsCourse.setVisible(false);
+		txBxCourseCredits.setVisible(false);
+		txBxCourseSection.setVisible(false);
+		chBxShcools.setVisible(false);
+		chBxAcademicSemesters.setVisible(false);
+		txArCourseDetails.setVisible(false);
+		labelNameCourse.setVisible(false);
+		labelCourseInitials.setVisible(false);
+		labelCourseCredits.setVisible(false);
+		labelCourseSection.setVisible(false);
+		labelCourseSchool.setVisible(false);
+		labelSemesterDictated.setVisible(false);
+		labelCourseDetails.setVisible(false);
+		chBxCoordination.setVisible(false);
+		labelCoordination.setVisible(false);
+		btnShowCourses.setVisible(false);
+		btnShowEvaluations.setVisible(false);
+		btnShowRequirements.setVisible(false);
+		btnShowCoRequirements.setVisible(false);
+		
+	}
+
+	public void hideCourseSelectionView() {
+		labelCourseEditorWelcomeMessage.setVisible(false);
+		btnCreateNewCourse.setVisible(false);
+		btnEditCourse.setVisible(false);
+		super.hideCourseSearcher();
+		super.hideCourseSelector();
+	}
+	
+	public void btnShowCoRequirements_Pressed() {
+		showRequirementsView();
+		hideCourseEditingView();
+		
+	}
+
+	public void btnAddRequirement_Pressed() {
+		
+	}
+
+	public void btnRemoveRequirement_Pressed() {
+		
 	}
 	
 }

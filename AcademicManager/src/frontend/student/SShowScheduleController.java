@@ -7,6 +7,8 @@ import backend.courses.Course;
 import backend.courses.CoursedSemester;
 import backend.interfaces.ICourse;
 import backend.manager.Manager;
+import backend.others.Messages;
+import backend.others.Messages.UILabel;
 import backend.users.Student;
 import frontend.main.MViewController;
 import javafx.beans.value.ChangeListener;

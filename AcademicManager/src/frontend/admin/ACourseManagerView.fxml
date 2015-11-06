@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.view.main.CourseEditorCreatorController">
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.admin.ACourseManagerViewController">
    <children>
       <Pane prefHeight="400.0" prefWidth="600.0">
          <children>
@@ -44,7 +44,7 @@
             <TextField fx:id="txBxCourseToSearch" layoutX="211.0" layoutY="85.0" prefHeight="27.0" prefWidth="193.0" />
             <Button fx:id="btnSearchCourse" layoutX="254.0" layoutY="115.0" mnemonicParsing="false" onAction="#btnSearchCourse_Pressed" prefHeight="27.0" prefWidth="102.0" text="Search" />
             <Button fx:id="btnDetails" layoutX="287.0" layoutY="209.0" mnemonicParsing="false" onAction="#btnDetails_Pressed" text="i" />
-            <Button fx:id="btnCreateCourse" layoutX="475.0" layoutY="329.0" mnemonicParsing="false" onAction="#btnSaveCourse_Pressed" text="Guardar Curso" />
+            <Button fx:id="btnCreateCourse" layoutX="475.0" layoutY="329.0" mnemonicParsing="false" onAction="#btnSaveCourse_Pressed" text="Crear Curso" />
          </children>
       </Pane>
       <Button fx:id="btnLogout" layoutX="531.0" layoutY="369.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
