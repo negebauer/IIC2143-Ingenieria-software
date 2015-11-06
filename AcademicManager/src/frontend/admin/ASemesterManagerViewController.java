@@ -4,18 +4,15 @@ import java.net.URL;
 import java.util.ArrayList;
 
 import backend.courses.Course;
-import backend.courses.Coursed;
-import backend.courses.CoursedSemester;
 import backend.courses.Semester;
 import backend.courses.StudyProgram;
+import backend.courses.Semester.AddOrRemoveCourseResponse;
 import backend.enums.AcademicSemester;
 import backend.manager.Manager;
-import backend.users.*;
 import frontend.main.MCourseSearcherSelectorViewController;
 import frontend.others.ViewUtilities;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -48,15 +45,20 @@ public class ASemesterManagerViewController extends MCourseSearcherSelectorViewC
 	Button btnSaveSemester;
 	@FXML
 	Button btnBackToStudyProgramManager;
+	@FXML
+	Label labelModificationResult;
 	
 	public static URL view = Object.class.getResource("/frontend/admin/ASemesterManagerView.fxml");
 		
+	private Semester currentEditingSemester;
 	
 	public void setUp() {
 		super.setUp();
 		super.hideCourseSelector();
 		super.hideCourseSearcher();
-
+		
+		//TODO set messages for all the buttons and labels. 
+		
 		btnAddCourse.setVisible(false);
 		btnRemoveCourse.setVisible(false);
 		btnAddSemester.setVisible(false);
@@ -64,6 +66,7 @@ public class ASemesterManagerViewController extends MCourseSearcherSelectorViewC
 		chBxSemesterType.setVisible(false);
 		labelSelectSemester.setVisible(false);
 		btnSaveSemester.setVisible(false);
+		labelModificationResult.setText("");
 		
 		if (Manager.INSTANCE.currentEditingStudyProgram != null) {
 			StudyProgram currentProgram = Manager.INSTANCE.currentEditingStudyProgram;
@@ -82,6 +85,7 @@ public class ASemesterManagerViewController extends MCourseSearcherSelectorViewC
 	public void btnCreateSemester_Pressed() {
 		changeToEditionMode();
 		btnAddSemester.setVisible(true);
+		currentEditingSemester = new Semester(null, 0, Manager.INSTANCE.currentEditingStudyProgram.getMaxCreditsPerSemester(), null, new ArrayList<Course>());
 	}
 
 	public void btnBackToStudyProgramManager_Pressed() {
@@ -91,39 +95,75 @@ public class ASemesterManagerViewController extends MCourseSearcherSelectorViewC
 	public void btnEditSemester_Pressed() {
 		changeToEditionMode();
 		btnSaveSemester.setVisible(true);
-		int indexChoosed = Integer.parseInt(chBxSemesters.getSelectionModel().getSelectedItem());
-		Semester semesterSelected = Manager.INSTANCE.currentEditingStudyProgram.getSemesters().get(indexChoosed);
+		int indexChoosed = Integer.parseInt(chBxSemesters.getSelectionModel().getSelectedItem()) - 1;
+		currentEditingSemester = Manager.INSTANCE.currentEditingStudyProgram.getSemesters().get(indexChoosed);
 		
 		ArrayList<String> semesterCourses = new ArrayList<String>();
-		for (Course course : semesterSelected.getCourses()) {
+		for (Course course : currentEditingSemester.getCourses()) {
 			semesterCourses.add(course.getInitials());
 		}
 		listCoursesInSemester.setItems(FXCollections.observableArrayList(semesterCourses));
 		
-		chBxSemesterType.getSelectionModel().select(semesterSelected.getSemester().toString());
+		chBxSemesterType.getSelectionModel().select(currentEditingSemester.getSemester().toString());
 		
 	}
 
 	public void btnAddCourse_Pressed() {
+		String rawCourseInfo = chBxSelectedCourse.getSelectionModel().getSelectedItem();
+		String[] parsed = getParsedInitialsSectionName(rawCourseInfo);
+		String initials = parsed[0];
+		int section = Integer.valueOf(parsed[1]);
+		String name = parsed[2];
+		for (Course course : coursesToShow) {
+			if (course.getInitials().equals(initials) && course.getSection() == section && course.getName().equals(name)) {
+				AddOrRemoveCourseResponse response = currentEditingSemester.addCourse(course);
+				if (response.success) {
+					ObservableList<String> currentCourses = listCoursesInSemester.getItems();
+					currentCourses.add(getParsedCourse(initials, section, name));
+					listCoursesInSemester.setItems(FXCollections.observableArrayList(currentCourses));
+					labelModificationResult.setText("Success");
+				} else {
+					labelModificationResult.setText("Not added: " + response.response);
+				}
+			}
+		}
+		
 		
 		
 	}
 
 	public void btnRemoveCourse_Pressed() {
-		
+		String rawCourseInfo = chBxSelectedCourse.getSelectionModel().getSelectedItem();
+		String[] parsed = getParsedInitialsSectionName(rawCourseInfo);
+		String initials = parsed[0];
+		int section = Integer.valueOf(parsed[1]);
+		String name = parsed[2];
+		for (Course course : coursesToShow) {
+			if (course.getInitials().equals(initials) && course.getSection() == section && course.getName().equals(name)) {
+				AddOrRemoveCourseResponse response = currentEditingSemester.removeCourse(course);
+				if (response.success) {
+					ObservableList<String> currentCourses = listCoursesInSemester.getItems();
+					currentCourses.remove(getParsedCourse(initials, section, name));
+					listCoursesInSemester.setItems(FXCollections.observableArrayList(currentCourses));
+					labelModificationResult.setText("Success");
+				} else {
+					labelModificationResult.setText("Not removed: " + response.response);
+				}
+			}
+		}
 		
 	}
 
 	public void btnAddSemester_Pressed() {
-		// create new semester with the data of the fields
-		
+		String semesterSelected = chBxSemesterType.getSelectionModel().getSelectedItem();
+		currentEditingSemester.setAcademicSemester(AcademicSemester.valueOf(semesterSelected));
+		Manager.INSTANCE.currentEditingStudyProgram.addSemester(currentEditingSemester);
 		ViewUtilities.openView(view, view);
 	}
 
 	public void btnSaveSemester_Pressed() {
-		// set data from the fields to the semester selected
-		
-		
+		String semesterSelected = chBxSemesterType.getSelectionModel().getSelectedItem();
+		currentEditingSemester.setAcademicSemester(AcademicSemester.valueOf(semesterSelected));
 		ViewUtilities.openView(view, view);
 	}
 	
@@ -136,6 +176,7 @@ public class ASemesterManagerViewController extends MCourseSearcherSelectorViewC
 		chBxSemesterType.setVisible(true);
 		labelSelectSemester.setVisible(true);
 		listCoursesInSemester.setVisible(true);
+		labelSemesterEditorWelcomeMessage.setVisible(false);
 		
 		
 		super.showCourseSearcher();

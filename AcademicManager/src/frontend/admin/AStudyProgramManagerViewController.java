@@ -121,9 +121,7 @@ public class AStudyProgramManagerViewController extends MViewController {
 		txBxYearStudyProgram.setVisible(true);
 		txBxMaxCreditsPerSemester.setVisible(true);
 		txBxMaxFailedCredits.setVisible(true);
-		chBxSchoolStudyProgram.setVisible(true);
-		btnSaveStudyProgram.setVisible(true);
-		
+		chBxSchoolStudyProgram.setVisible(true);		
 		
 		labelCreateStudyProgram.setVisible(false);
 		labelEditStudyProgram.setVisible(false);
@@ -142,6 +140,7 @@ public class AStudyProgramManagerViewController extends MViewController {
 	public void btnEditStudyProgram_Pressed() {
 		changeToEditMode();
 		btnEditSemesters.setVisible(true);
+		btnSaveStudyProgram.setVisible(true);
 		String studyProgramSelected = chBxStudyProgramsList.getSelectionModel().getSelectedItem();
 		fillFields(Manager.INSTANCE.getStudyProgramForName(studyProgramSelected));
 		Manager.INSTANCE.currentEditingStudyProgram = Manager.INSTANCE.getStudyProgramForName(studyProgramSelected);

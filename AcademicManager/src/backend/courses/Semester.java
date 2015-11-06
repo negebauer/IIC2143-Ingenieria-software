@@ -41,6 +41,15 @@ public class Semester {
 		}
 	}
 	
+	public void setAcademicSemester(AcademicSemester semester) {
+		this.semester = semester;
+	}
+	
+	public void addCoursed(String courseInitials) {
+		this.approvedCourses.add(courseInitials);
+	}
+	
+	
 	/**
 	 * Adds a course to the semester if the conditions for doing so are met.
 	 * @param course The course that wants to be added to the semester
