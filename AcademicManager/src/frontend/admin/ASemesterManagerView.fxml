@@ -17,8 +17,6 @@
             <ListView fx:id="listCoursesInSemester" layoutX="411.0" layoutY="81.0" prefHeight="200.0" prefWidth="162.0" />
             <Button fx:id="btnRemoveCourse" layoutX="285.0" layoutY="146.0" mnemonicParsing="false" onAction="#btnRemoveCourse_Pressed" prefHeight="25.0" prefWidth="92.0" style="-fx-background-radius: 0;" text="Quitar Curso" />
             <Button fx:id="btnAddSemester" layoutX="437.0" layoutY="335.0" mnemonicParsing="false" onAction="#btnAddSemester_Pressed" style="-fx-background-radius: 0;" text="Agregar Semestre" />
-            <ChoiceBox fx:id="chBxSemesterType" layoutX="173.0" layoutY="269.0" prefHeight="25.0" prefWidth="172.0" style="-fx-background-radius: 0;" />
-            <Label fx:id="labelSelectSemester" layoutX="173.0" layoutY="246.0" text="Selecciona el semestre (primero, segundo)" />
             <Button fx:id="btnSaveSemester" layoutX="437.0" layoutY="335.0" mnemonicParsing="false" onAction="#btnSaveSemester_Pressed" style="-fx-background-radius: 0;" text="Guardar Semestre" />
             <Button fx:id="btnBackToStudyProgramManager" layoutX="52.0" layoutY="335.0" mnemonicParsing="false" onAction="#btnBackToStudyProgramManager_Pressed" style="-fx-background-radius: 0;" text="Volver al Editor de Mallas" />
             <Button fx:id="btnSearchCourse" layoutX="101.0" layoutY="118.0" mnemonicParsing="false" onAction="#btnSearchCourse_Pressed" prefHeight="27.0" prefWidth="102.0" text="Search" />
@@ -27,7 +25,7 @@
             <ChoiceBox fx:id="chBxSelectedCourse" layoutX="55.0" layoutY="181.0" prefHeight="27.0" prefWidth="193.0" />
             <Label fx:id="labelSelectCoure" layoutX="120.0" layoutY="158.0" text="Elige ramos" />
             <Button fx:id="btnDetails" layoutX="285.0" layoutY="196.0" mnemonicParsing="false" onAction="#btnDetails_Pressed" text="Ver Info Curso" />
-            <Label fx:id="labelModificationResult" layoutX="58.0" layoutY="221.0" text="Label" />
+            <Label fx:id="labelModificationResult" layoutX="58.0" layoutY="221.0" prefHeight="42.0" prefWidth="193.0" text="Label" wrapText="true" />
          </children>
       </Pane>
       <Button fx:id="btnLogout" layoutX="547.0" layoutY="383.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />

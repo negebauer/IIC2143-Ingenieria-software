@@ -260,7 +260,14 @@ public class Messages {
 		MAXIMUM_OF_FAILED_CREDITS,
 		STUDY_PROGRAM_MANAGER,
 		COURSE_MANAGER,
-		BACK_TO_PROGRAM_STUDY_SELECTION
+		BACK_TO_PROGRAM_STUDY_SELECTION,
+		SAVE_SEMESTER,
+		ADD_SEMESTER,
+		REMOVE_COURSE,
+		ADD_COURSE,
+		EDIT_SEMESTER,
+		CREATE_SEMESTER,
+		SEMESTER_MANGER_WELCOME_MESSAGE
 		
 	}
 	
@@ -337,6 +344,13 @@ public class Messages {
         result.put(UILabel.STUDY_PROGRAM_MANAGER,							"Study Program Manager");
         result.put(UILabel.COURSE_MANAGER,									"Course Manager");
         result.put(UILabel.BACK_TO_PROGRAM_STUDY_SELECTION,					"Back to Program Study Selection");
+        result.put(UILabel.SAVE_SEMESTER,									"Save Semester");
+        result.put(UILabel.ADD_SEMESTER,									"Add Semester");
+        result.put(UILabel.REMOVE_COURSE,									"Remove Course");
+        result.put(UILabel.ADD_COURSE,										"Add Course");
+        result.put(UILabel.EDIT_SEMESTER,									"Edit Semester");
+        result.put(UILabel.CREATE_SEMESTER,									"Create New Semester");
+        result.put(UILabel.SEMESTER_MANGER_WELCOME_MESSAGE,					"Welcome to the Semesters Manager, to start select one semester to edit, or press in create new semester");
         return Collections.unmodifiableMap(result);
     }
 	
@@ -396,6 +410,13 @@ public class Messages {
         result.put(UILabel.STUDY_PROGRAM_MANAGER,							"Editor de Mallas");
         result.put(UILabel.COURSE_MANAGER,									"Editor de Cursos");
         result.put(UILabel.BACK_TO_PROGRAM_STUDY_SELECTION,					"Volver a la Seleccion de Malla");
+        result.put(UILabel.SAVE_SEMESTER,									"Guardar Semestre");
+        result.put(UILabel.ADD_SEMESTER,									"Agregar Semestre");
+        result.put(UILabel.REMOVE_COURSE,									"Remover Curso");
+        result.put(UILabel.ADD_COURSE,										"Agregar Curso");
+        result.put(UILabel.EDIT_SEMESTER,									"Editar Semestre");
+        result.put(UILabel.CREATE_SEMESTER,									"Crear Semestre Nuevo");
+        result.put(UILabel.SEMESTER_MANGER_WELCOME_MESSAGE,					"Bienvenido al Administrador de Semestres, para comenzar selecciona un semestre para editar, o presiona en crear nuevo semestre");
         
         return Collections.unmodifiableMap(result);
     }
