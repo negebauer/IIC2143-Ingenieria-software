@@ -8,6 +8,8 @@ import backend.courses.Laboratory;
 import backend.courses.Lecture;
 import backend.interfaces.ICourse;
 import backend.manager.Manager;
+import backend.users.Assistant;
+import backend.users.Professor;
 import frontend.main.MViewController;
 import frontend.others.ViewUtilities;
 import javafx.collections.FXCollections;
@@ -74,8 +76,17 @@ public class AICourseManagerViewController extends MViewController {
 		hideEditView();
 		
 		//TODO set messages for all components.
-		
-		chBxICourses.setItems(FXCollections.observableArrayList("Assistantship", "Lecture", "Laboratory"));
+		ArrayList<String> iCourses = new ArrayList<String>();
+		for (ICourse iCourse : Manager.INSTANCE.currentEditignCourse.getCourses()) {
+			if (iCourse.getClass().equals(Assistantship.class)) {
+				iCourses.add("Assistantship");
+			} else if (iCourse.getClass().equals(Laboratory.class)) {
+				iCourses.add("Laboratory");
+			} else if (iCourse.getClass().equals(Lecture.class)) {
+				iCourses.add("Lecture");
+			}
+		}
+		chBxICourses.setItems(FXCollections.observableArrayList(iCourses));
 		
 	}
 
@@ -85,12 +96,34 @@ public class AICourseManagerViewController extends MViewController {
 		
 		String selectedICourse = chBxICourses.getSelectionModel().getSelectedItem();
 		if (selectedICourse == "Assistantship") {
+			Assistantship selectedAssistanship = Manager.INSTANCE.currentEditignCourse.getAssistantship();
+			ArrayList<String> assistants = new ArrayList<String>();
+			for (Assistant assistant : selectedAssistanship.getAssistants()) {
+				assistants.add(assistant.getName() + " " + assistant.getLastnameFather() + " " + assistant.getLastnameMother());
+			}
+			listAssistantsOrProfessors.setItems(FXCollections.observableArrayList(assistants));
 			
 		} else if (selectedICourse == "Lecture") {
+			Lecture selectedLecture = Manager.INSTANCE.currentEditignCourse.getLecture();
+			ArrayList<String> professors = new ArrayList<String>();
+			for (Professor professor : selectedLecture.getProfessors()) {
+				professors.add(professor.getName() + " " + professor.getLastnameFather() + " " + professor.getLastnameMother());
+			}
+			listAssistantsOrProfessors.setItems(FXCollections.observableArrayList(professors));
 			
 		} else if (selectedICourse == "Laboratory") {
+			Laboratory selectedLaboratory = Manager.INSTANCE.currentEditignCourse.getLaboratory();
+			ArrayList<String> professors = new ArrayList<String>();
+			for (Professor professor : selectedLaboratory.getProfessors()) {
+				professors.add(professor.getName() + " " + professor.getLastnameFather() + " " + professor.getLastnameMother());
+			}
+			listAssistantsOrProfessors.setItems(FXCollections.observableArrayList(professors));
 			
 		}
+		
+		
+		
+		
 	}
 	
 	public void btnCreateNewICourse_Pressed() {
