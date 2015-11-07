@@ -75,7 +75,7 @@ public class Semester {
 				notApprovedCourses += requisito + ", \n";
 			}
 			notApprovedCourses = notApprovedCourses.substring(0, notApprovedCourses.length() - 2) + ".";
-			response = new AddOrRemoveCourseResponse(false, Messages.getMessage(Message.COURSE_WASNT_ADDED_TO_SEMESTER_REQUIREMENTS, notApprovedCourses));
+			response = new AddOrRemoveCourseResponse(false, Messages.getMessage(Message.COURSE_WASNT_ADDED_TO_SEMESTER_REQUIREMENTS, "\n" + notApprovedCourses));
 
 		} else if (Eclashes > 0) {
 			response = new AddOrRemoveCourseResponse(false, Messages.getMessage(Message.COURSE_WASNT_ADDED_TO_SEMESTER_EVALUATION_CLASH, Integer.toString(Eclashes)));
@@ -89,7 +89,7 @@ public class Semester {
 				notValidatedCourses += coRequisito + ", \n";
 			}
 			notValidatedCourses = notValidatedCourses.substring(0, notValidatedCourses.length() - 2) + ".";
-			response = new AddOrRemoveCourseResponse(false, Messages.getMessage(Message.COURSE_WASNT_ADDED_TO_SEMESTER_COREQUIREMENTS, notValidatedCourses));
+			response = new AddOrRemoveCourseResponse(false, Messages.getMessage(Message.COURSE_WASNT_ADDED_TO_SEMESTER_COREQUIREMENTS, "\n" + notValidatedCourses));
 
 		} else{
 			response = new AddOrRemoveCourseResponse(true, Messages.getMessage(Message.COURSE_WAS_ADDED_TO_SEMESTER));

@@ -73,7 +73,6 @@ public class Utilities {
 	 * @return
 	 */
 	public static ArrayList<Course> getFinichedCourses(StudyProgram program, Curriculum curriculum, boolean isFinished) {
-
 		ArrayList<Course> finished = new ArrayList<Course>();
 
 		for(Semester semester : program.getSemesters())
@@ -92,7 +91,6 @@ public class Utilities {
 	}
 
 	public static ArrayList<String> getCoursesList(ArrayList<Course> courses) {
-
 		ArrayList<String> coursesList = new ArrayList<String>();	
 		for(Course course : courses)
 			coursesList.add(course.getInitials() + " " + course.getName());
@@ -101,7 +99,6 @@ public class Utilities {
 	}
 
 	public static ArrayList<String> getCoursesList(StudyProgram program, Curriculum curriculum, boolean isFinished) {
-
 		ArrayList<Course> courses = getFinichedCourses(program, curriculum, isFinished);
 		
 		ArrayList<String> coursesList = new ArrayList<String>();	

@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import frontend.main.MLogInController;
 import frontend.others.CurrentViewHandler;
+import backend.others.Range;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -30,6 +31,9 @@ public class Main extends Application {
 		
 		System.out.println("Year: " + Manager.getYear());
 		System.out.println("Month: " + Manager.getMonth());
+		for (int i : new Range(9)) {
+	        System.out.println(i);
+	    }
 		
 		// ----- 			To this line				  -----
 		

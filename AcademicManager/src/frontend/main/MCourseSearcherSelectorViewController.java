@@ -31,6 +31,7 @@ public class MCourseSearcherSelectorViewController extends MViewController {
 	@FXML
 	protected ChoiceBox<String> chBxSelectedCourse;
 	
+	Boolean firstLoad = true;
 	protected ArrayList<Course> coursesToShow = Manager.INSTANCE.courses;
 	public static URL view = Object.class.getResource("/frontend/main/MCourseSearcherSelectorView.fxml");
 	
@@ -39,6 +40,14 @@ public class MCourseSearcherSelectorViewController extends MViewController {
 		super.setUp();
 		
 		labelSearchCourse.setText(Messages.getUILabel(UILabel.SEMESTER_CURRENT_SEMESTER_SEARCH_COURSE));
+		if (firstLoad) {
+			updateCoursesShow();
+			firstLoad = false;
+		}
+		
+	}
+	
+	public void updateCoursesShow() {
 		ArrayList<String> coursesStrings = new ArrayList<String>();
 		for (Course course : coursesToShow) {
 			coursesStrings.add(getParsedCourse(course.getInitials(), course.getSection(), course.getName()));
@@ -49,7 +58,7 @@ public class MCourseSearcherSelectorViewController extends MViewController {
 	public void btnSearchCourse_Pressed() {
 		String searchParam = txBxCourseToSearch.getText();
 		coursesToShow = CourseSearcher.searchCourses(searchParam);
-		setUp();
+		updateCoursesShow();
 	}
 	
 	public void btnDetails_Pressed() {

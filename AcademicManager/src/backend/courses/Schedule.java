@@ -19,6 +19,26 @@ public class Schedule {
 			return Messages.getDay(this);
 		}
 		
+		public int getInt() {
+			switch (this) {
+			case MONDAY:
+				return 1;
+			case TUESDAY:
+				return 2;
+			case WEDNESDAY:
+				return 3;
+			case THURSDAY:
+				return 4;
+			case FRIDAY:
+				return 5;
+			case SATURDAY:
+				return 6;
+			case SUNDAY:
+				return 7;
+			default:
+				return 9;
+			}
+		}
 	}
 	
 	public enum Module {
@@ -60,6 +80,29 @@ public class Schedule {
 				return "20:00-21:20";
 			default:
 				return "00:00-00:00";
+			}
+		}
+		
+		public int getInt() {
+			switch (this) {
+			case _1:
+				return 1;
+			case _2:
+				return 2;
+			case _3:
+				return 3;
+			case _4:
+				return 4;
+			case _5:
+				return 5;
+			case _6:
+				return 6;
+			case _7:
+				return 7;
+			case _8:
+				return 8;
+			default:
+				return 9;
 			}
 		}
 	}
@@ -115,14 +158,63 @@ public class Schedule {
 	/**
 	 * @return The schedule in a readable format.
 	 */
-	public String getSchedule() {
+	public String getSchedule(String initials) {
+//		ArrayList<String> schedule = getScheduleWithBasicStuff();
+//		System.out.println("Fase 2 ok");
+//		for (DayModuleTuple module : getModules()) {
+//			int dayInt = module.day.getInt();
+//			int moduleInt = module.module.getInt();
+//			schedule.set(dayInt + moduleInt, initials);
+//		}
+//		System.out.println("Fase 3 ok");
+//		String formattedSchedule = "";
+//		for (int dayInt : new Range(8)) {
+//			for (int moduleInt : new Range(9)) {
+//				if (schedule.size() < dayInt + moduleInt || schedule.get(dayInt + moduleInt) == null) {
+//					formattedSchedule += "\t\t";
+//				} else {
+//					formattedSchedule += schedule.get(dayInt + moduleInt);
+//				}
+//			}
+//			formattedSchedule += "\n";
+//		}
+//		return formattedSchedule;
 		String schedule = "";
-		// TODO Better processing to emulate the Banner format ¿?
 		for (DayModuleTuple module : getModules()) {
-			schedule += module.day.getDayString() + ":" + module.module.getModuleString() + "\n";
+			schedule += Messages.getDay(module.day) + ": " + module.module.getTimeRangeString() + "\n\t\t";
 		}
 		return schedule;
 	}
+	
+	/**
+	 * Tried something more beautifull but didn't have time.
+	 */
+//	private ArrayList<String> getScheduleWithBasicStuff() {
+//		ArrayList<String> schedule = new ArrayList<String>();
+//		for (int dayInt : new Range(8)) {
+//			for (int moduleInt : new Range(9)) {
+//				schedule.add("");
+//			}
+//		} 
+//		System.out.println("Fase 1 ok");
+//		// schedule.set(dia + modulo * 8, texto);
+//		schedule.set(0 + 1 * 8, Module._1.getTimeRangeString());
+//		schedule.set(0 + 2 * 8, Module._2.getTimeRangeString());
+//		schedule.set(0 + 3 * 8, Module._3.getTimeRangeString());
+//		schedule.set(0 + 4 * 8, Module._4.getTimeRangeString());
+//		schedule.set(0 + 5 * 8, Module._5.getTimeRangeString());
+//		schedule.set(0 + 6 * 8, Module._6.getTimeRangeString());
+//		schedule.set(0 + 7 * 8, Module._7.getTimeRangeString());
+//		schedule.set(0 + 8 * 8, Module._8.getTimeRangeString());
+//		schedule.set(1 + 0, Messages.getDay(Day.MONDAY));
+//		schedule.set(2 + 0, Messages.getDay(Day.TUESDAY));
+//		schedule.set(3 + 0, Messages.getDay(Day.WEDNESDAY));
+//		schedule.set(4 + 0, Messages.getDay(Day.THURSDAY));
+//		schedule.set(5 + 0, Messages.getDay(Day.FRIDAY));
+//		schedule.set(6 + 0, Messages.getDay(Day.SATURDAY));
+//		schedule.set(7 + 0, Messages.getDay(Day.SUNDAY));
+//		return schedule;
+//	}
 	
 	/**
 	 * Checks whether a schedule have any same module that this schedule.
