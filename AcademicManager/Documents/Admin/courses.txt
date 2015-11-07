@@ -14,72 +14,61 @@ Termodinamica&FIS1523&1&10&PHYSICS|&BOTH&true
 Electricidad y Magnetismo&FIS1533&1&10&PHYSICS|&BOTH&true
 Desarrollo de Habilidades Comunicativas para Ingenieros&LET0003&1&10&LETTERS&BOTH&true
 Etica para Ingenieros&FIL188&1&10&PHILOSOFY&BOTH&true
-
 Desafios de la Ingenieria&ING1004&3&10&ENGINEERING&BOTH&true
-
 Introduccion a la Programacion&IIC1103&1&10&ENGINEERING&BOTH&true
-
 Introduccion a la Economia&ICS1513&1&10&ENGINEERING&BOTH&true
-
 Optimizacion&ICS1113&1&10&ENGINEERING&BOTH&true
-
 Optimizacion&ICS1113&2&10&ENGINEERING&BOTH&true
-
 Mecanica de Fluidos&ICH1104&1&10&ENGINEERING&BOTH&true
-
 Matematicas Discretas&IIC1253&1&10&ENGINEERING&BOTH&true
-
-
 Modelos Estocasticos&ICS2123&1&10&ENGINEERING&BOTH&true
-
 Microeconomia&ICS2523&1&10&ENGINEERING&BOTH&true
-
 Contabilidad Y Control de Gestion&ICS2613&1&10&ENGINEERING&BOTH&true
-
 Organizacion y Comportamiento de la Empresa&ICS2813&1&10&ENGINEERING&BOTH&true
-
 Programacion Avanzada&IIC2233&1&10&ENGINEERING&BOTH&true
 Programacion Avanzada&IIC2233&2&10&ENGINEERING&BOTH&true
-
 Estructuras de Datos y Algoritmos&IIC2133&1&10&ENGINEERING&BOTH&true
-
 Ingenieria de Software&IIC2143&1&10&ENGINEERING&BOTH&true
-
 Arquitectura de Computadores&IIC2343&1&10&ENGINEERING&BOTH&true
-
 Sistemas Operativos y Redes&IIC2333&1&10&ENGINEERING&BOTH&true
-
 Bases de Datos&IIC2413&1&10&ENGINEERING&BOTH&true
-
 Sistemas de Informacion&IIC2713&1&10&ENGINEERING&BOTH&true
-
 Modelos de Procesos&IIC2733&1&10&ENGINEERING&BOTH&true
-
 Conocimiento Cultura y Tecnologia&IIC2764&1&10&ENGINEERING&FIRST&true
-
 Gestion de Proyectos&IIC3113&1&10&ENGINEERING&BOTH&true
-
 Proyecto de Especialidad&IIC2154&1&10&ENGINEERING&BOTH&true
-
 Estrategias y Tecnologias de Informacion&IIC3743&1&10&ENGINEERING&BOTH&true
-
 Gestion de Operaciones TI&IIC3703&1&10&ENGINEERING&FIRST&true
-
 Taller de Integracion&IIC3103&1&10&ENGINEERING&SECOND&true
-
 Evaluacion de Proyectos&ICS3013&1&10&ENGINEERING&BOTH&true
-
 Gestion de Operaciones&ICS3213&1&10&ENGINEERING&BOTH&true
-
 Marketing&ICS3313&1&10&ENGINEERING&BOTH&true
-
 Finanzas&ICS3532&1&10&ENGINEERING&BOTH&true
-
 Simulacion&ICS3723&1&10&ENGINEERING&FIRST&true
 Sistemas Digitales&IEE2713&1&10&ENGINEERING&BOTH&true
 Mecanizacion&AGC204&1&10&AGRICULTURE&BOTH&true
-Logica para Ciencias de la Computacion&IIC2213&1&10&ENGINEERING&BOTH&true
-
 Modelos Estocasticos Avanzados&ICS3222&1&10&ENGINEERING&BOTH&true
-
 Optimizacion Avanzada&ICS3153&1&10&ENGINEERING&BOTH&true
+Inteligencia Artificial&IIC2613&1&10&ENGINEERING&SECOND&true
+Teoria de Automatas y Lenguajes Formales&IIC2223&1&10&ENGINEERING&BOTH&true
+Logica para Ciencias de la Computacion&IIC2213&1&10&ENGINEERING&BOTH&true
+Sistemas Distribuidos&IIC2523&1&10&ENGINEERING&BOTH&true
+Criptografia y Seguridad Computacional&IIC3253&1&10&ENGINEERING&FIRST&true
+Diseño y Analisis de Algoritmos&IIC2283&1&10&ENGINEERING&SECOND&true
+Tecnologias y Aplicaciones Web&IIC2513&1&10&ENGINEERING&BOTH&true
+Reconocimiento de Patrones&IIC3724&1&10&ENGINEERING&FIRST&true
+Practica I&ING1001&1&0&ENGINEERING&BOTH&true
+Practica II&ING2001&1&0&ENGINEERING&BOTH&true
+Electivo I&OFG01&1&10&UNKNOWN&BOTH&true
+Electivo II&OFG02&1&10&UNKNOWN&BOTH&true
+Electivo III&OFG03&1&10&UNKNOWN&BOTH&true
+Electivo IV&OFG04&1&10&UNKNOWN&BOTH&true
+Electivo V&OFG05&1&10&UNKNOWN&BOTH&true
+Profundizacion I&OPR11&1&10&ENGINEERING&BOTH&true
+Profundizacion II&OPR21&1&10&ENGINEERING&BOTH&true
+Profundizacion III&OPR31&1&10&ENGINEERING&BOTH&true
+Profundizacion IV&OPR32&1&10&ENGINEERING&BOTH&true
+Teologico&TEO33&1&10&THEOLOGY&BOTH&true
+
+
+
