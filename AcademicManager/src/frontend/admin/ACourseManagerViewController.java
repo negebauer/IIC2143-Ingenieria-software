@@ -267,6 +267,7 @@ public class ACourseManagerViewController extends MCourseSearcherSelectorViewCon
 	public void btnBack_Pressed() {
 		if (Manager.INSTANCE.currentEditignCourse != null) {
 			ViewUtilities.openView(view, AMainViewController.view);
+			Manager.INSTANCE.currentEditignCourse = null;
 		} else {
 			super.btnBack_Pressed();
 		}

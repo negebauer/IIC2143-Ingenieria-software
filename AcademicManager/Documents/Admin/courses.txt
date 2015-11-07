@@ -11,7 +11,6 @@ Termodinamica&FIS1523&1&10&PHYSICS&BOTH&true
 Electricidad y Magnetismo&FIS1533&1&10&PHYSICS&BOTH&true
 Desarrollo de Habilidades Comunicativas para Ingenieros&LET0003&1&10&LETTERS&BOTH&true
 Introduccion a la Programacion&IIC1103&1&10&ENGINEERING&BOTH&true
-Estructuras de Datos y Algoritmos&IIC2133&1&10&ENGINEERING&BOTH&true
 Ingenieria de Software&IIC2143&1&10&ENGINEERING&BOTH&true
 Sistemas Operativos y Redes&IIC2333&1&10&ENGINEERING&BOTH&true
 Sistemas de Informacion&IIC2713&1&10&ENGINEERING&BOTH&true
