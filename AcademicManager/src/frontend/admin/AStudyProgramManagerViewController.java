@@ -194,7 +194,7 @@ public class AStudyProgramManagerViewController extends MViewController {
 	}
 		
 	public void btnBack_Pressed() {
-		super.btnBack_Pressed();
 		Manager.INSTANCE.currentEditingStudyProgram = null;
+		super.btnBack_Pressed();
 	}
 }
