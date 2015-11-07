@@ -10,7 +10,6 @@
       <Pane prefHeight="400.0" prefWidth="600.0">
          <children>
             <Label fx:id="labelCourseEditorWelcomeMessage" layoutX="120.0" layoutY="14.0" prefHeight="40.0" prefWidth="360.0" text="Bienvenido al editor de cursos, para comenzar selecciona un curso de la lista para editarlo, o bien, selecciona en crear nuevo curso" wrapText="true" />
-            <Button fx:id="btnEditCourse" layoutX="257.0" layoutY="274.0" mnemonicParsing="false" onAction="#btnEditCourse_Pressed" style="-fx-background-radius: 0;" text="Editar curso" />
             <Button fx:id="btnCreateNewCourse" layoutX="44.0" layoutY="329.0" mnemonicParsing="false" onAction="#btnCreateNewCourse_Pressed" style="-fx-background-radius: 0;" text="Crear Curso Nuevo" />
             <TextField fx:id="txBxCourseName" layoutX="46.0" layoutY="88.0" promptText="ej. Calculo III" style="-fx-background-radius: 0;" />
             <TextField fx:id="txBxInitialsCourse" layoutX="44.0" layoutY="149.0" promptText="ej. MAT1230" style="-fx-background-radius: 0;" />
@@ -44,7 +43,9 @@
             <TextField fx:id="txBxCourseToSearch" layoutX="211.0" layoutY="85.0" prefHeight="27.0" prefWidth="193.0" />
             <Button fx:id="btnSearchCourse" layoutX="254.0" layoutY="115.0" mnemonicParsing="false" onAction="#btnSearchCourse_Pressed" prefHeight="27.0" prefWidth="102.0" text="Search" />
             <Button fx:id="btnDetails" layoutX="287.0" layoutY="209.0" mnemonicParsing="false" onAction="#btnDetails_Pressed" text="i" />
-            <Button fx:id="btnCreateCourse" layoutX="475.0" layoutY="329.0" mnemonicParsing="false" onAction="#btnSaveCourse_Pressed" text="Crear Curso" />
+            <Button fx:id="btnDeleteCourse" layoutX="250.0" layoutY="317.0" mnemonicParsing="false" onAction="#btnDeleteCourse_Pressed" text="Eliminar Curso" />
+            <Label fx:id="labelModificationResult" layoutX="203.0" layoutY="249.0" prefHeight="57.0" prefWidth="137.0" text="Label" wrapText="true" />
+            <Button fx:id="btnEditCourse" layoutX="256.0" layoutY="274.0" mnemonicParsing="false" onAction="#btnEditCourse_Pressed" text="Editar Curso" />
          </children>
       </Pane>
       <Button fx:id="btnLogout" layoutX="531.0" layoutY="369.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />

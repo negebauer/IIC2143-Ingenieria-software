@@ -4,23 +4,17 @@ Fisica General&FIS1503&1&10&PHYSICS&BOTH&true
 Calculo I&MAT1610&1&10&MATHEMATICS&BOTH&true
 Calculo II&MAT1620&1&10&MATHEMATICS&BOTH&true
 Calculo III&MAT1630&1&10&MATHEMATICS&BOTH&true
-Algebra Lineal&MAT1203&1&10&MATHEMATICS&BOTH&true
 Ecuaciones Diferenciales&MAT1640&1&10&MATHEMATICS&BOTH&true
-Probabilidades y Estadistica&EYP1113&1&10&MATHEMATICS&BOTH&true
 Quimica General II&QIM100A&1&10&CHEMISTRY&BOTH&true
 Estatica y Dinamica&FIS1513&1&10&PHYSICS&BOTH&true
 Termodinamica&FIS1523&1&10&PHYSICS&BOTH&true
 Electricidad y Magnetismo&FIS1533&1&10&PHYSICS&BOTH&true
 Desarrollo de Habilidades Comunicativas para Ingenieros&LET0003&1&10&LETTERS&BOTH&true
-Etica para Ingenieros&FIL188&1&10&PHILOSOFY&BOTH&true
 Desafios de la Ingenieria&ING1004&3&10&ENGINEERING&BOTH&true
 Introduccion a la Programacion&IIC1103&1&10&ENGINEERING&BOTH&true
-Introduccion a la Economia&ICS1513&1&10&ENGINEERING&BOTH&true
-Optimizacion&ICS1113&1&10&ENGINEERING&BOTH&true
 Mecanica de Fluidos&ICH1104&1&10&ENGINEERING&BOTH&true
 Matematicas Discretas&IIC1253&1&10&ENGINEERING&BOTH&true
 Modelos Estocasticos&ICS2123&1&10&ENGINEERING&BOTH&true
-Microeconomia&ICS2523&1&10&ENGINEERING&BOTH&true
 Contabilidad Y Control de Gestion&ICS2613&1&10&ENGINEERING&BOTH&true
 Organizacion y Comportamiento de la Empresa&ICS2813&1&10&ENGINEERING&BOTH&true
 Programacion Avanzada&IIC2233&1&10&ENGINEERING&BOTH&true
@@ -44,3 +38,5 @@ Finanzas&ICS3413&1&10&ENGINEERING&BOTH&true
 Simulacion&ICS3723&1&10&ENGINEERING&FIRST&true
 Sistemas Digitales&IEE2713&1&10&ENGINEERING&BOTH&true
 Mecanizacion&AGC204&1&10&AGRICULTURE&BOTH&true
+Probabilidades y Estadistica&EYP1113&1&10&MATHEMATICS&BOTH&true
+Microeconomia&ICS2523&1&10&ENGINEERING&BOTH&true

@@ -4,14 +4,14 @@ import java.net.URL;
 import java.util.ArrayList;
 
 import backend.courses.Course;
-import backend.courses.Evaluation;
+import backend.courses.Course.AddOrRemoveRequirementResponse;
 import backend.enums.AcademicSemester;
 import backend.enums.School;
-import backend.interfaces.ICourse;
 import backend.manager.Manager;
 import frontend.main.MCourseSearcherSelectorViewController;
 import frontend.others.ViewUtilities;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -81,14 +81,20 @@ public class ACourseManagerViewController extends MCourseSearcherSelectorViewCon
 	@FXML
 	Label labelSelectCourseAsRequirement;
 	@FXML
-	Button btnCreateCourse;
+	Button btnDeleteCourse;
+	@FXML
+	Label labelModificationResult;
 
 	public static URL view = Object.class.getResource("/frontend/admin/ACourseManagerView.fxml");
+	private boolean firstStartUp = true;
+	private boolean isEditingRequirements = false;
+	private boolean isEditingCoRequirements = false;
+	
 	
 	public void setUp() {
 		// TODO Make the messages for every component and set their text to them.
 		
-		if (Manager.INSTANCE.currentEditignCourse != null) {
+		if (Manager.INSTANCE.currentEditignCourse != null && firstStartUp) {
 			changeToEditCourseMode();
 			
 			txBxCourseName.setText(Manager.INSTANCE.currentEditignCourse.getName());
@@ -98,10 +104,11 @@ public class ACourseManagerViewController extends MCourseSearcherSelectorViewCon
 			chBxShcools.getSelectionModel().select(Manager.INSTANCE.currentEditignCourse.getSchool().toString());
 			chBxAcademicSemesters.getSelectionModel().select(Manager.INSTANCE.currentEditignCourse.getSemester().toString());
 			txArCourseDetails.setText(Manager.INSTANCE.currentEditignCourse.getDetails());
+			labelModificationResult.setText("");
 			
 			btnSaveCourse.setVisible(true);
 			
-		} else {
+		} else if (firstStartUp){
 		
 			txBxCourseName.setVisible(false);
 			txBxInitialsCourse.setVisible(false);
@@ -124,7 +131,6 @@ public class ACourseManagerViewController extends MCourseSearcherSelectorViewCon
 			btnShowRequirements.setVisible(false);
 			btnShowCoRequirements.setVisible(false);
 			
-			btnCreateCourse.setVisible(false);
 			btnSaveCourse.setVisible(false);
 			
 			listRequirements.setVisible(false);
@@ -132,8 +138,13 @@ public class ACourseManagerViewController extends MCourseSearcherSelectorViewCon
 			btnAddRequirement.setVisible(false);
 			btnRemoveRequirement.setVisible(false);
 			labelSelectCourseAsRequirement.setVisible(false);
+			
+			labelModificationResult.setText("");
+			
 			super.setUp();
 		}
+		
+		firstStartUp = false;
 	}
 
 	public void btnEditCourse_Pressed() {
@@ -189,6 +200,7 @@ public class ACourseManagerViewController extends MCourseSearcherSelectorViewCon
 		btnShowCoRequirements.setVisible(true);
 		
 		hideCourseSelectionView();
+		hideRequirementsView();
 		
 		ArrayList<String> schools = new ArrayList<String>();
 		for (School school : School.values()) {
@@ -222,7 +234,7 @@ public class ACourseManagerViewController extends MCourseSearcherSelectorViewCon
 	
 	public void btnCreateNewCourse_Pressed() {
 		changeToEditCourseMode();		
-		btnCreateCourse.setVisible(true);
+		btnSaveCourse.setVisible(true);
 		Manager.INSTANCE.currentEditignCourse = new Course(null, null, 0, -1, null, null, null, null, null, null, null, null);
 	}
 
@@ -247,6 +259,8 @@ public class ACourseManagerViewController extends MCourseSearcherSelectorViewCon
 		
 		Manager.INSTANCE.courses.add(Manager.INSTANCE.currentEditignCourse);
 		Manager.INSTANCE.currentEditignCourse = null;
+		isEditingRequirements = false;
+		isEditingCoRequirements = false;
 		ViewUtilities.openView(view, AMainViewController.view);
 	}
 	
@@ -255,6 +269,24 @@ public class ACourseManagerViewController extends MCourseSearcherSelectorViewCon
 			ViewUtilities.openView(view, AMainViewController.view);
 		} else {
 			super.btnBack_Pressed();
+		}
+	}
+	
+	public void btnDeleteCourse_Pressed() {
+		if (!super.chBxSelectedCourse.getSelectionModel().isEmpty()) {
+			changeToEditCourseMode();
+			
+			String rawCourseInfo = chBxSelectedCourse.getSelectionModel().getSelectedItem();
+			String[] parsed = getParsedInitialsSectionName(rawCourseInfo);
+			String initials = parsed[0];
+			int section = Integer.valueOf(parsed[1]);
+			String name = parsed[2];
+			for (Course course : coursesToShow) {
+				if (course.getInitials().equals(initials) && course.getSection() == section && course.getName().equals(name)) {
+					Manager.INSTANCE.currentEditignCourse = course;
+				}
+			}
+			Manager.INSTANCE.courses.remove(Manager.INSTANCE.currentEditignCourse);
 		}
 	}
 	
@@ -273,9 +305,128 @@ public class ACourseManagerViewController extends MCourseSearcherSelectorViewCon
 		showRequirementsView();
 		hideCourseEditingView();
 		hideCourseSelectionView();
+		isEditingRequirements = true;
 		
+		ArrayList<String> requirements = new ArrayList<String>();
+		for (Course requirement : Manager.INSTANCE.currentEditignCourse.getRequirements()) {
+			requirements.add(requirement.getInitials());
+		}
+		listRequirements.setItems(FXCollections.observableArrayList(requirements));
+		
+		ArrayList<String> coursesStrings = new ArrayList<String>();
+		for (Course course : coursesToShow) {
+			coursesStrings.add(getParsedCourse(course.getInitials(), course.getSection(), course.getName()));
+		}
+		chBxCoursesAsRequirements.setItems(FXCollections.observableArrayList(coursesStrings));
+	}
+	
+	public void btnShowCoRequirements_Pressed() {
+		showRequirementsView();
+		hideCourseEditingView();
+		hideCourseSelectionView();
+		isEditingCoRequirements = true;
+		
+		ArrayList<String> coRequirements = new ArrayList<String>();
+		for (Course coRequirement : Manager.INSTANCE.currentEditignCourse.getCoRequirements()) {
+			coRequirements.add(coRequirement.getInitials());
+		}
+		listRequirements.setItems(FXCollections.observableArrayList(coRequirements));
+		
+		ArrayList<String> coursesStrings = new ArrayList<String>();
+		for (Course course : coursesToShow) {
+			coursesStrings.add(getParsedCourse(course.getInitials(), course.getSection(), course.getName()));
+		}
+		chBxCoursesAsRequirements.setItems(FXCollections.observableArrayList(coursesStrings));
 	}
 
+	public void btnAddRequirement_Pressed() {
+		if (!chBxCoursesAsRequirements.getSelectionModel().isEmpty()) {		
+			if (isEditingRequirements) {
+				String rawCourseInfo = chBxSelectedCourse.getSelectionModel().getSelectedItem();
+				String[] parsed = getParsedInitialsSectionName(rawCourseInfo);
+				String initials = parsed[0];
+				int section = Integer.valueOf(parsed[1]);
+				String name = parsed[2];
+				for (Course course : coursesToShow) {
+					if (course.getInitials().equals(initials) && course.getSection() == section && course.getName().equals(name)) {
+						AddOrRemoveRequirementResponse response = Manager.INSTANCE.currentEditignCourse.addRequirement(course);
+						if (response.success) {
+							ObservableList<String> currentRequirements = listRequirements.getItems();
+							currentRequirements.add(getParsedCourse(initials, section, name));
+							listRequirements.setItems(FXCollections.observableArrayList(currentRequirements));
+							labelModificationResult.setText("Success");
+						} else {
+							labelModificationResult.setText("Not added: " + response.response);
+						}
+					}
+				}
+			} else if (isEditingCoRequirements) {
+				String rawCourseInfo = chBxSelectedCourse.getSelectionModel().getSelectedItem();
+				String[] parsed = getParsedInitialsSectionName(rawCourseInfo);
+				String initials = parsed[0];
+				int section = Integer.valueOf(parsed[1]);
+				String name = parsed[2];
+				for (Course course : coursesToShow) {
+					if (course.getInitials().equals(initials) && course.getSection() == section && course.getName().equals(name)) {
+						AddOrRemoveRequirementResponse response = Manager.INSTANCE.currentEditignCourse.addCoRequirement(course);
+						if (response.success) {
+							ObservableList<String> currentCoRequirements = listRequirements.getItems();
+							currentCoRequirements.add(getParsedCourse(initials, section, name));
+							listRequirements.setItems(FXCollections.observableArrayList(currentCoRequirements));
+							labelModificationResult.setText("Success");
+						} else {
+							labelModificationResult.setText("Not added: " + response.response);
+						}
+					}
+				}
+			}
+		}
+	}
+
+	public void btnRemoveRequirement_Pressed() {
+		if (!chBxCoursesAsRequirements.getSelectionModel().isEmpty()) {		
+			if (isEditingRequirements) {
+				String rawCourseInfo = chBxSelectedCourse.getSelectionModel().getSelectedItem();
+				String[] parsed = getParsedInitialsSectionName(rawCourseInfo);
+				String initials = parsed[0];
+				int section = Integer.valueOf(parsed[1]);
+				String name = parsed[2];
+				for (Course course : coursesToShow) {
+					if (course.getInitials().equals(initials) && course.getSection() == section && course.getName().equals(name)) {
+						AddOrRemoveRequirementResponse response = Manager.INSTANCE.currentEditignCourse.removeRequirement(course);
+						if (response.success) {
+							ObservableList<String> currentRequirements = listRequirements.getItems();
+							currentRequirements.add(getParsedCourse(initials, section, name));
+							listRequirements.setItems(FXCollections.observableArrayList(currentRequirements));
+							labelModificationResult.setText("Success");
+						} else {
+							labelModificationResult.setText("Not added: " + response.response);
+						}
+					}
+				}
+			} else if (isEditingCoRequirements) {
+				String rawCourseInfo = chBxSelectedCourse.getSelectionModel().getSelectedItem();
+				String[] parsed = getParsedInitialsSectionName(rawCourseInfo);
+				String initials = parsed[0];
+				int section = Integer.valueOf(parsed[1]);
+				String name = parsed[2];
+				for (Course course : coursesToShow) {
+					if (course.getInitials().equals(initials) && course.getSection() == section && course.getName().equals(name)) {
+						AddOrRemoveRequirementResponse response = Manager.INSTANCE.currentEditignCourse.removeCoRequirement(course);
+						if (response.success) {
+							ObservableList<String> currentCoRequirements = listRequirements.getItems();
+							currentCoRequirements.add(getParsedCourse(initials, section, name));
+							listRequirements.setItems(FXCollections.observableArrayList(currentCoRequirements));
+							labelModificationResult.setText("Success");
+						} else {
+							labelModificationResult.setText("Not added: " + response.response);
+						}
+					}
+				}
+			}
+		}		
+	}
+	
 	public void hideCourseEditingView() {
 		txBxCourseName.setVisible(false);
 		txBxInitialsCourse.setVisible(false);
@@ -299,27 +450,46 @@ public class ACourseManagerViewController extends MCourseSearcherSelectorViewCon
 		btnShowCoRequirements.setVisible(false);
 		
 	}
+	
+	public void showCourseEditingView() {
+		txBxCourseName.setVisible(true);
+		txBxInitialsCourse.setVisible(true);
+		txBxCourseCredits.setVisible(true);
+		txBxCourseSection.setVisible(true);
+		chBxShcools.setVisible(true);
+		chBxAcademicSemesters.setVisible(true);
+		txArCourseDetails.setVisible(true);
+		labelNameCourse.setVisible(true);
+		labelCourseInitials.setVisible(true);
+		labelCourseCredits.setVisible(true);
+		labelCourseSection.setVisible(true);
+		labelCourseSchool.setVisible(true);
+		labelSemesterDictated.setVisible(true);
+		labelCourseDetails.setVisible(true);
+		chBxCoordination.setVisible(true);
+		labelCoordination.setVisible(true);
+		btnShowCourses.setVisible(true);
+		btnShowEvaluations.setVisible(true);
+		btnShowRequirements.setVisible(true);
+		btnShowCoRequirements.setVisible(true);
+	}
 
 	public void hideCourseSelectionView() {
 		labelCourseEditorWelcomeMessage.setVisible(false);
 		btnCreateNewCourse.setVisible(false);
 		btnEditCourse.setVisible(false);
+		btnDeleteCourse.setVisible(false);
 		super.hideCourseSearcher();
 		super.hideCourseSelector();
 	}
 	
-	public void btnShowCoRequirements_Pressed() {
-		showRequirementsView();
-		hideCourseEditingView();
-		
-	}
-
-	public void btnAddRequirement_Pressed() {
-		
-	}
-
-	public void btnRemoveRequirement_Pressed() {
-		
+	public void showCourseSelectionView() {
+		labelCourseEditorWelcomeMessage.setVisible(true);
+		btnCreateNewCourse.setVisible(true);
+		btnEditCourse.setVisible(true);
+		btnDeleteCourse.setVisible(true);
+		super.showCourseSearcher();
+		super.showCourseSelector();
 	}
 	
 }
