@@ -7,6 +7,8 @@ import backend.courses.Course;
 import backend.courses.CoursedSemester;
 import backend.interfaces.ICourse;
 import backend.manager.Manager;
+import backend.others.Messages;
+import backend.others.Messages.UILabel;
 import backend.users.Student;
 import frontend.main.MViewController;
 import javafx.beans.value.ChangeListener;
@@ -24,29 +26,40 @@ public class SShowScheduleController extends MViewController {
 	@FXML
 	TextArea txASchedule;
 
+	Boolean firstLoad = true;
 	Student user = (Student) Manager.INSTANCE.currentUser;
 	public static URL view = Object.class.getResource("/frontend/student/SShowSchedule.fxml");
 
 	public void setUp() {
 		super.setUp();
 
+		labelShowScheduleWelcomeMessage.setText(Messages.getUILabel(UILabel.SCHEDULE_MAIN_MESSAGE));
+		
 		ArrayList<String> semesterInfo = new ArrayList<String>();
 		for (CoursedSemester coursedSemester : user.getCurriculum().getCoursedSemesters()) {
 			int year = coursedSemester.getYear();
 			String semester = coursedSemester.getSemester().getSemesterNumber();
 			semesterInfo.add(year + " - " + semester);
 		}
-		int currentYear = user.getCurriculum().getCurrentSemester().getYear();
+		if (user.getCurriculum().getCurrentSemester() != null) {
+			int currentYear = user.getCurriculum().getCurrentSemester().getYear();
 		String currentSemester = user.getCurriculum().getCurrentSemester().getSemester().getSemesterNumber();
 		semesterInfo.add(currentYear + " - " + currentSemester);
+		}
 		chBxSemesters.setItems(FXCollections.observableArrayList(semesterInfo));
 		chBxSemesters.getSelectionModel().selectedItemProperty().addListener(
 				new ChangeListener<String>() {
 					@Override
 					public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-						showSchedule(newValue);
+						if (newValue != null) {
+							showSchedule(newValue);
+						}
 					}
 				});
+		if (semesterInfo.size() > 0 && firstLoad) {
+			chBxSemesters.getSelectionModel().selectLast();
+			firstLoad = false;
+		}
 	}
 	
 	private void showSchedule(String rawString) {
@@ -59,14 +72,15 @@ public class SShowScheduleController extends MViewController {
 				String initials = course.getInitials();
 				String section = "" + course.getSection();
 				String name = course.getName();
-				String firstPart = initials + "-" + section + " - " + name + ": ";
+				String firstPart = initials + "-" + section + " - " + name + "\n\t";
 				String courseSchedules = "";
 				for (ICourse icourse : course.getCourses()) {
-					String schedule = icourse.getSchedule().getSchedule();
-					String newLine = firstPart + schedule;
+					String schedule = icourse.getSchedule().getSchedule(course.getInitials());
+					String newLine = firstPart + Messages.getICourseName(icourse) + "\n\t\t" + schedule;
 					courseSchedules = courseSchedules == "" ? newLine : courseSchedules + "\n" + newLine;
 				}
 				allSchedulesString = allSchedulesString == "" ? courseSchedules : allSchedulesString + courseSchedules; 
+				allSchedulesString = allSchedulesString + "\n";
 			}
 		} else {
 			

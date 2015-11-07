@@ -14,20 +14,20 @@
             <Button fx:id="btnLanguage" layoutX="564.0" layoutY="1.0" mnemonicParsing="false" onAction="#btnLanguage_Pressed" style="-fx-background-radius: 0;" text="ES" />
             <Button fx:id="btnReload" layoutX="524.0" layoutY="1.0" mnemonicParsing="false" onAction="#btnReload_Pressed" style="-fx-background-radius: 0;" text="R" />
             <Button fx:id="btnBack" layoutY="1.0" mnemonicParsing="false" onAction="#btnBack_Pressed" style="-fx-background-radius: 0;" text="Back" />
-            <Button fx:id="btnLogout" layoutX="537.0" layoutY="373.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
+            <Button fx:id="btnLogout" layoutX="494.0" layoutY="360.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
             <Label fx:id="labelMainMessage" layoutX="24.0" layoutY="46.0" prefHeight="51.0" prefWidth="165.0" text="Aqui puedes ver tu semestre actual y editarlo" wrapText="true" />
             <Label fx:id="labelCurrentSemester" layoutX="24.0" layoutY="97.0" text="Current semester: 2015-2" />
             <Label fx:id="labelCurrentCourses" layoutX="24.0" layoutY="124.0" text="Cursos actuales:" />
-            <Label fx:id="labelCurrentCoursesNames" alignment="TOP_LEFT" layoutX="24.0" layoutY="154.0" prefHeight="198.0" prefWidth="165.0" text="Curso 1: adbwadbwakd" />
+            <Label fx:id="labelCurrentCoursesNames" alignment="TOP_LEFT" layoutX="24.0" layoutY="154.0" prefHeight="198.0" prefWidth="532.0" text="Curso 1: adbwadbwakd" />
             <Button fx:id="btnCreateNewSemester" layoutX="236.0" layoutY="360.0" mnemonicParsing="false" onAction="#btnCreateNewSemester_Pressed" text="Create new semester" />
-            <Label fx:id="labelModification" layoutX="431.0" layoutY="89.0" text="Resultado modificacion" />
-            <Label fx:id="labelModificationResult" alignment="TOP_CENTER" layoutX="431.0" layoutY="125.0" prefHeight="82.0" prefWidth="143.0" text="Resultado modificacion" wrapText="true" />
+            <Label fx:id="labelModification" layoutX="431.0" layoutY="51.0" text="Resultado modificacion" />
+            <Label fx:id="labelModificationResult" alignment="TOP_CENTER" layoutX="431.0" layoutY="75.0" prefHeight="273.0" prefWidth="143.0" text="Resultado modificacion" wrapText="true" />
             <Label fx:id="labelSelectCoure" layoutX="278.0" layoutY="116.0" text="Elige ramos" />
             <ListView fx:id="listSelectedCourses" layoutX="217.0" layoutY="207.0" prefHeight="146.0" prefWidth="193.0" />
             <ChoiceBox fx:id="chBxSelectedCourse" layoutX="213.0" layoutY="139.0" prefHeight="27.0" prefWidth="193.0" />
             <Label fx:id="labelSearchCourse" layoutX="274.0" layoutY="28.0" text="Buscar ramo" />
             <TextField fx:id="txBxCourseToSearch" layoutX="216.0" layoutY="46.0" prefHeight="27.0" prefWidth="193.0" />
-            <Button fx:id="btnSearchCourse" layoutX="259.0" layoutY="76.0" mnemonicParsing="false" onAction="#btnSearchCourse_Pressed" prefHeight="27.0" prefWidth="102.0" text="Search" />
+            <Button fx:id="btnSearchCourse" alignment="CENTER" contentDisplay="CENTER" layoutX="238.0" layoutY="76.0" mnemonicParsing="false" onAction="#btnSearchCourse_Pressed" prefHeight="27.0" prefWidth="143.0" text="Search" textAlignment="CENTER" />
             <Button fx:id="btnDetails" layoutX="292.0" layoutY="170.0" mnemonicParsing="false" onAction="#btnDetails_Pressed" text="i" />
             <Button fx:id="btnRemoveCourse" layoutX="329.0" layoutY="170.0" mnemonicParsing="false" onAction="#btnRemoveCourse_Pressed" text="Remover" />
             <Button fx:id="btnAddCourse" layoutX="212.0" layoutY="170.0" mnemonicParsing="false" onAction="#btnAddCourse_Pressed" text="Agregar" />

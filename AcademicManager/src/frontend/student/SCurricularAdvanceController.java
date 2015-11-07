@@ -3,15 +3,17 @@ package frontend.student;
 import java.net.URL;
 import java.util.ArrayList;
 
-import backend.courses.Curriculum;
 import backend.courses.StudyProgram;
 import backend.manager.Manager;
+import backend.others.Messages;
+import backend.others.Messages.UILabel;
 import backend.others.Utilities;
 import backend.users.Student;
 import frontend.main.MViewController;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -25,37 +27,59 @@ public class SCurricularAdvanceController extends MViewController {
 	@FXML
 	ListView<String> listUnfinished;
 	@FXML
-	ListView<String> listAdvance;	
+	ListView<String> listAdvance;
 	@FXML
-	Button btnShowAdvance;
+	Label labelApproved;
+	@FXML
+	Label labelNotApproved;
 	
+	Student user = (Student) Manager.INSTANCE.currentUser;
 	public static URL view = Object.class.getResource("/frontend/student/SCurricularAdvance.fxml");
 	
 	public void setUp() {
 		super.setUp();
 		
+		labelApproved.setText(Messages.getUILabel(UILabel.CURRICULAR_ADVANCE_APPROVED));
+		labelNotApproved.setText(Messages.getUILabel(UILabel.CURRICULAR_ADVANCE_NOT_APPROVED));
+		
+		chBxStudyProgram.setItems(FXCollections.observableArrayList(generateStudyProgramsList()));
+		chBxStudyProgram.getSelectionModel().selectedItemProperty().addListener(
+				new ChangeListener<String>() {
+					@Override
+					public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+						if (newValue != null) {
+							showCurricularAdvance(newValue);
+						}
+					}
+				});
+		chBxStudyProgram.getSelectionModel().selectFirst();
 	}
 	
-	public void btnShowAdvance_Pressed(){
-		String name = chBxStudyProgram.getSelectionModel().getSelectedItem().toString();
+	public ArrayList<String> generateStudyProgramsList() {
+		ArrayList<String> studyProgramsList = new ArrayList<String>();
+		for (StudyProgram studyProgram : user.getCurriculum().getStudyPrograms()) {
+			studyProgramsList.add(studyProgram.getName() + " - " + studyProgram.getyearProgram());
+		}
+		return studyProgramsList;
+	}
+	
+	public void showCurricularAdvance(String studyProgramRawInfo) {
+		String[] splitStudyProgramRawInfo = studyProgramRawInfo.split(" - ");
+		String studyProgramName = splitStudyProgramRawInfo[0];
+		int studyProgramYear = Integer.valueOf(splitStudyProgramRawInfo[1]);
 		
-		Curriculum curriculum = null; //CURRICULUM ALUMNO
-		StudyProgram program = null; //ASOCIAR PROGRAMA
+		StudyProgram program = null;
 		
-		for(StudyProgram sp : Manager.INSTANCE.studyPrograms)
-			if (name == sp.getName()) {
-				program = sp;
-				break;
+		for (StudyProgram studyProgram : Manager.INSTANCE.studyPrograms) {
+			if (studyProgram.getName().equals(studyProgramName) && studyProgram.getyearProgram() == studyProgramYear) {
+				program = studyProgram;
 			}
-					
-		for(Student student : Manager.INSTANCE.students)
-			if (student.getRut() == Manager.INSTANCE.currentUser.getRut())
-				curriculum = student.getCurriculum();		
+		}
 		
-		ArrayList<String> advance = Utilities.getCoursesList(program, curriculum, true);
+		ArrayList<String> advance = Utilities.getCoursesList(program, user.getCurriculum(), true);
 		this.listAdvance.setItems(FXCollections.observableArrayList(advance));
 		
-		ArrayList<String> unfinished = Utilities.getCoursesList(program, curriculum, false);
+		ArrayList<String> unfinished = Utilities.getCoursesList(program, user.getCurriculum(), false);
 		this.listUnfinished.setItems(FXCollections.observableArrayList(unfinished));
 	}
 }

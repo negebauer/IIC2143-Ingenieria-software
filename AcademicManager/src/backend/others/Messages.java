@@ -9,7 +9,11 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
+import backend.courses.Assistantship;
+import backend.courses.Laboratory;
+import backend.courses.Lecture;
 import backend.courses.Schedule.Day;
+import backend.interfaces.ICourse;
 import backend.manager.FolderFileManager;
 
 public class Messages {
@@ -53,6 +57,8 @@ public class Messages {
 		COURSE_WAS_DELETED
 		
 	}
+	
+	public static String ERROR_MESSAGE = "ERROR GETTING MESSAGE (404 Language)";
 		
 	public static SupportedLanguage LANGUAGE() {
 		try {
@@ -93,7 +99,7 @@ public class Messages {
 		case SPANISH:
 			return SPANISH.get(message) + additionalInfo;
 		default:
-			return "ERROR GETTING MESSAGE (404)";
+			return ERROR_MESSAGE;
 		}
 	}
 	
@@ -164,6 +170,45 @@ public class Messages {
         return result;
     }
     
+    public static String getICourseName(ICourse icourse) {
+    	switch (LANGUAGE()) {
+		case ENGLISH:
+			return ICourseEnglish.get(icourse);
+		case SPANISH:
+			return ICourseSpanish.get(icourse);
+		default:
+			return ERROR_MESSAGE;
+		}
+	}
+    
+    static class ICourseEnglish {
+    	static public String get(ICourse icourse) {
+    		if (icourse instanceof Assistantship) {
+    			return "Assistanship";
+    		} else if (icourse instanceof Laboratory) {
+    			return "Laboratory";
+    		} else if (icourse instanceof Lecture) {
+    			return "Lecture";
+    		} else {
+    			return ERROR_MESSAGE;
+    		}
+    	}
+    }
+    
+    static class ICourseSpanish {
+    	static public String get(ICourse icourse) {
+    		if (icourse instanceof Assistantship) {
+    			return "Ayudantia";
+    		} else if (icourse instanceof Laboratory) {
+    			return "Laboratorio";
+    		} else if (icourse instanceof Lecture) {
+    			return "Catedra";
+    		} else {
+    			return ERROR_MESSAGE;
+    		}
+    	}
+    }
+    
     public static String getDay(Day day) {
     	switch (LANGUAGE()) {
 		case ENGLISH:
@@ -171,7 +216,7 @@ public class Messages {
 		case SPANISH:
 			return DAY_SPANISH.get(day);
 		default:
-			return "ERROR GETTING MESSAGE (404)";
+			return ERROR_MESSAGE;
 		}
 	}
     
@@ -179,6 +224,44 @@ public class Messages {
 	public static final Map<Day, String> DAY_SPANISH = createMapDaySpanish();
 	
 	private static Map<Day, String> createMapDayEnglish() {
+        Map<Day, String> result = new HashMap<Day, String>();
+        result.put(Day.MONDAY,		"Monday");
+        result.put(Day.TUESDAY,		"Tuesday");
+        result.put(Day.WEDNESDAY,	"Wednesday");
+        result.put(Day.THURSDAY,	"Thursday");
+        result.put(Day.FRIDAY,		"Friday");
+        result.put(Day.SATURDAY,	"Saturday");
+        result.put(Day.SUNDAY,		"Sunday");
+        return Collections.unmodifiableMap(result);
+    }
+	
+	private static Map<Day, String> createMapDaySpanish() {
+        Map<Day, String> result = new HashMap<Day, String>();
+        result.put(Day.MONDAY,		"Lunes");
+        result.put(Day.TUESDAY,		"Martes");
+        result.put(Day.WEDNESDAY,	"Miercoles");
+        result.put(Day.THURSDAY,	"Jueves");
+        result.put(Day.FRIDAY,		"Viernes");
+        result.put(Day.SATURDAY,	"Sabado");
+        result.put(Day.SUNDAY,		"Domingo");
+        return Collections.unmodifiableMap(result);
+    }
+    
+    public static String getDayLetter(Day day) {
+    	switch (LANGUAGE()) {
+		case ENGLISH:
+			return DAY_LETTER_ENGLISH.get(day);
+		case SPANISH:
+			return DAY_LETTER_SPANISH.get(day);
+		default:
+			return ERROR_MESSAGE;
+		}
+	}
+    
+    public static final Map<Day, String> DAY_LETTER_ENGLISH = createMapDayLetterEnglish();
+	public static final Map<Day, String> DAY_LETTER_SPANISH = createMapDayLetterSpanish();
+	
+	private static Map<Day, String> createMapDayLetterEnglish() {
         Map<Day, String> result = new HashMap<Day, String>();
         result.put(Day.MONDAY,		"M");
         result.put(Day.TUESDAY,		"T");
@@ -190,7 +273,7 @@ public class Messages {
         return Collections.unmodifiableMap(result);
     }
 	
-	private static Map<Day, String> createMapDaySpanish() {
+	private static Map<Day, String> createMapDayLetterSpanish() {
         Map<Day, String> result = new HashMap<Day, String>();
         result.put(Day.MONDAY,		"L");
         result.put(Day.TUESDAY,		"M");
@@ -267,7 +350,14 @@ public class Messages {
 		ADD_COURSE,
 		EDIT_SEMESTER,
 		CREATE_SEMESTER,
-		SEMESTER_MANGER_WELCOME_MESSAGE
+		SEMESTER_MANGER_WELCOME_MESSAGE,
+		CURRICULAR_ADVANCE_APPROVED,
+		CURRICULAR_ADVANCE_NOT_APPROVED,
+		SCHEDULE_MAIN_MESSAGE,
+		SEMESTER_CURRENT_SEMESTER_MODIFICATION_SUCCESS,
+		SEMESTER_CURRENT_SEMESTER_MODIFICATION_FAILED,
+		SEMESTER_CURRENT_SEMESTER_MODIFICATION_MAIN,
+		SEMESTER_CURRENT_SEMESTER_EDIT_SEMESTER
 		
 	}
 	
@@ -278,7 +368,7 @@ public class Messages {
 		case SPANISH:
 			return UI_LABEL_SPANISH.get(label);
 		default:
-			return "ERROR GETTING UILabel (404)";
+			return ERROR_MESSAGE;
 		}
 	}
 	
@@ -351,6 +441,13 @@ public class Messages {
         result.put(UILabel.EDIT_SEMESTER,									"Edit Semester");
         result.put(UILabel.CREATE_SEMESTER,									"Create New Semester");
         result.put(UILabel.SEMESTER_MANGER_WELCOME_MESSAGE,					"Welcome to the Semesters Manager, to start select one semester to edit, or press in create new semester");
+        result.put(UILabel.CURRICULAR_ADVANCE_APPROVED,						"Courses approved");
+        result.put(UILabel.CURRICULAR_ADVANCE_NOT_APPROVED,					"Courses remaining");
+        result.put(UILabel.SCHEDULE_MAIN_MESSAGE,							"Here is your schedule for this semester. You can select a previous semester and see it's schedule also");
+        result.put(UILabel.SEMESTER_CURRENT_SEMESTER_MODIFICATION_FAILED,	"Failed");
+        result.put(UILabel.SEMESTER_CURRENT_SEMESTER_MODIFICATION_SUCCESS,	"Success");
+        result.put(UILabel.SEMESTER_CURRENT_SEMESTER_MODIFICATION_MAIN,		"Modification result");
+        result.put(UILabel.SEMESTER_CURRENT_SEMESTER_EDIT_SEMESTER,			"Edit semester");
         return Collections.unmodifiableMap(result);
     }
 	
@@ -417,7 +514,13 @@ public class Messages {
         result.put(UILabel.EDIT_SEMESTER,									"Editar Semestre");
         result.put(UILabel.CREATE_SEMESTER,									"Crear Semestre Nuevo");
         result.put(UILabel.SEMESTER_MANGER_WELCOME_MESSAGE,					"Bienvenido al Administrador de Semestres, para comenzar selecciona un semestre para editar, o presiona en crear nuevo semestre");
-        
+        result.put(UILabel.CURRICULAR_ADVANCE_APPROVED,						"Cursos aprovados");
+        result.put(UILabel.CURRICULAR_ADVANCE_NOT_APPROVED,					"Cursos faltantes");
+        result.put(UILabel.SCHEDULE_MAIN_MESSAGE,							"Aqui esta tu horario para este semestre. Puedes seleccionar otro semestre y ver su horario tambien.");
+        result.put(UILabel.SEMESTER_CURRENT_SEMESTER_MODIFICATION_FAILED,	"Error");
+        result.put(UILabel.SEMESTER_CURRENT_SEMESTER_MODIFICATION_SUCCESS,	"Exito");
+        result.put(UILabel.SEMESTER_CURRENT_SEMESTER_MODIFICATION_MAIN,		"Resultado modificacion");
+        result.put(UILabel.SEMESTER_CURRENT_SEMESTER_EDIT_SEMESTER,			"Editar semestre");
         return Collections.unmodifiableMap(result);
     }
 	

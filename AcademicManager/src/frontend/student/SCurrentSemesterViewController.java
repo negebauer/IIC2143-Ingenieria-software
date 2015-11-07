@@ -50,22 +50,43 @@ public class SCurrentSemesterViewController extends MCourseSearcherSelectorViewC
 	@FXML
 	Button btnEditSemester;
 	
+	String responseToAddOrRemoveCourse = "";
+	Boolean firstLoad = true;
 	Student user = (Student) Manager.INSTANCE.currentUser;
 	public static URL view = Object.class.getResource("/frontend/student/SCurrentSemesterView.fxml");
 	
 	public void setUp() {
 		super.setUp();
-		
+			
 		labelMainMessage.setText(Messages.getUILabel(UILabel.SEMESTER_CURRENT_SEMESTER_EDITOR_MAIN));
 		labelCurrentCourses.setText(Messages.getUILabel(UILabel.SEMESTER_CURRENT_SEMESTER_CURRENT_COURSES));
 		btnCreateNewSemester.setText(Messages.getUILabel(UILabel.SEMESTER_CURRENT_SEMESTER_CREATE_NEW));
-		// TODO Set text values in Messages
-//		labelModification.setText(value);
-//		labelModificationResult.setText(value);
-//		btnCreateNewSemester.setText(value);
-//		btnContinue.setText(value);
+		labelModification.setText(Messages.getUILabel(UILabel.SEMESTER_CURRENT_SEMESTER_MODIFICATION_MAIN));
+		btnCreateNewSemester.setText(Messages.getUILabel(UILabel.SEMESTER_CURRENT_SEMESTER_CREATE_NEW));
 		btnSearchCourse.setText(Messages.getUILabel(UILabel.SEMESTER_CURRENT_SEMESTER_SEARCH_COURSE));
+		btnSearchCourse.setText(Messages.getUILabel(UILabel.SEMESTER_CURRENT_SEMESTER_EDIT_SEMESTER));
 		
+		if (responseToAddOrRemoveCourse == "") {
+			labelModificationResult.setText(Messages.getUILabel(UILabel.SEMESTER_CURRENT_SEMESTER_MODIFICATION_SUCCESS) + "\n" + responseToAddOrRemoveCourse);
+		} else {
+			labelModificationResult.setText(Messages.getUILabel(UILabel.SEMESTER_CURRENT_SEMESTER_MODIFICATION_FAILED) + "\n" + responseToAddOrRemoveCourse);
+		}
+		
+		Semester currentSemester = user.getCurriculum().getCurrentSemester();
+		if (currentSemester == null || currentSemester.getCourses().size() == 0) {
+			labelCurrentSemester.setText(Messages.getUILabel(UILabel.SEMESTER_CURRENT_SEMESTER_NO_CURRENT_SEMESTER));
+		} else {
+			String semesterInfo = currentSemester.getYear() + "-" + currentSemester.getSemester().getSemesterNumber();
+			labelCurrentSemester.setText(Messages.getUILabel(UILabel.SEMESTER_CURRENT_SEMESTER_INFO) + semesterInfo);
+		}
+		
+		if (firstLoad) {
+			showInfoOfSemesterOrEditor();
+			firstLoad = false;
+		}
+	}
+
+	public void showInfoOfSemesterOrEditor() {
 		Semester currentSemester = user.getCurriculum().getCurrentSemester();
 		if (currentSemester == null || currentSemester.getCourses().size() == 0) {
 			user.getCurriculum().setCurrentSemester(new Semester(Manager.INSTANCE.currentSemester.getSemester(), Manager.getYear(), user.getCurriculum().getMaxSemesterCredits(), user.getCurriculum().getCoursedCourses(), null));
@@ -87,6 +108,7 @@ public class SCurrentSemesterViewController extends MCourseSearcherSelectorViewC
 	}
 	
 	public void btnCreateNewSemester_Pressed() {
+		showInfoOfSemesterOrEditor();
 		
 	}
 	
@@ -125,7 +147,7 @@ public class SCurrentSemesterViewController extends MCourseSearcherSelectorViewC
 		listSelectedCourses.setVisible(true);
 		btnAddCourse.setVisible(true);
 		btnRemoveCourse.setVisible(true);
-		
+
 	}
 	
 	public void btnAddCourse_Pressed() {
@@ -141,14 +163,16 @@ public class SCurrentSemesterViewController extends MCourseSearcherSelectorViewC
 					ObservableList<String> currentCourses = listSelectedCourses.getItems();
 					currentCourses.add(getParsedCourse(initials, section, name));
 					listSelectedCourses.setItems(FXCollections.observableArrayList(currentCourses));
-					labelModificationResult.setText("Success");
+					responseToAddOrRemoveCourse = "";
+					labelModificationResult.setText(Messages.getUILabel(UILabel.SEMESTER_CURRENT_SEMESTER_MODIFICATION_SUCCESS) + "\n" + responseToAddOrRemoveCourse);
 				} else {
-					labelModificationResult.setText("Not added: " + response.response);
+					responseToAddOrRemoveCourse = response.response;
+					labelModificationResult.setText(Messages.getUILabel(UILabel.SEMESTER_CURRENT_SEMESTER_MODIFICATION_FAILED) + "\n" + responseToAddOrRemoveCourse);
 				}
 			}
 		}	
 	}
-	
+
 	public void btnRemoveCourse_Pressed() {
 		String rawCourseInfo = chBxSelectedCourse.getSelectionModel().getSelectedItem();
 		String[] parsed = getParsedInitialsSectionName(rawCourseInfo);
@@ -162,9 +186,11 @@ public class SCurrentSemesterViewController extends MCourseSearcherSelectorViewC
 					ObservableList<String> currentCourses = listSelectedCourses.getItems();
 					currentCourses.remove(getParsedCourse(initials, section, name));
 					listSelectedCourses.setItems(FXCollections.observableArrayList(currentCourses));
-					labelModificationResult.setText("Success");
+					responseToAddOrRemoveCourse = "";
+					labelModificationResult.setText(Messages.getUILabel(UILabel.SEMESTER_CURRENT_SEMESTER_MODIFICATION_SUCCESS) + "\n" + responseToAddOrRemoveCourse);
 				} else {
-					labelModificationResult.setText("Not removed: " + response.response);
+					responseToAddOrRemoveCourse = response.response;
+					labelModificationResult.setText(Messages.getUILabel(UILabel.SEMESTER_CURRENT_SEMESTER_MODIFICATION_FAILED) + "\n" + responseToAddOrRemoveCourse);
 				}
 			}
 		}
@@ -173,7 +199,7 @@ public class SCurrentSemesterViewController extends MCourseSearcherSelectorViewC
 	public void btnEditSemester_Pressed() {
 		ArrayList<Course> courses = user.getCurriculum().getCurrentSemester().getCourses();
 		user.getCurriculum().setCurrentSemester(null);
-		setUp();
+		showInfoOfSemesterOrEditor();
 		user.getCurriculum().getCurrentSemester().setCourses(courses);
 		ArrayList<String> currentCourses = new ArrayList<String>();
 		for (Course course : courses) {
