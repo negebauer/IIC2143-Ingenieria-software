@@ -10,7 +10,6 @@ Estatica y Dinamica&FIS1513&1&10&PHYSICS&BOTH&true
 Termodinamica&FIS1523&1&10&PHYSICS&BOTH&true
 Electricidad y Magnetismo&FIS1533&1&10&PHYSICS&BOTH&true
 Desarrollo de Habilidades Comunicativas para Ingenieros&LET0003&1&10&LETTERS&BOTH&true
-Desafios de la Ingenieria&ING1004&3&10&ENGINEERING&BOTH&true
 Introduccion a la Programacion&IIC1103&1&10&ENGINEERING&BOTH&true
 Mecanica de Fluidos&ICH1104&1&10&ENGINEERING&BOTH&true
 Matematicas Discretas&IIC1253&1&10&ENGINEERING&BOTH&true
