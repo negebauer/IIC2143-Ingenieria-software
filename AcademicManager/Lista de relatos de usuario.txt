@@ -21,9 +21,9 @@ Administrador:
 - Ingreso de administrador___________________________________________DONE
 - Registro de administador...........................................DONE
 - Agregar malla nueva________________________________________________DONE
-- Agregar curso......................................................
+- Agregar curso......................................................DONE
 - Eliminar Curso_____________________________________________________
-- Modificar curso....................................................
+- Modificar curso....................................................DONE
 - Fijar limite de ramos reprobados___________________________________DONE
 - Fijar maximo de creditos por semestre..............................DONE
 - Controlar topes de salas usadas a la misma hora____________________DONE

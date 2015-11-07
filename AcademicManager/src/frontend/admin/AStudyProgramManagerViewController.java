@@ -138,12 +138,14 @@ public class AStudyProgramManagerViewController extends MViewController {
 	}
 	
 	public void btnEditStudyProgram_Pressed() {
-		changeToEditMode();
-		btnEditSemesters.setVisible(true);
-		btnSaveStudyProgram.setVisible(true);
-		String studyProgramSelected = chBxStudyProgramsList.getSelectionModel().getSelectedItem();
-		fillFields(Manager.INSTANCE.getStudyProgramForName(studyProgramSelected));
-		Manager.INSTANCE.currentEditingStudyProgram = Manager.INSTANCE.getStudyProgramForName(studyProgramSelected);
+		if (!chBxStudyProgramsList.getSelectionModel().isEmpty()) {
+			changeToEditMode();
+			btnEditSemesters.setVisible(true);
+			btnSaveStudyProgram.setVisible(true);
+			String studyProgramSelected = chBxStudyProgramsList.getSelectionModel().getSelectedItem();
+			fillFields(Manager.INSTANCE.getStudyProgramForName(studyProgramSelected));
+			Manager.INSTANCE.currentEditingStudyProgram = Manager.INSTANCE.getStudyProgramForName(studyProgramSelected);
+		}
 	}
 	
 	public void fillFields(StudyProgram studyProgram) {
@@ -188,8 +190,7 @@ public class AStudyProgramManagerViewController extends MViewController {
 		currentProgram.setSchool(school);
 		currentProgram.setYearProgram(year);
 		
-		
-		
+		ViewUtilities.openView(view, AStudyProgramManagerViewController.view);
 	}
 		
 	public void btnBack_Pressed() {

@@ -95,16 +95,18 @@ public class ASemesterManagerViewController extends MCourseSearcherSelectorViewC
 	}
 
 	public void btnEditSemester_Pressed() {
-		changeToEditionMode();
-		btnSaveSemester.setVisible(true);
-		int indexChoosed = Integer.parseInt(chBxSemesters.getSelectionModel().getSelectedItem()) - 1;
-		currentEditingSemester = Manager.INSTANCE.currentEditingStudyProgram.getSemesters().get(indexChoosed);
+		if (!chBxSemesters.getSelectionModel().isEmpty()) {
+			changeToEditionMode();
+			btnSaveSemester.setVisible(true);
+			int indexChoosed = Integer.parseInt(chBxSemesters.getSelectionModel().getSelectedItem()) - 1;
+			currentEditingSemester = Manager.INSTANCE.currentEditingStudyProgram.getSemesters().get(indexChoosed);
 		
-		ArrayList<String> semesterCourses = new ArrayList<String>();
-		for (Course course : currentEditingSemester.getCourses()) {
-			semesterCourses.add(course.getInitials());
+			ArrayList<String> semesterCourses = new ArrayList<String>();
+			for (Course course : currentEditingSemester.getCourses()) {
+				semesterCourses.add(course.getInitials());
+			}
+			listCoursesInSemester.setItems(FXCollections.observableArrayList(semesterCourses));
 		}
-		listCoursesInSemester.setItems(FXCollections.observableArrayList(semesterCourses));
 		
 	}
 
@@ -156,11 +158,11 @@ public class ASemesterManagerViewController extends MCourseSearcherSelectorViewC
 
 	public void btnAddSemester_Pressed() {
 		Manager.INSTANCE.currentEditingStudyProgram.addSemester(currentEditingSemester);
-		ViewUtilities.openView(view, view);
+		ViewUtilities.openView(view, AStudyProgramManagerViewController.view);
 	}
 
 	public void btnSaveSemester_Pressed() {
-		ViewUtilities.openView(view, view);
+		ViewUtilities.openView(view, AStudyProgramManagerViewController.view);
 	}
 	
 	public void changeToEditionMode() {
