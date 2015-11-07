@@ -25,7 +25,7 @@
             <Label fx:id="labelHour" layoutX="33.0" layoutY="237.0" text="Hora" />
             <ChoiceBox fx:id="chBxEvaluationType" layoutX="254.0" layoutY="134.0" prefWidth="150.0" style="-fx-background-radius: 0;" />
             <Label fx:id="labelEvaluationType" layoutX="254.0" layoutY="113.0" text="Tipo evaluacion" />
-            <Button fx:id="btnSaveEvaluation" layoutX="396.0" layoutY="307.0" mnemonicParsing="false" onAction="#btnSaveEvaluation_Presses" text="Guardar Evaluacion" />
+            <Button fx:id="btnSaveEvaluation" layoutX="396.0" layoutY="307.0" mnemonicParsing="false" onAction="#btnSaveEvaluation_Pressed" text="Guardar Evaluacion" />
          </children>
       </Pane>
       <Button fx:id="btnLogout" layoutX="531.0" layoutY="369.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />

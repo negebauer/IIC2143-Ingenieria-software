@@ -167,18 +167,18 @@ public class AEvaluationManagerViewController extends MViewController {
 	}
 
 	public void hideEvaluationEditionView() {
-		chBxClassroom.setVisible(true);
-		labelClassroom.setVisible(true);
-		txBxDay.setVisible(true);
-		txBxMonth.setVisible(true);
-		txBxYear.setVisible(true);
-		txBxHour.setVisible(true);
-		labelDay.setVisible(true);
-		labelMonth.setVisible(true);
-		labelYear.setVisible(true);
-		labelHour.setVisible(true);
-		chBxEvaluationType.setVisible(true);
-		labelEvaluationType.setVisible(true);
-		btnSaveEvaluation.setVisible(true);
+		chBxClassroom.setVisible(false);
+		labelClassroom.setVisible(false);
+		txBxDay.setVisible(false);
+		txBxMonth.setVisible(false);
+		txBxYear.setVisible(false);
+		txBxHour.setVisible(false);
+		labelDay.setVisible(false);
+		labelMonth.setVisible(false);
+		labelYear.setVisible(false);
+		labelHour.setVisible(false);
+		chBxEvaluationType.setVisible(false);
+		labelEvaluationType.setVisible(false);
+		btnSaveEvaluation.setVisible(false);
 	}
 }

@@ -20,8 +20,8 @@
             <Label fx:id="labelCurrentCourses" layoutX="24.0" layoutY="124.0" text="Cursos actuales:" />
             <Label fx:id="labelCurrentCoursesNames" alignment="TOP_LEFT" layoutX="24.0" layoutY="154.0" prefHeight="198.0" prefWidth="532.0" text="Curso 1: adbwadbwakd" />
             <Button fx:id="btnCreateNewSemester" layoutX="236.0" layoutY="360.0" mnemonicParsing="false" onAction="#btnCreateNewSemester_Pressed" text="Create new semester" />
-            <Label fx:id="labelModification" layoutX="431.0" layoutY="89.0" text="Resultado modificacion" />
-            <Label fx:id="labelModificationResult" alignment="TOP_CENTER" layoutX="431.0" layoutY="125.0" prefHeight="82.0" prefWidth="143.0" text="Resultado modificacion" wrapText="true" />
+            <Label fx:id="labelModification" layoutX="431.0" layoutY="51.0" text="Resultado modificacion" />
+            <Label fx:id="labelModificationResult" alignment="TOP_CENTER" layoutX="431.0" layoutY="75.0" prefHeight="273.0" prefWidth="143.0" text="Resultado modificacion" wrapText="true" />
             <Label fx:id="labelSelectCoure" layoutX="278.0" layoutY="116.0" text="Elige ramos" />
             <ListView fx:id="listSelectedCourses" layoutX="217.0" layoutY="207.0" prefHeight="146.0" prefWidth="193.0" />
             <ChoiceBox fx:id="chBxSelectedCourse" layoutX="213.0" layoutY="139.0" prefHeight="27.0" prefWidth="193.0" />
