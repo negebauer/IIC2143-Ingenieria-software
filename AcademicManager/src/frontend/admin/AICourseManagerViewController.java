@@ -102,6 +102,8 @@ public class AICourseManagerViewController extends MViewController {
 				assistants.add(assistant.getName() + " " + assistant.getLastnameFather() + " " + assistant.getLastnameMother());
 			}
 			listAssistantsOrProfessors.setItems(FXCollections.observableArrayList(assistants));
+			chBxClassesTypes.getSelectionModel().select("Assistantship");
+			
 			
 		} else if (selectedICourse == "Lecture") {
 			Lecture selectedLecture = Manager.INSTANCE.currentEditignCourse.getLecture();
@@ -110,6 +112,7 @@ public class AICourseManagerViewController extends MViewController {
 				professors.add(professor.getName() + " " + professor.getLastnameFather() + " " + professor.getLastnameMother());
 			}
 			listAssistantsOrProfessors.setItems(FXCollections.observableArrayList(professors));
+			chBxClassesTypes.getSelectionModel().select("Lecture");
 			
 		} else if (selectedICourse == "Laboratory") {
 			Laboratory selectedLaboratory = Manager.INSTANCE.currentEditignCourse.getLaboratory();
@@ -118,11 +121,9 @@ public class AICourseManagerViewController extends MViewController {
 				professors.add(professor.getName() + " " + professor.getLastnameFather() + " " + professor.getLastnameMother());
 			}
 			listAssistantsOrProfessors.setItems(FXCollections.observableArrayList(professors));
+			chBxClassesTypes.getSelectionModel().select("Laboratory");
 			
-		}
-		
-		
-		
+		}	
 		
 	}
 	
