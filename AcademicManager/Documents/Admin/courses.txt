@@ -57,18 +57,21 @@ Criptografia y Seguridad Computacional&IIC3253&1&10&ENGINEERING&FIRST&true
 Diseño y Analisis de Algoritmos&IIC2283&1&10&ENGINEERING&SECOND&true
 Tecnologias y Aplicaciones Web&IIC2513&1&10&ENGINEERING&BOTH&true
 Reconocimiento de Patrones&IIC3724&1&10&ENGINEERING&FIRST&true
+Teologico&TEO33&1&10&THEOLOGY&BOTH&true
 Practica I&ING1001&1&0&ENGINEERING&BOTH&true
 Practica II&ING2001&1&0&ENGINEERING&BOTH&true
-Electivo I&OFG01&1&10&UNKNOWN&BOTH&true
-Electivo II&OFG02&1&10&UNKNOWN&BOTH&true
-Electivo III&OFG03&1&10&UNKNOWN&BOTH&true
-Electivo IV&OFG04&1&10&UNKNOWN&BOTH&true
-Electivo V&OFG05&1&10&UNKNOWN&BOTH&true
-Profundizacion I&OPR11&1&10&ENGINEERING&BOTH&true
-Profundizacion II&OPR21&1&10&ENGINEERING&BOTH&true
-Profundizacion III&OPR31&1&10&ENGINEERING&BOTH&true
-Profundizacion IV&OPR32&1&10&ENGINEERING&BOTH&true
-Teologico&TEO33&1&10&THEOLOGY&BOTH&true
-
+Electivo de Formacion General I&OFG0001&1&10&UNKNOWN&BOTH&true
+Electivo de Formacion General II&OFG0002&1&10&UNKNOWN&BOTH&true
+Electivo de Formacion General III&OFG0003&1&10&UNKNOWN&BOTH&true
+Electivo de Formacion General IV&OFG0004&1&10&UNKNOWN&BOTH&true
+Electivo de Formacion General V&OFG0005&1&10&UNKNOWN&BOTH&true
+Optativo de Ingenieria I&OPR1001&1&10&ENGINEERING&BOTH&true
+Optativo de Ingenieria II&OPR2001&1&10&ENGINEERING&BOTH&true
+Optativo de Ingenieria III&OPR3001&1&10&ENGINEERING&BOTH&true
+Optativo de Ingenieria IV&OPR3002&1&10&ENGINEERING&BOTH&true
+Examen de Comunicacion Escrita&VRA100C&1&0&ENGINEERING&BOTH&true
+English Placement Test Alte 3&VRA2010&1&0&ENGINEERING&BOTH&true
+Examen de Titulo Parte I&EXA001&1&0&ENGINEERING&BOTH&true
+Examen de Titulo Parte II&EXA002&1&0&ENGINEERING&BOTH&true
 
 
