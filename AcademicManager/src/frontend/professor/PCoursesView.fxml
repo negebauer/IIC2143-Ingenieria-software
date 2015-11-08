@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.professor.PCoursesViewController">
+   <children>
+      <Pane layoutX="5.0" layoutY="5.0" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <Button fx:id="btnLanguage" layoutX="565.0" layoutY="1.0" mnemonicParsing="false" onAction="#btnLanguage_Pressed" style="-fx-background-radius: 0;" text="ES" />
+            <Button fx:id="btnReload" layoutX="531.0" layoutY="1.0" mnemonicParsing="false" onAction="#btnReload_Pressed" style="-fx-background-radius: 0;" text="R" />
+            <Button fx:id="btnBack" layoutY="1.0" mnemonicParsing="false" onAction="#btnBack_Pressed" style="-fx-background-radius: 0;" text="Back" />
+            <Button fx:id="btnLogout" layoutX="506.0" layoutY="372.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
+            <Label fx:id="labelMain" alignment="CENTER" layoutX="73.0" layoutY="15.0" lineSpacing="1.0" prefHeight="49.0" prefWidth="454.0" text="Here you can see all the courses that you have dictated (and have been coursed by at least one student or are being dictated this semester)" textAlignment="CENTER" wrapText="true" />
+            <ChoiceBox fx:id="chBxSemesters" layoutX="225.0" layoutY="64.0" prefWidth="150.0" />
+            <Label fx:id="labelMyCourses" alignment="CENTER" layoutX="73.0" layoutY="95.0" prefHeight="210.0" prefWidth="454.0" text="Label" textAlignment="CENTER" wrapText="true" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
