@@ -18,10 +18,10 @@
             <Label fx:id="labelRegistration" layoutX="390.0" layoutY="127.0" prefHeight="40.0" prefWidth="131.0" text="No tienes una cuenta?, Registrate!" wrapText="true" />
             <Line endX="100.0" layoutX="300.0" layoutY="170.0" rotate="90.0" scaleY="2.0" startX="-100.0" />
             <Label fx:id="labelLogIn" layoutX="243.0" layoutY="33.0" text="INICIO DE SESION" textAlignment="CENTER" />
-            <Button fx:id="btnLogout" layoutX="521.0" layoutY="359.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
-            <Button fx:id="btnBack" layoutX="14.0" layoutY="20.0" mnemonicParsing="false" onAction="#btnBack_Pressed" style="-fx-background-radius: 0;" text="Back" />
-            <Button fx:id="btnReload" layoutX="508.0" layoutY="20.0" mnemonicParsing="false" onAction="#btnReload_Pressed" style="-fx-background-radius: 0;" text="R" />
-            <Button fx:id="btnLanguage" layoutX="547.0" layoutY="20.0" mnemonicParsing="false" onAction="#btnLanguage_Pressed" style="-fx-background-radius: 0;" text="ES" />
+            <Button fx:id="btnBack" layoutY="1.0" mnemonicParsing="false" onAction="#btnBack_Pressed" style="-fx-background-radius: 0;" text="Back" />
+            <Button fx:id="btnReload" layoutX="534.0" layoutY="1.0" mnemonicParsing="false" onAction="#btnReload_Pressed" style="-fx-background-radius: 0;" text="R" />
+            <Button fx:id="btnLanguage" layoutX="569.0" layoutY="1.0" mnemonicParsing="false" onAction="#btnLanguage_Pressed" style="-fx-background-radius: 0;" text="ES" />
+            <Button fx:id="btnLogout" layoutX="504.0" layoutY="368.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
          </children>
       </Pane>
    </children>

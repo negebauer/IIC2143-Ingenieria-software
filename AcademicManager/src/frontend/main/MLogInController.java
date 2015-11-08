@@ -9,6 +9,7 @@ import backend.users.*;
 import backend.users.User;
 import frontend.admin.AMainViewController;
 import frontend.others.ViewUtilities;
+import frontend.professor.PMainViewController;
 import frontend.student.SMainViewController;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
