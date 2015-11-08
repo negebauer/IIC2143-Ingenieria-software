@@ -1,6 +1,7 @@
 package frontend.admin;
 
 import java.net.URL;
+import java.util.ArrayList;
 
 import backend.courses.Schedule;
 import backend.courses.Schedule.Day;
@@ -190,177 +191,179 @@ public class AScheduleViewController extends MViewController {
 	}
 	
 	public void btnSaveSchedule_Pressed() {
+		ArrayList<DayModuleTuple> modules = new ArrayList<DayModuleTuple>();
 		Schedule editingSchedule = new Schedule();
 
-
 		if (chckBxMondayModule5.isSelected()) {
-			editingSchedule.addModule(new DayModuleTuple(Day.MONDAY, Module._5));
+			modules.add(editingSchedule.new DayModuleTuple(Day.MONDAY, Module._5));
 		}
 		if (chckBxMondayModule6.isSelected()) {
-
+			modules.add(editingSchedule.new DayModuleTuple(Day.MONDAY, Module._6));
 		}
 		if (chckBxMondayModule8.isSelected()) {
-
+			modules.add(editingSchedule.new DayModuleTuple(Day.MONDAY, Module._8));
 		}
 		if (chckBxMondayModule7.isSelected()) {
-
+			modules.add(editingSchedule.new DayModuleTuple(Day.MONDAY, Module._7));
 		}
 		if (chckBxMondayModule3.isSelected()) {
-
+			modules.add(editingSchedule.new DayModuleTuple(Day.MONDAY, Module._3));
 		}
 		if (chckBxMondayModule4.isSelected()) {
-
+			modules.add(editingSchedule.new DayModuleTuple(Day.MONDAY, Module._4));
 		}
 		if (chckBxMondayModule2.isSelected()) {
-
+			modules.add(editingSchedule.new DayModuleTuple(Day.MONDAY, Module._2));
 		}
 		if (chckBxMondayModule1.isSelected()) {
-
+			modules.add(editingSchedule.new DayModuleTuple(Day.MONDAY, Module._1));
 		}
 		if (chckBxTuesdayModule1.isSelected()) {
-
+			modules.add(editingSchedule.new DayModuleTuple(Day.TUESDAY, Module._1));
 		}
 		if (chckBxTuesdayModule2.isSelected()) {
-
+			modules.add(editingSchedule.new DayModuleTuple(Day.TUESDAY, Module._2));
 		}
 		if (chckBxTuesdayModule4.isSelected()) {
-
+			modules.add(editingSchedule.new DayModuleTuple(Day.TUESDAY, Module._4));
 		}
 		if (chckBxTuesdayModule3.isSelected()) {
-
+			modules.add(editingSchedule.new DayModuleTuple(Day.TUESDAY, Module._3));
 		}
 		if (chckBxTuesdayModule7.isSelected()) {
-
+			modules.add(editingSchedule.new DayModuleTuple(Day.TUESDAY, Module._7));
 		}
 		if (chckBxTuesdayModule8.isSelected()) {
-
+			modules.add(editingSchedule.new DayModuleTuple(Day.TUESDAY, Module._8));
 		}
 		if (chckBxTuesdayModule6.isSelected()) {
-
+			modules.add(editingSchedule.new DayModuleTuple(Day.TUESDAY, Module._6));
 		}
 		if (chckBxTuesdayModule5.isSelected()) {
-
+			modules.add(editingSchedule.new DayModuleTuple(Day.TUESDAY, Module._5));
 		}
 		if (chckBxWednesdayModule1.isSelected()) {
-
+			modules.add(editingSchedule.new DayModuleTuple(Day.WEDNESDAY, Module._1));
 		}
 		if (chckBxWednesdayModule2.isSelected()) {
-
+			modules.add(editingSchedule.new DayModuleTuple(Day.WEDNESDAY, Module._2));
 		}
 		if (chckBxWednesdayModule4.isSelected()) {
-
+			modules.add(editingSchedule.new DayModuleTuple(Day.WEDNESDAY, Module._4));
 		}
 		if (chckBxWednesdayModule3.isSelected()) {
-
+			modules.add(editingSchedule.new DayModuleTuple(Day.WEDNESDAY, Module._3));
 		}
 		if (chckBxWednesdayModule7.isSelected()) {
-
+			modules.add(editingSchedule.new DayModuleTuple(Day.WEDNESDAY, Module._7));
 		}
 		if (chckBxWednesdayModule8.isSelected()) {
-
+			modules.add(editingSchedule.new DayModuleTuple(Day.WEDNESDAY, Module._8));
 		}
 		if (chckBxWednesdayModule6.isSelected()) {
-
+			modules.add(editingSchedule.new DayModuleTuple(Day.WEDNESDAY, Module._6));
 		}
 		if (chckBxWednesdayModule5.isSelected()) {
-
+			modules.add(editingSchedule.new DayModuleTuple(Day.WEDNESDAY, Module._5));
 		}
 		if (chckBxThursdayModule1.isSelected()) {
-
+			modules.add(editingSchedule.new DayModuleTuple(Day.THURSDAY, Module._1));
 		}
 		if (chckBxThursdayModule2.isSelected()) {
-
+			modules.add(editingSchedule.new DayModuleTuple(Day.THURSDAY, Module._2));
 		}
 		if (chckBxThursdayModule4.isSelected()) {
-
+			modules.add(editingSchedule.new DayModuleTuple(Day.THURSDAY, Module._4));
 		}
 		if (chckBxThursdayModule3.isSelected()) {
-
+			modules.add(editingSchedule.new DayModuleTuple(Day.THURSDAY, Module._3));
 		}
 		if (chckBxThursdayModule7.isSelected()) {
-
+			modules.add(editingSchedule.new DayModuleTuple(Day.THURSDAY, Module._7));
 		}
 		if (chckBxThursdayModule8.isSelected()) {
-
+			modules.add(editingSchedule.new DayModuleTuple(Day.THURSDAY, Module._8));
 		}
 		if (chckBxThursdayModule6.isSelected()) {
-
+			modules.add(editingSchedule.new DayModuleTuple(Day.THURSDAY, Module._6));
 		}
 		if (chckBxThursdayModule5.isSelected()) {
-
+			modules.add(editingSchedule.new DayModuleTuple(Day.THURSDAY, Module._5));
 		}
 		if (chckBxFridayModule1.isSelected()) {
-
+			modules.add(editingSchedule.new DayModuleTuple(Day.FRIDAY, Module._1));
 		}
 		if (chckBxFridayModule2.isSelected()) {
-
+			modules.add(editingSchedule.new DayModuleTuple(Day.FRIDAY, Module._2));
 		}
 		if (chckBxFridayModule4.isSelected()) {
-
+			modules.add(editingSchedule.new DayModuleTuple(Day.FRIDAY, Module._4));
 		}
 		if (chckBxFridayModule3.isSelected()) {
-
+			modules.add(editingSchedule.new DayModuleTuple(Day.FRIDAY, Module._3));
 		}
 		if (chckBxFridayModule7.isSelected()) {
-
+			modules.add(editingSchedule.new DayModuleTuple(Day.FRIDAY, Module._7));
 		}
 		if (chckBxFridayModule8.isSelected()) {
-
+			modules.add(editingSchedule.new DayModuleTuple(Day.FRIDAY, Module._8));
 		}
 		if (chckBxFridayModule6.isSelected()) {
-
+			modules.add(editingSchedule.new DayModuleTuple(Day.FRIDAY, Module._6));
 		}
 		if (chckBxFridayModule5.isSelected()) {
-
+			modules.add(editingSchedule.new DayModuleTuple(Day.FRIDAY, Module._5));
 		}
 		if (chckBxSaturdayModule1.isSelected()) {
-
+			modules.add(editingSchedule.new DayModuleTuple(Day.SATURDAY, Module._1));
 		}
 		if (chckBxSaturdayModule2.isSelected()) {
-
+			modules.add(editingSchedule.new DayModuleTuple(Day.SATURDAY, Module._2));
 		}
 		if (chckBxSaturdayModule4.isSelected()) {
-
+			modules.add(editingSchedule.new DayModuleTuple(Day.SATURDAY, Module._4));
 		}
 		if (chckBxSaturdayModule3.isSelected()) {
-
+			modules.add(editingSchedule.new DayModuleTuple(Day.SATURDAY, Module._3));
 		}
 		if (chckBxSaturdayModule7.isSelected()) {
-
+			modules.add(editingSchedule.new DayModuleTuple(Day.SATURDAY, Module._7));
 		}
 		if (chckBxSaturdayModule8.isSelected()) {
-
+			modules.add(editingSchedule.new DayModuleTuple(Day.SATURDAY, Module._8));
 		}
 		if (chckBxSaturdayModule6.isSelected()) {
-
+			modules.add(editingSchedule.new DayModuleTuple(Day.SATURDAY, Module._6));
 		}
 		if (chckBxSaturdayModule5.isSelected()) {
-
+			modules.add(editingSchedule.new DayModuleTuple(Day.SATURDAY, Module._5));
 		}
 		if (chckBxSundayModule1.isSelected()) {
-
+			modules.add(editingSchedule.new DayModuleTuple(Day.SUNDAY, Module._1));
 		}
 		if (chckBxSundayModule2.isSelected()) {
-
+			modules.add(editingSchedule.new DayModuleTuple(Day.SUNDAY, Module._2));
 		}
 		if (chckBxSundayModule4.isSelected()) {
-
+			modules.add(editingSchedule.new DayModuleTuple(Day.SUNDAY, Module._4));
 		}
 		if (chckBxSundayModule3.isSelected()) {
-
+			modules.add(editingSchedule.new DayModuleTuple(Day.SUNDAY, Module._3));
 		}
 		if (chckBxSundayModule7.isSelected()) {
-
+			modules.add(editingSchedule.new DayModuleTuple(Day.SUNDAY, Module._7));
 		}
 		if (chckBxSundayModule8.isSelected()) {
-
+			modules.add(editingSchedule.new DayModuleTuple(Day.SUNDAY, Module._8));
 		}
 		if (chckBxSundayModule6.isSelected()) {
-
+			modules.add(editingSchedule.new DayModuleTuple(Day.SUNDAY, Module._6));
 		}
 		if (chckBxSundayModule5.isSelected()) {
-
+			modules.add(editingSchedule.new DayModuleTuple(Day.SUNDAY, Module._5));
 		}
+		
+		Manager.INSTANCE.currentEditingSchedule = new Schedule(modules);
 	}
 
 	public void setCheckBoxes(Schedule editingSchedule) {
