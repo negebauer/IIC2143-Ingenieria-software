@@ -110,7 +110,7 @@ public class StudyProgramsReaderWriter {
 					int maxFailedCredits = Integer.valueOf(arguments[4]);
 					int numberOfSemesters = Integer.valueOf(arguments[5]);
 					
-					int i = 0;
+					int i = -1;
 					while (i < numberOfSemesters) {
 						Semester emptySemester = new Semester(null, i, i, null, null);
 						studyProgramSemesters.add(emptySemester);
@@ -122,10 +122,6 @@ public class StudyProgramsReaderWriter {
 					studyProgram.setSemesters(studyProgramSemesters);
 					studyProgramInfoBufferedReader.close();
 					
-					File[] listFiles = studyProgramFolder.listFiles();
-					for (int j = 0; j < listFiles.length; j++) {
-						studyProgramSemesters.add(null);
-					}
 					for (File studyProgramFile : studyProgramFolder.listFiles()) {
 						if (studyProgramFile.getName().equals(FolderFileManager.adminStudyProgramInfo.split("/")[1])) {
 							continue;
