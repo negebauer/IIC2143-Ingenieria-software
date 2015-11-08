@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import frontend.main.MLogInController;
 import frontend.others.CurrentViewHandler;
-import backend.others.Range;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
