@@ -85,7 +85,7 @@ public class MLogInController extends MViewController {
 			ViewUtilities.openView(SMainViewController.view, view);
 		} else if (Manager.INSTANCE.currentUser instanceof Admin) {
 			ViewUtilities.openView(AMainViewController.view, view);
-		} else {
+		} else if (Manager.INSTANCE.currentUser instanceof Professor) {
 			ViewUtilities.openView(PMainViewController.view, view);
 		}
 		

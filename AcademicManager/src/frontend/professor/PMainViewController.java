@@ -4,8 +4,6 @@ import java.net.URL;
 
 import backend.others.Messages;
 import backend.others.Messages.UILabel;
-import frontend.admin.ACourseManagerViewController;
-import frontend.admin.AStudyProgramManagerViewController;
 import frontend.main.MViewController;
 import frontend.others.ViewUtilities;
 import javafx.fxml.FXML;
@@ -23,7 +21,7 @@ public class PMainViewController extends MViewController  {
 	@FXML
 	Button btnQualifyStudents;
 	
-	public static URL view = Object.class.getResource("/frontend/admin/AMainView.fxml");
+	public static URL view = Object.class.getResource("/frontend/professor/PMainView.fxml");
 	
 	public void setUp() {
 		super.setUp();
@@ -35,10 +33,11 @@ public class PMainViewController extends MViewController  {
 	}
 	
 	public void btnSeeMyCourses_Pressed() {
-		ViewUtilities.openView(AStudyProgramManagerViewController.view, view);
+		ViewUtilities.openView(PCoursesViewController.view, view);
 	}
 	
 	public void btnQualifyStudents_Pressed() {
-		ViewUtilities.openView(ACourseManagerViewController.view, view);
+//		TODO: Create view for qualifying students [PROFESSOR]
+//		ViewUtilities.openView(PQualifyStudentsViewController.view, view);
 	}
 }

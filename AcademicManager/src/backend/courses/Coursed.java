@@ -162,4 +162,31 @@ public class Coursed {
 		this.details = details;
 	}
 	
+	public Assistantship getAssistantship() {
+		for (ICourse icourse : courses) {
+			if (icourse instanceof Assistantship) {
+				return (Assistantship) icourse;
+			}
+		}
+		return null;
+	}
+	
+	public Laboratory getLaboratory() {
+		for (ICourse icourse : courses) {
+			if (icourse instanceof Laboratory) {
+				return (Laboratory) icourse;
+			}
+		}
+		return null;
+	}
+	
+	public Lecture getLecture() {
+		for (ICourse icourse : courses) {
+			if (icourse instanceof Lecture) {
+				return (Lecture) icourse;
+			}
+		}
+		return null;
+	}
+	
 }

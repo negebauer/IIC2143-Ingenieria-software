@@ -19,4 +19,14 @@ public enum AcademicSemester {
 			return "DATA ERROR";
 		}
 	}
+	
+	static public AcademicSemester createWithNumber(String number) {
+		if (number.equals("1")) {
+			return AcademicSemester.FIRST;
+		} else if (number.equals("2")) {
+			return AcademicSemester.SECOND;
+		} else {
+			return AcademicSemester.BOTH;
+		}
+	}
 }
