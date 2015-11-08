@@ -9,7 +9,7 @@
    <children>
       <Pane prefHeight="400.0" prefWidth="600.0">
          <children>
-            <Label fx:id="labelWelcomeMessage" layoutX="15.0" layoutY="44.0" prefHeight="17.0" prefWidth="421.0" text="BIENVENIDO A ACADEMIC TOOL MANAGER PROFESSIONAL [ADMIN]" />
+            <Label fx:id="labelWelcomeMessage" layoutX="15.0" layoutY="44.0" prefHeight="17.0" prefWidth="505.0" text="BIENVENIDO A ACADEMIC TOOL MANAGER PROFESSIONAL [ADMIN]" />
             <Label fx:id="labelWhatDoNext" layoutX="14.0" layoutY="61.0" prefHeight="17.0" prefWidth="211.0" text="Qué deseas hacer ahora?" />
             <Button fx:id="btnStudyProgramManager" layoutX="15.0" layoutY="100.0" mnemonicParsing="false" onAction="#btnStudyProgramManager_Pressed" style="-fx-background-radius: 0 0 0 0;" text="Study Program Manager" textAlignment="CENTER" />
             <Button fx:id="btnBack" layoutX="7.0" layoutY="8.0" mnemonicParsing="false" onAction="#btnBack_Pressed" style="-fx-background-radius: 0;" text="Back" />
