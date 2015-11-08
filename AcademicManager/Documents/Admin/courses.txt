@@ -54,7 +54,7 @@ Teoria de Automatas y Lenguajes Formales&IIC2223&1&10&ENGINEERING&BOTH&true
 Logica para Ciencias de la Computacion&IIC2213&1&10&ENGINEERING&BOTH&true
 Sistemas Distribuidos&IIC2523&1&10&ENGINEERING&BOTH&true
 Criptografia y Seguridad Computacional&IIC3253&1&10&ENGINEERING&FIRST&true
-Diseño y Analisis de Algoritmos&IIC2283&1&10&ENGINEERING&SECOND&true
+Diseï¿½o y Analisis de Algoritmos&IIC2283&1&10&ENGINEERING&SECOND&true
 Tecnologias y Aplicaciones Web&IIC2513&1&10&ENGINEERING&BOTH&true
 Reconocimiento de Patrones&IIC3724&1&10&ENGINEERING&FIRST&true
 Teologico&TEO033&1&10&THEOLOGY&BOTH&true
@@ -74,7 +74,7 @@ English Placement Test Alte 3&VRA2010&1&0&ENGINEERING&BOTH&true
 English Test Sufficiency Alte 3&VRA3010&1&0&ENGINEERING&BOTH&true
 Examen de Titulo Parte I&EXA001&1&0&ENGINEERING&BOTH&true
 Examen de Titulo Parte II&EXA002&1&0&ENGINEERING&BOTH&true
-Diseño Avanzado de Aplicaciones Web&IIC3585&1&10&ENGINEERING&SECOND&true
+Diseï¿½o Avanzado de Aplicaciones Web&IIC3585&1&10&ENGINEERING&SECOND&true
 Construccion de Compiladores&IIC2323&1&10&ENGINEERING&FIRST&true
 Mineria de Datos&IIC2433&1&10&ENGINEERING&SECOND&true
 Robotica Movil&IIC3685&1&10&ENGINEERING&FIRST&true

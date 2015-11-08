@@ -120,7 +120,7 @@ public class CourseCoursesReaderWriter {
 			String icourseString = bufferedReader.readLine();
 			while (icourseString != null ) {
 				String[] arguments = icourseString.split("&");
-				
+
 				String initials = arguments[0];
 				int section = Integer.parseInt(arguments[1]);
 				AcademicSemester semester = AcademicSemester.valueOf(arguments[2]);

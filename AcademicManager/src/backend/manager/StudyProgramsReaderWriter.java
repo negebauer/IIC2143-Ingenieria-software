@@ -62,7 +62,7 @@ public class StudyProgramsReaderWriter {
 				
 				int i = 1;
 				for (Semester semester : studyProgram.getSemesters()) {
-					FileOutputStream semesterFile = new FileOutputStream(studyProgramFolder.getCanonicalPath() + "/semester" + i + ".txt");
+					FileOutputStream semesterFile = new FileOutputStream(studyProgramFolder.getCanonicalPath() + "/semester" + (i < 10 ? "0" + i : i) + ".txt");
 					PrintStream semesterPrintStream = new PrintStream(semesterFile);
 					
 					for (Course course : semester.getCourses()) {
@@ -122,6 +122,10 @@ public class StudyProgramsReaderWriter {
 					studyProgram.setSemesters(studyProgramSemesters);
 					studyProgramInfoBufferedReader.close();
 					
+					File[] listFiles = studyProgramFolder.listFiles();
+					for (int j = 0; j < listFiles.length; j++) {
+						studyProgramSemesters.add(null);
+					}
 					for (File studyProgramFile : studyProgramFolder.listFiles()) {
 						if (studyProgramFile.getName().equals(FolderFileManager.adminStudyProgramInfo.split("/")[1])) {
 							continue;

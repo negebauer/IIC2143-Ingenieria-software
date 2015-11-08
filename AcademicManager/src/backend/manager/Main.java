@@ -29,11 +29,7 @@ public class Main extends Application {
 	    }));
 		// -----    Delete any test code from this line   -----
 		
-		System.out.println("Year: " + Manager.getYear());
-		System.out.println("Month: " + Manager.getMonth());
-		for (int i : new Range(9)) {
-	        System.out.println(i);
-	    }
+		
 		
 		// ----- 			To this line				  -----
 		

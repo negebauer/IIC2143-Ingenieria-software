@@ -50,7 +50,7 @@ public class CourseRequirementsReaderWriter {
 			String courseRequirementString = bufferedReader.readLine();
 			while (courseRequirementString != null ) {
 				String[] arguments = courseRequirementString.split("&");
-				
+
 				String courseInitials = arguments[0];
 				String courseRequiredInitials = arguments[1];
 				
