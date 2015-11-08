@@ -294,6 +294,7 @@ public class Messages {
 		CHANGE_MODE_ADMIN_TO_STUDENT,
 		WELCOME_MESSAGE,
 		WELCOME_MESSAGE_ADMIN,
+		WELCOME_MESSAGE_PROFESSOR,
 		WHAT_TO_DO_NEXT_QUESTION,
 		SIGN_IN,
 		REGISTER,
@@ -466,6 +467,7 @@ public class Messages {
         result.put(UILabel.SUNDAY,											"Sunday");
         result.put(UILabel.SAVE_SCHEDULE,									"Save Schedule");
         result.put(UILabel.SCHEDULE_VIEW_TITLE,								"Schedule");
+        result.put(UILabel.WELCOME_MESSAGE_PROFESSOR, 						"WELCOME TO ACADEMIC TOOL MANAGER PROFESSIONAL [PROFESSOR]");
         return Collections.unmodifiableMap(result);
     }
 	
@@ -548,6 +550,7 @@ public class Messages {
         result.put(UILabel.SUNDAY,											"Domingo");
         result.put(UILabel.SAVE_SCHEDULE,									"Guardar Horario");
         result.put(UILabel.SCHEDULE_VIEW_TITLE,								"Horario");
+        result.put(UILabel.WELCOME_MESSAGE_PROFESSOR, 						"BIENVENIDO A ACADEMIC TOOL MANAGER PROFESSIONAL [PROFESOR]");
         return Collections.unmodifiableMap(result);
     }
 	

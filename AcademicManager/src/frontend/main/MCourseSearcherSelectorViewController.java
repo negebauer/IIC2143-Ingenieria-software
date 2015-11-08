@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ArrayList;
 
 import backend.courses.Course;
+import backend.enums.AcademicSemester;
 import backend.manager.CourseSearcher;
 import backend.manager.Manager;
 import backend.others.Messages;
@@ -48,9 +49,15 @@ public class MCourseSearcherSelectorViewController extends MViewController {
 	}
 	
 	public void updateCoursesShow() {
+		updateCoursesShow(AcademicSemester.BOTH);
+	}
+	
+	public void updateCoursesShow(AcademicSemester semester) {
 		ArrayList<String> coursesStrings = new ArrayList<String>();
 		for (Course course : coursesToShow) {
-			coursesStrings.add(getParsedCourse(course.getInitials(), course.getSection(), course.getName()));
+			if (course.getSemester() == semester || course.getSemester() == AcademicSemester.BOTH || semester == AcademicSemester.BOTH) {
+				coursesStrings.add(getParsedCourse(course.getInitials(), course.getSection(), course.getName()));
+			}
 		}
 		chBxSelectedCourse.setItems(FXCollections.observableArrayList(coursesStrings));
 	}

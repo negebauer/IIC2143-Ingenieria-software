@@ -85,6 +85,11 @@ public class SCurrentSemesterViewController extends MCourseSearcherSelectorViewC
 			firstLoad = false;
 		}
 	}
+	
+	public void btnSearchCourse_Pressed() {
+		super.btnSearchCourse_Pressed();
+		super.updateCoursesShow(user.getCurriculum().getCurrentSemester().getSemester());
+	}
 
 	public void showInfoOfSemesterOrEditor() {
 		Semester currentSemester = user.getCurriculum().getCurrentSemester();

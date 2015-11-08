@@ -85,7 +85,7 @@ public class MLogInController extends MViewController {
 		} else if (Manager.INSTANCE.currentUser instanceof Admin) {
 			ViewUtilities.openView(AMainViewController.view, view);
 		} else {
-			System.out.println("ASD");
+			ViewUtilities.openView(PMainViewController.view, view);
 		}
 		
 	}
