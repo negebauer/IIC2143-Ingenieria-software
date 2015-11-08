@@ -57,7 +57,7 @@ Criptografia y Seguridad Computacional&IIC3253&1&10&ENGINEERING&FIRST&true
 Diseño y Analisis de Algoritmos&IIC2283&1&10&ENGINEERING&SECOND&true
 Tecnologias y Aplicaciones Web&IIC2513&1&10&ENGINEERING&BOTH&true
 Reconocimiento de Patrones&IIC3724&1&10&ENGINEERING&FIRST&true
-Teologico&TEO33&1&10&THEOLOGY&BOTH&true
+Teologico&TEO033&1&10&THEOLOGY&BOTH&true
 Practica I&ING1001&1&0&ENGINEERING&BOTH&true
 Practica II&ING2001&1&0&ENGINEERING&BOTH&true
 Electivo de Formacion General I&OFG0001&1&10&UNKNOWN&BOTH&true
@@ -71,7 +71,13 @@ Optativo de Ingenieria III&OPR3001&1&10&ENGINEERING&BOTH&true
 Optativo de Ingenieria IV&OPR3002&1&10&ENGINEERING&BOTH&true
 Examen de Comunicacion Escrita&VRA100C&1&0&ENGINEERING&BOTH&true
 English Placement Test Alte 3&VRA2010&1&0&ENGINEERING&BOTH&true
+English Test Sufficiency Alte 3&VRA3010&1&0&ENGINEERING&BOTH&true
 Examen de Titulo Parte I&EXA001&1&0&ENGINEERING&BOTH&true
 Examen de Titulo Parte II&EXA002&1&0&ENGINEERING&BOTH&true
+Diseño Avanzado de Aplicaciones Web&IIC3585&1&10&ENGINEERING&SECOND&true
+Construccion de Compiladores&IIC2323&1&10&ENGINEERING&FIRST&true
+Mineria de Datos&IIC2433&1&10&ENGINEERING&SECOND&true
+Robotica Movil&IIC3685&1&10&ENGINEERING&FIRST&true
+Teoria de Modelos Finitos&IIC3263&1&10&ENGINEERING&FIRST&true
 
 

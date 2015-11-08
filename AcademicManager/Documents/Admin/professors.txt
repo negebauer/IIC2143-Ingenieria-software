@@ -22,7 +22,7 @@
 00000021&Ricardi&Raineri&UC&Casa Raineri&MALE&16.09.1990 01:00
 00000022&Ana&Bravo&UC&Casa Bravo&FEMALE&16.09.1990 01:00
 00000023&Julio&Pertuze&UC&Casa Pertuze&MALE&16.09.1990 01:00
-00000024&Karin&PicharaUC&Casa Pichara&MALE&15.09.1990 00:00
+00000024&Karim&PicharaUC&Casa Pichara&MALE&15.09.1990 00:00
 00000025&Yadran&Eterovic&UC&Casa Yadran&MALE&15.09.1990 00:00
 00000026&Hans&Lobel&UC&Casa Lobel&MALE&20.09.1990 00:00
 00000027&Cristian&Ruz&UC&Casa Ruz&MALE&20.09.1990 00:00
@@ -49,4 +49,6 @@
 00000048&Raul&Montes&UC&Casa Montes&MALE&14.10.1991 00:00
 00000049&Jose&Saavedra&UC&Casa Saavedra&MALE&14.08.1991 00:00
 00000050&Jesus&De Nazareth&UC&Nazareth&MALE&25.12.1981 00:00
+00000051&Jaime&Navon&UC&Casa Navon&MALE&05.02.1990 00:00
+00000052&Alvaro&Soto&UC&Casa Soto&MALE&07.09.1990 00:00
 
