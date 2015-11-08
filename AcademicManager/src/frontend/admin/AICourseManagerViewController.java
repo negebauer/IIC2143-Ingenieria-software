@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import backend.courses.Assistantship;
 import backend.courses.Laboratory;
 import backend.courses.Lecture;
+import backend.courses.Schedule;
 import backend.interfaces.ICourse;
 import backend.manager.Manager;
 import backend.users.Assistant;
@@ -40,10 +41,7 @@ public class AICourseManagerViewController extends MViewController {
 	Label labelPickAssistantsOrProfessors;
 	@FXML
 	Label labelClasroomSelection;
-	@FXML
-	Label labelPickShedule;
-	@FXML
-	ChoiceBox<String> chBxDays;
+
 	@FXML
 	CheckBox chckBxModule1;
 	@FXML
@@ -66,6 +64,8 @@ public class AICourseManagerViewController extends MViewController {
 	ChoiceBox<String> chBxClassesTypes;
 	@FXML
 	Button btnSaveCourse;
+	@FXML
+	Button btnSeeSchedule;
 	
 	static URL view = Object.class.getResource("/frontend/admin/AICourseManagerView.fxml");
 	ICourse currentEditingICourse = null;
@@ -89,7 +89,11 @@ public class AICourseManagerViewController extends MViewController {
 		chBxICourses.setItems(FXCollections.observableArrayList(iCourses));
 		
 	}
-
+	
+	public void btnSeeSchedule_Pressed() {
+		ViewUtilities.openNewView(AScheduleViewController.view);
+	}
+	
 	public void btnEditICourse_Pressed() {
 		hideMainView();
 		showEditView();
@@ -103,6 +107,7 @@ public class AICourseManagerViewController extends MViewController {
 			}
 			listAssistantsOrProfessors.setItems(FXCollections.observableArrayList(assistants));
 			chBxClassesTypes.getSelectionModel().select("Assistantship");
+			Manager.INSTANCE.currentEditingSchedule = selectedAssistanship.getSchedule();
 			
 			
 		} else if (selectedICourse == "Lecture") {
@@ -113,6 +118,7 @@ public class AICourseManagerViewController extends MViewController {
 			}
 			listAssistantsOrProfessors.setItems(FXCollections.observableArrayList(professors));
 			chBxClassesTypes.getSelectionModel().select("Lecture");
+			Manager.INSTANCE.currentEditingSchedule = selectedLecture.getSchedule();
 			
 		} else if (selectedICourse == "Laboratory") {
 			Laboratory selectedLaboratory = Manager.INSTANCE.currentEditignCourse.getLaboratory();
@@ -122,6 +128,7 @@ public class AICourseManagerViewController extends MViewController {
 			}
 			listAssistantsOrProfessors.setItems(FXCollections.observableArrayList(professors));
 			chBxClassesTypes.getSelectionModel().select("Laboratory");
+			Manager.INSTANCE.currentEditingSchedule = selectedLaboratory.getSchedule();
 			
 		}	
 		
@@ -130,6 +137,7 @@ public class AICourseManagerViewController extends MViewController {
 	public void btnCreateNewICourse_Pressed() {
 		hideMainView();
 		showEditView();
+		Manager.INSTANCE.currentEditingSchedule = new Schedule();
 	}
 	
 	public void btnAddAssistantOrProfessor_Pressed() {
@@ -168,16 +176,7 @@ public class AICourseManagerViewController extends MViewController {
 		chBxClassrooms.setVisible(true);
 		labelPickAssistantsOrProfessors.setVisible(true);
 		labelClasroomSelection.setVisible(true);
-		labelPickShedule.setVisible(true);
-		chBxDays.setVisible(true);
-		chckBxModule1.setVisible(true);
-		chckBxModule2.setVisible(true);
-		chckBxModule4.setVisible(true);
-		chckBxModule3.setVisible(true);
-		chckBxModule7.setVisible(true);
-		chckBxModule8.setVisible(true);
-		chckBxModule6.setVisible(true);
-		chckBxModule5.setVisible(true);
+		btnSeeSchedule.setVisible(true);
 		labelClassTypeChoose.setVisible(true);
 		chBxClassesTypes.setVisible(true);
 		btnSaveCourse.setVisible(true);
@@ -191,16 +190,7 @@ public class AICourseManagerViewController extends MViewController {
 		chBxClassrooms.setVisible(false);
 		labelPickAssistantsOrProfessors.setVisible(false);
 		labelClasroomSelection.setVisible(false);
-		labelPickShedule.setVisible(false);
-		chBxDays.setVisible(false);
-		chckBxModule1.setVisible(false);
-		chckBxModule2.setVisible(false);
-		chckBxModule4.setVisible(false);
-		chckBxModule3.setVisible(false);
-		chckBxModule7.setVisible(false);
-		chckBxModule8.setVisible(false);
-		chckBxModule6.setVisible(false);
-		chckBxModule5.setVisible(false);
+		btnSeeSchedule.setVisible(false);
 		labelClassTypeChoose.setVisible(false);
 		chBxClassesTypes.setVisible(false);
 		btnSaveCourse.setVisible(true);

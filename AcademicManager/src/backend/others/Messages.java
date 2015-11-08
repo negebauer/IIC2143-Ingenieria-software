@@ -357,7 +357,16 @@ public class Messages {
 		SEMESTER_CURRENT_SEMESTER_MODIFICATION_SUCCESS,
 		SEMESTER_CURRENT_SEMESTER_MODIFICATION_FAILED,
 		SEMESTER_CURRENT_SEMESTER_MODIFICATION_MAIN,
-		SEMESTER_CURRENT_SEMESTER_EDIT_SEMESTER
+		SEMESTER_CURRENT_SEMESTER_EDIT_SEMESTER,
+		MONDAY,
+		TUESDAY,
+		WEDNESDAY,
+		THURSDAY,
+		FRIDAY,
+		SATURDAY,
+		SUNDAY,
+		SAVE_SCHEDULE,
+		SCHEDULE_VIEW_TITLE
 		
 	}
 	
@@ -448,6 +457,15 @@ public class Messages {
         result.put(UILabel.SEMESTER_CURRENT_SEMESTER_MODIFICATION_SUCCESS,	"Success");
         result.put(UILabel.SEMESTER_CURRENT_SEMESTER_MODIFICATION_MAIN,		"Modification result");
         result.put(UILabel.SEMESTER_CURRENT_SEMESTER_EDIT_SEMESTER,			"Edit semester");
+        result.put(UILabel.MONDAY,											"Monday");
+        result.put(UILabel.TUESDAY,											"Tuesday");
+        result.put(UILabel.WEDNESDAY,										"Wednesday");
+        result.put(UILabel.THURSDAY,										"Thursday");
+        result.put(UILabel.FRIDAY,											"Friday");
+        result.put(UILabel.SATURDAY,										"Saturday");
+        result.put(UILabel.SUNDAY,											"Sunday");
+        result.put(UILabel.SAVE_SCHEDULE,									"Save Schedule");
+        result.put(UILabel.SCHEDULE_VIEW_TITLE,								"Schedule");
         return Collections.unmodifiableMap(result);
     }
 	
@@ -521,6 +539,15 @@ public class Messages {
         result.put(UILabel.SEMESTER_CURRENT_SEMESTER_MODIFICATION_SUCCESS,	"Exito");
         result.put(UILabel.SEMESTER_CURRENT_SEMESTER_MODIFICATION_MAIN,		"Resultado modificacion");
         result.put(UILabel.SEMESTER_CURRENT_SEMESTER_EDIT_SEMESTER,			"Editar semestre");
+        result.put(UILabel.MONDAY,											"Lunes");
+        result.put(UILabel.TUESDAY,											"Martes");
+        result.put(UILabel.WEDNESDAY,										"Miercoles");
+        result.put(UILabel.THURSDAY,										"Jueves");
+        result.put(UILabel.FRIDAY,											"Viernes");
+        result.put(UILabel.SATURDAY,										"Sabado");
+        result.put(UILabel.SUNDAY,											"Domingo");
+        result.put(UILabel.SAVE_SCHEDULE,									"Guardar Horario");
+        result.put(UILabel.SCHEDULE_VIEW_TITLE,								"Horario");
         return Collections.unmodifiableMap(result);
     }
 	
