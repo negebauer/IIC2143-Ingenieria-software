@@ -110,7 +110,7 @@ public class StudyProgramsReaderWriter {
 					int maxFailedCredits = Integer.valueOf(arguments[4]);
 					int numberOfSemesters = Integer.valueOf(arguments[5]);
 					
-					int i = -1;
+					int i = 0;
 					while (i < numberOfSemesters) {
 						Semester emptySemester = new Semester(null, i, i, null, null);
 						studyProgramSemesters.add(emptySemester);
