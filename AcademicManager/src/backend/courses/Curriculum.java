@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class Curriculum {
 
 	private Semester currentSemester;
+	private CoursedSemester currentCoursedSemester;
 	private ArrayList<Coursed> coursedCourses;
 	private ArrayList<StudyProgram> studyPrograms;
 	
@@ -179,5 +180,13 @@ public class Curriculum {
 			}
 		}
 		return max;
+	}
+
+	public CoursedSemester getCurrentCoursedSemester() {
+		return currentCoursedSemester;
+	}
+
+	public void setCurrentCoursedSemester(CoursedSemester currentCoursedSemester) {
+		this.currentCoursedSemester = currentCoursedSemester;
 	}
 }

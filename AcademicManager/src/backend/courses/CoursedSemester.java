@@ -15,6 +15,7 @@ public class CoursedSemester {
 		this.semester = semester;
 		this.year = year;
 		this.setMaxCredits(maxCredits);
+		coursedCourses = new ArrayList<Coursed>();
 	}
 
 	public AcademicSemester getSemester() {
