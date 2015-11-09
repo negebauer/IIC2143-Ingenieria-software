@@ -22,7 +22,8 @@ public class SMainViewController extends MViewController {
 	Label labelWhatDoNext;
 	@FXML
 	Label labelWelcomeMessage;
-	
+	@FXML
+	Button btnCoursedSemesters;
 	
 	public static URL view = Object.class.getResource("/frontend/student/SMainView.fxml");
 
@@ -49,7 +50,7 @@ public class SMainViewController extends MViewController {
 	}
 	
 	public void btnCoursedSemesters_Pressed() {
-		
+		ViewUtilities.openView(SCoursedSemestersViewController.view, view);
 	}
 
 }

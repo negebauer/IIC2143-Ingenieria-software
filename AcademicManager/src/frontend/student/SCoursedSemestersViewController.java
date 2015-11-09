@@ -3,10 +3,10 @@ package frontend.student;
 import java.net.URL;
 import java.util.ArrayList;
 
+import backend.courses.Coursed;
 import backend.courses.CoursedSemester;
+import backend.enums.AcademicSemester;
 import backend.manager.Manager;
-import backend.others.Messages;
-import backend.others.Messages.UILabel;
 import backend.users.Student;
 import frontend.main.MViewController;
 import javafx.beans.value.ChangeListener;
@@ -26,7 +26,7 @@ public class SCoursedSemestersViewController extends MViewController {
 	ChoiceBox<String> chBxCoursedSemesters;
 	
 	Student user = (Student) Manager.INSTANCE.currentUser;
-	public static URL view = Object.class.getResource("/frontend/student/SCoursedSemestersView.fxml");
+	static URL view = Object.class.getResource("/frontend/student/SCoursedSemestersView.fxml");
 	
 	public void setUp() {
 		super.setUp();
@@ -56,10 +56,25 @@ public class SCoursedSemestersViewController extends MViewController {
 			}
 		}
 		coursedSemesters.sort(null);
+		for (Coursed coursed : user.getCurriculum().getCoursedCourses()) {
+			System.out.println(coursed.getInitials() + "-" + coursed.getName());
+		}
+		System.out.println(coursedSemesters);
 		return coursedSemesters;
 	}
 	
-	void showCoursedSemesterGrades(String semester) {
-		
+	void showCoursedSemesterGrades(String yearSemesterRawString) {
+		String coursedCoursesString = "";
+		int year = Integer.valueOf(yearSemesterRawString.split(" - ")[0]);
+		AcademicSemester semester = AcademicSemester.valueOf(yearSemesterRawString.split(" - ")[1]);
+		for (CoursedSemester coursedSemester : user.getCurriculum().getCoursedSemesters()) {
+			if (coursedSemester.getYear() == year && coursedSemester.getSemester() == semester) {
+				coursedCoursesString += year + " - " + semester.getSemesterNumber() + ": " + coursedSemester.getGrade() + "\n\t";
+				for (Coursed coursed : coursedSemester.getCoursedCourses()) {
+					coursedCoursesString += coursed.getInitials() + "-" + coursed.getSection() + " " + coursed.getName() + ": " + coursed.getGrade() + "\n\t";
+				}
+			}
+		}
+		labelCoursedSemesterCourses.setText(coursedCoursesString);
 	}
 }

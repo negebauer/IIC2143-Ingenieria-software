@@ -6,7 +6,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.main.MViewController">
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.student.SCoursedSemestersViewController">
    <children>
       <Pane layoutX="5.0" layoutY="5.0" prefHeight="400.0" prefWidth="600.0">
          <children>
@@ -14,6 +14,9 @@
             <Button fx:id="btnReload" layoutX="531.0" layoutY="1.0" mnemonicParsing="false" onAction="#btnReload_Pressed" style="-fx-background-radius: 0;" text="R" />
             <Button fx:id="btnBack" layoutY="1.0" mnemonicParsing="false" onAction="#btnBack_Pressed" style="-fx-background-radius: 0;" text="Back" />
             <Button fx:id="btnLogout" layoutX="501.0" layoutY="370.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
+            <Label fx:id="labelMain" alignment="CENTER" contentDisplay="CENTER" layoutX="81.0" layoutY="15.0" prefHeight="48.0" prefWidth="439.0" text="Label" textAlignment="CENTER" wrapText="true" />
+            <ChoiceBox fx:id="chBxCoursedSemesters" layoutX="251.0" layoutY="63.0" prefHeight="27.0" prefWidth="99.0" />
+            <Label fx:id="labelCoursedSemesterCourses" alignment="TOP_LEFT" layoutX="48.0" layoutY="104.0" prefHeight="257.0" prefWidth="512.0" text="Label" wrapText="true" />
          </children>
       </Pane>
    </children>

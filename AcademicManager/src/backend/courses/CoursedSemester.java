@@ -59,4 +59,12 @@ public class CoursedSemester {
 	public void setMaxCredits(int maxCredits) {
 		this.maxCredits = maxCredits;
 	}
+	
+	public double getGrade() {
+		double total = 0;
+		for (Coursed coursed : coursedCourses) {
+			total += coursed.getGrade();
+		}
+		return total / coursedCourses.size();
+	}
 }
