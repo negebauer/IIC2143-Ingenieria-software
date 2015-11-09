@@ -56,6 +56,10 @@ public class SCoursedSemestersViewController extends MViewController {
 			}
 		}
 		coursedSemesters.sort(null);
+		for (Coursed coursed : user.getCurriculum().getCoursedCourses()) {
+			System.out.println(coursed.getInitials() + "-" + coursed.getName());
+		}
+		System.out.println(coursedSemesters);
 		return coursedSemesters;
 	}
 	
