@@ -367,7 +367,17 @@ public class Messages {
 		SATURDAY,
 		SUNDAY,
 		SAVE_SCHEDULE,
-		SCHEDULE_VIEW_TITLE
+		SCHEDULE_VIEW_TITLE,
+		EDIT_ICOURSE,
+		CREATE_ICOURSE,
+		ADMIN_ICOURSE_MANAGER_WELCOME_MESSAGE,
+		ADD_ASSISTANT_OR_PROFESSOR,
+		REMOVE_ASSISTANT_OR_PROFESSOR,
+		PICK_ASSISTANT_OR_PROFESSOR,
+		SELECT_CLASSROOM,
+		SELECT_CLASS_TYPE,
+		SAVE_ICOURSE,
+		SEE_SCHEDULE
 		
 	}
 	
@@ -468,6 +478,16 @@ public class Messages {
         result.put(UILabel.SAVE_SCHEDULE,									"Save Schedule");
         result.put(UILabel.SCHEDULE_VIEW_TITLE,								"Schedule");
         result.put(UILabel.WELCOME_MESSAGE_PROFESSOR, 						"WELCOME TO ACADEMIC TOOL MANAGER PROFESSIONAL [PROFESSOR]");
+        result.put(UILabel.EDIT_ICOURSE,									"Edit Class");
+		result.put(UILabel.CREATE_ICOURSE,									"Create Class");
+		result.put(UILabel.ADMIN_ICOURSE_MANAGER_WELCOME_MESSAGE,			"Welcome to the Classes Manager, select one to edit or press to create a new one");
+		result.put(UILabel.ADD_ASSISTANT_OR_PROFESSOR,						"Add Assistant or Professor");
+		result.put(UILabel.REMOVE_ASSISTANT_OR_PROFESSOR,					"Remove Assistant or Professor");
+		result.put(UILabel.PICK_ASSISTANT_OR_PROFESSOR,						"Pick the assistants or professors for the class");
+		result.put(UILabel.SELECT_CLASSROOM,								"Select Classroom");
+		result.put(UILabel.SELECT_CLASS_TYPE,								"Select the Class type");
+		result.put(UILabel.SAVE_ICOURSE,									"Save Class");
+		result.put(UILabel.SEE_SCHEDULE,									"See Schedule");
         return Collections.unmodifiableMap(result);
     }
 	
@@ -551,6 +571,16 @@ public class Messages {
         result.put(UILabel.SAVE_SCHEDULE,									"Guardar Horario");
         result.put(UILabel.SCHEDULE_VIEW_TITLE,								"Horario");
         result.put(UILabel.WELCOME_MESSAGE_PROFESSOR, 						"BIENVENIDO A ACADEMIC TOOL MANAGER PROFESSIONAL [PROFESOR]");
+        result.put(UILabel.EDIT_ICOURSE,									"Editar Clase");
+		result.put(UILabel.CREATE_ICOURSE,									"Crear Clase");
+		result.put(UILabel.ADMIN_ICOURSE_MANAGER_WELCOME_MESSAGE,			"Bienvenido al Editor de clases, selecciona una para editar, o presiona para crear una nueva");
+		result.put(UILabel.ADD_ASSISTANT_OR_PROFESSOR,						"Agregar Ayudante o Profesor");
+		result.put(UILabel.REMOVE_ASSISTANT_OR_PROFESSOR,					"Remover Audante o Profesor");
+		result.put(UILabel.PICK_ASSISTANT_OR_PROFESSOR,						"Elige a los ayudantes o profesores de la clase");
+		result.put(UILabel.SELECT_CLASSROOM,								"Elige una sala");
+		result.put(UILabel.SELECT_CLASS_TYPE,								"Selecciona un tipo de clase");
+		result.put(UILabel.SAVE_ICOURSE,									"Guardar Clase");
+		result.put(UILabel.SEE_SCHEDULE,									"Ver Horario");
         return Collections.unmodifiableMap(result);
     }
 	

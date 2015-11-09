@@ -9,7 +9,7 @@
    <children>
       <Pane prefHeight="302.0" prefWidth="451.0">
          <children>
-         	<Button fx:id="btnBack" layoutX="7.0" layoutY="8.0" mnemonicParsing="false" onAction="#btnBack_Pressed" style="-fx-background-radius: 0;" text="Back" />
+         	<Button fx:id="btnBack" layoutX="14.0" layoutY="263.0" mnemonicParsing="false" onAction="#btnBack_Pressed" style="-fx-background-radius: 0;" text="Back" />
             <Button fx:id="btnLanguage" layoutX="414.0" layoutY="2.0" mnemonicParsing="false" onAction="#btnLanguage_Pressed" style="-fx-background-radius: 0;" text="ES" />
             <Button fx:id="btnReload" layoutX="371.0" layoutY="2.0" mnemonicParsing="false" onAction="#btnReload_Pressed" style="-fx-background-radius: 0;" text="R" />
             <CheckBox fx:id="chckBxMondayModule5" layoutX="56.0" layoutY="158.0" mnemonicParsing="false" />

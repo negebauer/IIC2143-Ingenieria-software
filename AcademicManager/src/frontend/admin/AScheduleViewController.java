@@ -170,8 +170,8 @@ public class AScheduleViewController extends MViewController {
 
 	public void setUp() {
 		super.setUp();
-		super.hideBack();
 		super.hideLanguage();
+		super.hideBack();
 		super.hideLogout();
 		super.hideReload();
 		
@@ -187,7 +187,6 @@ public class AScheduleViewController extends MViewController {
 		
 		Schedule editingSchedule = Manager.INSTANCE.currentEditingSchedule;
 		setCheckBoxes(editingSchedule);
-		
 	}
 	
 	public void btnSaveSchedule_Pressed() {
@@ -497,5 +496,5 @@ public class AScheduleViewController extends MViewController {
 			}
 		}
 	}
-	
+
 }
