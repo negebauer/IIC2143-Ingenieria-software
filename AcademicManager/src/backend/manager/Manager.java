@@ -51,6 +51,8 @@ public class Manager {
 	public Course currentEditignCourse;
 	public Schedule currentEditingSchedule;
 	
+	public boolean alreadyEditing = false;
+	
 	/**
 	 * Creates the instance of manager.
 	 */

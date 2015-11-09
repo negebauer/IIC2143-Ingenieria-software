@@ -91,10 +91,12 @@ public class ACourseManagerViewController extends MCourseSearcherSelectorViewCon
 	private boolean isEditingCoRequirements = false;
 	
 	
+	
 	public void setUp() {
 		// TODO Make the messages for every component and set their text to them.
 		
-		if (Manager.INSTANCE.currentEditignCourse != null && firstStartUp) {
+		if (Manager.INSTANCE.alreadyEditing && firstStartUp) {
+			
 			changeToEditCourseMode();
 			
 			txBxCourseName.setText(Manager.INSTANCE.currentEditignCourse.getName());
@@ -107,6 +109,8 @@ public class ACourseManagerViewController extends MCourseSearcherSelectorViewCon
 			labelModificationResult.setText("");
 			
 			btnSaveCourse.setVisible(true);
+			
+			Manager.INSTANCE.alreadyEditing = false;
 			
 		} else if (firstStartUp){
 		
@@ -159,9 +163,10 @@ public class ACourseManagerViewController extends MCourseSearcherSelectorViewCon
 			for (Course course : coursesToShow) {
 				if (course.getInitials().equals(initials) && course.getSection() == section && course.getName().equals(name)) {
 					Manager.INSTANCE.currentEditignCourse = course;
+					Manager.INSTANCE.courses.remove(course);
+					break;
 				}
 			}
-			Manager.INSTANCE.courses.remove(Manager.INSTANCE.currentEditignCourse);
 			
 			txBxCourseName.setText(Manager.INSTANCE.currentEditignCourse.getName());
 			txBxInitialsCourse.setText(Manager.INSTANCE.currentEditignCourse.getInitials());
@@ -173,6 +178,8 @@ public class ACourseManagerViewController extends MCourseSearcherSelectorViewCon
 			chBxCoordination.getSelectionModel().select(Manager.INSTANCE.currentEditignCourse.isCoordinated().toString());
 			
 			btnSaveCourse.setVisible(true);
+			
+			Manager.INSTANCE.alreadyEditing = false;
 		}
 	}
 	
@@ -222,6 +229,7 @@ public class ACourseManagerViewController extends MCourseSearcherSelectorViewCon
 		btnAddRequirement.setVisible(true);
 		btnRemoveRequirement.setVisible(true);
 		labelSelectCourseAsRequirement.setVisible(true);
+		Manager.INSTANCE.alreadyEditing = true;
 	}
 	
 	public void hideRequirementsView() {
@@ -262,15 +270,12 @@ public class ACourseManagerViewController extends MCourseSearcherSelectorViewCon
 		isEditingRequirements = false;
 		isEditingCoRequirements = false;
 		ViewUtilities.openView(view, AMainViewController.view);
+		
+		Manager.INSTANCE.alreadyEditing = false;
 	}
 	
 	public void btnBack_Pressed() {
-		if (Manager.INSTANCE.currentEditignCourse != null) {
-			ViewUtilities.openView(view, AMainViewController.view);
-			Manager.INSTANCE.currentEditignCourse = null;
-		} else {
-			super.btnBack_Pressed();
-		}
+		ViewUtilities.openView(view, AMainViewController.view);
 	}
 	
 	public void btnDeleteCourse_Pressed() {
@@ -294,11 +299,13 @@ public class ACourseManagerViewController extends MCourseSearcherSelectorViewCon
 	// ICourses Stuff
 	public void btnShowCourses_Pressed() {
 		ViewUtilities.openView(AICourseManagerViewController.view, view);
+		Manager.INSTANCE.alreadyEditing = true;
 	}
 
 	// Evaluations Stuff
 	public void btnShowEvaluations_Pressed() {
 		ViewUtilities.openView(AEvaluationManagerViewController.view, view);
+		Manager.INSTANCE.alreadyEditing = true;
 	}
 
 	// Requirements Stuff
@@ -307,6 +314,7 @@ public class ACourseManagerViewController extends MCourseSearcherSelectorViewCon
 		hideCourseEditingView();
 		hideCourseSelectionView();
 		isEditingRequirements = true;
+		isEditingCoRequirements = false;
 		
 		ArrayList<String> requirements = new ArrayList<String>();
 		for (Course requirement : Manager.INSTANCE.currentEditignCourse.getRequirements()) {
@@ -319,6 +327,8 @@ public class ACourseManagerViewController extends MCourseSearcherSelectorViewCon
 			coursesStrings.add(getParsedCourse(course.getInitials(), course.getSection(), course.getName()));
 		}
 		chBxCoursesAsRequirements.setItems(FXCollections.observableArrayList(coursesStrings));
+		
+		Manager.INSTANCE.alreadyEditing = true;
 	}
 	
 	public void btnShowCoRequirements_Pressed() {
@@ -326,6 +336,7 @@ public class ACourseManagerViewController extends MCourseSearcherSelectorViewCon
 		hideCourseEditingView();
 		hideCourseSelectionView();
 		isEditingCoRequirements = true;
+		isEditingRequirements = false;
 		
 		ArrayList<String> coRequirements = new ArrayList<String>();
 		for (Course coRequirement : Manager.INSTANCE.currentEditignCourse.getCoRequirements()) {
@@ -338,6 +349,8 @@ public class ACourseManagerViewController extends MCourseSearcherSelectorViewCon
 			coursesStrings.add(getParsedCourse(course.getInitials(), course.getSection(), course.getName()));
 		}
 		chBxCoursesAsRequirements.setItems(FXCollections.observableArrayList(coursesStrings));
+		
+		Manager.INSTANCE.alreadyEditing = true;
 	}
 
 	public void btnAddRequirement_Pressed() {
