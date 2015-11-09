@@ -1,6 +1,7 @@
 package backend.manager;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import frontend.main.MLogInController;
 import frontend.others.CurrentViewHandler;
@@ -28,7 +29,14 @@ public class Main extends Application {
 	    }));
 		// -----    Delete any test code from this line   -----
 		
-		
+		ArrayList<String> newarray = new ArrayList<String>();
+		newarray.add("A");
+		newarray.add("C");
+		newarray.add("B");
+		newarray.sort(null);
+		for (String s : newarray) {
+			System.out.println(s);
+		}
 		
 		// ----- 			To this line				  -----
 		

@@ -13,6 +13,7 @@ import backend.courses.Assistantship;
 import backend.courses.Classroom;
 import backend.courses.Course;
 import backend.courses.Coursed;
+import backend.courses.CoursedSemester;
 import backend.courses.Curriculum;
 import backend.courses.Laboratory;
 import backend.courses.Lecture;
@@ -251,7 +252,8 @@ public class StudentsReaderWriter {
 					ArrayList<Course> coursesList 				= new ArrayList<Course>();
 					Student student1							= new Student(0, 0, null, null, null, null, null, null, null, null, null);
 					ArrayList<StudyProgram> studyProgramsList 	= new ArrayList<StudyProgram>();
-
+					ArrayList<Coursed> currentSemesterCoursed	= new ArrayList<Coursed>();
+					
 					String coursedString 						= coursedReader.readLine();
 					String coursedCoursesString					= coursedCoursesReader.readLine();
 					String coursesString 						= coursesReader.readLine();
@@ -272,6 +274,9 @@ public class StudentsReaderWriter {
 						Coursed coursedLoaded = new Coursed(name, initials, section, credits, "", school, semester, year, approved, grade);
 						coursedList.add(coursedLoaded);
 						coursedString = coursedReader.readLine();
+						if (year == Manager.getYear() && semester == Manager.INSTANCE.currentSemester.getSemester()) {
+							currentSemesterCoursed.add(coursedLoaded);
+						}
 					}
 
 					while (coursedCoursesString != null) {
@@ -416,6 +421,11 @@ public class StudentsReaderWriter {
 								coursed2.setDetails(course.getDetails());
 							}
 						}
+					}
+					
+					if (currentSemesterCoursed.size() > 0) {
+						student1.getCurriculum().setCurrentCoursedSemester(new CoursedSemester(currentSemester.getSemester(), currentSemester.getYear(), student1.getCurriculum().getMaxSemesterCredits()));
+						student1.getCurriculum().getCurrentCoursedSemester().setCoursedCourses(currentSemesterCoursed);
 					}
 					
 				} catch (IOException iOException) {

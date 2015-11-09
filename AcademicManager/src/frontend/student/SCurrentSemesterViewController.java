@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ArrayList;
 
 import backend.courses.Course;
+import backend.courses.Coursed;
 import backend.courses.Semester;
 import backend.courses.Semester.AddOrRemoveCourseResponse;
 import backend.manager.Manager;
@@ -103,8 +104,14 @@ public class SCurrentSemesterViewController extends MCourseSearcherSelectorViewC
 			labelCurrentSemester.setText(Messages.getUILabel(UILabel.SEMESTER_CURRENT_SEMESTER_INFO) + semesterInfo);
 			String names = "";
 			for (Course course : currentSemester.getCourses()) {
-				String courseName = course.getInitials() + "-" + course.getSection() + ": " + course.getName() + "\n";
+				String courseName = course.getInitials() + "-" + course.getSection() + ": " + course.getName();
 				names = names == "" ? courseName : names + courseName;
+				if (user.getCurriculum().getCurrentCoursedSemester() != null) {
+					for (Coursed coursed : user.getCurriculum().getCurrentCoursedSemester().getCoursedCourses()) {
+						names += ": " + coursed.getGrade();
+					}
+				}
+				names += "\n";
 			}
 			labelCurrentCoursesNames.setText(names);
 			showSemesterInfo();
