@@ -9,7 +9,6 @@ Ecuaciones Diferenciales&MAT1640&1&10&MATHEMATICS&BOTH&true
 Probabilidades y Estadistica&EYP1113&1&10&MATHEMATICS&BOTH&true
 Quimica General II&QIM100A&1&10&CHEMISTRY&BOTH&true
 Estatica y Dinamica&FIS1513&1&10&PHYSICS&BOTH&true
-Termodinamica&FIS1523&1&10&PHYSICS&BOTH&true
 Electricidad y Magnetismo&FIS1533&1&10&PHYSICS&BOTH&true
 Desarrollo de Habilidades Comunicativas para Ingenieros&LET0003&1&10&LETTERS&BOTH&true
 Etica para Ingenieros&FIL188&1&10&PHILOSOFY&BOTH&true
@@ -97,3 +96,4 @@ Sistemas de Distribucion&IEE3353&1&10&ENGINEERING&FIRST&true
 Seminario de Sistemas de Potencia&IEE3383&1&10&ENGINEERING&SECOND&true
 Topicos Avanzados en Ingenieria de Potencia&IEE3303&1&10&ENGINEERING&FIRST&true
 Diseño Electrico&IEE2913&1&10&ENGINEERING&BOTH&true
+Termodinamica&FIS1523&1&10&PHYSICS&BOTH&true
