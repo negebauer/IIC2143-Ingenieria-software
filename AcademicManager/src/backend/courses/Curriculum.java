@@ -83,6 +83,9 @@ public class Curriculum {
 		ArrayList<CoursedSemester> coursedSemesters = new ArrayList<CoursedSemester>();
 		for (Coursed coursedCourse : coursedCourses) {
 			Boolean shouldCreateNewCoursedSemester = false;
+			if (coursedSemesters.size() == 0) {
+				shouldCreateNewCoursedSemester = true;
+			}
 			for (CoursedSemester coursedSemester : coursedSemesters) {
 				if (coursedSemester.getYear() == coursedCourse.getYear() && coursedCourse.getSemester() == coursedSemester.getSemester()) {
 					coursedSemester.addCoursedCourse(coursedCourse);
@@ -95,6 +98,7 @@ public class Curriculum {
 			if (shouldCreateNewCoursedSemester) {
 				CoursedSemester coursedSemester = new CoursedSemester(coursedCourse.getSemester(), coursedCourse.getYear(), getMaxSemesterCredits());
 				coursedSemester.addCoursedCourse(coursedCourse);
+				coursedSemesters.add(coursedSemester);
 			}
 		}
 		return coursedSemesters;

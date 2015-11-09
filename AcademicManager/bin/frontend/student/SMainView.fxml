@@ -17,6 +17,7 @@
             <Button fx:id="btnShowSchedule" layoutX="56.0" layoutY="78.0" mnemonicParsing="false" onAction="#btnShowSchedule_Pressed" style="-fx-background-radius: 0 0 0 0;" text="Ver mi Horario" textAlignment="CENTER" />
             <Button fx:id="btnBack" layoutY="1.0" mnemonicParsing="false" onAction="#btnBack_Pressed" style="-fx-background-radius: 0;" text="Back" />
             <Button fx:id="btnCoursedSemesters" layoutX="56.0" layoutY="193.0" mnemonicParsing="false" onAction="#btnCoursedSemesters_Pressed" text="Ver calificaciones semestres cursados" />
+            <Button fx:id="btnAcademicHistory" layoutX="56.0" layoutY="232.0" mnemonicParsing="false" onAction="#btnAcademicHistory_Pressed" text="Ver historial academico" />
          </children>
       </Pane>
       <Button fx:id="btnLogout" layoutX="531.0" layoutY="369.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />

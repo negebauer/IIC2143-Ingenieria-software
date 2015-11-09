@@ -24,6 +24,8 @@ public class SMainViewController extends MViewController {
 	Label labelWelcomeMessage;
 	@FXML
 	Button btnCoursedSemesters;
+	@FXML
+	Button btnAcademicHistory;
 	
 	public static URL view = Object.class.getResource("/frontend/student/SMainView.fxml");
 
@@ -34,6 +36,10 @@ public class SMainViewController extends MViewController {
 		btnShowSchedule.setText(Messages.getUILabel(UILabel.STUDENT_SEE_SCHEDULE));
 		labelWhatDoNext.setText(Messages.getUILabel(UILabel.WHAT_TO_DO_NEXT_QUESTION));
 		labelWelcomeMessage.setText(Messages.getUILabel(UILabel.WELCOME_MESSAGE));	
+		
+//		TODO: Create UILabel
+//		btnCoursedSemesters.setText(Messages.getUILabel(UILabel.STUDENT_SHOW_COURSED_SEMESTERS));	
+//		btnAcademicHistory.setText(Messages.getUILabel(UILabel.STUDENT_SHOW_ACADEMIC_HISTORY));	
 		
 	}
 
@@ -51,6 +57,10 @@ public class SMainViewController extends MViewController {
 	
 	public void btnCoursedSemesters_Pressed() {
 		ViewUtilities.openView(SCoursedSemestersViewController.view, view);
+	}
+	
+	public void btnAcademicHistory_Pressed() {
+		ViewUtilities.openView(SAcademicHistoryViewController.view, view);
 	}
 
 }
