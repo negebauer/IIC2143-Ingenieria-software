@@ -9,6 +9,7 @@ import backend.courses.Classroom;
 import backend.courses.Evaluation;
 import backend.courses.Evaluation.CourseEvaluation;
 import backend.manager.Manager;
+import backend.others.Utilities;
 import frontend.main.MViewController;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -92,7 +93,7 @@ public class AEvaluationManagerViewController extends MViewController {
 				String evaluationClassroom = evaluation.getClassroom().toString();
 				if (evaluationType + "-" + evaluationDate + "-" + evaluationClassroom == selectedEvaluationRawString) {
 					selectedEvaluation = evaluation;
-					Manager.INSTANCE.currentEditignCourse.getEvaluations().remove(evaluation);
+					//Manager.INSTANCE.currentEditignCourse.getEvaluations().remove(evaluation);
 				}
 			}
 			
@@ -132,8 +133,12 @@ public class AEvaluationManagerViewController extends MViewController {
 		
 		CourseEvaluation evaluationType = CourseEvaluation.valueOf(chBxEvaluationType.getSelectionModel().getSelectedItem());
 		
-		Evaluation evaluation = new Evaluation(evaluationType, classroom, dateString);
-		Manager.INSTANCE.currentEditignCourse.getEvaluations().add(evaluation);
+		selectedEvaluation.setClassroom(classroom);
+		selectedEvaluation.setDate(Utilities.getDateFromString(dateString));
+		selectedEvaluation.setCourseEvaluation(evaluationType);
+		
+		//Evaluation evaluation = new Evaluation(evaluationType, classroom, dateString);
+		//Manager.INSTANCE.currentEditignCourse.getEvaluations().add(evaluation);
 	}
 	
 	public void showMainView() {

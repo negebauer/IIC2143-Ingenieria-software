@@ -106,7 +106,8 @@ public class AICourseManagerViewController extends MViewController {
 		String selectedICourse = chBxICourses.getSelectionModel().getSelectedItem();
 		if (selectedICourse == "Assistantship") {
 			Assistantship selectedAssistanship = Manager.INSTANCE.currentEditignCourse.getAssistantship();
-			Manager.INSTANCE.currentEditignCourse.getCourses().remove(selectedAssistanship);
+			currentEditingICourse = selectedAssistanship;
+			//Manager.INSTANCE.currentEditignCourse.getCourses().remove(selectedAssistanship);
 			this.isAssistantship = true;
 			this.isLecture = false;
 			this.isLaboratory = false;
@@ -121,7 +122,8 @@ public class AICourseManagerViewController extends MViewController {
 			
 		} else if (selectedICourse == "Lecture") {
 			Lecture selectedLecture = Manager.INSTANCE.currentEditignCourse.getLecture();
-			Manager.INSTANCE.currentEditignCourse.getCourses().remove(selectedLecture);
+			currentEditingICourse = selectedLecture;
+			//Manager.INSTANCE.currentEditignCourse.getCourses().remove(selectedLecture);
 			this.isLecture = true;
 			this.isAssistantship = false;
 			this.isLaboratory = false;
@@ -136,7 +138,8 @@ public class AICourseManagerViewController extends MViewController {
 			
 		} else if (selectedICourse == "Laboratory") {
 			Laboratory selectedLaboratory = Manager.INSTANCE.currentEditignCourse.getLaboratory();
-			Manager.INSTANCE.currentEditignCourse.getCourses().remove(selectedLaboratory);
+			currentEditingICourse = selectedLaboratory;
+			//Manager.INSTANCE.currentEditignCourse.getCourses().remove(selectedLaboratory);
 			this.isLaboratory = true;
 			this.isAssistantship = false;
 			this.isLecture = false;
@@ -153,13 +156,13 @@ public class AICourseManagerViewController extends MViewController {
 		
 		hideMainView();
 		showEditView();
-		
 	}
 	
 	public void btnCreateNewICourse_Pressed() {
 		hideMainView();
 		showEditView();
 		Manager.INSTANCE.currentEditingSchedule = new Schedule();
+		currentEditingICourse = null;
 	}
 
 	public void btnAddAssistantOrProfessor_Pressed() {
@@ -220,10 +223,13 @@ public class AICourseManagerViewController extends MViewController {
 		}
 		
 		if (savedCourse != null) {
-			Manager.INSTANCE.currentEditignCourse.addCourse(savedCourse);
+			//Manager.INSTANCE.currentEditignCourse.addCourse(savedCourse);
 		}
 		
-		ViewUtilities.openView(view, ACourseManagerViewController.view);
+		//ViewUtilities.openView(view, ACourseManagerViewController.view);
+		hideEditView();
+		showMainView();
+		
 	}
 	
 	public void showMainView() {

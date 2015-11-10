@@ -46,6 +46,10 @@ public class Evaluation {
 	public CourseEvaluation getCourseEvaluation() {
 		return courseEvaluation;
 	}
+	
+	public void setCourseEvaluation(CourseEvaluation courseEvaluation) {
+		this.courseEvaluation = courseEvaluation;
+	}
 
 	/**
 	 * @return The classroom where the Evaluation will take place.

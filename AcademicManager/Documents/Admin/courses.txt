@@ -10,7 +10,6 @@ Probabilidades y Estadistica&EYP1113&1&10&MATHEMATICS&BOTH&true
 Quimica General II&QIM100A&1&10&CHEMISTRY&BOTH&true
 Estatica y Dinamica&FIS1513&1&10&PHYSICS&BOTH&true
 Electricidad y Magnetismo&FIS1533&1&10&PHYSICS&BOTH&true
-Desarrollo de Habilidades Comunicativas para Ingenieros&LET0003&1&10&LETTERS&BOTH&true
 Etica para Ingenieros&FIL188&1&10&PHILOSOFY&BOTH&true
 Desafios de la Ingenieria&ING1004&3&10&ENGINEERING&BOTH&true
 Introduccion a la Programacion&IIC1103&1&10&ENGINEERING&BOTH&true
@@ -19,12 +18,10 @@ Optimizacion&ICS1113&1&10&ENGINEERING&BOTH&true
 Mecanica de Fluidos&ICH1104&1&10&ENGINEERING&BOTH&true
 Matematicas Discretas&IIC1253&1&10&ENGINEERING&BOTH&true
 Modelos Estocasticos&ICS2123&1&10&ENGINEERING&BOTH&true
-Microeconomia&ICS2523&1&10&ENGINEERING&BOTH&true
 Contabilidad Y Control de Gestion&ICS2613&1&10&ENGINEERING&BOTH&true
 Organizacion y Comportamiento de la Empresa&ICS2813&1&10&ENGINEERING&BOTH&true
 Programacion Avanzada&IIC2233&1&10&ENGINEERING&BOTH&true
 Estructuras de Datos y Algoritmos&IIC2133&1&10&ENGINEERING&BOTH&true
-Ingenieria de Software&IIC2143&1&10&ENGINEERING&BOTH&true
 Arquitectura de Computadores&IIC2343&1&10&ENGINEERING&BOTH&true
 Sistemas Operativos y Redes&IIC2333&1&10&ENGINEERING&BOTH&true
 Bases de Datos&IIC2413&1&10&ENGINEERING&BOTH&true
@@ -97,3 +94,5 @@ Seminario de Sistemas de Potencia&IEE3383&1&10&ENGINEERING&SECOND&true
 Topicos Avanzados en Ingenieria de Potencia&IEE3303&1&10&ENGINEERING&FIRST&true
 Diseño Electrico&IEE2913&1&10&ENGINEERING&BOTH&true
 Termodinamica&FIS1523&1&10&PHYSICS&BOTH&true
+Ingenieria de Software&IIC2143&1&10&ENGINEERING&BOTH&true
+Desarrollo de Habilidades Comunicativas para Ingenieros&LET0003&1&10&LETTERS&BOTH&true

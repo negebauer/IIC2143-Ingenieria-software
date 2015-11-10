@@ -15,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
 public class AScheduleViewController extends MViewController {
 
@@ -363,6 +364,9 @@ public class AScheduleViewController extends MViewController {
 		}
 		
 		Manager.INSTANCE.currentEditingSchedule = new Schedule(modules);
+		
+		Stage stage = (Stage) btnSaveSchedule.getScene().getWindow();
+	    stage.close();
 	}
 
 	public void setCheckBoxes(Schedule editingSchedule) {

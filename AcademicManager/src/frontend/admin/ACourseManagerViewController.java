@@ -163,7 +163,7 @@ public class ACourseManagerViewController extends MCourseSearcherSelectorViewCon
 			for (Course course : coursesToShow) {
 				if (course.getInitials().equals(initials) && course.getSection() == section && course.getName().equals(name)) {
 					Manager.INSTANCE.currentEditignCourse = course;
-					Manager.INSTANCE.courses.remove(course);
+					//Manager.INSTANCE.courses.remove(course);
 					break;
 				}
 			}
@@ -265,7 +265,7 @@ public class ACourseManagerViewController extends MCourseSearcherSelectorViewCon
 		course.setSemester(semester);
 		course.setDetails(details);
 		
-		Manager.INSTANCE.courses.add(Manager.INSTANCE.currentEditignCourse);
+		//Manager.INSTANCE.courses.add(Manager.INSTANCE.currentEditignCourse);
 		Manager.INSTANCE.currentEditignCourse = null;
 		isEditingRequirements = false;
 		isEditingCoRequirements = false;
