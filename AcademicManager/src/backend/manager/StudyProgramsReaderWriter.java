@@ -10,6 +10,7 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 
 import backend.courses.Course;
+import backend.courses.Coursed;
 import backend.courses.Semester;
 import backend.courses.StudyProgram;
 import backend.enums.School;
@@ -143,7 +144,13 @@ public class StudyProgramsReaderWriter {
 								}
 								courseInitials = bufferedReader.readLine();
 							}
-							Semester semester = new Semester(null, 0, 0, null, courses);
+							ArrayList<Coursed> coursesBeforeThisSemester = new ArrayList<Coursed>();
+							for (Semester previousSemester : studyProgramSemesters) {
+								for (Course previousCourse : previousSemester.getCourses()) {
+									coursesBeforeThisSemester.add(new Coursed(previousCourse, true, 7, null, 0));
+								}
+							}
+							Semester semester = new Semester(null, 0, 0, coursesBeforeThisSemester, courses);
 							studyProgramSemesters.set(semesterNumber - 1, semester);
 							
 							bufferedReader.close();
