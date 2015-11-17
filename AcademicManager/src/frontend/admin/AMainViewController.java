@@ -31,7 +31,7 @@ public class AMainViewController extends MViewController {
 	}
 	
 	public void btnStudyProgramManager_Pressed() {
-		ViewUtilities.openView(AStudyProgramManagerViewController.view, view);
+		ViewUtilities.openView(AStudyProgramManagerMainViewController.view, view);
 	}
 	
 	public void btnCourseManager_Pressed() {
