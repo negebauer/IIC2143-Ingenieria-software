@@ -6,18 +6,15 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.main.MCourseSearcherSelectorViewController">
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.main.MCourseSearcherSelectorViewController">
    <children>
       <Pane layoutX="5.0" layoutY="5.0" prefHeight="400.0" prefWidth="600.0">
          <children>
             <Button fx:id="btnDetails" layoutX="300.0" layoutY="180.0" mnemonicParsing="false" onAction="#btnDetails_Pressed" text="i" />
          </children>
       </Pane>
-      <Button fx:id="btnSearchCourse" layoutX="267.0" layoutY="86.0" mnemonicParsing="false" onAction="#btnSearchCourse_Pressed" prefHeight="27.0" prefWidth="102.0" text="Search" />
-      <TextField fx:id="txBxCourseToSearch" layoutX="224.0" layoutY="56.0" prefHeight="27.0" prefWidth="193.0" />
-      <Label fx:id="labelSearchCourse" layoutX="282.0" layoutY="38.0" text="Buscar ramo" />
-      <ChoiceBox fx:id="chBxSelectedCourse" layoutX="221.0" layoutY="149.0" prefHeight="27.0" prefWidth="193.0" />
-      <Label fx:id="labelSelectCoure" layoutX="286.0" layoutY="126.0" text="Elige ramos" />
+      <Label fx:id="labelSearchCourse" layoutX="282.0" layoutY="79.0" text="Buscar ramo" />
+      <ComboBox fx:id="chBxSelectedCourse" layoutX="221.0" layoutY="108.0" prefHeight="27.0" prefWidth="193.0" />
       <Button fx:id="btnLogout" layoutX="547.0" layoutY="383.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
       <Button fx:id="btnBack" layoutX="10.0" layoutY="11.0" mnemonicParsing="false" onAction="#btnBack_Pressed" style="-fx-background-radius: 0;" text="Back" />
       <Button fx:id="btnReload" layoutX="534.0" layoutY="11.0" mnemonicParsing="false" onAction="#btnReload_Pressed" style="-fx-background-radius: 0;" text="R" />
