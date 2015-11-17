@@ -377,7 +377,34 @@ public class Messages {
 		SELECT_CLASSROOM,
 		SELECT_CLASS_TYPE,
 		SAVE_ICOURSE,
-		SEE_SCHEDULE
+		SEE_SCHEDULE,
+		TRUE,
+		FALSE,
+		EDIT_COURSE,
+		CREATE_COURSE,
+		DELETE_COURSE,
+		COURSE_MANAGER_WELCOME_MESSAGE,
+		SAVE_COURSE,
+		COURSE_NAME,
+		COURSE_INITIALS,
+		COURSE_CREDITS,
+		COURSE_SECTION,
+		COURSE_SCHOOL,
+		COURSE_SEMESTER_DICTATED,
+		COURSE_DETAILS,
+		COURSE_COORDINATION,
+		SHOW_ICOURSES,
+		SHOW_EVALUATIONS,
+		SHOW_REQUIREMENTS,
+		SHOW_COREQUIREMENTS,
+		SUCCESS,
+		NOT_ADDED,
+		ADD_REQUIREMENT,
+		REMOVE_REQUIREMENT,
+		SELECT_REQUIREMENT,
+		ADD_CO_REQUIREMENT,
+		REMOVE_CO_REQUIREMENT,
+		SELECT_CO_REQUIREMENT
 		
 	}
 	
@@ -488,6 +515,33 @@ public class Messages {
 		result.put(UILabel.SELECT_CLASS_TYPE,								"Select the Class type");
 		result.put(UILabel.SAVE_ICOURSE,									"Save Class");
 		result.put(UILabel.SEE_SCHEDULE,									"See Schedule");
+		result.put(UILabel.TRUE,											"Yes");
+		result.put(UILabel.FALSE,											"No");
+		result.put(UILabel.EDIT_COURSE,										"Edit Course");
+		result.put(UILabel.CREATE_COURSE,									"Create New Course");
+		result.put(UILabel.DELETE_COURSE,									"Delete Course");
+		result.put(UILabel.COURSE_MANAGER_WELCOME_MESSAGE,					"Welcome to the Course Manager!, select a course to edit or delete, or press to create a new one.");
+		result.put(UILabel.SAVE_COURSE,										"Save Course");
+		result.put(UILabel.COURSE_NAME,										"Name");
+		result.put(UILabel.COURSE_INITIALS,									"Initials");
+		result.put(UILabel.COURSE_CREDITS,									"Credits");
+		result.put(UILabel.COURSE_SECTION,									"Section");
+		result.put(UILabel.COURSE_SCHOOL,									"School");
+		result.put(UILabel.COURSE_SEMESTER_DICTATED,						"Semester Dictated");
+		result.put(UILabel.COURSE_DETAILS,									"Details");
+		result.put(UILabel.COURSE_COORDINATION,								"Coordination");
+		result.put(UILabel.SHOW_ICOURSES,									"Show Classes");
+		result.put(UILabel.SHOW_EVALUATIONS,								"Show Evaluations");
+		result.put(UILabel.SHOW_REQUIREMENTS,								"Show Requirements");
+		result.put(UILabel.SHOW_COREQUIREMENTS,								"Show Co-Requirements");
+		result.put(UILabel.SUCCESS,											"Success");
+		result.put(UILabel.NOT_ADDED,										"Not Added");
+		result.put(UILabel.ADD_REQUIREMENT,									"Add Requirements");
+		result.put(UILabel.REMOVE_REQUIREMENT,								"Remove Requirements");
+		result.put(UILabel.ADD_CO_REQUIREMENT,								"Add Co-Requirements");
+		result.put(UILabel.REMOVE_CO_REQUIREMENT,							"Remove Co-Requirements");
+		result.put(UILabel.SELECT_CO_REQUIREMENT,							"Select Co-Requirements");
+		result.put(UILabel.SELECT_REQUIREMENT,								"Select Requirements");		
         return Collections.unmodifiableMap(result);
     }
 	
@@ -581,6 +635,33 @@ public class Messages {
 		result.put(UILabel.SELECT_CLASS_TYPE,								"Selecciona un tipo de clase");
 		result.put(UILabel.SAVE_ICOURSE,									"Guardar Clase");
 		result.put(UILabel.SEE_SCHEDULE,									"Ver Horario");
+		result.put(UILabel.TRUE,											"Si");
+		result.put(UILabel.FALSE,											"No");
+		result.put(UILabel.EDIT_COURSE,										"Editar Curso");
+		result.put(UILabel.CREATE_COURSE,									"Crear Curso Nuevo");
+		result.put(UILabel.DELETE_COURSE,									"Eliminar Curso");
+		result.put(UILabel.COURSE_MANAGER_WELCOME_MESSAGE,					"Bienvenido al Editor de Cursos!, selecciona un curso para editar o eliminar, o presiona para crear uno nuevo");
+		result.put(UILabel.SAVE_COURSE,										"Guardar Curso");
+		result.put(UILabel.COURSE_NAME,										"Nombre");
+		result.put(UILabel.COURSE_INITIALS,									"Sigla");
+		result.put(UILabel.COURSE_CREDITS,									"Creditos");
+		result.put(UILabel.COURSE_SECTION,									"Seccion");
+		result.put(UILabel.COURSE_SCHOOL,									"Escuela");
+		result.put(UILabel.COURSE_SEMESTER_DICTATED,						"Semestre Dictado");
+		result.put(UILabel.COURSE_DETAILS,									"Detalles");
+		result.put(UILabel.COURSE_COORDINATION,								"Coordinacion");
+		result.put(UILabel.SHOW_ICOURSES,									"Ver Clases");
+		result.put(UILabel.SHOW_EVALUATIONS,								"Ver Evaluaciones");
+		result.put(UILabel.SHOW_REQUIREMENTS,								"Ver Requisitos");
+		result.put(UILabel.SHOW_COREQUIREMENTS,								"Ver Co-Requisitos");
+		result.put(UILabel.SUCCESS,											"Aprobado");
+		result.put(UILabel.NOT_ADDED,										"No Agregado");
+		result.put(UILabel.ADD_REQUIREMENT,									"Agregar Requisito");
+		result.put(UILabel.REMOVE_REQUIREMENT,								"Remover Requisito");
+		result.put(UILabel.ADD_CO_REQUIREMENT,								"Agregar Co-Requisito");
+		result.put(UILabel.REMOVE_CO_REQUIREMENT,							"Remover Co-Requisito");
+		result.put(UILabel.SELECT_CO_REQUIREMENT,							"Seleccionar Co-Requisito");
+		result.put(UILabel.SELECT_REQUIREMENT,								"Seleccionar Requisito");	
         return Collections.unmodifiableMap(result);
     }
 	

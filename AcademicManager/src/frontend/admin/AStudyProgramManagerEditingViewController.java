@@ -13,7 +13,7 @@ import frontend.others.ViewUtilities;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
@@ -38,7 +38,7 @@ public class AStudyProgramManagerEditingViewController extends MViewController {
 	@FXML
 	TextField txBxMaxFailedCredits;
 	@FXML
-	ChoiceBox<String> chBxSchoolStudyProgram;
+	ComboBox<String> chBxSchoolStudyProgram;
 	@FXML
 	Button btnEditSemesters;
 	@FXML
@@ -49,6 +49,7 @@ public class AStudyProgramManagerEditingViewController extends MViewController {
 	
 	public void setUp() {
 		super.setUp();
+		ViewUtilities.autoComplete(chBxSchoolStudyProgram);
 		labelName.setText(Messages.getUILabel(UILabel.NAME));
 		labelYear.setText(Messages.getUILabel(UILabel.YEAR));
 		labelMaxCreditsPerSemester.setText(Messages.getUILabel(UILabel.MAXIMUM_OF_CREDITS_PER_SEMESTER));

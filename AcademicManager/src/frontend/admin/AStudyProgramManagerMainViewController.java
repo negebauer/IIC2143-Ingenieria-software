@@ -12,7 +12,7 @@ import frontend.others.ViewUtilities;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 
 public class AStudyProgramManagerMainViewController extends MViewController {
@@ -26,13 +26,16 @@ public class AStudyProgramManagerMainViewController extends MViewController {
 	@FXML
 	Button btnEditStudyProgram;
 	@FXML
-	ChoiceBox<String> chBxStudyProgramsList;
+	ComboBox<String> chBxStudyProgramsList;
 	
 	
 	public static URL view = Object.class.getResource("/frontend/admin/AStudyProgramManagerMainView.fxml");
 	
 	public void setUp() {
 		super.setUp();
+		
+		ViewUtilities.autoComplete(chBxStudyProgramsList);
+		
 		labelCreateStudyProgram.setText(Messages.getUILabel(UILabel.STUDY_PROGRAM_CREATE_LABEL));
 		labelEditStudyProgram.setText(Messages.getUILabel(UILabel.STUDY_PROGRAM_EDIT_LABEL));
 		btnCreateStudyProgram.setText(Messages.getUILabel(UILabel.CREATE_NEW_STUDY_PROGRAM));

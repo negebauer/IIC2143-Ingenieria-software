@@ -20,7 +20,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-public class ACourseManagerViewController extends MCourseSearcherSelectorViewController {
+public class ACourseManagerEditingCoRequirementsViewController extends MCourseSearcherSelectorViewController {
 	
 	@FXML
 	Label labelCourseEditorWelcomeMessage;
@@ -71,20 +71,16 @@ public class ACourseManagerViewController extends MCourseSearcherSelectorViewCon
 	@FXML
 	Button btnShowCoRequirements;
 	@FXML
-	ListView<String> listRequirements;
+	ListView<String> listCoRequirements;
 	@FXML
-	ChoiceBox<String> chBxCoursesAsRequirements;
+	ChoiceBox<String> chBxCoursesAsCoRequirements;
 	@FXML
-	Button btnAddRequirement;
+	Button btnAddCoRequirement;
 	@FXML
-	Button btnRemoveRequirement;
+	Button btnRemoveCoRequirement;
 	@FXML
-	Label labelSelectCourseAsRequirement;
-	@FXML
-	Button btnDeleteCourse;
-	@FXML
-	Label labelModificationResult;
-
+	Label labelSelectCourseAsCoRequirement;
+	
 	public static URL view = Object.class.getResource("/frontend/admin/ACourseManagerView.fxml");
 	private boolean firstStartUp = true;
 	private boolean isEditingRequirements = false;
@@ -94,6 +90,20 @@ public class ACourseManagerViewController extends MCourseSearcherSelectorViewCon
 	
 	public void setUp() {
 		// TODO Make the messages for every component and set their text to them.
+		
+		ArrayList<String> coRequirements = new ArrayList<String>();
+		for (Course coRequirement : Manager.INSTANCE.currentEditignCourse.getCoRequirements()) {
+			coRequirements.add(coRequirement.getInitials());
+		}
+		listCoRequirements.setItems(FXCollections.observableArrayList(coRequirements));
+		
+		ArrayList<String> coursesStrings = new ArrayList<String>();
+		for (Course course : coursesToShow) {
+			coursesStrings.add(getParsedCourse(course.getInitials(), course.getSection(), course.getName()));
+		}
+		chBxCoursesAsCoRequirements.setItems(FXCollections.observableArrayList(coursesStrings));
+
+		
 		
 		if (Manager.INSTANCE.alreadyEditing && firstStartUp) {
 			
@@ -353,7 +363,7 @@ public class ACourseManagerViewController extends MCourseSearcherSelectorViewCon
 		Manager.INSTANCE.alreadyEditing = true;
 	}
 
-	public void btnAddRequirement_Pressed() {
+	public void btnAddCoRequirement_Pressed() {
 		if (!chBxCoursesAsRequirements.getSelectionModel().isEmpty()) {		
 			if (isEditingRequirements) {
 				String rawCourseInfo = chBxSelectedCourse.getSelectionModel().getSelectedItem();
@@ -397,7 +407,7 @@ public class ACourseManagerViewController extends MCourseSearcherSelectorViewCon
 		}
 	}
 
-	public void btnRemoveRequirement_Pressed() {
+	public void btnRemoveCoRequirement_Pressed() {
 		if (!chBxCoursesAsRequirements.getSelectionModel().isEmpty()) {		
 			if (isEditingRequirements) {
 				String rawCourseInfo = chBxSelectedCourse.getSelectionModel().getSelectedItem();

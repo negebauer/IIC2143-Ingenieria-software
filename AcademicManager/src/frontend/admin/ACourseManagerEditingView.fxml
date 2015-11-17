@@ -5,12 +5,10 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.admin.ACourseManagerViewController">
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.admin.ACourseManagerEditingViewController">
    <children>
       <Pane prefHeight="400.0" prefWidth="600.0">
          <children>
-            <Label fx:id="labelCourseEditorWelcomeMessage" layoutX="120.0" layoutY="14.0" prefHeight="40.0" prefWidth="360.0" text="Bienvenido al editor de cursos, para comenzar selecciona un curso de la lista para editarlo, o bien, selecciona en crear nuevo curso" wrapText="true" />
-            <Button fx:id="btnCreateNewCourse" layoutX="44.0" layoutY="329.0" mnemonicParsing="false" onAction="#btnCreateNewCourse_Pressed" style="-fx-background-radius: 0;" text="Crear Curso Nuevo" />
             <TextField fx:id="txBxCourseName" layoutX="46.0" layoutY="88.0" promptText="ej. Calculo III" style="-fx-background-radius: 0;" />
             <TextField fx:id="txBxInitialsCourse" layoutX="44.0" layoutY="149.0" promptText="ej. MAT1230" style="-fx-background-radius: 0;" />
             <TextField fx:id="txBxCourseCredits" layoutX="46.0" layoutY="212.0" promptText="ej. 10" style="-fx-background-radius: 0;" />
@@ -32,20 +30,6 @@
             <Button fx:id="btnShowEvaluations" layoutX="468.0" layoutY="182.0" mnemonicParsing="false" onAction="#btnShowEvaluations_Pressed" prefHeight="25.0" prefWidth="106.0" style="-fx-background-radius: 0;" text="Ver Evaluaciones" />
             <Button fx:id="btnShowRequirements" layoutX="468.0" layoutY="212.0" mnemonicParsing="false" onAction="#btnShowRequirements_Pressed" prefHeight="25.0" prefWidth="106.0" style="-fx-background-radius: 0;" text="Ver Requisitos" />
             <Button fx:id="btnShowCoRequirements" layoutX="468.0" layoutY="245.0" mnemonicParsing="false" onAction="#btnShowCoRequirements_Pressed" style="-fx-background-radius: 0;" text="Ver CoRequisitos" />
-            <ListView fx:id="listRequirements" layoutX="368.0" layoutY="111.0" prefHeight="200.0" prefWidth="200.0" />
-            <ChoiceBox fx:id="chBxCoursesAsRequirements" layoutX="26.0" layoutY="188.0" prefWidth="150.0" style="-fx-background-radius: 0;" />
-            <Button fx:id="btnAddRequirement" layoutX="204.0" layoutY="170.0" mnemonicParsing="false" onAction="#btnAddRequirement_Pressed" style="-fx-background-radius: 0;" text="Agregar (Co)Requisito" />
-            <Button fx:id="btnRemoveRequirement" layoutX="201.0" layoutY="212.0" mnemonicParsing="false" onAction="#btnRemoveRequirement_Pressed" style="-fx-background-radius: 0;" text="Remover (Co)Requisito" />
-            <Label fx:id="labelSelectCourseAsRequirement" layoutX="30.0" layoutY="106.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-radius: 0;" text="Selecciona un curso para agregarlo o eliminarlo como (Co)Requisito" wrapText="true" />
-            <Label fx:id="labelSelectCoure" layoutX="273.0" layoutY="155.0" text="Elige ramos" />
-            <ChoiceBox fx:id="chBxSelectedCourse" layoutX="208.0" layoutY="178.0" prefHeight="27.0" prefWidth="193.0" />
-            <Label fx:id="labelSearchCourse" layoutX="269.0" layoutY="67.0" text="Buscar ramo" />
-            <TextField fx:id="txBxCourseToSearch" layoutX="211.0" layoutY="85.0" prefHeight="27.0" prefWidth="193.0" />
-            <Button fx:id="btnSearchCourse" layoutX="254.0" layoutY="115.0" mnemonicParsing="false" onAction="#btnSearchCourse_Pressed" prefHeight="27.0" prefWidth="102.0" text="Search" />
-            <Button fx:id="btnDetails" layoutX="287.0" layoutY="209.0" mnemonicParsing="false" onAction="#btnDetails_Pressed" text="i" />
-            <Button fx:id="btnDeleteCourse" layoutX="250.0" layoutY="317.0" mnemonicParsing="false" onAction="#btnDeleteCourse_Pressed" text="Eliminar Curso" />
-            <Label fx:id="labelModificationResult" layoutX="203.0" layoutY="249.0" prefHeight="57.0" prefWidth="137.0" text="Label" wrapText="true" />
-            <Button fx:id="btnEditCourse" layoutX="256.0" layoutY="274.0" mnemonicParsing="false" onAction="#btnEditCourse_Pressed" text="Editar Curso" />
          </children>
       </Pane>
       <Button fx:id="btnLogout" layoutX="531.0" layoutY="369.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />

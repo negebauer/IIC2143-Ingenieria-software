@@ -46,7 +46,7 @@ public class ASemesterManagerEditingViewController extends MCourseSearcherSelect
 			isCreating = false;
 			ArrayList<String> semesterCourses = new ArrayList<String>();
 			for (Course course : Manager.INSTANCE.currentSemester.getCourses()) {
-				semesterCourses.add(course.getInitials() + "-" + course.getSection() + " " + course.getName());
+				semesterCourses.add(getParsedCourse(course.getInitials(), course.getSection(), course.getName()));
 			}
 			listCoursesInSemester.setItems(FXCollections.observableArrayList(semesterCourses));
 		} else {
@@ -75,10 +75,11 @@ public class ASemesterManagerEditingViewController extends MCourseSearcherSelect
 						ObservableList<String> currentCourses = listCoursesInSemester.getItems();
 						currentCourses.add(getParsedCourse(initials, section, name));
 						listCoursesInSemester.setItems(FXCollections.observableArrayList(currentCourses));
-						labelModificationResult.setText("Success");
+						labelModificationResult.setText("Success");						
 					} else {
 						labelModificationResult.setText("Not added: " + response.response);
 					}
+					break;
 				}
 			}
 		}
@@ -86,8 +87,8 @@ public class ASemesterManagerEditingViewController extends MCourseSearcherSelect
 	}
 
 	public void btnRemoveCourse_Pressed() {
-		if (!chBxSelectedCourse.getSelectionModel().isEmpty()) {
-			String rawCourseInfo = chBxSelectedCourse.getSelectionModel().getSelectedItem();
+		if (!listCoursesInSemester.getSelectionModel().isEmpty()) {
+			String rawCourseInfo = listCoursesInSemester.getSelectionModel().getSelectedItem();
 			String[] parsed = getParsedInitialsSectionName(rawCourseInfo);
 			String initials = parsed[0];
 			int section = Integer.valueOf(parsed[1]);
@@ -103,6 +104,7 @@ public class ASemesterManagerEditingViewController extends MCourseSearcherSelect
 					} else {
 						labelModificationResult.setText("Not removed: " + response.response);
 					}
+					break;
 				}
 			}
 		}
@@ -119,6 +121,7 @@ public class ASemesterManagerEditingViewController extends MCourseSearcherSelect
 				if (course.getInitials() + "-" + course.getSection() + " " + course.getName() == courseString) {
 					courses.add(course);
 				}
+				break;
 			}
 		}
 		
@@ -126,6 +129,7 @@ public class ASemesterManagerEditingViewController extends MCourseSearcherSelect
 		
 		if (isCreating) {
 			Manager.INSTANCE.currentEditingStudyProgram.addSemester(currentSemester);
+			isCreating = false;
 		}
 		
 		Manager.INSTANCE.currentSemester = null;
