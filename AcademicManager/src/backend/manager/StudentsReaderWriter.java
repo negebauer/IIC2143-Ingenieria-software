@@ -402,7 +402,7 @@ public class StudentsReaderWriter {
 						curriculum.addCoursedCourse(coursed1);
 					}
 					
-					Semester semester = new Semester(currentSemester.getSemester(), currentSemester.getYear(), 100, null, null);
+					Semester semester = new Semester(currentSemester.getSemester(), currentSemester.getYear(), 100, coursedList, null);
 					for (Course course : coursesList) {
 						semester.addCourse(course);
 					}
