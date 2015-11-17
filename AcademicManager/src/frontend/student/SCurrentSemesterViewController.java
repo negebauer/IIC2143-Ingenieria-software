@@ -19,10 +19,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 
-/* TODO Connect choicebox
+/* TODO Connect combobox
  * TODO Connect courses list
  * TODO Implement all buttons
- * TODO Button and choicebox to show a course details
+ * TODO Button and combobox to show a course details
  */
 public class SCurrentSemesterViewController extends MCourseSearcherSelectorViewController {
 

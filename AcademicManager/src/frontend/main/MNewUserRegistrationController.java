@@ -118,6 +118,7 @@ public class MNewUserRegistrationController extends MViewController {
 			studyProgramsNames.add(studyProgram.getName());
 		}
 		chBxCarreers.setItems(FXCollections.observableArrayList(studyProgramsNames));
+		chBxCarreers.getSelectionModel().selectFirst();
 		
 		String[] accesos = new String[]{
 				Messages.getUILabel(UILabel.STUDENT), 
@@ -127,7 +128,8 @@ public class MNewUserRegistrationController extends MViewController {
 		
 		chBxAccess.setItems(FXCollections.observableArrayList(accesos));
 		chBxSex.setItems(FXCollections.observableArrayList(Messages.getUILabel(UILabel.MALE), Messages.getUILabel(UILabel.FEMALE)));
-
+		chBxSex.getSelectionModel().selectFirst();
+		
 		chBxAccess.getSelectionModel().selectedIndexProperty().addListener(
 				new ChangeListener<Number>() {
 					@Override
@@ -152,7 +154,7 @@ public class MNewUserRegistrationController extends MViewController {
 						}
 					}
 				});
-		
+		chBxAccess.getSelectionModel().selectFirst();
 	}
 	
 	public void btnContinue_Pressed() {

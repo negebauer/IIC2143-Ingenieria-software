@@ -13,7 +13,7 @@ import frontend.others.ViewUtilities;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
@@ -30,7 +30,7 @@ public class MCourseSearcherSelectorViewController extends MViewController {
 	@FXML
 	TextField txBxCourseToSearch;
 	@FXML
-	protected ChoiceBox<String> chBxSelectedCourse;
+	protected ComboBox<String> chBxSelectedCourse;
 	
 	Boolean firstLoad = true;
 	protected ArrayList<Course> coursesToShow = Manager.INSTANCE.courses;
@@ -40,6 +40,7 @@ public class MCourseSearcherSelectorViewController extends MViewController {
 	public void setUp() {
 		super.setUp();
 		
+		ViewUtilities.autoComplete(this.chBxSelectedCourse);
 		labelSearchCourse.setText(Messages.getUILabel(UILabel.SEMESTER_CURRENT_SEMESTER_SEARCH_COURSE));
 		if (firstLoad) {
 			updateCoursesShow();

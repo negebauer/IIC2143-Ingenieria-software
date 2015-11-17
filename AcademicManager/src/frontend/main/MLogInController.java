@@ -2,10 +2,14 @@ package frontend.main;
 
 import java.net.URL;
 import java.util.ArrayList;
+
 import backend.manager.Manager;
 import backend.others.Messages;
 import backend.others.Messages.UILabel;
-import backend.users.*;
+import backend.users.Admin;
+import backend.users.Assistant;
+import backend.users.Professor;
+import backend.users.Student;
 import backend.users.User;
 import frontend.admin.AMainViewController;
 import frontend.others.ViewUtilities;
@@ -14,13 +18,13 @@ import frontend.student.SMainViewController;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 
 public class MLogInController extends MViewController {
 	
 	@FXML
-	ChoiceBox<String> chBxUsers;
+	ComboBox<String> chBxUsers;
 	@FXML
 	Button btnSignIn;
 	@FXML
@@ -65,7 +69,7 @@ public class MLogInController extends MViewController {
 		}
 		
 		chBxUsers.setItems(FXCollections.observableArrayList(users));
-		
+		ViewUtilities.autoComplete(chBxUsers);
 	}
 	
 	public void btnSignIn_Pressed() {
