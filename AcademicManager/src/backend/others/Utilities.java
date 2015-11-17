@@ -74,19 +74,20 @@ public class Utilities {
 	 */
 	public static ArrayList<Course> getFinichedCourses(StudyProgram program, Curriculum curriculum, boolean isFinished) {
 		ArrayList<Course> finished = new ArrayList<Course>();
-
+	
 		for(Semester semester : program.getSemesters())
 			for(Course course : semester.getCourses()) {
 
 				boolean check = false;	
-				for(Coursed coursed : curriculum.getCoursedCourses())
-					if(course.getInitials() == coursed.getInitials() && coursed.isApproved()) {
+				for(Coursed coursed : curriculum.getCoursedCourses()){
+					
+					if((course.getInitials()).equals(coursed.getInitials()) && coursed.isApproved()) {
 						check = true;
 						break;
-					}					
+					}					}
 				if(check == isFinished)
 					finished.add(course);
-			}					
+			}				
 		return finished;
 	}
 
