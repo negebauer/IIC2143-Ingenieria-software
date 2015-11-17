@@ -7,7 +7,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.student.SCurrentSemesterViewController">
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.student.SCurrentSemesterViewController">
    <children>
       <Pane layoutX="5.0" layoutY="5.0" prefHeight="400.0" prefWidth="600.0">
          <children>
@@ -22,15 +22,12 @@
             <Button fx:id="btnCreateNewSemester" layoutX="236.0" layoutY="360.0" mnemonicParsing="false" onAction="#btnCreateNewSemester_Pressed" text="Create new semester" />
             <Label fx:id="labelModification" layoutX="431.0" layoutY="51.0" text="Resultado modificacion" />
             <Label fx:id="labelModificationResult" alignment="TOP_CENTER" layoutX="431.0" layoutY="75.0" prefHeight="273.0" prefWidth="143.0" text="Resultado modificacion" wrapText="true" />
-            <Label fx:id="labelSelectCoure" layoutX="278.0" layoutY="116.0" text="Elige ramos" />
             <ListView fx:id="listSelectedCourses" layoutX="217.0" layoutY="207.0" prefHeight="146.0" prefWidth="193.0" />
-            <ChoiceBox fx:id="chBxSelectedCourse" layoutX="213.0" layoutY="139.0" prefHeight="27.0" prefWidth="193.0" />
-            <Label fx:id="labelSearchCourse" layoutX="274.0" layoutY="28.0" text="Buscar ramo" />
-            <TextField fx:id="txBxCourseToSearch" layoutX="216.0" layoutY="46.0" prefHeight="27.0" prefWidth="193.0" />
-            <Button fx:id="btnSearchCourse" alignment="CENTER" contentDisplay="CENTER" layoutX="238.0" layoutY="76.0" mnemonicParsing="false" onAction="#btnSearchCourse_Pressed" prefHeight="27.0" prefWidth="143.0" text="Search" textAlignment="CENTER" />
-            <Button fx:id="btnDetails" layoutX="292.0" layoutY="170.0" mnemonicParsing="false" onAction="#btnDetails_Pressed" text="i" />
-            <Button fx:id="btnRemoveCourse" layoutX="329.0" layoutY="170.0" mnemonicParsing="false" onAction="#btnRemoveCourse_Pressed" text="Remover" />
-            <Button fx:id="btnAddCourse" layoutX="212.0" layoutY="170.0" mnemonicParsing="false" onAction="#btnAddCourse_Pressed" text="Agregar" />
+            <ComboBox fx:id="chBxSelectedCourse" layoutX="213.0" layoutY="128.0" prefHeight="27.0" prefWidth="193.0" />
+            <Label fx:id="labelSearchCourse" layoutX="274.0" layoutY="95.0" text="Buscar ramo" />
+            <Button fx:id="btnDetails" layoutX="299.0" layoutY="170.0" mnemonicParsing="false" onAction="#btnDetails_Pressed" prefHeight="25.0" prefWidth="23.0" text="i" />
+            <Button fx:id="btnRemoveCourse" layoutX="345.0" layoutY="170.0" mnemonicParsing="false" onAction="#btnRemoveCourse_Pressed" text="Remover" />
+            <Button fx:id="btnAddCourse" layoutX="216.0" layoutY="170.0" mnemonicParsing="false" onAction="#btnAddCourse_Pressed" text="Agregar" />
             <Button fx:id="btnEditSemester" layoutX="52.0" layoutY="360.0" mnemonicParsing="false" onAction="#btnEditSemester_Pressed" text="Edit semester" />
          </children>
       </Pane>
