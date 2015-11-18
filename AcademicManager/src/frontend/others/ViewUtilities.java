@@ -42,6 +42,7 @@ public final class ViewUtilities {
 				CurrentViewHandler.INSTANCE.addNewParentView(sender);
 			}
 			stage.setScene(new Scene(root));
+			stage.setResizable(false);
 			stage.setTitle("RENNAB");
 			stage.show();
 			
@@ -69,6 +70,7 @@ public final class ViewUtilities {
 			((MViewController) loader.getController()).setUp();
 			Stage stage = new Stage();
 			stage.setScene(new Scene(root));
+			stage.setResizable(false);
 			stage.setTitle("RENNAB");
 			stage.show();
 			

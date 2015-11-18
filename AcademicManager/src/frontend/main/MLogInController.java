@@ -53,23 +53,24 @@ public class MLogInController extends MViewController {
 		ArrayList<String> users = new ArrayList<String>();
 		
 		for (Professor professor : Manager.INSTANCE.professors) {
-			users.add(Messages.getUILabel(UILabel.PROFESSOR) + " " + professor.getRut() + " " + professor.getName() + " " + professor.getLastnameFather() + " " + professor.getLastnameMother());
-		}
-		
+			users.add(getUser(UILabel.PROFESSOR, professor));
+		}	
 		for (Student student : Manager.INSTANCE.students) {
-			users.add(Messages.getUILabel(UILabel.STUDENT) + " " + student.getRut() + " " + student.getName() + " " + student.getLastnameFather() + " " + student.getLastnameMother());
+			users.add(getUser(UILabel.STUDENT, student));
 		}
-		
 		for (Assistant assistant : Manager.INSTANCE.assistants) {
-			users.add(Messages.getUILabel(UILabel.ASSISTANT) + " " + assistant.getRut() + " " + assistant.getName() + " " + assistant.getLastnameFather() + " " + assistant.getLastnameMother());
+			users.add(getUser(UILabel.ASSISTANT, assistant));
 		}
-		
 		for (Admin admin : Manager.INSTANCE.admins) {
-			users.add(Messages.getUILabel(UILabel.ADMINISTRATOR) + " " + admin.getRut() + " " + admin.getName() + " " + admin.getLastnameFather() + " " + admin.getLastnameMother());
+			users.add(getUser(UILabel.ADMINISTRATOR, admin));
 		}
 		
 		chBxUsers.setItems(FXCollections.observableArrayList(users));
 		ViewUtilities.autoComplete(chBxUsers);
+	}
+	
+	private String getUser(Messages.UILabel label, User user) {
+		return Messages.getUILabel(label) + " " + user.getRut() + " " + user.getName() + " " + user.getLastnameFather();
 	}
 	
 	public void btnSignIn_Pressed() {
@@ -92,7 +93,6 @@ public class MLogInController extends MViewController {
 		} else if (Manager.INSTANCE.currentUser instanceof Professor) {
 			ViewUtilities.openView(PMainViewController.view, view);
 		}
-		
 	}
 	
 	public void btnRegister_Pressed() {

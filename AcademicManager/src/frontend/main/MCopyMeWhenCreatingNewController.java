@@ -16,7 +16,6 @@ public class MCopyMeWhenCreatingNewController extends MViewController {
 		// hideBack();
 		// hideReload();
 		// hideLanguage();
-		// hideLogout();
-		
+		// hideLogout();	
 	}
 }

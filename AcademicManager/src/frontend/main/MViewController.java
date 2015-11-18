@@ -37,8 +37,7 @@ public class MViewController {
 		Manager.INSTANCE.changeLanguage();
 		btnReload.setText("R");
 		btnBack.setText(Messages.getUILabel(UILabel.BACK));
-		btnLogout.setText(Messages.getUILabel(UILabel.LOGOUT));
-		
+		btnLogout.setText(Messages.getUILabel(UILabel.LOGOUT));	
 	}
 
 	/**
@@ -93,8 +92,7 @@ public class MViewController {
 		int section = Integer.valueOf(split2[1]);
 		String name = split1[1];
 		String complete = initials + "&" + section + "&" + name;
-		return complete.split("&");
-		
+		return complete.split("&");		
 	}
 	
 	/**
