@@ -12,27 +12,23 @@ import backend.others.Utilities;
  * Class that represents a User.
  */
 public abstract class User {
-	
+
 	public enum Access {
-		ADMIN,
-		EDITOR,
-		USER,
-		READONLY;
-		
+		ADMIN, EDITOR, USER, READONLY;
+
 		public static Access defaultAccess() {
 			return Access.READONLY;
 		}
 	}
-	
+
 	public enum Gender {
-		MALE,
-		FEMALE;
-		
+		MALE, FEMALE;
+
 		public static Gender defaultGender() {
 			return Gender.MALE;
 		}
 	}
-	
+
 	private String rut;
 	private String name;
 	private String lastnameFather;
@@ -42,32 +38,43 @@ public abstract class User {
 	private Access access;
 	private String phone;
 	private Date birthday;
-	
+
 	/**
-	 * Creates a new instance of User.
-	 * Supports default values for every parameter, therefore null is a valid value for every parameter.
-	 * @param rut The unique role identifier of the User.
-	 * @param name The name of the user.
-	 * @param lastnameF The last name from the father of the User.
-	 * @param lastnameM The last name from the mother of the User.
-	 * @param address The address of the User.
-	 * @param gender The gender of the User.
-	 * @param access The access of the User.
-	 * @param phone The cell phone of the User.
-	 * @param birthdayString The birthday of the User in the format dd.MM.yyyy
+	 * Creates a new instance of User. Supports default values for every
+	 * parameter, therefore null is a valid value for every parameter.
+	 * 
+	 * @param rut
+	 *            The unique role identifier of the User.
+	 * @param name
+	 *            The name of the user.
+	 * @param lastnameF
+	 *            The last name from the father of the User.
+	 * @param lastnameM
+	 *            The last name from the mother of the User.
+	 * @param address
+	 *            The address of the User.
+	 * @param gender
+	 *            The gender of the User.
+	 * @param access
+	 *            The access of the User.
+	 * @param phone
+	 *            The cell phone of the User.
+	 * @param birthdayString
+	 *            The birthday of the User in the format dd.MM.yyyy
 	 */
-	public User(String rut, String name, String lastnameFather, String lastnameMother, String address, Gender gender, Access access, String phone, String birthdayString) {
+	public User(String rut, String name, String lastnameFather, String lastnameMother, String address, Gender gender,
+			Access access, String phone, String birthdayString) {
 		this.rut = rut != null ? rut : "RUTNil";
 		this.name = name != null ? name : "NameNil";
 		this.lastnameFather = lastnameFather != null ? lastnameFather : "";
 		this.lastnameMother = lastnameMother != null ? lastnameMother : "";
-		this.address = address != null ? address : "" ;
+		this.address = address != null ? address : "";
 		this.gender = gender != null ? gender : Gender.defaultGender();
 		this.access = access != null ? access : Access.defaultAccess();
 		this.phone = phone != null ? phone : "";
 		this.birthday = birthdayString != null ? Utilities.getDateFromString(birthdayString + " 00:00") : new Date();
 	}
-	
+
 	/**
 	 * @return The age of the User
 	 */
@@ -93,8 +100,10 @@ public abstract class User {
 	}
 
 	/**
-	 * Modifies the User name. 
-	 * @param name The new name of the User.
+	 * Modifies the User name.
+	 * 
+	 * @param name
+	 *            The new name of the User.
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -109,7 +118,9 @@ public abstract class User {
 
 	/**
 	 * Modifies the last name from the father of the user.
-	 * @param lastnameFather The new last name from the father of the user.
+	 * 
+	 * @param lastnameFather
+	 *            The new last name from the father of the user.
 	 */
 	public void setLastnameFather(String lastnameFather) {
 		this.lastnameFather = lastnameFather;
@@ -121,10 +132,12 @@ public abstract class User {
 	public String getLastnameMother() {
 		return lastnameMother;
 	}
-	
+
 	/**
 	 * Modifies last name from the mother of the user.
-	 * @param lastnameFather The new last name from the mother of the user.
+	 * 
+	 * @param lastnameFather
+	 *            The new last name from the mother of the user.
 	 */
 	public void setLastnameMother(String lastnameMother) {
 		this.lastnameMother = lastnameMother;
@@ -136,10 +149,12 @@ public abstract class User {
 	public String getAddress() {
 		return address;
 	}
-	
+
 	/**
 	 * Modifies the address of the user.
-	 * @param address The new address of the user.
+	 * 
+	 * @param address
+	 *            The new address of the user.
 	 */
 	public void setAddress(String address) {
 		this.address = address;
@@ -154,7 +169,9 @@ public abstract class User {
 
 	/**
 	 * Modifies the gender of the user.
-	 * @param gender The new gender of the user.
+	 * 
+	 * @param gender
+	 *            The new gender of the user.
 	 */
 	public void setGender(Gender gender) {
 		this.gender = gender;
@@ -166,10 +183,12 @@ public abstract class User {
 	public Access getAccess() {
 		return access;
 	}
-	
+
 	/**
 	 * Modifies the access mode of the user.
-	 * @param access The new access mode of the user.
+	 * 
+	 * @param access
+	 *            The new access mode of the user.
 	 */
 	public void setAccess(Access access) {
 		this.access = access;
@@ -184,7 +203,9 @@ public abstract class User {
 
 	/**
 	 * Modifies the phone of the user.
-	 * @param phone The new phone of the user.
+	 * 
+	 * @param phone
+	 *            The new phone of the user.
 	 */
 	public void setPhone(String phone) {
 		this.phone = phone;
@@ -196,5 +217,5 @@ public abstract class User {
 	public Date getBirthday() {
 		return birthday;
 	}
-	
+
 }

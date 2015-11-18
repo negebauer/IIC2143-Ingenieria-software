@@ -16,6 +16,7 @@ public class Utilities {
 
 	/**
 	 * Returns a Date objected parsed from a given string representing a date.
+	 * 
 	 * <pre>
 	 * {@code
 	 * Date date = getDateFromString("10.09.1993 18:58")
@@ -23,17 +24,20 @@ public class Utilities {
 	 * >> Fri Sep 10 18:58:00 CLT 1993
 	 * }
 	 * </pre>
-	 * @param dateString The string representing a date in the format "dd.MM.yyyy HH:mm".
+	 * 
+	 * @param dateString
+	 *            The string representing a date in the format
+	 *            "dd.MM.yyyy HH:mm".
 	 * @return A date object
 	 * @throws ParseException
 	 */
 	public static Date getDateFromString(String dateString) {
-		SimpleDateFormat dateFormat =  new SimpleDateFormat ("dd.MM.yyyy HH:mm");
-		try { 
-			Date date = dateFormat.parse(dateString); 
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm");
+		try {
+			Date date = dateFormat.parse(dateString);
 			return date;
-		} catch (ParseException e) { 
-			System.out.println(dateString + " is unparseable using " + dateFormat); 
+		} catch (ParseException e) {
+			System.out.println(dateString + " is unparseable using " + dateFormat);
 		}
 		return new Date();
 	}
@@ -44,13 +48,15 @@ public class Utilities {
 	 * @return
 	 */
 	public static String getStringFromDate(Date date) {
-		SimpleDateFormat dateFormat =  new SimpleDateFormat ("dd.MM.yyyy HH:mm", Locale.ENGLISH);
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.ENGLISH);
 		return dateFormat.format(date);
 	}
 
 	/**
 	 * Cleans the extra new line characters (\n) from a String.
-	 * @param stringToClean The string to be cleaned.
+	 * 
+	 * @param stringToClean
+	 *            The string to be cleaned.
 	 * @return The cleaned string.
 	 */
 	public static String cleanNewLineCharExcessFromString(String stringToClean) {
@@ -58,7 +64,8 @@ public class Utilities {
 		for (String character : stringToClean.split("\n")) {
 			if (cleanedString.size() == 0 && !character.isEmpty()) {
 				cleanedString.add(character);
-			} else if (cleanedString.size() > 0 && !(cleanedString.get(cleanedString.size() - 1).isEmpty() && character.isEmpty())) {
+			} else if (cleanedString.size() > 0
+					&& !(cleanedString.get(cleanedString.size() - 1).isEmpty() && character.isEmpty())) {
 				cleanedString.add(character);
 			}
 		}
@@ -66,34 +73,38 @@ public class Utilities {
 	}
 
 	/**
-	 * Return approved courses or uncoursed courses depending of isFinished param
+	 * Return approved courses or uncoursed courses depending of isFinished
+	 * param
+	 * 
 	 * @param program
 	 * @param curriculum
 	 * @param isFinished
 	 * @return
 	 */
-	public static ArrayList<Course> getFinichedCourses(StudyProgram program, Curriculum curriculum, boolean isFinished) {
+	public static ArrayList<Course> getFinichedCourses(StudyProgram program, Curriculum curriculum,
+			boolean isFinished) {
 		ArrayList<Course> finished = new ArrayList<Course>();
-	
-		for(Semester semester : program.getSemesters())
-			for(Course course : semester.getCourses()) {
 
-				boolean check = false;	
-				for(Coursed coursed : curriculum.getCoursedCourses()){
-					
-					if((course.getInitials()).equals(coursed.getInitials()) && coursed.isApproved()) {
+		for (Semester semester : program.getSemesters())
+			for (Course course : semester.getCourses()) {
+
+				boolean check = false;
+				for (Coursed coursed : curriculum.getCoursedCourses()) {
+
+					if ((course.getInitials()).equals(coursed.getInitials()) && coursed.isApproved()) {
 						check = true;
 						break;
-					}					}
-				if(check == isFinished)
+					}
+				}
+				if (check == isFinished)
 					finished.add(course);
-			}				
+			}
 		return finished;
 	}
 
 	public static ArrayList<String> getCoursesList(ArrayList<Course> courses) {
-		ArrayList<String> coursesList = new ArrayList<String>();	
-		for(Course course : courses)
+		ArrayList<String> coursesList = new ArrayList<String>();
+		for (Course course : courses)
 			coursesList.add(course.getInitials() + " " + course.getName());
 
 		return coursesList;
@@ -101,9 +112,9 @@ public class Utilities {
 
 	public static ArrayList<String> getCoursesList(StudyProgram program, Curriculum curriculum, boolean isFinished) {
 		ArrayList<Course> courses = getFinichedCourses(program, curriculum, isFinished);
-		
-		ArrayList<String> coursesList = new ArrayList<String>();	
-		for(Course course : courses)
+
+		ArrayList<String> coursesList = new ArrayList<String>();
+		for (Course course : courses)
 			coursesList.add(course.getInitials() + " " + course.getName());
 
 		return coursesList;

@@ -10,16 +10,17 @@ public class MCourseDetailsViewController extends MViewController {
 
 	@FXML
 	TextArea txADetails;
-	
+
 	public static URL view = Object.class.getResource("/frontend/main/MCourseDetailsView.fxml");
-	
+
+	@Override
 	public void setUp() {
 		super.setUp();
 		hideBack();
 		hideReload();
 		hideLanguage();
 		hideLogout();
-		
+
 		txADetails.setText(Manager.INSTANCE.courseDetailsToShow);
 	}
 }

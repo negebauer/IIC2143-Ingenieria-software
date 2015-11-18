@@ -12,31 +12,35 @@ public class Lecture implements IProfessors {
 
 	private ArrayList<Professor> professors;
 	private Classroom classroom;
-	private Schedule schedule;	
-	
+	private Schedule schedule;
+
 	/**
 	 * Creates an instance of Lecture.
-	 * @param professors The professors of this Lecture.
-	 * @param classroom The classroom where the Lecture takes place.
-	 * @param schedule The schedule in which the Lecture takes place.
+	 * 
+	 * @param professors
+	 *            The professors of this Lecture.
+	 * @param classroom
+	 *            The classroom where the Lecture takes place.
+	 * @param schedule
+	 *            The schedule in which the Lecture takes place.
 	 */
 	public Lecture(ArrayList<Professor> professors, Classroom classroom, Schedule schedule) {
 		this.professors = professors != null ? professors : new ArrayList<Professor>();
 		this.classroom = classroom;
 		this.schedule = schedule;
 	}
-		
-	//IProfessors methods
+
+	// IProfessors methods
 	@Override
-	public void addProfessor(Professor professor) {		
+	public void addProfessor(Professor professor) {
 		this.professors.add(professor);
 	}
-	
+
 	@Override
 	public void removeProfessor(Professor professor) {
 		this.professors.remove(professor);
 	}
-	
+
 	@Override
 	public ArrayList<Professor> getProfessors() {
 		return this.professors;
@@ -46,7 +50,7 @@ public class Lecture implements IProfessors {
 	public Professor getProfessor(int index) {
 		return this.professors.get(index);
 	}
-	
+
 	// ICourse methods
 	@Override
 	public Classroom getClassroom() {

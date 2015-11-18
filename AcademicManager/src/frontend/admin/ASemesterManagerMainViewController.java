@@ -17,7 +17,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 
 public class ASemesterManagerMainViewController extends MViewController {
-	
+
 	@FXML
 	Label labelSemesterEditorWelcomeMessage;
 	@FXML
@@ -28,17 +28,18 @@ public class ASemesterManagerMainViewController extends MViewController {
 	ChoiceBox<String> chBxSemesters;
 	@FXML
 	Button btnRemoveLastSemester;
-	
+
 	public static URL view = Object.class.getResource("/frontend/admin/ASemesterManagerMainView.fxml");
-	
+
+	@Override
 	public void setUp() {
 		super.setUp();
-		
+
 		labelSemesterEditorWelcomeMessage.setText(Messages.getUILabel(UILabel.SEMESTER_MANGER_WELCOME_MESSAGE));
 		btnCreateSemester.setText(Messages.getUILabel(UILabel.CREATE_SEMESTER));
 		btnEditSemester.setText(Messages.getUILabel(UILabel.EDIT_SEMESTER));
 		btnRemoveLastSemester.setText(Messages.getUILabel(UILabel.REMOVE_LAST_SEMESTER));
-		
+
 		if (Manager.INSTANCE.currentEditingStudyProgram != null) {
 			StudyProgram currentProgram = Manager.INSTANCE.currentEditingStudyProgram;
 			int size = currentProgram.getSemesters().size();
@@ -51,12 +52,12 @@ public class ASemesterManagerMainViewController extends MViewController {
 			}
 		}
 	}
-	
+
 	public void btnCreateSemester_Pressed() {
 		Manager.INSTANCE.currentSemester = null;
 		ViewUtilities.openView(ASemesterManagerEditingViewController.view, view);
 	}
-	
+
 	public void btnRemoveLastSemester_Pressed() {
 		int indexChoosed = Manager.INSTANCE.currentEditingStudyProgram.getSemesters().size() - 1;
 		Semester semester = Manager.INSTANCE.currentEditingStudyProgram.getSemesters().get(indexChoosed);
@@ -64,18 +65,20 @@ public class ASemesterManagerMainViewController extends MViewController {
 			Manager.INSTANCE.currentEditingStudyProgram.getSemesters().remove(semester);
 		} else {
 			// TODO Uncomment when function is created
-			//ViewUtilities.showAlert(Messages.getUILabel(UILabel.ERROR_REMOVING_SEMESTER));
+			// ViewUtilities.showAlert(Messages.getUILabel(UILabel.ERROR_REMOVING_SEMESTER));
 		}
 	}
-	
+
 	public void btnEditSemester_Pressed() {
 		if (!chBxSemesters.getSelectionModel().isEmpty()) {
 			int indexChoosed = Integer.parseInt(chBxSemesters.getSelectionModel().getSelectedItem()) - 1;
-			Manager.INSTANCE.currentSemester = Manager.INSTANCE.currentEditingStudyProgram.getSemesters().get(indexChoosed);
+			Manager.INSTANCE.currentSemester = Manager.INSTANCE.currentEditingStudyProgram.getSemesters()
+					.get(indexChoosed);
 			ViewUtilities.openView(ASemesterManagerEditingViewController.view, view);
 		} else {
 			// TODO Uncomment when function is created
-			//ViewUtilities.showAlert(Messages.getUILabel(UILabel.ERROR_SELECTION) + "(" + Messages.getUILabel(UILabel.EDIT_SEMESTER) + ")");
+			// ViewUtilities.showAlert(Messages.getUILabel(UILabel.ERROR_SELECTION)
+			// + "(" + Messages.getUILabel(UILabel.EDIT_SEMESTER) + ")");
 		}
-	}	
+	}
 }

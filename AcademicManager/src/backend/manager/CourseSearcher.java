@@ -11,6 +11,7 @@ public class CourseSearcher {
 
 	/**
 	 * Searches for a course that contains any of the given parameters.
+	 * 
 	 * @param initials
 	 * @param name
 	 * @return

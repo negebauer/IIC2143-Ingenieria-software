@@ -13,21 +13,26 @@ import backend.users.Assistant;
 import backend.users.User.Gender;
 
 /**
- * Class that manages the reading and writing of all the assistants from the 'database'.
+ * Class that manages the reading and writing of all the assistants from the
+ * 'database'.
  */
 public class AssistantsReaderWriter {
-	
-	/* File format
-		rut&name&lastnameFather&lastnameMother&address&gender&access&phone&birthdayString
-	*/
+
+	/*
+	 * File format
+	 * rut&name&lastnameFather&lastnameMother&address&gender&access&phone&
+	 * birthdayString
+	 */
 
 	/**
 	 * Writes all the assistants to the assistants.txt file.
-	 * @param assistants The assistants to be written.
+	 * 
+	 * @param assistants
+	 *            The assistants to be written.
 	 */
 	public static void writeAssistants(ArrayList<Assistant> assistants) {
 		try {
-			FileOutputStream fileOutputStream = new FileOutputStream (FolderFileManager.adminAssistants);
+			FileOutputStream fileOutputStream = new FileOutputStream(FolderFileManager.adminAssistants);
 			PrintStream printStream = new PrintStream(fileOutputStream);
 			for (Assistant assistant : assistants) {
 				printStream.print(assistant.getRut());
@@ -47,24 +52,26 @@ public class AssistantsReaderWriter {
 				printStream.print(Utilities.getStringFromDate(assistant.getBirthday()));
 				printStream.println();
 			}
-			fileOutputStream.close();		
+			fileOutputStream.close();
 		} catch (IOException ioException) {
-			System.err.println ("Unable to write to file");
+			System.err.println("Unable to write to file");
 			System.out.println(ioException);
 		}
 	}
-	
+
 	/**
-	 * Reads all the assistants from the assistants.txt file and returns them in a list.
+	 * Reads all the assistants from the assistants.txt file and returns them in
+	 * a list.
+	 * 
 	 * @return The assistants list.
 	 */
 	public static ArrayList<Assistant> readAssistants() {
 		ArrayList<Assistant> assistants = new ArrayList<Assistant>();
 		try {
-			FileInputStream fileInputStream = new FileInputStream (FolderFileManager.adminAssistants);
+			FileInputStream fileInputStream = new FileInputStream(FolderFileManager.adminAssistants);
 			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(fileInputStream));
 			String assistantString = bufferedReader.readLine();
-			while (assistantString != null ) {
+			while (assistantString != null) {
 				String[] arguments = assistantString.split("&");
 				String rut = arguments[0];
 				String name = arguments[1];
@@ -74,13 +81,14 @@ public class AssistantsReaderWriter {
 				Gender gender = Gender.valueOf(arguments[5]);
 				String phone = arguments[6];
 				String birthdayString = arguments[7];
-				Assistant assistant = new Assistant(rut, name, lastnameFather, lastnameMother, address, gender, phone, birthdayString);
+				Assistant assistant = new Assistant(rut, name, lastnameFather, lastnameMother, address, gender, phone,
+						birthdayString);
 				assistants.add(assistant);
 				assistantString = bufferedReader.readLine();
 			}
-			fileInputStream.close();		
+			fileInputStream.close();
 		} catch (IOException ioException) {
-			System.err.println ("Unable to read from file");
+			System.err.println("Unable to read from file");
 			System.out.println(ioException);
 		}
 		return assistants;

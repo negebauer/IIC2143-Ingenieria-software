@@ -16,20 +16,26 @@ public class StudyProgram {
 	private ArrayList<Semester> semesters;
 	private int maxCreditsPerSemester = Const.DEFAULT_CREDITS_PER_SEMESTER;
 	private int maxFailedCredits = Const.DEFAULT_MAX_FAILED_CREDITS;
-	
+
 	/**
 	 * Creates an instance of StudyProgram
-	 * @param yearProgram Year in which this StudyProgram started (example: engineering 2009 and engineering 2013).
-	 * @param semesters The semesters of the StudyProgram.
-	 * @param school The school to which this StudyProgram belongs.
+	 * 
+	 * @param yearProgram
+	 *            Year in which this StudyProgram started (example: engineering
+	 *            2009 and engineering 2013).
+	 * @param semesters
+	 *            The semesters of the StudyProgram.
+	 * @param school
+	 *            The school to which this StudyProgram belongs.
 	 */
-	public StudyProgram(String name, int yearProgram, ArrayList<Semester> semesters, School school, int maxCreditsPerSemester, int maxFailedCredits){
+	public StudyProgram(String name, int yearProgram, ArrayList<Semester> semesters, School school,
+			int maxCreditsPerSemester, int maxFailedCredits) {
 		this.name = name;
 		this.yearProgram = yearProgram;
 		this.semesters = semesters != null ? semesters : new ArrayList<Semester>();
 		this.school = school;
 		this.maxCreditsPerSemester = maxCreditsPerSemester;
-		this.maxFailedCredits = maxFailedCredits; 
+		this.maxFailedCredits = maxFailedCredits;
 	}
 
 	public String getName() {
@@ -40,85 +46,100 @@ public class StudyProgram {
 		this.name = name;
 	}
 
-	//Getters and Setters
+	// Getters and Setters
 	/**
 	 * @return The year in which the StudyProgram started.
 	 */
 	public int getyearProgram() {
 		return yearProgram;
 	}
-	
+
 	/**
 	 * Modifies the year of the study program.
-	 * @param year The new year of this study program.
+	 * 
+	 * @param year
+	 *            The new year of this study program.
 	 */
 	public void setYearProgram(int year) {
 		this.yearProgram = year;
 	}
-	
+
 	/**
 	 * @return The school to which this StudyProgram belongs.
 	 */
 	public School getSchool() {
 		return school;
 	}
-	
+
 	/**
 	 * Modifies the school to which this StudyProgram belongs.
-	 * @param school The new school to which this StudyProgram will belong.
+	 * 
+	 * @param school
+	 *            The new school to which this StudyProgram will belong.
 	 */
 	public void setSchool(School school) {
 		this.school = school;
 	}
 
 	/**
-	 * The semesters must be sorted in ascending order [semester 1, semester 2, ...].
+	 * The semesters must be sorted in ascending order [semester 1, semester 2,
+	 * ...].
+	 * 
 	 * @return The semesters of this StudyProgram.
 	 */
 	public ArrayList<Semester> getSemesters() {
 		return semesters;
 	}
-	
+
 	/**
 	 * Modifies the semesters of this StudyProgram.
-	 * @param semestres The new semesters of this StudyProgram.
+	 * 
+	 * @param semestres
+	 *            The new semesters of this StudyProgram.
 	 */
 	public void setSemesters(ArrayList<Semester> semesters) {
 		this.semesters = semesters;
 	}
-	
+
 	public void addSemester(Semester semester) {
 		this.semesters.add(semester);
 	}
-	
-	/** 
+
+	/**
 	 * @return The maximum of credits that one semester can have.
 	 */
 	public int getMaxCreditsPerSemester() {
 		return maxCreditsPerSemester;
 	}
-	
+
 	/**
 	 * Modifies the maximum of credits that one semester can have.
-	 * @param maxCreditsPerSemester The new maximum of credits for each semester.
+	 * 
+	 * @param maxCreditsPerSemester
+	 *            The new maximum of credits for each semester.
 	 */
 	public void setMaxCreditsPerSemester(int maxCreditsPerSemester) {
 		this.maxCreditsPerSemester = maxCreditsPerSemester;
 	}
 
-	/** 
-	 * @return The maximum number of credits that can be failed in this study program.
+	/**
+	 * @return The maximum number of credits that can be failed in this study
+	 *         program.
 	 */
 	public int getMaxFailedCredits() {
 		return maxFailedCredits;
 	}
 
 	/**
-	 * Modifies the maximum number of credits that can be failed in this study program.
-	 * @param maxFailedCredits The new maximum of of credits that can be failed in this study program.
+	 * Modifies the maximum number of credits that can be failed in this study
+	 * program.
+	 * 
+	 * @param maxFailedCredits
+	 *            The new maximum of of credits that can be failed in this study
+	 *            program.
 	 */
 	public void setMaxFailedCredits(int maxFailedCredits) {
 		this.maxFailedCredits = maxFailedCredits;
 	}
-	
+
 }

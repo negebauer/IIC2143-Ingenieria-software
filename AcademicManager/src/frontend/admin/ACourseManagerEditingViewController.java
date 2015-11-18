@@ -21,7 +21,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 public class ACourseManagerEditingViewController extends MViewController {
-	
+
 	@FXML
 	TextField txBxCourseName;
 	@FXML
@@ -65,12 +65,13 @@ public class ACourseManagerEditingViewController extends MViewController {
 	@FXML
 	Button btnShowCoRequirements;
 
-	public static URL view = Object.class.getResource("/frontend/admin/ACourseManagerEditingView.fxml");	
+	public static URL view = Object.class.getResource("/frontend/admin/ACourseManagerEditingView.fxml");
 	public boolean isCreating = true;
-	
+
+	@Override
 	public void setUp() {
 		super.setUp();
-		
+
 		btnSaveCourse.setText(Messages.getUILabel(UILabel.SAVE_COURSE));
 		labelNameCourse.setText(Messages.getUILabel(UILabel.COURSE_NAME));
 		labelCourseInitials.setText(Messages.getUILabel(UILabel.COURSE_INITIALS));
@@ -90,61 +91,66 @@ public class ACourseManagerEditingViewController extends MViewController {
 			schools.add(School.getSchoolMessage(school));
 		}
 		chBxShcools.setItems(FXCollections.observableArrayList(schools));
-		
+
 		ArrayList<String> academicSemesters = new ArrayList<String>();
 		for (AcademicSemester academicSemester : AcademicSemester.values()) {
 			academicSemesters.add(AcademicSemester.getAcademicSemesterMessage(academicSemester));
 		}
 		chBxAcademicSemesters.setItems(FXCollections.observableArrayList(academicSemesters));
-		chBxCoordination.setItems(FXCollections.observableArrayList(Messages.getUILabel(UILabel.TRUE), Messages.getUILabel(UILabel.FALSE)));		
-		
+		chBxCoordination.setItems(FXCollections.observableArrayList(Messages.getUILabel(UILabel.TRUE),
+				Messages.getUILabel(UILabel.FALSE)));
+
 		if (Manager.INSTANCE.currentEditignCourse != null) {
-			
+
 			txBxCourseName.setText(Manager.INSTANCE.currentEditignCourse.getName());
 			txBxInitialsCourse.setText(Manager.INSTANCE.currentEditignCourse.getInitials());
 			txBxCourseCredits.setText(Manager.INSTANCE.currentEditignCourse.getCredits() + "");
 			txBxCourseSection.setText(Manager.INSTANCE.currentEditignCourse.getSection() + "");
 			chBxShcools.getSelectionModel().select(Manager.INSTANCE.currentEditignCourse.getSchool().toString());
-			chBxAcademicSemesters.getSelectionModel().select(Manager.INSTANCE.currentEditignCourse.getSemester().toString());
+			chBxAcademicSemesters.getSelectionModel()
+					.select(Manager.INSTANCE.currentEditignCourse.getSemester().toString());
 			txArCourseDetails.setText(Manager.INSTANCE.currentEditignCourse.getDetails());
-			
+
 			isCreating = false;
 		} else {
 			isCreating = true;
 		}
-		
+
 		ViewUtilities.autoComplete(chBxShcools);
 	}
-	
+
 	public void saveCourse() {
 		String name = txBxCourseName.getText();
 		String initials = txBxInitialsCourse.getText();
 		int credits = Integer.parseInt(txBxCourseCredits.getText());
 		int section = Integer.parseInt(txBxCourseSection.getText());
-		
+
 		School school = School.defaultSchool();
-		if (!chBxShcools.getSelectionModel().isEmpty() & chBxShcools.getItems().contains(chBxShcools.getSelectionModel().getSelectedItem())) {
+		if (!chBxShcools.getSelectionModel().isEmpty()
+				& chBxShcools.getItems().contains(chBxShcools.getSelectionModel().getSelectedItem())) {
 			school = School.getSchool(chBxShcools.getSelectionModel().getSelectedItem());
 		}
-		
+
 		AcademicSemester semester = AcademicSemester.defaultSemester();
 		if (!chBxAcademicSemesters.getSelectionModel().isEmpty()) {
-			semester = AcademicSemester.getAcademicSemester(chBxAcademicSemesters.getSelectionModel().getSelectedItem());
+			semester = AcademicSemester
+					.getAcademicSemester(chBxAcademicSemesters.getSelectionModel().getSelectedItem());
 		}
-		
+
 		String details = txArCourseDetails.getText();
 		String coordinatedBool = chBxCoordination.getSelectionModel().getSelectedItem();
-		
+
 		boolean coordinated = false;
-		
+
 		if (coordinatedBool == Messages.getUILabel(UILabel.TRUE)) {
 			coordinated = true;
 		}
-		
+
 		Course course = Manager.INSTANCE.currentEditignCourse;
-		
+
 		if (isCreating) {
-			course = new Course(name, initials, section, credits, details, school, semester, null, null, null, null, coordinated);
+			course = new Course(name, initials, section, credits, details, school, semester, null, null, null, null,
+					coordinated);
 			Manager.INSTANCE.courses.add(course);
 			isCreating = false;
 		} else {
@@ -157,13 +163,13 @@ public class ACourseManagerEditingViewController extends MViewController {
 			course.setDetails(details);
 		}
 	}
-	
+
 	public void btnSaveCourse_Pressed() {
-		saveCourse();				
+		saveCourse();
 		Manager.INSTANCE.currentEditignCourse = null;
 		super.btnBack_Pressed();
 	}
-	
+
 	public void btnShowCourses_Pressed() {
 		saveCourse();
 		ViewUtilities.openView(AICourseManagerMainViewController.view, view);
@@ -176,13 +182,12 @@ public class ACourseManagerEditingViewController extends MViewController {
 
 	public void btnShowRequirements_Pressed() {
 		saveCourse();
-		ViewUtilities.openView(ACourseManagerEditingRequirementsViewController.view, view);		
-	}
-	
-	public void btnShowCoRequirements_Pressed() {
-		saveCourse();
-		ViewUtilities.openView(ACourseManagerEditingCoRequirementsViewController.view, view);	
+		ViewUtilities.openView(ACourseManagerEditingRequirementsViewController.view, view);
 	}
 
-	
+	public void btnShowCoRequirements_Pressed() {
+		saveCourse();
+		ViewUtilities.openView(ACourseManagerEditingCoRequirementsViewController.view, view);
+	}
+
 }

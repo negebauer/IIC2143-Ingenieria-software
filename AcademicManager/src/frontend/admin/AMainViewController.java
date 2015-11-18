@@ -7,10 +7,11 @@ import backend.others.Messages.UILabel;
 import frontend.main.MViewController;
 import frontend.others.ViewUtilities;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 
 public class AMainViewController extends MViewController {
-	
+
 	@FXML
 	Label labelWelcomeMessage;
 	@FXML
@@ -19,9 +20,10 @@ public class AMainViewController extends MViewController {
 	Button btnStudyProgramManager;
 	@FXML
 	Button btnCourseManager;
-	
+
 	public static URL view = Object.class.getResource("/frontend/admin/AMainView.fxml");
-	
+
+	@Override
 	public void setUp() {
 		super.setUp();
 		labelWelcomeMessage.setText(Messages.getUILabel(UILabel.WELCOME_MESSAGE_ADMIN));
@@ -29,11 +31,11 @@ public class AMainViewController extends MViewController {
 		btnStudyProgramManager.setText(Messages.getUILabel(UILabel.STUDY_PROGRAM_MANAGER));
 		btnCourseManager.setText(Messages.getUILabel(UILabel.COURSE_MANAGER));
 	}
-	
+
 	public void btnStudyProgramManager_Pressed() {
 		ViewUtilities.openView(AStudyProgramManagerMainViewController.view, view);
 	}
-	
+
 	public void btnCourseManager_Pressed() {
 		ViewUtilities.openView(ACourseManagerMainViewController.view, view);
 	}

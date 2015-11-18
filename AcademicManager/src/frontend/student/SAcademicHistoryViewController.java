@@ -14,13 +14,14 @@ public class SAcademicHistoryViewController extends MViewController {
 
 	@FXML
 	TextArea txAAcademicHistory;
-	
+
 	Student user = (Student) Manager.INSTANCE.currentUser;
 	static URL view = Object.class.getResource("/frontend/student/SAcademicHistoryView.fxml");
-	
+
+	@Override
 	public void setUp() {
 		super.setUp();
-		
+
 		String fullText = "";
 		double totalGrade = 0;
 		for (Coursed coursed : user.getCurriculum().getCoursedCourses()) {
@@ -29,9 +30,11 @@ public class SAcademicHistoryViewController extends MViewController {
 		totalGrade = totalGrade / user.getCurriculum().getCoursedCourses().size();
 		fullText += totalGrade + "\n\n";
 		for (CoursedSemester coursedSemester : user.getCurriculum().getCoursedSemesters()) {
-			fullText += coursedSemester.getYear() + "-" + coursedSemester.getSemester().getSemesterNumber() + ": " + coursedSemester.getGrade() + "\n\t";
+			fullText += coursedSemester.getYear() + "-" + coursedSemester.getSemester().getSemesterNumber() + ": "
+					+ coursedSemester.getGrade() + "\n\t";
 			for (Coursed coursed : coursedSemester.getCoursedCourses()) {
-				fullText += coursed.getInitials() + "-" + coursed.getSection() + " " + coursed.getName() + ": " + coursed.getGrade() + "\n\t";
+				fullText += coursed.getInitials() + "-" + coursed.getSection() + " " + coursed.getName() + ": "
+						+ coursed.getGrade() + "\n\t";
 			}
 			fullText += "\n";
 		}

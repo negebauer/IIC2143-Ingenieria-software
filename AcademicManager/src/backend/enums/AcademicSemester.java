@@ -7,14 +7,12 @@ import java.util.Map;
 import backend.others.Messages;
 
 public enum AcademicSemester {
-	FIRST,
-	SECOND,
-	BOTH;
-	
+	FIRST, SECOND, BOTH;
+
 	public static AcademicSemester defaultSemester() {
 		return AcademicSemester.BOTH;
 	}
-	
+
 	public String getSemesterNumber() {
 		switch (this) {
 		case FIRST:
@@ -25,7 +23,7 @@ public enum AcademicSemester {
 			return "DATA ERROR";
 		}
 	}
-	
+
 	static public AcademicSemester createWithNumber(String number) {
 		if (number.equals("1")) {
 			return AcademicSemester.FIRST;
@@ -35,10 +33,10 @@ public enum AcademicSemester {
 			return AcademicSemester.BOTH;
 		}
 	}
-	
+
 	public static final Map<AcademicSemester, String> ACADEMIC_SEMESTER_MESSAGE_ENGLISH = createMapAcademicSemesterMessageEnglish();
 	public static final Map<AcademicSemester, String> ACADEMIC_SEMESTER_SPANISH = createMapAcademicSemesterMessageSpanish();
-	
+
 	public static String getAcademicSemesterMessage(AcademicSemester academicSemester) {
 		switch (Messages.LANGUAGE()) {
 		case ENGLISH:
@@ -49,23 +47,23 @@ public enum AcademicSemester {
 			return Messages.ERROR_MESSAGE;
 		}
 	}
-	
+
 	private static Map<AcademicSemester, String> createMapAcademicSemesterMessageEnglish() {
-        Map<AcademicSemester, String> result = new HashMap<AcademicSemester, String>();
-        result.put(AcademicSemester.BOTH,										"Both");
-        result.put(AcademicSemester.FIRST,										"First");
-        result.put(AcademicSemester.SECOND,										"Second");
-        return Collections.unmodifiableMap(result);
+		Map<AcademicSemester, String> result = new HashMap<AcademicSemester, String>();
+		result.put(AcademicSemester.BOTH, "Both");
+		result.put(AcademicSemester.FIRST, "First");
+		result.put(AcademicSemester.SECOND, "Second");
+		return Collections.unmodifiableMap(result);
 	}
-	
+
 	private static Map<AcademicSemester, String> createMapAcademicSemesterMessageSpanish() {
 		Map<AcademicSemester, String> result = new HashMap<AcademicSemester, String>();
-        result.put(AcademicSemester.BOTH,										"Ambos");
-        result.put(AcademicSemester.FIRST,										"Primero");
-        result.put(AcademicSemester.SECOND,										"Segundo");
-        return Collections.unmodifiableMap(result);
+		result.put(AcademicSemester.BOTH, "Ambos");
+		result.put(AcademicSemester.FIRST, "Primero");
+		result.put(AcademicSemester.SECOND, "Segundo");
+		return Collections.unmodifiableMap(result);
 	}
-	
+
 	public static AcademicSemester getAcademicSemester(String academicSemesterString) {
 		for (AcademicSemester academicSemester : AcademicSemester.values()) {
 			if (getAcademicSemesterMessage(academicSemester) == academicSemesterString) {

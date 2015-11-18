@@ -14,15 +14,17 @@ import backend.users.Assistant;
 import backend.users.Professor;
 
 /**
- * Class that manages the creation of copies.
- * For working with particular instances of an object (example: A coursed course).
+ * Class that manages the creation of copies. For working with particular
+ * instances of an object (example: A coursed course).
  */
 public class CopyCreator {
-	
+
 	// Copying courses methods
 	/**
 	 * Copies an ICourse Array List, dereferencing the contained objects.
-	 * @param courses The courses to be copied.
+	 * 
+	 * @param courses
+	 *            The courses to be copied.
 	 * @return A copy of courses.
 	 */
 	public static ArrayList<ICourse> copyICourses(ArrayList<ICourse> courses) {
@@ -42,112 +44,140 @@ public class CopyCreator {
 		}
 		return copiedCourses;
 	}
-	
+
 	/**
-	 * Copies all the data from an assistantship into a new instance of Assistanship.
-	 * @param original The original Assistanship.
+	 * Copies all the data from an assistantship into a new instance of
+	 * Assistanship.
+	 * 
+	 * @param original
+	 *            The original Assistanship.
 	 * @return The copy of the original Assistantship.
 	 */
 	public static Assistantship copyAssistantship(Assistantship original) {
 		ArrayList<Assistant> copiedAssistants = copyAssistants(original.getAssistants());
 		Classroom copiedClassroom = copyClassroom(original.getClassroom());
 		Schedule copiedSchedule = copySchedule(original.getSchedule());
-		
+
 		return new Assistantship(copiedAssistants, copiedClassroom, copiedSchedule);
 	}
-	
+
 	/**
 	 * Copies all the data from a laboratory into a new instance of Laboratory.
-	 * @param original The original Laboratory.
+	 * 
+	 * @param original
+	 *            The original Laboratory.
 	 * @return The copy of the original Laboratory.
 	 */
 	public static Laboratory copyLaboratory(Laboratory original) {
 		ArrayList<Professor> copiedProfessors = copyProfessors(original.getProfessors());
 		Classroom copiedClassroom = copyClassroom(original.getClassroom());
 		Schedule copiedSchedule = copySchedule(original.getSchedule());
-		
+
 		return new Laboratory(copiedProfessors, copiedClassroom, copiedSchedule);
 	}
-	
+
 	/**
 	 * Copies all the data from a Lecture into a new instance of Lecture.
-	 * @param original The original Lecture.
+	 * 
+	 * @param original
+	 *            The original Lecture.
 	 * @return The copy of the original Lecture.
 	 */
 	public static Lecture copyLecture(Lecture original) {
 		ArrayList<Professor> copiedProfessors = copyProfessors(original.getProfessors());
 		Classroom copiedClassroom = copyClassroom(original.getClassroom());
 		Schedule copiedSchedule = copySchedule(original.getSchedule());
-		
+
 		return new Lecture(copiedProfessors, copiedClassroom, copiedSchedule);
 	}
-	
+
 	// Copying evaluations methods
 	/**
-	 * Copies an array list of evaluations into a new array list of new instances of evaluations.
-	 * @param evaluations The original evaluations.
+	 * Copies an array list of evaluations into a new array list of new
+	 * instances of evaluations.
+	 * 
+	 * @param evaluations
+	 *            The original evaluations.
 	 * @return The copy of the original evaluations.
 	 */
 	public static ArrayList<Evaluation> copyEvaluations(ArrayList<Evaluation> evaluations) {
 		ArrayList<Evaluation> copiedEvaluations = new ArrayList<Evaluation>();
 		for (Evaluation originalEvaluation : evaluations) {
 			Classroom copiedClassroom = copyClassroom(originalEvaluation.getClassroom());
-			Evaluation copiedEvaluation = new Evaluation(originalEvaluation.getCourseEvaluation(), copiedClassroom, Utilities.getStringFromDate(originalEvaluation.getDate()));
+			Evaluation copiedEvaluation = new Evaluation(originalEvaluation.getCourseEvaluation(), copiedClassroom,
+					Utilities.getStringFromDate(originalEvaluation.getDate()));
 			copiedEvaluations.add(copiedEvaluation);
 		}
 		return copiedEvaluations;
 	}
-	
+
 	// General copies
 	/**
-	 * Copies an array list of professors into a new array list of new instances of professors.
-	 * @param original The original professors.
+	 * Copies an array list of professors into a new array list of new instances
+	 * of professors.
+	 * 
+	 * @param original
+	 *            The original professors.
 	 * @return The copy of the original professors.
 	 */
 	public static ArrayList<Professor> copyProfessors(ArrayList<Professor> original) {
 		ArrayList<Professor> copiedProfessors = new ArrayList<Professor>();
 		for (Professor originalProfessor : original) {
-			Professor copiedProfessor = new Professor(originalProfessor.getRut(), originalProfessor.getName(), originalProfessor.getLastnameFather(), originalProfessor.getLastnameMother(), originalProfessor.getAddress(), originalProfessor.getGender(), originalProfessor.getPhone(), Utilities.getStringFromDate(originalProfessor.getBirthday()));
+			Professor copiedProfessor = new Professor(originalProfessor.getRut(), originalProfessor.getName(),
+					originalProfessor.getLastnameFather(), originalProfessor.getLastnameMother(),
+					originalProfessor.getAddress(), originalProfessor.getGender(), originalProfessor.getPhone(),
+					Utilities.getStringFromDate(originalProfessor.getBirthday()));
 			copiedProfessors.add(copiedProfessor);
 		}
-//		return copiedProfessors;
+		// return copiedProfessors;
 		return original;
 	}
-	
+
 	/**
-	 * Copies an array list of assistants into a new array list of new instances of assistants.
-	 * @param original The original assistants.
+	 * Copies an array list of assistants into a new array list of new instances
+	 * of assistants.
+	 * 
+	 * @param original
+	 *            The original assistants.
 	 * @return The copy of the original assistants.
 	 */
 	public static ArrayList<Assistant> copyAssistants(ArrayList<Assistant> original) {
 		ArrayList<Assistant> copiedAssistants = new ArrayList<Assistant>();
 		for (Assistant originalAssistant : original) {
-			Assistant copiedAssistant = new Assistant(originalAssistant.getRut(), originalAssistant.getName(), originalAssistant.getLastnameFather(), originalAssistant.getLastnameMother(), originalAssistant.getAddress(), originalAssistant.getGender(), originalAssistant.getPhone(), Utilities.getStringFromDate(originalAssistant.getBirthday()));
+			Assistant copiedAssistant = new Assistant(originalAssistant.getRut(), originalAssistant.getName(),
+					originalAssistant.getLastnameFather(), originalAssistant.getLastnameMother(),
+					originalAssistant.getAddress(), originalAssistant.getGender(), originalAssistant.getPhone(),
+					Utilities.getStringFromDate(originalAssistant.getBirthday()));
 			copiedAssistants.add(copiedAssistant);
 		}
-//		return copiedAssistants;
+		// return copiedAssistants;
 		return original;
 	}
-	
+
 	/**
 	 * Copies a classroom into a new instance of classroom.
-	 * @param original The original classroom.
+	 * 
+	 * @param original
+	 *            The original classroom.
 	 * @return The copy of the original classroom.
 	 */
 	public static Classroom copyClassroom(Classroom original) {
 		return new Classroom(original.getInitials(), original.getSchool(), original.getCampus(), original.getSize());
 	}
-	
+
 	/**
-	 * Copies a schedule into a new instance of schedule.
-	 * In order to do it, copies every DayModuleTuple into a new instance of DayModuleTuple. 
-	 * @param original The original schedule.
+	 * Copies a schedule into a new instance of schedule. In order to do it,
+	 * copies every DayModuleTuple into a new instance of DayModuleTuple.
+	 * 
+	 * @param original
+	 *            The original schedule.
 	 * @return The copy of the original schedule.
 	 */
 	public static Schedule copySchedule(Schedule original) {
 		Schedule copiedSchedule = new Schedule();
-		for (DayModuleTuple originalDayModuleTuple : original.getModules()){
-			DayModuleTuple copiedDayModuleTuple = copiedSchedule.new DayModuleTuple(originalDayModuleTuple.day, originalDayModuleTuple.module);
+		for (DayModuleTuple originalDayModuleTuple : original.getModules()) {
+			DayModuleTuple copiedDayModuleTuple = copiedSchedule.new DayModuleTuple(originalDayModuleTuple.day,
+					originalDayModuleTuple.module);
 			copiedSchedule.addModule(copiedDayModuleTuple);
 		}
 		return copiedSchedule;

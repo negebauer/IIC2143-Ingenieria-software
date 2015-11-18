@@ -25,17 +25,16 @@ import backend.users.Student;
 import backend.users.User;
 
 /**
- * [Singleton] Main class that does what the application user requires.
- * Contains all the objects of the program.
- * Data container.
+ * [Singleton] Main class that does what the application user requires. Contains
+ * all the objects of the program. Data container.
  */
 public class Manager {
 
 	public final static Calendar CALENDAR = Calendar.getInstance();
 	public final static Manager INSTANCE = new Manager();
-	
+
 	public User currentUser;
-	
+
 	public ArrayList<Classroom> classrooms = new ArrayList<Classroom>();
 	public ArrayList<Course> courses = new ArrayList<Course>();
 	public ArrayList<StudyProgram> studyPrograms = new ArrayList<StudyProgram>();
@@ -44,22 +43,22 @@ public class Manager {
 	public ArrayList<Assistant> assistants = new ArrayList<Assistant>();
 	public ArrayList<Professor> professors = new ArrayList<Professor>();
 	public ArrayList<Student> students = new ArrayList<Student>();
-	
+
 	public String courseDetailsToShow;
 	public Semester currentSemester;
-	
+
 	public StudyProgram currentEditingStudyProgram;
 	public Course currentEditignCourse;
 	public Schedule currentEditingSchedule;
 	public Evaluation currentEditingEvaluation;
-	
+
 	/**
 	 * Creates the instance of manager.
 	 */
 	private Manager() {
-		
+
 	}
-	
+
 	/**
 	 * Reloads all the data from the server
 	 */
@@ -72,13 +71,13 @@ public class Manager {
 	 */
 	public void loadData() {
 		System.out.println("Loading data...");
-		
+
 		if (getMonth() <= 6 && getDay() <= 19) {
 			currentSemester = new Semester(AcademicSemester.FIRST, getYear(), 0, null, null);
 		} else {
 			currentSemester = new Semester(AcademicSemester.SECOND, getYear(), 0, null, null);
 		}
-		
+
 		admins = AdminReaderWriter.readAdmins();
 		assistants = AssistantsReaderWriter.readAssistants();
 		classrooms = ClassroomReaderWriter.readClasrooms();
@@ -90,11 +89,12 @@ public class Manager {
 		CourseCoRequirementsReaderWriter.readCoursesCoRequirements(courses);
 		CourseRequirementsReaderWriter.readCoursesRequirements(courses);
 		DetailsReaderWriter.readDetails(courses);
-		students = StudentsReaderWriter.readStudents(courses, studyPrograms, classrooms, currentSemester, professors, assistants);
-		
+		students = StudentsReaderWriter.readStudents(courses, studyPrograms, classrooms, currentSemester, professors,
+				assistants);
+
 		System.out.println("Data loaded!");
 	}
-	
+
 	/**
 	 * Writes all the data to the `database`.
 	 */
@@ -112,21 +112,21 @@ public class Manager {
 		CourseRequirementsReaderWriter.writeCoursesRequirements(courses);
 		DetailsReaderWriter.writeDetails(courses);
 		StudentsReaderWriter.writeStudents(students);
-		
+
 		System.out.println("Data saved!");
 	}
-	
+
 	/**
 	 * Switches language between Spanish and English for the software.
 	 */
 	public void changeLanguage() {
 		try {
-			FileInputStream fileInputStream = new FileInputStream (FolderFileManager.language);
+			FileInputStream fileInputStream = new FileInputStream(FolderFileManager.language);
 			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(fileInputStream));
 			SupportedLanguage language = Messages.SupportedLanguage.valueOf(bufferedReader.readLine());
 			fileInputStream.close();
 
-			FileOutputStream fileOutputStream = new FileOutputStream (FolderFileManager.language);
+			FileOutputStream fileOutputStream = new FileOutputStream(FolderFileManager.language);
 			PrintStream printStream = new PrintStream(fileOutputStream);
 
 			switch (language) {
@@ -155,7 +155,7 @@ public class Manager {
 		}
 		return maxID + 1;
 	}
-	
+
 	public StudyProgram getStudyProgramForName(String name) {
 		for (StudyProgram studyProgram : studyPrograms) {
 			if (studyProgram.getName().equals(name)) {
@@ -164,15 +164,15 @@ public class Manager {
 		}
 		return null;
 	}
-	
+
 	public static int getYear() {
 		return CALENDAR.get(Calendar.YEAR);
 	}
-	
+
 	public static int getMonth() {
 		return CALENDAR.get(Calendar.MONTH);
 	}
-	
+
 	public static int getDay() {
 		return CALENDAR.get(Calendar.DAY_OF_MONTH);
 	}

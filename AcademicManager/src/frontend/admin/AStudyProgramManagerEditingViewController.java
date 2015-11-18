@@ -18,7 +18,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 public class AStudyProgramManagerEditingViewController extends MViewController {
-	
+
 	@FXML
 	Label labelName;
 	@FXML
@@ -43,13 +43,13 @@ public class AStudyProgramManagerEditingViewController extends MViewController {
 	Button btnEditSemesters;
 	@FXML
 	Button btnSaveStudyProgram;
-	
-	
+
 	public static URL view = Object.class.getResource("/frontend/admin/AStudyProgramManagerEditingView.fxml");
 	public boolean isCreating = false;
-	
+
+	@Override
 	public void setUp() {
-		
+
 		super.setUp();
 		labelName.setText(Messages.getUILabel(UILabel.NAME));
 		labelYear.setText(Messages.getUILabel(UILabel.YEAR));
@@ -57,18 +57,18 @@ public class AStudyProgramManagerEditingViewController extends MViewController {
 		labelMaxFailedCredits.setText(Messages.getUILabel(UILabel.MAXIMUM_OF_FAILED_CREDITS));
 		labelSchool.setText(Messages.getUILabel(UILabel.SCHOOL));
 		btnEditSemesters.setText(Messages.getUILabel(UILabel.SEMESTER_CURRENT_SEMESTER_CREATE_NEW));
-		btnEditSemesters.setText(Messages.getUILabel(UILabel.EDIT_SEMESTERS));		
-		
+		btnEditSemesters.setText(Messages.getUILabel(UILabel.EDIT_SEMESTERS));
+
 		ArrayList<String> schools = new ArrayList<String>();
 		for (School school : School.values()) {
 			schools.add(School.getSchoolMessage(school));
 		}
 		chBxSchoolStudyProgram.setItems(FXCollections.observableArrayList(schools));
-		
+
 		StudyProgram studyProgram = Manager.INSTANCE.currentEditingStudyProgram;
-		
+
 		ViewUtilities.autoComplete(chBxSchoolStudyProgram);
-		
+
 		if (studyProgram != null) {
 			fillFields(studyProgram);
 			isCreating = false;
@@ -76,7 +76,7 @@ public class AStudyProgramManagerEditingViewController extends MViewController {
 			isCreating = true;
 		}
 	}
-	
+
 	public void fillFields(StudyProgram studyProgram) {
 		txBxNameStudyProgram.setText(studyProgram.getName());
 		txBxYearStudyProgram.setText(studyProgram.getyearProgram() + "");
@@ -84,18 +84,18 @@ public class AStudyProgramManagerEditingViewController extends MViewController {
 		txBxMaxFailedCredits.setText(studyProgram.getMaxFailedCredits() + "");
 		chBxSchoolStudyProgram.getSelectionModel().select(School.getSchoolMessage(studyProgram.getSchool()));
 	}
-	
+
 	public void btnEditSemesters_Pressed() {
 		saveStudyProgram();
 		ViewUtilities.openView(ASemesterManagerMainViewController.view, view);
 	}
-	
+
 	public void btnSaveStudyProgram_Pressed() {
 		saveStudyProgram();
 		Manager.INSTANCE.currentEditingStudyProgram = null;
 		super.btnBack_Pressed();
 	}
-	
+
 	public void saveStudyProgram() {
 		StudyProgram currentProgram = Manager.INSTANCE.currentEditingStudyProgram;
 
@@ -103,14 +103,15 @@ public class AStudyProgramManagerEditingViewController extends MViewController {
 		int year = Integer.parseInt(txBxYearStudyProgram.getText());
 		int maxCreditsPerSemester = Integer.parseInt(txBxMaxCreditsPerSemester.getText());
 		int maxFailedCredits = Integer.parseInt(txBxMaxFailedCredits.getText());
-		
+
 		School school = null;
-		if (!chBxSchoolStudyProgram.getSelectionModel().isEmpty() && chBxSchoolStudyProgram.getItems().contains(chBxSchoolStudyProgram.getSelectionModel().getSelectedItem())) {
+		if (!chBxSchoolStudyProgram.getSelectionModel().isEmpty() && chBxSchoolStudyProgram.getItems()
+				.contains(chBxSchoolStudyProgram.getSelectionModel().getSelectedItem())) {
 			school = School.getSchool(chBxSchoolStudyProgram.getSelectionModel().getSelectedItem());
 		} else {
 			school = School.defaultSchool();
 		}
-		
+
 		if (isCreating) {
 			currentProgram = new StudyProgram(name, year, null, school, maxCreditsPerSemester, maxFailedCredits);
 			Manager.INSTANCE.currentEditingStudyProgram = currentProgram;
@@ -121,6 +122,6 @@ public class AStudyProgramManagerEditingViewController extends MViewController {
 			currentProgram.setMaxFailedCredits(maxFailedCredits);
 			currentProgram.setSchool(school);
 			currentProgram.setYearProgram(year);
-		}		
+		}
 	}
 }

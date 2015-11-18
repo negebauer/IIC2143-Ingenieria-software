@@ -24,33 +24,34 @@ public class SCoursedSemestersViewController extends MViewController {
 	Label labelCoursedSemesterCourses;
 	@FXML
 	ChoiceBox<String> chBxCoursedSemesters;
-	
+
 	Student user = (Student) Manager.INSTANCE.currentUser;
 	static URL view = Object.class.getResource("/frontend/student/SCoursedSemestersView.fxml");
-	
+
+	@Override
 	public void setUp() {
 		super.setUp();
-		
-//		TODO: Create UILabel
-//		labelMain.setText(Messages.getUILabel(UILabel.STUDENT_COURSED_SEMESTERS_MAIN));
-		
+
+		// TODO: Create UILabel
+		// labelMain.setText(Messages.getUILabel(UILabel.STUDENT_COURSED_SEMESTERS_MAIN));
+
 		chBxCoursedSemesters.setItems(FXCollections.observableArrayList(generateCoursedSemesters()));
-		chBxCoursedSemesters.getSelectionModel().selectedItemProperty().addListener(
-				new ChangeListener<String>() {
-					@Override
-					public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-						if (newValue != null) {
-							showCoursedSemesterGrades(newValue);
-						}
-					}
-				});
+		chBxCoursedSemesters.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+			@Override
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+				if (newValue != null) {
+					showCoursedSemesterGrades(newValue);
+				}
+			}
+		});
 		chBxCoursedSemesters.getSelectionModel().selectLast();
 	}
-	
+
 	ArrayList<String> generateCoursedSemesters() {
 		ArrayList<String> coursedSemesters = new ArrayList<String>();
 		for (CoursedSemester coursedSemester : user.getCurriculum().getCoursedSemesters()) {
-			String coursedSemesterString = coursedSemester.getYear() + " - " + coursedSemester.getSemester().getSemesterNumber();
+			String coursedSemesterString = coursedSemester.getYear() + " - "
+					+ coursedSemester.getSemester().getSemesterNumber();
 			if (!(coursedSemesters.contains(coursedSemesterString))) {
 				coursedSemesters.add(coursedSemesterString);
 			}
@@ -62,16 +63,18 @@ public class SCoursedSemestersViewController extends MViewController {
 		System.out.println(coursedSemesters);
 		return coursedSemesters;
 	}
-	
+
 	void showCoursedSemesterGrades(String yearSemesterRawString) {
 		String coursedCoursesString = "";
 		int year = Integer.valueOf(yearSemesterRawString.split(" - ")[0]);
 		AcademicSemester semester = AcademicSemester.createWithNumber(yearSemesterRawString.split(" - ")[1]);
 		for (CoursedSemester coursedSemester : user.getCurriculum().getCoursedSemesters()) {
 			if (coursedSemester.getYear() == year && coursedSemester.getSemester() == semester) {
-				coursedCoursesString += year + "-" + semester.getSemesterNumber() + ": " + coursedSemester.getGrade() + "\n\t";
+				coursedCoursesString += year + "-" + semester.getSemesterNumber() + ": " + coursedSemester.getGrade()
+						+ "\n\t";
 				for (Coursed coursed : coursedSemester.getCoursedCourses()) {
-					coursedCoursesString += coursed.getInitials() + "-" + coursed.getSection() + " " + coursed.getName() + ": " + coursed.getGrade() + "\n\t";
+					coursedCoursesString += coursed.getInitials() + "-" + coursed.getSection() + " " + coursed.getName()
+							+ ": " + coursed.getGrade() + "\n\t";
 				}
 			}
 		}

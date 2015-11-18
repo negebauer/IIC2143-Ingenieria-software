@@ -23,18 +23,18 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 public final class ViewUtilities {
-	
+
 	public enum AutoCompleteMode {
-        STARTS_WITH, CONTAINING;
-    }
-	
+		STARTS_WITH, CONTAINING;
+	}
+
 	/**
-	 * Open a new window view while keeping the view hierarchy.
-	 * Allows the operation of the back button.
+	 * Open a new window view while keeping the view hierarchy. Allows the
+	 * operation of the back button.
 	 */
 	public static void openView(URL location, URL sender) {
 		FXMLLoader loader = new FXMLLoader(location);
-		Parent root = null; 	
+		Parent root = null;
 		try {
 			root = (Parent) loader.load();
 			((MViewController) loader.getController()).setUp();
@@ -47,26 +47,27 @@ public final class ViewUtilities {
 			stage.setResizable(false);
 			stage.setTitle("RENNAB");
 			stage.show();
-			
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * Opens a new window without adding it to the view hierarchy.
 	 */
 	public static void openView(URL location) {
 		openView(location, null);
 	}
-	
+
 	/**
 	 * Opens a new window
+	 * 
 	 * @param location
 	 */
 	public static void openNewView(URL location) {
 		FXMLLoader loader = new FXMLLoader(location);
-		Parent root = null; 	
+		Parent root = null;
 		try {
 			root = (Parent) loader.load();
 			((MViewController) loader.getController()).setUp();
@@ -75,116 +76,121 @@ public final class ViewUtilities {
 			stage.setResizable(false);
 			stage.setTitle("RENNAB");
 			stage.show();
-			
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/***
 	 * Change Object Visibility
+	 * 
 	 * @param o
 	 */
 	public static void changeOV(Object o) {
-		if(o instanceof Button)
-			((Button)o).visibleProperty().set(!((Button)o).visibleProperty().get());
-		else if(o instanceof Label)
-			((Label)o).visibleProperty().set(!((Label)o).visibleProperty().get());
-		else if(o instanceof TextField)
-			((TextField)o).visibleProperty().set(!((TextField)o).visibleProperty().get());
-		else if(o instanceof ChoiceBox)
-			((ChoiceBox<?>)o).visibleProperty().set(!((ChoiceBox<?>)o).visibleProperty().get());
-		else if(o instanceof TextArea)
-			((TextArea)o).visibleProperty().set(!((TextArea)o).visibleProperty().get());
-		else if(o instanceof ListView)
-			((ListView<?>)o).visibleProperty().set(!((ListView<?>)o).visibleProperty().get());
+		if (o instanceof Button)
+			((Button) o).visibleProperty().set(!((Button) o).visibleProperty().get());
+		else if (o instanceof Label)
+			((Label) o).visibleProperty().set(!((Label) o).visibleProperty().get());
+		else if (o instanceof TextField)
+			((TextField) o).visibleProperty().set(!((TextField) o).visibleProperty().get());
+		else if (o instanceof ChoiceBox)
+			((ChoiceBox<?>) o).visibleProperty().set(!((ChoiceBox<?>) o).visibleProperty().get());
+		else if (o instanceof TextArea)
+			((TextArea) o).visibleProperty().set(!((TextArea) o).visibleProperty().get());
+		else if (o instanceof ListView)
+			((ListView<?>) o).visibleProperty().set(!((ListView<?>) o).visibleProperty().get());
 	}
-	
+
 	/***
 	 * Auto Complete Combo Box
+	 * 
 	 * @param comboBox
 	 * @param mode
 	 */
-	public static<T> void autoComplete(ComboBox<T> comboBox) {
-        ObservableList<T> data = comboBox.getItems();
-        AutoCompleteMode mode = AutoCompleteMode.CONTAINING;
-        
-        comboBox.setEditable(true);
-        comboBox.getEditor().focusedProperty().addListener(observable -> {
-            if (comboBox.getSelectionModel().getSelectedIndex() < 0) {
-                comboBox.getEditor().setText(null);
-            }
-        });
-        comboBox.addEventHandler(KeyEvent.KEY_PRESSED, t -> comboBox.hide());
-        comboBox.addEventHandler(KeyEvent.KEY_RELEASED, new EventHandler<KeyEvent>() {
+	public static <T> void autoComplete(ComboBox<T> comboBox) {
+		ObservableList<T> data = comboBox.getItems();
+		AutoCompleteMode mode = AutoCompleteMode.CONTAINING;
 
-            private boolean moveCaretToPos = false;
-            private int caretPos;
+		comboBox.setEditable(true);
+		comboBox.getEditor().focusedProperty().addListener(observable -> {
+			if (comboBox.getSelectionModel().getSelectedIndex() < 0) {
+				comboBox.getEditor().setText(null);
+			}
+		});
+		comboBox.addEventHandler(KeyEvent.KEY_PRESSED, t -> comboBox.hide());
+		comboBox.addEventHandler(KeyEvent.KEY_RELEASED, new EventHandler<KeyEvent>() {
 
-            @Override
-            public void handle(KeyEvent event) {
-                if (event.getCode() == KeyCode.UP) {
-                    caretPos = -1;
-                    moveCaret(comboBox.getEditor().getText().length());
-                    return;
-                } else if (event.getCode() == KeyCode.DOWN) {
-                    if (!comboBox.isShowing()) {
-                        comboBox.show();
-                    }
-                    caretPos = -1;
-                    moveCaret(comboBox.getEditor().getText().length());
-                    return;
-                } else if (event.getCode() == KeyCode.BACK_SPACE) {
-                    moveCaretToPos = true;
-                    caretPos = comboBox.getEditor().getCaretPosition();
-                } else if (event.getCode() == KeyCode.DELETE) {
-                    moveCaretToPos = true;
-                    caretPos = comboBox.getEditor().getCaretPosition();
-                }
+			private boolean moveCaretToPos = false;
+			private int caretPos;
 
-                if (event.getCode() == KeyCode.RIGHT || event.getCode() == KeyCode.LEFT || event.getCode().equals(KeyCode.SHIFT) || event.getCode().equals(KeyCode.CONTROL)
-                        || event.isControlDown() || event.getCode() == KeyCode.HOME
-                        || event.getCode() == KeyCode.END || event.getCode() == KeyCode.TAB) {
-                    return;
-                }
+			@Override
+			public void handle(KeyEvent event) {
+				if (event.getCode() == KeyCode.UP) {
+					caretPos = -1;
+					moveCaret(comboBox.getEditor().getText().length());
+					return;
+				} else if (event.getCode() == KeyCode.DOWN) {
+					if (!comboBox.isShowing()) {
+						comboBox.show();
+					}
+					caretPos = -1;
+					moveCaret(comboBox.getEditor().getText().length());
+					return;
+				} else if (event.getCode() == KeyCode.BACK_SPACE) {
+					moveCaretToPos = true;
+					caretPos = comboBox.getEditor().getCaretPosition();
+				} else if (event.getCode() == KeyCode.DELETE) {
+					moveCaretToPos = true;
+					caretPos = comboBox.getEditor().getCaretPosition();
+				}
 
-                ObservableList<T> list = FXCollections.observableArrayList();
-                for (T aData : data) {
-                    if (mode.equals(AutoCompleteMode.STARTS_WITH) && aData.toString().toLowerCase().startsWith(comboBox.getEditor().getText().toLowerCase())) {
-                        list.add(aData);
-                    } else if (mode.equals(AutoCompleteMode.CONTAINING) && aData.toString().toLowerCase().contains(comboBox.getEditor().getText().toLowerCase())) {
-                        list.add(aData);
-                    }
-                }
-                String t = comboBox.getEditor().getText();
+				if (event.getCode() == KeyCode.RIGHT || event.getCode() == KeyCode.LEFT
+						|| event.getCode().equals(KeyCode.SHIFT) || event.getCode().equals(KeyCode.CONTROL)
+						|| event.isControlDown() || event.getCode() == KeyCode.HOME || event.getCode() == KeyCode.END
+						|| event.getCode() == KeyCode.TAB) {
+					return;
+				}
 
-                comboBox.setItems(list);
-                comboBox.getEditor().setText(t);
-                if (!moveCaretToPos) {
-                    caretPos = -1;
-                }
-                moveCaret(t.length());
-                if (!list.isEmpty()) {
-                    comboBox.show();
-                }
-            }
+				ObservableList<T> list = FXCollections.observableArrayList();
+				for (T aData : data) {
+					if (mode.equals(AutoCompleteMode.STARTS_WITH) && aData.toString().toLowerCase()
+							.startsWith(comboBox.getEditor().getText().toLowerCase())) {
+						list.add(aData);
+					} else if (mode.equals(AutoCompleteMode.CONTAINING)
+							&& aData.toString().toLowerCase().contains(comboBox.getEditor().getText().toLowerCase())) {
+						list.add(aData);
+					}
+				}
+				String t = comboBox.getEditor().getText();
 
-            private void moveCaret(int textLength) {
-                if (caretPos == -1) {
-                    comboBox.getEditor().positionCaret(textLength);
-                } else {
-                    comboBox.getEditor().positionCaret(caretPos);
-                }
-                moveCaretToPos = false;
-            }
-        });
-    }
+				comboBox.setItems(list);
+				comboBox.getEditor().setText(t);
+				if (!moveCaretToPos) {
+					caretPos = -1;
+				}
+				moveCaret(t.length());
+				if (!list.isEmpty()) {
+					comboBox.show();
+				}
+			}
 
-    public static<T> T getComboBoxValue(ComboBox<T> comboBox) {
-        if (comboBox.getSelectionModel().getSelectedIndex() < 0) {
-            return null;
-        } else {
-            return comboBox.getItems().get(comboBox.getSelectionModel().getSelectedIndex());
-        }
-    }
+			private void moveCaret(int textLength) {
+				if (caretPos == -1) {
+					comboBox.getEditor().positionCaret(textLength);
+				} else {
+					comboBox.getEditor().positionCaret(caretPos);
+				}
+				moveCaretToPos = false;
+			}
+		});
+	}
+
+	public static <T> T getComboBoxValue(ComboBox<T> comboBox) {
+		if (comboBox.getSelectionModel().getSelectedIndex() < 0) {
+			return null;
+		} else {
+			return comboBox.getItems().get(comboBox.getSelectionModel().getSelectedIndex());
+		}
+	}
 }

@@ -24,37 +24,39 @@ public class MCourseSearcherSelectorViewController extends MViewController {
 	Button btnDetails;
 	@FXML
 	protected ComboBox<String> chBxSelectedCourse;
-	
+
 	Boolean firstLoad = true;
 	protected ArrayList<Course> coursesToShow = Manager.INSTANCE.courses;
 	public static URL view = Object.class.getResource("/frontend/main/MCourseSearcherSelectorView.fxml");
-	
+
 	@Override
 	public void setUp() {
 		super.setUp();
-		
+
 		btnDetails.setCursor(Cursor.HAND);
 		labelSearchCourse.setText(Messages.getUILabel(UILabel.SEMESTER_CURRENT_SEMESTER_SEARCH_COURSE));
 		if (firstLoad) {
 			updateCoursesShow();
 			firstLoad = false;
-		}	
+		}
 	}
-	
+
 	public void updateCoursesShow() {
 		updateCoursesShow(AcademicSemester.BOTH);
 	}
-	
+
 	public void updateCoursesShow(AcademicSemester semester) {
 		ArrayList<String> coursesStrings = new ArrayList<String>();
 		for (Course course : coursesToShow) {
-			if (course.getSemester() == semester || course.getSemester() == AcademicSemester.BOTH || semester == AcademicSemester.BOTH) {
+			if (course.getSemester() == semester || course.getSemester() == AcademicSemester.BOTH
+					|| semester == AcademicSemester.BOTH) {
 				coursesStrings.add(getParsedCourse(course.getInitials(), course.getSection(), course.getName()));
 			}
 		}
 		chBxSelectedCourse.setItems(FXCollections.observableArrayList(coursesStrings));
+		ViewUtilities.autoComplete(chBxSelectedCourse);
 	}
-		
+
 	public void btnDetails_Pressed() {
 		String rawCourseInfo = chBxSelectedCourse.getSelectionModel().getSelectedItem();
 		String[] parsed = getParsedInitialsSectionName(rawCourseInfo);
@@ -62,29 +64,30 @@ public class MCourseSearcherSelectorViewController extends MViewController {
 		int section = Integer.valueOf(parsed[1]);
 		String name = parsed[2];
 		for (Course course : coursesToShow) {
-			if (course.getInitials().equals(initials) && course.getSection() == section && course.getName().equals(name)) {
+			if (course.getInitials().equals(initials) && course.getSection() == section
+					&& course.getName().equals(name)) {
 				Manager.INSTANCE.courseDetailsToShow = course.getDetails();
 				ViewUtilities.openNewView(MCourseDetailsViewController.view);
 				return;
 			}
 		}
 	}
-		
+
 	public void hideCourseSearcher() {
-		labelSearchCourse.setVisible(false);	
+		labelSearchCourse.setVisible(false);
 	}
-	
+
 	public void hideCourseSelector() {
 		btnDetails.setVisible(false);
-		chBxSelectedCourse.setVisible(false);	
+		chBxSelectedCourse.setVisible(false);
 	}
-	
+
 	public void showCourseSearcher() {
 		labelSearchCourse.setVisible(true);
 	}
-	
+
 	public void showCourseSelector() {
 		btnDetails.setVisible(true);
-		chBxSelectedCourse.setVisible(true);		
+		chBxSelectedCourse.setVisible(true);
 	}
 }

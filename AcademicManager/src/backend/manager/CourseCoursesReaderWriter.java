@@ -23,25 +23,32 @@ import backend.users.Assistant;
 import backend.users.Professor;
 
 /**
- * Class that manages the reading and writing of all the courses from the 'database' for each course.
+ * Class that manages the reading and writing of all the courses from the
+ * 'database' for each course.
  */
 public class CourseCoursesReaderWriter {
 
-	/* File format
-		initials&section&semester&TypeOfCourse&assistants or professors rut&classroom initials&day:module;day:module
-		
-		initials&section&semester&ASSISTANTSHIP&rut1;rut2&classroomInitials&dia1:modulo1;dia2:modulo2
-		initials&section&semester&LABORATORY&rut1;rut2&classroomInitials&dia1:modulo1;dia2:modulo2
-		initials&section&semester&LECTURE&rut1;rut2&classroomInitials&dia1:modulo1;dia2:modulo2
-	*/
+	/*
+	 * File format initials&section&semester&TypeOfCourse&assistants or
+	 * professors rut&classroom initials&day:module;day:module
+	 * 
+	 * initials&section&semester&ASSISTANTSHIP&rut1;rut2&classroomInitials&dia1:
+	 * modulo1;dia2:modulo2
+	 * initials&section&semester&LABORATORY&rut1;rut2&classroomInitials&dia1:
+	 * modulo1;dia2:modulo2
+	 * initials&section&semester&LECTURE&rut1;rut2&classroomInitials&dia1:
+	 * modulo1;dia2:modulo2
+	 */
 
 	/**
 	 * Writes all the course courses to the courseCourses.txt file.
-	 * @param allCourse All the courses to write their icourses
+	 * 
+	 * @param allCourse
+	 *            All the courses to write their icourses
 	 */
 	public static void writeCoursesCourses(ArrayList<Course> allCourses) {
 		try {
-			FileOutputStream fileOutputStream = new FileOutputStream (FolderFileManager.adminCourseCourses);
+			FileOutputStream fileOutputStream = new FileOutputStream(FolderFileManager.adminCourseCourses);
 			PrintStream printStream = new PrintStream(fileOutputStream);
 			for (Course course : allCourses) {
 				for (ICourse icourse : course.getCourses()) {
@@ -99,26 +106,33 @@ public class CourseCoursesReaderWriter {
 					printStream.println();
 				}
 			}
-			fileOutputStream.close();		
+			fileOutputStream.close();
 		} catch (IOException ioException) {
-			System.err.println ("Unable to write to file");
+			System.err.println("Unable to write to file");
 			System.out.println(ioException);
 		}
 	}
-	
+
 	/**
-	 * Reads all the course courses from the courseCourses.txt file and returns them in a list.
-	 * @param allCourses All the courses to reference the ICourse from them.
-	 * @param allAssistants All the assistants of the system.
-	 * @param allProfessors All the professors of the system.
-	 * @param allClassroooms All the classrooms of the system.
+	 * Reads all the course courses from the courseCourses.txt file and returns
+	 * them in a list.
+	 * 
+	 * @param allCourses
+	 *            All the courses to reference the ICourse from them.
+	 * @param allAssistants
+	 *            All the assistants of the system.
+	 * @param allProfessors
+	 *            All the professors of the system.
+	 * @param allClassroooms
+	 *            All the classrooms of the system.
 	 */
-	public static void readCourseCourses(ArrayList<Course> allCourses, ArrayList<Assistant> allAssistants, ArrayList<Professor> allProfessors, ArrayList<Classroom> allClassroooms) {
+	public static void readCourseCourses(ArrayList<Course> allCourses, ArrayList<Assistant> allAssistants,
+			ArrayList<Professor> allProfessors, ArrayList<Classroom> allClassroooms) {
 		try {
-			FileInputStream fileInputStream = new FileInputStream (FolderFileManager.adminCourseCourses);
+			FileInputStream fileInputStream = new FileInputStream(FolderFileManager.adminCourseCourses);
 			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(fileInputStream));
 			String icourseString = bufferedReader.readLine();
-			while (icourseString != null ) {
+			while (icourseString != null) {
 				String[] arguments = icourseString.split("&");
 
 				String initials = arguments[0];
@@ -128,7 +142,7 @@ public class CourseCoursesReaderWriter {
 				String assitantsOrProfessorsString = arguments[4];
 				String classroomInitials = arguments[5];
 				String dayModuleStrings = arguments[6];
-				
+
 				Schedule schedule = new Schedule();
 				ArrayList<DayModuleTuple> dayModuleTuples = new ArrayList<DayModuleTuple>();
 				for (String dayModuleString : dayModuleStrings.split(";")) {
@@ -138,11 +152,11 @@ public class CourseCoursesReaderWriter {
 					DayModuleTuple dayModuleTuple = schedule.new DayModuleTuple(day, module);
 					dayModuleTuples.add(dayModuleTuple);
 				}
-				
+
 				for (DayModuleTuple dayModuleTuple : dayModuleTuples) {
 					schedule.addModule(dayModuleTuple);
 				}
-				
+
 				Classroom classroom = new Classroom(null, null, null, 0);
 				for (Classroom possibleClassroom : allClassroooms) {
 					if (possibleClassroom.getInitials().equals(classroomInitials)) {
@@ -188,16 +202,17 @@ public class CourseCoursesReaderWriter {
 				}
 
 				for (Course possibleCourse : allCourses) {
-					if (possibleCourse.getInitials().equals(initials) && possibleCourse.getSection() == section && possibleCourse.getSemester() == semester) {
+					if (possibleCourse.getInitials().equals(initials) && possibleCourse.getSection() == section
+							&& possibleCourse.getSemester() == semester) {
 						possibleCourse.addCourse(icourse);
 					}
 				}
 
 				icourseString = bufferedReader.readLine();
 			}
-			fileInputStream.close();		
+			fileInputStream.close();
 		} catch (IOException ioException) {
-			System.err.println ("Unable to read from file");
+			System.err.println("Unable to read from file");
 			System.out.println(ioException);
 		}
 	}

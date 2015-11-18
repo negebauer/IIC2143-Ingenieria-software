@@ -10,7 +10,7 @@ public class CoursedSemester {
 	private int year;
 	private int maxCredits;
 	private ArrayList<Coursed> coursedCourses;
-	
+
 	public CoursedSemester(AcademicSemester semester, int year, int maxCredits) {
 		this.semester = semester;
 		this.year = year;
@@ -33,7 +33,7 @@ public class CoursedSemester {
 	public void setYear(int year) {
 		this.year = year;
 	}
-	
+
 	public void addCoursedCourse(Coursed coursedCourse) {
 		this.coursedCourses.add(coursedCourse);
 	}
@@ -54,12 +54,13 @@ public class CoursedSemester {
 	}
 
 	/**
-	 * @param maxCredits the maxCredits to set
+	 * @param maxCredits
+	 *            the maxCredits to set
 	 */
 	public void setMaxCredits(int maxCredits) {
 		this.maxCredits = maxCredits;
 	}
-	
+
 	public double getGrade() {
 		double total = 0;
 		for (Coursed coursed : coursedCourses) {

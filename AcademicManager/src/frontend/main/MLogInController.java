@@ -23,7 +23,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 
 public class MLogInController extends MViewController {
-	
+
 	@FXML
 	ComboBox<String> chBxUsers;
 	@FXML
@@ -36,28 +36,28 @@ public class MLogInController extends MViewController {
 	Label labelRegistration;
 	@FXML
 	Label labelLogIn;
-	
+
 	static URL view = Object.class.getResource("/frontend/main/MLogIn.fxml");
-	
+
 	@Override
-	public void setUp(){
+	public void setUp() {
 		super.setUp();
 		hideBack();
 		hideLogout();
-		
+
 		btnSignIn.setText(Messages.getUILabel(UILabel.SIGN_IN));
 		btnRegister.setText(Messages.getUILabel(UILabel.REGISTER));
 		labelSignIn.setText(Messages.getUILabel(UILabel.SIGN_IN_AS_USER));
 		labelRegistration.setText(Messages.getUILabel(UILabel.DONT_HAVE_ACCOUNT_REGISTER));
 		labelLogIn.setText(Messages.getUILabel(UILabel.LOG_IN));
-		
+
 		btnSignIn.setCursor(Cursor.HAND);
 		btnRegister.setCursor(Cursor.HAND);
 		ArrayList<String> users = new ArrayList<String>();
-		
+
 		for (Professor professor : Manager.INSTANCE.professors) {
 			users.add(getUser(UILabel.PROFESSOR, professor));
-		}	
+		}
 		for (Student student : Manager.INSTANCE.students) {
 			users.add(getUser(UILabel.STUDENT, student));
 		}
@@ -67,28 +67,28 @@ public class MLogInController extends MViewController {
 		for (Admin admin : Manager.INSTANCE.admins) {
 			users.add(getUser(UILabel.ADMINISTRATOR, admin));
 		}
-		
+
 		chBxUsers.setItems(FXCollections.observableArrayList(users));
 		ViewUtilities.autoComplete(chBxUsers);
 	}
-	
+
 	private String getUser(Messages.UILabel label, User user) {
 		return Messages.getUILabel(label) + " " + user.getRut() + " " + user.getName() + " " + user.getLastnameFather();
 	}
-	
+
 	public void btnSignIn_Pressed() {
 		ArrayList<User> users = new ArrayList<User>();
 		users.addAll(Manager.INSTANCE.students);
 		users.addAll(Manager.INSTANCE.admins);
 		users.addAll(Manager.INSTANCE.professors);
-		
+
 		for (User user : users) {
 			if (this.chBxUsers.getSelectionModel().getSelectedItem().split(" ")[1].equals(user.getRut())) {
 				Manager.INSTANCE.currentUser = user;
 				break;
 			}
 		}
-		
+
 		if (Manager.INSTANCE.currentUser instanceof Student) {
 			ViewUtilities.openView(SMainViewController.view, view);
 		} else if (Manager.INSTANCE.currentUser instanceof Admin) {
@@ -97,7 +97,7 @@ public class MLogInController extends MViewController {
 			ViewUtilities.openView(PMainViewController.view, view);
 		}
 	}
-	
+
 	public void btnRegister_Pressed() {
 		ViewUtilities.openView(MNewUserRegistrationController.view, view);
 	}

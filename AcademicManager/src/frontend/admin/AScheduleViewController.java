@@ -19,7 +19,7 @@ import javafx.stage.Stage;
 
 public class AScheduleViewController extends MViewController {
 
-	//Monday CheckBoxes
+	// Monday CheckBoxes
 	@FXML
 	CheckBox chckBxMondayModule5;
 	@FXML
@@ -37,7 +37,7 @@ public class AScheduleViewController extends MViewController {
 	@FXML
 	CheckBox chckBxMondayModule1;
 
-	//Tuesday CheckBoxes
+	// Tuesday CheckBoxes
 	@FXML
 	CheckBox chckBxTuesdayModule1;
 	@FXML
@@ -55,7 +55,7 @@ public class AScheduleViewController extends MViewController {
 	@FXML
 	CheckBox chckBxTuesdayModule5;
 
-	//Wednesday CheckBoxes
+	// Wednesday CheckBoxes
 	@FXML
 	CheckBox chckBxWednesdayModule1;
 	@FXML
@@ -73,7 +73,7 @@ public class AScheduleViewController extends MViewController {
 	@FXML
 	CheckBox chckBxWednesdayModule5;
 
-	//Thursday CheckBoxes
+	// Thursday CheckBoxes
 	@FXML
 	CheckBox chckBxThursdayModule1;
 	@FXML
@@ -90,8 +90,8 @@ public class AScheduleViewController extends MViewController {
 	CheckBox chckBxThursdayModule6;
 	@FXML
 	CheckBox chckBxThursdayModule5;
-	
-	//Friday CheckBoxes
+
+	// Friday CheckBoxes
 	@FXML
 	CheckBox chckBxFridayModule1;
 	@FXML
@@ -109,7 +109,7 @@ public class AScheduleViewController extends MViewController {
 	@FXML
 	CheckBox chckBxFridayModule5;
 
-	//Saturday CheckBoxes
+	// Saturday CheckBoxes
 	@FXML
 	CheckBox chckBxSaturdayModule1;
 	@FXML
@@ -127,7 +127,7 @@ public class AScheduleViewController extends MViewController {
 	@FXML
 	CheckBox chckBxSaturdayModule5;
 
-	//Sunday CheckBoxes
+	// Sunday CheckBoxes
 	@FXML
 	CheckBox chckBxSundayModule1;
 	@FXML
@@ -145,7 +145,7 @@ public class AScheduleViewController extends MViewController {
 	@FXML
 	CheckBox chckBxSundayModule5;
 
-	//Days Labels
+	// Days Labels
 	@FXML
 	Label labelMonday;
 	@FXML
@@ -161,7 +161,7 @@ public class AScheduleViewController extends MViewController {
 	@FXML
 	Label labelSunday;
 
-	//Else
+	// Else
 	@FXML
 	Button btnSaveSchedule;
 	@FXML
@@ -169,13 +169,14 @@ public class AScheduleViewController extends MViewController {
 
 	static URL view = Object.class.getResource("/frontend/admin/AScheduleView.fxml");
 
+	@Override
 	public void setUp() {
 		super.setUp();
 		super.hideLanguage();
 		super.hideBack();
 		super.hideLogout();
 		super.hideReload();
-		
+
 		labelMonday.setText(Messages.getDay(Day.MONDAY));
 		labelTuesday.setText(Messages.getDay(Day.TUESDAY));
 		labelWednesday.setText(Messages.getDay(Day.WEDNESDAY));
@@ -185,11 +186,11 @@ public class AScheduleViewController extends MViewController {
 		labelSunday.setText(Messages.getDay(Day.SUNDAY));
 		btnSaveSchedule.setText(Messages.getUILabel(UILabel.SAVE_SCHEDULE));
 		labelScheduleTitle.setText(Messages.getUILabel(UILabel.SCHEDULE_VIEW_TITLE));
-		
+
 		Schedule editingSchedule = Manager.INSTANCE.currentEditingSchedule;
 		setCheckBoxes(editingSchedule);
 	}
-	
+
 	public void btnSaveSchedule_Pressed() {
 		ArrayList<DayModuleTuple> modules = new ArrayList<DayModuleTuple>();
 		Schedule editingSchedule = new Schedule();
@@ -362,11 +363,11 @@ public class AScheduleViewController extends MViewController {
 		if (chckBxSundayModule5.isSelected()) {
 			modules.add(editingSchedule.new DayModuleTuple(Day.SUNDAY, Module._5));
 		}
-		
+
 		Manager.INSTANCE.currentEditingSchedule = new Schedule(modules);
-		
+
 		Stage stage = (Stage) btnSaveSchedule.getScene().getWindow();
-	    stage.close();
+		stage.close();
 	}
 
 	public void setCheckBoxes(Schedule editingSchedule) {

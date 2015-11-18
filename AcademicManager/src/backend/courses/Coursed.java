@@ -24,14 +24,20 @@ public class Coursed {
 	private ArrayList<Evaluation> evaluations;
 	private boolean approved;
 	private double grade;
-	
+
 	/**
 	 * Creates a new Coursed instance from a coursed Course.
-	 * @param course The Course that was coursed.
-	 * @param approved Whether the Course was approved or not.
-	 * @param grade The grade obtained in the Course.
-	 * @param semester The semester in which the Course was taken.
-	 * @param year The year in which this Course was taken.
+	 * 
+	 * @param course
+	 *            The Course that was coursed.
+	 * @param approved
+	 *            Whether the Course was approved or not.
+	 * @param grade
+	 *            The grade obtained in the Course.
+	 * @param semester
+	 *            The semester in which the Course was taken.
+	 * @param year
+	 *            The year in which this Course was taken.
 	 */
 	public Coursed(Course course, boolean approved, double grade, AcademicSemester semester, int year) {
 		this.name = course.getName();
@@ -51,7 +57,8 @@ public class Coursed {
 	/**
 	 * This method is used internally to load Coursed from the database.
 	 */
-	public Coursed(String name, String initials, int section, int credits, String details, School school, AcademicSemester semester, int year, boolean approved, double grade) {
+	public Coursed(String name, String initials, int section, int credits, String details, School school,
+			AcademicSemester semester, int year, boolean approved, double grade) {
 		this.name = name;
 		this.initials = initials;
 		this.section = section;
@@ -78,7 +85,7 @@ public class Coursed {
 	public String getInitials() {
 		return initials;
 	}
-	
+
 	/**
 	 * @return The section of this Course.
 	 */
@@ -113,7 +120,7 @@ public class Coursed {
 	public AcademicSemester getSemester() {
 		return semester;
 	}
-	
+
 	public int getYear() {
 		return year;
 	}
@@ -124,7 +131,7 @@ public class Coursed {
 	public ArrayList<ICourse> getCourses() {
 		return courses;
 	}
-	
+
 	public void addICourse(ICourse icourse) {
 		courses.add(icourse);
 	}
@@ -149,10 +156,12 @@ public class Coursed {
 	public double getGrade() {
 		return grade;
 	}
-	
+
 	/**
 	 * Modifies the grade obtained in the Course.
-	 * @param grade The new grade obtained in the Course.
+	 * 
+	 * @param grade
+	 *            The new grade obtained in the Course.
 	 */
 	public void setGrade(int grade) {
 		this.grade = grade;
@@ -161,7 +170,7 @@ public class Coursed {
 	public void setDetails(String details) {
 		this.details = details;
 	}
-	
+
 	public Assistantship getAssistantship() {
 		for (ICourse icourse : courses) {
 			if (icourse instanceof Assistantship) {
@@ -170,7 +179,7 @@ public class Coursed {
 		}
 		return null;
 	}
-	
+
 	public Laboratory getLaboratory() {
 		for (ICourse icourse : courses) {
 			if (icourse instanceof Laboratory) {
@@ -179,7 +188,7 @@ public class Coursed {
 		}
 		return null;
 	}
-	
+
 	public Lecture getLecture() {
 		for (ICourse icourse : courses) {
 			if (icourse instanceof Lecture) {
@@ -188,5 +197,5 @@ public class Coursed {
 		}
 		return null;
 	}
-	
+
 }

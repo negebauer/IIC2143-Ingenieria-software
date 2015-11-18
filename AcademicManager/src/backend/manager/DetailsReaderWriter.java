@@ -15,24 +15,25 @@ import backend.courses.Course;
  */
 public class DetailsReaderWriter {
 
-	/* File format
-	details
-	*/
-	
+	/*
+	 * File format details
+	 */
+
 	/**
 	 * Writes all the courses details to the details folder.
 	 */
 	public static void writeDetails(ArrayList<Course> courses) {
 		try {
 			for (Course course : courses) {
-				String detailsString = FolderFileManager.adminCourseDetails + "/" + course.getInitials() + "_" + course.getSection() + ".txt";
-				FileOutputStream fileOutputStream = new FileOutputStream (detailsString);
+				String detailsString = FolderFileManager.adminCourseDetails + "/" + course.getInitials() + "_"
+						+ course.getSection() + ".txt";
+				FileOutputStream fileOutputStream = new FileOutputStream(detailsString);
 				PrintStream printStream = new PrintStream(fileOutputStream);
 				printStream.println(course.getDetails());
 				fileOutputStream.close();
 			}
 		} catch (IOException ioException) {
-			System.err.println ("Unable to write to file");
+			System.err.println("Unable to write to file");
 			System.out.println(ioException);
 		}
 	}
@@ -43,9 +44,11 @@ public class DetailsReaderWriter {
 	public static void readDetails(ArrayList<Course> allCourses) {
 		try {
 			for (Course course : allCourses) {
-				String detailsString = FolderFileManager.adminCourseDetails + "/" + course.getInitials() + "_" + course.getSection() + ".txt";
+				String detailsString = FolderFileManager.adminCourseDetails + "/" + course.getInitials() + "_"
+						+ course.getSection() + ".txt";
 				if (course.isCoordinated()) {
-					detailsString = FolderFileManager.adminCourseDetails + "/" + course.getInitials() + "_" + 1 + ".txt";
+					detailsString = FolderFileManager.adminCourseDetails + "/" + course.getInitials() + "_" + 1
+							+ ".txt";
 				}
 				FileInputStream fileInputStream = new FileInputStream(detailsString);
 				BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(fileInputStream));
@@ -54,9 +57,9 @@ public class DetailsReaderWriter {
 				fileInputStream.close();
 			}
 		} catch (IOException ioException) {
-			System.err.println ("Unable to write to file");
+			System.err.println("Unable to write to file");
 			System.out.println(ioException);
 		}
 	}
-	
+
 }

@@ -16,10 +16,14 @@ import frontend.main.MViewController;
 import frontend.others.ViewUtilities;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
 public class AEvaluationManagerEditingViewController extends MViewController {
-	
+
 	@FXML
 	ComboBox<String> chBxClassroom;
 	@FXML
@@ -46,46 +50,47 @@ public class AEvaluationManagerEditingViewController extends MViewController {
 	Label labelEvaluationType;
 	@FXML
 	Button btnSaveEvaluation;
-	
+
 	static URL view = Object.class.getResource("/frontend/admin/AEvaluationManagerEditingView.fxml");
 	boolean isCreating = false;
-	
+
+	@Override
 	public void setUp() {
 		super.setUp();
 		labelClassroom.setText(Messages.getUILabel(UILabel.SELECT_CLASSROOM));
-		
+
 		ArrayList<String> evaluationTypes = new ArrayList<String>();
 		for (CourseEvaluation evaluationType : CourseEvaluation.values()) {
 			evaluationTypes.add(CourseEvaluation.getCourseEvaluationMessage(evaluationType));
 		}
 		chBxEvaluationType.setItems(FXCollections.observableArrayList(evaluationTypes));
-		
+
 		ArrayList<String> classrooms = new ArrayList<String>();
 		for (Classroom clasroom : Manager.INSTANCE.classrooms) {
 			classrooms.add(clasroom.getInitials());
 		}
 		chBxClassroom.setItems(FXCollections.observableArrayList(classrooms));
-		
+
 		Evaluation selectedEvaluation = Manager.INSTANCE.currentEditingEvaluation;
 		if (selectedEvaluation != null) {
 			chBxClassroom.getSelectionModel().select(selectedEvaluation.getClassroom().getInitials());
 			chBxEvaluationType.getSelectionModel().select(selectedEvaluation.getCourseEvaluation().toString());
-			SimpleDateFormat dateFormat =  new SimpleDateFormat ("dd.MM.yyyy HH:mm", Locale.ENGLISH);
+			SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.ENGLISH);
 			String[] rawDate = dateFormat.format((selectedEvaluation.getDate())).split(" ");
 			String[] rawDay = rawDate[0].split(".");
 			txBxDay.setText(rawDay[0]);
 			txBxMonth.setText(rawDay[1]);
 			txBxYear.setText(rawDay[2]);
 			txBxHour.setText(rawDate[1]);
-			
+
 			isCreating = false;
 		} else {
 			isCreating = true;
 		}
-		
-		ViewUtilities.autoComplete(chBxClassroom);	
+
+		ViewUtilities.autoComplete(chBxClassroom);
 	}
-	
+
 	public void btnSaveEvaluation_Pressed() {
 		String day = txBxDay.getText();
 		String month = txBxMonth.getText();
@@ -93,22 +98,23 @@ public class AEvaluationManagerEditingViewController extends MViewController {
 		String hour = txBxHour.getText();
 		String dateString = day + "." + month + "." + year + " " + hour;
 		Classroom classroom = null;
-		
+
 		for (Classroom Uclassroom : Manager.INSTANCE.classrooms) {
-			if (Uclassroom.getInitials() == chBxClassroom.getSelectionModel().getSelectedItem()){
+			if (Uclassroom.getInitials() == chBxClassroom.getSelectionModel().getSelectedItem()) {
 				classroom = Uclassroom;
 				break;
 			}
 		}
-		
-		CourseEvaluation evaluationType = null;		
-		if (!chBxEvaluationType.getSelectionModel().isEmpty() & chBxEvaluationType.getItems().contains(chBxEvaluationType.getSelectionModel().getSelectedItem())) {
-			evaluationType = CourseEvaluation.getCourseEvaluation(chBxEvaluationType.getSelectionModel().getSelectedItem());
+
+		CourseEvaluation evaluationType = null;
+		if (!chBxEvaluationType.getSelectionModel().isEmpty()
+				& chBxEvaluationType.getItems().contains(chBxEvaluationType.getSelectionModel().getSelectedItem())) {
+			evaluationType = CourseEvaluation
+					.getCourseEvaluation(chBxEvaluationType.getSelectionModel().getSelectedItem());
 		}
-		
-		
+
 		Evaluation selectedEvaluation = Manager.INSTANCE.currentEditingEvaluation;
-		
+
 		if (isCreating) {
 			selectedEvaluation = new Evaluation(evaluationType, classroom, dateString);
 			Manager.INSTANCE.currentEditignCourse.getEvaluations().add(selectedEvaluation);
@@ -117,7 +123,7 @@ public class AEvaluationManagerEditingViewController extends MViewController {
 			selectedEvaluation.setDate(Utilities.getDateFromString(dateString));
 			selectedEvaluation.setCourseEvaluation(evaluationType);
 		}
-		
+
 		Manager.INSTANCE.currentEditingEvaluation = null;
 		super.btnBack_Pressed();
 	}

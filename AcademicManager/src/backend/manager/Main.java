@@ -15,21 +15,21 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
 	public final static Main INSTANCE = new Main();
-	
+
 	private Stage primaryStage;
 	private Pane root;
-	
-	public static void main(String [ ] args) {
+
+	public static void main(String[] args) {
 		FolderFileManager.checkFolders();
 		Manager.INSTANCE.loadData();
 		Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
-	        @Override
+			@Override
 			public void run() {
-	        	Manager.INSTANCE.saveData();
-	        }
-	    }));
-		// -----    Delete any test code from this line   -----
-		
+				Manager.INSTANCE.saveData();
+			}
+		}));
+		// ----- Delete any test code from this line -----
+
 		ArrayList<String> newarray = new ArrayList<String>();
 		newarray.add("A");
 		newarray.add("C");
@@ -38,34 +38,34 @@ public class Main extends Application {
 		for (String s : newarray) {
 			System.out.println(s);
 		}
-		
-		// ----- 			To this line				  -----
-		
+
+		// ----- To this line -----
+
 		Application.launch(Main.class, args);
-		
+
 	}
 
 	@Override
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
-		this.showLogInView();		
+		this.showLogInView();
 	}
-	
+
 	private void showLogInView() {
 		FXMLLoader fxmlLoader = new FXMLLoader(MLogInController.getView());
-		
+
 		try {
-			root = (Pane)fxmlLoader.load();
+			root = (Pane) fxmlLoader.load();
 			((MLogInController) fxmlLoader.getController()).setUp();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
-		Scene scene = new Scene(root,600,400);
+		Scene scene = new Scene(root, 600, 400);
 		primaryStage.setScene(scene);
-        primaryStage.setTitle("Academic Manager");
-        primaryStage.setResizable(false);
-        primaryStage.getIcons().add(new Image("file:documents/images/icon_colors.png"));
+		primaryStage.setTitle("Academic Manager");
+		primaryStage.setResizable(false);
+		primaryStage.getIcons().add(new Image("file:documents/images/icon_colors.png"));
 		primaryStage.show();
 		CurrentViewHandler.INSTANCE.primaryStage = primaryStage;
 	}

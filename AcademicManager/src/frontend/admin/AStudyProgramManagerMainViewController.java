@@ -16,7 +16,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 
 public class AStudyProgramManagerMainViewController extends MViewController {
-	
+
 	@FXML
 	Label labelEditStudyProgram;
 	@FXML
@@ -27,26 +27,26 @@ public class AStudyProgramManagerMainViewController extends MViewController {
 	Button btnEditStudyProgram;
 	@FXML
 	ComboBox<String> chBxStudyProgramsList;
-	
-	
+
 	public static URL view = Object.class.getResource("/frontend/admin/AStudyProgramManagerMainView.fxml");
-	
+
+	@Override
 	public void setUp() {
 		super.setUp();
-		
+
 		labelCreateStudyProgram.setText(Messages.getUILabel(UILabel.STUDY_PROGRAM_CREATE_LABEL));
 		labelEditStudyProgram.setText(Messages.getUILabel(UILabel.STUDY_PROGRAM_EDIT_LABEL));
 		btnCreateStudyProgram.setText(Messages.getUILabel(UILabel.CREATE_NEW_STUDY_PROGRAM));
 		btnEditStudyProgram.setText(Messages.getUILabel(UILabel.EDIT_STUDY_PROGRAM));
 
 		ArrayList<String> studyProgramNames = new ArrayList<String>();
-			
+
 		for (StudyProgram studyProgram : Manager.INSTANCE.studyPrograms) {
 			studyProgramNames.add(studyProgram.getName());
 		}
-			
+
 		chBxStudyProgramsList.setItems(FXCollections.observableArrayList(studyProgramNames));
-		
+
 		if (Manager.INSTANCE.currentEditingStudyProgram != null) {
 			chBxStudyProgramsList.getSelectionModel().select(Manager.INSTANCE.currentEditingStudyProgram.getName());
 		}
@@ -58,17 +58,20 @@ public class AStudyProgramManagerMainViewController extends MViewController {
 		Manager.INSTANCE.currentEditingStudyProgram = null;
 		ViewUtilities.openView(AStudyProgramManagerEditingViewController.view, view);
 	}
-	
+
 	public void btnEditStudyProgram_Pressed() {
-		if (!chBxStudyProgramsList.getSelectionModel().isEmpty() && chBxStudyProgramsList.getItems().contains(chBxStudyProgramsList.getSelectionModel().getSelectedItem())) {
+		if (!chBxStudyProgramsList.getSelectionModel().isEmpty() && chBxStudyProgramsList.getItems()
+				.contains(chBxStudyProgramsList.getSelectionModel().getSelectedItem())) {
 			String selected = chBxStudyProgramsList.getSelectionModel().getSelectedItem();
 			Manager.INSTANCE.currentEditingStudyProgram = Manager.INSTANCE.getStudyProgramForName(selected);
 			ViewUtilities.openView(AStudyProgramManagerEditingViewController.view, view);
 		} else {
 			// TODO Uncomment when function is created
-			//ViewUtilities.showAlert(Messages.getUILabel(UILabel.ERROR_SELECTION) + "(" + Messages.getUILabel(UILabel.STUDY_PROGRAM_EDIT_LABEL) + ")");
+			// ViewUtilities.showAlert(Messages.getUILabel(UILabel.ERROR_SELECTION)
+			// + "(" + Messages.getUILabel(UILabel.STUDY_PROGRAM_EDIT_LABEL) +
+			// ")");
 		}
-		
+
 	}
-	
+
 }
