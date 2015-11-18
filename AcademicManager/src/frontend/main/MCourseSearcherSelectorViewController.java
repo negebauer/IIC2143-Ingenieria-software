@@ -45,8 +45,7 @@ public class MCourseSearcherSelectorViewController extends MViewController {
 		if (firstLoad) {
 			updateCoursesShow();
 			firstLoad = false;
-		}
-		
+		}	
 	}
 	
 	public void updateCoursesShow() {
@@ -85,8 +84,7 @@ public class MCourseSearcherSelectorViewController extends MViewController {
 	}
 		
 	public void hideCourseSearcher() {
-		labelSearchCourse.setVisible(false);
-		
+		labelSearchCourse.setVisible(false);	
 	}
 	
 	public void hideCourseSelector() {
@@ -94,13 +92,11 @@ public class MCourseSearcherSelectorViewController extends MViewController {
 		btnSearchCourse.setVisible(false);
 		txBxCourseToSearch.setVisible(false);
 		btnDetails.setVisible(false);
-		chBxSelectedCourse.setVisible(false);
-		
+		chBxSelectedCourse.setVisible(false);	
 	}
 	
 	public void showCourseSearcher() {
 		labelSearchCourse.setVisible(true);
-		
 	}
 	
 	public void showCourseSelector() {
@@ -108,8 +104,6 @@ public class MCourseSearcherSelectorViewController extends MViewController {
 		btnSearchCourse.setVisible(true);
 		txBxCourseToSearch.setVisible(true);
 		btnDetails.setVisible(true);
-		chBxSelectedCourse.setVisible(true);
-		
+		chBxSelectedCourse.setVisible(true);		
 	}
-	
 }

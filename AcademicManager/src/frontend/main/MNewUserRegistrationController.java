@@ -18,6 +18,7 @@ import backend.users.Admin;
 import backend.users.Professor;
 import backend.users.Student;
 import backend.users.User.Gender;
+import frontend.others.Validate;
 import frontend.others.ViewUtilities;
 
 public class MNewUserRegistrationController extends MViewController {
@@ -95,8 +96,7 @@ public class MNewUserRegistrationController extends MViewController {
 		hideStudentFields();
 		
 		labelToUseATMMustRegister.setText(Messages.getUILabel(UILabel.TO_USE_ATM_MUST_REGISTER));
-		btnContinue.setText(Messages.getUILabel(UILabel.CONTINUE));
-		
+		btnContinue.setText(Messages.getUILabel(UILabel.CONTINUE));		
 		labelName.setText(Messages.getUILabel(UILabel.NAME));
 		labelLastFather.setText(Messages.getUILabel(UILabel.LAST_NAME_FATHER));
 		labelLastMother.setText(Messages.getUILabel(UILabel.LAST_NAME_MOTHER));
@@ -158,11 +158,9 @@ public class MNewUserRegistrationController extends MViewController {
 	}
 	
 	public void btnContinue_Pressed() {
-		cleanInfo();
-		Boolean valid = checkValid();
-		if (!valid) {
+		this.cleanInfo();
+		if (!this.checkValid())
 			return;
-		}
 		
 		String name = txBxName.getText();
 		String lastFather = txBxLastFather.getText();
@@ -194,38 +192,26 @@ public class MNewUserRegistrationController extends MViewController {
 	
 	public void cleanInfo() {
 		if (txBxRUT.getText().contains(".") || txBxRUT.getText().contains("-")) {
-			String raw = txBxRUT.getText();
 			String clean = "";
-			for (char character : raw.toCharArray()) {
-				if (character == ".".charAt(0) || character == "-".charAt(0)) {
-					continue;
-				} else {
-					clean = clean + character;
-				}
+			for (char character : txBxRUT.getText().toCharArray()) {
+				if (character != '.' && character != '-')
+					clean += character;
 			}
 			txBxRUT.setText(clean);
 		}
 		
 		if (txBxCellPhone.getText().contains("+")) {
-			String raw = txBxCellPhone.getText();
 			String clean = "";
-			for (char character : raw.toCharArray()) {
-				if (character == "+".charAt(0)) {
-					continue;
-				} else {
-					clean = clean + character;
-				}
+			for (char character : txBxCellPhone.getText().toCharArray()) {
+				if (character != '+')
+					clean += character;
 			}
 			txBxCellPhone.setText(clean);
 		}
-		
 	}
 	
-	public Boolean checkValid() {
-		if (txBxRUT.getText().length() < "12.345.678-9".length() - 3) {
-			return false;
-		}
-		return true;
+	public Boolean checkValid() {	
+		return (txBxRUT.getText().length() < 9 && Validate.checkRUT(txBxRUT.getText()));
 	}
 	
 	public void showStudentFields() {
