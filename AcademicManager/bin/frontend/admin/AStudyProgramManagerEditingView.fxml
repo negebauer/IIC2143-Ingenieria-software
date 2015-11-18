@@ -16,7 +16,7 @@
             <TextField fx:id="txBxYearStudyProgram" layoutX="64.0" layoutY="148.0" promptText="ej. 2013" />
             <TextField fx:id="txBxMaxCreditsPerSemester" layoutX="68.0" layoutY="242.0" promptText="ej. 50" />
             <TextField fx:id="txBxMaxFailedCredits" layoutX="288.0" layoutY="75.0" promptText="ej. 60" />
-            <ChoiceBox fx:id="chBxSchoolStudyProgram" layoutX="287.0" layoutY="148.0" prefHeight="25.0" prefWidth="288.0" />
+            <ComboBox fx:id="chBxSchoolStudyProgram" layoutX="287.0" layoutY="148.0" prefHeight="25.0" prefWidth="288.0" />
             <Label fx:id="labelName" layoutX="64.0" layoutY="54.0" text="Name" />
             <Label fx:id="labelYear" layoutX="64.0" layoutY="130.0" text="Year" />
             <Label fx:id="labelMaxCreditsPerSemester" layoutX="64.0" layoutY="224.0" text="Maximum of Credits per Semester" />

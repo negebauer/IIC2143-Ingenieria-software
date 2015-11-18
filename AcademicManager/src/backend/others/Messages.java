@@ -404,7 +404,15 @@ public class Messages {
 		SELECT_REQUIREMENT,
 		ADD_CO_REQUIREMENT,
 		REMOVE_CO_REQUIREMENT,
-		SELECT_CO_REQUIREMENT
+		SELECT_CO_REQUIREMENT, 
+		NOT_REMOVED,
+		ERROR_SELECTION,
+		ERROR_REMOVING_SEMESTER,
+		REMOVE_LAST_SEMESTER,
+		REMOVE_EVALUATION,
+		CREATE_EVALUATION,
+		EDIT_EVALUATION,
+		EVALUATION_MANAGER_WELCOME_MESSAGE
 		
 	}
 	
@@ -541,7 +549,15 @@ public class Messages {
 		result.put(UILabel.ADD_CO_REQUIREMENT,								"Add Co-Requirements");
 		result.put(UILabel.REMOVE_CO_REQUIREMENT,							"Remove Co-Requirements");
 		result.put(UILabel.SELECT_CO_REQUIREMENT,							"Select Co-Requirements");
-		result.put(UILabel.SELECT_REQUIREMENT,								"Select Requirements");		
+		result.put(UILabel.SELECT_REQUIREMENT,								"Select Requirements");
+		result.put(UILabel.NOT_REMOVED,										"Not Removed");
+		result.put(UILabel.ERROR_SELECTION,									"Select a valid option");
+		result.put(UILabel.ERROR_REMOVING_SEMESTER,							"The last semester must be empty to be removed");
+		result.put(UILabel.REMOVE_LAST_SEMESTER,							"Remove Last Semester");
+		result.put(UILabel.REMOVE_EVALUATION,								"Remove Evaluation");
+		result.put(UILabel.CREATE_EVALUATION,								"Create Evaluation");
+		result.put(UILabel.EDIT_EVALUATION,									"Edit Evaluation");
+		result.put(UILabel.EVALUATION_MANAGER_WELCOME_MESSAGE,				"Welcome to the Evaluations Manager, select one to edit or remove it, or press to select one");
         return Collections.unmodifiableMap(result);
     }
 	
@@ -661,7 +677,15 @@ public class Messages {
 		result.put(UILabel.ADD_CO_REQUIREMENT,								"Agregar Co-Requisito");
 		result.put(UILabel.REMOVE_CO_REQUIREMENT,							"Remover Co-Requisito");
 		result.put(UILabel.SELECT_CO_REQUIREMENT,							"Seleccionar Co-Requisito");
-		result.put(UILabel.SELECT_REQUIREMENT,								"Seleccionar Requisito");	
+		result.put(UILabel.SELECT_REQUIREMENT,								"Seleccionar Requisito");
+		result.put(UILabel.NOT_REMOVED,										"No Removido");
+		result.put(UILabel.ERROR_SELECTION,									"Selecciona una opcion valida");
+		result.put(UILabel.ERROR_REMOVING_SEMESTER,							"El ultimo semestre debe estar vacio para poder eliminarlo");
+		result.put(UILabel.REMOVE_LAST_SEMESTER,							"Eliminar Ultimo Semestre");
+		result.put(UILabel.REMOVE_EVALUATION,								"Eliminar Evaluacion");
+		result.put(UILabel.CREATE_EVALUATION,								"Crear Evaluacion");
+		result.put(UILabel.EDIT_EVALUATION,									"Editar Evaluacion");
+		result.put(UILabel.EVALUATION_MANAGER_WELCOME_MESSAGE,				"Bienvenido al Editor de Evaluaciones, selecciona una para editarla o eliminarla, o presione para crear una nueva");
         return Collections.unmodifiableMap(result);
     }
 	

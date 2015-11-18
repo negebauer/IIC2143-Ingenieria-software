@@ -38,15 +38,13 @@ public class MCourseSearcherSelectorViewController extends MViewController {
 	
 	@Override
 	public void setUp() {
-		super.setUp();
-		
-		ViewUtilities.autoComplete(this.chBxSelectedCourse);
+		super.setUp();		
 		labelSearchCourse.setText(Messages.getUILabel(UILabel.SEMESTER_CURRENT_SEMESTER_SEARCH_COURSE));
 		if (firstLoad) {
 			updateCoursesShow();
 			firstLoad = false;
 		}
-		
+		ViewUtilities.autoComplete(this.chBxSelectedCourse);
 	}
 	
 	public void updateCoursesShow() {

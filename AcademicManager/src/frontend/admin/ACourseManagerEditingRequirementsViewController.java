@@ -9,13 +9,10 @@ import backend.manager.Manager;
 import backend.others.Messages;
 import backend.others.Messages.UILabel;
 import frontend.main.MCourseSearcherSelectorViewController;
-import frontend.others.ViewUtilities;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 
@@ -23,8 +20,6 @@ public class ACourseManagerEditingRequirementsViewController extends MCourseSear
 	
 	@FXML
 	ListView<String> listRequirements;
-	@FXML
-	ComboBox<String> chBxCoursesAsRequirements;
 	@FXML
 	Button btnAddRequirement;
 	@FXML
@@ -34,12 +29,10 @@ public class ACourseManagerEditingRequirementsViewController extends MCourseSear
 	@FXML
 	Label labelModificationResult;
 
-	public static URL view = Object.class.getResource("/frontend/admin/ACourseManagerView.fxml");
+	public static URL view = Object.class.getResource("/frontend/admin/ACourseManagerEditingRequirementsView.fxml");
 	
 	public void setUp() {
 		super.setUp();
-		
-		ViewUtilities.autoComplete(chBxCoursesAsRequirements);
 		
 		btnAddRequirement.setText(Messages.getUILabel(UILabel.ADD_REQUIREMENT));
 		btnRemoveRequirement.setText(Messages.getUILabel(UILabel.REMOVE_REQUIREMENT));
@@ -51,16 +44,10 @@ public class ACourseManagerEditingRequirementsViewController extends MCourseSear
 			requirements.add(requirement.getInitials());
 		}
 		listRequirements.setItems(FXCollections.observableArrayList(requirements));
-		
-		ArrayList<String> coursesStrings = new ArrayList<String>();
-		for (Course course : coursesToShow) {
-			coursesStrings.add(getParsedCourse(course.getInitials(), course.getSection(), course.getName()));
-		}
-		chBxCoursesAsRequirements.setItems(FXCollections.observableArrayList(coursesStrings));
 	}
 
 	public void btnAddRequirement_Pressed() {
-		if (!chBxCoursesAsRequirements.getSelectionModel().isEmpty()) {		
+		if (!chBxSelectedCourse.getSelectionModel().isEmpty() & chBxSelectedCourse.getItems().contains(chBxSelectedCourse.getSelectionModel().getSelectedItem())) {		
 			String rawCourseInfo = chBxSelectedCourse.getSelectionModel().getSelectedItem();
 			String[] parsed = getParsedInitialsSectionName(rawCourseInfo);
 			String initials = parsed[0];
@@ -77,14 +64,18 @@ public class ACourseManagerEditingRequirementsViewController extends MCourseSear
 					} else {
 						labelModificationResult.setText(Messages.getUILabel(UILabel.NOT_ADDED) + ": " + response.response);
 					}
+					break;
 				}
 			}
+		} else {
+			// TODO Uncomment when function is created
+			//ViewUtilities.showAlert(Messages.getUILabel(UILabel.ERROR_SELECTION) + "(" + Messages.getUILabel(UILabel.ADD_REQUIREMENT) + ")");
 		}
 	}
 
 	public void btnRemoveRequirement_Pressed() {
-		if (!chBxCoursesAsRequirements.getSelectionModel().isEmpty()) {	
-			String rawCourseInfo = chBxSelectedCourse.getSelectionModel().getSelectedItem();
+		if (!listRequirements.getSelectionModel().isEmpty()) {	
+			String rawCourseInfo = listRequirements.getSelectionModel().getSelectedItem();
 			String[] parsed = getParsedInitialsSectionName(rawCourseInfo);
 			String initials = parsed[0];
 			int section = Integer.valueOf(parsed[1]);
@@ -94,14 +85,18 @@ public class ACourseManagerEditingRequirementsViewController extends MCourseSear
 					AddOrRemoveRequirementResponse response = Manager.INSTANCE.currentEditignCourse.removeRequirement(course);
 					if (response.success) {
 						ObservableList<String> currentRequirements = listRequirements.getItems();
-						currentRequirements.add(getParsedCourse(initials, section, name));
+						currentRequirements.remove(getParsedCourse(initials, section, name));
 						listRequirements.setItems(FXCollections.observableArrayList(currentRequirements));
 						labelModificationResult.setText(Messages.getUILabel(UILabel.SUCCESS));
 					} else {
-						labelModificationResult.setText(Messages.getUILabel(UILabel.NOT_ADDED) + ": " + response.response);
+						labelModificationResult.setText(Messages.getUILabel(UILabel.NOT_REMOVED) + ": " + response.response);
 					}
+					break;
 				}
 			}
+		} else {
+			// TODO Uncomment when function is created
+			//ViewUtilities.showAlert(Messages.getUILabel(UILabel.ERROR_SELECTION) + "(" + Messages.getUILabel(UILabel.REMOVE_REQUIREMENT) + ")");
 		}
 	}	
 }

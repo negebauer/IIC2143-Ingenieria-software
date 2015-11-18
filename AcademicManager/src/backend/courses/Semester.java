@@ -49,7 +49,6 @@ public class Semester {
 		this.approvedCourses.add(courseInitials);
 	}
 	
-	
 	/**
 	 * Adds a course to the semester if the conditions for doing so are met.
 	 * @param course The course that wants to be added to the semester
@@ -185,6 +184,7 @@ public class Semester {
 		if (courses.contains(course) && courseNotCorequirement(course)){
 			response = new AddOrRemoveCourseResponse(true, Messages.getMessage(Message.COURSE_WAS_REMOVED_OF_SEMESTER));
 			courses.remove(course);
+			actualCredits -= course.getCredits();
 		} else {
 			response = new AddOrRemoveCourseResponse(false, Messages.getMessage(Message.COURSE_WASNT_REMOVED_OF_SEMESTER_NOT_IN_SEMESTER));
 		}

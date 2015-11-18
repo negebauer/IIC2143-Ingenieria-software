@@ -1,7 +1,11 @@
 package backend.courses;
 
+import java.util.Collections;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
+import backend.others.Messages;
 import backend.others.Utilities;
 
 /**
@@ -21,6 +25,45 @@ public class Evaluation {
 		
 		public String getEvaluation() {
 			return this.evaluation;
+		}
+		
+		public static final Map<CourseEvaluation, String> ACADEMIC_SEMESTER_MESSAGE_ENGLISH = createMapCourseEvaluationMessageEnglish();
+		public static final Map<CourseEvaluation, String> ACADEMIC_SEMESTER_SPANISH = createMapCourseEvaluationMessageSpanish();
+		
+		public static String getCourseEvaluationMessage(CourseEvaluation courseEvaluation) {
+			switch (Messages.LANGUAGE()) {
+			case ENGLISH:
+				return ACADEMIC_SEMESTER_MESSAGE_ENGLISH.get(courseEvaluation);
+			case SPANISH:
+				return ACADEMIC_SEMESTER_SPANISH.get(courseEvaluation);
+			default:
+				return Messages.ERROR_MESSAGE;
+			}
+		}
+		
+		private static Map<CourseEvaluation, String> createMapCourseEvaluationMessageEnglish() {
+	        Map<CourseEvaluation, String> result = new HashMap<CourseEvaluation, String>();
+	        result.put(CourseEvaluation.INTERROGATION,								"Interrogation");
+	        result.put(CourseEvaluation.EXAM,										"Exam");
+	        result.put(CourseEvaluation.CONTROL,									"Control");
+	        return Collections.unmodifiableMap(result);
+		}
+		
+		private static Map<CourseEvaluation, String> createMapCourseEvaluationMessageSpanish() {
+			Map<CourseEvaluation, String> result = new HashMap<CourseEvaluation, String>();
+	        result.put(CourseEvaluation.INTERROGATION,								"Interrogacion");
+	        result.put(CourseEvaluation.EXAM,										"Examen");
+	        result.put(CourseEvaluation.CONTROL,									"Control");
+	        return Collections.unmodifiableMap(result);
+		}
+		
+		public static CourseEvaluation getCourseEvaluation(String evaluationString) {
+			for (CourseEvaluation courseEvaluation : CourseEvaluation.values()) {
+				if (getCourseEvaluationMessage(courseEvaluation) == evaluationString) {
+					return courseEvaluation;
+				}
+			}
+			return null;
 		}
 	}
 	

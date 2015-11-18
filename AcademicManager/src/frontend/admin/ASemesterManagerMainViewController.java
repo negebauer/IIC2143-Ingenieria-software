@@ -3,6 +3,7 @@ package frontend.admin;
 import java.net.URL;
 import java.util.ArrayList;
 
+import backend.courses.Semester;
 import backend.courses.StudyProgram;
 import backend.manager.Manager;
 import backend.others.Messages;
@@ -25,6 +26,8 @@ public class ASemesterManagerMainViewController extends MViewController {
 	Button btnEditSemester;
 	@FXML
 	ChoiceBox<String> chBxSemesters;
+	@FXML
+	Button btnRemoveLastSemester;
 	
 	public static URL view = Object.class.getResource("/frontend/admin/ASemesterManagerMainView.fxml");
 	
@@ -34,6 +37,7 @@ public class ASemesterManagerMainViewController extends MViewController {
 		labelSemesterEditorWelcomeMessage.setText(Messages.getUILabel(UILabel.SEMESTER_MANGER_WELCOME_MESSAGE));
 		btnCreateSemester.setText(Messages.getUILabel(UILabel.CREATE_SEMESTER));
 		btnEditSemester.setText(Messages.getUILabel(UILabel.EDIT_SEMESTER));
+		btnRemoveLastSemester.setText(Messages.getUILabel(UILabel.REMOVE_LAST_SEMESTER));
 		
 		if (Manager.INSTANCE.currentEditingStudyProgram != null) {
 			StudyProgram currentProgram = Manager.INSTANCE.currentEditingStudyProgram;
@@ -46,19 +50,32 @@ public class ASemesterManagerMainViewController extends MViewController {
 				chBxSemesters.setItems(FXCollections.observableArrayList(semesters));
 			}
 		}
-		
 	}
 	
 	public void btnCreateSemester_Pressed() {
 		Manager.INSTANCE.currentSemester = null;
 		ViewUtilities.openView(ASemesterManagerEditingViewController.view, view);
 	}
-
+	
+	public void btnRemoveLastSemester_Pressed() {
+		int indexChoosed = Manager.INSTANCE.currentEditingStudyProgram.getSemesters().size() - 1;
+		Semester semester = Manager.INSTANCE.currentEditingStudyProgram.getSemesters().get(indexChoosed);
+		if (semester.getCourses().size() == 0) {
+			Manager.INSTANCE.currentEditingStudyProgram.getSemesters().remove(semester);
+		} else {
+			// TODO Uncomment when function is created
+			//ViewUtilities.showAlert(Messages.getUILabel(UILabel.ERROR_REMOVING_SEMESTER));
+		}
+	}
+	
 	public void btnEditSemester_Pressed() {
 		if (!chBxSemesters.getSelectionModel().isEmpty()) {
 			int indexChoosed = Integer.parseInt(chBxSemesters.getSelectionModel().getSelectedItem()) - 1;
 			Manager.INSTANCE.currentSemester = Manager.INSTANCE.currentEditingStudyProgram.getSemesters().get(indexChoosed);
 			ViewUtilities.openView(ASemesterManagerEditingViewController.view, view);
+		} else {
+			// TODO Uncomment when function is created
+			//ViewUtilities.showAlert(Messages.getUILabel(UILabel.ERROR_SELECTION) + "(" + Messages.getUILabel(UILabel.EDIT_SEMESTER) + ")");
 		}
 	}	
 }

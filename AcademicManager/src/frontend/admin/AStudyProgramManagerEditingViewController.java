@@ -46,10 +46,11 @@ public class AStudyProgramManagerEditingViewController extends MViewController {
 	
 	
 	public static URL view = Object.class.getResource("/frontend/admin/AStudyProgramManagerEditingView.fxml");
+	public boolean isCreating = false;
 	
 	public void setUp() {
+		
 		super.setUp();
-		ViewUtilities.autoComplete(chBxSchoolStudyProgram);
 		labelName.setText(Messages.getUILabel(UILabel.NAME));
 		labelYear.setText(Messages.getUILabel(UILabel.YEAR));
 		labelMaxCreditsPerSemester.setText(Messages.getUILabel(UILabel.MAXIMUM_OF_CREDITS_PER_SEMESTER));
@@ -60,15 +61,20 @@ public class AStudyProgramManagerEditingViewController extends MViewController {
 		
 		ArrayList<String> schools = new ArrayList<String>();
 		for (School school : School.values()) {
-			schools.add(school.toString());
+			schools.add(School.getSchoolMessage(school));
 		}
 		chBxSchoolStudyProgram.setItems(FXCollections.observableArrayList(schools));
 		
 		StudyProgram studyProgram = Manager.INSTANCE.currentEditingStudyProgram;
+		
+		ViewUtilities.autoComplete(chBxSchoolStudyProgram);
+		
 		if (studyProgram != null) {
 			fillFields(studyProgram);
+			isCreating = false;
+		} else {
+			isCreating = true;
 		}
-		
 	}
 	
 	public void fillFields(StudyProgram studyProgram) {
@@ -76,7 +82,7 @@ public class AStudyProgramManagerEditingViewController extends MViewController {
 		txBxYearStudyProgram.setText(studyProgram.getyearProgram() + "");
 		txBxMaxCreditsPerSemester.setText(studyProgram.getMaxCreditsPerSemester() + "");
 		txBxMaxFailedCredits.setText(studyProgram.getMaxFailedCredits() + "");
-		chBxSchoolStudyProgram.getSelectionModel().select(studyProgram.getSchool().toString());
+		chBxSchoolStudyProgram.getSelectionModel().select(School.getSchoolMessage(studyProgram.getSchool()));
 	}
 	
 	public void btnEditSemesters_Pressed() {
@@ -92,34 +98,29 @@ public class AStudyProgramManagerEditingViewController extends MViewController {
 	
 	public void saveStudyProgram() {
 		StudyProgram currentProgram = Manager.INSTANCE.currentEditingStudyProgram;
-		
-		if (Manager.INSTANCE.currentEditingStudyProgram == null) {
-			currentProgram = new StudyProgram(null, 0, null, null, 0, 0);
-		}
-		
-		
+
 		String name = txBxNameStudyProgram.getText();
 		int year = Integer.parseInt(txBxYearStudyProgram.getText());
 		int maxCreditsPerSemester = Integer.parseInt(txBxMaxCreditsPerSemester.getText());
 		int maxFailedCredits = Integer.parseInt(txBxMaxFailedCredits.getText());
 		
 		School school = null;
-		if (!chBxSchoolStudyProgram.getSelectionModel().isEmpty()) {
-			school = School.valueOf(chBxSchoolStudyProgram.getSelectionModel().getSelectedItem());
+		if (!chBxSchoolStudyProgram.getSelectionModel().isEmpty() && chBxSchoolStudyProgram.getItems().contains(chBxSchoolStudyProgram.getSelectionModel().getSelectedItem())) {
+			school = School.getSchool(chBxSchoolStudyProgram.getSelectionModel().getSelectedItem());
 		} else {
 			school = School.defaultSchool();
 		}
 		
-		currentProgram.setName(name);
-		currentProgram.setMaxCreditsPerSemester(maxCreditsPerSemester);
-		currentProgram.setMaxFailedCredits(maxFailedCredits);
-		currentProgram.setSchool(school);
-		currentProgram.setYearProgram(year);
-		
-		if (Manager.INSTANCE.currentEditingStudyProgram == null) {
+		if (isCreating) {
+			currentProgram = new StudyProgram(name, year, null, school, maxCreditsPerSemester, maxFailedCredits);
 			Manager.INSTANCE.currentEditingStudyProgram = currentProgram;
 			Manager.INSTANCE.studyPrograms.add(currentProgram);
-		}
-		
+		} else {
+			currentProgram.setName(name);
+			currentProgram.setMaxCreditsPerSemester(maxCreditsPerSemester);
+			currentProgram.setMaxFailedCredits(maxFailedCredits);
+			currentProgram.setSchool(school);
+			currentProgram.setYearProgram(year);
+		}		
 	}
 }

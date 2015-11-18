@@ -13,7 +13,7 @@
             <TextField fx:id="txBxInitialsCourse" layoutX="44.0" layoutY="149.0" promptText="ej. MAT1230" style="-fx-background-radius: 0;" />
             <TextField fx:id="txBxCourseCredits" layoutX="46.0" layoutY="212.0" promptText="ej. 10" style="-fx-background-radius: 0;" />
             <TextField fx:id="txBxCourseSection" layoutX="44.0" layoutY="274.0" promptText="ej. 2" style="-fx-background-radius: 0;" />
-            <ChoiceBox fx:id="chBxShcools" layoutX="45.0" layoutY="329.0" prefWidth="150.0" style="-fx-background-radius: 0;" />
+            <ComboBox fx:id="chBxShcools" layoutX="45.0" layoutY="329.0" prefWidth="150.0" style="-fx-background-radius: 0;" />
             <ChoiceBox fx:id="chBxAcademicSemesters" layoutX="217.0" layoutY="89.0" prefWidth="150.0" style="-fx-background-radius: 0;" />
             <TextArea fx:id="txArCourseDetails" layoutX="217.0" layoutY="150.0" prefHeight="200.0" prefWidth="200.0" promptText="ej. Contenidos: Integrales, " style="-fx-background-radius: 0;" wrapText="true" />
             <Button fx:id="btnSaveCourse" layoutX="475.0" layoutY="329.0" mnemonicParsing="false" onAction="#btnSaveCourse_Pressed" text="Guardar Curso" />

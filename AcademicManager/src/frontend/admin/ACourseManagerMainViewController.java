@@ -42,7 +42,7 @@ public class ACourseManagerMainViewController extends MCourseSearcherSelectorVie
 	}
 
 	public void btnEditCourse_Pressed() {
-		if (!super.chBxSelectedCourse.getSelectionModel().isEmpty()) {
+		if (!super.chBxSelectedCourse.getSelectionModel().isEmpty() && chBxSelectedCourse.getItems().contains(chBxSelectedCourse.getSelectionModel().getSelectedItem())) {
 			
 			String rawCourseInfo = chBxSelectedCourse.getSelectionModel().getSelectedItem();
 			String[] parsed = getParsedInitialsSectionName(rawCourseInfo);
@@ -56,6 +56,9 @@ public class ACourseManagerMainViewController extends MCourseSearcherSelectorVie
 				}
 			}
 			ViewUtilities.openView(ACourseManagerEditingViewController.view, view);
+		} else {
+			// TODO Uncomment when function is created
+			//ViewUtilities.showAlert(Messages.getUILabel(UILabel.ERROR_SELECTION) + "(" + Messages.getUILabel(UILabel.EDIT_COURSE) + ")");
 		}
 	}
 	
@@ -65,7 +68,7 @@ public class ACourseManagerMainViewController extends MCourseSearcherSelectorVie
 	}
 	
 	public void btnDeleteCourse_Pressed() {
-		if (!super.chBxSelectedCourse.getSelectionModel().isEmpty()) {
+		if (!super.chBxSelectedCourse.getSelectionModel().isEmpty() & chBxSelectedCourse.getItems().contains(chBxSelectedCourse.getSelectionModel().getSelectedItem())) {
 
 			String rawCourseInfo = chBxSelectedCourse.getSelectionModel().getSelectedItem();
 			String[] parsed = getParsedInitialsSectionName(rawCourseInfo);
@@ -82,6 +85,9 @@ public class ACourseManagerMainViewController extends MCourseSearcherSelectorVie
 			if (Manager.INSTANCE.courses.contains(Manager.INSTANCE.currentEditignCourse)) {
 				Manager.INSTANCE.courses.remove(Manager.INSTANCE.currentEditignCourse);
 			}
+		} else {
+			// TODO Uncomment when function is created
+			//ViewUtilities.showAlert(Messages.getUILabel(UILabel.ERROR_SELECTION) + "(" + Messages.getUILabel(UILabel.DELETE_COURSE) + ")");
 		}
 	}	
 }

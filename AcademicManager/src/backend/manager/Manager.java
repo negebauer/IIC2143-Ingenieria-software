@@ -11,6 +11,7 @@ import java.util.Calendar;
 
 import backend.courses.Classroom;
 import backend.courses.Course;
+import backend.courses.Evaluation;
 import backend.courses.Schedule;
 import backend.courses.Semester;
 import backend.courses.StudyProgram;
@@ -50,6 +51,7 @@ public class Manager {
 	public StudyProgram currentEditingStudyProgram;
 	public Course currentEditignCourse;
 	public Schedule currentEditingSchedule;
+	public Evaluation currentEditingEvaluation;
 	
 	/**
 	 * Creates the instance of manager.

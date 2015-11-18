@@ -137,4 +137,13 @@ public enum School {
         result.put(School.UNKNOWN,											"Desconocido");
         return Collections.unmodifiableMap(result);
 	}
+	
+	public static School getSchool(String schoolString) {
+		for (School school : School.values()) {
+			if (getSchoolMessage(school) == schoolString) {
+				return school;
+			}
+		}
+		return School.defaultSchool();
+	}
 }

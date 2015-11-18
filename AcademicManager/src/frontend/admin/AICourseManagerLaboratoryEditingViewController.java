@@ -24,7 +24,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-public class AICourseManagerViewController extends MViewController {
+public class AICourseManagerLaboratoryEditingViewController extends MViewController {
 	
 	@FXML
 	ChoiceBox<String> chBxICourses;
@@ -58,7 +58,7 @@ public class AICourseManagerViewController extends MViewController {
 	@FXML
 	Button btnSeeSchedule;
 	
-	static URL view = Object.class.getResource("/frontend/admin/AICourseManagerView.fxml");
+	static URL view = Object.class.getResource("/frontend/admin/AICourseManagerLaboratoryEditingView.fxml");
 	ICourse currentEditingICourse = null;
 	ArrayList<String> assistantsOrProfessors = new ArrayList<String>();
 	boolean isLaboratory = false;

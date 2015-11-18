@@ -65,4 +65,13 @@ public enum AcademicSemester {
         result.put(AcademicSemester.SECOND,										"Segundo");
         return Collections.unmodifiableMap(result);
 	}
+	
+	public static AcademicSemester getAcademicSemester(String academicSemesterString) {
+		for (AcademicSemester academicSemester : AcademicSemester.values()) {
+			if (getAcademicSemesterMessage(academicSemester) == academicSemesterString) {
+				return academicSemester;
+			}
+		}
+		return AcademicSemester.defaultSemester();
+	}
 }

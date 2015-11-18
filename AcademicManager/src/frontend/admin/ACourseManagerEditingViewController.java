@@ -65,13 +65,11 @@ public class ACourseManagerEditingViewController extends MViewController {
 	@FXML
 	Button btnShowCoRequirements;
 
-	public static URL view = Object.class.getResource("/frontend/admin/ACourseManagerView.fxml");	
+	public static URL view = Object.class.getResource("/frontend/admin/ACourseManagerEditingView.fxml");	
 	public boolean isCreating = true;
 	
 	public void setUp() {
 		super.setUp();
-		
-		ViewUtilities.autoComplete(chBxShcools);
 		
 		btnSaveCourse.setText(Messages.getUILabel(UILabel.SAVE_COURSE));
 		labelNameCourse.setText(Messages.getUILabel(UILabel.COURSE_NAME));
@@ -114,6 +112,8 @@ public class ACourseManagerEditingViewController extends MViewController {
 		} else {
 			isCreating = true;
 		}
+		
+		ViewUtilities.autoComplete(chBxShcools);
 	}
 	
 	public void saveCourse() {
@@ -121,10 +121,18 @@ public class ACourseManagerEditingViewController extends MViewController {
 		String initials = txBxInitialsCourse.getText();
 		int credits = Integer.parseInt(txBxCourseCredits.getText());
 		int section = Integer.parseInt(txBxCourseSection.getText());
-		School school = School.valueOf(chBxShcools.getSelectionModel().getSelectedItem());
-		AcademicSemester semester = AcademicSemester.valueOf(chBxAcademicSemesters.getSelectionModel().getSelectedItem());
-		String details = txArCourseDetails.getText();
 		
+		School school = School.defaultSchool();
+		if (!chBxShcools.getSelectionModel().isEmpty() & chBxShcools.getItems().contains(chBxShcools.getSelectionModel().getSelectedItem())) {
+			school = School.getSchool(chBxShcools.getSelectionModel().getSelectedItem());
+		}
+		
+		AcademicSemester semester = AcademicSemester.defaultSemester();
+		if (!chBxAcademicSemesters.getSelectionModel().isEmpty()) {
+			semester = AcademicSemester.getAcademicSemester(chBxAcademicSemesters.getSelectionModel().getSelectedItem());
+		}
+		
+		String details = txArCourseDetails.getText();
 		String coordinatedBool = chBxCoordination.getSelectionModel().getSelectedItem();
 		
 		boolean coordinated = false;
@@ -158,12 +166,12 @@ public class ACourseManagerEditingViewController extends MViewController {
 	
 	public void btnShowCourses_Pressed() {
 		saveCourse();
-		ViewUtilities.openView(AICourseManagerViewController.view, view);
+		ViewUtilities.openView(AICourseManagerMainViewController.view, view);
 	}
 
 	public void btnShowEvaluations_Pressed() {
 		saveCourse();
-		ViewUtilities.openView(AEvaluationManagerViewController.view, view);
+		ViewUtilities.openView(AEvaluationManagerMainViewController.view, view);
 	}
 
 	public void btnShowRequirements_Pressed() {

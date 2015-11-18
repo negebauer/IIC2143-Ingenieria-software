@@ -16,7 +16,7 @@
             <Label fx:id="labelCreateStudyProgram" layoutX="64.0" layoutY="55.0" text="Si deseas crear una malla nueva, presiona en crear nueva malla" />
             <Button fx:id="btnEditStudyProgram" layoutX="64.0" layoutY="148.0" mnemonicParsing="false" onAction="#btnEditStudyProgram_Pressed" text="Edit Stuty Program" />
             <Button fx:id="btnCreateStudyProgram" layoutX="64.0" layoutY="260.0" mnemonicParsing="false" onAction="#btnCreateStudyProgram_Pressed" text="Ceate New Study Program" />
-            <ChoiceBox fx:id="chBxStudyProgramsList" layoutX="64.0" layoutY="103.0" prefHeight="25.0" prefWidth="288.0" />
+            <ComboBox fx:id="chBxStudyProgramsList" layoutX="64.0" layoutY="103.0" prefHeight="25.0" prefWidth="288.0" />
          </children>
       </Pane>
    </children>

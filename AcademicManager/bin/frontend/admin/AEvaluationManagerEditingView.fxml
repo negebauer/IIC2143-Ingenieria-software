@@ -5,14 +5,10 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.admin.AEvaluationManagerViewController">
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.admin.AEvaluationManagerMainViewController">
    <children>
       <Pane prefHeight="400.0" prefWidth="600.0">
          <children>
-            <Label fx:id="labelEvaluationsEditor" layoutX="34.0" layoutY="80.0" prefHeight="42.0" prefWidth="272.0" text="Editor de Evaluaciones, selecciona una evaluacion para editar o crea una nueva" wrapText="true" />
-            <ChoiceBox fx:id="chBxEvaluations" layoutX="71.0" layoutY="144.0" prefWidth="150.0" style="-fx-background-radius: 0;" />
-            <Button fx:id="btnEditEvaluation" layoutX="71.0" layoutY="187.0" mnemonicParsing="false" onAction="#btnEditEvaluation_Pressed" style="-fx-background-radius: 0;" text="Editar evaluacion" />
-            <Button fx:id="btnCreateEvaluation" layoutX="71.0" layoutY="307.0" mnemonicParsing="false" onAction="#btnCreateEvaluation_Pressed" style="-fx-background-radius: 0;" text="Crear nueva evaluacion" />
             <ChoiceBox fx:id="chBxClassroom" layoutX="33.0" layoutY="134.0" prefWidth="150.0" style="-fx-background-radius: 0;" />
             <Label fx:id="labelClassroom" layoutX="33.0" layoutY="113.0" text="Sala" />
             <TextField fx:id="txBxDay" layoutX="34.0" layoutY="200.0" prefHeight="25.0" prefWidth="43.0" promptText="ej. 05" style="-fx-background-radius: 0;" />

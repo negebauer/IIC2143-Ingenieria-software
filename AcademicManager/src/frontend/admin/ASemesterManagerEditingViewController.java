@@ -40,7 +40,8 @@ public class ASemesterManagerEditingViewController extends MCourseSearcherSelect
 		
 		btnAddCourse.setText(Messages.getUILabel(UILabel.ADD_COURSE));
 		btnRemoveCourse.setText(Messages.getUILabel(UILabel.REMOVE_COURSE));
-		btnSaveSemester.setText(Messages.getUILabel(UILabel.SAVE_SEMESTER));		
+		btnSaveSemester.setText(Messages.getUILabel(UILabel.SAVE_SEMESTER));
+		labelModificationResult.setText("");
 		
 		if (Manager.INSTANCE.currentSemester != null) {
 			isCreating = false;
@@ -57,12 +58,12 @@ public class ASemesterManagerEditingViewController extends MCourseSearcherSelect
 					passedCourses.add(new Coursed(course, true, 7, AcademicSemester.defaultSemester(), 0));
 				}
 			}
-			Manager.INSTANCE.currentSemester = new Semester(AcademicSemester.defaultSemester(), 0, 0, passedCourses, new ArrayList<Course>());
+			Manager.INSTANCE.currentSemester = new Semester(AcademicSemester.defaultSemester(), 0, Manager.INSTANCE.currentEditingStudyProgram.getMaxCreditsPerSemester(), passedCourses, new ArrayList<Course>());
 		}
 	}
 
 	public void btnAddCourse_Pressed() {
-		if (!chBxSelectedCourse.getSelectionModel().isEmpty()){ 
+		if (!chBxSelectedCourse.getSelectionModel().isEmpty() & chBxSelectedCourse.getItems().contains(chBxSelectedCourse.getSelectionModel().getSelectedItem())){ 
 			String rawCourseInfo = chBxSelectedCourse.getSelectionModel().getSelectedItem();
 			String[] parsed = getParsedInitialsSectionName(rawCourseInfo);
 			String initials = parsed[0];
@@ -82,6 +83,9 @@ public class ASemesterManagerEditingViewController extends MCourseSearcherSelect
 					break;
 				}
 			}
+		} else {
+			// TODO Uncomment when function is created
+			//ViewUtilities.showAlert(Messages.getUILabel(UILabel.ERROR_SELECTION) + "(" + Messages.getUILabel(UILabel.ADD_COURSE) + ")");
 		}
 		
 	}
@@ -107,6 +111,9 @@ public class ASemesterManagerEditingViewController extends MCourseSearcherSelect
 					break;
 				}
 			}
+		} else {
+			// TODO Uncomment when function is created
+			//ViewUtilities.showAlert(Messages.getUILabel(UILabel.ERROR_SELECTION) + "(" + Messages.getUILabel(UILabel.REMOVE_COURSE) + ")");
 		}
 
 		

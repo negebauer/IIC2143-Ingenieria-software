@@ -17,7 +17,8 @@ import backend.users.Professor;
  * Class that checks if a course modification can be done.
  */
 public class CourseModificationChecker {
-
+	
+	static ArrayList<Course> currentCourses = Manager.INSTANCE.courses;
 	/**
 	 * Checks if a Course can be created by checking the following situations:
 	 * <ul>
@@ -29,7 +30,7 @@ public class CourseModificationChecker {
 	 * @param newCourse The course that wants to be created.
 	 * @return A ModifyCourseResponse detailing if the creation can be done.
 	 */
-	public static ModifyCourseResponse courseCanBeCreated(ArrayList<Course> currentCourses, Course newCourse) {
+	public static ModifyCourseResponse courseCanBeCreated(Course newCourse) {
 		String evaluationClassRoomClash = "";
 		String courseClassRoomClash = "";
 		String courseProfessorClash = "";
@@ -92,10 +93,10 @@ public class CourseModificationChecker {
 	 * @param coRequirements The coRequisites of this Course.
 	 * @return A ModifyCourseResponse detailing if the modification can be done containing the modified Course.
 	 */
-	public static ModifyCourseResponse courseCanBeModified(ArrayList<Course> currentCourses, Course courseToModify, String name, String initials, int section, int credits, String details, School school, AcademicSemester semester, ArrayList<ICourse> courses, ArrayList<Evaluation> evaluations, ArrayList<Course> requisites, ArrayList<Course> coRequisites, Boolean coordinated) {
+	public static ModifyCourseResponse courseCanBeModified(Course courseToModify, String name, String initials, int section, int credits, String details, School school, AcademicSemester semester, ArrayList<ICourse> courses, ArrayList<Evaluation> evaluations, ArrayList<Course> requisites, ArrayList<Course> coRequisites, Boolean coordinated) {
 		Course modifiedCourse = new Course(name, initials, section, credits, details, school, semester, courses, evaluations, requisites, coRequisites, coordinated);
 		currentCourses.remove(courseToModify);
-		ModifyCourseResponse modifyCourseResponse = courseCanBeCreated(currentCourses, modifiedCourse);
+		ModifyCourseResponse modifyCourseResponse = courseCanBeCreated(modifiedCourse);
 		if (modifyCourseResponse.success) {
 			modifyCourseResponse.course = modifiedCourse;
 		} else {
@@ -114,7 +115,7 @@ public class CourseModificationChecker {
 	 * @param deleteCourse
 	 * @return A ModifyCourseResponse detailing if the deletion can be done.
 	 */
-	public static ModifyCourseResponse courseCanBeDeleted(ArrayList<Course> currentCourses, Course deleteCourse) {
+	public static ModifyCourseResponse courseCanBeDeleted(Course deleteCourse) {
 		String requisites = "";
 		String coRequisites = "";
 		boolean success = false;

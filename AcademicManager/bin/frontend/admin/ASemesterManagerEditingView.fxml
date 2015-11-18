@@ -5,21 +5,16 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.admin.ASemesterManagerMainViewController">
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.admin.ASemesterManagerEditingViewController">
    <children>
       <Pane prefHeight="400.0" prefWidth="600.0">
          <children>
             <Button fx:id="btnAddCourse" layoutX="285.0" layoutY="103.0" mnemonicParsing="false" onAction="#btnAddCourse_Pressed" style="-fx-background-radius: 0;" text="Agregar Curso" />
             <ListView fx:id="listCoursesInSemester" layoutX="411.0" layoutY="81.0" prefHeight="200.0" prefWidth="162.0" />
             <Button fx:id="btnRemoveCourse" layoutX="285.0" layoutY="146.0" mnemonicParsing="false" onAction="#btnRemoveCourse_Pressed" prefHeight="25.0" prefWidth="92.0" style="-fx-background-radius: 0;" text="Quitar Curso" />
-            <Button fx:id="btnAddSemester" layoutX="437.0" layoutY="335.0" mnemonicParsing="false" onAction="#btnAddSemester_Pressed" style="-fx-background-radius: 0;" text="Agregar Semestre" />
             <Button fx:id="btnSaveSemester" layoutX="437.0" layoutY="335.0" mnemonicParsing="false" onAction="#btnSaveSemester_Pressed" style="-fx-background-radius: 0;" text="Guardar Semestre" />
-            <Button fx:id="btnBackToStudyProgramManager" layoutX="52.0" layoutY="335.0" mnemonicParsing="false" onAction="#btnBackToStudyProgramManager_Pressed" style="-fx-background-radius: 0;" text="Volver al Editor de Mallas" />
-            <Button fx:id="btnSearchCourse" layoutX="101.0" layoutY="118.0" mnemonicParsing="false" onAction="#btnSearchCourse_Pressed" prefHeight="27.0" prefWidth="102.0" text="Search" />
-            <TextField fx:id="txBxCourseToSearch" layoutX="58.0" layoutY="88.0" prefHeight="27.0" prefWidth="193.0" />
             <Label fx:id="labelSearchCourse" layoutX="116.0" layoutY="70.0" text="Buscar ramo" />
-            <ChoiceBox fx:id="chBxSelectedCourse" layoutX="55.0" layoutY="181.0" prefHeight="27.0" prefWidth="193.0" />
-            <Label fx:id="labelSelectCoure" layoutX="120.0" layoutY="158.0" text="Elige ramos" />
+            <ComboBox fx:id="chBxSelectedCourse" layoutX="55.0" layoutY="181.0" prefHeight="27.0" prefWidth="193.0" />
             <Button fx:id="btnDetails" layoutX="285.0" layoutY="196.0" mnemonicParsing="false" onAction="#btnDetails_Pressed" text="Ver Info Curso" />
             <Label fx:id="labelModificationResult" layoutX="58.0" layoutY="221.0" prefHeight="42.0" prefWidth="193.0" text="Label" wrapText="true" />
          </children>

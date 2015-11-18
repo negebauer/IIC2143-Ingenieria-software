@@ -34,8 +34,6 @@ public class AStudyProgramManagerMainViewController extends MViewController {
 	public void setUp() {
 		super.setUp();
 		
-		ViewUtilities.autoComplete(chBxStudyProgramsList);
-		
 		labelCreateStudyProgram.setText(Messages.getUILabel(UILabel.STUDY_PROGRAM_CREATE_LABEL));
 		labelEditStudyProgram.setText(Messages.getUILabel(UILabel.STUDY_PROGRAM_EDIT_LABEL));
 		btnCreateStudyProgram.setText(Messages.getUILabel(UILabel.CREATE_NEW_STUDY_PROGRAM));
@@ -52,7 +50,8 @@ public class AStudyProgramManagerMainViewController extends MViewController {
 		if (Manager.INSTANCE.currentEditingStudyProgram != null) {
 			chBxStudyProgramsList.getSelectionModel().select(Manager.INSTANCE.currentEditingStudyProgram.getName());
 		}
-		
+
+		ViewUtilities.autoComplete(chBxStudyProgramsList);
 	}
 
 	public void btnCreateStudyProgram_Pressed() {
@@ -61,10 +60,13 @@ public class AStudyProgramManagerMainViewController extends MViewController {
 	}
 	
 	public void btnEditStudyProgram_Pressed() {
-		if (!chBxStudyProgramsList.getSelectionModel().isEmpty()) {
+		if (!chBxStudyProgramsList.getSelectionModel().isEmpty() && chBxStudyProgramsList.getItems().contains(chBxStudyProgramsList.getSelectionModel().getSelectedItem())) {
 			String selected = chBxStudyProgramsList.getSelectionModel().getSelectedItem();
 			Manager.INSTANCE.currentEditingStudyProgram = Manager.INSTANCE.getStudyProgramForName(selected);
 			ViewUtilities.openView(AStudyProgramManagerEditingViewController.view, view);
+		} else {
+			// TODO Uncomment when function is created
+			//ViewUtilities.showAlert(Messages.getUILabel(UILabel.ERROR_SELECTION) + "(" + Messages.getUILabel(UILabel.STUDY_PROGRAM_EDIT_LABEL) + ")");
 		}
 		
 	}
