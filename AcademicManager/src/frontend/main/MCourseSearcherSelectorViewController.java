@@ -5,30 +5,23 @@ import java.util.ArrayList;
 
 import backend.courses.Course;
 import backend.enums.AcademicSemester;
-import backend.manager.CourseSearcher;
 import backend.manager.Manager;
 import backend.others.Messages;
 import backend.others.Messages.UILabel;
 import frontend.others.ViewUtilities;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 
 public class MCourseSearcherSelectorViewController extends MViewController {
 
 	@FXML
 	Label labelSearchCourse;
 	@FXML
-	Label labelSelectCoure;
-	@FXML
-	Button btnSearchCourse;
-	@FXML
 	Button btnDetails;
-	@FXML
-	TextField txBxCourseToSearch;
 	@FXML
 	protected ComboBox<String> chBxSelectedCourse;
 	
@@ -38,13 +31,14 @@ public class MCourseSearcherSelectorViewController extends MViewController {
 	
 	@Override
 	public void setUp() {
-		super.setUp();		
+		super.setUp();
+		
+		btnDetails.setCursor(Cursor.HAND);
 		labelSearchCourse.setText(Messages.getUILabel(UILabel.SEMESTER_CURRENT_SEMESTER_SEARCH_COURSE));
 		if (firstLoad) {
 			updateCoursesShow();
 			firstLoad = false;
-		}
-		ViewUtilities.autoComplete(this.chBxSelectedCourse);
+		}	
 	}
 	
 	public void updateCoursesShow() {
@@ -60,13 +54,7 @@ public class MCourseSearcherSelectorViewController extends MViewController {
 		}
 		chBxSelectedCourse.setItems(FXCollections.observableArrayList(coursesStrings));
 	}
-	
-	public void btnSearchCourse_Pressed() {
-		String searchParam = txBxCourseToSearch.getText();
-		coursesToShow = CourseSearcher.searchCourses(searchParam);
-		updateCoursesShow();
-	}
-	
+		
 	public void btnDetails_Pressed() {
 		String rawCourseInfo = chBxSelectedCourse.getSelectionModel().getSelectedItem();
 		String[] parsed = getParsedInitialsSectionName(rawCourseInfo);
@@ -87,9 +75,6 @@ public class MCourseSearcherSelectorViewController extends MViewController {
 	}
 	
 	public void hideCourseSelector() {
-		labelSelectCoure.setVisible(false);
-		btnSearchCourse.setVisible(false);
-		txBxCourseToSearch.setVisible(false);
 		btnDetails.setVisible(false);
 		chBxSelectedCourse.setVisible(false);	
 	}
@@ -99,9 +84,6 @@ public class MCourseSearcherSelectorViewController extends MViewController {
 	}
 	
 	public void showCourseSelector() {
-		labelSelectCoure.setVisible(true);
-		btnSearchCourse.setVisible(true);
-		txBxCourseToSearch.setVisible(true);
 		btnDetails.setVisible(true);
 		chBxSelectedCourse.setVisible(true);		
 	}

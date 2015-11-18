@@ -17,6 +17,7 @@ import frontend.professor.PMainViewController;
 import frontend.student.SMainViewController;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -50,6 +51,8 @@ public class MLogInController extends MViewController {
 		labelRegistration.setText(Messages.getUILabel(UILabel.DONT_HAVE_ACCOUNT_REGISTER));
 		labelLogIn.setText(Messages.getUILabel(UILabel.LOG_IN));
 		
+		btnSignIn.setCursor(Cursor.HAND);
+		btnRegister.setCursor(Cursor.HAND);
 		ArrayList<String> users = new ArrayList<String>();
 		
 		for (Professor professor : Manager.INSTANCE.professors) {

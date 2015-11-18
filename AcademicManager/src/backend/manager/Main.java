@@ -8,6 +8,7 @@ import frontend.others.CurrentViewHandler;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -47,7 +48,6 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
-		this.primaryStage.setResizable(false);
 		this.showLogInView();		
 	}
 	
@@ -64,6 +64,8 @@ public class Main extends Application {
 		Scene scene = new Scene(root,600,400);
 		primaryStage.setScene(scene);
         primaryStage.setTitle("Academic Manager");
+        primaryStage.setResizable(false);
+        primaryStage.getIcons().add(new Image("file:documents/images/icon_colors.png"));
 		primaryStage.show();
 		CurrentViewHandler.INSTANCE.primaryStage = primaryStage;
 	}

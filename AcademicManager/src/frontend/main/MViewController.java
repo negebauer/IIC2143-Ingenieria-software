@@ -8,6 +8,7 @@ import backend.others.Messages.UILabel;
 import frontend.others.CurrentViewHandler;
 import frontend.others.ViewUtilities;
 import javafx.fxml.FXML;
+import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 
 public class MViewController {
@@ -38,6 +39,10 @@ public class MViewController {
 		btnReload.setText("R");
 		btnBack.setText(Messages.getUILabel(UILabel.BACK));
 		btnLogout.setText(Messages.getUILabel(UILabel.LOGOUT));	
+		btnLanguage.setCursor(Cursor.HAND);
+		btnReload.setCursor(Cursor.HAND);
+		btnBack.setCursor(Cursor.HAND);
+		btnLogout.setCursor(Cursor.HAND);
 	}
 
 	/**

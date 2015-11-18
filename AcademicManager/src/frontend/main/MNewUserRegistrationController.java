@@ -5,6 +5,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.Cursor;
 import javafx.scene.control.*;
 
 import java.net.URL;
@@ -112,6 +113,8 @@ public class MNewUserRegistrationController extends MViewController {
 		labelPickCarreer.setText(Messages.getUILabel(UILabel.PICK_CARREER));
 		btnAddStudyPlan.setText(Messages.getUILabel(UILabel.ADD));
 		btnRemoveStudyPlan.setText(Messages.getUILabel(UILabel.REMOVE));
+		btnAddStudyPlan.setCursor(Cursor.HAND);
+		btnRemoveStudyPlan.setCursor(Cursor.HAND);
 		
 		ArrayList<String> studyProgramsNames = new ArrayList<String>();
 		for (StudyProgram studyProgram : Manager.INSTANCE.studyPrograms) {
