@@ -158,8 +158,8 @@ public class MNewUserRegistrationController extends MViewController {
 	}
 	
 	public void btnContinue_Pressed() {
-		this.cleanInfo();
-		if (!this.checkValid())
+		cleanInfo();
+		if (!checkValid())
 			return;
 		
 		String name = txBxName.getText();
@@ -194,8 +194,9 @@ public class MNewUserRegistrationController extends MViewController {
 		if (txBxRUT.getText().contains(".") || txBxRUT.getText().contains("-")) {
 			String clean = "";
 			for (char character : txBxRUT.getText().toCharArray()) {
-				if (character != '.' && character != '-')
+				if (character != '.' && character != '-') {
 					clean += character;
+				}				
 			}
 			txBxRUT.setText(clean);
 		}
@@ -203,8 +204,9 @@ public class MNewUserRegistrationController extends MViewController {
 		if (txBxCellPhone.getText().contains("+")) {
 			String clean = "";
 			for (char character : txBxCellPhone.getText().toCharArray()) {
-				if (character != '+')
+				if (character != '+') {
 					clean += character;
+				}
 			}
 			txBxCellPhone.setText(clean);
 		}

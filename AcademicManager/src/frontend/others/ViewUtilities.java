@@ -2,7 +2,6 @@ package frontend.others;
 
 import java.io.IOException;
 import java.net.URL;
-
 import frontend.main.MViewController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -69,6 +68,7 @@ public final class ViewUtilities {
 			((MViewController) loader.getController()).setUp();
 			Stage stage = new Stage();
 			stage.setScene(new Scene(root));
+			stage.setResizable(false);
 			stage.setTitle("RENNAB");
 			stage.show();
 			
