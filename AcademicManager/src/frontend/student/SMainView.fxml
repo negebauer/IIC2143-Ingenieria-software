@@ -10,18 +10,19 @@
    <children>
       <Pane prefHeight="400.0" prefWidth="600.0">
          <children>
-            <Label fx:id="labelWelcomeMessage" layoutX="56.0" layoutY="24.0" prefHeight="17.0" prefWidth="421.0" text="BIENVENIDO A ACADEMIC TOOL MANAGER PROFESSIONAL!!! " />
-            <Label fx:id="labelWhatDoNext" layoutX="56.0" layoutY="41.0" prefHeight="17.0" prefWidth="211.0" text="Qué deseas hacer ahora?" />
-            <Button fx:id="btnEditSemester" layoutX="56.0" layoutY="115.0" mnemonicParsing="false" onAction="#btnEditSemester_Pressed" style="-fx-background-radius: 0 0 0 0;" text="Editor semestre" textAlignment="CENTER" />
-            <Button fx:id="btnCurricularAdvance" layoutX="56.0" layoutY="154.0" mnemonicParsing="false" onAction="#btnCurricularAdvance_Pressed" style="-fx-background-radius: 0 0 0 0;" text="Ver avance Curricular" textAlignment="CENTER" />
-            <Button fx:id="btnShowSchedule" layoutX="56.0" layoutY="78.0" mnemonicParsing="false" onAction="#btnShowSchedule_Pressed" style="-fx-background-radius: 0 0 0 0;" text="Ver mi Horario" textAlignment="CENTER" />
+            <Label fx:id="labelWelcomeMessage" layoutX="56.0" layoutY="32.0" prefHeight="17.0" prefWidth="421.0" text="BIENVENIDO A ACADEMIC TOOL MANAGER PROFESSIONAL!!! " />
+            <Label fx:id="labelWhatDoNext" layoutX="56.0" layoutY="49.0" prefHeight="17.0" prefWidth="211.0" text="¿Qué deseas hacer ahora?" />
+            <Button fx:id="btnEditSemester" layoutX="56.0" layoutY="123.0" mnemonicParsing="false" onAction="#btnEditSemester_Pressed" style="-fx-background-radius: 0 0 0 0;" text="Editor semestre" textAlignment="CENTER" />
+            <Button fx:id="btnCurricularAdvance" layoutX="56.0" layoutY="162.0" mnemonicParsing="false" onAction="#btnCurricularAdvance_Pressed" style="-fx-background-radius: 0 0 0 0;" text="Ver avance curricular" textAlignment="CENTER" />
+            <Button fx:id="btnShowSchedule" layoutX="56.0" layoutY="86.0" mnemonicParsing="false" onAction="#btnShowSchedule_Pressed" style="-fx-background-radius: 0 0 0 0;" text="Ver mi horario" textAlignment="CENTER" />
             <Button fx:id="btnBack" layoutY="1.0" mnemonicParsing="false" onAction="#btnBack_Pressed" style="-fx-background-radius: 0;" text="Back" />
-            <Button fx:id="btnCoursedSemesters" layoutX="56.0" layoutY="193.0" mnemonicParsing="false" onAction="#btnCoursedSemesters_Pressed" text="Ver calificaciones semestres cursados" />
-            <Button fx:id="btnAcademicHistory" layoutX="56.0" layoutY="232.0" mnemonicParsing="false" onAction="#btnAcademicHistory_Pressed" text="Ver historial academico" />
+            <Button fx:id="btnCoursedSemesters" layoutX="56.0" layoutY="201.0" mnemonicParsing="false" onAction="#btnCoursedSemesters_Pressed" text="Ver calificaciones semestres cursados" />
+            <Button fx:id="btnAcademicHistory" layoutX="56.0" layoutY="240.0" mnemonicParsing="false" onAction="#btnAcademicHistory_Pressed" text="Ver historial academico" />
+            <Label fx:id="labelUserInformation" layoutX="58.0" layoutY="354.0" text="Informacion del Usuario" />
+            <Button fx:id="btnLogout" layoutX="523.0" layoutY="350.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
+            <Button fx:id="btnLanguage" layoutX="547.0" layoutY="28.0" mnemonicParsing="false" onAction="#btnLanguage_Pressed" style="-fx-background-radius: 0;" text="ES" />
          </children>
       </Pane>
-      <Button fx:id="btnLogout" layoutX="531.0" layoutY="369.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
-      <Button fx:id="btnReload" layoutX="518.0" layoutY="28.0" mnemonicParsing="false" onAction="#btnReload_Pressed" style="-fx-background-radius: 0;" text="R" />
-      <Button fx:id="btnLanguage" layoutX="561.0" layoutY="28.0" mnemonicParsing="false" onAction="#btnLanguage_Pressed" style="-fx-background-radius: 0;" text="ES" />
+      <Button fx:id="btnReload" layoutX="520.0" layoutY="28.0" mnemonicParsing="false" onAction="#btnReload_Pressed" style="-fx-background-radius: 0;" text="R" />
    </children>
 </AnchorPane>

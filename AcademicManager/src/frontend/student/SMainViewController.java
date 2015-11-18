@@ -2,8 +2,10 @@ package frontend.student;
 
 import java.net.URL;
 
+import backend.manager.Manager;
 import backend.others.Messages;
 import backend.others.Messages.UILabel;
+import backend.users.Student;
 import frontend.main.MViewController;
 import frontend.others.ViewUtilities;
 import javafx.fxml.FXML;
@@ -27,6 +29,8 @@ public class SMainViewController extends MViewController {
 	Button btnCoursedSemesters;
 	@FXML
 	Button btnAcademicHistory;
+	@FXML
+	Label labelUserInformation;
 
 	public static URL view = Object.class.getResource("/frontend/student/SMainView.fxml");
 
@@ -44,6 +48,9 @@ public class SMainViewController extends MViewController {
 		btnShowSchedule.setCursor(Cursor.HAND);
 		btnCoursedSemesters.setCursor(Cursor.HAND);
 		btnAcademicHistory.setCursor(Cursor.HAND);
+		
+		Student student = (Student)Manager.INSTANCE.currentUser;	
+		labelUserInformation.setText(student.getStudentInformation());
 		
 		// TODO: Create UILabel
 		// btnCoursedSemesters.setText(Messages.getUILabel(UILabel.STUDENT_SHOW_COURSED_SEMESTERS));

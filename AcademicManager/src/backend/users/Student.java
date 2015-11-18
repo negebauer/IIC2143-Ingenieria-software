@@ -131,4 +131,9 @@ public class Student extends User {
 		}
 		return schools;
 	}
+	
+	public String getStudentInformation() {
+		return getName() + " " + getLastnameFather() + " - " + getId() + " - " + 
+				School.getSchoolMessage(getCurriculum().getStudyPrograms().get(0).getSchool());
+	}
 }
