@@ -25,7 +25,8 @@ import javafx.stage.Stage;
 public final class ViewUtilities {
 
 	public enum AutoCompleteMode {
-		STARTS_WITH, CONTAINING;
+		STARTS_WITH, 
+		CONTAINING;
 	}
 
 	/**
