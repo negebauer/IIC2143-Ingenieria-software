@@ -55,7 +55,7 @@ public class MViewController {
 	}
 
 	public void btnReload_Pressed() {
-		Manager.INSTANCE.reloadData(this);
+		Manager.INSTANCE.reloadData();
 	}
 
 	public void btnBack_Pressed() {

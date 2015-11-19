@@ -36,7 +36,6 @@ import backend.users.Assistant;
 import backend.users.Professor;
 import backend.users.Student;
 import backend.users.User;
-import frontend.main.MViewController;
 
 /**
  * [Singleton] Main class that does what the application user requires. Contains
@@ -85,12 +84,18 @@ public class Manager {
 	/**
 	 * Reloads all the data from the server
 	 */
-	public void reloadData(MViewController view) {
-		// TODO Implement server first
-		System.out.println("View calling reloadData: " + view.view2);
+	public void reloadData() {
+		if (currentUser == null) {
+			downloadData();
+		} else {
+			saveData();
+		}
 	}
 	
-	public void uploadData() {
+	/**
+	 * MUST BE CALLED ONLY BY saveData().
+	 */
+	private void uploadData() {
 		File rootFolder = new File(FolderFileManager.rootFolder);
 		try {
 			// Create zip
@@ -142,6 +147,9 @@ public class Manager {
 		}
 	}
 	
+	/**
+	 * Downloads data from Dropbox and calls loadData().
+	 */
 	public void downloadData() {
 		DbxEntry.WithChildren listing;
 		try {
@@ -199,9 +207,10 @@ public class Manager {
 	}
 
 	/**
+	 * MUST BE CALLED ONLY BY downloadData().
 	 * Loads all the data from the `database`.
 	 */
-	public void loadData() {
+	private void loadData() {
 		System.out.println("Loading data...");
 
 		if (getMonth() <= 6 && getDay() <= 19) {
@@ -235,6 +244,7 @@ public class Manager {
 
 	/**
 	 * Writes all the data to the `database`.
+	 * Then calls uploadData().
 	 */
 	public void saveData() {
 		System.out.println("Starting to save data...");
@@ -252,6 +262,7 @@ public class Manager {
 		StudentsReaderWriter.writeStudents(students);
 
 		System.out.println("Data saved!");
+		uploadData();
 	}
 
 	/**

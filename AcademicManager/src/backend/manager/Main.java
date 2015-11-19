@@ -31,9 +31,8 @@ public class Main extends Application {
 		Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
 			@Override
 			public void run() {
-				// Save all data from RAM and upload it to Dropbox
+				// Save all data from RAM and upload it to Dropbox. saveData calls uploadData
 				Manager.INSTANCE.saveData();
-				Manager.INSTANCE.uploadData();
 			}
 		}));
 		
