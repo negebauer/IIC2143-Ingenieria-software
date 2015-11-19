@@ -9,7 +9,11 @@ import backend.others.Const;
 public class Classroom {
 
 	public enum Campus {
-		CASA_CENTRAL, LO_CONTADOR, ORIENTE, SAN_JOAQUIN, VILLARRICA;
+		CASA_CENTRAL, 
+		LO_CONTADOR, 
+		ORIENTE, 
+		SAN_JOAQUIN, 
+		VILLARRICA;
 
 		public static Campus defaultCampus() {
 			return Campus.SAN_JOAQUIN;

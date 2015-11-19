@@ -42,23 +42,18 @@ import backend.users.User.Gender;
 public class StudentsReaderWriter {
 
 	/*
-	 * Files to be read and written |-> Student |-> Student1 |-> Student2 |->
-	 * coursed.txt Line format:
-	 * name&initials&section&credits&school&semester&year&approved&grade |->
-	 * coursedCourses.txt Line format: 3 cases - Assistantship:
-	 * initials&section&year&semester&ASSISTANTSHIP&name:lastNameFather:
-	 * lastNameMother;name:lastNameFather:lastNameMother&classroomInitials&dia1:
-	 * modulo1;dia2:modulo2 - Laboratory:
-	 * initials&section&year&semester&LABORATORY&name:lastNameFather:
-	 * lastNameMother;name:lastNameFather:lastNameMother&classroomInitials&dia1:
-	 * modulo1;dia2:modulo2 - Lecture:
-	 * initials&section&year&semester&LECTURE&name:lastNameFather:lastNameMother
-	 * ;name:lastNameFather:lastNameMother&classroomInitials&dia1:modulo1;dia2:
-	 * modulo2 |-> courses.txt Line format: initials&section |-> student.txt
-	 * Line format:
-	 * id&yearEntrance&yearGraduation&regularStudent&rut&name&lastnameFather&
-	 * lastnameMother&address&gender&access&phone&birthdayString |->
-	 * studyPrograms.txt Line format: name&year
+	 * Files to be read and written 
+	 * |-> Student 
+	 * 		|-> Student1 
+	 * 		|-> Student2 
+	 * 			|-> coursed.txt 				Line format: name&initials&section&credits&school&semester&year&approved&grade 
+	 * 			|-> coursedCourses.txt 			Line format: 3 cases
+	 * 												- Assistantship: initials&section&year&semester&ASSISTANTSHIP& name:lastNameFather:lastNameMother;name:lastNameFather:lastNameMother&classroomInitials&dia1: modulo1;dia2:modulo2
+	 * 		 										- Laboratory: initials&section&year&semester&LABORATORY&name:lastNameFather: lastNameMother;name:lastNameFather:lastNameMother&classroomInitials&dia1: modulo1;dia2:modulo2 
+	 * 												- Lecture: initials&section&year&semester&LECTURE&name:lastNameFather:lastNameMother;name:lastNameFather: lastNameMother&classroomInitials&dia1:modulo1;dia2:modulo2 
+	 * 			|-> courses.txt 				Line format: initials&section 
+	 * 			|-> student.txt 				Line format:id&yearEntrance&yearGraduation&regularStudent&rut&name&lastnameFather&lastnameMother&address&gender&access&phone&birthdayString 
+	 * 			|-> studyPrograms.txt 			Line format: name&year
 	 */
 
 	/**

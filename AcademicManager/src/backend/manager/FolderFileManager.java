@@ -12,32 +12,37 @@ import java.util.ArrayList;
 public class FolderFileManager {
 
 	/*
-	 * Folder system Documents |-> language.txt Contiene el lenguaje del sistema
-	 * |-> Admin |-> admins.txt Contiene informacion de todos los
-	 * administradores |-> assistants.txt Contiene inforamcion de todos los
-	 * ayudantes |-> classrooms.txt Todas las salas de clases con su informacion
-	 * |-> courseCoRequirements.txt Cada linea: sigla curso&sigla co requisito
-	 * |-> courseCourses.txt Todas las clases con toda su informacion mas
-	 * prefijo: sigla curso&seccion |-> courseRequirements.txt Cada linea: sigla
-	 * curso&sigla requisito |-> courses.txt Todos los cursos con su informacion
-	 * directa (sigla, seccion, creditos) |-> evaluations.txt Todas las
-	 * evaluaciones con su informacion mas prefijo: sigla curso&seccion |->
-	 * professors.txt Contiene informacion de todos los profesores |->
-	 * CourseDetails Contiene los detalles de todos los cursos |-> course_1.txt
-	 * Contiene los detalles del curso con sigla course y seccion 1 |->
-	 * course_2.txt |-> StudyPrograms Todos los programas de estudio |->
-	 * Escuela1 Una escuela de la universidad. Llamar carpeta con el nombre de
-	 * la escuela |-> Escuela2 |-> StudyProgram1 Un programa de estudio. Llamar
-	 * carpeta con el nombre del programa de estudio |-> StudyProgram2 |->
-	 * studyProgram.txt Informacion del programa de estudio |-> semester1.txt
-	 * Cursos del primer semester. Solo la sigla |-> semester2.txt Cursos del
-	 * segundo semester. Solo la sigla |-> Student |-> Student1 Un estudiante.
-	 * Llamar carpeta como id_nombre_apellidoPaterno |-> Student2 |->
-	 * coursed.txt Todos los cursos cursados |-> coursedCourses.txt Todas las
-	 * clases con toda su informacion de los cursos ya cursados mas prefijo:
-	 * sigla curso&seccion |-> courses.txt Todos los cursos que se estan
-	 * cursando |-> student.txt Informacion del estudiante |-> studyPrograms.txt
-	 * Los programas de estudio del alumno (nombres)
+	 * Folder system Documents 
+	 * |-> language.txt 							Contiene el lenguaje del sistema
+	 * |-> Admin 
+	 * 		|-> admins.txt 							Contiene informacion de todos los administradores 
+	 * 		|-> assistants.txt 						Contiene inforamcion de todos los ayudantes 
+	 * 		|-> classrooms.txt 						Todas las salas de clases con su informacion
+	 * 		|-> courseCoRequirements.txt 			Cada linea: sigla curso&sigla co requisito
+	 * 		|-> courseCourses.txt 					Todas las clases con toda su informacion mas prefijo: sigla curso&seccion 
+	 * 		|-> courseRequirements.txt 				Cada linea: sigla curso&sigla requisito 
+	 * 		|-> courses.txt 						Todos los cursos con su informacion directa (sigla, seccion, creditos) 
+	 * 		|-> evaluations.txt 					Todas las evaluaciones con su informacion mas prefijo: sigla curso&seccion 
+	 * 		|-> professors.txt 						Contiene informacion de todos los profesores 
+	 * 		|-> CourseDetails 						Contiene los detalles de todos los cursos 
+	 * 		|-> course_1.txt 						Contiene los detalles del curso con sigla course y seccion 1 
+	 * 		|-> course_2.txt 
+	 * 			|-> StudyPrograms 					Todos los programas de estudio 
+	 * 			|-> Escuela1 						Una escuela de la universidad. Llamar carpeta con el nombre de la escuela 
+	 * 			|-> Escuela2 
+	 * 				|-> StudyProgram1 				Un programa de estudio. Llamar carpeta con el nombre del programa de estudio 
+	 * 				|-> StudyProgram2 
+	 * 					|-> studyProgram.txt 		Informacion del programa de estudio 
+	 * 					|-> semester1.txt 			Cursos del primer semester. Solo la sigla 
+	 * 					|-> semester2.txt 			Cursos del segundo semester. Solo la sigla 
+	 * |-> Student 
+	 * 		|-> Student1 							Un estudiante. Llamar carpeta como id_nombre_apellidoPaterno 
+	 * 		|-> Student2 
+	 * 			|-> coursed.txt 					Todos los cursos cursados 
+	 * 			|-> coursedCourses.txt 				Todas las clases con toda su informacion de los cursos ya cursados mas prefijo: sigla curso&seccion 
+	 * 			|-> courses.txt 					Todos los cursos que se estan cursando 
+	 * 			|-> student.txt 					Informacion del estudiante 
+	 * 			|-> studyPrograms.txt 				Los programas de estudio del alumno (nombres)
 	 */
 
 	// Main folders

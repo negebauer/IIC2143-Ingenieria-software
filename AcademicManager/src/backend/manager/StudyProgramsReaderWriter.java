@@ -19,8 +19,7 @@ public class StudyProgramsReaderWriter {
 
 	/*
 	 * File format studyProgram.txt => name&school&year program&max credits per
-	 * semester&max failed credits&nº of semesters semesterX.txt => course
-	 * initials
+	 * semester&max failed credits&nº of semesters semesterX.txt => course initials
 	 */
 
 	/**

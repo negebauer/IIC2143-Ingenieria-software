@@ -14,7 +14,9 @@ import backend.others.Utilities;
 public class Evaluation {
 
 	public enum CourseEvaluation {
-		INTERROGATION("I"), EXAM("E"), CONTROL("C");
+		INTERROGATION("I"), 
+		EXAM("E"), 
+		CONTROL("C");
 
 		private final String evaluation;
 
@@ -42,17 +44,17 @@ public class Evaluation {
 
 		private static Map<CourseEvaluation, String> createMapCourseEvaluationMessageEnglish() {
 			Map<CourseEvaluation, String> result = new HashMap<CourseEvaluation, String>();
-			result.put(CourseEvaluation.INTERROGATION, "Interrogation");
-			result.put(CourseEvaluation.EXAM, "Exam");
-			result.put(CourseEvaluation.CONTROL, "Control");
+			result.put(CourseEvaluation.INTERROGATION, 		"Interrogation");
+			result.put(CourseEvaluation.EXAM, 				"Exam");
+			result.put(CourseEvaluation.CONTROL, 			"Control");
 			return Collections.unmodifiableMap(result);
 		}
 
 		private static Map<CourseEvaluation, String> createMapCourseEvaluationMessageSpanish() {
 			Map<CourseEvaluation, String> result = new HashMap<CourseEvaluation, String>();
-			result.put(CourseEvaluation.INTERROGATION, "Interrogacion");
-			result.put(CourseEvaluation.EXAM, "Examen");
-			result.put(CourseEvaluation.CONTROL, "Control");
+			result.put(CourseEvaluation.INTERROGATION, 		"Interrogacion");
+			result.put(CourseEvaluation.EXAM, 				"Examen");
+			result.put(CourseEvaluation.CONTROL, 			"Control");
 			return Collections.unmodifiableMap(result);
 		}
 
