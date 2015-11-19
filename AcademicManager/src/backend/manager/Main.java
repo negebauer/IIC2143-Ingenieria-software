@@ -38,6 +38,7 @@ public class Main extends Application {
 		for (String s : newarray) {
 			System.out.println(s);
 		}
+		// Trying an app for my iPad
 
 		// ----- To this line -----
 
