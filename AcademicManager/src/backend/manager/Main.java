@@ -2,6 +2,13 @@ package backend.manager;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Locale;
+
+import com.dropbox.core.DbxAppInfo;
+import com.dropbox.core.DbxClient;
+import com.dropbox.core.DbxException;
+import com.dropbox.core.DbxRequestConfig;
+import com.dropbox.core.DbxWebAuthNoRedirect;
 
 import frontend.main.MLogInController;
 import frontend.others.CurrentViewHandler;
@@ -20,6 +27,22 @@ public class Main extends Application {
 	private Pane root;
 
 	public static void main(String[] args) {
+		// Get your app key and secret from the Dropbox developers website.
+        final String APP_KEY = "hvbbay0m9n2krxo";
+        final String APP_SECRET = "vay4fyg4k3tb9gb";
+
+        DbxAppInfo appInfo = new DbxAppInfo(APP_KEY, APP_SECRET);
+
+        DbxRequestConfig config = new DbxRequestConfig(
+            "JavaTutorial/1.0", Locale.getDefault().toString());
+        DbxClient client = new DbxClient(config, "dVvPUaRLEWAAAAAAAAAABv0uS4g09s18mmjwGQSfF7D_xtqbqKbvwz6A_iGU2Anq");
+        try {
+			System.out.println("Linked account: " + client.getAccountInfo().displayName);
+		} catch (DbxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
 		FolderFileManager.checkFolders();
 		Manager.INSTANCE.loadData();
 		Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
