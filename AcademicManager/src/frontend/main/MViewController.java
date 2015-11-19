@@ -27,7 +27,8 @@ public class MViewController {
 	 * ViewController. MUST OVERRIDE
 	 */
 	public static URL view = Object.class.getResource("/frontend/main/MView.fxml");
-
+	public URL view2 = view;
+	
 	/**
 	 * You must override this function to setUp all the buttons and labels of
 	 * the View to the current language. Override and call super.setUp() ALWAYS.
@@ -54,7 +55,7 @@ public class MViewController {
 	}
 
 	public void btnReload_Pressed() {
-		Manager.INSTANCE.reloadData();
+		Manager.INSTANCE.reloadData(this);
 	}
 
 	public void btnBack_Pressed() {

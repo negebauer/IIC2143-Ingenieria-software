@@ -13,6 +13,10 @@ import java.util.Calendar;
 import java.util.Locale;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
+import net.lingala.zip4j.exception.ZipException;
+import net.lingala.zip4j.core.ZipFile;
+
+import org.apache.commons.io.FileUtils;
 
 import com.dropbox.core.DbxClient;
 import com.dropbox.core.DbxEntry;
@@ -30,11 +34,13 @@ import backend.enums.AcademicSemester;
 import backend.interfaces.ICourse;
 import backend.others.Messages;
 import backend.others.Messages.SupportedLanguage;
+import backend.others.Range;
 import backend.users.Admin;
 import backend.users.Assistant;
 import backend.users.Professor;
 import backend.users.Student;
 import backend.users.User;
+import frontend.main.MViewController;
 
 /**
  * [Singleton] Main class that does what the application user requires. Contains
@@ -78,27 +84,14 @@ public class Manager {
 		} catch (DbxException e) {
 			e.printStackTrace();
 		}
-		
-		// TODO: Delete from here
-		DbxEntry.WithChildren listing;
-		try {
-			listing = client.getMetadataWithChildren("/");
-			System.out.println("Files in the root path:");
-	        for (DbxEntry child : listing.children) {
-	            System.out.println("	" + child.name + ": " + child.toString());
-	        }
-		} catch (DbxException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		// TO here
 	}
 
 	/**
 	 * Reloads all the data from the server
 	 */
-	public void reloadData() {
+	public void reloadData(MViewController view) {
 		// TODO Implement server first
+		System.out.println("View calling reloadData: " + view.view2);
 	}
 	
 	public void uploadData() {
@@ -115,7 +108,7 @@ public class Manager {
 			File zipFile = new File(zipName);
 			FileInputStream zipFileStream = new FileInputStream(zipFile);
 		    DbxEntry.File uploadedFile = client.uploadFile("/" + zipName,
-		        DbxWriteMode.add(), zipFile.length(), zipFileStream);
+		        DbxWriteMode.force(), zipFile.length(), zipFileStream);
 		    System.out.println("Uploaded: " + uploadedFile.name);
 		    zipFileStream.close();
 		} catch (FileNotFoundException e) {
@@ -154,7 +147,59 @@ public class Manager {
 	}
 	
 	public void downloadData() {
-		
+		DbxEntry.WithChildren listing;
+		try {
+			Boolean shouldLoadLocal = true;
+			listing = client.getMetadataWithChildren("/");
+			for (DbxEntry child : listing.children) {
+				if (child.name.equals(FolderFileManager.rootFolder + ".zip")) {
+					FileOutputStream downloadFileOutputStream = new FileOutputStream(child.name);
+					DbxEntry.File downloadedFile = client.getFile("/" + child.name, null,
+							downloadFileOutputStream);
+					System.out.println("Downloaded: " + downloadedFile.name);
+					downloadFileOutputStream.close();
+					extractData(downloadedFile);
+					shouldLoadLocal = false;
+					break;
+				}
+			}
+			if (shouldLoadLocal) {
+				Manager.INSTANCE.loadData();
+			}
+		} catch (DbxException e) {
+			Manager.INSTANCE.loadData();
+			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			Manager.INSTANCE.loadData();
+			e.printStackTrace();
+		} catch (IOException e) {
+			Manager.INSTANCE.loadData();
+			e.printStackTrace();
+		}
+	}
+	
+	private void extractData(DbxEntry downloadedFile) {
+		try {
+			String zipName = downloadedFile.name;
+			File oldDirectory = new File(FolderFileManager.rootFolder);
+			if (oldDirectory.exists()) {
+				// FileUtils.deleteDirectory(oldDirectory);
+			}
+			
+			String source = zipName;
+			String destination = oldDirectory.getAbsolutePath().split("Documents")[0];
+			String password = "";
+			
+			ZipFile zipFile = new ZipFile(source);
+			if (zipFile.isEncrypted()) {
+				zipFile.setPassword(password);
+			}
+			zipFile.extractAll(destination);
+
+			Manager.INSTANCE.loadData();
+		} catch (ZipException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -220,8 +265,12 @@ public class Manager {
 		try {
 			FileInputStream fileInputStream = new FileInputStream(FolderFileManager.language);
 			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(fileInputStream));
-			SupportedLanguage language = Messages.SupportedLanguage.valueOf(bufferedReader.readLine());
-			fileInputStream.close();
+			SupportedLanguage language = Messages.SupportedLanguage.defaultLanguage();
+			String readLanguage = bufferedReader.readLine();
+			if (readLanguage != null) {
+				language = Messages.SupportedLanguage.valueOf(readLanguage);
+				fileInputStream.close();
+			}
 
 			FileOutputStream fileOutputStream = new FileOutputStream(FolderFileManager.language);
 			PrintStream printStream = new PrintStream(fileOutputStream);
