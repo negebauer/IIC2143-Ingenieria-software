@@ -16,8 +16,6 @@ import java.util.zip.ZipOutputStream;
 import net.lingala.zip4j.exception.ZipException;
 import net.lingala.zip4j.core.ZipFile;
 
-import org.apache.commons.io.FileUtils;
-
 import com.dropbox.core.DbxClient;
 import com.dropbox.core.DbxEntry;
 import com.dropbox.core.DbxException;
@@ -34,7 +32,6 @@ import backend.enums.AcademicSemester;
 import backend.interfaces.ICourse;
 import backend.others.Messages;
 import backend.others.Messages.SupportedLanguage;
-import backend.others.Range;
 import backend.users.Admin;
 import backend.users.Assistant;
 import backend.users.Professor;
@@ -265,13 +262,14 @@ public class Manager {
 		try {
 			FileInputStream fileInputStream = new FileInputStream(FolderFileManager.language);
 			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(fileInputStream));
-			SupportedLanguage language = Messages.SupportedLanguage.defaultLanguage();
-			String readLanguage = bufferedReader.readLine();
-			if (readLanguage != null) {
-				language = Messages.SupportedLanguage.valueOf(readLanguage);
-				fileInputStream.close();
+			String languageString = bufferedReader.readLine();
+			SupportedLanguage language = SupportedLanguage.defaultLanguage();
+			if (languageString != null && languageString != "") {
+				language = SupportedLanguage.valueOf(languageString);
 			}
-
+			bufferedReader.close();
+			fileInputStream.close();
+			
 			FileOutputStream fileOutputStream = new FileOutputStream(FolderFileManager.language);
 			PrintStream printStream = new PrintStream(fileOutputStream);
 

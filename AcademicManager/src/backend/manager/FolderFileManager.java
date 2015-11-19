@@ -12,8 +12,10 @@ import java.util.ArrayList;
 public class FolderFileManager {
 
 	/*
-	 * Folder system Documents 
+	 * Folder system Settings
 	 * |-> language.txt 							Contiene el lenguaje del sistema
+	 * 
+	 * Folder system Documents 
 	 * |-> Admin 
 	 * 		|-> admins.txt 							Contiene informacion de todos los administradores 
 	 * 		|-> assistants.txt 						Contiene inforamcion de todos los ayudantes 
@@ -49,9 +51,10 @@ public class FolderFileManager {
 	public static String rootFolder = "Documents";
 	public static String rootAdmin = rootFolder + "/Admin";
 	public static String rootStudent = rootFolder + "/Student";
+	public static String rootSettings = "Settings";
 
 	// Main files
-	public static String language = rootFolder + "/language.txt";
+	public static String language = rootSettings + "/language.txt";
 
 	// Admin folders
 	public static String adminCourseDetails = rootAdmin + "/CourseDetails";
@@ -86,6 +89,7 @@ public class FolderFileManager {
 		ArrayList<String> folders = new ArrayList<String>();
 		folders.add(rootFolder);
 		folders.add(rootAdmin);
+		folders.add(rootSettings);
 		folders.add(rootStudent);
 		folders.add(adminCourseDetails);
 		folders.add(adminStudyPrograms);
