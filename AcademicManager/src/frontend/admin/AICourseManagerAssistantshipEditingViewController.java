@@ -5,8 +5,6 @@ import java.util.ArrayList;
 
 import backend.courses.Assistantship;
 import backend.courses.Classroom;
-import backend.courses.Laboratory;
-import backend.courses.Lecture;
 import backend.courses.Schedule;
 import backend.interfaces.ICourse;
 import backend.manager.Manager;
@@ -16,300 +14,184 @@ import backend.users.Assistant;
 import backend.users.Professor;
 import frontend.main.MViewController;
 import frontend.others.ViewUtilities;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 
 public class AICourseManagerAssistantshipEditingViewController extends MViewController {
 
 	@FXML
-	ChoiceBox<String> chBxICourses;
-	@FXML
-	Button btnEditICourse;
-	@FXML
-	Button btnCreateNewICourse;
-	@FXML
-	Label labelWelcomeMessage;
-	@FXML
 	ListView<String> listAssistantsOrProfessors;
 	@FXML
-	ChoiceBox<String> chBxAssistantsOrProfessors;
+	ComboBox<String> chBxAssistantsOrProfessors;
 	@FXML
 	Button btnAddAssistantOrProfessor;
 	@FXML
 	Button btnRemoveAssistantOrProfessor;
 	@FXML
-	ChoiceBox<String> chBxClassrooms;
+	ComboBox<String> chBxClassrooms;
 	@FXML
 	Label labelPickAssistantsOrProfessors;
 	@FXML
 	Label labelClasroomSelection;
-
-	@FXML
-	Label labelClassTypeChoose;
-	@FXML
-	ChoiceBox<String> chBxClassesTypes;
 	@FXML
 	Button btnSaveCourse;
 	@FXML
 	Button btnSeeSchedule;
-
-	static URL view = Object.class.getResource("/frontend/admin/AICourseManagerAssistantshipEditingView.fxml");
-	ICourse currentEditingICourse = null;
-	ArrayList<String> assistantsOrProfessors = new ArrayList<String>();
-	boolean isLaboratory = false;
-	boolean isLecture = false;
-	boolean isAssistantship = false;
-
-	String[] classesTypes = new String[] { "Assistantship", "Lecture", "Laboratory" };
+	@FXML
+	Button btnRemoveICourse;
+	
+	
+	static URL view = Object.class.getResource("/frontend/admin/AICourseManageAssistantshipEditingView.fxml");
 
 	@Override
 	public void setUp() {
 		super.setUp();
-		showMainView();
-		hideEditView();
 
-		btnEditICourse.setText(Messages.getUILabel(UILabel.EDIT_ICOURSE));
-		btnCreateNewICourse.setText(Messages.getUILabel(UILabel.CREATE_ICOURSE));
-		labelWelcomeMessage.setText(Messages.getUILabel(UILabel.ADMIN_ICOURSE_MANAGER_WELCOME_MESSAGE));
-		btnAddAssistantOrProfessor.setText(Messages.getUILabel(UILabel.ADD_ASSISTANT_OR_PROFESSOR));
-		btnRemoveAssistantOrProfessor.setText(Messages.getUILabel(UILabel.REMOVE_ASSISTANT_OR_PROFESSOR));
-		labelPickAssistantsOrProfessors.setText(Messages.getUILabel(UILabel.PICK_ASSISTANT_OR_PROFESSOR));
+		btnAddAssistantOrProfessor.setText(Messages.getUILabel(UILabel.ADD_PROFESSOR));
+		btnRemoveAssistantOrProfessor.setText(Messages.getUILabel(UILabel.REMOVE_PROFESSOR));
+		labelPickAssistantsOrProfessors.setText(Messages.getUILabel(UILabel.PICK_PROFESSOR));
 		labelClasroomSelection.setText(Messages.getUILabel(UILabel.SELECT_CLASSROOM));
-		labelClassTypeChoose.setText(Messages.getUILabel(UILabel.SELECT_CLASS_TYPE));
 		btnSaveCourse.setText(Messages.getUILabel(UILabel.SAVE_ICOURSE));
 		btnSeeSchedule.setText(Messages.getUILabel(UILabel.SEE_SCHEDULE));
-
-		ArrayList<String> iCourses = new ArrayList<String>();
-		for (ICourse iCourse : Manager.INSTANCE.currentEditignCourse.getCourses()) {
-			if (iCourse.getClass().equals(Assistantship.class)) {
-				iCourses.add("Assistantship");
-			} else if (iCourse.getClass().equals(Laboratory.class)) {
-				iCourses.add("Laboratory");
-			} else if (iCourse.getClass().equals(Lecture.class)) {
-				iCourses.add("Lecture");
-			}
-		}
-		chBxICourses.setItems(FXCollections.observableArrayList(iCourses));
-
-	}
-
-	public void btnSeeSchedule_Pressed() {
-		ViewUtilities.openNewView(AScheduleViewController.view);
-	}
-
-	public void btnEditICourse_Pressed() {
-
-		String selectedICourse = chBxICourses.getSelectionModel().getSelectedItem();
-		if (selectedICourse == "Assistantship") {
-			Assistantship selectedAssistanship = Manager.INSTANCE.currentEditignCourse.getAssistantship();
-			currentEditingICourse = selectedAssistanship;
-			// Manager.INSTANCE.currentEditignCourse.getCourses().remove(selectedAssistanship);
-			this.isAssistantship = true;
-			this.isLecture = false;
-			this.isLaboratory = false;
-			ArrayList<String> assistants = new ArrayList<String>();
-			for (Assistant assistant : selectedAssistanship.getAssistants()) {
-				assistants.add(assistant.getName() + " " + assistant.getLastnameFather() + " "
-						+ assistant.getLastnameMother());
-			}
-			listAssistantsOrProfessors.setItems(FXCollections.observableArrayList(assistants));
-			assistantsOrProfessors = assistants;
-			chBxClassesTypes.getSelectionModel().select("Assistantship");
-			Manager.INSTANCE.currentEditingSchedule = selectedAssistanship.getSchedule();
-
-		} else if (selectedICourse == "Lecture") {
-			Lecture selectedLecture = Manager.INSTANCE.currentEditignCourse.getLecture();
-			currentEditingICourse = selectedLecture;
-			// Manager.INSTANCE.currentEditignCourse.getCourses().remove(selectedLecture);
-			this.isLecture = true;
-			this.isAssistantship = false;
-			this.isLaboratory = false;
-			ArrayList<String> professors = new ArrayList<String>();
-			for (Professor professor : selectedLecture.getProfessors()) {
-				professors.add(professor.getName() + " " + professor.getLastnameFather() + " "
-						+ professor.getLastnameMother());
-			}
-			listAssistantsOrProfessors.setItems(FXCollections.observableArrayList(professors));
-			assistantsOrProfessors = professors;
-			chBxClassesTypes.getSelectionModel().select("Lecture");
-			Manager.INSTANCE.currentEditingSchedule = selectedLecture.getSchedule();
-
-		} else if (selectedICourse == "Laboratory") {
-			Laboratory selectedLaboratory = Manager.INSTANCE.currentEditignCourse.getLaboratory();
-			currentEditingICourse = selectedLaboratory;
-			// Manager.INSTANCE.currentEditignCourse.getCourses().remove(selectedLaboratory);
-			this.isLaboratory = true;
-			this.isAssistantship = false;
-			this.isLecture = false;
-			ArrayList<String> professors = new ArrayList<String>();
-			for (Professor professor : selectedLaboratory.getProfessors()) {
-				professors.add(professor.getName() + " " + professor.getLastnameFather() + " "
-						+ professor.getLastnameMother());
-			}
-			listAssistantsOrProfessors.setItems(FXCollections.observableArrayList(professors));
-			assistantsOrProfessors = professors;
-			chBxClassesTypes.getSelectionModel().select("Laboratory");
-			Manager.INSTANCE.currentEditingSchedule = selectedLaboratory.getSchedule();
-
-		}
-
-		hideMainView();
-		showEditView();
-	}
-
-	public void btnCreateNewICourse_Pressed() {
-		hideMainView();
-		showEditView();
-		Manager.INSTANCE.currentEditingSchedule = new Schedule();
-		currentEditingICourse = null;
-	}
-
-	public void btnAddAssistantOrProfessor_Pressed() {
-		String valueSelected = chBxAssistantsOrProfessors.getSelectionModel().getSelectedItem();
-		assistantsOrProfessors.add(valueSelected);
-		listAssistantsOrProfessors.setItems(FXCollections.observableArrayList(assistantsOrProfessors));
-	}
-
-	public void btnRemoveAssistantOrProfessor_Pressed() {
-		String valueSelected = chBxAssistantsOrProfessors.getSelectionModel().getSelectedItem();
-		assistantsOrProfessors.remove(valueSelected);
-		listAssistantsOrProfessors.setItems(FXCollections.observableArrayList(assistantsOrProfessors));
-	}
-
-	public void btnSaveCourse_Pressed() {
-		Schedule schedule = Manager.INSTANCE.currentEditingSchedule;
-		String classroomString = chBxClassrooms.getSelectionModel().getSelectedItem();
-		Classroom classroom = null;
-		for (Classroom classroomLocal : Manager.INSTANCE.classrooms) {
-			if (classroomLocal.getInitials() == classroomString) {
-				classroom = classroomLocal;
-				break;
-			}
-		}
-
-		ObservableList<String> AssistantsOrProfessorsStrings = chBxAssistantsOrProfessors.getItems();
-
-		ICourse savedCourse = null;
-
-		if (isLecture) {
-			ArrayList<Professor> professors = new ArrayList<Professor>();
-			for (Professor prof : Manager.INSTANCE.professors) {
-				if (AssistantsOrProfessorsStrings
-						.contains(prof.getName() + " " + prof.getLastnameFather() + " " + prof.getLastnameMother())) {
-					professors.add(prof);
-				}
-			}
-
-			savedCourse = new Lecture(professors, classroom, schedule);
-
-		} else if (isLaboratory) {
-			ArrayList<Professor> professors = new ArrayList<Professor>();
-			for (Professor prof : Manager.INSTANCE.professors) {
-				if (AssistantsOrProfessorsStrings
-						.contains(prof.getName() + " " + prof.getLastnameFather() + " " + prof.getLastnameMother())) {
-					professors.add(prof);
-				}
-			}
-			savedCourse = new Laboratory(professors, classroom, schedule);
-
-		} else if (isAssistantship) {
-			ArrayList<Assistant> assistants = new ArrayList<Assistant>();
-			for (Assistant assist : Manager.INSTANCE.assistants) {
-				if (AssistantsOrProfessorsStrings.contains(
-						assist.getName() + " " + assist.getLastnameFather() + " " + assist.getLastnameMother())) {
-					assistants.add(assist);
-				}
-			}
-
-			savedCourse = new Assistantship(assistants, classroom, schedule);
-		}
-
-		if (savedCourse != null) {
-			// Manager.INSTANCE.currentEditignCourse.addCourse(savedCourse);
-		}
-
-		// ViewUtilities.openView(view, ACourseManagerViewController.view);
-		hideEditView();
-		showMainView();
-
-	}
-
-	public void showMainView() {
-		chBxICourses.setVisible(true);
-		btnEditICourse.setVisible(true);
-		btnCreateNewICourse.setVisible(true);
-		labelWelcomeMessage.setVisible(true);
-	}
-
-	public void hideMainView() {
-		chBxICourses.setVisible(false);
-		btnEditICourse.setVisible(false);
-		btnCreateNewICourse.setVisible(false);
-		labelWelcomeMessage.setVisible(false);
-	}
-
-	public void showEditView() {
-		listAssistantsOrProfessors.setVisible(true);
-		chBxAssistantsOrProfessors.setVisible(true);
-		btnAddAssistantOrProfessor.setVisible(true);
-		btnRemoveAssistantOrProfessor.setVisible(true);
-		chBxClassrooms.setVisible(true);
-		labelPickAssistantsOrProfessors.setVisible(true);
-		labelClasroomSelection.setVisible(true);
-		btnSeeSchedule.setVisible(true);
-		labelClassTypeChoose.setVisible(true);
-		chBxClassesTypes.setVisible(true);
-		btnSaveCourse.setVisible(true);
-
-		chBxClassesTypes.setItems(FXCollections.observableArrayList(classesTypes));
-
-		chBxClassesTypes.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
-			@Override
-			public void changed(ObservableValue<? extends String> ov, String value, String newValue) {
-				if (newValue == "Assistantship") {
-					ArrayList<String> assistants = new ArrayList<String>();
-					for (Assistant assistant : Manager.INSTANCE.assistants) {
-						assistants.add(assistant.getName() + " " + assistant.getLastnameFather() + " "
-								+ assistant.getLastnameMother());
-					}
-					chBxAssistantsOrProfessors.setItems(FXCollections.observableArrayList(assistants));
-				} else {
-					ArrayList<String> professors = new ArrayList<String>();
-					for (Professor professor : Manager.INSTANCE.professors) {
-						professors.add(professor.getName() + " " + professor.getLastnameFather() + " "
-								+ professor.getLastnameMother());
-					}
-					chBxAssistantsOrProfessors.setItems(FXCollections.observableArrayList(professors));
-				}
-			}
-		});
-
+		btnRemoveICourse.setText(Messages.getUILabel(UILabel.REMOVE_ICOURSE));
+		
 		ArrayList<String> classrooms = new ArrayList<String>();
 		for (Classroom classroom : Manager.INSTANCE.classrooms) {
 			classrooms.add(classroom.getInitials());
 		}
 		chBxClassrooms.setItems(FXCollections.observableArrayList(classrooms));
+		ViewUtilities.autoComplete(chBxClassrooms);
+		
+		
+		if (Manager.INSTANCE.currentEditignICourse instanceof Assistantship & Manager.INSTANCE.currentEditignICourse != null) {
+			Assistantship selectedAssistantship = (Assistantship) Manager.INSTANCE.currentEditignICourse;
+
+			Manager.INSTANCE.currentEditingSchedule = selectedAssistantship.getSchedule();
+			
+			ArrayList<String> professors = new ArrayList<String>();
+			for (Assistant assistant : selectedAssistantship.getAssistants()) {
+				professors.add(assistant.getName() + " " + assistant.getLastnameFather() + " " + assistant.getLastnameMother() + "-" + assistant.getRut());
+			}
+			listAssistantsOrProfessors.setItems(FXCollections.observableArrayList(professors));
+			
+			chBxClassrooms.getSelectionModel().select(selectedAssistantship.getClassroom().getInitials());
+
+		} else {
+			Manager.INSTANCE.currentEditignICourse = new Assistantship(null, null, new Schedule());
+			Manager.INSTANCE.currentEditingSchedule = Manager.INSTANCE.currentEditignICourse.getSchedule();
+		}
+		
+		ArrayList<String> professors2 = new ArrayList<String>();
+		for (Professor professor : Manager.INSTANCE.professors) {
+			professors2.add(professor.getName() + " " + professor.getLastnameFather() + " "	+ professor.getLastnameMother() + "-" + professor.getRut());
+		}
+		chBxAssistantsOrProfessors.setItems(FXCollections.observableArrayList(professors2));
+		
+		ViewUtilities.autoComplete(chBxAssistantsOrProfessors);
+		
+	}
+	
+	public void btnRemoveICourse_Pressed() {
+		if (Manager.INSTANCE.currentEditignICourse != null) {
+			ArrayList<ICourse> courses = Manager.INSTANCE.currentEditignCourse.getCourses();
+			if (courses.contains(Manager.INSTANCE.currentEditignICourse)) {
+				courses.remove(Manager.INSTANCE.currentEditignICourse);
+				Manager.INSTANCE.currentEditignCourse.setCourses(courses);
+			} else {
+				// TODO Uncomment when function is finished
+				//ViewUtilities.showAlert("The class is not in the classes of the course");
+			}
+		} else {
+			// TODO Uncomment when function is finished
+			//ViewUtilities.showAlert("The ICourse is null");
+		}
+	}
+	
+	public void btnSeeSchedule_Pressed() {
+		ViewUtilities.openNewView(AScheduleViewController.view);
 	}
 
-	public void hideEditView() {
-		listAssistantsOrProfessors.setVisible(false);
-		chBxAssistantsOrProfessors.setVisible(false);
-		btnAddAssistantOrProfessor.setVisible(false);
-		btnRemoveAssistantOrProfessor.setVisible(false);
-		chBxClassrooms.setVisible(false);
-		labelPickAssistantsOrProfessors.setVisible(false);
-		labelClasroomSelection.setVisible(false);
-		btnSeeSchedule.setVisible(false);
-		labelClassTypeChoose.setVisible(false);
-		chBxClassesTypes.setVisible(false);
-		btnSaveCourse.setVisible(true);
+	public void btnAddAssistantOrProfessor_Pressed() {
+		if (!chBxAssistantsOrProfessors.getSelectionModel().isEmpty()) {	
+			ObservableList<String> updatedElements = listAssistantsOrProfessors.getItems();
+			
+			String valueSelected = chBxAssistantsOrProfessors.getSelectionModel().getSelectedItem();
+			String rut = valueSelected.split("-")[1];
+			
+			for (Assistant assistant : Manager.INSTANCE.assistants) {
+				if (rut == assistant.getRut()) {
+					if (!((Assistantship)Manager.INSTANCE.currentEditignICourse).getAssistants().contains(assistant)) {
+						((Assistantship)Manager.INSTANCE.currentEditignICourse).addAssistant(assistant);
+						updatedElements.add(valueSelected);
+						listAssistantsOrProfessors.setItems(updatedElements);
+						break;
+					} else {
+						// TODO Uncomment when function is finished
+						//ViewUtilities.showAlert("The professor is already in that course");
+						break;
+					}
+				}
+			}
+		} else {
+			// TODO Uncomment when function is finished
+			//ViewUtilities.showAlert("Select a professor to add");
+		}
 	}
 
+	public void btnRemoveAssistantOrProfessor_Pressed() {
+		if (!listAssistantsOrProfessors.getSelectionModel().isEmpty()) {
+			ObservableList<String> updatedElements = listAssistantsOrProfessors.getItems();
+			
+			String valueSelected = listAssistantsOrProfessors.getSelectionModel().getSelectedItem();
+			String rut = valueSelected.split("-")[1];
+			
+			for (Assistant assistant : Manager.INSTANCE.assistants) {
+				if (rut == assistant.getRut()) {
+					if (((Assistantship)Manager.INSTANCE.currentEditignICourse).getAssistants().contains(assistant)) {
+						((Assistantship)Manager.INSTANCE.currentEditignICourse).removeAssistant(assistant);
+						updatedElements.remove(valueSelected);
+						listAssistantsOrProfessors.setItems(updatedElements);
+						break;
+					} else {
+						// TODO Uncomment when function is finished
+						//ViewUtilities.showAlert("The professor is not contained in the class");
+						break;
+					}
+				}
+			}
+		} else {
+			// TODO Uncomment when function is finished
+			//ViewUtilities.showAlert("Select a professor to remove");
+		}
+	}
+
+	public void btnSaveCourse_Pressed() {
+		Schedule schedule = Manager.INSTANCE.currentEditingSchedule;
+		Classroom classroom = null;
+		
+		if (!chBxClassrooms.getSelectionModel().isEmpty()) {
+			String classroomString = chBxClassrooms.getSelectionModel().getSelectedItem();
+			for (Classroom classroomLocal : Manager.INSTANCE.classrooms) {
+				if (classroomLocal.getInitials() == classroomString) {
+					classroom = classroomLocal;
+					break;
+				}
+			}
+			
+			Manager.INSTANCE.currentEditignICourse.setClassroom(classroom);
+			Manager.INSTANCE.currentEditignICourse.setSchedule(schedule);
+
+			Manager.INSTANCE.currentEditignICourse = null;
+			Manager.INSTANCE.currentEditingSchedule = null;
+			super.btnBack_Pressed();
+		} else {
+			// TODO Uncomment when function is finished
+			//ViewUtilities.showAlert("Select a classroom first");
+		}		
+	}
 }

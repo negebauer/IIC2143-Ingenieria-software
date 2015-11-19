@@ -15,6 +15,7 @@
             <Button fx:id="btnDetails" layoutX="287.0" layoutY="209.0" mnemonicParsing="false" onAction="#btnDetails_Pressed" text="i" />
             <Button fx:id="btnDeleteCourse" layoutX="250.0" layoutY="317.0" mnemonicParsing="false" onAction="#btnDeleteCourse_Pressed" text="Eliminar Curso" />
             <Button fx:id="btnEditCourse" layoutX="256.0" layoutY="274.0" mnemonicParsing="false" onAction="#btnEditCourse_Pressed" text="Editar Curso" />
+            <Label fx:id="labelSearchCourse" layoutX="263.0" layoutY="149.0" text="Buscar ramo" />
          </children>
       </Pane>
       <Button fx:id="btnLogout" layoutX="531.0" layoutY="369.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />

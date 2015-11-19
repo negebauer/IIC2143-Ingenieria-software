@@ -95,7 +95,7 @@ public class AStudyProgramManagerEditingViewController extends MViewController {
 		Manager.INSTANCE.currentEditingStudyProgram = null;
 		super.btnBack_Pressed();
 	}
-
+	
 	public void saveStudyProgram() {
 		StudyProgram currentProgram = Manager.INSTANCE.currentEditingStudyProgram;
 

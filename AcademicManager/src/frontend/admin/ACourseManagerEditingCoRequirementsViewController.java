@@ -29,7 +29,7 @@ public class ACourseManagerEditingCoRequirementsViewController extends MCourseSe
 	@FXML
 	Label labelModificationResult;
 
-	public static URL view = Object.class.getResource("/frontend/admin/ACourseManagerEditingCoRequirementssView.fxml");
+	public static URL view = Object.class.getResource("/frontend/admin/ACourseManagerEditingCoRequirementsView.fxml");
 
 	@Override
 	public void setUp() {

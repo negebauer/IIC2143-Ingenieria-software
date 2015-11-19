@@ -16,6 +16,7 @@ import backend.courses.Schedule;
 import backend.courses.Semester;
 import backend.courses.StudyProgram;
 import backend.enums.AcademicSemester;
+import backend.interfaces.ICourse;
 import backend.others.Messages;
 import backend.others.Messages.SupportedLanguage;
 import backend.users.Admin;
@@ -51,7 +52,8 @@ public class Manager {
 	public Course currentEditignCourse;
 	public Schedule currentEditingSchedule;
 	public Evaluation currentEditingEvaluation;
-
+	public ICourse currentEditignICourse;
+	
 	/**
 	 * Creates the instance of manager.
 	 */

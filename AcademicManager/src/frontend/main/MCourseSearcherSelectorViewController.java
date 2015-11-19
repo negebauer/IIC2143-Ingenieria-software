@@ -25,7 +25,7 @@ public class MCourseSearcherSelectorViewController extends MViewController {
 	@FXML
 	protected ComboBox<String> chBxSelectedCourse;
 
-	Boolean firstLoad = true;
+	boolean firstLoad = true;
 	protected ArrayList<Course> coursesToShow = Manager.INSTANCE.courses;
 	public static URL view = Object.class.getResource("/frontend/main/MCourseSearcherSelectorView.fxml");
 

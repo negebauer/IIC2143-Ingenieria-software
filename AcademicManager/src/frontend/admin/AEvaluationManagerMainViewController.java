@@ -53,8 +53,7 @@ public class AEvaluationManagerMainViewController extends MViewController {
 			String evaluationType = CourseEvaluation.getCourseEvaluationMessage(evaluation.getCourseEvaluation());
 			String evaluationDate = evaluation.getDate().toString();
 			String evaluationClassroom = evaluation.getClassroom().getInitials();
-			chBxEvaluations.getSelectionModel()
-					.select(evaluationType + "-" + evaluationDate + "-" + evaluationClassroom);
+			chBxEvaluations.getSelectionModel().select(evaluationType + "-" + evaluationDate + "-" + evaluationClassroom);
 		}
 	}
 

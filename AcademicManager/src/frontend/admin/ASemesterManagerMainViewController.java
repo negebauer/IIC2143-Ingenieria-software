@@ -50,6 +50,11 @@ public class ASemesterManagerMainViewController extends MViewController {
 				}
 				chBxSemesters.setItems(FXCollections.observableArrayList(semesters));
 			}
+			
+			if (Manager.INSTANCE.currentSemester != null) {
+				String i = currentProgram.getSemesters().indexOf(Manager.INSTANCE.currentSemester) + 1 + "";
+				chBxSemesters.getSelectionModel().select(i);
+			}
 		}
 	}
 

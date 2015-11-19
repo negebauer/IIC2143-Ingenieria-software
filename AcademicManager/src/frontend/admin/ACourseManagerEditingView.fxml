@@ -26,10 +26,10 @@
             <Label fx:id="labelCourseDetails" layoutX="217.0" layoutY="132.0" text="Detalles curso" />
             <ChoiceBox fx:id="chBxCoordination" layoutX="411.0" layoutY="88.0" prefHeight="25.0" prefWidth="170.0" style="-fx-background-radius: 0;" />
             <Label fx:id="labelCoordination" layoutX="411.0" layoutY="71.0" text="Cordinacion con otras secciones" />
-            <Button fx:id="btnShowCourses" layoutX="468.0" layoutY="149.0" mnemonicParsing="false" onAction="#btnShowCourses_Pressed" prefHeight="25.0" prefWidth="106.0" style="-fx-background-radius: 0;" text="Ver Clases" />
-            <Button fx:id="btnShowEvaluations" layoutX="468.0" layoutY="182.0" mnemonicParsing="false" onAction="#btnShowEvaluations_Pressed" prefHeight="25.0" prefWidth="106.0" style="-fx-background-radius: 0;" text="Ver Evaluaciones" />
-            <Button fx:id="btnShowRequirements" layoutX="468.0" layoutY="212.0" mnemonicParsing="false" onAction="#btnShowRequirements_Pressed" prefHeight="25.0" prefWidth="106.0" style="-fx-background-radius: 0;" text="Ver Requisitos" />
-            <Button fx:id="btnShowCoRequirements" layoutX="468.0" layoutY="245.0" mnemonicParsing="false" onAction="#btnShowCoRequirements_Pressed" style="-fx-background-radius: 0;" text="Ver CoRequisitos" />
+            <Button fx:id="btnShowCourses" layoutX="443.0" layoutY="149.0" mnemonicParsing="false" onAction="#btnShowCourses_Pressed" style="-fx-background-radius: 0;" text="Ver Clases" />
+            <Button fx:id="btnShowEvaluations" layoutX="443.0" layoutY="182.0" mnemonicParsing="false" onAction="#btnShowEvaluations_Pressed" style="-fx-background-radius: 0;" text="Ver Evaluaciones" />
+            <Button fx:id="btnShowRequirements" layoutX="443.0" layoutY="212.0" mnemonicParsing="false" onAction="#btnShowRequirements_Pressed" style="-fx-background-radius: 0;" text="Ver Requisitos" />
+            <Button fx:id="btnShowCoRequirements" layoutX="443.0" layoutY="245.0" mnemonicParsing="false" onAction="#btnShowCoRequirements_Pressed" style="-fx-background-radius: 0;" text="Ver CoRequisitos" />
          </children>
       </Pane>
       <Button fx:id="btnLogout" layoutX="531.0" layoutY="369.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />

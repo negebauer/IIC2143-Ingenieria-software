@@ -365,11 +365,16 @@ public class AScheduleViewController extends MViewController {
 		}
 
 		Manager.INSTANCE.currentEditingSchedule = new Schedule(modules);
-
+		Manager.INSTANCE.currentEditignICourse.setSchedule(Manager.INSTANCE.currentEditingSchedule);
+		
 		Stage stage = (Stage) btnSaveSchedule.getScene().getWindow();
 		stage.close();
 	}
-
+	
+	public void CloseWindow() {
+		
+	}
+	
 	public void setCheckBoxes(Schedule editingSchedule) {
 		for (DayModuleTuple tuple : editingSchedule.getModules()) {
 			if (tuple.day.equals(Day.MONDAY)) {

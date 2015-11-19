@@ -37,8 +37,7 @@ public class ACourseManagerMainViewController extends MCourseSearcherSelectorVie
 		Course currentCourse = Manager.INSTANCE.currentEditignCourse;
 
 		if (currentCourse != null) {
-			chBxSelectedCourse.getSelectionModel().select(
-					getParsedCourse(currentCourse.getInitials(), currentCourse.getSection(), currentCourse.getName()));
+			chBxSelectedCourse.getSelectionModel().select(getParsedCourse(currentCourse.getInitials(), currentCourse.getSection(), currentCourse.getName()));
 		}
 
 	}

@@ -16,6 +16,7 @@
             <Button fx:id="btnRemoveRequirement" layoutX="235.0" layoutY="199.0" mnemonicParsing="false" onAction="#btnRemoveRequirement_Pressed" style="-fx-background-radius: 0;" text="Remover CoRequisito" />
             <Label fx:id="labelSelectCourseAsRequirement" layoutX="30.0" layoutY="106.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-radius: 0;" text="Selecciona un curso para agregarlo o eliminarlo como CoRequisito" wrapText="true" />
             <Label fx:id="labelModificationResult" layoutX="30.0" layoutY="253.0" prefHeight="73.0" prefWidth="295.0" text="Status" wrapText="true" />
+            <Label fx:id="labelSearchCourse" layoutX="98.0" layoutY="146.0" text="Buscar ramo" />
          </children>
       </Pane>
       <Button fx:id="btnLogout" layoutX="531.0" layoutY="369.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />

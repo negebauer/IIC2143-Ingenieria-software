@@ -97,26 +97,31 @@ public class ACourseManagerEditingViewController extends MViewController {
 			academicSemesters.add(AcademicSemester.getAcademicSemesterMessage(academicSemester));
 		}
 		chBxAcademicSemesters.setItems(FXCollections.observableArrayList(academicSemesters));
-		chBxCoordination.setItems(FXCollections.observableArrayList(Messages.getUILabel(UILabel.TRUE),
-				Messages.getUILabel(UILabel.FALSE)));
-
+		chBxCoordination.setItems(FXCollections.observableArrayList(Messages.getUILabel(UILabel.TRUE), Messages.getUILabel(UILabel.FALSE)));
+		ViewUtilities.autoComplete(chBxShcools);
+		
 		if (Manager.INSTANCE.currentEditignCourse != null) {
 
 			txBxCourseName.setText(Manager.INSTANCE.currentEditignCourse.getName());
 			txBxInitialsCourse.setText(Manager.INSTANCE.currentEditignCourse.getInitials());
 			txBxCourseCredits.setText(Manager.INSTANCE.currentEditignCourse.getCredits() + "");
 			txBxCourseSection.setText(Manager.INSTANCE.currentEditignCourse.getSection() + "");
-			chBxShcools.getSelectionModel().select(Manager.INSTANCE.currentEditignCourse.getSchool().toString());
-			chBxAcademicSemesters.getSelectionModel()
-					.select(Manager.INSTANCE.currentEditignCourse.getSemester().toString());
+			chBxShcools.getSelectionModel().select(School.getSchoolMessage(Manager.INSTANCE.currentEditignCourse.getSchool()));
+			chBxAcademicSemesters.getSelectionModel().select(AcademicSemester.getAcademicSemesterMessage(Manager.INSTANCE.currentEditignCourse.getSemester()));
 			txArCourseDetails.setText(Manager.INSTANCE.currentEditignCourse.getDetails());
-
+			
+			if (Manager.INSTANCE.currentEditignCourse.isCoordinated()) {
+				chBxCoordination.getSelectionModel().select(Messages.getUILabel(UILabel.TRUE));
+			} else {
+				chBxCoordination.getSelectionModel().select(Messages.getUILabel(UILabel.FALSE));
+			}
+			
 			isCreating = false;
 		} else {
 			isCreating = true;
 		}
 
-		ViewUtilities.autoComplete(chBxShcools);
+		
 	}
 
 	public void saveCourse() {
@@ -126,15 +131,13 @@ public class ACourseManagerEditingViewController extends MViewController {
 		int section = Integer.parseInt(txBxCourseSection.getText());
 
 		School school = School.defaultSchool();
-		if (!chBxShcools.getSelectionModel().isEmpty()
-				& chBxShcools.getItems().contains(chBxShcools.getSelectionModel().getSelectedItem())) {
+		if (!chBxShcools.getSelectionModel().isEmpty() & chBxShcools.getItems().contains(chBxShcools.getSelectionModel().getSelectedItem())) {
 			school = School.getSchool(chBxShcools.getSelectionModel().getSelectedItem());
 		}
 
 		AcademicSemester semester = AcademicSemester.defaultSemester();
 		if (!chBxAcademicSemesters.getSelectionModel().isEmpty()) {
-			semester = AcademicSemester
-					.getAcademicSemester(chBxAcademicSemesters.getSelectionModel().getSelectedItem());
+			semester = AcademicSemester.getAcademicSemester(chBxAcademicSemesters.getSelectionModel().getSelectedItem());
 		}
 
 		String details = txArCourseDetails.getText();
@@ -149,8 +152,7 @@ public class ACourseManagerEditingViewController extends MViewController {
 		Course course = Manager.INSTANCE.currentEditignCourse;
 
 		if (isCreating) {
-			course = new Course(name, initials, section, credits, details, school, semester, null, null, null, null,
-					coordinated);
+			course = new Course(name, initials, section, credits, details, school, semester, null, null, null, null, coordinated);
 			Manager.INSTANCE.courses.add(course);
 			isCreating = false;
 		} else {
