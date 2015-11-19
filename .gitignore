@@ -12,7 +12,5 @@ hs_err_pid*
 
 # Eclipse metadata
 .metadata/**/*
-.recommenders/**/*
-.recommenders/caches/identified-project-coordinates.json
-.recommenders/caches/**/*
+.recommenders/
 
