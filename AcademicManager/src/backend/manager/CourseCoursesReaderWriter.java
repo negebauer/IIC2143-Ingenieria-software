@@ -29,15 +29,11 @@ import backend.users.Professor;
 public class CourseCoursesReaderWriter {
 
 	/*
-	 * File format initials&section&semester&TypeOfCourse&assistants or
-	 * professors rut&classroom initials&day:module;day:module
-	 * 
-	 * initials&section&semester&ASSISTANTSHIP&rut1;rut2&classroomInitials&dia1:
-	 * modulo1;dia2:modulo2
-	 * initials&section&semester&LABORATORY&rut1;rut2&classroomInitials&dia1:
-	 * modulo1;dia2:modulo2
-	 * initials&section&semester&LECTURE&rut1;rut2&classroomInitials&dia1:
-	 * modulo1;dia2:modulo2
+	 * File format 
+	 * initials&section&semester&TypeOfCourse&assistants or professors rut&classroom initials&day:module;day:module
+	 * initials&section&semester&ASSISTANTSHIP&rut1;rut2&classroomInitials&dia1:modulo1;dia2:modulo2
+	 * initials&section&semester&LABORATORY&rut1;rut2&classroomInitials&dia1:modulo1;dia2:modulo2
+	 * initials&section&semester&LECTURE&rut1;rut2&classroomInitials&dia1:modulo1;dia2:modulo2
 	 */
 
 	/**

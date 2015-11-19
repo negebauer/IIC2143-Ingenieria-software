@@ -14,7 +14,10 @@ import backend.others.Utilities;
 public abstract class User {
 
 	public enum Access {
-		ADMIN, EDITOR, USER, READONLY;
+		ADMIN, 
+		EDITOR, 
+		USER, 
+		READONLY;
 
 		public static Access defaultAccess() {
 			return Access.READONLY;
@@ -22,7 +25,8 @@ public abstract class User {
 	}
 
 	public enum Gender {
-		MALE, FEMALE;
+		MALE, 
+		FEMALE;
 
 		public static Gender defaultGender() {
 			return Gender.MALE;

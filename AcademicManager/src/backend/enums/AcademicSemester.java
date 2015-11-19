@@ -7,7 +7,9 @@ import java.util.Map;
 import backend.others.Messages;
 
 public enum AcademicSemester {
-	FIRST, SECOND, BOTH;
+	FIRST, 
+	SECOND, 
+	BOTH;
 
 	public static AcademicSemester defaultSemester() {
 		return AcademicSemester.BOTH;

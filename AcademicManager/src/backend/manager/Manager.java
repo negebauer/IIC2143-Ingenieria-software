@@ -91,8 +91,14 @@ public class Manager {
 		CourseCoRequirementsReaderWriter.readCoursesCoRequirements(courses);
 		CourseRequirementsReaderWriter.readCoursesRequirements(courses);
 		DetailsReaderWriter.readDetails(courses);
-		students = StudentsReaderWriter.readStudents(courses, studyPrograms, classrooms, currentSemester, professors,
-				assistants);
+		students = StudentsReaderWriter.readStudents(
+				courses, 
+				studyPrograms, 
+				classrooms, 
+				currentSemester, 
+				professors,
+				assistants
+		);
 
 		System.out.println("Data loaded!");
 	}

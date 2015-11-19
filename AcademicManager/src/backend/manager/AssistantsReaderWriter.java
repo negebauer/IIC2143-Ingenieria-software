@@ -20,8 +20,7 @@ public class AssistantsReaderWriter {
 
 	/*
 	 * File format
-	 * rut&name&lastnameFather&lastnameMother&address&gender&access&phone&
-	 * birthdayString
+	 * rut&name&lastnameFather&lastnameMother&address&gender&access&phone&birthdayString
 	 */
 
 	/**

@@ -7,7 +7,13 @@ import backend.others.Messages;
 public class Schedule {
 
 	public enum Day {
-		MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY;
+		MONDAY, 
+		TUESDAY, 
+		WEDNESDAY, 
+		THURSDAY, 
+		FRIDAY, 
+		SATURDAY, 
+		SUNDAY;
 
 		public String getDayString() {
 			return Messages.getDay(this);
@@ -36,7 +42,14 @@ public class Schedule {
 	}
 
 	public enum Module {
-		_1("1"), _2("2"), _3("3"), _4("4"), _5("5"), _6("6"), _7("7"), _8("8");
+		_1("1"), 
+		_2("2"), 
+		_3("3"), 
+		_4("4"), 
+		_5("5"), 
+		_6("6"),
+		_7("7"), 
+		_8("8");
 
 		private final String module;
 
