@@ -39,6 +39,7 @@ public class Main extends Application {
 			System.out.println(s);
 		}
 		// Trying an app for my iPad
+      	// Another try for an app from my iPad∫
 
 		// ----- To this line -----
 
