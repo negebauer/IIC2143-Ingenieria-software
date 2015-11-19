@@ -79,10 +79,7 @@ public class AICourseManagerMainViewController extends MViewController {
 
 		} else if (selectedICourse == Messages.getICourseName(new Laboratory(null, null, null))) {
 			Manager.INSTANCE.currentEditignICourse = Manager.INSTANCE.currentEditignCourse.getLaboratory();
-			ViewUtilities.openView(AICourseManagerLaboratoryEditingViewController.view, view);
-			
-		} else {
-			System.out.println("no me meti");
+			ViewUtilities.openView(AICourseManagerLaboratoryEditingViewController.view, view);	
 		}
 	}
 

@@ -45,6 +45,7 @@ public class AICourseManagerLectureEditingViewController extends MViewController
 	Button btnRemoveICourse;
 
 	static URL view = Object.class.getResource("/frontend/admin/AICourseManageLectureEditingView.fxml");
+	boolean isCreating = false;
 	
 	@Override
 	public void setUp() {
@@ -66,6 +67,7 @@ public class AICourseManagerLectureEditingViewController extends MViewController
 		ViewUtilities.autoComplete(chBxClassrooms);
 		
 		if (Manager.INSTANCE.currentEditignICourse instanceof Lecture & Manager.INSTANCE.currentEditignICourse != null) {
+			isCreating = false;
 			Lecture selectedLecture = (Lecture) Manager.INSTANCE.currentEditignICourse;
 
 			Manager.INSTANCE.currentEditingSchedule = selectedLecture.getSchedule();
@@ -79,6 +81,7 @@ public class AICourseManagerLectureEditingViewController extends MViewController
 			chBxClassrooms.getSelectionModel().select(selectedLecture.getClassroom().getInitials());
 			
 		} else {
+			isCreating = true;
 			Manager.INSTANCE.currentEditignICourse = new Lecture(null, null, new Schedule());
 			Manager.INSTANCE.currentEditingSchedule = Manager.INSTANCE.currentEditignICourse.getSchedule();
 		}
@@ -121,7 +124,7 @@ public class AICourseManagerLectureEditingViewController extends MViewController
 			String rut = valueSelected.split("-")[1];
 			
 			for (Professor professor : Manager.INSTANCE.professors) {
-				if (rut == professor.getRut()) {
+				if (rut.equals(professor.getRut())) {
 					if (!((Lecture)Manager.INSTANCE.currentEditignICourse).getProfessors().contains(professor)) {
 						((Lecture)Manager.INSTANCE.currentEditignICourse).addProfessor(professor);
 						updatedElements.add(valueSelected);
@@ -148,7 +151,7 @@ public class AICourseManagerLectureEditingViewController extends MViewController
 			String rut = valueSelected.split("-")[1];
 			
 			for (Professor professor : Manager.INSTANCE.professors) {
-				if (rut == professor.getRut()) {
+				if (rut.equals(professor.getRut())) {
 					if (((Lecture)Manager.INSTANCE.currentEditignICourse).getProfessors().contains(professor)) {
 						((Lecture)Manager.INSTANCE.currentEditignICourse).removeProfessor(professor);
 						updatedElements.remove(valueSelected);
@@ -174,7 +177,7 @@ public class AICourseManagerLectureEditingViewController extends MViewController
 		if (!chBxClassrooms.getSelectionModel().isEmpty()) {
 			String classroomString = chBxClassrooms.getSelectionModel().getSelectedItem();
 			for (Classroom classroomLocal : Manager.INSTANCE.classrooms) {
-				if (classroomLocal.getInitials() == classroomString) {
+				if (classroomLocal.getInitials().equals(classroomString)) {
 					classroom = classroomLocal;
 					break;
 				}
@@ -182,7 +185,11 @@ public class AICourseManagerLectureEditingViewController extends MViewController
 			
 			Manager.INSTANCE.currentEditignICourse.setClassroom(classroom);
 			Manager.INSTANCE.currentEditignICourse.setSchedule(schedule);
-
+			
+			if (isCreating) {
+				Manager.INSTANCE.currentEditignCourse.addCourse(Manager.INSTANCE.currentEditignICourse);
+			}
+			
 			Manager.INSTANCE.currentEditignICourse = null;
 			Manager.INSTANCE.currentEditingSchedule = null;
 			super.btnBack_Pressed();
