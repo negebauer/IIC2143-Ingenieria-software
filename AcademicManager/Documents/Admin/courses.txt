@@ -11,7 +11,7 @@ Quimica General II&QIM100A&1&10&CHEMISTRY&BOTH&true
 Estatica y Dinamica&FIS1513&1&10&PHYSICS&BOTH&true
 Electricidad y Magnetismo&FIS1533&1&10&PHYSICS&BOTH&true
 Etica para Ingenieros&FIL188&1&10&PHILOSOFY&BOTH&true
-Desafios de la Ingenieria&ING1004&3&10&ENGINEERING&BOTH&true
+Desafios de la Ingenieria&ING1004&1&10&ENGINEERING&BOTH&true
 Introduccion a la Programacion&IIC1103&1&10&ENGINEERING&BOTH&true
 Introduccion a la Economia&ICS1513&1&10&ENGINEERING&BOTH&true
 Optimizacion&ICS1113&1&10&ENGINEERING&BOTH&true
