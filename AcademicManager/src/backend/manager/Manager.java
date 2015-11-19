@@ -1,13 +1,24 @@
 package backend.manager;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Locale;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
+
+import com.dropbox.core.DbxClient;
+import com.dropbox.core.DbxEntry;
+import com.dropbox.core.DbxException;
+import com.dropbox.core.DbxRequestConfig;
+import com.dropbox.core.DbxWriteMode;
 
 import backend.courses.Classroom;
 import backend.courses.Course;
@@ -30,7 +41,11 @@ import backend.users.User;
  * all the objects of the program. Data container.
  */
 public class Manager {
-
+	
+	public DbxRequestConfig config = new DbxRequestConfig("Upload", Locale.getDefault().toString());
+	public DbxClient client = new DbxClient(config, "dVvPUaRLEWAAAAAAAAAABzuW5o9besAnmRMCxddf_Gs3-PxoHn9WWKBGlVFGjakI");
+	private byte[] zipBuffer = new byte[1024];
+	
 	public final static Calendar CALENDAR = Calendar.getInstance();
 	public final static Manager INSTANCE = new Manager();
 
@@ -58,7 +73,25 @@ public class Manager {
 	 * Creates the instance of manager.
 	 */
 	private Manager() {
-
+		try {
+			System.out.println("Linked account: " + client.getAccountInfo().displayName);
+		} catch (DbxException e) {
+			e.printStackTrace();
+		}
+		
+		// TODO: Delete from here
+		DbxEntry.WithChildren listing;
+		try {
+			listing = client.getMetadataWithChildren("/");
+			System.out.println("Files in the root path:");
+	        for (DbxEntry child : listing.children) {
+	            System.out.println("	" + child.name + ": " + child.toString());
+	        }
+		} catch (DbxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		// TO here
 	}
 
 	/**
@@ -66,6 +99,62 @@ public class Manager {
 	 */
 	public void reloadData() {
 		// TODO Implement server first
+	}
+	
+	public void uploadData() {
+		File rootFolder = new File(FolderFileManager.rootFolder);
+		try {
+			// Create zip
+			String zipName = FolderFileManager.rootFolder + ".zip";
+			FileOutputStream zipFileOutputStream = new FileOutputStream(zipName);
+			ZipOutputStream zip = new ZipOutputStream(zipFileOutputStream);
+			addFileOrFolderToZip(zip, rootFolder);
+			zip.close();
+			
+			// Upload zip
+			File zipFile = new File(zipName);
+			FileInputStream zipFileStream = new FileInputStream(zipFile);
+		    DbxEntry.File uploadedFile = client.uploadFile("/" + zipName,
+		        DbxWriteMode.add(), zipFile.length(), zipFileStream);
+		    System.out.println("Uploaded: " + uploadedFile.name);
+		    zipFileStream.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (DbxException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private void addFileOrFolderToZip(ZipOutputStream zip, File fileOrFolder) {
+		if (fileOrFolder.isDirectory()) {
+			for (File childFileOrFolder : fileOrFolder.listFiles()) {
+				addFileOrFolderToZip(zip, childFileOrFolder);
+			}
+		} else if (!(fileOrFolder.getName().contains(".DS_Store"))) {
+			try {
+				FileInputStream inputStream = new FileInputStream(fileOrFolder);
+				String rawPath = fileOrFolder.getAbsolutePath();
+				String[] splitedPath = rawPath.split(FolderFileManager.rootFolder);
+				String realPath = "/" + FolderFileManager.rootFolder + splitedPath[1];
+				zip.putNextEntry(new ZipEntry(realPath));
+				int len;
+				while ((len = inputStream.read(zipBuffer)) > 0) {
+					zip.write(zipBuffer, 0, len);
+				}
+				zip.closeEntry();
+				inputStream.close();
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public void downloadData() {
+		
 	}
 
 	/**

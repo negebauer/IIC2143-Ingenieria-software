@@ -77,7 +77,7 @@ public class FolderFileManager {
 	public static String studentCourses = "/courses.txt";
 	public static String studentInfo = "/student.txt";
 	public static String studentStudyPrograms = "/studyPrograms.txt";
-
+	
 	/**
 	 * Makes sure that all the required folders and files exist. Basically,
 	 * maintains the folder hierarchy.
