@@ -7,10 +7,10 @@ import backend.users.User;
 
 public class ForumPost {
 
-	User creator;
-	Date createdAt;
-	String title;
-	ArrayList<ForumComment> comments;
+	public User creator;
+	public Date createdAt;
+	public String title;
+	public ArrayList<ForumComment> comments;
 	
 	public ForumPost(User creator, String title) {
 		this.creator = creator;

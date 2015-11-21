@@ -4,12 +4,14 @@ import java.net.URL;
 import java.util.ArrayList;
 
 import backend.courses.Course;
+import backend.courses.ForumPost;
 import backend.manager.Manager;
 import backend.users.Student;
 import frontend.main.MViewController;
 import frontend.others.Parser;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -49,6 +51,7 @@ public class SForumsViewController extends MViewController {
 			super.btnBack_Pressed();
 		}
 		coursesToShow = user.getCurriculum().getCurrentSemester().getCourses();
+		cmBxCourses.setItems(Parser.generateParsedCourses(coursesToShow));
 		
 		cmBxCourses.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 			@Override
@@ -69,7 +72,7 @@ public class SForumsViewController extends MViewController {
 	}
 	
 	public void showForums(Course course) {
-		
+		cmBxForumEntry.setItems(Parser.generateParsedForumPosts(course.getForum().posts));
 	}
 	
 	public void btnPostComment_Pressed() {

@@ -6,9 +6,9 @@ import backend.users.User;
 
 public class ForumComment {
 
-	User creator;
-	Date createdAt;
-	String comment;
+	public User creator;
+	public Date createdAt;
+	public String comment;
 	
 	public ForumComment(User creator, String comment) {
 		this.creator = creator;

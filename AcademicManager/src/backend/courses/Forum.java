@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Forum {
 
-	ArrayList<ForumPost> posts;
+	public ArrayList<ForumPost> posts;
 	
 	public Forum() {
 		posts = new ArrayList<ForumPost>();

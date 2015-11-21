@@ -39,14 +39,15 @@ public class ForumReaderWriter {
 	}
 
 	public static void readForums(ArrayList<Course> allCourses, ArrayList<User> allUsers) {
+		System.out.println("--- Starting forum read");
 		try {
-			int line = 0;
 			File forumsFolder = new File(FolderFileManager.rootForums);
+			System.out.println("--- Forum folder: " + forumsFolder.getName());
 			for (File forumFolder : forumsFolder.listFiles()) {
 				if (forumFolder.getName().contains(".DS_")) {
-					return;
+					continue;
 				}
-				System.out.println("Going to read forum: " + forumFolder.getName());
+				System.out.println("--- Checking forumFolder: " + forumFolder.getName());
 				String initials = forumFolder.getName().split("-")[0];
 				int section = Integer.valueOf(forumFolder.getName().split("-")[1].split(".txt")[0]);
 				Course courseForForum = null;
@@ -59,15 +60,21 @@ public class ForumReaderWriter {
 				if (courseForForum == null) {
 					continue;
 				}
+				Forum forum = new Forum();
 				for (File forumFile : forumFolder.listFiles()) {
-					Forum forum = new Forum();
+					if (forumFile.getName().contains(".DS_")) {
+						continue;
+					}
+					System.out.println("----- Checking forumFile: " + forumFile.getName());
 					ForumPost forumPost = null;
 					courseForForum.setForum(forum);
 
 					FileInputStream forumInputStream = new FileInputStream(forumFile);
 					BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(forumInputStream));
 					String forumLine = bufferedReader.readLine();
+					Boolean createdPost = false;
 					while (forumLine != null) {
+						System.out.println("------- Checking rawData: " + forumLine);
 						String[] rawData = forumLine.split("&");
 						String rutCreator = rawData[0];
 						Date createdAt = Utilities.getDateFromString(rawData[1]);
@@ -84,17 +91,16 @@ public class ForumReaderWriter {
 							forumInputStream.close();
 							return;
 						}
-						if (line == 0) {
+						if (!createdPost) {
 							ForumPost post = new ForumPost(creator, content, createdAt);
-							forum.addPost(post);
 							forumPost = post;
-						} else {
+							forum.addPost(forumPost);
+							createdPost = true;
+						} else if (createdPost) {
 							ForumComment comment = new ForumComment(creator, content, createdAt);
 							forumPost.addComment(comment);
 						}
-						line++;
 						forumLine = bufferedReader.readLine();
-						
 					}
 					bufferedReader.close();
 					forumInputStream.close();

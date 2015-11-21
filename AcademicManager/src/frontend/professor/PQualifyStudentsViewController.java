@@ -57,11 +57,7 @@ public class PQualifyStudentsViewController extends MViewController {
 					currentCourse = null;
 				}
 				refreshStudentsToShowArray();
-				ArrayList<String> parsedStudents = new ArrayList<String>();
-				for (Student student : studentsToShow) {
-					parsedStudents.add(Parser.getParsedStudent(student));
-				}
-				cmBxSelectedStudent.setItems(FXCollections.observableArrayList(parsedStudents));
+				cmBxSelectedStudent.setItems(Parser.generateParsedStudents(studentsToShow));
 			}
 		});
 		cmBxSelectedStudent.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
@@ -76,11 +72,7 @@ public class PQualifyStudentsViewController extends MViewController {
 		});
 		
 		if (firstLoad) {
-			ArrayList<String> parsedCourses = new ArrayList<String>();
-			for (Course course : coursesToShow) {
-				parsedCourses.add(Parser.getParsedCourse(course));
-			}
-			cmBxSelectedCourse.setItems(FXCollections.observableArrayList(parsedCourses));
+			cmBxSelectedCourse.setItems(Parser.generateParsedCourses(coursesToShow));
 			firstLoad = false;
 		}
 	}
@@ -98,11 +90,7 @@ public class PQualifyStudentsViewController extends MViewController {
 	}
 	
 	public void updateCoursesShow(AcademicSemester semester) {
-		ArrayList<String> studentsStrings = new ArrayList<String>();
-		for (Student student : studentsToShow) {
-			studentsStrings.add(Parser.getParsedStudent(student));
-		}
-		cmBxSelectedStudent.setItems(FXCollections.observableArrayList(studentsStrings));
+		cmBxSelectedStudent.setItems(Parser.generateParsedStudents(studentsToShow));
 		ViewUtilities.autoComplete(cmBxSelectedStudent);
 	}
 	
