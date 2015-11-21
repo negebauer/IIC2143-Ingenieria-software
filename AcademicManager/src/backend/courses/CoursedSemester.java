@@ -8,13 +8,11 @@ public class CoursedSemester {
 
 	private AcademicSemester semester;
 	private int year;
-	private int maxCredits;
 	private ArrayList<Coursed> coursedCourses;
 
-	public CoursedSemester(AcademicSemester semester, int year, int maxCredits) {
+	public CoursedSemester(AcademicSemester semester, int year) {
 		this.semester = semester;
 		this.year = year;
-		this.setMaxCredits(maxCredits);
 		coursedCourses = new ArrayList<Coursed>();
 	}
 
@@ -44,21 +42,6 @@ public class CoursedSemester {
 
 	public void setCoursedCourses(ArrayList<Coursed> coursedCourses) {
 		this.coursedCourses = coursedCourses;
-	}
-
-	/**
-	 * @return the maxCredits
-	 */
-	public int getMaxCredits() {
-		return maxCredits;
-	}
-
-	/**
-	 * @param maxCredits
-	 *            the maxCredits to set
-	 */
-	public void setMaxCredits(int maxCredits) {
-		this.maxCredits = maxCredits;
 	}
 
 	public double getGrade() {

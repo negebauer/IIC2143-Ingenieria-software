@@ -38,7 +38,6 @@ public class PMainViewController extends MViewController {
 	}
 
 	public void btnQualifyStudents_Pressed() {
-		// TODO: [PROFESSOR] Create view for qualifying students
-		// ViewUtilities.openView(PQualifyStudentsViewController.view, view);
+		 ViewUtilities.openView(PQualifyStudentsViewController.view, view);
 	}
 }

@@ -56,8 +56,6 @@ public class PCoursesViewController extends MViewController {
 	}
 
 	String parseYearSemesterToString(int year, AcademicSemester semester) {
-		System.out.println(year);
-		System.out.println(semester);
 		return year + " - " + semester.getSemesterNumber();
 	}
 

@@ -109,7 +109,9 @@ public class SCurrentSemesterViewController extends MCourseSearcherSelectorViewC
 				names = names == "" ? courseName : names + courseName;
 				if (user.getCurriculum().getCurrentCoursedSemester() != null) {
 					for (Coursed coursed : user.getCurriculum().getCurrentCoursedSemester().getCoursedCourses()) {
-						names += ": " + coursed.getGrade();
+						if (coursed.getInitials().equals(course.getInitials()) && coursed.getSection() == course.getSection()) {
+							names += ": " + coursed.getGrade();
+						}
 					}
 				}
 				names += "\n";

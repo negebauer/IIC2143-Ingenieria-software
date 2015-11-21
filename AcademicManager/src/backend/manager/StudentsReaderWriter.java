@@ -458,7 +458,7 @@ public class StudentsReaderWriter {
 					if (currentSemesterCoursed.size() > 0) {
 						student1.getCurriculum()
 								.setCurrentCoursedSemester(new CoursedSemester(currentSemester.getSemester(),
-										currentSemester.getYear(), student1.getCurriculum().getMaxSemesterCredits()));
+										currentSemester.getYear()));
 						student1.getCurriculum().getCurrentCoursedSemester().setCoursedCourses(currentSemesterCoursed);
 					}
 

@@ -2,6 +2,8 @@ package backend.courses;
 
 import java.util.ArrayList;
 
+import backend.manager.Manager;
+
 /**
  * Class that represents the students' Curriculum.
  */
@@ -41,6 +43,11 @@ public class Curriculum {
 	}
 
 	public void addCoursedCourse(Coursed course) {
+		if (course.getYear() == Manager.getYear() && course.getSemester() == Manager.INSTANCE.currentSemester.getSemester() && currentCoursedSemester == null) {
+			currentCoursedSemester = new CoursedSemester(Manager.INSTANCE.currentSemester.getSemester(), Manager.getYear());
+		} else if (course.getYear() == currentCoursedSemester.getYear() && course.getSemester() == currentCoursedSemester.getSemester()) {
+			currentCoursedSemester.addCoursedCourse(course);
+		}
 		coursedCourses.add(course);
 	}
 
@@ -109,7 +116,7 @@ public class Curriculum {
 			}
 			if (shouldCreateNewCoursedSemester) {
 				CoursedSemester coursedSemester = new CoursedSemester(coursedCourse.getSemester(),
-						coursedCourse.getYear(), getMaxSemesterCredits());
+						coursedCourse.getYear());
 				coursedSemester.addCoursedCourse(coursedCourse);
 				coursedSemesters.add(coursedSemester);
 			}
