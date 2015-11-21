@@ -9,6 +9,7 @@ import backend.manager.Manager;
 import backend.others.Messages;
 import backend.others.Messages.UILabel;
 import frontend.main.MCourseSearcherSelectorViewController;
+import frontend.others.ViewUtilities;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -73,9 +74,7 @@ public class ACourseManagerEditingCoRequirementsViewController extends MCourseSe
 				}
 			}
 		} else {
-			// TODO Uncomment when function is created
-			// ViewUtilities.showAlert(Messages.getUILabel(UILabel.ERROR_SELECTION)
-			// + "(" + Messages.getUILabel(UILabel.ADD_CO_REQUIREMENT) + ")");
+			 ViewUtilities.showAlert(Messages.getUILabel(UILabel.ERROR_SELECTION) + "(" + Messages.getUILabel(UILabel.ADD_CO_REQUIREMENT) + ")");
 		}
 	}
 
@@ -104,10 +103,9 @@ public class ACourseManagerEditingCoRequirementsViewController extends MCourseSe
 				}
 			}
 		} else {
-			// TODO Uncomment when function is created
-			// ViewUtilities.showAlert(Messages.getUILabel(UILabel.ERROR_SELECTION)
-			// + "(" + Messages.getUILabel(UILabel.REMOVE_CO_REQUIREMENT) +
-			// ")");
+			 ViewUtilities.showAlert(Messages.getUILabel(UILabel.ERROR_SELECTION)
+			 + "(" + Messages.getUILabel(UILabel.REMOVE_CO_REQUIREMENT) +
+			 ")");
 		}
 	}
 

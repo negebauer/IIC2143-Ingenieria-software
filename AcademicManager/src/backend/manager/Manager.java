@@ -51,7 +51,8 @@ public class Manager {
 	public final static Manager INSTANCE = new Manager();
 
 	public User currentUser;
-
+	public String alertMessage;
+	
 	public ArrayList<Classroom> classrooms = new ArrayList<Classroom>();
 	public ArrayList<Course> courses = new ArrayList<Course>();
 	public ArrayList<StudyProgram> studyPrograms = new ArrayList<StudyProgram>();

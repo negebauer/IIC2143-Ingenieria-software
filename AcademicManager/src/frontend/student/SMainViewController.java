@@ -33,7 +33,8 @@ public class SMainViewController extends MViewController {
 	Label labelUserInformation;
 
 	public static URL view = Object.class.getResource("/frontend/student/SMainView.fxml");
-
+	Student user = (Student) Manager.INSTANCE.currentUser;
+	
 	@Override
 	public void setUp() {
 		super.setUp();
@@ -49,8 +50,7 @@ public class SMainViewController extends MViewController {
 		btnCoursedSemesters.setCursor(Cursor.HAND);
 		btnAcademicHistory.setCursor(Cursor.HAND);
 		
-		Student student = (Student)Manager.INSTANCE.currentUser;	
-		labelUserInformation.setText(student.getStudentInformation());
+		labelUserInformation.setText(user.getStudentInformation());
 		
 		// TODO: Create UILabel
 		// btnCoursedSemesters.setText(Messages.getUILabel(UILabel.STUDENT_SHOW_COURSED_SEMESTERS));

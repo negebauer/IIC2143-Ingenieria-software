@@ -28,7 +28,7 @@ public class PMainViewController extends MViewController {
 		super.setUp();
 		labelWelcomeMessage.setText(Messages.getUILabel(UILabel.WELCOME_MESSAGE_ADMIN));
 		labelWhatDoNext.setText(Messages.getUILabel(UILabel.WHAT_TO_DO_NEXT_QUESTION));
-		// TODO: Create UILabels
+		// TODO: [PROFESSOR] Create UILabels
 		// btnSeeMyCourses.setText(Messages.getUILabel(UILabel.PROFESSOR_SEE_MY_COURSES));
 		// btnQualifyStudents.setText(Messages.getUILabel(UILabel.PROFESSOR_QUALIFY_STUDENTS));
 	}
@@ -38,7 +38,7 @@ public class PMainViewController extends MViewController {
 	}
 
 	public void btnQualifyStudents_Pressed() {
-		// TODO: Create view for qualifying students [PROFESSOR]
+		// TODO: [PROFESSOR] Create view for qualifying students
 		// ViewUtilities.openView(PQualifyStudentsViewController.view, view);
 	}
 }

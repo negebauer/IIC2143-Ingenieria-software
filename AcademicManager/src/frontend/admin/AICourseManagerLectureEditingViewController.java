@@ -103,12 +103,10 @@ public class AICourseManagerLectureEditingViewController extends MViewController
 				courses.remove(Manager.INSTANCE.currentEditignICourse);
 				Manager.INSTANCE.currentEditignCourse.setCourses(courses);
 			} else {
-				// TODO Uncomment when function is finished
-				//ViewUtilities.showAlert("The class is not in the classes of the course");
+				ViewUtilities.showAlert("The class is not in the classes of the course");
 			}
 		} else {
-			// TODO Uncomment when function is finished
-			//ViewUtilities.showAlert("The ICourse is null");
+			ViewUtilities.showAlert("The ICourse is null");
 		}
 	}
 	
@@ -131,15 +129,13 @@ public class AICourseManagerLectureEditingViewController extends MViewController
 						listAssistantsOrProfessors.setItems(updatedElements);
 						break;
 					} else {
-						// TODO Uncomment when function is finished
-						//ViewUtilities.showAlert("The professor is already in that course");
+						ViewUtilities.showAlert("The professor is already in that course");
 						break;
 					}
 				}
 			}
 		} else {
-			// TODO Uncomment when function is finished
-			//ViewUtilities.showAlert("Select a professor to add");
+			ViewUtilities.showAlert("Select a professor to add");
 		}
 	}
 
@@ -158,15 +154,13 @@ public class AICourseManagerLectureEditingViewController extends MViewController
 						listAssistantsOrProfessors.setItems(updatedElements);
 						break;
 					} else {
-						// TODO Uncomment when function is finished
-						//ViewUtilities.showAlert("The professor is not contained in the class");
+						ViewUtilities.showAlert("The professor is not contained in the class");
 						break;
 					}
 				}
 			}
 		} else {
-			// TODO Uncomment when function is finished
-			//ViewUtilities.showAlert("Select a professor to remove");
+			ViewUtilities.showAlert("Select a professor to remove");
 		}
 	}
 
@@ -194,8 +188,7 @@ public class AICourseManagerLectureEditingViewController extends MViewController
 			Manager.INSTANCE.currentEditingSchedule = null;
 			super.btnBack_Pressed();
 		} else {
-			// TODO Uncomment when function is finished
-			//ViewUtilities.showAlert("Select a classroom first");
+			ViewUtilities.showAlert("Select a classroom first");
 		}		
 	}
 

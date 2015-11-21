@@ -3,6 +3,8 @@ package frontend.others;
 import java.io.IOException;
 import java.net.URL;
 
+import backend.manager.Manager;
+import frontend.main.MAlertViewController;
 import frontend.main.MViewController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -76,6 +78,28 @@ public final class ViewUtilities {
 			stage.setScene(new Scene(root));
 			stage.setResizable(false);
 			stage.setTitle("RENNAB");
+			stage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Opens a view with an alert
+	 * @param alertMessage The message to be shown in the alert
+	 */
+	public static void showAlert(String alertMessage) {
+		Manager.INSTANCE.alertMessage = alertMessage;
+		FXMLLoader loader = new FXMLLoader(MAlertViewController.view);
+		Parent root = null;
+		try {
+			root = (Parent) loader.load();
+			((MViewController) loader.getController()).setUp();
+			Stage stage = new Stage();
+			stage.setScene(new Scene(root));
+			stage.setResizable(false);
+			stage.setTitle("ALERT");
 			stage.show();
 
 		} catch (IOException e) {

@@ -69,8 +69,7 @@ public class ASemesterManagerMainViewController extends MViewController {
 		if (semester.getCourses().size() == 0) {
 			Manager.INSTANCE.currentEditingStudyProgram.getSemesters().remove(semester);
 		} else {
-			// TODO Uncomment when function is created
-			// ViewUtilities.showAlert(Messages.getUILabel(UILabel.ERROR_REMOVING_SEMESTER));
+			 ViewUtilities.showAlert(Messages.getUILabel(UILabel.ERROR_REMOVING_SEMESTER));
 		}
 	}
 
@@ -81,9 +80,8 @@ public class ASemesterManagerMainViewController extends MViewController {
 					.get(indexChoosed);
 			ViewUtilities.openView(ASemesterManagerEditingViewController.view, view);
 		} else {
-			// TODO Uncomment when function is created
-			// ViewUtilities.showAlert(Messages.getUILabel(UILabel.ERROR_SELECTION)
-			// + "(" + Messages.getUILabel(UILabel.EDIT_SEMESTER) + ")");
+			 ViewUtilities.showAlert(Messages.getUILabel(UILabel.ERROR_SELECTION)
+			 + "(" + Messages.getUILabel(UILabel.EDIT_SEMESTER) + ")");
 		}
 	}
 }

@@ -60,9 +60,7 @@ public class ACourseManagerMainViewController extends MCourseSearcherSelectorVie
 			}
 			ViewUtilities.openView(ACourseManagerEditingViewController.view, view);
 		} else {
-			// TODO Uncomment when function is created
-			// ViewUtilities.showAlert(Messages.getUILabel(UILabel.ERROR_SELECTION)
-			// + "(" + Messages.getUILabel(UILabel.EDIT_COURSE) + ")");
+			 ViewUtilities.showAlert(Messages.getUILabel(UILabel.ERROR_SELECTION) + "(" + Messages.getUILabel(UILabel.EDIT_COURSE) + ")");
 		}
 	}
 
@@ -92,9 +90,7 @@ public class ACourseManagerMainViewController extends MCourseSearcherSelectorVie
 				Manager.INSTANCE.courses.remove(Manager.INSTANCE.currentEditignCourse);
 			}
 		} else {
-			// TODO Uncomment when function is created
-			// ViewUtilities.showAlert(Messages.getUILabel(UILabel.ERROR_SELECTION)
-			// + "(" + Messages.getUILabel(UILabel.DELETE_COURSE) + ")");
+			ViewUtilities.showAlert(Messages.getUILabel(UILabel.ERROR_SELECTION) + "(" + Messages.getUILabel(UILabel.DELETE_COURSE) + ")");
 		}
 	}
 }

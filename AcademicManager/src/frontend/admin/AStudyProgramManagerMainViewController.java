@@ -66,10 +66,9 @@ public class AStudyProgramManagerMainViewController extends MViewController {
 			Manager.INSTANCE.currentEditingStudyProgram = Manager.INSTANCE.getStudyProgramForName(selected);
 			ViewUtilities.openView(AStudyProgramManagerEditingViewController.view, view);
 		} else {
-			// TODO Uncomment when function is created
-			// ViewUtilities.showAlert(Messages.getUILabel(UILabel.ERROR_SELECTION)
-			// + "(" + Messages.getUILabel(UILabel.STUDY_PROGRAM_EDIT_LABEL) +
-			// ")");
+			 ViewUtilities.showAlert(Messages.getUILabel(UILabel.ERROR_SELECTION)
+			 + "(" + Messages.getUILabel(UILabel.STUDY_PROGRAM_EDIT_LABEL) +
+			 ")");
 		}
 
 	}

@@ -12,6 +12,7 @@ import backend.manager.Manager;
 import backend.others.Messages;
 import backend.others.Messages.UILabel;
 import frontend.main.MCourseSearcherSelectorViewController;
+import frontend.others.ViewUtilities;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -89,9 +90,7 @@ public class ASemesterManagerEditingViewController extends MCourseSearcherSelect
 				}
 			}
 		} else {
-			// TODO Uncomment when function is created
-			// ViewUtilities.showAlert(Messages.getUILabel(UILabel.ERROR_SELECTION)
-			// + "(" + Messages.getUILabel(UILabel.ADD_COURSE) + ")");
+			ViewUtilities.showAlert(Messages.getUILabel(UILabel.ERROR_SELECTION) + "(" + Messages.getUILabel(UILabel.ADD_COURSE) + ")");
 		}
 
 	}
@@ -119,9 +118,7 @@ public class ASemesterManagerEditingViewController extends MCourseSearcherSelect
 				}
 			}
 		} else {
-			// TODO Uncomment when function is created
-			// ViewUtilities.showAlert(Messages.getUILabel(UILabel.ERROR_SELECTION)
-			// + "(" + Messages.getUILabel(UILabel.REMOVE_COURSE) + ")");
+			ViewUtilities.showAlert(Messages.getUILabel(UILabel.ERROR_SELECTION) + "(" + Messages.getUILabel(UILabel.REMOVE_COURSE) + ")");
 		}
 
 	}
