@@ -14,3 +14,5 @@ hs_err_pid*
 .metadata/**/*
 .recommenders/
 
+# Zip file (gets redone every time)
+Documents.zip

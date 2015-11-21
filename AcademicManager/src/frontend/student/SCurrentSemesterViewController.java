@@ -181,7 +181,7 @@ public class SCurrentSemesterViewController extends MCourseSearcherSelectorViewC
 	}
 
 	public void btnRemoveCourse_Pressed() {
-		String rawCourseInfo = chBxSelectedCourse.getSelectionModel().getSelectedItem();
+		String rawCourseInfo = listSelectedCourses.getSelectionModel().getSelectedItem();
 		String[] parsed = getParsedInitialsSectionName(rawCourseInfo);
 		String initials = parsed[0];
 		int section = Integer.valueOf(parsed[1]);
