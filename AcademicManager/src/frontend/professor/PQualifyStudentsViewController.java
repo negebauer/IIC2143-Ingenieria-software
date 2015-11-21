@@ -10,6 +10,7 @@ import backend.manager.Manager;
 import backend.users.Professor;
 import backend.users.Student;
 import frontend.main.MViewController;
+import frontend.others.Parser;
 import frontend.others.ViewUtilities;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -51,14 +52,14 @@ public class PQualifyStudentsViewController extends MViewController {
 			@Override
 			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 				if (newValue != null) {
-					currentCourse = getCourseForParsed(newValue);
+					currentCourse = Parser.getCourseForParsed(newValue, coursesToShow);
 				} else {
 					currentCourse = null;
 				}
 				refreshStudentsToShowArray();
 				ArrayList<String> parsedStudents = new ArrayList<String>();
 				for (Student student : studentsToShow) {
-					parsedStudents.add(getParsedStudent(student));
+					parsedStudents.add(Parser.getParsedStudent(student));
 				}
 				cmBxSelectedStudent.setItems(FXCollections.observableArrayList(parsedStudents));
 			}
@@ -67,7 +68,7 @@ public class PQualifyStudentsViewController extends MViewController {
 			@Override
 			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 				if (newValue != null) {
-					currentStudent = getStudentForParsed(newValue);
+					currentStudent = Parser.getStudentForParsed(newValue, studentsToShow);
 				} else {
 					currentStudent = null;
 				}
@@ -77,7 +78,7 @@ public class PQualifyStudentsViewController extends MViewController {
 		if (firstLoad) {
 			ArrayList<String> parsedCourses = new ArrayList<String>();
 			for (Course course : coursesToShow) {
-				parsedCourses.add(getParsedCourse(course));
+				parsedCourses.add(Parser.getParsedCourse(course));
 			}
 			cmBxSelectedCourse.setItems(FXCollections.observableArrayList(parsedCourses));
 			firstLoad = false;
@@ -96,44 +97,10 @@ public class PQualifyStudentsViewController extends MViewController {
 		txBxGrade.setText("0.0");
 	}
 	
-	public Student getStudentForParsed(String parsed) {
-		String rut = parsed.split(" - ")[0];
-		for (Student student : studentsToShow) {
-			if (student.getRut().equals(rut)) {
-				return student;
-			}
-		}
-		return null;
-	}
-	
-	public String getParsedStudent(Student student) {
-		return student.getRut() + " - "
-				+ student.getName() + " "
-				+ student.getLastnameFather() + " "
-				+ student.getLastnameMother() + " ";
-	}
-	
-	public Course getCourseForParsed(String parsed) {
-		String initials = parsed.split("-")[0];
-		int section = Integer.valueOf(parsed.split("-")[1].split(":")[0]);
-		for (Course course : coursesToShow) {
-			if (course.getInitials().equals(initials) && course.getSection() == section) {
-				return course;
-			}
-		}
-		return null;
-	}
-	
-	public String getParsedCourse(Course course) {
-		return course.getInitials() + "-"
-				+ course.getSection() + ": "
-				+ course.getName();
-	}
-	
 	public void updateCoursesShow(AcademicSemester semester) {
 		ArrayList<String> studentsStrings = new ArrayList<String>();
 		for (Student student : studentsToShow) {
-			studentsStrings.add(getParsedStudent(student));
+			studentsStrings.add(Parser.getParsedStudent(student));
 		}
 		cmBxSelectedStudent.setItems(FXCollections.observableArrayList(studentsStrings));
 		ViewUtilities.autoComplete(cmBxSelectedStudent);

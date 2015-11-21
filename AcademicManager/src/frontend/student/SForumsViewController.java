@@ -7,6 +7,7 @@ import backend.courses.Course;
 import backend.manager.Manager;
 import backend.users.Student;
 import frontend.main.MViewController;
+import frontend.others.Parser;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -53,7 +54,7 @@ public class SForumsViewController extends MViewController {
 			@Override
 			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 				if (newValue != null) {
-					
+					showForums(Parser.getCourseForParsed(newValue, coursesToShow));
 				}
 			}
 		});
@@ -65,6 +66,10 @@ public class SForumsViewController extends MViewController {
 				}
 			}
 		});
+	}
+	
+	public void showForums(Course course) {
+		
 	}
 	
 	public void btnPostComment_Pressed() {

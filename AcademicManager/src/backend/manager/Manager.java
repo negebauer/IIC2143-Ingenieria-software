@@ -250,6 +250,7 @@ public class Manager {
 				professors,
 				assistants
 		);
+		ForumReaderWriter.readForums(courses, users());
 
 		System.out.println("Data loaded!");
 	}
@@ -272,6 +273,7 @@ public class Manager {
 		CourseRequirementsReaderWriter.writeCoursesRequirements(courses);
 		DetailsReaderWriter.writeDetails(courses);
 		StudentsReaderWriter.writeStudents(students);
+//		ForumReaderWriter.writeForums();
 
 		System.out.println("Data saved!");
 		uploadData();
@@ -341,5 +343,22 @@ public class Manager {
 
 	public static int getDay() {
 		return CALENDAR.get(Calendar.DAY_OF_MONTH);
+	}
+	
+	public ArrayList<User> users() {
+		ArrayList<User> users = new ArrayList<User>();
+		for (User user : admins) {
+			users.add(user);
+		}
+		for (User user : assistants) {
+			users.add(user);
+		}
+		for (User user : professors) {
+			users.add(user);
+		}
+		for (User user : students) {
+			users.add(user);
+		}
+		return users;
 	}
 }

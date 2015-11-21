@@ -6,12 +6,10 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Date;
 
 import backend.courses.Course;
-import backend.courses.Evaluation;
 import backend.courses.Forum;
 import backend.courses.ForumComment;
 import backend.courses.ForumPost;
@@ -36,7 +34,7 @@ public class ForumReaderWriter {
 	 * rutCreator&stringDateCreated&comment		<= ForumComment
 	 */
 	
-	public static void writeForums(ArrayList<Course> allCourses) {
+	public static void writeForums() {
 		
 	}
 
