@@ -3,8 +3,11 @@ package backend.manager;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -33,8 +36,37 @@ public class ForumReaderWriter {
 	 * rutCreator&stringDateCreated&comment		<= ForumComment
 	 */
 	
-	public static void writeForums() {
-		
+	public static void writeForums(ArrayList<Course> allCourses) {
+		try {
+			File forumsFolder = new File(FolderFileManager.rootForums);
+			for (Course course : allCourses) {
+				File courseForumFolder = new File(forumsFolder.getAbsolutePath() + "/" + course.getInitials() + "-" + course.getSection());
+				courseForumFolder.mkdir();
+				int postNumber = 0;
+				for (ForumPost post : course.getForum().posts) {
+					FileOutputStream postStream = new FileOutputStream(courseForumFolder.getAbsolutePath() + "/post" + postNumber + ".txt");
+					PrintStream printStream = new PrintStream(postStream);
+					printStream.print(post.creator.getRut());
+					printStream.print("&");
+					printStream.print(Utilities.getStringFromDate(post.createdAt));
+					printStream.print("&");
+					printStream.print(post.title);
+					printStream.println("");
+					for (ForumComment comment : post.comments) {
+						printStream.print(comment.creator.getRut());
+						printStream.print("&");
+						printStream.print(Utilities.getStringFromDate(comment.createdAt));
+						printStream.print("&");
+						printStream.print(comment.comment);
+						printStream.println("");
+					}
+					postNumber++;
+					printStream.close();
+				}
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static void readForums(ArrayList<Course> allCourses, ArrayList<User> allUsers) {

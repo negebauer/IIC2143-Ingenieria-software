@@ -289,7 +289,7 @@ public class Manager {
 		CourseRequirementsReaderWriter.writeCoursesRequirements(courses);
 		DetailsReaderWriter.writeDetails(courses);
 		StudentsReaderWriter.writeStudents(students);
-//		ForumReaderWriter.writeForums();
+		ForumReaderWriter.writeForums(courses);
 
 		System.out.println("Data saved!");
 		uploadData();
