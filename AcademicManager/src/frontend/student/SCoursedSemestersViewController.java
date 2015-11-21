@@ -32,7 +32,7 @@ public class SCoursedSemestersViewController extends MViewController {
 	public void setUp() {
 		super.setUp();
 
-		// TODO: Create UILabel
+		// TODO: [STUDENT] Create UILabel
 		// labelMain.setText(Messages.getUILabel(UILabel.STUDENT_COURSED_SEMESTERS_MAIN));
 
 		chBxCoursedSemesters.setItems(FXCollections.observableArrayList(generateCoursedSemesters()));

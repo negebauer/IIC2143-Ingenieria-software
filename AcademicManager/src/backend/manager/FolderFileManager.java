@@ -29,7 +29,11 @@ public class FolderFileManager {
 	 * 		|-> CourseDetails 						Contiene los detalles de todos los cursos 
 	 * 		|-> course_1.txt 						Contiene los detalles del curso con sigla course y seccion 1 
 	 * 		|-> course_2.txt 
-	 * 			|-> StudyPrograms 					Todos los programas de estudio 
+	 * 		|-> Forums
+	 * 			|-> sigla-seccion					El foro de un curso con sigla: sigla y seccion: seccion
+	 * 				|-> post1.txt
+	 * 				|-> post2.txt
+	 * 		|-> StudyPrograms 						Todos los programas de estudio 
 	 * 			|-> Escuela1 						Una escuela de la universidad. Llamar carpeta con el nombre de la escuela 
 	 * 			|-> Escuela2 
 	 * 				|-> StudyProgram1 				Un programa de estudio. Llamar carpeta con el nombre del programa de estudio 
@@ -52,6 +56,7 @@ public class FolderFileManager {
 	public static String rootAdmin = rootFolder + "/Admin";
 	public static String rootStudent = rootFolder + "/Student";
 	public static String rootSettings = "Settings";
+	public static String rootForums = rootAdmin + "/Forums";
 
 	// Main files
 	public static String language = rootSettings + "/language.txt";
@@ -93,6 +98,7 @@ public class FolderFileManager {
 		folders.add(rootStudent);
 		folders.add(adminCourseDetails);
 		folders.add(adminStudyPrograms);
+		folders.add(rootForums);
 
 		for (String folderString : folders) {
 			File folder = new File(folderString);

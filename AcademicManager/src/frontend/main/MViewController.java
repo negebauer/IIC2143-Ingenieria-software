@@ -27,7 +27,6 @@ public class MViewController {
 	 * ViewController. MUST OVERRIDE
 	 */
 	public static URL view = Object.class.getResource("/frontend/main/MView.fxml");
-	public URL view2 = view;
 	
 	/**
 	 * You must override this function to setUp all the buttons and labels of

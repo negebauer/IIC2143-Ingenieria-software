@@ -26,6 +26,7 @@ public class Course {
 	private ArrayList<Course> requirements;
 	private ArrayList<Course> coRequirements;
 	private Boolean coordinated;
+	private Forum forum;
 
 	/**
 	 * Creates an instance of Course. Supports default values for every
@@ -71,6 +72,7 @@ public class Course {
 		this.requirements = requirements != null ? requirements : new ArrayList<Course>();
 		this.coRequirements = coRequirements != null ? coRequirements : new ArrayList<Course>();
 		this.coordinated = coordinated != null ? coordinated : false;
+		this.forum = new Forum();
 	}
 
 	/**
@@ -386,6 +388,14 @@ public class Course {
 			}
 		}
 		return null;
+	}
+	
+	public Forum getForum() {
+		return forum;
+	}
+	
+	public void setForum(Forum forum) {
+		this.forum = forum;
 	}
 
 	public class AddOrRemoveRequirementResponse {

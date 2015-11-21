@@ -21,6 +21,7 @@
             <Label fx:id="labelUserInformation" layoutX="58.0" layoutY="354.0" text="Informacion del Usuario" />
             <Button fx:id="btnLogout" layoutX="523.0" layoutY="350.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
             <Button fx:id="btnLanguage" layoutX="547.0" layoutY="28.0" mnemonicParsing="false" onAction="#btnLanguage_Pressed" style="-fx-background-radius: 0;" text="ES" />
+            <Button fx:id="btnForums" layoutX="56.0" layoutY="278.0" mnemonicParsing="false" onAction="#btnForums_Pressed" text="Enter forums" />
          </children>
       </Pane>
       <Button fx:id="btnReload" layoutX="520.0" layoutY="28.0" mnemonicParsing="false" onAction="#btnReload_Pressed" style="-fx-background-radius: 0;" text="R" />

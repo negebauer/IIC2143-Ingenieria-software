@@ -37,7 +37,7 @@ public class PCoursesViewController extends MViewController {
 	@Override
 	public void setUp() {
 		super.setUp();
-		// TODO: Create UILabels
+		// TODO: [PROFESSOR] Create UILabel
 		// labelMain.setText(Messages.getUILabel(UILabel.PROFESSOR_SEE_MY_COURSES_MAIN));
 
 		chBxSemesters.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {

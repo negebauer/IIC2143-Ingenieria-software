@@ -31,6 +31,8 @@ public class SMainViewController extends MViewController {
 	Button btnAcademicHistory;
 	@FXML
 	Label labelUserInformation;
+	@FXML
+	Button btnForums;
 
 	public static URL view = Object.class.getResource("/frontend/student/SMainView.fxml");
 	Student user = (Student) Manager.INSTANCE.currentUser;
@@ -52,9 +54,10 @@ public class SMainViewController extends MViewController {
 		
 		labelUserInformation.setText(user.getStudentInformation());
 		
-		// TODO: Create UILabel
+		// TODO: [STUDENT] Create UILabel
 		// btnCoursedSemesters.setText(Messages.getUILabel(UILabel.STUDENT_SHOW_COURSED_SEMESTERS));
 		// btnAcademicHistory.setText(Messages.getUILabel(UILabel.STUDENT_SHOW_ACADEMIC_HISTORY));
+		// btnForums.setText(Messages.getUILabel(UILabel.STUDENT_SHOW_FORUMS));
 	}
 
 	public void btnCurricularAdvance_Pressed() {
@@ -75,6 +78,10 @@ public class SMainViewController extends MViewController {
 
 	public void btnAcademicHistory_Pressed() {
 		ViewUtilities.openView(SAcademicHistoryViewController.view, view);
+	}
+	
+	public void btnForums_Pressed() {
+		ViewUtilities.openView(SForumsViewController.view, view);
 	}
 
 }
