@@ -65,7 +65,7 @@ public class Main extends Application {
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Academic Manager");
 		primaryStage.setResizable(false);
-		primaryStage.getIcons().add(new Image("file:documents/images/icon_colors.png"));
+		primaryStage.getIcons().add(new Image("file:images/icon_colors.png"));
 		primaryStage.show();
 		CurrentViewHandler.INSTANCE.primaryStage = primaryStage;
 	}

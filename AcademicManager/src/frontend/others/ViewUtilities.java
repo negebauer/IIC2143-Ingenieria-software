@@ -46,7 +46,7 @@ public final class ViewUtilities {
 				CurrentViewHandler.INSTANCE.addNewParentView(sender);
 			}
 			stage.setScene(new Scene(root));
-			stage.getIcons().add(new Image("file:documents/images/icon_colors.png"));
+			stage.getIcons().add(new Image("file:images/icon_colors.png"));
 			stage.setResizable(false);
 			stage.setTitle("RENNAB");
 			stage.show();

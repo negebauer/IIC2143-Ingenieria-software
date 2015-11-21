@@ -273,6 +273,9 @@ public class Manager {
 	 * Then calls uploadData().
 	 */
 	public void saveData() {
+		File oldDirectory = new File(FolderFileManager.rootFolder);
+		deleteFolderContentOrFile(oldDirectory);
+		FolderFileManager.checkFolders();
 		System.out.println("Starting to save data...");
 		AdminReaderWriter.writeAdmins(admins);
 		AssistantsReaderWriter.writeAssistants(assistants);
