@@ -198,6 +198,7 @@ public class Manager {
 		try {
 			String zipName = downloadedFile.name;
 			File oldDirectory = new File(FolderFileManager.rootFolder);
+			deleteFolderContentOrFile(oldDirectory);
 			
 			String source = zipName;
 			String destination = oldDirectory.getAbsolutePath().split("Documents")[0];
@@ -216,6 +217,18 @@ public class Manager {
 			Manager.INSTANCE.loadData();
 //			e.printStackTrace();
 		}
+	}
+	
+	private void deleteFolderContentOrFile(File folderOrFile) {
+		for (File subFolderOrFile : folderOrFile.listFiles()) {
+			if (subFolderOrFile.isDirectory()) {
+				deleteFolderContentOrFile(subFolderOrFile);
+				subFolderOrFile.delete();
+			} else {
+				subFolderOrFile.delete();
+			}
+		}
+		folderOrFile.delete();
 	}
 
 	/**

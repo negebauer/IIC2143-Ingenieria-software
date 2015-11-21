@@ -1,8 +1,6 @@
 package frontend.others;
 
 import java.util.ArrayList;
-import java.util.Date;
-
 import backend.courses.Course;
 import backend.courses.ForumComment;
 import backend.courses.ForumPost;
@@ -68,15 +66,6 @@ public class Parser {
 		String rutCreator = parsed.split(" ")[2];
 		String title = parsed.split(": ")[1];
 		for (ForumPost post : forumPosts) {
-			System.out.println("----------- Checking data:\n\t"
-					+ "\n\t" + "dateString: " + dateString
-					+ "\n\t" + "rutCreator: " + rutCreator
-					+ "\n\t" + "title: " + title
-					+ "\n\t" + "AGAINST"
-					+ "\n\t" + "dateString: " + Utilities.getStringFromDate(post.createdAt)
-					+ "\n\t" + "rutCreator: " + post.creator.getRut()
-					+ "\n\t" + "title: " + post.title
-					);
 			if (post.creator.getRut().equals(rutCreator) && Utilities.getStringFromDate(post.createdAt).equals(dateString) && post.title.equals(title)) {
 				return post;
 			}

@@ -81,8 +81,6 @@ public class SForumsViewController extends MViewController {
 	
 	public void showForumPostsComments(ForumPost post) {
 		String comments = "";
-		System.out.println("----------- Post: " + post.title);
-		System.out.println("----------- Comments: " + post.comments);
 		for (ForumComment comment : post.comments) {
 			comments += (Parser.getParsedForumComment(comment)) + "\n\n";
 		}

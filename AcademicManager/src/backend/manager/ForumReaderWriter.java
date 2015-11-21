@@ -3,7 +3,6 @@ package backend.manager;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -39,15 +38,12 @@ public class ForumReaderWriter {
 	}
 
 	public static void readForums(ArrayList<Course> allCourses, ArrayList<User> allUsers) {
-		System.out.println("--- Starting forum read");
 		try {
 			File forumsFolder = new File(FolderFileManager.rootForums);
-			System.out.println("--- Forum folder: " + forumsFolder.getName());
 			for (File forumFolder : forumsFolder.listFiles()) {
 				if (forumFolder.getName().contains(".DS_")) {
 					continue;
 				}
-				System.out.println("--- Checking forumFolder: " + forumFolder.getName());
 				String initials = forumFolder.getName().split("-")[0];
 				int section = Integer.valueOf(forumFolder.getName().split("-")[1].split(".txt")[0]);
 				Course courseForForum = null;
@@ -65,7 +61,6 @@ public class ForumReaderWriter {
 					if (forumFile.getName().contains(".DS_")) {
 						continue;
 					}
-					System.out.println("----- Checking forumFile: " + forumFile.getName());
 					ForumPost forumPost = null;
 					courseForForum.setForum(forum);
 
@@ -74,7 +69,6 @@ public class ForumReaderWriter {
 					String forumLine = bufferedReader.readLine();
 					Boolean createdPost = false;
 					while (forumLine != null) {
-						System.out.println("------- Checking rawData: " + forumLine);
 						String[] rawData = forumLine.split("&");
 						String rutCreator = rawData[0];
 						Date createdAt = Utilities.getDateFromString(rawData[1]);
@@ -92,13 +86,11 @@ public class ForumReaderWriter {
 							return;
 						}
 						if (!createdPost) {
-							System.out.println("--------- Creating forum post: " + creator + " " + content + " " + createdAt);
 							ForumPost post = new ForumPost(creator, content, createdAt);
 							forumPost = post;
 							forum.addPost(forumPost);
 							createdPost = true;
 						} else if (createdPost) {
-							System.out.println("--------- Creating forum comment: " + creator + " " + content + " " + createdAt);
 							ForumComment comment = new ForumComment(creator, content, createdAt);
 							forumPost.addComment(comment);
 						}
