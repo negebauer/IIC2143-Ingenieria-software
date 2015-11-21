@@ -66,7 +66,7 @@ public class MCourseSearcherSelectorViewController extends MViewController {
 		for (Course course : coursesToShow) {
 			if (course.getInitials().equals(initials) && course.getSection() == section
 					&& course.getName().equals(name)) {
-				Manager.INSTANCE.courseDetailsToShow = course.getDetails();
+				Manager.INSTANCE.courseToShowInfo = course;
 				ViewUtilities.openNewView(MCourseDetailsViewController.view);
 				return;
 			}

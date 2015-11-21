@@ -62,7 +62,7 @@ public class Manager {
 	public ArrayList<Professor> professors = new ArrayList<Professor>();
 	public ArrayList<Student> students = new ArrayList<Student>();
 
-	public String courseDetailsToShow;
+	public Course courseToShowInfo;
 	public Semester currentSemester;
 
 	public StudyProgram currentEditingStudyProgram;

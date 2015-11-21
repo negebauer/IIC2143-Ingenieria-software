@@ -21,6 +21,6 @@ public class MCourseDetailsViewController extends MViewController {
 		hideLanguage();
 		hideLogout();
 
-		txADetails.setText(Manager.INSTANCE.courseDetailsToShow);
+		txADetails.setText(Manager.INSTANCE.courseToShowInfo.getDetails());
 	}
 }
