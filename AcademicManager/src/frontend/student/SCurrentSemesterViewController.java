@@ -4,7 +4,6 @@ import java.net.URL;
 import java.util.ArrayList;
 
 import backend.courses.Course;
-import backend.courses.Coursed;
 import backend.courses.Semester;
 import backend.courses.Semester.AddOrRemoveCourseResponse;
 import backend.manager.Manager;

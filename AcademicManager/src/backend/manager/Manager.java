@@ -78,7 +78,8 @@ public class Manager {
 		try {
 			System.out.println("Linked account: " + client.getAccountInfo().displayName);
 		} catch (DbxException e) {
-			e.printStackTrace();
+//			e.printStackTrace();
+			System.out.println("Account link failed");
 		}
 	}
 
@@ -97,6 +98,7 @@ public class Manager {
 	 * MUST BE CALLED ONLY BY saveData().
 	 */
 	private void uploadData() {
+		System.out.println("Starting upload...");
 		File rootFolder = new File(FolderFileManager.rootFolder);
 		try {
 			// Create zip
@@ -114,11 +116,14 @@ public class Manager {
 		    System.out.println("Uploaded: " + uploadedFile.name);
 		    zipFileStream.close();
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+//			e.printStackTrace();
+			System.out.println("Upload failed");
 		} catch (IOException e) {
-			e.printStackTrace();
+//			e.printStackTrace();
+			System.out.println("Upload failed");
 		} catch (DbxException e) {
-			e.printStackTrace();
+//			e.printStackTrace();
+			System.out.println("Upload failed");
 		}
 	}
 	
@@ -152,6 +157,7 @@ public class Manager {
 	 * Downloads data from Dropbox and calls loadData().
 	 */
 	public void downloadData() {
+		System.out.println("Starting download...");
 		DbxEntry.WithChildren listing;
 		try {
 			Boolean shouldLoadLocal = true;
@@ -169,27 +175,29 @@ public class Manager {
 				}
 			}
 			if (shouldLoadLocal) {
+				System.out.println("Server doesn't have data, loading local data");
 				Manager.INSTANCE.loadData();
 			}
 		} catch (DbxException e) {
+			System.out.println("Download failed, loading local data");
 			Manager.INSTANCE.loadData();
-			e.printStackTrace();
+//			e.printStackTrace();
 		} catch (FileNotFoundException e) {
+			System.out.println("Download failed, loading local data");
 			Manager.INSTANCE.loadData();
-			e.printStackTrace();
+//			e.printStackTrace();
 		} catch (IOException e) {
+			System.out.println("Download failed, loading local data");
 			Manager.INSTANCE.loadData();
-			e.printStackTrace();
+//			e.printStackTrace();
 		}
 	}
 	
 	private void extractData(DbxEntry downloadedFile) {
+		System.out.println("Starting data extraction...");
 		try {
 			String zipName = downloadedFile.name;
 			File oldDirectory = new File(FolderFileManager.rootFolder);
-			if (oldDirectory.exists()) {
-				// FileUtils.deleteDirectory(oldDirectory);
-			}
 			
 			String source = zipName;
 			String destination = oldDirectory.getAbsolutePath().split("Documents")[0];
@@ -203,7 +211,9 @@ public class Manager {
 
 			Manager.INSTANCE.loadData();
 		} catch (ZipException e) {
-			e.printStackTrace();
+			System.out.println("Extraction failed, loading local data");
+			Manager.INSTANCE.loadData();
+//			e.printStackTrace();
 		}
 	}
 

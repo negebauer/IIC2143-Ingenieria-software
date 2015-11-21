@@ -45,7 +45,7 @@ public class Curriculum {
 	public void addCoursedCourse(Coursed course) {
 		if (course.getYear() == Manager.getYear() && course.getSemester() == Manager.INSTANCE.currentSemester.getSemester() && currentCoursedSemester == null) {
 			currentCoursedSemester = new CoursedSemester(Manager.INSTANCE.currentSemester.getSemester(), Manager.getYear());
-		} else if (course.getYear() == currentCoursedSemester.getYear() && course.getSemester() == currentCoursedSemester.getSemester()) {
+		} else if (course.getYear() == Manager.getYear() && course.getSemester() == Manager.INSTANCE.currentSemester.getSemester()) {
 			currentCoursedSemester.addCoursedCourse(course);
 		}
 		coursedCourses.add(course);

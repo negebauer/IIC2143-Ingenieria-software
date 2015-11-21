@@ -84,6 +84,10 @@ public class MLogInController extends MViewController {
 		users.addAll(Manager.INSTANCE.admins);
 		users.addAll(Manager.INSTANCE.professors);
 
+		if (this.chBxUsers.getSelectionModel().getSelectedItem() == null) {
+			return;
+		}
+		
 		for (User user : users) {
 			if (this.chBxUsers.getSelectionModel().getSelectedItem().split(" ")[1].equals(user.getRut())) {
 				Manager.INSTANCE.currentUser = user;
