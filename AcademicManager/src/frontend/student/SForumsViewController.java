@@ -88,10 +88,22 @@ public class SForumsViewController extends MViewController {
 	}
 	
 	public void btnPostComment_Pressed() {
+		ForumComment comment = new ForumComment(user, txFForumComment.getText());
+		currentPost.comments.add(comment);
+		showForumPostsComments(currentPost);
+		clearText();
 		
 	}
 	
 	public void btnPostNewForumEntry_Pressed() {
-		
+		ForumPost post = new ForumPost(user, txFNewForumEntry.getText());
+		currentCourse.getForum().addPost(post);
+		showForumPosts(currentCourse);
+		clearText();
+	}
+	
+	public void clearText() {
+		txFForumComment.setText("");
+		txFNewForumEntry.setText("");
 	}
 }
