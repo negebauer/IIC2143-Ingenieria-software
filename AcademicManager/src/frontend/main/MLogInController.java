@@ -44,6 +44,8 @@ public class MLogInController extends MViewController {
 		super.setUp();
 		hideBack();
 		hideLogout();
+		
+		Manager.INSTANCE.currentUser = null;
 
 		btnSignIn.setText(Messages.getUILabel(UILabel.SIGN_IN));
 		btnRegister.setText(Messages.getUILabel(UILabel.REGISTER));
