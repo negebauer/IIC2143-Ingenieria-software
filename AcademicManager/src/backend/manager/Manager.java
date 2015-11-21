@@ -209,6 +209,7 @@ public class Manager {
 			}
 			zipFile.extractAll(destination);
 
+			System.out.println("Data extracted!");
 			Manager.INSTANCE.loadData();
 		} catch (ZipException e) {
 			System.out.println("Extraction failed, loading local data");
