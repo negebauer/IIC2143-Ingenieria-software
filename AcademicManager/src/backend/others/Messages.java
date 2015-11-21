@@ -474,8 +474,8 @@ public class Messages {
 		result.put(UILabel.MALE,  											"Male");
 		result.put(UILabel.FEMALE,  										"Female");
 		result.put(UILabel.NAME,  											"Name");
-		result.put(UILabel.LAST_NAME_FATHER,  								"Mother's last name");
-		result.put(UILabel.LAST_NAME_MOTHER,  								"Father's last name");
+		result.put(UILabel.LAST_NAME_FATHER,  								"Father's last name");
+		result.put(UILabel.LAST_NAME_MOTHER,  								"Mother's last name");
 		result.put(UILabel.ADDRESS,  										"Adress");
 		result.put(UILabel.CELL_PHONE,		  								"Cellphone number");
 		result.put(UILabel.RUT, 							 				"R.U.T.");
