@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ArrayList;
 
 import backend.courses.Course;
+import backend.courses.ForumComment;
 import backend.courses.ForumPost;
 import backend.manager.Manager;
 import backend.users.Student;
@@ -11,7 +12,6 @@ import frontend.main.MViewController;
 import frontend.others.Parser;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -42,6 +42,8 @@ public class SForumsViewController extends MViewController {
 	Student user = (Student) Manager.INSTANCE.currentUser;
 	public static URL view = Object.class.getResource("/frontend/student/SForumsView.fxml");
 	ArrayList<Course> coursesToShow;
+	Course currentCourse;
+	ForumPost currentPost;
 	
 	@Override
 	public void setUp() {
@@ -57,7 +59,8 @@ public class SForumsViewController extends MViewController {
 			@Override
 			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 				if (newValue != null) {
-					showForums(Parser.getCourseForParsed(newValue, coursesToShow));
+					currentCourse = Parser.getCourseForParsed(newValue, coursesToShow);
+					showForumPosts(currentCourse);
 				}
 			}
 		});
@@ -65,14 +68,25 @@ public class SForumsViewController extends MViewController {
 			@Override
 			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 				if (newValue != null) {
-					
+					currentPost = Parser.getForumPostForParsed(newValue, currentCourse.getForum().posts);
+					showForumPostsComments(currentPost);
 				}
 			}
 		});
 	}
 	
-	public void showForums(Course course) {
+	public void showForumPosts(Course course) {
 		cmBxForumEntry.setItems(Parser.generateParsedForumPosts(course.getForum().posts));
+	}
+	
+	public void showForumPostsComments(ForumPost post) {
+		String comments = "";
+		System.out.println("----------- Post: " + post.title);
+		System.out.println("----------- Comments: " + post.comments);
+		for (ForumComment comment : post.comments) {
+			comments += (Parser.getParsedForumComment(comment)) + "\n\n";
+		}
+		txAForumEntryComments.setText(comments);
 	}
 	
 	public void btnPostComment_Pressed() {

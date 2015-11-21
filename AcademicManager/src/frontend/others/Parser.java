@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import backend.courses.Course;
+import backend.courses.ForumComment;
 import backend.courses.ForumPost;
 import backend.others.Utilities;
 import backend.users.Student;
@@ -63,12 +64,20 @@ public class Parser {
 	}
 	
 	static public ForumPost getForumPostForParsed(String parsed, ArrayList<ForumPost> forumPosts) {
-		String dateString = parsed.split(" ")[0];
-		String rutCreator = parsed.split(" ")[1];
+		String dateString = parsed.split(" ")[0] + " " + parsed.split(" ")[1];
+		String rutCreator = parsed.split(" ")[2];
 		String title = parsed.split(": ")[1];
-		Date date = Utilities.getDateFromString(dateString);
 		for (ForumPost post : forumPosts) {
-			if (post.creator.getRut().equals(rutCreator) && post.createdAt == date && post.title.equals(title)) {
+			System.out.println("----------- Checking data:\n\t"
+					+ "\n\t" + "dateString: " + dateString
+					+ "\n\t" + "rutCreator: " + rutCreator
+					+ "\n\t" + "title: " + title
+					+ "\n\t" + "AGAINST"
+					+ "\n\t" + "dateString: " + Utilities.getStringFromDate(post.createdAt)
+					+ "\n\t" + "rutCreator: " + post.creator.getRut()
+					+ "\n\t" + "title: " + post.title
+					);
+			if (post.creator.getRut().equals(rutCreator) && Utilities.getStringFromDate(post.createdAt).equals(dateString) && post.title.equals(title)) {
 				return post;
 			}
 		}
@@ -89,5 +98,13 @@ public class Parser {
 			parsedForumPosts.add(Parser.getParsedForumPost(post));
 		}
 		return FXCollections.observableArrayList(parsedForumPosts);
+	}
+	
+	static public String getParsedForumComment(ForumComment forumComment) {
+		return Utilities.getStringFromDate(forumComment.createdAt) + " "
+				+ forumComment.creator.getRut() + " "
+				+ forumComment.creator.getName() + " "
+				+ forumComment.creator.getLastnameFather() + ": \n\t"
+				+ forumComment.comment;
 	}
 }

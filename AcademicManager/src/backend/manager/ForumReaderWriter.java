@@ -92,11 +92,13 @@ public class ForumReaderWriter {
 							return;
 						}
 						if (!createdPost) {
+							System.out.println("--------- Creating forum post: " + creator + " " + content + " " + createdAt);
 							ForumPost post = new ForumPost(creator, content, createdAt);
 							forumPost = post;
 							forum.addPost(forumPost);
 							createdPost = true;
 						} else if (createdPost) {
+							System.out.println("--------- Creating forum comment: " + creator + " " + content + " " + createdAt);
 							ForumComment comment = new ForumComment(creator, content, createdAt);
 							forumPost.addComment(comment);
 						}
