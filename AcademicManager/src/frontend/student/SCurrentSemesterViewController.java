@@ -49,8 +49,6 @@ public class SCurrentSemesterViewController extends MCourseSearcherSelectorViewC
 	Button btnRemoveCourse;
 	@FXML
 	Button btnEditSemester;
-	@FXML
-	Button btnShowPrettySchedule;
 
 	String responseToAddOrRemoveCourse = "";
 	Boolean firstLoad = true;
@@ -227,9 +225,5 @@ public class SCurrentSemesterViewController extends MCourseSearcherSelectorViewC
 			currentCourses.add(parsedCourse);
 		}
 		listSelectedCourses.setItems(FXCollections.observableArrayList(currentCourses));
-	}
-	
-	public void btnShowPrettySchedule_Pressed() {
-		
 	}
 }

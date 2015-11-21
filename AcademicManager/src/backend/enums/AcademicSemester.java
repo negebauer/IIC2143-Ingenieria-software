@@ -9,7 +9,8 @@ import backend.others.Messages;
 public enum AcademicSemester {
 	FIRST, 
 	SECOND, 
-	BOTH;
+	BOTH,
+	NONE;
 
 	public static AcademicSemester defaultSemester() {
 		return AcademicSemester.BOTH;
@@ -31,6 +32,8 @@ public enum AcademicSemester {
 			return AcademicSemester.FIRST;
 		} else if (number.equals("2")) {
 			return AcademicSemester.SECOND;
+		} else if (number.equals("0")) {
+			return AcademicSemester.NONE;
 		} else {
 			return AcademicSemester.BOTH;
 		}
@@ -52,17 +55,19 @@ public enum AcademicSemester {
 
 	private static Map<AcademicSemester, String> createMapAcademicSemesterMessageEnglish() {
 		Map<AcademicSemester, String> result = new HashMap<AcademicSemester, String>();
-		result.put(AcademicSemester.BOTH, "Both");
-		result.put(AcademicSemester.FIRST, "First");
+		result.put(AcademicSemester.BOTH, 	"Both");
+		result.put(AcademicSemester.FIRST, 	"First");
 		result.put(AcademicSemester.SECOND, "Second");
+		result.put(AcademicSemester.NONE,	"None");
 		return Collections.unmodifiableMap(result);
 	}
 
 	private static Map<AcademicSemester, String> createMapAcademicSemesterMessageSpanish() {
 		Map<AcademicSemester, String> result = new HashMap<AcademicSemester, String>();
-		result.put(AcademicSemester.BOTH, "Ambos");
-		result.put(AcademicSemester.FIRST, "Primero");
+		result.put(AcademicSemester.BOTH, 	"Ambos");
+		result.put(AcademicSemester.FIRST, 	"Primero");
 		result.put(AcademicSemester.SECOND, "Segundo");
+		result.put(AcademicSemester.NONE, 	"Ningun");
 		return Collections.unmodifiableMap(result);
 	}
 
