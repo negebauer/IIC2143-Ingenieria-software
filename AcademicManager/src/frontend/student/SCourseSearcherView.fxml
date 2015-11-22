@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.student.SCourseSearcherViewController">
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.student.SCourseSearcherViewController">
    <children>
       <Pane prefHeight="408.0" prefWidth="600.0">
          <children>
@@ -24,7 +24,7 @@
             <ComboBox fx:id="chBxSelectedCourse" layoutX="24.0" layoutY="78.0" prefHeight="27.0" prefWidth="214.0" />
             <ListView fx:id="listCoursesInSemester" layoutX="476.0" layoutY="194.0" prefHeight="166.0" prefWidth="102.0" />
             <Label fx:id="labelSearchCourses" layoutX="265.0" layoutY="22.0" text="Buscador de cursos" />
-            <ChoiceBox fx:id="chSelectSemester" onAction="#handleChangeSemesterAction" layoutX="127.0" layoutY="115.0" prefHeight="25.0" prefWidth="111.0" />
+            <ChoiceBox fx:id="chSelectSemester" layoutX="127.0" layoutY="115.0" onAction="#handleChangeSemesterAction" prefHeight="25.0" prefWidth="111.0" />
             <Label fx:id="labelSemester" layoutX="27.0" layoutY="119.0" text="Semestre:" />
             <ListView fx:id="listDetails" editable="false" layoutX="394.0" layoutY="79.0" prefHeight="94.0" prefWidth="185.0" />
             <Label fx:id="labelSchedule" layoutX="26.0" layoutY="165.0" text="Horario:" />
@@ -61,6 +61,8 @@
                </cursor>
             </Button>
             <Label fx:id="labelStatusBar" layoutX="27.0" layoutY="382.0" text="" />
+            <Button fx:id="btnDetails" layoutX="146.0" layoutY="26.0" mnemonicParsing="false" text="i" />
+            <Label fx:id="labelSearchCourse" layoutX="140.0" layoutY="14.0" text="Label" />
          </children>
       </Pane>
       <Button fx:id="btnLogout" layoutX="540.0" layoutY="378.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />

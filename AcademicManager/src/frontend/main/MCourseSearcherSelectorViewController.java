@@ -33,7 +33,7 @@ public class MCourseSearcherSelectorViewController extends MViewController {
 	public void setUp() {
 		super.setUp();
 
-		btnDetails.setCursor(Cursor.HAND);
+		//btnDetails.setCursor(Cursor.HAND);
 		labelSearchCourse.setText(Messages.getUILabel(UILabel.SEMESTER_CURRENT_SEMESTER_SEARCH_COURSE));
 		if (firstLoad) {
 			updateCoursesShow();
