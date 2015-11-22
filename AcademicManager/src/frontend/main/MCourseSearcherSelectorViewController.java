@@ -11,7 +11,6 @@ import backend.others.Messages.UILabel;
 import frontend.others.ViewUtilities;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -58,19 +57,24 @@ public class MCourseSearcherSelectorViewController extends MViewController {
 	}
 
 	public void btnDetails_Pressed() {
-		String rawCourseInfo = chBxSelectedCourse.getSelectionModel().getSelectedItem();
-		String[] parsed = getParsedInitialsSectionName(rawCourseInfo);
-		String initials = parsed[0];
-		int section = Integer.valueOf(parsed[1]);
-		String name = parsed[2];
-		for (Course course : coursesToShow) {
-			if (course.getInitials().equals(initials) && course.getSection() == section
-					&& course.getName().equals(name)) {
-				Manager.INSTANCE.courseToShowInfo = course;
-				ViewUtilities.openNewView(MCourseDetailsViewController.view);
-				return;
+		if (!chBxSelectedCourse.getSelectionModel().isEmpty()) {
+			String rawCourseInfo = chBxSelectedCourse.getSelectionModel().getSelectedItem();
+			String[] parsed = getParsedInitialsSectionName(rawCourseInfo);
+			String initials = parsed[0];
+			int section = Integer.valueOf(parsed[1]);
+			String name = parsed[2];
+			for (Course course : coursesToShow) {
+				if (course.getInitials().equals(initials) && course.getSection() == section
+						&& course.getName().equals(name)) {
+					Manager.INSTANCE.courseToShowInfo = course;
+					ViewUtilities.openNewView(MCourseDetailsViewController.view);
+					return;
+				}
 			}
+		} else {
+			ViewUtilities.showAlert(Messages.ERROR_MESSAGE);
 		}
+		
 	}
 
 	public void hideCourseSearcher() {

@@ -90,7 +90,14 @@ public class Messages {
 	 *         language.
 	 */
 	public static String getMessage(Message message) {
-		return getMessage(message, null);
+		switch (LANGUAGE()) {
+		case ENGLISH:
+			return ENGLISH.get(message);
+		case SPANISH:
+			return SPANISH.get(message);
+		default:
+			return ERROR_MESSAGE;
+		}
 	}
 
 	/**
