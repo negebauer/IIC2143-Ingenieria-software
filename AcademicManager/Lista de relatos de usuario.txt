@@ -1,19 +1,19 @@
 Alumno:
 - Ingreso de alumno__________________________________________________DONE
 - Registro de almumno................................................DONE
-- Seleccionar Malla..................................................
-- Crear Semestre_____________________________________________________
-- Guardar Semestre...................................................
+- Seleccionar Malla..................................................DONE
+- Crear Semestre_____________________________________________________DONE
+- Guardar Semestre...................................................DONE
 - Agregar Curso al semestre__________________________________________DONE
 - Eliminar Curso del semestre........................................DONE
-- Calificar Semestre_________________________________________________
+- Calificar Semestre_________________________________________________PROFESSOR
 - Recibir avisos de topes de horario.................................DONE
 - Recibir avisos de topes de evaluaciones____________________________DONE
 - Recibir avisos de requisitos para cursos...........................DONE
 - Recibir avisos de exceso de creditos_______________________________DONE
-- Mostrar avance curricular..........................................
-- Historial Curricular_______________________________________________
-- Ver Horario........................................................
+- Mostrar avance curricular..........................................DONE
+- Historial Curricular_______________________________________________DONE
+- Ver Horario........................................................DONE
 - Cambio de modo_____________________________________________________DONE
 - Tener Multiples Mallas.............................................DONE
 
@@ -31,7 +31,7 @@ Administrador:
 - Cambio de modo_____________________________________________________DONE
 
 Profesor:
-- Ingreso de profesor________________________________________________
-- Registro de profesor...............................................
-- Ver cursos dictados________________________________________________
-- Calificar cursos dictados..........................................
+- Ingreso de profesor________________________________________________DONE
+- Registro de profesor...............................................DONE
+- Ver cursos dictados________________________________________________DONE
+- Calificar cursos dictados..........................................DONE

@@ -1,32 +1,32 @@
 Valor agregado:
 
-	- Soporte de múltiples lenguajes (ingles y español ahora)
-	- Opción de tener Cursos coordinados que comparten informacion (detalles, fechas de evaluaciones, ...)
-	- Múltiples usuarios pueden usar la misma aplicación (instalar en laboratorios)
+	- Soporte de multiples lenguajes (ingles y espanol ahora) DONE 										
+	- Opcion de tener Cursos coordinados que comparten informacion (detalles, fechas de evaluaciones, ...) DONE
+	- Multiples usuarios pueden usar la misma aplicacion (instalar en laboratorios) DONE
 	- 
 	
 Sugeridos:
 
-	- Soporte online <= ESTE TENEMOS QUE HACER
+	- Soporte online <= DONE
 	- Recomendar ramos  en base a historial de ramos, malla <= Mas complicado, muy bacan
-	- Interfaz gráfica amigable <=  Seria choro
+	- Interfaz grafica amigable <=  Seria choro
 	- 
 	
 	
 
 Pedidos para entrega 5:
 	
-Se debe poder agregar a los cursos una descripci ́on de los mismos y los contenidos que se ver ́an. El alumno al crear su semestre debe poder ver esta descripci ́on.
+Se debe poder agregar a los cursos una descripcion de los mismos y los contenidos que se veran. El alumno al crear su semestre debe poder ver esta descripcion.
 La descripcion ya es un atributo que manejamos (details) no deberia costarnos
 
-Debe incorporar un nuevo tipo de usuario: el profesor, quien podr ́a acceder a la plataforma para calificar a los alumnos en los distintos ramos que  ́el dicta y los alumnos hayan tomado.
-Tenemos el usuario, no lo de calificar ramos (cambio mas grande)
+Debe incorporar un nuevo tipo de usuario: el profesor, quien podria acceder a la plataforma para calificar a los alumnos en los distintos ramos que el dicta y los alumnos hayan tomado.
+DONE
 
-Dado que el alumno ya no controla la evaluaci ́on de su semestre, se debe poder archivar autom ́atica- mente cuando todos sus ramos hayan sido calificados por sus profesores respectivos.
-Mismo que arriba
+Dado que el alumno ya no controla la evaluacion de su semestre, se debe poder archivar automatica-mente cuando todos sus ramos hayan sido calificados por sus profesores respectivos.
+DONE
 
-Debe poder soportar una especie de foro, en el cual los alumnos pueden dejar la opini ́on del ramo, as ́ı como compartir apuntes u otro material que crean que ser ́a de utilidad al resto.
-Dificil
+Debe poder soportar una especie de foro, en el cual los alumnos pueden dejar la opinion del ramo, asi como compartir apuntes u otro material que crean que seria de utilidad al resto.
+MISSING
 
-Debe manejar el concepto de carreras paralelas. Un alumno puede tener semestres distintos para cada carrera que est ́a cursando.
-Ya lo tenemos
+Debe manejar el concepto de carreras paralelas. Un alumno puede tener semestres distintos para cada carrera que esta cursando.
+1/2 DONE
