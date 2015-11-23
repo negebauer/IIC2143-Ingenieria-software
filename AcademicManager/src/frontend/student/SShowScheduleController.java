@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import backend.courses.Course;
 import backend.courses.CoursedSemester;
+import backend.courses.StudyProgram;
 import backend.interfaces.ICourse;
 import backend.manager.Manager;
 import backend.others.Messages;
@@ -16,6 +17,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 
@@ -27,17 +29,31 @@ public class SShowScheduleController extends MViewController {
 	ChoiceBox<String> chBxSemesters;
 	@FXML
 	TextArea txASchedule;
+	@FXML
+	ComboBox<String> chBxCarreer;
 
 	Boolean firstLoad = true;
 	Student user = (Student) Manager.INSTANCE.currentUser;
 	public static URL view = Object.class.getResource("/frontend/student/SShowSchedule.fxml");
+	String carreer = "";
 
 	@Override
 	public void setUp() {
 		super.setUp();
 
+		ArrayList<String> sp = new ArrayList<String>();
+		for (StudyProgram p : user.getCurriculum().getStudyPrograms()) {
+			sp.add(p.getName());
+		}
+		chBxCarreer.setItems(FXCollections.observableArrayList(sp));
+		chBxCarreer.setOnAction((event) -> {
+			carreer = chBxCarreer.getSelectionModel().getSelectedItem().trim();
+			chBxSemesters.getSelectionModel().selectLast();
+		});
+		chBxCarreer.getSelectionModel().selectFirst();
+		
 		labelShowScheduleWelcomeMessage.setText(Messages.getUILabel(UILabel.SCHEDULE_MAIN_MESSAGE));
-
+	
 		ArrayList<String> semesterInfo = new ArrayList<String>();
 		for (CoursedSemester coursedSemester : user.getCurriculum().getCoursedSemesters()) {
 			int year = coursedSemester.getYear();
@@ -69,6 +85,7 @@ public class SShowScheduleController extends MViewController {
 		int year = Integer.valueOf(split[0]);
 		int semester = Integer.valueOf(split[1]);
 		String allSchedulesString = "";
+		
 		if (year == Manager.getYear()
 				&& semester == Integer.valueOf(Manager.INSTANCE.currentSemester.getSemester().getSemesterNumber())) {
 			for (Course course : user.getCurriculum().getCurrentSemester().getCourses()) {
@@ -83,8 +100,8 @@ public class SShowScheduleController extends MViewController {
 					courseSchedules = courseSchedules == "" ? newLine : courseSchedules + "\n" + newLine;
 				}
 				allSchedulesString = allSchedulesString == "" ? courseSchedules : allSchedulesString + courseSchedules;
-				allSchedulesString = allSchedulesString + "\n";
-			}
+				allSchedulesString = allSchedulesString + "\n";							
+			}						
 		} else {
 
 		}
