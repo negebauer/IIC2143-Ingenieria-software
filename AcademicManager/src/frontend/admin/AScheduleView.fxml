@@ -7,7 +7,7 @@
 
 <AnchorPane prefHeight="297.0" prefWidth="442.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.admin.AScheduleViewController">
    <children>
-      <Pane prefHeight="302.0" prefWidth="451.0">
+      <Pane prefHeight="302.0" prefWidth="451.0" style="-fx-background-color: #026;">
          <children>
          	<Button fx:id="btnBack" layoutX="14.0" layoutY="263.0" mnemonicParsing="false" onAction="#btnBack_Pressed" style="-fx-background-radius: 0;" text="Back" />
             <Button fx:id="btnLanguage" layoutX="414.0" layoutY="2.0" mnemonicParsing="false" onAction="#btnLanguage_Pressed" style="-fx-background-radius: 0;" text="ES" />
@@ -76,16 +76,16 @@
             <CheckBox fx:id="chckBxSundayModule8" layoutX="403.0" layoutY="234.0" mnemonicParsing="false" />
             <CheckBox fx:id="chckBxSundayModule6" layoutX="403.0" layoutY="184.0" mnemonicParsing="false" />
             <CheckBox fx:id="chckBxSundayModule5" layoutX="403.0" layoutY="158.0" mnemonicParsing="false" />
-            <Label fx:id="labelMonday" layoutX="45.0" layoutY="28.0" text="Monday" />
-            <Label fx:id="labelTuesday" layoutX="97.0" layoutY="28.0" text="Tuesday" />
-            <Label fx:id="labelWednesday" layoutX="151.0" layoutY="28.0" text="Wednesday" />
-            <Label fx:id="labelThursday" layoutX="220.0" layoutY="28.0" text="Thursday" />
-            <Label fx:id="labelFriday" layoutX="283.0" layoutY="28.0" text="Friday" />
-            <Label fx:id="labelSaturday" layoutX="331.0" layoutY="28.0" text="Saturday" />
-            <Label fx:id="labelSunday" layoutX="394.0" layoutY="28.0" text="Sunday" />
+            <Label fx:id="labelMonday" layoutX="45.0" layoutY="28.0" text="Monday" textFill="WHITE" />
+            <Label fx:id="labelTuesday" layoutX="97.0" layoutY="28.0" text="Tuesday" textFill="WHITE" />
+            <Label fx:id="labelWednesday" layoutX="151.0" layoutY="28.0" text="Wednesday" textFill="WHITE" />
+            <Label fx:id="labelThursday" layoutX="220.0" layoutY="28.0" text="Thursday" textFill="WHITE" />
+            <Label fx:id="labelFriday" layoutX="283.0" layoutY="28.0" text="Friday" textFill="WHITE" />
+            <Label fx:id="labelSaturday" layoutX="331.0" layoutY="28.0" text="Saturday" textFill="WHITE" />
+            <Label fx:id="labelSunday" layoutX="394.0" layoutY="28.0" text="Sunday" textFill="WHITE" />
             <Button fx:id="btnSaveSchedule" layoutX="337.0" layoutY="263.0" mnemonicParsing="false" onAction="#btnSaveSchedule_Pressed" text="Save Schedule" />
-            <Label fx:id="labelScheduleTitle" layoutX="201.0" layoutY="6.0" text="Schedule" />
-            <Button fx:id="btnLogout" layoutX="224.0" layoutY="259.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
+            <Label fx:id="labelScheduleTitle" layoutX="201.0" layoutY="6.0" text="Schedule" textFill="WHITE" />
+            <Button fx:id="btnLogout" layoutX="222.0" layoutY="263.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
          </children>
       </Pane>
    </children>
