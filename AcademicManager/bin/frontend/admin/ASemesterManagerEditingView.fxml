@@ -16,7 +16,7 @@
             <Label fx:id="labelSearchCourse" layoutX="116.0" layoutY="70.0" text="Buscar ramo" />
             <ComboBox fx:id="chBxSelectedCourse" layoutX="55.0" layoutY="181.0" prefHeight="27.0" prefWidth="193.0" />
             <Button fx:id="btnDetails" layoutX="285.0" layoutY="196.0" mnemonicParsing="false" onAction="#btnDetails_Pressed" text="Ver Info Curso" />
-            <Label fx:id="labelModificationResult" layoutX="58.0" layoutY="221.0" prefHeight="42.0" prefWidth="193.0" text="Label" wrapText="true" />
+            <Label fx:id="labelModificationResult" layoutX="58.0" layoutY="221.0" prefHeight="136.0" prefWidth="193.0" text="Label" wrapText="true" />
             <Label fx:id="labelSearchCourse" layoutX="282.0" layoutY="79.0" text="Buscar ramo" />
          </children>
       </Pane>
