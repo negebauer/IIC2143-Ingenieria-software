@@ -51,6 +51,7 @@ public class SShowScheduleController extends MViewController {
 		chBxCarreer.setItems(FXCollections.observableArrayList(sp));
 		chBxCarreer.setOnAction((event) -> {
 			carreer = chBxCarreer.getSelectionModel().getSelectedItem().trim();
+			chBxCarreer.getSelectionModel().selectFirst();
 			chBxSemesters.getSelectionModel().selectLast();
 		});
 		chBxCarreer.getSelectionModel().selectFirst();

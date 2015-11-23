@@ -4,12 +4,15 @@ import java.io.IOException;
 import java.net.URL;
 
 import backend.manager.Manager;
+import backend.others.Messages;
+import backend.others.Messages.UILabel;
 import frontend.main.MAlertViewController;
 import frontend.main.MViewController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -217,5 +220,12 @@ public final class ViewUtilities {
 		} else {
 			return comboBox.getItems().get(comboBox.getSelectionModel().getSelectedIndex());
 		}
+	}
+	
+	public static void setButtonText(Button button, UILabel label) {
+		if (label != null) {
+			button.setText(Messages.getUILabel(label));
+		}
+		button.setCursor(Cursor.HAND);
 	}
 }
