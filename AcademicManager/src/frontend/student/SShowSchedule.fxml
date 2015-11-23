@@ -14,10 +14,10 @@
             <Button fx:id="btnBack" layoutY="1.0" mnemonicParsing="false" onAction="#btnBack_Pressed" style="-fx-background-radius: 0;" text="Back" />
             <Button fx:id="btnLanguage" layoutX="565.0" layoutY="1.0" mnemonicParsing="false" onAction="#btnLanguage_Pressed" style="-fx-background-radius: 0;" text="ES" />
             <Button fx:id="btnReload" layoutX="530.0" layoutY="1.0" mnemonicParsing="false" onAction="#btnReload_Pressed" style="-fx-background-radius: 0;" text="R" />
-            <TextArea fx:id="txASchedule" layoutX="31.0" layoutY="127.0" prefHeight="200.0" prefWidth="264.0" />
+            <TextArea fx:id="txASchedule" layoutX="31.0" layoutY="127.0" prefHeight="200.0" prefWidth="264.0" wrapText="true" />
             <Button fx:id="btnLogout" layoutX="496.0" layoutY="367.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
             <ComboBox fx:id="chBxCarreer" layoutX="250.0" layoutY="77.0" prefHeight="27.0" prefWidth="233.0" style="-fx-background-radius: 0;" />
-            <TextArea fx:id="txAScheduleComplete" layoutX="301.0" layoutY="127.0" prefHeight="200.0" prefWidth="264.0" />
+            <TextArea fx:id="txAScheduleComplete" layoutX="301.0" layoutY="127.0" prefHeight="200.0" prefWidth="264.0" wrapText="true" />
             <Label layoutX="115.0" layoutY="335.0" text="Cursos por carrera" />
             <Label layoutX="389.0" layoutY="335.0" text="Todos los cursos" />
          </children>

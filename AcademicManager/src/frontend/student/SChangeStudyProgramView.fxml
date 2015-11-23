@@ -17,7 +17,7 @@
             <ComboBox fx:id="cmBxStudyProgram" layoutX="61.0" layoutY="15.0" prefHeight="27.0" prefWidth="460.0" />
             <Button fx:id="btnAddStudyProgram" layoutX="531.0" layoutY="90.0" mnemonicParsing="false" onAction="#btnAddStudyProgram_Pressed" text="+" />
             <Button fx:id="btnRemoveStudyProgram" layoutX="532.0" layoutY="137.0" mnemonicParsing="false" onAction="#btnRemoveStudyProgram_Pressed" text="-" />
-            <TextArea fx:id="txASemestersAndCourses" layoutX="61.0" layoutY="236.0" prefHeight="123.0" prefWidth="460.0" />
+            <TextArea fx:id="txASemestersAndCourses" layoutX="61.0" layoutY="236.0" prefHeight="123.0" prefWidth="460.0" wrapText="true" />
             <ListView fx:id="listStudyPrograms" layoutX="61.0" layoutY="50.0" prefHeight="174.0" prefWidth="460.0" />
          </children>
       </Pane>
