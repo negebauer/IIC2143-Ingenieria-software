@@ -90,14 +90,7 @@ public class Messages {
 	 *         language.
 	 */
 	public static String getMessage(Message message) {
-		switch (LANGUAGE()) {
-		case ENGLISH:
-			return ENGLISH.get(message);
-		case SPANISH:
-			return SPANISH.get(message);
-		default:
-			return ERROR_MESSAGE;
-		}
+		return getMessage(message, null);
 	}
 
 	/**
@@ -112,12 +105,12 @@ public class Messages {
 	 *         + "\n" + the additionalInfo string.
 	 */
 	public static String getMessage(Message message, String additionalInfo) {
-		additionalInfo = "\n" + additionalInfo != null ? additionalInfo : "";
+		String additionalInfoReal = "\n" + additionalInfo != null ? additionalInfo : "";
 		switch (LANGUAGE()) {
 		case ENGLISH:
-			return ENGLISH.get(message) + additionalInfo;
+			return ENGLISH.get(message) + additionalInfoReal;
 		case SPANISH:
-			return SPANISH.get(message) + additionalInfo;
+			return SPANISH.get(message) + additionalInfoReal;
 		default:
 			return ERROR_MESSAGE;
 		}
