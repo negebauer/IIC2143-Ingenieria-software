@@ -208,6 +208,8 @@ public class ASemesterManagerEditingViewController extends MCourseSearcherSelect
 						new ArrayList<Course>());
 			}
 			
+			Manager.INSTANCE.currentSemester.setMaxCredits(Manager.INSTANCE.currentEditingStudyProgram.getMaxCreditsPerSemester());
+			
 			ArrayList<String> semesterCourses = new ArrayList<String>();
 			for (Course course : Manager.INSTANCE.currentSemester.getCourses()) {
 				String parsedCourse = getParsedCourse(course.getInitials(), course.getSection(), course.getName());
@@ -300,6 +302,7 @@ public class ASemesterManagerEditingViewController extends MCourseSearcherSelect
 								}
 								Text textToPut = new Text(course.getInitials());
 								textToPut.setFill(Color.YELLOW);
+								
 								schedule[mod][day] = textToPut;
 							}
 						} if (course.getAssistantship() != null) {
@@ -327,7 +330,7 @@ public class ASemesterManagerEditingViewController extends MCourseSearcherSelect
 								schedule[mod][day] = textToPut;
 							}
 						}
-						
+						refresh();
 						labelStatusBar.setText("Success");
 					} else {
 						labelStatusBar.setText("Not added: " + response.response);
@@ -391,7 +394,7 @@ public class ASemesterManagerEditingViewController extends MCourseSearcherSelect
 								schedule[mod][day] = textToPut;
 							}
 						}
-						
+						refresh();
 						labelStatusBar.setText("Success");
 					} else {
 						labelStatusBar.setText("Not removed: " + response.response);

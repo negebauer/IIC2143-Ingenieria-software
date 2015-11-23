@@ -14,7 +14,7 @@
             <Button fx:id="btnReload" layoutX="162.0" layoutY="96.0" mnemonicParsing="false" onAction="#btnReload_Pressed" style="-fx-background-radius: 0;" text="R" />
             <Button fx:id="btnBack" layoutX="151.0" layoutY="96.0" mnemonicParsing="false" onAction="#btnBack_Pressed" style="-fx-background-radius: 0;" text="Back" />
             <Button fx:id="btnLogout" layoutX="145.0" layoutY="96.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
-            <TextArea fx:id="txADetails" layoutX="5.0" layoutY="4.0" prefHeight="211.0" prefWidth="341.0" wrapText="true" />
+            <TextArea fx:id="txADetails" editable="false" layoutX="5.0" layoutY="4.0" prefHeight="211.0" prefWidth="341.0" wrapText="true" />
          </children>
       </Pane>
    </children>
