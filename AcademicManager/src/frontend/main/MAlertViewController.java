@@ -9,7 +9,7 @@ import javafx.scene.control.TextArea;
 public class MAlertViewController extends MViewController {
 	
 	@FXML
-	TextArea txAAlert;
+	TextArea txADetails;
 	
 	public static URL view = Object.class.getResource("/frontend/main/MAlertView.fxml");
 	
@@ -21,6 +21,6 @@ public class MAlertViewController extends MViewController {
 		hideLanguage();
 		hideLogout();
 
-		txAAlert.setText(Manager.INSTANCE.alertMessage);
+		txADetails.setText(Manager.INSTANCE.alertMessage);
 	}
 }

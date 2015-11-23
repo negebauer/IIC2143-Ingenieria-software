@@ -11,7 +11,7 @@
 	<classpathentry kind="lib" path="httpcomponents-client-4.5.1/lib/httpcore-4.4.3.jar"/>
 	<classpathentry kind="lib" path="dropbox-core-sdk-1.8.2.jar"/>
 	<classpathentry kind="lib" path="jackson-core-2.6.1.jar"/>
-	<classpathentry kind="lib" path="zip4j_1.3.2.jar"/>
+	<classpathentry kind="lib" path="zip4j_1.3.2.jar" sourcepath="zip4j_1.3.2.jar"/>
 	<classpathentry kind="lib" path="commons-io-2.4/commons-io-2.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
