@@ -208,6 +208,8 @@ public class ASemesterManagerEditingViewController extends MCourseSearcherSelect
 						new ArrayList<Course>());
 			}
 			
+			Manager.INSTANCE.currentSemester.setMaxCredits(Manager.INSTANCE.currentEditingStudyProgram.getMaxCreditsPerSemester());
+			
 			ArrayList<String> semesterCourses = new ArrayList<String>();
 			for (Course course : Manager.INSTANCE.currentSemester.getCourses()) {
 				String parsedCourse = getParsedCourse(course.getInitials(), course.getSection(), course.getName());

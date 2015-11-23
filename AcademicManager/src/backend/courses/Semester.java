@@ -44,7 +44,11 @@ public class Semester {
 			this.approvedCourses = new HashSet<String>();
 		}
 	}
-
+	
+	public void setMaxCredits(int maxCredits) {
+		this.maxCredits = maxCredits;
+	}
+	
 	public void setAcademicSemester(AcademicSemester semester) {
 		this.semester = semester;
 	}
