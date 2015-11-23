@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import backend.courses.Course;
 import backend.courses.CoursedSemester;
+import backend.courses.Semester;
 import backend.courses.StudyProgram;
 import backend.interfaces.ICourse;
 import backend.manager.Manager;
@@ -88,19 +89,32 @@ public class SShowScheduleController extends MViewController {
 		
 		if (year == Manager.getYear()
 				&& semester == Integer.valueOf(Manager.INSTANCE.currentSemester.getSemester().getSemesterNumber())) {
+			
+			
+			
 			for (Course course : user.getCurriculum().getCurrentSemester().getCourses()) {
-				String initials = course.getInitials();
-				String section = "" + course.getSection();
-				String name = course.getName();
-				String firstPart = initials + "-" + section + " - " + name + "\n\t";
-				String courseSchedules = "";
-				for (ICourse icourse : course.getCourses()) {
-					String schedule = icourse.getSchedule().getSchedule(course.getInitials());
-					String newLine = firstPart + Messages.getICourseName(icourse) + "\n\t\t" + schedule;
-					courseSchedules = courseSchedules == "" ? newLine : courseSchedules + "\n" + newLine;
-				}
-				allSchedulesString = allSchedulesString == "" ? courseSchedules : allSchedulesString + courseSchedules;
-				allSchedulesString = allSchedulesString + "\n";							
+				for (StudyProgram sp : Manager.INSTANCE.studyPrograms) {
+					if (sp.getName().equals(carreer)) {
+						for (Semester s : sp.getSemesters()) {
+							for (Course c : s.getCourses()) {
+								if (c.getInitials().equals(course.getInitials())) {
+									String initials = course.getInitials();
+									String section = "" + course.getSection();
+									String name = course.getName();
+									String firstPart = initials + "-" + section + " - " + name + "\n\t";
+									String courseSchedules = "";
+									for (ICourse icourse : course.getCourses()) {
+										String schedule = icourse.getSchedule().getSchedule(course.getInitials());
+										String newLine = firstPart + Messages.getICourseName(icourse) + "\n\t\t" + schedule;
+										courseSchedules = courseSchedules == "" ? newLine : courseSchedules + "\n" + newLine;
+									}
+									allSchedulesString = allSchedulesString == "" ? courseSchedules : allSchedulesString + courseSchedules;
+									allSchedulesString = allSchedulesString + "\n";	
+								}
+							}
+						}
+					}
+				}						
 			}						
 		} else {
 
