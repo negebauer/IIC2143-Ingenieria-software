@@ -432,7 +432,11 @@ public class Messages {
 		PICK_PROFESSOR,
 		ADD_ASSISTANT,
 		REMOVE_ASSISTANT,
-		PICK_ASSISTANT
+		PICK_ASSISTANT,
+		LECTURE,
+		ASSISTANTSHIP,
+		LABORATORY,
+		CLEAN_COURSES_FROM_LIST
 
 	}
 
@@ -585,6 +589,9 @@ public class Messages {
 		result.put(UILabel.ADD_ASSISTANT, 									"Add Assistant");
 		result.put(UILabel.REMOVE_ASSISTANT, 								"Remove Assistant");
 		result.put(UILabel.PICK_ASSISTANT, 									"Pick Assistant");
+		result.put(UILabel.LABORATORY, 										"Laboratory");
+		result.put(UILabel.LECTURE, 										"Lecture");
+		result.put(UILabel.ASSISTANTSHIP, 									"Assistantship");
 		return Collections.unmodifiableMap(result);
 	}
 
@@ -720,6 +727,9 @@ public class Messages {
 		result.put(UILabel.ADD_ASSISTANT, 									"Agregar Ayudante");
 		result.put(UILabel.REMOVE_ASSISTANT, 								"Remover Ayudante");
 		result.put(UILabel.PICK_ASSISTANT, 									"Elegir Ayudante");
+		result.put(UILabel.LABORATORY, 										"Laboratory");
+		result.put(UILabel.LECTURE, 										"Lecture");
+		result.put(UILabel.ASSISTANTSHIP, 									"Assistantship");
 		return Collections.unmodifiableMap(result);
 	}
 
