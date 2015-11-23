@@ -110,6 +110,7 @@ public class SCourseSearcherViewController extends MCourseSearcherSelectorViewCo
 				}
 			}		
 			listDetails.setItems(FXCollections.observableArrayList(details));
+			labelStatusBar.setText("");
 		});
 		
 		chSelectSemester.setOnAction((event) -> {

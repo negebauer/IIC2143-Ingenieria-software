@@ -59,7 +59,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Label fx:id="labelStatusBar" layoutX="27.0" layoutY="382.0" text="" />
+            <Label fx:id="labelStatusBar" layoutX="27.0" layoutY="382.0" text="" style="-fx-text-fill: #fff;" />
          </children>
       </Pane>
       <Button fx:id="btnLogout" layoutX="501.0" layoutY="370.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
