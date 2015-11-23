@@ -129,10 +129,9 @@ public class ASemesterManagerEditingViewController extends MCourseSearcherSelect
 
 		for (String courseString : listCoursesInSemester.getItems()) {
 			for (Course course : Manager.INSTANCE.courses) {
-				if (course.getInitials() + "-" + course.getSection() + " " + course.getName() == courseString) {
+				if ((course.getInitials() + "-" + course.getSection() + " - " + course.getName()).equals(courseString)) {
 					courses.add(course);
 				}
-				break;
 			}
 		}
 
