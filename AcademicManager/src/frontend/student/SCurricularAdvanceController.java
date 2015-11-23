@@ -57,7 +57,7 @@ public class SCurricularAdvanceController extends MViewController {
 
 	public ArrayList<String> generateStudyProgramsList() {
 		ArrayList<String> studyProgramsList = new ArrayList<String>();
-		for (StudyProgram studyProgram : user.getCurriculum().getStudyPrograms()) {
+		for (StudyProgram studyProgram : Manager.INSTANCE.studyPrograms) {
 			studyProgramsList.add(studyProgram.getName() + " - " + studyProgram.getyearProgram());
 		}
 		return studyProgramsList;

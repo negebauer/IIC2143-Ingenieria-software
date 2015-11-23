@@ -35,6 +35,8 @@ public class SMainViewController extends MViewController {
 	Button btnForums;
 	@FXML
 	Button btnCourseFinder;
+	@FXML
+	Button btnStudyProgram;
 
 	public static URL view = Object.class.getResource("/frontend/student/SMainView.fxml");
 	Student user = (Student) Manager.INSTANCE.currentUser;
@@ -88,6 +90,10 @@ public class SMainViewController extends MViewController {
 	
 	public void btnCourseFinder_Pressed() {
 		ViewUtilities.openView(SCourseSearcherViewController.view, view);
+	}
+	
+	public void btnStudyProgram_Pressed() {
+		ViewUtilities.openView(SStudyProgramViewController.view, view);
 	}
 
 }

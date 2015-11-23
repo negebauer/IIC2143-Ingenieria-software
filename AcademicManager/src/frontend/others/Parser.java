@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import backend.courses.Course;
 import backend.courses.ForumComment;
 import backend.courses.ForumPost;
+import backend.courses.StudyProgram;
 import backend.others.Utilities;
 import backend.users.Student;
 import javafx.collections.FXCollections;
@@ -95,5 +96,29 @@ public class Parser {
 				+ forumComment.creator.getName() + " "
 				+ forumComment.creator.getLastnameFather() + ": \n\t"
 				+ forumComment.comment;
+	}
+	
+	static public StudyProgram getStudyProgramForParsed(String parsed, ArrayList<StudyProgram> studyPrograms) {
+		String name = parsed.split(" - ")[0];
+		int year = Integer.valueOf(parsed.split(" - ")[1]);
+		for (StudyProgram studyProgram : studyPrograms) {
+			if (studyProgram.getName().equals(name) && studyProgram.getyearProgram() == year) {
+				return studyProgram;
+			}
+		}
+		return null;
+	}
+	
+	static public String getParsedStudyProgram(StudyProgram studyProgram) {
+		return studyProgram.getName() + " - "
+				+ studyProgram.getyearProgram();
+	}
+	
+	static public ObservableList<String> generateParsedStudyPrograms(ArrayList<StudyProgram> studyPrograms) {
+		ArrayList<String> parsedStudyPrograms = new ArrayList<String>();
+		for (StudyProgram studyProgram : studyPrograms) {
+			parsedStudyPrograms.add(Parser.getParsedStudyProgram(studyProgram));
+		}
+		return FXCollections.observableArrayList(parsedStudyPrograms);
 	}
 }

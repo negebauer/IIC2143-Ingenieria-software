@@ -11,7 +11,6 @@ import backend.others.Messages.UILabel;
 import frontend.others.ViewUtilities;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
