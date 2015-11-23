@@ -12,8 +12,6 @@ import backend.enums.AcademicSemester;
 import backend.manager.Manager;
 import backend.users.Student;
 import frontend.main.MViewController;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
