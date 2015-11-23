@@ -98,3 +98,6 @@ Ingenieria de Software&IIC2143&1&10&ENGINEERING&BOTH&true
 Desarrollo de Habilidades Comunicativas para Ingenieros&LET0003&1&10&LETTERS&BOTH&true
 Curso malla distinta&DIS1000&1&10&AGRICULTURE&BOTH&true
 Curso malla distinta 2&DIS1001&1&10&AGRICULTURE&BOTH&true
+Curso distinto&DIS1002&1&10&AGRICULTURE&BOTH&true
+C&DIS1003&1&10&AGRICULTURE&BOTH&true
+C&DIS1001&1&10&AGRICULTURE&BOTH&false
