@@ -99,11 +99,9 @@ public class PQualifyStudentsViewController extends MViewController {
 		}
 		ArrayList<Student> studentsToShow = new ArrayList<Student>();
 		for (Student student : Manager.INSTANCE.students) {
-			System.out.println("Checking student: " + student.getName());
 			if (student.getCurriculum() != null &&
 					student.getCurriculum().getCurrentSemester() != null &&
 					student.getCurriculum().getCurrentSemester().getCourses().contains(currentCourse)) {
-				System.out.println("Student ok: " + student.getName());
 				studentsToShow.add(student);
 			}
 		}
