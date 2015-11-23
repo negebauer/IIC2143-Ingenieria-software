@@ -14,12 +14,10 @@ import frontend.main.MCourseSearcherSelectorViewController;
 import frontend.others.ViewUtilities;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.GridPane;
@@ -50,20 +48,17 @@ public class SCourseSearcherViewController extends MCourseSearcherSelectorViewCo
 	@FXML
 	ListView<String> listCoursesInSemester;
 	@FXML
-	ChoiceBox<String> chSelectSemester;
+	ComboBox<String> chSelectSemester;
 	@FXML
 	GridPane gridSchedule;
 
 	public static URL view = Object.class.getResource("/frontend/student/SCourseSearcherView.fxml");
 	public ArrayList<Course> courses = new ArrayList<Course>();
+	public Text[][] schedule = new Text[10][7];
 
 	@Override
 	public void setUp() {
 		super.setUp();
-
-		btnAddCourse.setText(Messages.getUILabel(UILabel.ADD_COURSE));
-		btnRemoveCourse.setText(Messages.getUILabel(UILabel.REMOVE_COURSE));
-		btnSaveSemester.setText(Messages.getUILabel(UILabel.SAVE_SEMESTER));
 
 		chSelectSemester.setCursor(Cursor.HAND);
 		chSelectSemester.setItems(FXCollections.observableArrayList("1","2"));
@@ -72,7 +67,7 @@ public class SCourseSearcherViewController extends MCourseSearcherSelectorViewCo
 	
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < 7; j++) {
-				gridSchedule.add(new Text(""), i, j);
+				schedule[i][j] = new Text("");
 			}
 		}
 		
@@ -89,42 +84,55 @@ public class SCourseSearcherViewController extends MCourseSearcherSelectorViewCo
 
 					Lecture lecture = course.getLecture();					
 					details.add(course.getInitials());
-					details.add(Messages.getUILabel(UILabel.PROFESSOR) + ":");
-					for(Professor p : lecture.getProfessors()) {
-						details.add(p.getName() + " " + p.getLastnameFather());
+					String teachers = Messages.getUILabel(UILabel.PROFESSOR) + ": ";
+					if (lecture.getProfessors().size() > 1) {
+						details.add(teachers);
+						for(Professor p : lecture.getProfessors()) {
+							details.add(p.getName() + " " + p.getLastnameFather());
+						}
 					}
-					details.add("Sala: " + lecture.getClassroom().getInitials());
-					details.add("Cupos: " + lecture.getClassroom().getSize());
+					else
+					{
+						Professor p = lecture.getProfessors().get(0);
+						teachers += p.getName() + " " + p.getLastnameFather();
+						details.add(teachers);
+					}	
 					String schedule = "Horario: ";
 					for(DayModuleTuple t : lecture.getSchedule().getModules()) {
-						schedule += (t.day.getDayString() + t.module.getInt() + " ");
+						schedule += (t.day.getDayString() + " " + t.module.getInt() + " ");
 					}
-					details.add(schedule);
+					details.add(schedule);				
+					details.add("Sala: " + lecture.getClassroom().getInitials());
+					details.add("Cupos: " + lecture.getClassroom().getSize());
 					break;
 				}
 			}		
 			listDetails.setItems(FXCollections.observableArrayList(details));
 		});
 		
-		gridSchedule.add(new Text("08:30"), 1, 0);
-		gridSchedule.add(new Text("10:00"), 2, 0);
-		gridSchedule.add(new Text("11:30"), 3, 0);
-		gridSchedule.add(new Text("14:00"), 5, 0);
-		gridSchedule.add(new Text("15:30"), 6, 0);
-		gridSchedule.add(new Text("17:00"), 7, 0);
-		gridSchedule.add(new Text("18:30"), 8, 0);
-		gridSchedule.add(new Text("20:00"), 9, 0);
-		gridSchedule.add(new Text("L"), 0, 1);
-		gridSchedule.add(new Text("M"), 0, 2);
-		gridSchedule.add(new Text("W"), 0, 3);
-		gridSchedule.add(new Text("J"), 0, 4);
-		gridSchedule.add(new Text("V"), 0, 5);
-		gridSchedule.add(new Text("S"), 0, 6);
+		chSelectSemester.setOnAction((event) -> {
+			updateCoursesShow(AcademicSemester.getAcademicSemester(chSelectSemester.getSelectionModel().getSelectedItem()));
+		});
+			
+		schedule[1][0] = new Text("08:30");
+		schedule[2][0] = new Text("10:00");
+		schedule[3][0] = new Text("11:30");
+		schedule[5][0] = new Text("14:00");
+		schedule[6][0] = new Text("15:30");
+		schedule[7][0] = new Text("17:00");
+		schedule[8][0] = new Text("18:30");
+		schedule[9][0] = new Text("20:00");
+		schedule[0][1] = new Text("L");
+		schedule[0][2] = new Text("M");
+		schedule[0][3] = new Text("W");
+		schedule[0][4] = new Text("J");
+		schedule[0][5] = new Text("V");
+		schedule[0][6] = new Text("S");
 		
-		Node node = this.getGridNode(1, 0);
-		System.out.println((String)node.getUserData());
+		refresh();
 	}
 	
+	@Override
 	public void updateCoursesShow(AcademicSemester semester) {
 		ArrayList<String> coursesStrings = new ArrayList<String>();
 		for (Course course : coursesToShow) {
@@ -177,7 +185,8 @@ public class SCourseSearcherViewController extends MCourseSearcherSelectorViewCo
 							if (day > 3) {
 								day++;
 							}
-							gridSchedule.add(new Text(course.getInitials()), mod, day);
+							schedule[mod][day] = new Text(course.getInitials());
+							refresh();
 						}
 						courses.add(course);
 					}
@@ -214,8 +223,9 @@ public class SCourseSearcherViewController extends MCourseSearcherSelectorViewCo
 						int mod = tm.module.getInt();
 						if (day > 3) {
 							day++;
-						}
-						gridSchedule.add(new Text(""), mod, day);
+						}				
+						schedule[mod][day] = new Text("");
+						refresh();
 					}
 					courses.remove(course);				
 					break;
@@ -235,28 +245,19 @@ public class SCourseSearcherViewController extends MCourseSearcherSelectorViewCo
 	public void btnCleanCourses_Pressed() {
 		for (int i = 1; i < 10; i++) {
 			for (int j = 1; j < 7; j++) {
-				gridSchedule.add(new Text(""), i, j);
+				schedule[i][j] = new Text("");
 			}
 		}
 		listCoursesInSemester.setItems(FXCollections.observableArrayList(""));
 		courses.clear();
 	}
 	
-	@FXML
-	 private void handleChangeSemesterAction(ActionEvent event) {
-		updateCoursesShow(AcademicSemester.getAcademicSemester(chSelectSemester.getSelectionModel().getSelectedItem()));
-	 }
-	
-	@SuppressWarnings("static-access")
-	private Node getGridNode(final int row, final int column) {
-		
-		Node result = null;
-		for (Node node : gridSchedule.getChildren()) {
-			if (gridSchedule.getRowIndex(node) == row && gridSchedule.getColumnIndex(node) == column) {
-				result = node;
-				break;
+	private void refresh() {				
+		gridSchedule.getChildren().clear();
+		for (int i = 0; i < 10; i++) {
+			for (int j = 0; j < 7; j++) {
+				gridSchedule.add(schedule[i][j], j, i);
 			}
 		}
-		return result;
 	}
 }
