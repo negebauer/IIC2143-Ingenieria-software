@@ -3,6 +3,11 @@ package frontend.others;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import backend.courses.Course;
+import backend.courses.Semester;
+import backend.courses.StudyProgram;
+import backend.manager.Manager;
+
 public final class Validate {
 
 	/***
@@ -46,5 +51,20 @@ public final class Validate {
 		}
 
 		return num == fn;
+	}
+	
+	public static boolean checkCourse(String initials, String carreer) {
+		for (StudyProgram sp : Manager.INSTANCE.studyPrograms) {
+			if (sp.getName().equals(carreer)) {
+				for (Semester s : sp.getSemesters()) {
+					for (Course c : s.getCourses()) {
+						if (c.getInitials().equals(initials)) {
+							return true;
+						}
+					}
+				}
+			}
+		}
+		return false;
 	}
 }
