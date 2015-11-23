@@ -300,6 +300,7 @@ public class ASemesterManagerEditingViewController extends MCourseSearcherSelect
 								}
 								Text textToPut = new Text(course.getInitials());
 								textToPut.setFill(Color.YELLOW);
+								
 								schedule[mod][day] = textToPut;
 							}
 						} if (course.getAssistantship() != null) {
@@ -327,7 +328,7 @@ public class ASemesterManagerEditingViewController extends MCourseSearcherSelect
 								schedule[mod][day] = textToPut;
 							}
 						}
-						
+						refresh();
 						labelStatusBar.setText("Success");
 					} else {
 						labelStatusBar.setText("Not added: " + response.response);
@@ -391,7 +392,7 @@ public class ASemesterManagerEditingViewController extends MCourseSearcherSelect
 								schedule[mod][day] = textToPut;
 							}
 						}
-						
+						refresh();
 						labelStatusBar.setText("Success");
 					} else {
 						labelStatusBar.setText("Not removed: " + response.response);
