@@ -9,7 +9,6 @@ import backend.users.Student;
 import frontend.main.MViewController;
 import frontend.others.ViewUtilities;
 import javafx.fxml.FXML;
-import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
@@ -46,20 +45,20 @@ public class SMainViewController extends MViewController {
 	@Override
 	public void setUp() {
 		super.setUp();
-		btnEditSemester.setText(Messages.getUILabel(UILabel.STUDENT_EDIT_SEMESTER));
-		btnCurricularAdvance.setText(Messages.getUILabel(UILabel.STUDENT_SEE_CURRICULAR_ADVANCE));
-		btnShowSchedule.setText(Messages.getUILabel(UILabel.STUDENT_SEE_SCHEDULE));
+		ViewUtilities.setButtonText(btnEditSemester, UILabel.STUDENT_EDIT_SEMESTER);
+		ViewUtilities.setButtonText(btnCurricularAdvance, UILabel.STUDENT_SEE_CURRICULAR_ADVANCE);
+		ViewUtilities.setButtonText(btnShowSchedule, UILabel.STUDENT_SEE_SCHEDULE);
+		ViewUtilities.setButtonText(btnCoursedSemesters, null);
+		ViewUtilities.setButtonText(btnAcademicHistory, null);
+		ViewUtilities.setButtonText(btnStudyProgram, null);
+		ViewUtilities.setButtonText(btnChangeStudyProgram, null);
+		ViewUtilities.setButtonText(btnCourseFinder, null);
+		ViewUtilities.setButtonText(btnForums, null);
+		
 		labelWhatDoNext.setText(Messages.getUILabel(UILabel.WHAT_TO_DO_NEXT_QUESTION));
 		labelWelcomeMessage.setText(Messages.getUILabel(UILabel.WELCOME_MESSAGE));
-
-		btnEditSemester.setCursor(Cursor.HAND);
-		btnCurricularAdvance.setCursor(Cursor.HAND);
-		btnShowSchedule.setCursor(Cursor.HAND);
-		btnCoursedSemesters.setCursor(Cursor.HAND);
-		btnAcademicHistory.setCursor(Cursor.HAND);
-		
 		labelUserInformation.setText(user.getStudentInformation());
-		
+				
 		// TODO: [STUDENT] Create UILabel
 		// btnCoursedSemesters.setText(Messages.getUILabel(UILabel.STUDENT_SHOW_COURSED_SEMESTERS));
 		// btnAcademicHistory.setText(Messages.getUILabel(UILabel.STUDENT_SHOW_ACADEMIC_HISTORY));

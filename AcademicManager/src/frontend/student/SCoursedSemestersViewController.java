@@ -3,15 +3,14 @@ package frontend.student;
 import java.net.URL;
 import java.util.ArrayList;
 
-import backend.courses.Course;
 import backend.courses.Coursed;
 import backend.courses.CoursedSemester;
-import backend.courses.Semester;
 import backend.courses.StudyProgram;
 import backend.enums.AcademicSemester;
 import backend.manager.Manager;
 import backend.users.Student;
 import frontend.main.MViewController;
+import frontend.others.Validate;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
@@ -54,7 +53,6 @@ public class SCoursedSemestersViewController extends MViewController {
 			chBxCoursedSemesters.getSelectionModel().selectLast();
 		});
 		chBxCarreer.getSelectionModel().selectFirst();
-		chBxCoursedSemesters.getSelectionModel().selectLast();
 	}
 
 	ArrayList<String> generateCoursedSemesters() {
@@ -82,27 +80,18 @@ public class SCoursedSemestersViewController extends MViewController {
 				double sum = 0;
 				String aux = "";				
 				for (Coursed coursed : coursedSemester.getCoursedCourses()) {
-					for (StudyProgram sp : Manager.INSTANCE.studyPrograms) {
-						if (sp.getName().equals(carreer)) {
-							for (Semester s : sp.getSemesters()) {
-								for (Course c : s.getCourses()) {
-									if (c.getInitials().equals(coursed.getInitials())) {
-										aux += coursed.getInitials() + "-" + coursed.getSection() + " " + coursed.getName()
-										+ ": " + coursed.getGrade() + "\n\t";	
-										sum+= coursed.getGrade();
-										count++;
-									}
-								}
-							}
-						}	
+					if (Validate.checkCourse(coursed.getInitials(), carreer)) {
+						aux += coursed.getInitials() + "-" + coursed.getSection() + " " + coursed.getName()
+						+ ": " + coursed.getGrade() + "\n\t";	
+						sum+= coursed.getGrade();
+						count++;	
 					}
 				}
 				double prom = 0;
 				if(count != 0) {
 					prom = sum/count;
 				}				
-				coursedCoursesString += year + "-" + semester.getSemesterNumber() + ": " + prom
-				+ "\n\t" + aux;
+				coursedCoursesString += year + "-" + semester.getSemesterNumber() + ": " + prom + "\n\t" + aux;
 				if (prom == 0) {
 					coursedCoursesString += "No hay ramos cursados este semestres";
 				}

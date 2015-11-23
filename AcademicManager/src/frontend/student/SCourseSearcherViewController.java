@@ -16,6 +16,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -221,8 +222,8 @@ public class SCourseSearcherViewController extends MCourseSearcherSelectorViewCo
 					for (DayModuleTuple tm : t) {
 						int day = tm.day.getInt();
 						int mod = tm.module.getInt();
-						if (day > 3) {
-							day++;
+						if (mod > 3) {
+							mod++;
 						}				
 						schedule[mod][day] = new Text("");
 						refresh();
@@ -254,7 +255,9 @@ public class SCourseSearcherViewController extends MCourseSearcherSelectorViewCo
 	}
 	
 	private void refresh() {				
+		Node node = gridSchedule.getChildren().get(0);
 		gridSchedule.getChildren().clear();
+		gridSchedule.getChildren().add(0,node);
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < 7; j++) {
 				gridSchedule.add(schedule[i][j], j, i);
