@@ -46,6 +46,7 @@ public class SStudyProgramViewController extends MViewController {
 				}
 			}
 		});
+		cmBxStudyProgram.getSelectionModel().selectFirst();
 	}
 	
 	public void showStudyProgram(StudyProgram studyProgram) {
