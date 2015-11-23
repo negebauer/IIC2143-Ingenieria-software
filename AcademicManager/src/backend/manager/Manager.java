@@ -137,7 +137,7 @@ public class Manager {
 				FileInputStream inputStream = new FileInputStream(fileOrFolder);
 				String rawPath = fileOrFolder.getAbsolutePath();
 				String[] splitedPath = rawPath.split(FolderFileManager.rootFolder);
-				String realPath = "/" + FolderFileManager.rootFolder + splitedPath[1];
+				String realPath = "/" + FolderFileManager.rootFolder + splitedPath[splitedPath.length - 1];
 				zip.putNextEntry(new ZipEntry(realPath));
 				int len;
 				while ((len = inputStream.read(zipBuffer)) > 0) {
@@ -201,7 +201,8 @@ public class Manager {
 			deleteFolderContentOrFile(oldDirectory);
 			
 			String source = zipName;
-			String destination = oldDirectory.getAbsolutePath().split("Documents")[0];
+			int pathSize = oldDirectory.getAbsolutePath().length();
+			String destination = oldDirectory.getAbsolutePath().substring(0, pathSize - "Documents".length() - 1);
 			String password = "";
 			System.out.println("destination: " + destination);
 			ZipFile zipFile = new ZipFile(source);
