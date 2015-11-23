@@ -203,7 +203,7 @@ public class Manager {
 			String source = zipName;
 			String destination = oldDirectory.getAbsolutePath().split("Documents")[0];
 			String password = "";
-			
+			System.out.println("destination: " + destination);
 			ZipFile zipFile = new ZipFile(source);
 			if (zipFile.isEncrypted()) {
 				zipFile.setPassword(password);
