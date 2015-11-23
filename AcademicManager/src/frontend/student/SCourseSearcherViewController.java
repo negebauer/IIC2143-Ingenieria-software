@@ -15,6 +15,7 @@ import frontend.others.ViewUtilities;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.geometry.HPos;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -129,7 +130,7 @@ public class SCourseSearcherViewController extends MCourseSearcherSelectorViewCo
 		schedule[0][4] = new Text("J");
 		schedule[0][5] = new Text("V");
 		schedule[0][6] = new Text("S");
-		
+			
 		refresh();
 	}
 	
@@ -254,12 +255,14 @@ public class SCourseSearcherViewController extends MCourseSearcherSelectorViewCo
 		courses.clear();
 	}
 	
+	@SuppressWarnings("static-access")
 	private void refresh() {				
 		Node node = gridSchedule.getChildren().get(0);
 		gridSchedule.getChildren().clear();
 		gridSchedule.getChildren().add(0,node);
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < 7; j++) {
+				gridSchedule.setHalignment(schedule[i][j], HPos.CENTER);
 				gridSchedule.add(schedule[i][j], j, i);
 			}
 		}
