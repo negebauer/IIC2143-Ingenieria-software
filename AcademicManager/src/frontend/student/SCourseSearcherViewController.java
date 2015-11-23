@@ -182,8 +182,8 @@ public class SCourseSearcherViewController extends MCourseSearcherSelectorViewCo
 						for (DayModuleTuple tm : t) {
 							int day = tm.day.getInt();
 							int mod = tm.module.getInt();
-							if (day > 3) {
-								day++;
+							if (mod > 3) {
+								mod++;
 							}
 							schedule[mod][day] = new Text(course.getInitials());
 							refresh();
@@ -248,6 +248,7 @@ public class SCourseSearcherViewController extends MCourseSearcherSelectorViewCo
 				schedule[i][j] = new Text("");
 			}
 		}
+		refresh();
 		listCoursesInSemester.setItems(FXCollections.observableArrayList(""));
 		courses.clear();
 	}
