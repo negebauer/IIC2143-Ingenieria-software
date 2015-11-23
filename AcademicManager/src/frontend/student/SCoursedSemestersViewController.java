@@ -50,6 +50,7 @@ public class SCoursedSemestersViewController extends MViewController {
 		});	
 		chBxCarreer.setOnAction((event) -> {
 			carreer = chBxCarreer.getSelectionModel().getSelectedItem().trim();
+			chBxCoursedSemesters.getSelectionModel().selectFirst();
 			chBxCoursedSemesters.getSelectionModel().selectLast();
 		});
 		chBxCarreer.getSelectionModel().selectFirst();
@@ -102,6 +103,9 @@ public class SCoursedSemestersViewController extends MViewController {
 				}				
 				coursedCoursesString += year + "-" + semester.getSemesterNumber() + ": " + prom
 				+ "\n\t" + aux;
+				if (prom == 0) {
+					coursedCoursesString += "No hay ramos cursados este semestres";
+				}
 			}
 		}
 		labelCoursedSemesterCourses.setText(coursedCoursesString);
