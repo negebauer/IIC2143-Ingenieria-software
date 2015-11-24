@@ -157,9 +157,9 @@ public class Manager {
 	private String cleanSlashes(String stringToClear) {
 		String cleaned = "";
 		for (String character : stringToClear.split("")) {
-			if (character == "\\" && cleaned.substring(cleaned.length() - 1, cleaned.length()) != "/") {
+			if (character.equals("\\") && !cleaned.substring(cleaned.length() - 1, cleaned.length()).equals("/")) {
 				cleaned += "/";
-			} else if (character == "\\") {
+			} else if (character.equals("\\")) {
 			
 			} else {
 				cleaned += character;
