@@ -2,3 +2,4 @@ Introduccion al Calculo&MAT1600&1&10&MATHEMATICS&FIRST&2013&true&4.8
 Quimica General&QIM100I&1&10&CHEMISTRY&FIRST&2013&true&4.3
 Fisica General&FIS1503&1&10&PHYSICS&FIRST&2013&true&5.0
 Desafios de la Ingenieria&ING1004&1&10&ENGINEERING&SECOND&2015&true&4.0
+Curso malla distinta&DIS1000&1&10&AGRICULTURE&SECOND&2015&true&4.8
