@@ -2,12 +2,12 @@ package backend.manager;
 
 import java.io.IOException;
 
+import backend.others.Utilities;
 import frontend.main.MLogInController;
 import frontend.others.CurrentViewHandler;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -65,7 +65,7 @@ public class Main extends Application {
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Academic Manager");
 		primaryStage.setResizable(false);
-		primaryStage.getIcons().add(new Image("file:images/icon_colors.png"));
+		primaryStage.getIcons().add(Utilities.getImage("icon_colors.png", this));
 		primaryStage.show();
 		CurrentViewHandler.INSTANCE.primaryStage = primaryStage;
 	}

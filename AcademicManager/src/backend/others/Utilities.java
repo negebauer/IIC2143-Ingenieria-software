@@ -11,6 +11,7 @@ import backend.courses.Coursed;
 import backend.courses.Curriculum;
 import backend.courses.Semester;
 import backend.courses.StudyProgram;
+import javafx.scene.image.Image;
 
 public class Utilities {
 
@@ -118,5 +119,12 @@ public class Utilities {
 			coursesList.add(course.getInitials() + " " + course.getName());
 
 		return coursesList;
+	}
+	
+	public static Image getImage(String imageName, Object sender) {
+		ClassLoader cldr = sender.getClass().getClassLoader();
+		java.net.URL imageURL = cldr.getResource("images/" + imageName);
+		Image image = new Image(imageURL.toString());
+		return image;
 	}
 }
