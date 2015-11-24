@@ -7,7 +7,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.admin.ASemesterManagerMainViewController">
    <children>
-      <Pane prefHeight="405.0" prefWidth="605.0" style="-fx-background-color: #026;">
+      <Pane prefHeight="410.0" prefWidth="605.0" style="-fx-background-color: #026;">
          <children>
             <Label fx:id="labelSemesterEditorWelcomeMessage" layoutX="24.0" layoutY="67.0" prefHeight="42.0" prefWidth="299.0" text="Este es el editor de Semestres, para comenzar selecciona un semestre a editar o elige crear uno nuevo" textFill="WHITE" wrapText="true" />
             <Button fx:id="btnCreateSemester" layoutX="52.0" layoutY="299.0" mnemonicParsing="false" onAction="#btnCreateSemester_Pressed" style="-fx-background-radius: 0;" text="Crear Semestre" />

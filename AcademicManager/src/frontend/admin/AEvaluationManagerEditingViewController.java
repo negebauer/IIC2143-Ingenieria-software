@@ -70,14 +70,16 @@ public class AEvaluationManagerEditingViewController extends MViewController {
 			classrooms.add(clasroom.getInitials());
 		}
 		chBxClassroom.setItems(FXCollections.observableArrayList(classrooms));
-
+		ViewUtilities.autoComplete(chBxClassroom);
+		
 		Evaluation selectedEvaluation = Manager.INSTANCE.currentEditingEvaluation;
 		if (selectedEvaluation != null) {
 			chBxClassroom.getSelectionModel().select(selectedEvaluation.getClassroom().getInitials());
-			chBxEvaluationType.getSelectionModel().select(selectedEvaluation.getCourseEvaluation().toString());
+			chBxEvaluationType.getSelectionModel().select(CourseEvaluation.getCourseEvaluationMessage(selectedEvaluation.getCourseEvaluation()));
 			SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.ENGLISH);
 			String[] rawDate = dateFormat.format((selectedEvaluation.getDate())).split(" ");
-			String[] rawDay = rawDate[0].split(".");
+			String day = rawDate[0];
+			String[] rawDay = day.split("\\.");
 			txBxDay.setText(rawDay[0]);
 			txBxMonth.setText(rawDay[1]);
 			txBxYear.setText(rawDay[2]);
@@ -88,7 +90,7 @@ public class AEvaluationManagerEditingViewController extends MViewController {
 			isCreating = true;
 		}
 
-		ViewUtilities.autoComplete(chBxClassroom);
+		
 	}
 
 	public void btnSaveEvaluation_Pressed() {

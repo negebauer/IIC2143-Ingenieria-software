@@ -4,8 +4,6 @@ import java.util.ArrayList;
 
 import backend.courses.Course;
 import backend.courses.Evaluation;
-import backend.enums.AcademicSemester;
-import backend.enums.School;
 import backend.interfaces.ICourse;
 import backend.interfaces.IProfessors;
 import backend.others.Messages;
@@ -126,12 +124,7 @@ public class CourseModificationChecker {
 	 * @return A ModifyCourseResponse detailing if the modification can be done
 	 *         containing the modified Course.
 	 */
-	public static ModifyCourseResponse courseCanBeModified(Course courseToModify, String name, String initials,
-			int section, int credits, String details, School school, AcademicSemester semester,
-			ArrayList<ICourse> courses, ArrayList<Evaluation> evaluations, ArrayList<Course> requisites,
-			ArrayList<Course> coRequisites, Boolean coordinated) {
-		Course modifiedCourse = new Course(name, initials, section, credits, details, school, semester, courses,
-				evaluations, requisites, coRequisites, coordinated);
+	public static ModifyCourseResponse courseCanBeModified(Course courseToModify, Course modifiedCourse) {
 		currentCourses.remove(courseToModify);
 		ModifyCourseResponse modifyCourseResponse = courseCanBeCreated(modifiedCourse);
 		if (modifyCourseResponse.success) {

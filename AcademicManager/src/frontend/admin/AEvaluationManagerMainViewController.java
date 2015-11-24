@@ -11,6 +11,7 @@ import backend.others.Messages.UILabel;
 import frontend.main.MViewController;
 import frontend.others.ViewUtilities;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -64,8 +65,11 @@ public class AEvaluationManagerMainViewController extends MViewController {
 				String evaluationType = CourseEvaluation.getCourseEvaluationMessage(evaluation.getCourseEvaluation());
 				String evaluationDate = evaluation.getDate().toString();
 				String evaluationClassroom = evaluation.getClassroom().getInitials();
-				if (evaluationType + "-" + evaluationDate + "-" + evaluationClassroom == selectedEvaluationRawString) {
+				if ((evaluationType + "-" + evaluationDate + "-" + evaluationClassroom).equals(selectedEvaluationRawString)) {
 					Manager.INSTANCE.currentEditignCourse.removeEvaluation(evaluation);
+					ObservableList<String> actualElements = chBxEvaluations.getItems();
+					actualElements.remove(selectedEvaluationRawString);
+					chBxEvaluations.setItems(actualElements);
 					break;
 				}
 			}
@@ -79,7 +83,7 @@ public class AEvaluationManagerMainViewController extends MViewController {
 				String evaluationType = CourseEvaluation.getCourseEvaluationMessage(evaluation.getCourseEvaluation());
 				String evaluationDate = evaluation.getDate().toString();
 				String evaluationClassroom = evaluation.getClassroom().getInitials();
-				if (evaluationType + "-" + evaluationDate + "-" + evaluationClassroom == selectedEvaluationRawString) {
+				if ((evaluationType + "-" + evaluationDate + "-" + evaluationClassroom).equals(selectedEvaluationRawString)) {
 					Manager.INSTANCE.currentEditingEvaluation = evaluation;
 					break;
 				}

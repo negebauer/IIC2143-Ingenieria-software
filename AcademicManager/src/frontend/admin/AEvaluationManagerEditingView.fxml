@@ -5,11 +5,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.admin.AEvaluationManagerMainViewController">
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.admin.AEvaluationManagerEditingViewController">
    <children>
       <Pane prefHeight="405.0" prefWidth="605.0" style="-fx-background-color: #026;">
          <children>
-            <ChoiceBox fx:id="chBxClassroom" layoutX="33.0" layoutY="134.0" prefWidth="150.0" style="-fx-background-radius: 0;" />
+            <ComboBox fx:id="chBxClassroom" layoutX="33.0" layoutY="134.0" prefWidth="150.0" style="-fx-background-radius: 0;" />
             <Label fx:id="labelClassroom" layoutX="33.0" layoutY="113.0" text="Sala" textFill="WHITE" />
             <TextField fx:id="txBxDay" layoutX="34.0" layoutY="200.0" prefHeight="25.0" prefWidth="43.0" promptText="ej. 05" style="-fx-background-radius: 0;" />
             <TextField fx:id="txBxMonth" layoutX="87.0" layoutY="200.0" prefHeight="25.0" prefWidth="43.0" promptText="ej. 02" style="-fx-background-radius: 0;" />
