@@ -138,8 +138,9 @@ public class Manager {
 				String rawPath = fileOrFolder.getAbsolutePath();
 				String[] splitedPath = rawPath.split(FolderFileManager.rootFolder);
 				String realPath = FolderFileManager.rootFolder + splitedPath[splitedPath.length - 1];
-				System.out.println("zip file path: " + cleanSlashes(realPath));
-				zip.putNextEntry(new ZipEntry(cleanSlashes(realPath)));
+				String cleanedPath = cleanSlashes(realPath);
+				System.out.println("zip file path: " + cleanedPath);
+				zip.putNextEntry(new ZipEntry(cleanedPath));
 				int len;
 				while ((len = inputStream.read(zipBuffer)) > 0) {
 					zip.write(zipBuffer, 0, len);
@@ -155,7 +156,7 @@ public class Manager {
 	}
 	
 	private String cleanSlashes(String stringToClear) {
-		String clean2 = stringToClear.replace('\\', '/');
+		String clean2 = stringToClear.replace("\\", "/");
 		return clean2;
 	}
 	
