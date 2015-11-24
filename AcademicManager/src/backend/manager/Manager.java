@@ -155,8 +155,7 @@ public class Manager {
 	}
 	
 	private String cleanSlashes(String stringToClear) {
-		String clean1 = stringToClear.replace("\\\\", "/");
-		String clean2 = clean1.replace("\\", "/");
+		String clean2 = stringToClear.replace('\\', '/');
 		return clean2;
 	}
 	
