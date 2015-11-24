@@ -158,7 +158,7 @@ public class Manager {
 		String cleaned = "";
 		for (String character : stringToClear.split("")) {
 			if (character == "\\" && cleaned.substring(cleaned.length() - 1, cleaned.length()) != "/") {
-				cleaned += character;
+				cleaned += "/";
 			} else if (character == "\\") {
 			
 			} else {
