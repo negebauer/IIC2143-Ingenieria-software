@@ -119,7 +119,7 @@ public class AICourseManagerLectureEditingViewController extends MViewController
 			ObservableList<String> updatedElements = listAssistantsOrProfessors.getItems();
 			
 			String valueSelected = chBxAssistantsOrProfessors.getSelectionModel().getSelectedItem();
-			String rut = valueSelected.split("-")[1];
+			String rut = valueSelected.split("-")[valueSelected.split("-").length - 1];
 			
 			for (Professor professor : Manager.INSTANCE.professors) {
 				if (rut.equals(professor.getRut())) {
