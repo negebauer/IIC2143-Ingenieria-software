@@ -138,7 +138,7 @@ public class Manager {
 				String rawPath = fileOrFolder.getAbsolutePath();
 				String[] splitedPath = rawPath.split(FolderFileManager.rootFolder);
 				String realPath = "/" + FolderFileManager.rootFolder + splitedPath[splitedPath.length - 1];
-				zip.putNextEntry(new ZipEntry(realPath));
+				zip.putNextEntry(new ZipEntry(cleanSlashes(realPath)));
 				int len;
 				while ((len = inputStream.read(zipBuffer)) > 0) {
 					zip.write(zipBuffer, 0, len);
@@ -151,6 +151,20 @@ public class Manager {
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	private String cleanSlashes(String stringToClear) {
+		String cleaned = "";
+		for (String character : stringToClear.split("")) {
+			if (character == "\\" && cleaned.substring(cleaned.length() - 1, cleaned.length()) != "/") {
+				cleaned += character;
+			} else if (character == "\\") {
+			
+			} else {
+				cleaned += character;
+			}
+		}
+		return cleaned;
 	}
 	
 	/**
@@ -202,7 +216,7 @@ public class Manager {
 			
 			String source = zipName;
 			int pathSize = oldDirectory.getAbsolutePath().length();
-			String destination = oldDirectory.getAbsolutePath().substring(0, pathSize - "Documents".length() - 1);
+			String destination = oldDirectory.getAbsolutePath().substring(0, pathSize - "Documents".length());
 			String password = "";
 			System.out.println("destination: " + destination);
 			ZipFile zipFile = new ZipFile(source);
