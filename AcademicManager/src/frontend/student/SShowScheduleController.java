@@ -65,12 +65,16 @@ public class SShowScheduleController extends MViewController {
 			int currentYear = user.getCurriculum().getCurrentSemester().getYear();
 			String currentSemester = user.getCurriculum().getCurrentSemester().getSemester().getSemesterNumber();
 			String currentSemesterInfo = currentYear + " - " + currentSemester;
+			Boolean shouldAddCurrentSemesterInfo = true;
 			for (String semesterInfoAlreadyShown : semesterInfo) {
 				if (semesterInfoAlreadyShown.equals(currentSemesterInfo)) {
-					return;
+					shouldAddCurrentSemesterInfo = false;
+					break;
 				}
 			}
-			semesterInfo.add(currentSemesterInfo);
+			if (shouldAddCurrentSemesterInfo) {
+				semesterInfo.add(currentSemesterInfo);
+			}
 		}
 		chBxSemesters.setItems(FXCollections.observableArrayList(semesterInfo));
 		chBxSemesters.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
