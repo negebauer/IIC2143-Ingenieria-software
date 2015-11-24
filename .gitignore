@@ -16,3 +16,6 @@ hs_err_pid*
 
 # Zip file (gets redone every time)
 Documents.zip
+
+# Bin folder
+bin/
