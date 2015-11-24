@@ -216,7 +216,8 @@ public class Manager {
 			
 			String source = zipName;
 			int pathSize = oldDirectory.getAbsolutePath().length();
-			String destination = oldDirectory.getAbsolutePath().substring(0, pathSize - "Documents".length());
+			String destinationRaw = oldDirectory.getAbsolutePath().substring(0, pathSize - "Documents".length());
+			String destination = cleanSlashes(destinationRaw);
 			String password = "";
 			System.out.println("destination: " + destination);
 			ZipFile zipFile = new ZipFile(source);
