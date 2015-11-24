@@ -27,8 +27,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.GridPane;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Text;
+import javafx.scene.text.Font;
 
 public class SCourseSearcherViewController extends MCourseSearcherSelectorViewController {
 
@@ -61,12 +60,12 @@ public class SCourseSearcherViewController extends MCourseSearcherSelectorViewCo
 
 	public static URL view = Object.class.getResource("/frontend/student/SCourseSearcherView.fxml");
 	public ArrayList<Course> courses = new ArrayList<Course>();
-	public Text[][] schedule = new Text[10][7];
+	public Label[][] schedule = new Label[10][7];
 
 	@Override
 	public void setUp() {
 		super.setUp();
-
+		
 		chSelectSemester.setCursor(Cursor.HAND);
 		chSelectSemester.setItems(FXCollections.observableArrayList("1","2"));
 		chSelectSemester.getSelectionModel().selectFirst();
@@ -74,7 +73,8 @@ public class SCourseSearcherViewController extends MCourseSearcherSelectorViewCo
 	
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < 7; j++) {
-				schedule[i][j] = new Text("");
+				schedule[i][j] = new Label("");
+				schedule[i][j].setFont(new Font("Arial", 12));;
 			}
 		}
 		
@@ -136,7 +136,6 @@ public class SCourseSearcherViewController extends MCourseSearcherSelectorViewCo
 						details.add(schedule);				
 						details.add("Sala: " + assistantship.getClassroom().getInitials());
 					} if (course.getLaboratory() != null) {
-						details.add(" ");
 						details.add(Messages.getUILabel(UILabel.LABORATORY));
 						
 						Laboratory laboratory = course.getLaboratory();
@@ -171,21 +170,29 @@ public class SCourseSearcherViewController extends MCourseSearcherSelectorViewCo
 			updateCoursesShow(AcademicSemester.getAcademicSemester(chSelectSemester.getSelectionModel().getSelectedItem()));
 		});
 			
-		schedule[1][0] = new Text("08:30");
-		schedule[2][0] = new Text("10:00");
-		schedule[3][0] = new Text("11:30");
-		schedule[5][0] = new Text("14:00");
-		schedule[6][0] = new Text("15:30");
-		schedule[7][0] = new Text("17:00");
-		schedule[8][0] = new Text("18:30");
-		schedule[9][0] = new Text("20:00");
-		schedule[0][1] = new Text("L");
-		schedule[0][2] = new Text("M");
-		schedule[0][3] = new Text("W");
-		schedule[0][4] = new Text("J");
-		schedule[0][5] = new Text("V");
-		schedule[0][6] = new Text("S");
+		schedule[1][0].setText("08:30");
+		schedule[2][0].setText("10:00");
+		schedule[3][0].setText("11:30");
+		schedule[5][0].setText("14:00");
+		schedule[6][0].setText("15:30");
+		schedule[7][0].setText("17:00");
+		schedule[8][0].setText("18:30");
+		schedule[9][0].setText("20:00");
+		schedule[0][1].setText("L");
+		schedule[0][2].setText("M");
+		schedule[0][3].setText("W");
+		schedule[0][4].setText("J");
+		schedule[0][5].setText("V");
+		schedule[0][6].setText("S");
 			
+		for (int i = 0; i < 10; i++) {
+			schedule[i][0].setStyle("-fx-background-color: #ff8;");
+			schedule[i][0].setText(ViewUtilities.reSize(schedule[i][0].getText(), 7));
+		}
+		for (int j = 0; j < 7; j++) {
+			schedule[0][j].setStyle("-fx-background-color: #ff8;");
+			schedule[0][j].setText(ViewUtilities.reSize(schedule[0][j].getText(), 15));
+		}	
 		refresh();
 	}
 	
@@ -247,9 +254,8 @@ public class SCourseSearcherViewController extends MCourseSearcherSelectorViewCo
 								if (mod > 3) {
 									mod++;
 								}
-								Text textToPut = new Text(course.getInitials());
-								textToPut.setFill(Color.BLUE);
-								schedule[mod][day] = textToPut;
+								schedule[mod][day].setStyle("-fx-text-fill: #1ab;");
+								schedule[mod][day].setText(ViewUtilities.reSize(course.getInitials(), 10));
 							}
 						} 
 						if (course.getAssistantship() != null) {
@@ -260,9 +266,8 @@ public class SCourseSearcherViewController extends MCourseSearcherSelectorViewCo
 								if (mod > 3) {
 									mod++;
 								}
-								Text textToPut = new Text(course.getInitials());
-								textToPut.setFill(Color.RED);
-								schedule[mod][day] = textToPut;
+								schedule[mod][day].setStyle("-fx-text-fill: #f70;");
+								schedule[mod][day].setText(ViewUtilities.reSize(course.getInitials(),10));
 							}
 						} 
 						if (course.getLaboratory() != null) {
@@ -273,9 +278,8 @@ public class SCourseSearcherViewController extends MCourseSearcherSelectorViewCo
 								if (mod > 3) {
 									mod++;
 								}
-								Text textToPut = new Text(course.getInitials());
-								textToPut.setFill(Color.GREEN);
-								schedule[mod][day] = textToPut;
+								schedule[mod][day].setStyle("-fx-text-fill: #060;");
+								schedule[mod][day].setText(ViewUtilities.reSize(course.getInitials(),10));
 							}
 						}
 						refresh();
@@ -316,7 +320,7 @@ public class SCourseSearcherViewController extends MCourseSearcherSelectorViewCo
 							if (mod > 3) {
 								mod++;
 							}				
-							schedule[mod][day] = new Text("");
+							schedule[mod][day].setText("");
 							refresh();
 						}					
 					}		
@@ -338,7 +342,8 @@ public class SCourseSearcherViewController extends MCourseSearcherSelectorViewCo
 	public void btnCleanCourses_Pressed() {
 		for (int i = 1; i < 10; i++) {
 			for (int j = 1; j < 7; j++) {
-				schedule[i][j] = new Text("");
+				schedule[i][j].setStyle("-fx-background-color: white;");
+				schedule[i][j].setText("");
 			}
 		}
 		refresh();
@@ -347,15 +352,18 @@ public class SCourseSearcherViewController extends MCourseSearcherSelectorViewCo
 	}
 	
 	@SuppressWarnings("static-access")
-	private void refresh() {				
+	private void refresh() {
 		Node node = gridSchedule.getChildren().get(0);
 		gridSchedule.getChildren().clear();
 		gridSchedule.getChildren().add(0,node);
 		for (int i = 0; i < 10; i++) {
-			for (int j = 0; j < 7; j++) {
-				gridSchedule.setHalignment(schedule[i][j], HPos.CENTER);
-				gridSchedule.add(schedule[i][j], j, i);
+			for (int j = 0; j < 7; j++) {				
+				if(!schedule[i][j].getText().trim().equals(""))
+				{	
+					gridSchedule.setHalignment(schedule[i][j], HPos.CENTER);
+					gridSchedule.add(schedule[i][j], j, i);
+				}
 			}
 		}
-	}
+	}	
 }

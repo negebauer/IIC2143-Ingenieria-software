@@ -228,4 +228,14 @@ public final class ViewUtilities {
 		}
 		button.setCursor(Cursor.HAND);
 	}
+	
+	public static String reSize(String str, int size) {		
+		int len = size - str.length();
+		if(len > 0) {
+			for (int i = 0; i < len / 2; i++) {
+				str = " " + str + " ";
+			}
+		}
+		return str;
+	}
 }

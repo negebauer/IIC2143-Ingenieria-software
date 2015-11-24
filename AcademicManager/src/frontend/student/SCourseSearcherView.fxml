@@ -28,7 +28,7 @@
          	<ListView fx:id="listDetails" editable="false" layoutX="394.0" layoutY="79.0" prefHeight="94.0" prefWidth="185.0" />
             <Label fx:id="labelSchedule" layoutX="26.0" layoutY="165.0" style="-fx-text-fill: #fff;" text="Horario:" />
             <Label fx:id="labelCourseInfo" layoutX="394.0" layoutY="52.0" style="-fx-text-fill: #fff;" text="Info curso:" />
-            <GridPane fx:id="gridSchedule" disable="true" gridLinesVisible="true" layoutX="27.0" layoutY="195.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="180.0" prefWidth="424.0" style="-fx-background-color: #fff;">
+            <GridPane fx:id="gridSchedule" gridLinesVisible="true" layoutX="27.0" layoutY="195.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="180.0" prefWidth="424.0" style="-fx-background-color: #fff;">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="75.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
