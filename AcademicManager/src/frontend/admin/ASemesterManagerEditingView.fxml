@@ -9,7 +9,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.admin.ASemesterManagerEditingViewController">
    <children>
-      <Pane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #026;">
+      <Pane layoutX="-4.0" layoutY="-1.0" prefHeight="417.0" prefWidth="616.0" style="-fx-background-color: #026;">
          <children>
             <Button fx:id="btnAddCourse" layoutX="270.0" layoutY="79.0" mnemonicParsing="false" onAction="#btnAddCourse_Pressed" style="-fx-background-radius: 0;" text="Agregar Curso">
                <cursor>
