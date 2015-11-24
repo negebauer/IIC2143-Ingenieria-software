@@ -21,3 +21,6 @@ Documents.zip
 bin/
 .metadata/
 .settings/
+
+# Data information (downloaded from Dropbox)
+Documents/
