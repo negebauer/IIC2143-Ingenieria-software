@@ -139,7 +139,6 @@ public class Manager {
 				String[] splitedPath = rawPath.split(FolderFileManager.rootFolder);
 				String realPath = FolderFileManager.rootFolder + splitedPath[splitedPath.length - 1];
 				String cleanedPath = cleanSlashes(realPath);
-				System.out.println("zip file path: " + cleanedPath);
 				zip.putNextEntry(new ZipEntry(cleanedPath));
 				int len;
 				while ((len = inputStream.read(zipBuffer)) > 0) {
