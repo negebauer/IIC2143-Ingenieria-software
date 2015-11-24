@@ -8,13 +8,16 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.student.SAcademicHistoryViewController">
    <children>
-      <Pane layoutX="5.0" layoutY="5.0" prefHeight="400.0" prefWidth="600.0">
+      <Pane prefHeight="405.0" prefWidth="605.0" style="-fx-background-color: #026;">
          <children>
             <Button fx:id="btnLanguage" layoutX="565.0" layoutY="1.0" mnemonicParsing="false" onAction="#btnLanguage_Pressed" style="-fx-background-radius: 0;" text="ES" />
             <Button fx:id="btnReload" layoutX="531.0" layoutY="1.0" mnemonicParsing="false" onAction="#btnReload_Pressed" style="-fx-background-radius: 0;" text="R" />
             <Button fx:id="btnBack" layoutY="1.0" mnemonicParsing="false" onAction="#btnBack_Pressed" style="-fx-background-radius: 0;" text="Back" />
             <Button fx:id="btnLogout" layoutX="501.0" layoutY="370.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
-            <TextArea fx:id="txAAcademicHistory" layoutX="40.0" layoutY="40.0" prefHeight="323.0" prefWidth="520.0" wrapText="true" />
+            <TextArea fx:id="txAAcademicHistory" layoutX="28.0" layoutY="40.0" prefHeight="323.0" prefWidth="261.0" wrapText="true" />
+            <TextArea fx:id="txAAcademic" layoutX="310.0" layoutY="73.0" prefHeight="289.0" prefWidth="261.0" wrapText="true" />
+            <ComboBox fx:id="chBxCarreer" layoutX="310.0" layoutY="40.0" prefHeight="25.0" prefWidth="261.0" />
+            <Label layoutX="112.0" layoutY="370.0" style="-fx-text-fill: #fff;" text="Todas las carreras" />
          </children>
       </Pane>
    </children>

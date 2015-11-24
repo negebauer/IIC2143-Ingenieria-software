@@ -41,7 +41,6 @@ public class SAcademicHistoryViewController extends MViewController {
 			carreer = chBxCarreer.getSelectionModel().getSelectedItem().trim();
 			refresh();
 		});
-		chBxCarreer.getSelectionModel().selectFirst();	
 	}
 	
 	public void refresh() {

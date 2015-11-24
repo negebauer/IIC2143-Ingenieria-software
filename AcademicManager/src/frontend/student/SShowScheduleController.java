@@ -51,10 +51,7 @@ public class SShowScheduleController extends MViewController {
 		chBxCarreer.setItems(FXCollections.observableArrayList(sp));
 		chBxCarreer.setOnAction((event) -> {
 			carreer = chBxCarreer.getSelectionModel().getSelectedItem().trim();
-			chBxCarreer.getSelectionModel().selectFirst();
-			chBxSemesters.getSelectionModel().selectLast();
 		});
-		chBxCarreer.getSelectionModel().selectFirst();
 		
 		labelShowScheduleWelcomeMessage.setText(Messages.getUILabel(UILabel.SCHEDULE_MAIN_MESSAGE));
 	
@@ -67,7 +64,13 @@ public class SShowScheduleController extends MViewController {
 		if (user.getCurriculum().getCurrentSemester() != null) {
 			int currentYear = user.getCurriculum().getCurrentSemester().getYear();
 			String currentSemester = user.getCurriculum().getCurrentSemester().getSemester().getSemesterNumber();
-			semesterInfo.add(currentYear + " - " + currentSemester);
+			String currentSemesterInfo = currentYear + " - " + currentSemester;
+			for (String semesterInfoAlreadyShown : semesterInfo) {
+				if (semesterInfoAlreadyShown.equals(currentSemesterInfo)) {
+					return;
+				}
+			}
+			semesterInfo.add(currentSemesterInfo);
 		}
 		chBxSemesters.setItems(FXCollections.observableArrayList(semesterInfo));
 		chBxSemesters.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
@@ -79,7 +82,6 @@ public class SShowScheduleController extends MViewController {
 			}
 		});
 		if (semesterInfo.size() > 0 && firstLoad) {
-			chBxSemesters.getSelectionModel().selectLast();
 			firstLoad = false;
 		}
 	}

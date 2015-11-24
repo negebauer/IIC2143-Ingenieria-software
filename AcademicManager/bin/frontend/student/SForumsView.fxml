@@ -8,7 +8,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.student.SForumsViewController">
    <children>
-      <Pane layoutX="5.0" layoutY="5.0" prefHeight="400.0" prefWidth="600.0">
+      <Pane prefHeight="405.0" prefWidth="605.0" style="-fx-background-color: #026;">
          <children>
             <Button fx:id="btnLanguage" layoutX="565.0" layoutY="1.0" mnemonicParsing="false" onAction="#btnLanguage_Pressed" style="-fx-background-radius: 0;" text="ES" />
             <Button fx:id="btnReload" layoutX="531.0" layoutY="1.0" mnemonicParsing="false" onAction="#btnReload_Pressed" style="-fx-background-radius: 0;" text="R" />

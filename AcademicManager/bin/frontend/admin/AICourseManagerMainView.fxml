@@ -7,19 +7,19 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.admin.AICourseManagerMainViewController">
    <children>
-      <Pane prefHeight="400.0" prefWidth="600.0">
+      <Pane prefHeight="405.0" prefWidth="605.0" style="-fx-background-color: #026;">
          <children>
             <ChoiceBox fx:id="chBxICourses" layoutX="100.0" layoutY="142.0" prefWidth="150.0" style="-fx-background-radius: 0;" />
             <Button fx:id="btnEditICourse" layoutX="100.0" layoutY="188.0" mnemonicParsing="false" onAction="#btnEditICourse_Pressed" style="-fx-background-radius: 0;" text="Editar Clase" />
             <Button fx:id="btnCreateLecture" layoutX="361.0" layoutY="112.0" mnemonicParsing="false" onAction="#btnCreateLecture_Pressed" style="-fx-background-radius: 0;" text="Crear Catedra" />
-            <Label fx:id="labelWelcomeMessage" layoutX="41.0" layoutY="76.0" prefHeight="36.0" prefWidth="248.0" text="Editor de Clases, selecciona una para editar o presiona para crear una nueva" wrapText="true" />
+            <Label fx:id="labelWelcomeMessage" layoutX="41.0" layoutY="76.0" prefHeight="36.0" prefWidth="248.0" text="Editor de Clases, selecciona una para editar o presiona para crear una nueva" textFill="WHITE" wrapText="true" />
             <Button fx:id="btnCreateAssistantship" layoutX="361.0" layoutY="155.0" mnemonicParsing="false" onAction="#btnCreateAssistantship_Pressed" style="-fx-background-radius: 0;" text="Crear Ayudantia" />
             <Button fx:id="btnCreateLaboratory" layoutX="361.0" layoutY="201.0" mnemonicParsing="false" onAction="#btnCreateLaboratory_Pressed" style="-fx-background-radius: 0;" text="Crear Laboratorio" />
          </children>
       </Pane>
-      <Button fx:id="btnLogout" layoutX="531.0" layoutY="369.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
-      <Button fx:id="btnBack" layoutX="24.0" layoutY="28.0" mnemonicParsing="false" onAction="#btnBack_Pressed" style="-fx-background-radius: 0;" text="Back" />
-      <Button fx:id="btnReload" layoutX="518.0" layoutY="28.0" mnemonicParsing="false" onAction="#btnReload_Pressed" style="-fx-background-radius: 0;" text="R" />
-      <Button fx:id="btnLanguage" layoutX="561.0" layoutY="28.0" mnemonicParsing="false" onAction="#btnLanguage_Pressed" style="-fx-background-radius: 0;" text="ES" />
+      <Button fx:id="btnLogout" layoutX="501.0" layoutY="370.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
+      <Button fx:id="btnBack" layoutY="1.0" mnemonicParsing="false" onAction="#btnBack_Pressed" style="-fx-background-radius: 0;" text="Back" />
+      <Button fx:id="btnReload" layoutX="531.0" layoutY="1.0" mnemonicParsing="false" onAction="#btnReload_Pressed" style="-fx-background-radius: 0;" text="R" />
+      <Button fx:id="btnLanguage" layoutX="565.0" layoutY="1.0" mnemonicParsing="false" onAction="#btnLanguage_Pressed" style="-fx-background-radius: 0;" text="ES" />
    </children>
 </AnchorPane>
