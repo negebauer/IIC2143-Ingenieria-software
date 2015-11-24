@@ -19,3 +19,5 @@ Documents.zip
 
 # Bin folder
 bin/
+.metadata/
+.settings/
