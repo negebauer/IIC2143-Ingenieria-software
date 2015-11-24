@@ -3,12 +3,16 @@ package frontend.student;
 import java.net.URL;
 import java.util.ArrayList;
 
+import backend.courses.Assistantship;
 import backend.courses.Course;
+import backend.courses.Laboratory;
 import backend.courses.Lecture;
 import backend.courses.Schedule.DayModuleTuple;
 import backend.enums.AcademicSemester;
+import backend.interfaces.ICourse;
 import backend.others.Messages;
 import backend.others.Messages.UILabel;
+import backend.users.Assistant;
 import backend.users.Professor;
 import frontend.main.MCourseSearcherSelectorViewController;
 import frontend.others.ViewUtilities;
@@ -23,6 +27,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
 public class SCourseSearcherViewController extends MCourseSearcherSelectorViewController {
@@ -83,29 +88,78 @@ public class SCourseSearcherViewController extends MCourseSearcherSelectorViewCo
 			ArrayList<String> details = new ArrayList<String>();			
 			for (Course course : coursesToShow) {
 				if (course.getInitials().equals(initials) && course.getSection() == section && course.getName().equals(name)) {										
-
-					Lecture lecture = course.getLecture();					
-					details.add(course.getInitials());
-					String teachers = Messages.getUILabel(UILabel.PROFESSOR) + ": ";
-					if (lecture.getProfessors().size() > 1) {
-						details.add(teachers);
-						for(Professor p : lecture.getProfessors()) {
-							details.add(p.getName() + " " + p.getLastnameFather());
+					details.add(course.getInitials());			
+					if (course.getLecture() != null) {						
+						details.add(Messages.getUILabel(UILabel.LECTURE));
+						Lecture lecture = course.getLecture();																
+						String teachers = Messages.getUILabel(UILabel.PROFESSOR) + ": ";
+						if (lecture.getProfessors().size() > 1) {
+							details.add(teachers);
+							for(Professor p : lecture.getProfessors()) {
+								details.add(p.getName() + " " + p.getLastnameFather());
+							}
 						}
+						else {
+							Professor p = lecture.getProfessors().get(0);
+							teachers += p.getName() + " " + p.getLastnameFather();
+							details.add(teachers);
+						}	
+						String schedule = "Horario: ";
+						for(DayModuleTuple t : lecture.getSchedule().getModules()) {
+							schedule += (t.day.getDayString() + " " + t.module.getInt() + " ");
+						}
+						details.add(schedule);				
+						details.add("Sala: " + lecture.getClassroom().getInitials());
+						details.add("Cupos: " + lecture.getClassroom().getSize());						
+						
+					} if (course.getAssistantship() != null) {
+						details.add(" ");
+						details.add(Messages.getUILabel(UILabel.ASSISTANTSHIP));
+						
+						Assistantship assistantship = course.getAssistantship();
+						String assistants = Messages.getUILabel(UILabel.ASSISTANT) + ": ";
+						if (assistantship.getAssistants().size() > 1) {
+							details.add(assistants);
+							for(Assistant p : assistantship.getAssistants()) {
+								details.add(p.getName() + " " + p.getLastnameFather());
+							}
+						}
+						else {
+							Assistant p = assistantship.getAssistants().get(0);
+							assistants += p.getName() + " " + p.getLastnameFather();
+							details.add(assistants);
+						}	
+						String schedule = "Horario: ";
+						for(DayModuleTuple t : assistantship.getSchedule().getModules()) {
+							schedule += (t.day.getDayString() + " " + t.module.getInt() + " ");
+						}
+						details.add(schedule);				
+						details.add("Sala: " + assistantship.getClassroom().getInitials());
+					} if (course.getLaboratory() != null) {
+						details.add(" ");
+						details.add(Messages.getUILabel(UILabel.LABORATORY));
+						
+						Laboratory laboratory = course.getLaboratory();
+						String teachers = Messages.getUILabel(UILabel.PROFESSOR) + ": ";
+						if (laboratory.getProfessors().size() > 1) {
+							details.add(teachers);
+							for(Professor p : laboratory.getProfessors()) {
+								details.add(p.getName() + " " + p.getLastnameFather());
+							}
+						}
+						else {
+							Professor p = laboratory.getProfessors().get(0);
+							teachers += p.getName() + " " + p.getLastnameFather();
+							details.add(teachers);
+						}	
+						String schedule = "Horario: ";
+						for(DayModuleTuple t : laboratory.getSchedule().getModules()) {
+							schedule += (t.day.getDayString() + " " + t.module.getInt() + " ");
+						}
+						details.add(schedule);				
+						details.add("Sala: " + laboratory.getClassroom().getInitials());
+						details.add("Cupos: " + laboratory.getClassroom().getSize());
 					}
-					else
-					{
-						Professor p = lecture.getProfessors().get(0);
-						teachers += p.getName() + " " + p.getLastnameFather();
-						details.add(teachers);
-					}	
-					String schedule = "Horario: ";
-					for(DayModuleTuple t : lecture.getSchedule().getModules()) {
-						schedule += (t.day.getDayString() + " " + t.module.getInt() + " ");
-					}
-					details.add(schedule);				
-					details.add("Sala: " + lecture.getClassroom().getInitials());
-					details.add("Cupos: " + lecture.getClassroom().getSize());
 					break;
 				}
 			}		
@@ -156,44 +210,78 @@ public class SCourseSearcherViewController extends MCourseSearcherSelectorViewCo
 			String[] parsed = getParsedInitialsSectionName(rawCourseInfo);
 			String initials = parsed[0];
 			int section = Integer.valueOf(parsed[1]);
-			String name = parsed[2];
+			String name = parsed[2];			
 			
 			for (Course course : coursesToShow) {
-				if (course.getInitials().equals(initials) && course.getSection() == section && course.getName().equals(name)) {					
-					
-					ArrayList<DayModuleTuple> t = course.getLecture().getSchedule().getModules();
-					ArrayList<DayModuleTuple> s;					
-					
-					for (Course c : courses) {						
-						s = c.getLecture().getSchedule().getModules();
-						for (DayModuleTuple sm : s) {
-							for (DayModuleTuple tm : t) {
-								if (sm.day.equals(tm.day) && sm.module.equals(tm.module)) {
-									labelStatusBar.setText("Se ha detectado tope de horario con " + c.getName());
-									return;
+				if (course.getInitials().equals(initials) && course.getSection() == section && course.getName().equals(name)) {									
+					if(course.getCourses() != null) {
+						for (ICourse i : course.getCourses()) {						
+							ArrayList<DayModuleTuple> t = i.getSchedule().getModules();
+							ArrayList<DayModuleTuple> s;											
+							for (Course c : courses) {						
+								s = c.getLecture().getSchedule().getModules();
+								for (DayModuleTuple sm : s) {
+									for (DayModuleTuple tm : t) {
+										if (sm.day.equals(tm.day) && sm.module.equals(tm.module)) {
+											labelStatusBar.setText("Se ha detectado tope de horario con " + c.getName());
+											return;
+										}
+									}
 								}
-							}
+							}	
 						}
-					}			
+					}					
 					
 					ObservableList<String> currentCourses = listCoursesInSemester.getItems();
-					String parsedCourse = getParsedCourse(initials, section, name);
+					String parsedCourse = getParsedCourse(initials, section, name);				
 					
-					if(!currentCourses.contains(parsedCourse)) {					
+					if(!currentCourses.contains(parsedCourse)) {
 						currentCourses.add(parsedCourse);
-						listCoursesInSemester.setItems(FXCollections.observableArrayList(currentCourses));					
-						for (DayModuleTuple tm : t) {
-							int day = tm.day.getInt();
-							int mod = tm.module.getInt();
-							if (mod > 3) {
-								mod++;
+						listCoursesInSemester.setItems(FXCollections.observableArrayList(currentCourses));
+						
+						if (course.getLecture() != null) {
+							ArrayList<DayModuleTuple> tc = course.getLecture().getSchedule().getModules();
+							for (DayModuleTuple tm : tc) {
+								int day = tm.day.getInt();
+								int mod = tm.module.getInt();
+								if (mod > 3) {
+									mod++;
+								}
+								Text textToPut = new Text(course.getInitials());
+								textToPut.setFill(Color.BLUE);
+								schedule[mod][day] = textToPut;
 							}
-							schedule[mod][day] = new Text(course.getInitials());
-							refresh();
+						} 
+						if (course.getAssistantship() != null) {
+							ArrayList<DayModuleTuple> ta = course.getAssistantship().getSchedule().getModules();
+							for (DayModuleTuple tm : ta) {
+								int day = tm.day.getInt();
+								int mod = tm.module.getInt();
+								if (mod > 3) {
+									mod++;
+								}
+								Text textToPut = new Text(course.getInitials());
+								textToPut.setFill(Color.RED);
+								schedule[mod][day] = textToPut;
+							}
+						} 
+						if (course.getLaboratory() != null) {
+							ArrayList<DayModuleTuple> tl = course.getLaboratory().getSchedule().getModules();
+							for (DayModuleTuple tm : tl) {
+								int day = tm.day.getInt();
+								int mod = tm.module.getInt();
+								if (mod > 3) {
+									mod++;
+								}
+								Text textToPut = new Text(course.getInitials());
+								textToPut.setFill(Color.GREEN);
+								schedule[mod][day] = textToPut;
+							}
 						}
+						refresh();
 						courses.add(course);
+						break;
 					}
-					break;
 				}
 			}
 		} else {
@@ -220,16 +308,18 @@ public class SCourseSearcherViewController extends MCourseSearcherSelectorViewCo
 					currentCourses.remove(getParsedCourse(initials, section, name));
 					listCoursesInSemester.setItems(FXCollections.observableArrayList(currentCourses));
 					
-					ArrayList<DayModuleTuple> t = course.getLecture().getSchedule().getModules();
-					for (DayModuleTuple tm : t) {
-						int day = tm.day.getInt();
-						int mod = tm.module.getInt();
-						if (mod > 3) {
-							mod++;
-						}				
-						schedule[mod][day] = new Text("");
-						refresh();
-					}
+					for (ICourse i : course.getCourses()) {
+						ArrayList<DayModuleTuple> t = i.getSchedule().getModules();
+						for (DayModuleTuple tm : t) {
+							int day = tm.day.getInt();
+							int mod = tm.module.getInt();
+							if (mod > 3) {
+								mod++;
+							}				
+							schedule[mod][day] = new Text("");
+							refresh();
+						}					
+					}		
 					courses.remove(course);				
 					break;
 				}
