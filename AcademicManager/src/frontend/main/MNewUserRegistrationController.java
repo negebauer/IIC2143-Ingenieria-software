@@ -221,7 +221,7 @@ public class MNewUserRegistrationController extends MViewController {
 	}
 
 	public Boolean checkValid() {
-		return (txBxRUT.getText().length() < 9 && Validate.checkRUT(txBxRUT.getText()));
+		return (txBxRUT.getText().length() <= 9 && Validate.checkRUT(txBxRUT.getText()));
 	}
 
 	public void showStudentFields() {
