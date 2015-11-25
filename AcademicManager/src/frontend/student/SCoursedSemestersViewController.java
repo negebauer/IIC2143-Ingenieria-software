@@ -49,8 +49,6 @@ public class SCoursedSemestersViewController extends MViewController {
 		});	
 		chBxCarreer.setOnAction((event) -> {
 			carreer = chBxCarreer.getSelectionModel().getSelectedItem().trim();
-			chBxCoursedSemesters.getSelectionModel().selectFirst();
-			chBxCoursedSemesters.getSelectionModel().selectLast();
 		});
 	}
 

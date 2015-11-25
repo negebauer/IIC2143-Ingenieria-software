@@ -164,8 +164,9 @@ public class MNewUserRegistrationController extends MViewController {
 
 	public void btnContinue_Pressed() {
 		cleanInfo();
-		if (!checkValid())
+		if (!checkValid()) {
 			return;
+		}
 
 		String name = txBxName.getText();
 		String lastFather = txBxLastFather.getText();

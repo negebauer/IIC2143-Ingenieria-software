@@ -111,4 +111,26 @@ public class MLogInController extends MViewController {
 	public static URL getView() {
 		return view;
 	}
+	
+	public void btnReload_Pressed() {
+		super.btnReload_Pressed();
+		
+		ArrayList<String> users = new ArrayList<String>();
+
+		for (Professor professor : Manager.INSTANCE.professors) {
+			users.add(getUser(UILabel.PROFESSOR, professor));
+		}
+		for (Student student : Manager.INSTANCE.students) {
+			users.add(getUser(UILabel.STUDENT, student));
+		}
+		for (Assistant assistant : Manager.INSTANCE.assistants) {
+			users.add(getUser(UILabel.ASSISTANT, assistant));
+		}
+		for (Admin admin : Manager.INSTANCE.admins) {
+			users.add(getUser(UILabel.ADMINISTRATOR, admin));
+		}
+
+		chBxUsers.setItems(FXCollections.observableArrayList(users));
+		ViewUtilities.autoComplete(chBxUsers);
+	}
 }

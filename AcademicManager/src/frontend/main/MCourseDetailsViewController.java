@@ -23,4 +23,5 @@ public class MCourseDetailsViewController extends MViewController {
 
 		txADetails.setText(Manager.INSTANCE.courseToShowInfo.getDetails());
 	}
+	
 }
