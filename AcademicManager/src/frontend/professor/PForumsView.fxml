@@ -6,7 +6,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.student.SForumsViewController">
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.professor.PForumsViewController">
    <children>
       <Pane prefHeight="405.0" prefWidth="605.0" style="-fx-background-color: #026;">
          <children>
@@ -18,9 +18,9 @@
             <ComboBox fx:id="cmBxForumEntry" layoutX="60.0" layoutY="84.0" prefHeight="27.0" prefWidth="457.0" />
             <TextField fx:id="txFNewForumEntry" layoutX="60.0" layoutY="50.0" prefHeight="27.0" prefWidth="331.0" />
             <Button fx:id="btnPostNewForumEntry" layoutX="395.0" layoutY="50.0" mnemonicParsing="false" onAction="#btnPostNewForumEntry_Pressed" prefHeight="27.0" prefWidth="122.0" text="New entry" />
-            <TextArea fx:id="txAForumEntryComments" layoutX="60.0" layoutY="119.0" prefHeight="208.0" prefWidth="457.0" wrapText="true" />
+            <TextArea fx:id="txAForumEntryComments" editable="false" layoutX="60.0" layoutY="119.0" prefHeight="208.0" prefWidth="457.0" wrapText="true" />
             <Button fx:id="btnPostComment" layoutX="395.0" layoutY="333.0" mnemonicParsing="false" onAction="#btnPostComment_Pressed" prefHeight="27.0" prefWidth="122.0" text="New comment" />
-            <TextField fx:id="txFForumComment" layoutX="60.0" layoutY="333.0" prefHeight="27.0" prefWidth="319.0" />
+            <TextField fx:id="txFForumComment" layoutX="60.0" layoutY="333.0" prefHeight="27.0" prefWidth="331.0" />
          </children>
       </Pane>
    </children>

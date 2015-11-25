@@ -14,6 +14,7 @@
             <Button fx:id="btnReload" layoutX="531.0" layoutY="1.0" mnemonicParsing="false" onAction="#btnReload_Pressed" style="-fx-background-radius: 0;" text="R" />
             <Button fx:id="btnBack" layoutY="1.0" mnemonicParsing="false" onAction="#btnBack_Pressed" style="-fx-background-radius: 0;" text="Back" />
             <Button fx:id="btnLogout" layoutX="501.0" layoutY="370.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
+            <Button fx:id="btnForums" layoutX="24.0" layoutY="189.0" mnemonicParsing="false" onAction="#btnForums_Pressed" prefHeight="27.0" prefWidth="119.0" text="Ver foro" />
          </children>
       </Pane>
       <Button fx:id="btnQualifyStudents" layoutX="25.0" layoutY="150.0" mnemonicParsing="false" onAction="#btnQualifyStudents_Pressed" style="-fx-background-radius: 0 0 0 0;" text="Qualify students" textAlignment="CENTER" />

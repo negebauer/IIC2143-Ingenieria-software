@@ -20,6 +20,8 @@ public class PMainViewController extends MViewController {
 	Button btnSeeMyCourses;
 	@FXML
 	Button btnQualifyStudents;
+	@FXML
+	Button btnForums;
 
 	public static URL view = Object.class.getResource("/frontend/professor/PMainView.fxml");
 
@@ -39,5 +41,9 @@ public class PMainViewController extends MViewController {
 
 	public void btnQualifyStudents_Pressed() {
 		 ViewUtilities.openView(PQualifyStudentsViewController.view, view);
+	}
+	
+	public void btnForums_Pressed() {
+		 ViewUtilities.openView(PForumsViewController.view, view);
 	}
 }
