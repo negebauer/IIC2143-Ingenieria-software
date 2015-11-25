@@ -49,12 +49,18 @@ public class SShowScheduleController extends MViewController {
 			sp.add(p.getName());
 		}
 		chBxCarreer.setItems(FXCollections.observableArrayList(sp));
-		chBxCarreer.setOnAction((event) -> {
-			carreer = chBxCarreer.getSelectionModel().getSelectedItem().trim();
+		chBxCarreer.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+			@Override
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+				if (newValue != null) {
+					carreer = newValue.trim();
+				}
+			}			
 		});
 		
 		labelShowScheduleWelcomeMessage.setText(Messages.getUILabel(UILabel.SCHEDULE_MAIN_MESSAGE));
-	
+		
+		
 		ArrayList<String> semesterInfo = new ArrayList<String>();
 		for (CoursedSemester coursedSemester : user.getCurriculum().getCoursedSemesters()) {
 			int year = coursedSemester.getYear();

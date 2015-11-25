@@ -5,17 +5,22 @@ import java.util.ArrayList;
 
 import backend.courses.Course;
 import backend.courses.Semester;
+import backend.courses.StudyProgram;
 import backend.courses.Semester.AddOrRemoveCourseResponse;
 import backend.manager.Manager;
 import backend.others.Messages;
 import backend.others.Messages.UILabel;
 import backend.users.Student;
 import frontend.main.MCourseSearcherSelectorViewController;
+import frontend.others.Validate;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 
@@ -39,6 +44,8 @@ public class SCurrentSemesterViewController extends MCourseSearcherSelectorViewC
 	@FXML
 	Label labelCurrentCoursesNames;
 	@FXML
+	Label labelCarreer;
+	@FXML
 	Button btnCreateNewSemester;
 	@FXML
 	ListView<String> listSelectedCourses;
@@ -48,12 +55,17 @@ public class SCurrentSemesterViewController extends MCourseSearcherSelectorViewC
 	Button btnRemoveCourse;
 	@FXML
 	Button btnEditSemester;
+	@FXML
+	ComboBox<String> chBxCarreer;
 
 	String responseToAddOrRemoveCourse = "";
 	Boolean firstLoad = true;
 	Student user = (Student) Manager.INSTANCE.currentUser;
 	public static URL view = Object.class.getResource("/frontend/student/SCurrentSemesterView.fxml");
-
+	ArrayList<ArrayList<Course>> courses = new ArrayList<ArrayList<Course>>();
+	ArrayList<String> sp;
+	String carreer = "";
+	
 	@Override
 	public void setUp() {
 		super.setUp();
@@ -67,6 +79,26 @@ public class SCurrentSemesterViewController extends MCourseSearcherSelectorViewC
 		btnRemoveCourse.setCursor(Cursor.HAND);
 		btnEditSemester.setCursor(Cursor.HAND);
 
+		sp = new ArrayList<String>();
+		for (StudyProgram p : user.getCurriculum().getStudyPrograms()) {
+			sp.add(p.getName());
+		}
+		chBxCarreer.setItems(FXCollections.observableArrayList(sp));
+		chBxCarreer.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+			@Override
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+				if (newValue != null) {
+					carreer = newValue.trim();
+					if (btnEditSemester.isVisible()) {
+						showInfoOfSemesterOrEditor();
+					} else {
+						btnEditSemester_Pressed();
+					}
+				}
+			}			
+		});		
+		chBxCarreer.getSelectionModel().selectFirst();
+		
 		if (responseToAddOrRemoveCourse == "") {
 			labelModificationResult.setText(Messages.getUILabel(UILabel.SEMESTER_CURRENT_SEMESTER_MODIFICATION_SUCCESS)
 					+ "\n" + responseToAddOrRemoveCourse);
@@ -81,8 +113,22 @@ public class SCurrentSemesterViewController extends MCourseSearcherSelectorViewC
 		} else {
 			String semesterInfo = currentSemester.getYear() + "-" + currentSemester.getSemester().getSemesterNumber();
 			labelCurrentSemester.setText(Messages.getUILabel(UILabel.SEMESTER_CURRENT_SEMESTER_INFO) + semesterInfo);
+		
+			for (int i = 0; i < sp.size(); i++) {
+				courses.add(new ArrayList<Course>());
+			}				
+			for (Course course : currentSemester.getCourses()) {
+				for (int i = 0; i < sp.size(); i++) {
+					if (Validate.checkCourse(course.getInitials(), sp.get(i))) {
+						courses.get(i).add(course);
+					}
+				}
+			}	
 		}
-
+	
+		if(sp.size() > 1 && currentSemester != null)
+			currentSemester.setMaxCredits(currentSemester.getMaxCredits() * sp.size());
+			
 		if (firstLoad) {
 			showInfoOfSemesterOrEditor();
 			firstLoad = false;
@@ -102,11 +148,22 @@ public class SCurrentSemesterViewController extends MCourseSearcherSelectorViewC
 		} else {
 			String semesterInfo = currentSemester.getYear() + "-" + currentSemester.getSemester().getSemesterNumber();
 			labelCurrentSemester.setText(Messages.getUILabel(UILabel.SEMESTER_CURRENT_SEMESTER_INFO) + semesterInfo);
-			String names = "";
+			String names = "";		
+			int count = 0;
+			for (String prog : sp) {
+				if (prog == carreer) {
+					break;
+				}
+				count++;
+			}			
 			for (Course course : currentSemester.getCourses()) {
-				String courseName = course.getInitials() + "-" + course.getSection() + ": " + course.getName();
-				names = names == "" ? courseName : names + courseName;
-				names += "\n";
+				for (Course c : courses.get(count)) {
+					if (course.getInitials().equals(c.getInitials())) {
+						String courseName = course.getInitials() + "-" + course.getSection() + ": " + course.getName();
+						names = names == "" ? courseName : names + courseName;
+						names += "\n";
+					}			
+				}				
 			}
 			labelCurrentCoursesNames.setText(names);
 			showSemesterInfo();
@@ -170,6 +227,14 @@ public class SCurrentSemesterViewController extends MCourseSearcherSelectorViewC
 					labelModificationResult
 							.setText(Messages.getUILabel(UILabel.SEMESTER_CURRENT_SEMESTER_MODIFICATION_SUCCESS) + "\n"
 									+ responseToAddOrRemoveCourse);
+					int count = 0;
+					for (String prog : sp) {
+						if (prog == carreer) {
+							break;
+						}
+						count++;
+					}	
+					courses.get(count).add(course);	
 				} else {
 					responseToAddOrRemoveCourse = response.response;
 					labelModificationResult
@@ -198,6 +263,18 @@ public class SCurrentSemesterViewController extends MCourseSearcherSelectorViewC
 					labelModificationResult
 							.setText(Messages.getUILabel(UILabel.SEMESTER_CURRENT_SEMESTER_MODIFICATION_SUCCESS) + "\n"
 									+ responseToAddOrRemoveCourse);
+					int count = 0;
+					for (String prog : sp) {
+						if (prog == carreer) {
+							break;
+						}
+						count++;
+					}
+					for (Course c : courses.get(count)) {
+						if (course.getInitials().equals(c.getInitials())) {
+							courses.remove(c);
+						}
+					}
 				} else {
 					responseToAddOrRemoveCourse = response.response;
 					labelModificationResult
@@ -209,14 +286,25 @@ public class SCurrentSemesterViewController extends MCourseSearcherSelectorViewC
 	}
 
 	public void btnEditSemester_Pressed() {
-		ArrayList<Course> courses = user.getCurriculum().getCurrentSemester().getCourses();
+		ArrayList<Course> coursess = user.getCurriculum().getCurrentSemester().getCourses();
 		user.getCurriculum().setCurrentSemester(null);
 		showInfoOfSemesterOrEditor();
-		user.getCurriculum().getCurrentSemester().setCourses(courses);
+		user.getCurriculum().getCurrentSemester().setCourses(coursess);
 		ArrayList<String> currentCourses = new ArrayList<String>();
-		for (Course course : courses) {
-			String parsedCourse = getParsedCourse(course.getInitials(), course.getSection(), course.getName());
-			currentCourses.add(parsedCourse);
+		int count = 0;
+		for (String prog : sp) {
+			if (prog == carreer) {
+				break;
+			}
+			count++;
+		}			
+		for (Course course : coursess) {
+			for (Course c : courses.get(count)) {
+				if (course.getInitials().equals(c.getInitials())) {
+					String parsedCourse = getParsedCourse(course.getInitials(), course.getSection(), course.getName());
+					currentCourses.add(parsedCourse);
+				}
+			}
 		}
 		listSelectedCourses.setItems(FXCollections.observableArrayList(currentCourses));
 	}

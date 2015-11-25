@@ -21,14 +21,16 @@
             <Label fx:id="labelCurrentCoursesNames" alignment="TOP_LEFT" layoutX="24.0" layoutY="154.0" prefHeight="198.0" prefWidth="532.0" style="-fx-text-fill: #fff;" text="Curso 1: adbwadbwakd" />
             <Label fx:id="labelModification" layoutX="431.0" layoutY="51.0" style="-fx-text-fill: #fff;" text="Resultado modificacion" />
             <Label fx:id="labelModificationResult" alignment="TOP_CENTER" layoutX="431.0" layoutY="75.0" prefHeight="273.0" prefWidth="143.0" style="-fx-text-fill: #fff;" text="Resultado modificacion" wrapText="true" />
-            <Label fx:id="labelSearchCourse" layoutX="274.0" layoutY="95.0" style="-fx-text-fill: #fff;" text="Buscar ramo" />
-            <ListView fx:id="listSelectedCourses" layoutX="217.0" layoutY="207.0" prefHeight="146.0" prefWidth="193.0" />
-           	<ComboBox fx:id="chBxSelectedCourse" layoutX="213.0" layoutY="128.0" prefHeight="27.0" prefWidth="193.0" />
-            <Button fx:id="btnCreateNewSemester" layoutX="250.0" layoutY="360.0" mnemonicParsing="false" onAction="#btnCreateNewSemester_Pressed" text="Create new semester" />
-            <Button fx:id="btnDetails" layoutX="299.0" layoutY="170.0" mnemonicParsing="false" onAction="#btnDetails_Pressed" prefHeight="25.0" prefWidth="23.0" text="i" />
-            <Button fx:id="btnRemoveCourse" layoutX="345.0" layoutY="170.0" mnemonicParsing="false" onAction="#btnRemoveCourse_Pressed" text="Remover" />
-            <Button fx:id="btnAddCourse" layoutX="216.0" layoutY="170.0" mnemonicParsing="false" onAction="#btnAddCourse_Pressed" text="Agregar" />
-            <Button fx:id="btnEditSemester" layoutX="52.0" layoutY="360.0" mnemonicParsing="false" onAction="#btnEditSemester_Pressed" text="Edit semester" />
+            <Label fx:id="labelSearchCourse" layoutX="280.0" layoutY="124.0" style="-fx-text-fill: #fff;" text="Buscar ramo" />
+            <ListView fx:id="listSelectedCourses" layoutX="217.0" layoutY="230.0" prefHeight="123.0" prefWidth="193.0" />
+           	<ComboBox fx:id="chBxSelectedCourse" layoutX="217.0" layoutY="148.0" prefHeight="27.0" prefWidth="193.0" />
+            <Button fx:id="btnCreateNewSemester" layoutX="250.0" layoutY="370.0" mnemonicParsing="false" onAction="#btnCreateNewSemester_Pressed" text="Create new semester" />
+            <Button fx:id="btnDetails" layoutX="302.0" layoutY="190.0" mnemonicParsing="false" onAction="#btnDetails_Pressed" prefHeight="25.0" prefWidth="23.0" text="i" />
+            <Button fx:id="btnRemoveCourse" layoutX="338.0" layoutY="190.0" mnemonicParsing="false" onAction="#btnRemoveCourse_Pressed" prefHeight="25.0" prefWidth="72.0" text="Remover" />
+            <Button fx:id="btnAddCourse" layoutX="218.0" layoutY="190.0" mnemonicParsing="false" onAction="#btnAddCourse_Pressed" prefHeight="25.0" prefWidth="72.0" text="Agregar" />
+            <Button fx:id="btnEditSemester" layoutX="47.0" layoutY="370.0" mnemonicParsing="false" onAction="#btnEditSemester_Pressed" text="Edit semester" />
+            <ComboBox fx:id="chBxCarreer" layoutX="217.0" layoutY="92.0" prefHeight="27.0" prefWidth="193.0" />
+            <Label fx:id="labelCarreer" layoutX="293.0" layoutY="67.0" style="-fx-text-fill: #fff;" text="Carrera" />
          </children>
       </Pane>
    </children>
