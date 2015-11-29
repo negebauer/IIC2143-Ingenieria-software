@@ -11,16 +11,17 @@
    <children>
       <Pane prefHeight="680.0" prefWidth="1080.0" style="-fx-background-color: #026;">
          <children>
-            <ComboBox fx:id="cmBxStudyProgram" layoutX="61.0" layoutY="15.0" prefHeight="27.0" prefWidth="460.0" />
-            <Button fx:id="btnAddStudyProgram" layoutX="531.0" layoutY="90.0" mnemonicParsing="false" onAction="#btnAddStudyProgram_Pressed" text="+" />
-            <Button fx:id="btnRemoveStudyProgram" layoutX="532.0" layoutY="137.0" mnemonicParsing="false" onAction="#btnRemoveStudyProgram_Pressed" text="-" />
-            <TextArea fx:id="txASemestersAndCourses" layoutX="61.0" layoutY="236.0" prefHeight="123.0" prefWidth="460.0" wrapText="true" />
-            <ListView fx:id="listStudyPrograms" layoutX="61.0" layoutY="50.0" prefHeight="174.0" prefWidth="460.0" />
+            <ComboBox fx:id="cmBxStudyProgram" layoutX="240.0" layoutY="140.0" prefHeight="27.0" prefWidth="600.0" />
+            <Button fx:id="btnAddStudyProgram" layoutX="720.0" layoutY="450.0" mnemonicParsing="false" onAction="#btnAddStudyProgram_Pressed" prefWidth="100.0" text="Agregar" />
+            <Button fx:id="btnRemoveStudyProgram" layoutX="720.0" layoutY="490.0" mnemonicParsing="false" onAction="#btnRemoveStudyProgram_Pressed" prefWidth="100.0" text="Eliminar" />
+            <ListView fx:id="listStudyPrograms" layoutX="240.0" layoutY="450.0" prefHeight="100.0" prefWidth="450.0" />
+            <TextArea fx:id="txASemestersAndCourses" layoutX="240.0" layoutY="190.0" prefHeight="240.0" prefWidth="600.0" wrapText="true" />
 	            <Label fx:id="labelTitle" alignment="CENTER" layoutX="340.0" layoutY="50.0" prefWidth="400.0" text="CAMBIAR MALLA" textFill="WHITE">
 	               <font>
 	                  <Font size="18.0" />
 	               </font>
 	            </Label>
+            <Label alignment="CENTER" layoutX="240.0" layoutY="553.0" prefWidth="450.0" text="Mis mallas" textFill="WHITE" />
          </children>
       </Pane>
 		<!-- LENGUAGE, RELOAD, LOGOUT AND BACK -->

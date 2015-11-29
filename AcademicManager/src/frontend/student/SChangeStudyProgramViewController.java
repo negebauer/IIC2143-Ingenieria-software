@@ -34,8 +34,8 @@ public class SChangeStudyProgramViewController extends MViewController {
 	@FXML
 	TextArea txASemestersAndCourses;
 	
+	public final static URL VIEW = Object.class.getResource("/frontend/student/SChangeStudyProgramView.fxml");
 	Student user = (Student) Manager.INSTANCE.currentUser;
-	public static URL view = Object.class.getResource("/frontend/student/SChangeStudyProgramView.fxml");
 	StudyProgram currentStudyProgram;
 	
 	@Override
@@ -53,6 +53,7 @@ public class SChangeStudyProgramViewController extends MViewController {
 				}
 			}
 		});
+		cmBxStudyProgram.getSelectionModel().selectLast();
 	}
 	
 	public void showStudyProgram(StudyProgram studyProgram) {

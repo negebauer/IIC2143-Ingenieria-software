@@ -72,7 +72,7 @@ public class SMainViewController extends MViewController {
 	}
 
 	public void btnCurricularAdvance_Pressed() {
-		ViewUtilities.openView(SCurricularAdvanceController.view, VIEW);
+		ViewUtilities.openView(SCurricularAdvanceController.VIEW, VIEW);
 	}
 	
 	public void btnCourseFinder_Pressed() {
@@ -88,11 +88,11 @@ public class SMainViewController extends MViewController {
 	}
 	
 	public void btnStudyProgram_Pressed() {
-		ViewUtilities.openView(SStudyProgramViewController.view, VIEW);
+		ViewUtilities.openView(SStudyProgramViewController.VIEW, VIEW);
 	}
 	
 	public void btnChangeStudyProgram_Pressed() {
-		ViewUtilities.openView(SChangeStudyProgramViewController.view, VIEW);
+		ViewUtilities.openView(SChangeStudyProgramViewController.VIEW, VIEW);
 	}
 	
 	public void btnForums_Pressed() {

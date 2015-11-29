@@ -97,7 +97,6 @@ public class SCurrentSemesterViewController extends MCourseSearcherSelectorViewC
 				}
 			}			
 		});		
-		chBxCarreer.getSelectionModel().selectFirst();
 		
 		if (responseToAddOrRemoveCourse == "") {
 			labelModificationResult.setText(Messages.getUILabel(UILabel.SEMESTER_CURRENT_SEMESTER_MODIFICATION_SUCCESS)
@@ -128,7 +127,9 @@ public class SCurrentSemesterViewController extends MCourseSearcherSelectorViewC
 	
 		if(sp.size() > 1 && currentSemester != null)
 			currentSemester.setMaxCredits(currentSemester.getMaxCredits() * sp.size());
-			
+
+		chBxCarreer.getSelectionModel().selectFirst();
+		
 		if (firstLoad) {
 			showInfoOfSemesterOrEditor();
 			firstLoad = false;

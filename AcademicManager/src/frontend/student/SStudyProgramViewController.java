@@ -26,9 +26,9 @@ public class SStudyProgramViewController extends MViewController {
 	ComboBox<String> cmBxStudyProgram;
 	@FXML
 	TextArea txASemestersAndCourses;
-
+	
+	public final static URL VIEW = Object.class.getResource("/frontend/student/SStudyProgramView.fxml");
 	Student user = (Student) Manager.INSTANCE.currentUser;
-	public static URL view = Object.class.getResource("/frontend/student/SStudyProgramView.fxml");
 	ArrayList<StudyProgram> studyProgramsToShow = user.getCurriculum().getStudyPrograms();
 	StudyProgram currentStudyProgram;
 	
