@@ -8,15 +8,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane style="-fx-background-color: #026;" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.main.MCourseDetailsViewController">
-   <children>
-      <Pane layoutX="3.0" prefHeight="269.0" prefWidth="390.0">
-         <children>
-            <Button fx:id="btnLanguage" layoutX="232.0" layoutY="152.0" mnemonicParsing="false" onAction="#btnLanguage_Pressed" style="-fx-background-radius: 0;" text="ES" />
-            <Button fx:id="btnReload" layoutX="189.0" layoutY="124.0" mnemonicParsing="false" onAction="#btnReload_Pressed" style="-fx-background-radius: 0;" text="R" />
-            <Button fx:id="btnBack" layoutX="191.0" layoutY="138.0" mnemonicParsing="false" onAction="#btnBack_Pressed" style="-fx-background-radius: 0;" text="Back" />
-            <Button fx:id="btnLogout" layoutX="202.0" layoutY="138.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
-            <TextArea fx:id="txADetails" layoutX="13.0" layoutY="11.0" prefHeight="247.0" prefWidth="364.0" wrapText="true" />
-         </children>
-      </Pane>
-   </children>
+   	<children>
+      	<Pane prefHeight="680.0" prefWidth="1080.0" style="-fx-background-color: #026;">
+         	<children>
+            	<TextArea fx:id="txADetails" layoutX="13.0" layoutY="11.0" prefHeight="247.0" prefWidth="364.0" wrapText="true" />
+         	</children>
+			<!-- LENGUAGE, RELOAD, LOGOUT AND BACK -->
+			<Button fx:id="btnLanguage" layoutX="1040.0" layoutY="1.0" minWidth="35.0" mnemonicParsing="false" onAction="#btnLanguage_Pressed" style="-fx-background-radius: 0;" text="ES" />
+			<Button fx:id="btnLogout" layoutX="960.0" layoutY="650.0" minWidth="95.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
+			<Button fx:id="btnReload" layoutX="1000.0" layoutY="1.0" minWidth="35.0" mnemonicParsing="false" onAction="#btnReload_Pressed" style="-fx-background-radius: 0;" text="R" />
+			<Button fx:id="btnBack" layoutY="1.0" minWidth="50.0" mnemonicParsing="false" onAction="#btnBack_Pressed" style="-fx-background-radius: 0;" text="Back" />
+      	</Pane>
+   	</children>
 </AnchorPane>

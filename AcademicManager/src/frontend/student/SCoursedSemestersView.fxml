@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -8,19 +9,24 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.student.SCoursedSemestersViewController">
    <children>
-      <Pane prefHeight="405.0" prefWidth="605.0" style="-fx-background-color: #026;">
+      <Pane prefHeight="680.0" prefWidth="1080.0" style="-fx-background-color: #026;">
          <children>
-            <Button fx:id="btnLanguage" layoutX="565.0" layoutY="1.0" mnemonicParsing="false" onAction="#btnLanguage_Pressed" style="-fx-background-radius: 0;" text="ES" />
-            <Button fx:id="btnReload" layoutX="531.0" layoutY="1.0" mnemonicParsing="false" onAction="#btnReload_Pressed" style="-fx-background-radius: 0;" text="R" />
-            <Button fx:id="btnBack" layoutY="1.0" mnemonicParsing="false" onAction="#btnBack_Pressed" style="-fx-background-radius: 0;" text="Back" />
-            <Button fx:id="btnLogout" layoutX="501.0" layoutY="370.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
             <Label fx:id="labelMain" alignment="CENTER" contentDisplay="CENTER" layoutX="81.0" layoutY="15.0" prefHeight="48.0" prefWidth="439.0" style="-fx-text-fill: #fff;" text="Calificación por semestre" textAlignment="CENTER" wrapText="true" />         
             <Label layoutX="48.0" layoutY="68.0" style="-fx-text-fill: #fff;" text="Semestre" />
             <Label layoutX="252.0" layoutY="68.0" style="-fx-text-fill: #fff;" text="Carrera" /><Label fx:id="labelCoursedSemesterCourses" alignment="TOP_LEFT" layoutX="48.0" layoutY="104.0" prefHeight="257.0" prefWidth="512.0" style="-fx-text-fill: #fff;" text="Label" wrapText="true" />
           	<ComboBox fx:id="chBxCoursedSemesters" layoutX="117.0" layoutY="63.0" prefHeight="27.0" prefWidth="99.0" />
             <ComboBox fx:id="chBxCarreer" layoutX="311.0" layoutY="63.0" prefHeight="27.0" prefWidth="243.0" />
+	            <Label fx:id="labelTitle" alignment="CENTER" layoutX="340.0" layoutY="50.0" prefWidth="400.0" text="CALIFICACIONES" textFill="WHITE">
+	               <font>
+	                  <Font size="18.0" />
+	               </font>
+	            </Label>
          </children>
       </Pane>
-      <Label layoutX="34.0" layoutY="-43.0" text="Label" />
-   </children>
+		<!-- LENGUAGE, RELOAD, LOGOUT AND BACK -->
+		<Button fx:id="btnLanguage" layoutX="1040.0" layoutY="1.0" minWidth="35.0" mnemonicParsing="false" onAction="#btnLanguage_Pressed" style="-fx-background-radius: 0;" text="ES" />
+		<Button fx:id="btnLogout" layoutX="960.0" layoutY="650.0" minWidth="95.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
+		<Button fx:id="btnReload" layoutX="1000.0" layoutY="1.0" minWidth="35.0" mnemonicParsing="false" onAction="#btnReload_Pressed" style="-fx-background-radius: 0;" text="R" />
+		<Button fx:id="btnBack" layoutY="1.0" minWidth="50.0" mnemonicParsing="false" onAction="#btnBack_Pressed" style="-fx-background-radius: 0;" text="Back" />
+	</children>
 </AnchorPane>

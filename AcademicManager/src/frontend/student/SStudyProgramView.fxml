@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -8,15 +9,21 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.student.SStudyProgramViewController">
    <children>
-      <Pane prefHeight="405.0" prefWidth="605.0" style="-fx-background-color: #026;">
+      <Pane prefHeight="680.0" prefWidth="1080.0" style="-fx-background-color: #026;">
          <children>
-            <Button fx:id="btnLanguage" layoutX="565.0" layoutY="1.0" mnemonicParsing="false" onAction="#btnLanguage_Pressed" style="-fx-background-radius: 0;" text="ES" />
-            <Button fx:id="btnReload" layoutX="531.0" layoutY="1.0" mnemonicParsing="false" onAction="#btnReload_Pressed" style="-fx-background-radius: 0;" text="R" />
-            <Button fx:id="btnBack" layoutY="1.0" mnemonicParsing="false" onAction="#btnBack_Pressed" style="-fx-background-radius: 0;" text="Back" />
-            <Button fx:id="btnLogout" layoutX="501.0" layoutY="370.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
-            <ComboBox fx:id="cmBxStudyProgram" layoutX="63.0" layoutY="44.0" prefHeight="27.0" prefWidth="462.0" />
-            <TextArea fx:id="txASemestersAndCourses" layoutX="63.0" layoutY="81.0" prefHeight="281.0" prefWidth="462.0" wrapText="true" />
+            <ComboBox fx:id="cmBxStudyProgram" layoutX="240.0" layoutY="140.0" prefHeight="27.0" prefWidth="600.0" />
+            <TextArea fx:id="txASemestersAndCourses" editable="false" layoutX="240.0" layoutY="190.0" prefHeight="360.0" prefWidth="600.0" wrapText="true" />
+            <Label fx:id="labelTitle" alignment="CENTER" layoutX="340.0" layoutY="50.0" prefWidth="400.0" text="MALLA CURRICULAR" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
          </children>
-      </Pane>
-   </children>
+      	</Pane>
+		<!-- LENGUAGE, RELOAD, LOGOUT AND BACK -->
+		<Button fx:id="btnLanguage" layoutX="1040.0" layoutY="1.0" minWidth="35.0" mnemonicParsing="false" onAction="#btnLanguage_Pressed" style="-fx-background-radius: 0;" text="ES" />
+		<Button fx:id="btnLogout" layoutX="960.0" layoutY="650.0" minWidth="95.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
+		<Button fx:id="btnReload" layoutX="1000.0" layoutY="1.0" minWidth="35.0" mnemonicParsing="false" onAction="#btnReload_Pressed" style="-fx-background-radius: 0;" text="R" />
+		<Button fx:id="btnBack" layoutY="1.0" minWidth="50.0" mnemonicParsing="false" onAction="#btnBack_Pressed" style="-fx-background-radius: 0;" text="Back" />
+	</children>
 </AnchorPane>

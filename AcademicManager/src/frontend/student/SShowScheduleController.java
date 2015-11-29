@@ -1,149 +1,166 @@
 package frontend.student;
 
 import java.net.URL;
-import java.util.ArrayList;
-
 import backend.courses.Course;
-import backend.courses.CoursedSemester;
-import backend.courses.Semester;
-import backend.courses.StudyProgram;
 import backend.interfaces.ICourse;
 import backend.manager.Manager;
 import backend.others.Messages;
 import backend.others.Messages.UILabel;
 import backend.users.Student;
 import frontend.main.MViewController;
+import frontend.others.Validate;
+import frontend.others.ViewSchedule;
+import frontend.others.ViewUtilities;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
+import javafx.scene.Cursor;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.layout.GridPane;
 
 public class SShowScheduleController extends MViewController {
 
 	@FXML
-	Label labelShowScheduleWelcomeMessage;
+	ComboBox<String> chBxSemester;
 	@FXML
-	ChoiceBox<String> chBxSemesters;
+	ComboBox<String> chBxCarreer;
 	@FXML
-	TextArea txASchedule;
+	TextArea txAScheduleByCarreer;
 	@FXML
 	TextArea txAScheduleComplete;
 	@FXML
-	ComboBox<String> chBxCarreer;
+	Label labelWelcomeMessage;
+	@FXML
+	Label labelAllCourses;
+	@FXML
+	Label labelCoursesByCarreer;
+	@FXML
+	Label labelCarreer;
+	@FXML
+	Label labelSemester;
+	@FXML
+	Label labelDetails1;
+	@FXML
+	Label labelDetails2;
+	@FXML
+	Label labelSchedule;
+	@FXML
+	Label labelLecture;
+	@FXML
+	Label labelAssistantship;
+	@FXML
+	Label labelLaboratory;
+	@FXML
+	CheckBox checkShowOthers;
+	@FXML
+	GridPane gridSchedule;
 
-	Boolean firstLoad = true;
-	Student user = (Student) Manager.INSTANCE.currentUser;
-	public static URL view = Object.class.getResource("/frontend/student/SShowSchedule.fxml");
-	String carreer = "";
+	public final static URL VIEW = Object.class.getResource("/frontend/student/SShowSchedule.fxml");
+	private Student user = (Student) Manager.INSTANCE.currentUser;
+	private ViewSchedule schedule;
+	private Boolean load = true;
+	private String carreer = "";
 
 	@Override
 	public void setUp() {
 		super.setUp();
-
-		ArrayList<String> sp = new ArrayList<String>();
-		for (StudyProgram p : user.getCurriculum().getStudyPrograms()) {
-			sp.add(p.getName());
-		}
-		chBxCarreer.setItems(FXCollections.observableArrayList(sp));
+		
+		schedule = new ViewSchedule(gridSchedule);	
+		
+		chBxCarreer.setCursor(Cursor.HAND);
+		chBxCarreer.setItems(ViewUtilities.getCarreersList(user));
 		chBxCarreer.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 			@Override
 			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 				if (newValue != null) {
 					carreer = newValue.trim();
+					showSchedule();
 				}
 			}			
 		});
-		
-		labelShowScheduleWelcomeMessage.setText(Messages.getUILabel(UILabel.SCHEDULE_MAIN_MESSAGE));
-		
-		
-		ArrayList<String> semesterInfo = new ArrayList<String>();
-		for (CoursedSemester coursedSemester : user.getCurriculum().getCoursedSemesters()) {
-			int year = coursedSemester.getYear();
-			String semester = coursedSemester.getSemester().getSemesterNumber();
-			semesterInfo.add(year + " - " + semester);
-		}
-		if (user.getCurriculum().getCurrentSemester() != null) {
-			int currentYear = user.getCurriculum().getCurrentSemester().getYear();
-			String currentSemester = user.getCurriculum().getCurrentSemester().getSemester().getSemesterNumber();
-			String currentSemesterInfo = currentYear + " - " + currentSemester;
-			Boolean shouldAddCurrentSemesterInfo = true;
-			for (String semesterInfoAlreadyShown : semesterInfo) {
-				if (semesterInfoAlreadyShown.equals(currentSemesterInfo)) {
-					shouldAddCurrentSemesterInfo = false;
-					break;
-				}
-			}
-			if (shouldAddCurrentSemesterInfo) {
-				semesterInfo.add(currentSemesterInfo);
-			}
-		}
-		chBxSemesters.setItems(FXCollections.observableArrayList(semesterInfo));
-		chBxSemesters.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+
+		chBxSemester.setCursor(Cursor.HAND);
+		chBxSemester.setItems(ViewUtilities.getActualSemester(user));
+		chBxSemester.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 			@Override
 			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 				if (newValue != null) {
-					showSchedule(newValue);
+					showSchedule();
 				}
 			}
 		});
-		if (semesterInfo.size() > 0 && firstLoad) {
-			firstLoad = false;
+
+		checkShowOthers.setCursor(Cursor.HAND);
+		checkShowOthers.selectedProperty().addListener(new ChangeListener<Boolean>() {
+			@Override
+			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+				showSchedule();			
+			}
+		});
+		
+		chBxSemester.getSelectionModel().selectLast();
+		chBxCarreer.getSelectionModel().selectFirst();
+
+		if (ViewUtilities.getSemestersList(user).size() > 0 && load) {
+			load = false;
 		}
 	}
 
-	private void showSchedule(String rawString) {
-		String[] split = rawString.split(" - ");
+	private void showSchedule() {
+
+		String[] split = chBxSemester.getSelectionModel().getSelectedItem().split(" - ");
 		int year = Integer.valueOf(split[0]);
 		int semester = Integer.valueOf(split[1]);
-		String allSchedulesString = "";
+
+		String carreerSchedule = "";
 		String completeSchedule = "";
-		
-		if (year == Manager.getYear()
-				&& semester == Integer.valueOf(Manager.INSTANCE.currentSemester.getSemester().getSemesterNumber())) {	
-			for (Course course : user.getCurriculum().getCurrentSemester().getCourses()) {
-				
-				String initials = course.getInitials();
-				String section = "" + course.getSection();
-				String name = course.getName();
-				String firstPart = initials + "-" + section + " - " + name + "\n\t";
-				String courseSchedules = "";
-				
-				for (StudyProgram sp : Manager.INSTANCE.studyPrograms) {
-					if (sp.getName().equals(carreer)) {
-						for (Semester s : sp.getSemesters()) {
-							for (Course c : s.getCourses()) {
-								if (c.getInitials().equals(course.getInitials())) {
-									
-									for (ICourse icourse : course.getCourses()) {
-										String schedule = icourse.getSchedule().getSchedule(course.getInitials());
-										String newLine = firstPart + Messages.getICourseName(icourse) + "\n\t\t" + schedule;
-										courseSchedules = courseSchedules == "" ? newLine : courseSchedules + "\n" + newLine;
-									}
-									allSchedulesString = allSchedulesString == "" ? courseSchedules : allSchedulesString + courseSchedules;
-									allSchedulesString = allSchedulesString + "\n";	
-								}
-							}
-						}
-					}
-				}
+
+		if (year == Manager.getYear() && semester == Integer.valueOf(
+				Manager.INSTANCE.currentSemester.getSemester().getSemesterNumber())) {
+			
+			schedule.clear();		
+			for (Course course: user.getCurriculum().getCurrentSemester().getCourses()) {
+				String head = course.getInitials() + "-" + course.getSection() + " - " + course.getName();
+				String body = "";
 				
 				for (ICourse icourse : course.getCourses()) {
 					String schedule = icourse.getSchedule().getSchedule(course.getInitials());
-					String newLine = firstPart + Messages.getICourseName(icourse) + "\n\t\t" + schedule;
-					courseSchedules = courseSchedules == "" ? newLine : courseSchedules + "\n" + newLine;
+					String newLine = "\n\t" + Messages.getICourseName(icourse) + "\n\t\t" + schedule;
+					body += newLine;
+				}									
+				if (Validate.checkCourse(course.getInitials(), carreer) || checkShowOthers.selectedProperty().get()) {
+					schedule.add(course);
+				}	
+				if (Validate.checkCourse(course.getInitials(), carreer)) {
+					carreerSchedule += head + body + "\n";
 				}
-				completeSchedule = completeSchedule == "" ? courseSchedules : completeSchedule + courseSchedules;
-				completeSchedule = completeSchedule + "\n";	
-			}						
-		} else {
+				completeSchedule += head + body + "\n";	
+			}		
+		}
+		else {
 
 		}
-		txASchedule.setText(allSchedulesString);
+		txAScheduleByCarreer.setText(carreerSchedule);
 		txAScheduleComplete.setText(completeSchedule);
+	}
+	
+	@Override
+	public void setLabels() {	
+		//		// TODO: [STUDENT] Create UILabel
+		labelCarreer.setText(Messages.getUILabel(UILabel.CARREER));
+		labelSemester.setText(Messages.getUILabel(UILabel.SEMESTER));
+		labelDetails1.setText(Messages.getUILabel(UILabel.COURSE_DETAILS));
+		labelDetails2.setText(Messages.getUILabel(UILabel.COURSE_DETAILS));
+		labelSchedule.setText(Messages.getUILabel(UILabel.SCHEDULE));
+		//		labelCoursesByCarreer.setText(Messages.getUILabel(UILabel.STUDENT_COURSES_BY_CARREER));
+		//		labelAllCourses.setText(Messages.getUILabel(UILabel.STUDENT_ALL_COURSES));
+		labelTitle.setText(Messages.getUILabel(UILabel.SCHEDULE).toUpperCase());
+		labelLecture.setText(Messages.getUILabel(UILabel.LECTURE));
+		labelAssistantship.setText(Messages.getUILabel(UILabel.ASSISTANTSHIP));
+		labelLaboratory.setText(Messages.getUILabel(UILabel.LABORATORY));
+		labelWelcomeMessage.setText(Messages.getUILabel(UILabel.SCHEDULE_MAIN_MESSAGE));
 	}
 }

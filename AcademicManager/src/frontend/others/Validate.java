@@ -6,13 +6,14 @@ import java.util.Collections;
 import backend.courses.Course;
 import backend.courses.Semester;
 import backend.courses.StudyProgram;
+import backend.courses.Schedule.DayModuleTuple;
+import backend.interfaces.ICourse;
 import backend.manager.Manager;
 
 public final class Validate {
 
 	/***
-	 * Checks if the RUT is valid
-	 * 
+	 * Revisa si el rut es valido
 	 * @param rut
 	 * @return
 	 */
@@ -53,6 +54,12 @@ public final class Validate {
 		return num == fn;
 	}
 	
+	/**
+	 * Revisa si un curso pertence a una carrera
+	 * @param initials
+	 * @param carreer
+	 * @return
+	 */
 	public static boolean checkCourse(String initials, String carreer) {
 		for (StudyProgram sp : Manager.INSTANCE.studyPrograms) {
 			if (sp.getName().equals(carreer)) {
@@ -66,5 +73,70 @@ public final class Validate {
 			}
 		}
 		return false;
+	}
+	
+	/**
+	 * Revisa si el curso es el seleccionado
+	 * @param course
+	 * @param selection
+	 * @return
+	 */
+	public static boolean checkCourse(Course course, String[] selection) {		
+		String initials = selection[0];
+		int section = Integer.valueOf(selection[1]);
+		String name = selection[2];		
+		return course.getInitials().equals(initials) && course.getSection() == section && course.getName().equals(name);
+	}
+	
+	/**
+	 * Revisa si hay tope de horario en una lista
+	 * @param course
+	 * @param courses
+	 * @return
+	 */
+	public static boolean checkOverlap(Course course, ArrayList<Course> courses) {
+		if(course.getCourses() != null) {
+			for (ICourse i : course.getCourses()) {						
+				ArrayList<DayModuleTuple> t = i.getSchedule().getModules();
+				ArrayList<DayModuleTuple> s;											
+				for (Course c : courses) {						
+					s = c.getLecture().getSchedule().getModules();
+					for (DayModuleTuple sm : s) {
+						for (DayModuleTuple tm : t) {
+							if (sm.day.equals(tm.day) && sm.module.equals(tm.module)) {
+								return true;
+							}
+						}
+					}
+				}	
+			}
+		}
+		return false;
+	}
+	
+	/**
+	 * Retorna el curso con el que hay tope de horario
+	 * @param course
+	 * @param courses
+	 * @return
+	 */
+	public static Course getOverlap(Course course, ArrayList<Course> courses) {
+		if(course.getCourses() != null) {
+			for (ICourse i : course.getCourses()) {						
+				ArrayList<DayModuleTuple> t = i.getSchedule().getModules();
+				ArrayList<DayModuleTuple> s;											
+				for (Course c : courses) {						
+					s = c.getLecture().getSchedule().getModules();
+					for (DayModuleTuple sm : s) {
+						for (DayModuleTuple tm : t) {
+							if (sm.day.equals(tm.day) && sm.module.equals(tm.module)) {
+								return c;
+							}
+						}
+					}
+				}	
+			}
+		}
+		return null;
 	}
 }

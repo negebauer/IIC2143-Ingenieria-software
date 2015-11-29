@@ -7,26 +7,34 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.student.SMainViewController">
-   <children>
-      <Pane prefHeight="405.0" prefWidth="605.0" style="-fx-background-color: #026;">
-         <children>
-            <Label fx:id="labelWelcomeMessage" layoutX="56.0" layoutY="32.0" prefHeight="17.0" prefWidth="421.0" text="BIENVENIDO A ACADEMIC TOOL MANAGER PROFESSIONAL!!! " textFill="WHITE" />
-            <Label fx:id="labelWhatDoNext" layoutX="56.0" layoutY="49.0" prefHeight="17.0" prefWidth="211.0" text="¿Qué deseas hacer ahora?" textFill="WHITE" />
-            <Button fx:id="btnEditSemester" layoutX="56.0" layoutY="123.0" mnemonicParsing="false" onAction="#btnEditSemester_Pressed" style="-fx-background-radius: 0 0 0 0;" text="Editor semestre" textAlignment="CENTER" />
-            <Button fx:id="btnCurricularAdvance" layoutX="56.0" layoutY="162.0" mnemonicParsing="false" onAction="#btnCurricularAdvance_Pressed" style="-fx-background-radius: 0 0 0 0;" text="Ver avance curricular" textAlignment="CENTER" />
-            <Button fx:id="btnShowSchedule" layoutX="56.0" layoutY="86.0" mnemonicParsing="false" onAction="#btnShowSchedule_Pressed" style="-fx-background-radius: 0 0 0 0;" text="Ver mi horario" textAlignment="CENTER" />
-            <Button fx:id="btnBack" layoutY="1.0" mnemonicParsing="false" onAction="#btnBack_Pressed" style="-fx-background-radius: 0;" text="Back" />
-            <Button fx:id="btnCoursedSemesters" layoutX="56.0" layoutY="201.0" mnemonicParsing="false" onAction="#btnCoursedSemesters_Pressed" text="Ver calificaciones semestres cursados" />
-            <Button fx:id="btnAcademicHistory" layoutX="56.0" layoutY="240.0" mnemonicParsing="false" onAction="#btnAcademicHistory_Pressed" text="Ver historial academico" />
-            <Label fx:id="labelUserInformation" layoutX="58.0" layoutY="370.0" text="Informacion del Usuario" textFill="WHITE" />
-            <Button fx:id="btnLogout" layoutX="501.0" layoutY="370.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
-            <Button fx:id="btnLanguage" layoutX="565.0" layoutY="1.0" mnemonicParsing="false" onAction="#btnLanguage_Pressed" style="-fx-background-radius: 0;" text="ES" />
-            <Button fx:id="btnCourseFinder" layoutX="56.0" layoutY="278.0" mnemonicParsing="false" onAction="#btnCourseFinder_Pressed" text="Buscador de cursos" />
-            <Button fx:id="btnForums" layoutX="364.0" layoutY="123.0" mnemonicParsing="false" onAction="#btnForums_Pressed" text="Ver foro" />
-            <Button fx:id="btnStudyProgram" alignment="CENTER_RIGHT" layoutX="364.0" layoutY="86.0" mnemonicParsing="false" onAction="#btnStudyProgram_Pressed" text="Ver mi malla" />
-            <Button fx:id="btnChangeStudyProgram" layoutX="364.0" layoutY="162.0" mnemonicParsing="false" onAction="#btnChangeStudyProgram_Pressed" text="Cambiar malla" />
-         </children>
-      </Pane>
-      <Button fx:id="btnReload" layoutX="531.0" layoutY="1.0" mnemonicParsing="false" onAction="#btnReload_Pressed" style="-fx-background-radius: 0;" text="R" />
-   </children>
+	<children>
+		<Pane prefHeight="680.0" prefWidth="1080.0" style="-fx-background-color: #026;">
+			<children>
+				<!-- STUDENT MAIN MENU ITEMS -->
+				<Button fx:id="btnShowSchedule" layoutX="450.0" layoutY="210.0" minWidth="180.0" mnemonicParsing="false" onAction="#btnShowSchedule_Pressed" style="-fx-background-radius: 0 0 0 0;" text="Horario" textAlignment="CENTER" />
+				<Button fx:id="btnEditSemester" layoutX="450.0" layoutY="250.0" minWidth="180.0" mnemonicParsing="false" onAction="#btnEditSemester_Pressed" style="-fx-background-radius: 0 0 0 0;" text="Editor Semestre" textAlignment="CENTER" />
+				<Button fx:id="btnCurricularAdvance" layoutX="450.0" layoutY="290.0" minWidth="180.0" mnemonicParsing="false" onAction="#btnCurricularAdvance_Pressed" style="-fx-background-radius: 0 0 0 0;" text="Avance Curricular" textAlignment="CENTER" />
+				<Button fx:id="btnCourseFinder" layoutX="450.0" layoutY="330.0" minWidth="180.0" mnemonicParsing="false" onAction="#btnCourseFinder_Pressed" text="Buscador de Cursos" />
+				<Button fx:id="btnAcademicHistory" layoutX="450.0" layoutY="370.0" minWidth="180.0" mnemonicParsing="false" onAction="#btnAcademicHistory_Pressed" text="Historial Academico" />
+				<Button fx:id="btnCoursedSemesters" layoutX="450.0" layoutY="410.0" minWidth="180.0" mnemonicParsing="false" onAction="#btnCoursedSemesters_Pressed" text="Calificaciones" />
+				<Button fx:id="btnStudyProgram" alignment="CENTER" contentDisplay="CENTER" layoutX="450.0" layoutY="450.0" minWidth="180.0" mnemonicParsing="false" onAction="#btnStudyProgram_Pressed" text="Malla Curricular" />
+				<Button fx:id="btnChangeStudyProgram" layoutX="450.0" layoutY="490.0" minWidth="180.0" mnemonicParsing="false" onAction="#btnChangeStudyProgram_Pressed" text="Cambiar Malla" />
+				<Button fx:id="btnForums" layoutX="450.0" layoutY="530.0" minWidth="180.0" mnemonicParsing="false" onAction="#btnForums_Pressed" text="Foro" />
+				<!-- STUDENT INFO AND WELCOME MESSAGE -->	
+				<Label fx:id="labelWelcomeMessage" alignment="CENTER" layoutX="240.0" layoutY="120.0" minWidth="600.0" prefHeight="17.0" prefWidth="421.0" text="BIENVENIDO A ACADEMIC TOOL MANAGER PROFESSIONAL!!! " textAlignment="CENTER" textFill="WHITE" />
+				<Label fx:id="labelWhatDoNext" alignment="CENTER" layoutX="340.0" layoutY="145.0" minWidth="400.0" prefHeight="17.0" prefWidth="211.0" text="¿Qué deseas hacer ahora?" textFill="WHITE" />
+				<Label fx:id="labelUserInformation" layoutX="58.0" layoutY="650.0" text="Informacion del Usuario" textFill="WHITE" />
+	            <Label fx:id="labelTitle" alignment="CENTER" layoutX="340.0" layoutY="50.0" prefWidth="400.0" text="MENU" textFill="WHITE">
+	               <font>
+	                  <Font size="18.0" />
+	               </font>
+	            </Label>		
+			</children>
+		</Pane>
+		<!-- LENGUAGE, RELOAD, LOGOUT AND BACK -->
+		<Button fx:id="btnLanguage" layoutX="1040.0" layoutY="1.0" minWidth="35.0" mnemonicParsing="false" onAction="#btnLanguage_Pressed" style="-fx-background-radius: 0;" text="ES" />
+		<Button fx:id="btnLogout" layoutX="960.0" layoutY="650.0" minWidth="95.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
+		<Button fx:id="btnReload" layoutX="1000.0" layoutY="1.0" minWidth="35.0" mnemonicParsing="false" onAction="#btnReload_Pressed" style="-fx-background-radius: 0;" text="R" />
+		<Button fx:id="btnBack" layoutY="1.0" minWidth="50.0" mnemonicParsing="false" onAction="#btnBack_Pressed" style="-fx-background-radius: 0;" text="Back" />
+	</children>
 </AnchorPane>

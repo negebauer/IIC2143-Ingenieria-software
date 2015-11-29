@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
@@ -7,7 +8,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.student.SCurricularAdvanceController">
    <children>
-      <Pane prefHeight="405.0" prefWidth="605.0" style="-fx-background-color: #026;">
+      <Pane prefHeight="680.0" prefWidth="1080.0" style="-fx-background-color: #026;">
          <children>
             <Label fx:id="labelCurricularAdvanceWelcomeMessage" layoutX="95.0" layoutY="14.0" prefHeight="42.0" prefWidth="410.0" style="-fx-text-fill: #fff;" text="Este es tu avance curricular, selecciona otra malla curricular para ver tu avance" textAlignment="CENTER" wrapText="true" />
             <ChoiceBox fx:id="chBxStudyProgram" layoutX="95.0" layoutY="62.0" prefHeight="27.0" prefWidth="410.0" style="-fx-background-radius: 0;" />
@@ -15,11 +16,17 @@
             <ListView fx:id="listUnfinished" layoutX="312.0" layoutY="125.0" prefHeight="240.0" prefWidth="254.0" />
             <Label fx:id="labelApproved" alignment="CENTER" contentDisplay="CENTER" layoutX="26.0" layoutY="105.0" prefHeight="17.0" prefWidth="270.0" style="-fx-text-fill: #fff;" text="Cursos aprobados" textAlignment="CENTER" />
             <Label fx:id="labelNotApproved" alignment="CENTER" contentDisplay="CENTER" layoutX="304.0" layoutY="105.0" prefHeight="17.0" prefWidth="270.0" style="-fx-text-fill: #fff;" text="Cursos faltantes" textAlignment="CENTER" />
-            <Button fx:id="btnBack" layoutY="1.0" mnemonicParsing="false" onAction="#btnBack_Pressed" style="-fx-background-radius: 0;" text="Back" />
-            <Button fx:id="btnLanguage" layoutX="565.0" layoutY="1.0" mnemonicParsing="false" onAction="#btnLanguage_Pressed" style="-fx-background-radius: 0;" text="ES" />
-            <Button fx:id="btnReload" layoutX="531.0" layoutY="1.0" mnemonicParsing="false" onAction="#btnReload_Pressed" style="-fx-background-radius: 0;" text="R" />
-            <Button fx:id="btnLogout" layoutX="501.0" layoutY="370.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
+	            <Label fx:id="labelTitle" alignment="CENTER" layoutX="340.0" layoutY="50.0" prefWidth="400.0" text="AVANCE CURRICULAR" textFill="WHITE">
+	               <font>
+	                  <Font size="18.0" />
+	               </font>
+	            </Label>
          </children>
       </Pane>
-   </children>
+		<!-- LENGUAGE, RELOAD, LOGOUT AND BACK -->
+		<Button fx:id="btnLanguage" layoutX="1040.0" layoutY="1.0" minWidth="35.0" mnemonicParsing="false" onAction="#btnLanguage_Pressed" style="-fx-background-radius: 0;" text="ES" />
+		<Button fx:id="btnLogout" layoutX="960.0" layoutY="650.0" minWidth="95.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
+		<Button fx:id="btnReload" layoutX="1000.0" layoutY="1.0" minWidth="35.0" mnemonicParsing="false" onAction="#btnReload_Pressed" style="-fx-background-radius: 0;" text="R" />
+		<Button fx:id="btnBack" layoutY="1.0" minWidth="50.0" mnemonicParsing="false" onAction="#btnBack_Pressed" style="-fx-background-radius: 0;" text="Back" />
+	</children>
 </AnchorPane>

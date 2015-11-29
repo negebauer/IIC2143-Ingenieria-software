@@ -9,12 +9,8 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.student.SCurrentSemesterViewController">
    <children>
-      <Pane prefHeight="405.0" prefWidth="605.0" style="-fx-background-color: #026;">
+      <Pane prefHeight="680.0" prefWidth="1080.0" style="-fx-background-color: #026;">
          <children>
-            <Button fx:id="btnLanguage" layoutX="565.0" layoutY="1.0" mnemonicParsing="false" onAction="#btnLanguage_Pressed" style="-fx-background-radius: 0;" text="ES" />
-            <Button fx:id="btnReload" layoutX="531.0" layoutY="1.0" mnemonicParsing="false" onAction="#btnReload_Pressed" style="-fx-background-radius: 0;" text="R" />
-            <Button fx:id="btnBack" layoutY="1.0" mnemonicParsing="false" onAction="#btnBack_Pressed" style="-fx-background-radius: 0;" text="Back" />
-            <Button fx:id="btnLogout" layoutX="501.0" layoutY="370.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
             <Label fx:id="labelMainMessage" layoutX="24.0" layoutY="46.0" prefHeight="51.0" prefWidth="165.0" style="-fx-text-fill: #fff;" text="Aqui puedes ver tu semestre actual y editarlo" wrapText="true" />
             <Label fx:id="labelCurrentSemester" layoutX="24.0" layoutY="97.0" style="-fx-text-fill: #fff;" text="Current semester: 2015-2" />
             <Label fx:id="labelCurrentCourses" layoutX="24.0" layoutY="124.0" style="-fx-text-fill: #fff;" text="Cursos actuales:" />
@@ -31,7 +27,17 @@
             <Button fx:id="btnEditSemester" layoutX="47.0" layoutY="370.0" mnemonicParsing="false" onAction="#btnEditSemester_Pressed" text="Edit semester" />
             <ComboBox fx:id="chBxCarreer" layoutX="217.0" layoutY="92.0" prefHeight="27.0" prefWidth="193.0" />
             <Label fx:id="labelCarreer" layoutX="293.0" layoutY="67.0" style="-fx-text-fill: #fff;" text="Carrera" />
+	            <Label fx:id="labelTitle" alignment="CENTER" layoutX="340.0" layoutY="50.0" prefWidth="400.0" text="EDITOR DE SEMESTRE" textFill="WHITE">
+	               <font>
+	                  <Font size="18.0" />
+	               </font>
+	            </Label>
          </children>
       </Pane>
-   </children>
+		<!-- LENGUAGE, RELOAD, LOGOUT AND BACK -->
+		<Button fx:id="btnLanguage" layoutX="1040.0" layoutY="1.0" minWidth="35.0" mnemonicParsing="false" onAction="#btnLanguage_Pressed" style="-fx-background-radius: 0;" text="ES" />
+		<Button fx:id="btnLogout" layoutX="960.0" layoutY="650.0" minWidth="95.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
+		<Button fx:id="btnReload" layoutX="1000.0" layoutY="1.0" minWidth="35.0" mnemonicParsing="false" onAction="#btnReload_Pressed" style="-fx-background-radius: 0;" text="R" />
+		<Button fx:id="btnBack" layoutY="1.0" minWidth="50.0" mnemonicParsing="false" onAction="#btnBack_Pressed" style="-fx-background-radius: 0;" text="Back" />
+	</children>
 </AnchorPane>
