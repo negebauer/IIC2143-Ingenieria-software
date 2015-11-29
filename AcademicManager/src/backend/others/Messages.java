@@ -303,7 +303,10 @@ public class Messages {
 		STUDENT_EDIT_SEMESTER, 
 		STUDENT_SEE_CURRICULAR_ADVANCE, 
 		STUDENT_QUALIFY_SEMESTER, 
-		STUDENT_SEE_SCHEDULE, 
+		STUDENT_SEE_SCHEDULE,
+		STUDENT_SEARCH_COURSE,
+		STUDENT_CURRICULAR_ADVANCE,
+		STUDENT_STUDY_PROGRAM,
 		CHANGE_MODE_STUDENT_TO_ADMIN, 
 		CHANGE_MODE_ADMIN_TO_STUDENT, 
 		WELCOME_MESSAGE, 
@@ -436,8 +439,12 @@ public class Messages {
 		LECTURE,
 		ASSISTANTSHIP,
 		LABORATORY,
-		CLEAN_COURSES_FROM_LIST
-
+		CLEAN_COURSES_FROM_LIST,
+		CLEAN,
+		SAVE,
+		SEMESTER,
+		CARREER,
+		SCHEDULE
 	}
 
 	public static String getUILabel(UILabel label) {
@@ -456,10 +463,13 @@ public class Messages {
 
 	private static Map<UILabel, String> createMapUILabelEnglish() {
 		Map<UILabel, String> result = new HashMap<UILabel, String>();
-		result.put(UILabel.STUDENT_EDIT_SEMESTER, 							"Semester manager");
-		result.put(UILabel.STUDENT_QUALIFY_SEMESTER, 						"Qualify a semester");
-		result.put(UILabel.STUDENT_SEE_CURRICULAR_ADVANCE,  				"See curricular progress");
-		result.put(UILabel.STUDENT_SEE_SCHEDULE,  							"See my schedule");
+		result.put(UILabel.STUDENT_EDIT_SEMESTER, 							"Semester Manager");
+		result.put(UILabel.STUDENT_QUALIFY_SEMESTER, 						"Qualify a Semester");
+		result.put(UILabel.STUDENT_SEE_CURRICULAR_ADVANCE,  				"Curricular Arogress");
+		result.put(UILabel.STUDENT_SEE_SCHEDULE,  							"Schedule");
+		result.put(UILabel.STUDENT_SEARCH_COURSE,  							"Course Searcher");
+		result.put(UILabel.STUDENT_CURRICULAR_ADVANCE,  					"Curricular Progress");
+		result.put(UILabel.STUDENT_STUDY_PROGRAM,  							"Study Program");
 		result.put(UILabel.CHANGE_MODE_ADMIN_TO_STUDENT,  					"Change to Student mode");
 		result.put(UILabel.CHANGE_MODE_STUDENT_TO_ADMIN,  					"Change to Admin mode");
 		result.put(UILabel.WELCOME_MESSAGE,  								"WELCOME TO ACADEMIC TOOL MANAGER PROFESSIONAL!!!");
@@ -495,8 +505,8 @@ public class Messages {
 		result.put(UILabel.STUDY_PROGRAM_CREATE_LABEL,						"If you want to create a new Stuty Program, press in Create Study Program");
 		result.put(UILabel.EDIT_STUDY_PROGRAM,  							"Edit Study Program");
 		result.put(UILabel.STUDY_PROGRAM_EDIT_LABEL,						"If you want to edit an old Study Program, select one from the list below");
-		result.put(UILabel.ADD,  					 						"Add Carreer");
-		result.put(UILabel.REMOVE,  										"Remove Carreer");
+		result.put(UILabel.ADD,  					 						"Add");
+		result.put(UILabel.REMOVE,  										"Remove");
 		result.put(UILabel.ASSISTANT,  										"Assistant");
 		result.put(UILabel.BACK,  					 						"Back");
 		result.put(UILabel.COURSED_SEMESTERS,  								"Coursed semesters");
@@ -592,23 +602,31 @@ public class Messages {
 		result.put(UILabel.LABORATORY, 										"Laboratory");
 		result.put(UILabel.LECTURE, 										"Lecture");
 		result.put(UILabel.ASSISTANTSHIP, 									"Assistantship");
+		result.put(UILabel.CLEAN, 											"Clear");
+		result.put(UILabel.SAVE, 											"Save");
+		result.put(UILabel.SEMESTER, 										"Semester");
+		result.put(UILabel.CARREER, 										"Carreer");
+		result.put(UILabel.SCHEDULE, 										"Schedule");
 		return Collections.unmodifiableMap(result);
 	}
 
 	private static Map<UILabel, String> createMapUILabelSpanish() {
 		Map<UILabel, String> result = new HashMap<UILabel, String>();
-		result.put(UILabel.STUDENT_EDIT_SEMESTER, 							"Manager de semestres");
-		result.put(UILabel.STUDENT_QUALIFY_SEMESTER,  						"Calificar un semestre");
-		result.put(UILabel.STUDENT_SEE_CURRICULAR_ADVANCE,  				"Ver avance curricular");
-		result.put(UILabel.STUDENT_SEE_SCHEDULE,  							"Ver mi horario");
+		result.put(UILabel.STUDENT_EDIT_SEMESTER, 							"Manager de Semestres");
+		result.put(UILabel.STUDENT_QUALIFY_SEMESTER,  						"Calificar Semestre");
+		result.put(UILabel.STUDENT_SEE_CURRICULAR_ADVANCE,  				"Avance Curricular");
+		result.put(UILabel.STUDENT_SEE_SCHEDULE,  							"Horario");
+		result.put(UILabel.STUDENT_SEARCH_COURSE,  							"Buscador de Cursos");
+		result.put(UILabel.STUDENT_CURRICULAR_ADVANCE,  					"Avance Curricular");
+		result.put(UILabel.STUDENT_STUDY_PROGRAM,  							"Malla Curricular");
 		result.put(UILabel.CHANGE_MODE_ADMIN_TO_STUDENT,  					"Cambiar a modo Estudiante");
 		result.put(UILabel.CHANGE_MODE_STUDENT_TO_ADMIN,  					"Cambiar a modo Administrador");
 		result.put(UILabel.WELCOME_MESSAGE,  								"BIENVENIDO A ACADEMIC TOOL MANAGER PROFESSIONAL!!!");
-		result.put(UILabel.WHAT_TO_DO_NEXT_QUESTION,  						"ï¿½Que deseas hacer ahora?");
+		result.put(UILabel.WHAT_TO_DO_NEXT_QUESTION,  						"¿Que deseas hacer ahora?");
 		result.put(UILabel.SIGN_IN,  										"Iniciar Sesion");
 		result.put(UILabel.REGISTER,  										"Registrarse");
-		result.put(UILabel.SIGN_IN_AS_USER,  								"Iniciar como usuario");
-		result.put(UILabel.DONT_HAVE_ACCOUNT_REGISTER,  					"ï¿½No tienes una cuenta?, Registrate!");
+		result.put(UILabel.SIGN_IN_AS_USER,  								"Seleccionar usuario");
+		result.put(UILabel.DONT_HAVE_ACCOUNT_REGISTER,  					"¿No tienes una cuenta?, Registrate!");
 		result.put(UILabel.LOG_IN,  										"INICIO DE SESION");
 		result.put(UILabel.TO_USE_ATM_MUST_REGISTER,						"Para poder usar Academic Tool Manager Professional debes registrarte pimero:");
 		result.put(UILabel.CONTINUE,  										"Continuar");
@@ -658,7 +676,7 @@ public class Messages {
 		result.put(UILabel.EDIT_SEMESTER,  							 		"Editar Semestre");
 		result.put(UILabel.CREATE_SEMESTER,  								"Crear Semestre Nuevo");
 		result.put(UILabel.SEMESTER_MANGER_WELCOME_MESSAGE,			 		"Bienvenido al Administrador de Semestres, para comenzar selecciona un semestre para editar, o presiona en crear nuevo semestre");
-		result.put(UILabel.CURRICULAR_ADVANCE_APPROVED,  					"Cursos aprovados");
+		result.put(UILabel.CURRICULAR_ADVANCE_APPROVED,  					"Cursos aprobados");
 		result.put(UILabel.CURRICULAR_ADVANCE_NOT_APPROVED,  				"Cursos faltantes");
 		result.put(UILabel.SCHEDULE_MAIN_MESSAGE,				 			"Aqui esta tu horario para este semestre. Puedes seleccionar otro semestre y ver su horario tambien.");
 		result.put(UILabel.SEMESTER_CURRENT_SEMESTER_MODIFICATION_FAILED,  	"Error");
@@ -730,6 +748,11 @@ public class Messages {
 		result.put(UILabel.LABORATORY, 										"Laboratory");
 		result.put(UILabel.LECTURE, 										"Lecture");
 		result.put(UILabel.ASSISTANTSHIP, 									"Assistantship");
+		result.put(UILabel.CLEAN, 											"Limpiar");
+		result.put(UILabel.SAVE, 											"Guardar");
+		result.put(UILabel.SEMESTER, 										"Semestre");
+		result.put(UILabel.CARREER, 										"Carrera");
+		result.put(UILabel.SCHEDULE, 										"Horario");
 		return Collections.unmodifiableMap(result);
 	}
 
