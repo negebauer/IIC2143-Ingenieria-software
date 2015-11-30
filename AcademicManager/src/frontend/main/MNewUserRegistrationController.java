@@ -87,7 +87,9 @@ public class MNewUserRegistrationController extends MViewController {
 	Button btnAddStudyPlan;
 	@FXML
 	Button btnRemoveStudyPlan;
-
+	@FXML
+	Label labelCourses;
+	
 	boolean isStudent;
 	boolean isProfessor;
 	boolean isAdmin;
@@ -99,27 +101,6 @@ public class MNewUserRegistrationController extends MViewController {
 		super.setUp();
 		hideLogout();
 		hideStudentFields();
-
-		labelToUseATMMustRegister.setText(Messages.getUILabel(UILabel.TO_USE_ATM_MUST_REGISTER));
-		btnContinue.setText(Messages.getUILabel(UILabel.CONTINUE));
-		labelName.setText(Messages.getUILabel(UILabel.NAME));
-		labelLastFather.setText(Messages.getUILabel(UILabel.LAST_NAME_FATHER));
-		labelLastMother.setText(Messages.getUILabel(UILabel.LAST_NAME_MOTHER));
-		labelAdress.setText(Messages.getUILabel(UILabel.ADDRESS));
-		labelCellPhone.setText(Messages.getUILabel(UILabel.CELL_PHONE));
-		labelRUT.setText(Messages.getUILabel(UILabel.RUT));
-		;
-		labelBirthday.setText(Messages.getUILabel(UILabel.BIRTHDAY));
-		labelSex.setText(Messages.getUILabel(UILabel.SEX));
-		labelAccess.setText(Messages.getUILabel(UILabel.ACCESS));
-		labelBirthDay.setText(Messages.getUILabel(UILabel.DAY));
-		labelBirthMonth.setText(Messages.getUILabel(UILabel.MONTH));
-		labelBirthYear.setText(Messages.getUILabel(UILabel.YEAR));
-		labelPickCarreer.setText(Messages.getUILabel(UILabel.PICK_CARREER));
-		btnAddStudyPlan.setText(Messages.getUILabel(UILabel.ADD));
-		btnRemoveStudyPlan.setText(Messages.getUILabel(UILabel.REMOVE));
-		btnAddStudyPlan.setCursor(Cursor.HAND);
-		btnRemoveStudyPlan.setCursor(Cursor.HAND);
 
 		ArrayList<String> studyProgramsNames = new ArrayList<String>();
 		for (StudyProgram studyProgram : Manager.INSTANCE.studyPrograms) {
@@ -164,9 +145,8 @@ public class MNewUserRegistrationController extends MViewController {
 
 	public void btnContinue_Pressed() {
 		cleanInfo();
-		if (!checkValid()) {
+		if (!checkValid())
 			return;
-		}
 
 		String name = txBxName.getText();
 		String lastFather = txBxLastFather.getText();
@@ -257,5 +237,29 @@ public class MNewUserRegistrationController extends MViewController {
 			currentCarrers.remove(studyProgramName);
 			listCarreers.setItems(FXCollections.observableArrayList(currentCarrers));
 		}
+	}
+	
+	@Override
+	public void setLabels() {
+		labelToUseATMMustRegister.setText(Messages.getUILabel(UILabel.TO_USE_ATM_MUST_REGISTER));
+		btnContinue.setText(Messages.getUILabel(UILabel.CONTINUE));
+		labelName.setText(Messages.getUILabel(UILabel.NAME));
+		labelLastFather.setText(Messages.getUILabel(UILabel.LAST_NAME_FATHER));
+		labelLastMother.setText(Messages.getUILabel(UILabel.LAST_NAME_MOTHER));
+		labelAdress.setText(Messages.getUILabel(UILabel.ADDRESS));
+		labelCellPhone.setText(Messages.getUILabel(UILabel.CELL_PHONE));
+		labelRUT.setText(Messages.getUILabel(UILabel.RUT));
+		labelTitle.setText(Messages.getUILabel(UILabel.REGISTER).toUpperCase());
+		labelBirthday.setText(Messages.getUILabel(UILabel.BIRTHDAY));
+		labelSex.setText(Messages.getUILabel(UILabel.SEX));
+		labelAccess.setText(Messages.getUILabel(UILabel.ACCESS));
+		labelBirthDay.setText(Messages.getUILabel(UILabel.DAY));
+		labelBirthMonth.setText(Messages.getUILabel(UILabel.MONTH));
+		labelBirthYear.setText(Messages.getUILabel(UILabel.YEAR));
+		labelPickCarreer.setText(Messages.getUILabel(UILabel.PICK_CARREER));
+		btnAddStudyPlan.setText(Messages.getUILabel(UILabel.ADD));
+		btnRemoveStudyPlan.setText(Messages.getUILabel(UILabel.REMOVE));
+		btnAddStudyPlan.setCursor(Cursor.HAND);
+		btnRemoveStudyPlan.setCursor(Cursor.HAND);
 	}
 }
