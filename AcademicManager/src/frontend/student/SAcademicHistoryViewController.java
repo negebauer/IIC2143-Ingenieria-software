@@ -6,13 +6,16 @@ import java.util.ArrayList;
 import backend.courses.Coursed;
 import backend.courses.CoursedSemester;
 import backend.courses.StudyProgram;
+import backend.enums.AcademicSemester;
 import backend.manager.Manager;
 import backend.users.Student;
 import frontend.main.MViewController;
 import frontend.others.Validate;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 
 public class SAcademicHistoryViewController extends MViewController {
@@ -23,10 +26,16 @@ public class SAcademicHistoryViewController extends MViewController {
 	TextArea txAAcademic;
 	@FXML
 	ComboBox<String> chBxCarreer;
+	@FXML
+	ComboBox<String> chBxCoursedSemesters;
+	@FXML
+	Label labelCoursedSemesterCourses;
+	@FXML
+	Label labelMain;
 	
-	Student user = (Student) Manager.INSTANCE.currentUser;
-	static URL view = Object.class.getResource("/frontend/student/SAcademicHistoryView.fxml");
-	String carreer = "";
+	public static final URL VIEW = Object.class.getResource("/frontend/student/SAcademicHistoryView.fxml");
+	private Student user = (Student) Manager.INSTANCE.currentUser;
+	private String carreer = "";
 	
 	@Override
 	public void setUp() {
@@ -37,8 +46,14 @@ public class SAcademicHistoryViewController extends MViewController {
 			sp.add(p.getName());
 		}
 		chBxCarreer.setItems(FXCollections.observableArrayList(sp));
+		chBxCoursedSemesters.setItems(generateCoursedSemesters());
+		chBxCoursedSemesters.setOnAction((event) -> {
+			showCoursedSemesterGrades(chBxCoursedSemesters.getSelectionModel().getSelectedItem());
+		});	
 		chBxCarreer.setOnAction((event) -> {
 			carreer = chBxCarreer.getSelectionModel().getSelectedItem().trim();
+			chBxCoursedSemesters.getSelectionModel().selectFirst();
+			chBxCoursedSemesters.getSelectionModel().selectLast();
 			refresh();
 		});
 		chBxCarreer.getSelectionModel().selectFirst();
@@ -92,5 +107,49 @@ public class SAcademicHistoryViewController extends MViewController {
 		}
 		txAAcademicHistory.setText(fullText);
 		txAAcademic.setText(academic);
+	}
+	
+	private ObservableList<String> generateCoursedSemesters() {
+		ArrayList<String> coursedSemesters = new ArrayList<String>();
+		
+		for (CoursedSemester coursedSemester : user.getCurriculum().getCoursedSemesters()) {
+			String coursedSemesterString = coursedSemester.getYear() + " - "
+					+ coursedSemester.getSemester().getSemesterNumber();
+			if (!(coursedSemesters.contains(coursedSemesterString))) {
+				coursedSemesters.add(coursedSemesterString);
+			}
+		}
+		coursedSemesters.sort(null);		
+		return FXCollections.observableArrayList(coursedSemesters);
+	}
+	
+	private void showCoursedSemesterGrades(String yearSemesterRawString) {
+		String coursedCoursesString = "";
+		int year = Integer.valueOf(yearSemesterRawString.split(" - ")[0]);
+		AcademicSemester semester = AcademicSemester.createWithNumber(yearSemesterRawString.split(" - ")[1]);
+		for (CoursedSemester coursedSemester : user.getCurriculum().getCoursedSemesters()) {			
+			if (coursedSemester.getYear() == year && coursedSemester.getSemester() == semester) {								
+				int count = 0;
+				double sum = 0;
+				String aux = "";				
+				for (Coursed coursed : coursedSemester.getCoursedCourses()) {
+					if (Validate.checkCourse(coursed.getInitials(), carreer)) {
+						aux += coursed.getInitials() + "-" + coursed.getSection() + " " + coursed.getName()
+						+ ": " + coursed.getGrade() + "\n\t";	
+						sum+= coursed.getGrade();
+						count++;	
+					}
+				}
+				double prom = 0;
+				if(count != 0) {
+					prom = sum/count;
+				}				
+				coursedCoursesString += year + "-" + semester.getSemesterNumber() + ": " + prom + "\n\t" + aux;
+				if (prom == 0) {
+					coursedCoursesString += "No hay ramos cursados este semestres";
+				}
+			}
+		}
+		labelCoursedSemesterCourses.setText(coursedCoursesString);
 	}
 }

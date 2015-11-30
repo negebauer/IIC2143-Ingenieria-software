@@ -25,11 +25,7 @@ public class SMainViewController extends MViewController {
 	@FXML
 	Button btnAcademicHistory;
 	@FXML
-	Button btnCoursedSemesters;
-	@FXML
 	Button btnStudyProgram;
-	@FXML
-	Button btnChangeStudyProgram;
 	@FXML
 	Button btnForums;	
 	@FXML
@@ -68,7 +64,7 @@ public class SMainViewController extends MViewController {
 	}
 
 	public void btnEditSemester_Pressed() {
-		ViewUtilities.openView(SCurrentSemesterViewController.view, VIEW);
+		ViewUtilities.openView(SCurrentSemesterViewController.VIEW, VIEW);
 	}
 
 	public void btnCurricularAdvance_Pressed() {
@@ -76,15 +72,11 @@ public class SMainViewController extends MViewController {
 	}
 	
 	public void btnCourseFinder_Pressed() {
-		ViewUtilities.openView(SCourseSearcherViewController.view, VIEW);
+		ViewUtilities.openView(SCourseSearcherViewController.VIEW, VIEW);
 	}
 
 	public void btnAcademicHistory_Pressed() {
-		ViewUtilities.openView(SAcademicHistoryViewController.view, VIEW);
-	}
-
-	public void btnCoursedSemesters_Pressed() {
-		ViewUtilities.openView(SCoursedSemestersViewController.view, VIEW);
+		ViewUtilities.openView(SAcademicHistoryViewController.VIEW, VIEW);
 	}
 	
 	public void btnStudyProgram_Pressed() {
@@ -96,6 +88,6 @@ public class SMainViewController extends MViewController {
 	}
 	
 	public void btnForums_Pressed() {
-		ViewUtilities.openView(SForumsViewController.view, VIEW);
+		ViewUtilities.openView(SForumsViewController.VIEW, VIEW);
 	}
 }

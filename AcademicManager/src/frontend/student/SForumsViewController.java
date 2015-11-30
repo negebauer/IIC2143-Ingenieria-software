@@ -39,11 +39,11 @@ public class SForumsViewController extends MViewController {
 	@FXML
 	Button btnPostNewForumEntry;
 	
-	Student user = (Student) Manager.INSTANCE.currentUser;
-	public static URL view = Object.class.getResource("/frontend/student/SForumsView.fxml");
-	ArrayList<Course> coursesToShow;
-	Course currentCourse;
-	ForumPost currentPost;
+	public final static URL VIEW = Object.class.getResource("/frontend/student/SForumsView.fxml");
+	private Student user = (Student) Manager.INSTANCE.currentUser;
+	private ArrayList<Course> coursesToShow;
+	private Course currentCourse;
+	private ForumPost currentPost;
 	
 	@Override
 	public void setUp() {
@@ -91,8 +91,7 @@ public class SForumsViewController extends MViewController {
 		ForumComment comment = new ForumComment(user, txFForumComment.getText());
 		currentPost.comments.add(comment);
 		showForumPostsComments(currentPost);
-		clearText();
-		
+		clearText();	
 	}
 	
 	public void btnPostNewForumEntry_Pressed() {

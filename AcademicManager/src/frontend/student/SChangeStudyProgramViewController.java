@@ -14,6 +14,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 
@@ -33,10 +34,12 @@ public class SChangeStudyProgramViewController extends MViewController {
 	Button btnRemoveStudyProgram;
 	@FXML
 	TextArea txASemestersAndCourses;
+	@FXML
+	Label labelMyStudyPrograms;
 	
 	public final static URL VIEW = Object.class.getResource("/frontend/student/SChangeStudyProgramView.fxml");
-	Student user = (Student) Manager.INSTANCE.currentUser;
-	StudyProgram currentStudyProgram;
+	private Student user = (Student) Manager.INSTANCE.currentUser;
+	private StudyProgram currentStudyProgram;
 	
 	@Override
 	public void setUp() {

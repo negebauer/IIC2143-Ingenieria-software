@@ -28,9 +28,9 @@ public class SStudyProgramViewController extends MViewController {
 	TextArea txASemestersAndCourses;
 	
 	public final static URL VIEW = Object.class.getResource("/frontend/student/SStudyProgramView.fxml");
-	Student user = (Student) Manager.INSTANCE.currentUser;
-	ArrayList<StudyProgram> studyProgramsToShow = user.getCurriculum().getStudyPrograms();
-	StudyProgram currentStudyProgram;
+	private Student user = (Student) Manager.INSTANCE.currentUser;
+	private ArrayList<StudyProgram> studyProgramsToShow = user.getCurriculum().getStudyPrograms();
+	private StudyProgram currentStudyProgram;
 	
 	@Override
 	public void setUp() {

@@ -58,13 +58,13 @@ public class SCurrentSemesterViewController extends MCourseSearcherSelectorViewC
 	@FXML
 	ComboBox<String> chBxCarreer;
 
-	String responseToAddOrRemoveCourse = "";
-	Boolean firstLoad = true;
-	Student user = (Student) Manager.INSTANCE.currentUser;
-	public static URL view = Object.class.getResource("/frontend/student/SCurrentSemesterView.fxml");
-	ArrayList<ArrayList<Course>> courses = new ArrayList<ArrayList<Course>>();
-	ArrayList<String> sp;
-	String carreer = "";
+	private String responseToAddOrRemoveCourse = "";
+	private Boolean firstLoad = true;
+	private Student user = (Student) Manager.INSTANCE.currentUser;
+	public final static URL VIEW = Object.class.getResource("/frontend/student/SCurrentSemesterView.fxml");
+	private ArrayList<ArrayList<Course>> courses = new ArrayList<ArrayList<Course>>();
+	private ArrayList<String> sp;
+	private String carreer = "";
 	
 	@Override
 	public void setUp() {

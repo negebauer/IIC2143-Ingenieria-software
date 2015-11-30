@@ -11,18 +11,14 @@
    <children>
       <Pane prefHeight="680.0" prefWidth="1080.0" style="-fx-background-color: #026;">
          <children>
-            <ComboBox fx:id="cmBxCourses" layoutX="60.0" layoutY="15.0" prefHeight="27.0" prefWidth="457.0" />
-            <ComboBox fx:id="cmBxForumEntry" layoutX="60.0" layoutY="84.0" prefHeight="27.0" prefWidth="457.0" />
-            <TextField fx:id="txFNewForumEntry" layoutX="60.0" layoutY="50.0" prefHeight="27.0" prefWidth="331.0" />
-            <Button fx:id="btnPostNewForumEntry" layoutX="395.0" layoutY="50.0" mnemonicParsing="false" onAction="#btnPostNewForumEntry_Pressed" prefHeight="27.0" prefWidth="122.0" text="New entry" />
-            <TextArea fx:id="txAForumEntryComments" layoutX="60.0" layoutY="119.0" prefHeight="208.0" prefWidth="457.0" wrapText="true" />
-            <TextField fx:id="txFForumComment" layoutX="60.0" layoutY="333.0" prefHeight="27.0" prefWidth="331.0" />
-            <Button fx:id="btnPostComment" layoutX="395.0" layoutY="333.0" mnemonicParsing="false" onAction="#btnPostComment_Pressed" prefHeight="27.0" prefWidth="122.0" text="New comment" />
-	            <Label fx:id="labelTitle" alignment="CENTER" layoutX="340.0" layoutY="50.0" prefWidth="400.0" text="FORO" textFill="WHITE">
-	               <font>
-	                  <Font size="18.0" />
-	               </font>
-	            </Label>
+         	<!-- STUDENT FORUM ENTRY -->
+            <ComboBox fx:id="cmBxCourses" layoutX="200.0" layoutY="140.0" prefHeight="27.0" prefWidth="690.0" />
+            <ComboBox fx:id="cmBxForumEntry" layoutX="200.0" layoutY="220.0" prefHeight="27.0" prefWidth="690.0" />
+            <TextField fx:id="txFNewForumEntry" layoutX="200.0" layoutY="180.0" prefHeight="27.0" prefWidth="550.0" />
+            <Button fx:id="btnPostNewForumEntry" layoutX="768.0" layoutY="180.0" mnemonicParsing="false" onAction="#btnPostNewForumEntry_Pressed" prefHeight="27.0" prefWidth="120.0" text="New entry" />
+            <TextArea fx:id="txAForumEntryComments" layoutX="200.0" layoutY="260.0" prefHeight="240.0" prefWidth="690.0" wrapText="true" />
+            <TextField fx:id="txFForumComment" layoutX="200.0" layoutY="515.0" prefHeight="27.0" prefWidth="550.0" />
+            <Button fx:id="btnPostComment" layoutX="768.0" layoutY="515.0" mnemonicParsing="false" onAction="#btnPostComment_Pressed" prefHeight="27.0" prefWidth="120.0" text="New comment" />
          </children>
       </Pane>
 		<!-- LENGUAGE, RELOAD, LOGOUT AND BACK -->
@@ -30,5 +26,10 @@
 		<Button fx:id="btnLogout" layoutX="960.0" layoutY="650.0" minWidth="95.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
 		<Button fx:id="btnReload" layoutX="1000.0" layoutY="1.0" minWidth="35.0" mnemonicParsing="false" onAction="#btnReload_Pressed" style="-fx-background-radius: 0;" text="R" />
 		<Button fx:id="btnBack" layoutY="1.0" minWidth="50.0" mnemonicParsing="false" onAction="#btnBack_Pressed" style="-fx-background-radius: 0;" text="Back" />
+      <Label fx:id="labelTitle" alignment="CENTER" layoutX="340.0" layoutY="50.0" prefWidth="400.0" text="FORO" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
 	</children>
 </AnchorPane>

@@ -8,22 +8,23 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.student.SChangeStudyProgramViewController">
-   <children>
-      <Pane prefHeight="680.0" prefWidth="1080.0" style="-fx-background-color: #026;">
-         <children>
-            <ComboBox fx:id="cmBxStudyProgram" layoutX="240.0" layoutY="140.0" prefHeight="27.0" prefWidth="600.0" />
-            <Button fx:id="btnAddStudyProgram" layoutX="720.0" layoutY="450.0" mnemonicParsing="false" onAction="#btnAddStudyProgram_Pressed" prefWidth="100.0" text="Agregar" />
-            <Button fx:id="btnRemoveStudyProgram" layoutX="720.0" layoutY="490.0" mnemonicParsing="false" onAction="#btnRemoveStudyProgram_Pressed" prefWidth="100.0" text="Eliminar" />
-            <ListView fx:id="listStudyPrograms" layoutX="240.0" layoutY="450.0" prefHeight="100.0" prefWidth="450.0" />
-            <TextArea fx:id="txASemestersAndCourses" layoutX="240.0" layoutY="190.0" prefHeight="240.0" prefWidth="600.0" wrapText="true" />
-	            <Label fx:id="labelTitle" alignment="CENTER" layoutX="340.0" layoutY="50.0" prefWidth="400.0" text="CAMBIAR MALLA" textFill="WHITE">
+   	<children>
+      	<Pane prefHeight="680.0" prefWidth="1080.0" style="-fx-background-color: #026;">
+         	<children>
+				<!-- STUDENT CHANGE STUDY PROGRAM -->
+	            <ComboBox fx:id="cmBxStudyProgram" layoutX="240.0" layoutY="140.0" prefHeight="27.0" prefWidth="600.0" />
+	            <Button fx:id="btnAddStudyProgram" layoutX="720.0" layoutY="450.0" mnemonicParsing="false" onAction="#btnAddStudyProgram_Pressed" prefWidth="100.0" text="Agregar" />
+	            <Button fx:id="btnRemoveStudyProgram" layoutX="720.0" layoutY="490.0" mnemonicParsing="false" onAction="#btnRemoveStudyProgram_Pressed" prefWidth="100.0" text="Eliminar" />
+	            <ListView fx:id="listStudyPrograms" layoutX="240.0" layoutY="450.0" prefHeight="100.0" prefWidth="450.0" />
+	            <TextArea fx:id="txASemestersAndCourses" layoutX="240.0" layoutY="190.0" prefHeight="240.0" prefWidth="600.0" wrapText="true" />
+	            <Label fx:id="labelMyStudyPrograms" alignment="CENTER" layoutX="240.0" layoutY="553.0" prefWidth="450.0" text="Mis mallas" textFill="WHITE" />
+         		<Label fx:id="labelTitle" alignment="CENTER" layoutX="340.0" layoutY="50.0" prefWidth="400.0" text="CAMBIAR MALLA" textFill="WHITE">
 	               <font>
 	                  <Font size="18.0" />
 	               </font>
 	            </Label>
-            <Label alignment="CENTER" layoutX="240.0" layoutY="553.0" prefWidth="450.0" text="Mis mallas" textFill="WHITE" />
-         </children>
-      </Pane>
+            </children>
+      	</Pane>
 		<!-- LENGUAGE, RELOAD, LOGOUT AND BACK -->
 		<Button fx:id="btnLanguage" layoutX="1040.0" layoutY="1.0" minWidth="35.0" mnemonicParsing="false" onAction="#btnLanguage_Pressed" style="-fx-background-radius: 0;" text="ES" />
 		<Button fx:id="btnLogout" layoutX="960.0" layoutY="650.0" minWidth="95.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />

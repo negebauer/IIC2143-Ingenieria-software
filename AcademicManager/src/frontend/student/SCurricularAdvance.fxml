@@ -7,26 +7,27 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.student.SCurricularAdvanceController">
-   <children>
-      <Pane prefHeight="680.0" prefWidth="1080.0" style="-fx-background-color: #026;">
-         <children>
-            <Label fx:id="labelCurricularAdvanceWelcomeMessage" layoutX="730.0" layoutY="385.0" prefHeight="90.0" prefWidth="160.0" style="-fx-text-fill: #fff;" text="Este es tu avance curricular, selecciona otra malla curricular para ver tu avance..." textAlignment="CENTER" wrapText="true" />
-            <ChoiceBox fx:id="chBxStudyProgram" layoutX="315.0" layoutY="140.0" prefHeight="27.0" prefWidth="450.0" style="-fx-background-radius: 0;" />
-            <ListView fx:id="listAdvance" layoutX="172.0" layoutY="210.0" prefHeight="150.0" prefWidth="360.0" />
-            <ListView fx:id="listUnfinished" layoutX="548.0" layoutY="210.0" prefHeight="150.0" prefWidth="360.0" />
-            <Label fx:id="labelApproved" alignment="CENTER" contentDisplay="CENTER" layoutX="172.0" layoutY="188.0" prefHeight="17.0" prefWidth="360.0" style="-fx-text-fill: #fff;" text="Cursos aprobados" textAlignment="CENTER" />
-            <Label fx:id="labelNotApproved" alignment="CENTER" contentDisplay="CENTER" layoutX="548.0" layoutY="188.0" prefHeight="17.0" prefWidth="360.0" style="-fx-text-fill: #fff;" text="Cursos faltantes" textAlignment="CENTER" />
-            <TextArea fx:id="txASemestersAndCourses" editable="false" layoutX="250.0" layoutY="380.0" prefHeight="210.0" prefWidth="450.0" />
-            <Label fx:id="labelStudyProgram" alignment="CENTER" layoutX="250.0" layoutY="592.0" prefWidth="450.0" text="Malla curricular" textFill="WHITE" />
-            <Button fx:id="btnAddStudyProgram" layoutX="760.0" layoutY="535.0" mnemonicParsing="false" onAction="#btnAddStudyProgram_Pressed" prefWidth="100.0" text="Editar" />
+   	<children>
+      	<Pane prefHeight="680.0" prefWidth="1080.0" style="-fx-background-color: #026;">
+         	<children>
+	         	<!-- STUDENT CURRICULAR ADVANCE -->
+	            <ChoiceBox fx:id="chBxStudyProgram" layoutX="300.0" layoutY="140.0" prefHeight="27.0" prefWidth="480.0" style="-fx-background-radius: 0;" />
+	            <ListView fx:id="listAdvance" layoutX="140.0" layoutY="210.0" prefHeight="150.0" prefWidth="390.0" />
+	            <ListView fx:id="listUnfinished" layoutX="550.0" layoutY="210.0" prefHeight="150.0" prefWidth="390.0" />
+	            <TextArea fx:id="txASemestersAndCourses" editable="false" layoutX="230.0" layoutY="380.0" prefHeight="210.0" prefWidth="480.0" />
+	            <Button fx:id="btnAddStudyProgram" layoutX="780.0" layoutY="535.0" mnemonicParsing="false" onAction="#btnAddStudyProgram_Pressed" prefWidth="100.0" text="Editar" />
+		        <Label fx:id="labelCurricularAdvanceWelcomeMessage" layoutX="750.0" layoutY="385.0" prefHeight="90.0" prefWidth="160.0" style="-fx-text-fill: #fff;" text="Este es tu avance curricular, selecciona otra malla curricular para ver tu avance..." textAlignment="CENTER" wrapText="true" />
+	            <Label fx:id="labelApproved" alignment="CENTER" contentDisplay="CENTER" layoutX="140.0" layoutY="188.0" prefHeight="17.0" prefWidth="390.0" style="-fx-text-fill: #fff;" text="Cursos aprobados" textAlignment="CENTER" />
+	            <Label fx:id="labelNotApproved" alignment="CENTER" contentDisplay="CENTER" layoutX="550.0" layoutY="188.0" prefHeight="17.0" prefWidth="390.0" style="-fx-text-fill: #fff;" text="Cursos faltantes" textAlignment="CENTER" />
+	            <Label fx:id="labelStudyProgram" alignment="CENTER" layoutX="220.0" layoutY="594.0" prefWidth="480.0" text="Malla curricular" textFill="WHITE" />
 	            <Label fx:id="labelTitle" alignment="CENTER" layoutX="340.0" layoutY="50.0" prefWidth="400.0" text="AVANCE CURRICULAR" textFill="WHITE">
-	               <font>
-	                  <Font size="18.0" />
-	               </font>
-	            </Label>
-            <Label fx:id="labelCurricularAdvanceWelcomeMessage1" layoutX="730.0" layoutY="445.0" prefHeight="90.0" prefWidth="160.0" style="-fx-text-fill: #fff;" text="Agrega o elimina una malla para hacer carreras paralelas" textAlignment="CENTER" wrapText="true" />
-         </children>
-      </Pane>
+		        	<font>
+		            	<Font size="18.0" />
+		            </font>
+		        </Label>
+	            <Label fx:id="labelCurricularAdvanceWelcomeMessage2" layoutX="750.0" layoutY="445.0" prefHeight="90.0" prefWidth="160.0" style="-fx-text-fill: #fff;" text="Agrega o elimina una malla para hacer carreras paralelas" textAlignment="CENTER" wrapText="true" />
+         	</children>
+      	</Pane>
 		<!-- LENGUAGE, RELOAD, LOGOUT AND BACK -->
 		<Button fx:id="btnLanguage" layoutX="1040.0" layoutY="1.0" minWidth="35.0" mnemonicParsing="false" onAction="#btnLanguage_Pressed" style="-fx-background-radius: 0;" text="ES" />
 		<Button fx:id="btnLogout" layoutX="960.0" layoutY="650.0" minWidth="95.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />

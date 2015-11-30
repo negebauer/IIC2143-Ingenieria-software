@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.student.SMainViewController">
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.student.SMainViewController">
 	<children>
 		<Pane prefHeight="680.0" prefWidth="1080.0" style="-fx-background-color: #026;">
 			<children>
@@ -16,9 +16,8 @@
 				<Button fx:id="btnCurricularAdvance" layoutX="450.0" layoutY="290.0" minWidth="180.0" mnemonicParsing="false" onAction="#btnCurricularAdvance_Pressed" style="-fx-background-radius: 0 0 0 0;" text="Avance Curricular" textAlignment="CENTER" />
 				<Button fx:id="btnCourseFinder" layoutX="450.0" layoutY="330.0" minWidth="180.0" mnemonicParsing="false" onAction="#btnCourseFinder_Pressed" text="Buscador de Cursos" />
 				<Button fx:id="btnAcademicHistory" layoutX="450.0" layoutY="370.0" minWidth="180.0" mnemonicParsing="false" onAction="#btnAcademicHistory_Pressed" text="Historial Academico" />
-				<Button fx:id="btnCoursedSemesters" layoutX="450.0" layoutY="410.0" minWidth="180.0" mnemonicParsing="false" onAction="#btnCoursedSemesters_Pressed" text="Calificaciones" />
-				<Button fx:id="btnStudyProgram" alignment="CENTER" contentDisplay="CENTER" layoutX="450.0" layoutY="450.0" minWidth="180.0" mnemonicParsing="false" onAction="#btnStudyProgram_Pressed" text="Malla Curricular" />
-				<Button fx:id="btnForums" layoutX="450.0" layoutY="490.0" minWidth="180.0" mnemonicParsing="false" onAction="#btnForums_Pressed" text="Foro" />
+				<Button fx:id="btnStudyProgram" alignment="CENTER" contentDisplay="CENTER" layoutX="450.0" layoutY="410.0" minWidth="180.0" mnemonicParsing="false" onAction="#btnStudyProgram_Pressed" text="Malla Curricular" />
+				<Button fx:id="btnForums" layoutX="450.0" layoutY="450.0" minWidth="180.0" mnemonicParsing="false" onAction="#btnForums_Pressed" text="Foro" />
 				<!-- STUDENT INFO AND WELCOME MESSAGE -->	
 				<Label fx:id="labelWelcomeMessage" alignment="CENTER" layoutX="240.0" layoutY="120.0" minWidth="600.0" prefHeight="17.0" prefWidth="421.0" text="BIENVENIDO A ACADEMIC TOOL MANAGER PROFESSIONAL!!! " textAlignment="CENTER" textFill="WHITE" />
 				<Label fx:id="labelWhatDoNext" alignment="CENTER" layoutX="340.0" layoutY="145.0" minWidth="400.0" prefHeight="17.0" prefWidth="211.0" text="¿Qué deseas hacer ahora?" textFill="WHITE" />

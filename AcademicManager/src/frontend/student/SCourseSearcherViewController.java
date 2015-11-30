@@ -61,9 +61,9 @@ public class SCourseSearcherViewController extends MCourseSearcherSelectorViewCo
 	@FXML
 	GridPane gridSchedule;
 
-	public static URL view = Object.class.getResource("/frontend/student/SCourseSearcherView.fxml");
-	public ArrayList<Course> courses = new ArrayList<Course>();
-	public ViewSchedule schedule;
+	public final static URL VIEW = Object.class.getResource("/frontend/student/SCourseSearcherView.fxml");
+	private ArrayList<Course> courses = new ArrayList<Course>();
+	private ViewSchedule schedule;
 
 	@Override
 	public void setUp() {

@@ -50,15 +50,12 @@ public class SCurricularAdvanceController extends MViewController {
 	Button btnAddStudyProgram;
 
 	public final static URL VIEW = Object.class.getResource("/frontend/student/SCurricularAdvance.fxml");
-	Student user = (Student) Manager.INSTANCE.currentUser;
-	StudyProgram currentStudyProgram;
+	private Student user = (Student) Manager.INSTANCE.currentUser;
+	private StudyProgram currentStudyProgram;
 
 	@Override
 	public void setUp() {
 		super.setUp();
-
-		labelApproved.setText(Messages.getUILabel(UILabel.CURRICULAR_ADVANCE_APPROVED));
-		labelNotApproved.setText(Messages.getUILabel(UILabel.CURRICULAR_ADVANCE_NOT_APPROVED));
 
 		chBxStudyProgram.setItems(FXCollections.observableArrayList(generateStudyProgramsList()));
 		chBxStudyProgram.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
@@ -117,5 +114,14 @@ public class SCurricularAdvanceController extends MViewController {
 	
 	public void btnAddStudyProgram_Pressed() {
 		ViewUtilities.openView(SChangeStudyProgramViewController.VIEW, VIEW);
+	}
+	
+	@Override
+	public void setLabels() {
+		labelApproved.setText(Messages.getUILabel(UILabel.CURRICULAR_ADVANCE_APPROVED));
+		labelNotApproved.setText(Messages.getUILabel(UILabel.CURRICULAR_ADVANCE_NOT_APPROVED));
+		labelTitle.setText(Messages.getUILabel(UILabel.STUDENT_CURRICULAR_ADVANCE).toUpperCase());
+		labelStudyProgram.setText(Messages.getUILabel(UILabel.STUDENT_STUDY_PROGRAM));
+		ViewUtilities.setButtonText(btnAddStudyProgram, UILabel.EDIT_STUDY_PROGRAM);
 	}
 }

@@ -11,8 +11,9 @@
    <children>
       <Pane prefHeight="680.0" prefWidth="1080.0" style="-fx-background-color: #026;">
          <children>
-            <ComboBox fx:id="cmBxStudyProgram" layoutX="240.0" layoutY="140.0" prefHeight="27.0" prefWidth="600.0" />
-            <TextArea fx:id="txASemestersAndCourses" editable="false" layoutX="240.0" layoutY="190.0" prefHeight="360.0" prefWidth="600.0" wrapText="true" />
+         	<!-- STUDENT STUDY PROGRAM -->
+            <ComboBox fx:id="cmBxStudyProgram" layoutX="240.0" layoutY="140.0" prefHeight="27.0" prefWidth="610.0" />
+            <TextArea fx:id="txASemestersAndCourses" editable="false" layoutX="240.0" layoutY="190.0" prefHeight="360.0" prefWidth="610.0" wrapText="true" />
             <Label fx:id="labelTitle" alignment="CENTER" layoutX="340.0" layoutY="50.0" prefWidth="400.0" text="MALLA CURRICULAR" textFill="WHITE">
                <font>
                   <Font size="18.0" />
