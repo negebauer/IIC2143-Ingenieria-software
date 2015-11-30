@@ -83,10 +83,6 @@ public class SMainViewController extends MViewController {
 		ViewUtilities.openView(SStudyProgramViewController.VIEW, VIEW);
 	}
 	
-	public void btnChangeStudyProgram_Pressed() {
-		ViewUtilities.openView(SChangeStudyProgramViewController.VIEW, VIEW);
-	}
-	
 	public void btnForums_Pressed() {
 		ViewUtilities.openView(SForumsViewController.VIEW, VIEW);
 	}

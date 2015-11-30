@@ -528,7 +528,7 @@ public class Messages {
 		result.put(UILabel.REMOVE_COURSE, 									"Remove Course");
 		result.put(UILabel.ADD_COURSE, 										"Add Course");
 		result.put(UILabel.EDIT_SEMESTER, 									"Edit Semester");
-		result.put(UILabel.CREATE_SEMESTER, 								"Create New Semester");
+		result.put(UILabel.CREATE_SEMESTER, 								"New Semester");
 		result.put(UILabel.SEMESTER_MANGER_WELCOME_MESSAGE,					"Welcome to the Semesters Manager, to start select one semester to edit, or press in create new semester");
 		result.put(UILabel.CURRICULAR_ADVANCE_APPROVED, 	 				"Courses approved");
 		result.put(UILabel.CURRICULAR_ADVANCE_NOT_APPROVED, 				"Courses remaining");
@@ -674,7 +674,7 @@ public class Messages {
 		result.put(UILabel.REMOVE_COURSE,  							 		"Remover Curso");
 		result.put(UILabel.ADD_COURSE,  							 		"Agregar Curso");
 		result.put(UILabel.EDIT_SEMESTER,  							 		"Editar Semestre");
-		result.put(UILabel.CREATE_SEMESTER,  								"Crear Semestre Nuevo");
+		result.put(UILabel.CREATE_SEMESTER,  								"Crear Semestre");
 		result.put(UILabel.SEMESTER_MANGER_WELCOME_MESSAGE,			 		"Bienvenido al Administrador de Semestres, para comenzar selecciona un semestre para editar, o presiona en crear nuevo semestre");
 		result.put(UILabel.CURRICULAR_ADVANCE_APPROVED,  					"Cursos aprobados");
 		result.put(UILabel.CURRICULAR_ADVANCE_NOT_APPROVED,  				"Cursos faltantes");
