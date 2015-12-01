@@ -60,8 +60,7 @@ public class Main extends Application {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
-		Scene scene = new Scene(root, 600, 400);
+		Scene scene = new Scene(root, 1080, 680);
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Academic Manager");
 		primaryStage.setResizable(false);
