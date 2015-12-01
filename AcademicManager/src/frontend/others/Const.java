@@ -14,5 +14,4 @@ public class Const {
 
 	public final static String[] SIZE = new String[] { "8", "9", "10", "12", "14", "16", "18", "20", "24", "28", "32",
 			"36", "40" };
-
 }
