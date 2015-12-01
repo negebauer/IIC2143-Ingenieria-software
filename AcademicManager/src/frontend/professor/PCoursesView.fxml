@@ -8,15 +8,15 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.professor.PCoursesViewController">
    <children>
-      <Pane prefHeight="405.0" prefWidth="605.0" style="-fx-background-color: #026;">
+      <Pane prefHeight="680.0" prefWidth="1080.0" style="-fx-background-color: #026;">
          <children>
-            <Button fx:id="btnLanguage" layoutX="565.0" layoutY="1.0" mnemonicParsing="false" onAction="#btnLanguage_Pressed" style="-fx-background-radius: 0;" text="ES" />
-            <Button fx:id="btnReload" layoutX="531.0" layoutY="1.0" mnemonicParsing="false" onAction="#btnReload_Pressed" style="-fx-background-radius: 0;" text="R" />
+            <Button fx:id="btnLanguage" layoutX="1035.0" layoutY="7.0" mnemonicParsing="false" onAction="#btnLanguage_Pressed" style="-fx-background-radius: 0;" text="ES" />
+            <Button fx:id="btnReload" layoutX="992.0" layoutY="7.0" mnemonicParsing="false" onAction="#btnReload_Pressed" style="-fx-background-radius: 0;" text="R" />
             <Button fx:id="btnBack" layoutY="1.0" mnemonicParsing="false" onAction="#btnBack_Pressed" style="-fx-background-radius: 0;" text="Back" />
-            <Button fx:id="btnLogout" layoutX="501.0" layoutY="370.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
-            <Label fx:id="labelMain" alignment="CENTER" layoutX="73.0" layoutY="28.0" lineSpacing="1.0" prefHeight="49.0" prefWidth="454.0" text="Here you can see all the courses that you have dictated (and have been coursed by at least one student or are being dictated this semester)" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
-            <ChoiceBox fx:id="chBxSemesters" layoutX="225.0" layoutY="77.0" prefWidth="150.0" />
-            <Label fx:id="labelMyCourses" alignment="CENTER" layoutX="73.0" layoutY="108.0" prefHeight="210.0" prefWidth="454.0" text="Label" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
+            <Button fx:id="btnLogout" layoutX="1005.0" layoutY="639.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
+            <Label fx:id="labelMain" alignment="CENTER" layoutX="313.0" layoutY="117.0" lineSpacing="1.0" prefHeight="49.0" prefWidth="454.0" text="Here you can see all the courses that you have dictated (and have been coursed by at least one student or are being dictated this semester)" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
+            <ChoiceBox fx:id="chBxSemesters" layoutX="465.0" layoutY="188.0" prefWidth="150.0" />
+            <Label fx:id="labelMyCourses" alignment="CENTER" layoutX="313.0" layoutY="235.0" prefHeight="210.0" prefWidth="454.0" text="Label" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
          </children>
       </Pane>
    </children>

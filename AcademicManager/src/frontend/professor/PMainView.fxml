@@ -8,18 +8,18 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.professor.PMainViewController">
    <children>
-      <Pane prefHeight="405.0" prefWidth="605.0" style="-fx-background-color: #026;">
+      <Pane prefHeight="680.0" prefWidth="1080.0" style="-fx-background-color: #026;">
          <children>
-            <Button fx:id="btnLanguage" layoutX="565.0" layoutY="1.0" mnemonicParsing="false" onAction="#btnLanguage_Pressed" style="-fx-background-radius: 0;" text="ES" />
-            <Button fx:id="btnReload" layoutX="531.0" layoutY="1.0" mnemonicParsing="false" onAction="#btnReload_Pressed" style="-fx-background-radius: 0;" text="R" />
             <Button fx:id="btnBack" layoutY="1.0" mnemonicParsing="false" onAction="#btnBack_Pressed" style="-fx-background-radius: 0;" text="Back" />
-            <Button fx:id="btnLogout" layoutX="501.0" layoutY="370.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
-            <Button fx:id="btnForums" layoutX="24.0" layoutY="189.0" mnemonicParsing="false" onAction="#btnForums_Pressed" prefHeight="27.0" prefWidth="119.0" text="Ver foro" />
+            <Button fx:id="btnForums" layoutX="435.0" layoutY="381.0" mnemonicParsing="false" onAction="#btnForums_Pressed" prefHeight="27.0" prefWidth="211.0" text="Ver foro" />
+            <Button fx:id="btnLogout" layoutX="988.0" layoutY="645.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
+            <Button fx:id="btnReload" layoutX="975.0" layoutY="13.0" mnemonicParsing="false" onAction="#btnReload_Pressed" style="-fx-background-radius: 0;" text="R" />
+            <Button fx:id="btnLanguage" layoutX="1018.0" layoutY="13.0" mnemonicParsing="false" onAction="#btnLanguage_Pressed" style="-fx-background-radius: 0;" text="ES" />
+            <Label fx:id="labelWelcomeMessage" alignment="CENTER" layoutX="288.0" layoutY="142.0" prefHeight="17.0" prefWidth="505.0" text="BIENVENIDO A ACADEMIC TOOL MANAGER PROFESSIONAL [PROFESSOR]" textFill="WHITE" />
+            <Label fx:id="labelWhatDoNext" alignment="CENTER" layoutX="435.0" layoutY="181.0" prefHeight="17.0" prefWidth="211.0" text="¿Qué deseas hacer ahora?" textFill="WHITE" />
+            <Button fx:id="btnSeeMyCourses" layoutX="435.0" layoutY="296.0" mnemonicParsing="false" onAction="#btnSeeMyCourses_Pressed" prefHeight="27.0" prefWidth="211.0" style="-fx-background-radius: 0 0 0 0;" text="See my courses" textAlignment="CENTER" />
+            <Button fx:id="btnQualifyStudents" layoutX="435.0" layoutY="336.0" mnemonicParsing="false" onAction="#btnQualifyStudents_Pressed" prefHeight="27.0" prefWidth="211.0" style="-fx-background-radius: 0 0 0 0;" text="Qualify students" textAlignment="CENTER" />
          </children>
       </Pane>
-      <Button fx:id="btnQualifyStudents" layoutX="25.0" layoutY="150.0" mnemonicParsing="false" onAction="#btnQualifyStudents_Pressed" style="-fx-background-radius: 0 0 0 0;" text="Qualify students" textAlignment="CENTER" />
-      <Button fx:id="btnSeeMyCourses" layoutX="25.0" layoutY="110.0" mnemonicParsing="false" onAction="#btnSeeMyCourses_Pressed" style="-fx-background-radius: 0 0 0 0;" text="See my courses" textAlignment="CENTER" />
-      <Label fx:id="labelWhatDoNext" layoutX="24.0" layoutY="71.0" prefHeight="17.0" prefWidth="211.0" text="Qué deseas hacer ahora?" textFill="WHITE" />
-      <Label fx:id="labelWelcomeMessage" layoutX="25.0" layoutY="54.0" prefHeight="17.0" prefWidth="505.0" text="BIENVENIDO A ACADEMIC TOOL MANAGER PROFESSIONAL [ADMIN]" textFill="WHITE" />
    </children>
 </AnchorPane>
