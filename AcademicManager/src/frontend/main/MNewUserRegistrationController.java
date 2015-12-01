@@ -145,8 +145,10 @@ public class MNewUserRegistrationController extends MViewController {
 
 	public void btnContinue_Pressed() {
 		cleanInfo();
-		if (!checkValid())
+		if (!isValid()) {
+			ViewUtilities.showAlert(Messages.getUILabel(UILabel.REGISTRATION_FAILED));
 			return;
+		}
 
 		String name = txBxName.getText();
 		String lastFather = txBxLastFather.getText();
@@ -201,7 +203,7 @@ public class MNewUserRegistrationController extends MViewController {
 		}
 	}
 
-	public Boolean checkValid() {
+	public Boolean isValid() {
 		return (txBxRUT.getText().length() <= 9 && Validate.checkRUT(txBxRUT.getText()));
 	}
 
