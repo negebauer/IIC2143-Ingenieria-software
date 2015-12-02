@@ -213,6 +213,7 @@ public class MNewUserRegistrationController extends MViewController {
 		labelPickCarreer.setVisible(true);
 		btnAddStudyPlan.setVisible(true);
 		btnRemoveStudyPlan.setVisible(true);
+		labelCourses.setVisible(true);
 	}
 
 	public void hideStudentFields() {
@@ -221,6 +222,7 @@ public class MNewUserRegistrationController extends MViewController {
 		labelPickCarreer.setVisible(false);
 		btnAddStudyPlan.setVisible(false);
 		btnRemoveStudyPlan.setVisible(false);
+		labelCourses.setVisible(false);
 	}
 
 	public void btnAddStudyPlan_Pressed() {
