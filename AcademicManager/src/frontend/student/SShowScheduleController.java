@@ -156,7 +156,7 @@ public class SShowScheduleController extends MViewController {
 		labelDetails2.setText(Messages.getUILabel(UILabel.COURSE_DETAILS));
 		labelSchedule.setText(Messages.getUILabel(UILabel.SCHEDULE));
 		//		labelCoursesByCarreer.setText(Messages.getUILabel(UILabel.STUDENT_COURSES_BY_CARREER));
-		//		labelAllCourses.setText(Messages.getUILabel(UILabel.STUDENT_ALL_COURSES));
+		//	labelAllCourses.setText(Messages.getUILabel(UILabel.STUDENT_ALL_COURSES));
 		labelTitle.setText(Messages.getUILabel(UILabel.SCHEDULE).toUpperCase());
 		labelLecture.setText(Messages.getUILabel(UILabel.LECTURE));
 		labelAssistantship.setText(Messages.getUILabel(UILabel.ASSISTANTSHIP));
