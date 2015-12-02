@@ -17,8 +17,8 @@
 	            <ListView fx:id="listSelectedCourses" layoutX="580.0" layoutY="140.0" prefHeight="90.0" prefWidth="380.0" />
 	            <ListView fx:id="listDetails" layoutX="120.0" layoutY="260.0" prefHeight="360.0" prefWidth="240.0" />
             	<Button fx:id="btnDetails" layoutX="333.0" layoutY="200.0" mnemonicParsing="false" onAction="#btnDetails_Pressed" prefHeight="27.0" prefWidth="27.0" text="i" />
-	            <Button fx:id="btnEditSemester" layoutX="840.0" layoutY="563.0" mnemonicParsing="false" onAction="#btnEditSemester_Pressed" prefHeight="27.0" prefWidth="120.0" text="Editar Semestre" />
-	            <Button fx:id="btnCreateNewSemester" layoutX="840.0" layoutY="563.0" mnemonicParsing="false" onAction="#btnCreateNewSemester_Pressed" prefHeight="27.0" prefWidth="120.0" text="Nuevo Semestre" />
+	            <Button fx:id="btnEditSemester" layoutX="935.0" layoutY="563.0" mnemonicParsing="false" onAction="#btnEditSemester_Pressed" prefHeight="27.0" prefWidth="120.0" text="Editar Semestre" />
+	            <Button fx:id="btnCreateNewSemester" layoutX="935.0" layoutY="563.0" mnemonicParsing="false" onAction="#btnCreateNewSemester_Pressed" prefHeight="27.0" prefWidth="120.0" text="Nuevo Semestre" />
          		<Button fx:id="btnAddCourse" layoutX="420.0" layoutY="140.0" mnemonicParsing="false" onAction="#btnAddCourse_Pressed" prefHeight="27.0" prefWidth="120.0" style="-fx-background-radius: 0;" text="Agregar" />
 		      	<Button fx:id="btnRemoveCourse" layoutX="420.0" layoutY="180.0" mnemonicParsing="false" onAction="#btnRemoveCourse_Pressed" prefHeight="27.0" prefWidth="120.0" style="-fx-background-radius: 0;" text="Quitar" />
 		      	<Button fx:id="btnShowSchedule" layoutX="130.0" layoutY="320.0" minWidth="180.0" mnemonicParsing="false" onAction="#btnShowSchedule_Pressed" style="-fx-background-radius: 0 0 0 0;" text="Horario" textAlignment="CENTER" />
@@ -27,7 +27,7 @@
 	            <Button fx:id="btnForums" layoutX="130.0" layoutY="440.0" minWidth="180.0" mnemonicParsing="false" onAction="#btnForums_Pressed" text="Foro" />   
 	     		<Label fx:id="labelMainMessage" layoutX="720.0" layoutY="258.0" prefHeight="17.0" prefWidth="240.0" style="-fx-text-fill: #fff;" text="Aqui puedes ver tu semestre actual y editarlo" wrapText="true" />
 	            <Label fx:id="labelCurrentCoursesNames" alignment="TOP_LEFT" layoutX="580.0" layoutY="140.0" prefHeight="90.0" prefWidth="380.0" style="-fx-text-fill: #fff;" text="Curso 1: adbwadbwakd" />
-	            <Label fx:id="labelModificationResult" alignment="CENTER" layoutX="840.0" layoutY="600.0" prefHeight="27.0" prefWidth="120.0" style="-fx-text-fill: #fff;" text="Resultado modificacion" wrapText="true" />
+	            <Label fx:id="labelModificationResult" alignment="CENTER" contentDisplay="CENTER" layoutX="547.0" layoutY="560.0" prefHeight="112.0" prefWidth="372.0" style="-fx-text-fill: #fff;" text="Resultado modificacion" textAlignment="CENTER" wrapText="true" />
 	            <Label fx:id="labelSearchCourse" alignment="CENTER" layoutX="120.0" layoutY="118.0" prefWidth="120.0" style="-fx-text-fill: #fff;" text="Curso" />
 	            <Label fx:id="labelCarreer" alignment="CENTER" layoutX="120.0" layoutY="178.0" prefWidth="120.0" style="-fx-text-fill: #fff;" text="Carrera" />
              	<Label fx:id="labelCoursesList" alignment="CENTER" layoutX="840.0" layoutY="118.0" prefWidth="120.0" text="Cursos" textFill="WHITE" />
