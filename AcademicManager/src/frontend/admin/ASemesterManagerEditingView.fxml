@@ -7,27 +7,27 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.admin.ASemesterManagerEditingViewController">
+<AnchorPane prefHeight="679.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.admin.ASemesterManagerEditingViewController">
    <children>
-      <Pane layoutX="-4.0" layoutY="-1.0" prefHeight="417.0" prefWidth="616.0" style="-fx-background-color: #026;">
+      <Pane layoutX="-4.0" layoutY="-1.0" prefHeight="680.0" prefWidth="1086.0" style="-fx-background-color: #026;">
          <children>
-            <Button fx:id="btnAddCourse" layoutX="270.0" layoutY="79.0" mnemonicParsing="false" onAction="#btnAddCourse_Pressed" style="-fx-background-radius: 0;" text="Agregar Curso">
+            <Button fx:id="btnAddCourse" layoutX="560.0" layoutY="79.0" mnemonicParsing="false" onAction="#btnAddCourse_Pressed" style="-fx-background-radius: 0;" text="Agregar Curso">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <Button fx:id="btnRemoveCourse" layoutX="270.0" layoutY="113.0" mnemonicParsing="false" onAction="#btnRemoveCourse_Pressed" prefHeight="25.0" prefWidth="92.0" style="-fx-background-radius: 0;" text="Quitar Curso">
+            <Button fx:id="btnRemoveCourse" layoutX="560.0" layoutY="178.0" mnemonicParsing="false" onAction="#btnRemoveCourse_Pressed" prefHeight="25.0" prefWidth="92.0" style="-fx-background-radius: 0;" text="Quitar Curso">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
             <!-- Button fx:id="btnSaveSemester" layoutX="476.0" layoutY="378.0" mnemonicParsing="false" onAction="#btnSaveSemester_Pressed" style="-fx-background-radius: 0;" text="Guardar" /-->
-            <Label fx:id="labelSearchCourse" layoutX="27.0" layoutY="52.0" style="-fx-text-fill: #fff;" text="Buscar curso:" />
-            <ComboBox fx:id="chBxSelectedCourse" layoutX="24.0" layoutY="78.0" prefHeight="27.0" prefWidth="214.0" />
-            <ListView fx:id="listCoursesInSemester" layoutX="476.0" layoutY="194.0" prefHeight="166.0" prefWidth="102.0" />
+            <Label fx:id="labelSearchCourse" layoutX="66.0" layoutY="104.0" style="-fx-text-fill: #fff;" text="Buscar curso:" />
+            <ComboBox fx:id="chBxSelectedCourse" layoutX="66.0" layoutY="128.0" prefHeight="27.0" prefWidth="441.0" />
+            <ListView fx:id="listCoursesInSemester" layoutX="723.0" layoutY="307.0" prefHeight="226.0" prefWidth="331.0" />
             <Label fx:id="labelSearchCourses" layoutX="265.0" layoutY="22.0" style="-fx-text-fill: #fff;" text="Editor de Semestres" />
-         	<ListView fx:id="listDetails" editable="false" layoutX="394.0" layoutY="79.0" prefHeight="94.0" prefWidth="185.0" />
-            <Label fx:id="labelSchedule" layoutX="26.0" layoutY="165.0" style="-fx-text-fill: #fff;" text="Horario:" />
-            <Label fx:id="labelCourseInfo" layoutX="394.0" layoutY="52.0" style="-fx-text-fill: #fff;" text="Info curso:" />
-            <GridPane fx:id="gridSchedule" disable="true" gridLinesVisible="true" layoutX="27.0" layoutY="195.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="180.0" prefWidth="424.0" style="-fx-text-fill: #fff;">
+         	<ListView fx:id="listDetails" editable="false" layoutX="723.0" layoutY="66.0" prefHeight="177.0" prefWidth="331.0" />
+            <Label fx:id="labelSchedule" layoutX="27.0" layoutY="225.0" style="-fx-text-fill: #fff;" text="Horario:" />
+            <Label fx:id="labelCourseInfo" layoutX="771.0" layoutY="44.0" style="-fx-text-fill: #fff;" text="Info curso:" />
+            <GridPane fx:id="gridSchedule" disable="true" gridLinesVisible="true" layoutX="27.0" layoutY="260.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="344.0" prefWidth="651.0" style="-fx-text-fill: #fff;">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="70.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -54,10 +54,10 @@
                </opaqueInsets>
             </GridPane>
             <Label fx:id="labelStatusBar" layoutX="27.0" layoutY="382.0" text="" />
-            <Button fx:id="btnSaveSemester" layoutX="408.0" layoutY="378.0" mnemonicParsing="false" onAction="#btnSaveSemester_Pressed" style="-fx-background-radius: 0;" text="Guardar Semestre" />
+            <Button fx:id="btnSaveSemester" layoutX="771.0" layoutY="568.0" mnemonicParsing="false" onAction="#btnSaveSemester_Pressed" style="-fx-background-radius: 0;" text="Guardar Semestre" />
+            <Button fx:id="btnLogout" layoutX="1014.0" layoutY="639.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
          </children>
       </Pane>
-      <Button fx:id="btnLogout" layoutX="547.0" layoutY="383.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
       <Button fx:id="btnBack" layoutX="10.0" layoutY="11.0" mnemonicParsing="false" onAction="#btnBack_Pressed" style="-fx-background-radius: 0;" text="Back" />
       <Button fx:id="btnReload" layoutX="534.0" layoutY="11.0" mnemonicParsing="false" onAction="#btnReload_Pressed" style="-fx-background-radius: 0;" text="R" />
       <Button fx:id="btnLanguage" layoutX="574.0" layoutY="11.0" mnemonicParsing="false" onAction="#btnLanguage_Pressed" style="-fx-background-radius: 0;" text="ES" />

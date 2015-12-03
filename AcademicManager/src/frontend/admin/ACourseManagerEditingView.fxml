@@ -5,36 +5,36 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.admin.ACourseManagerEditingViewController">
+<AnchorPane prefHeight="680.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.admin.ACourseManagerEditingViewController">
    <children>
-      <Pane prefHeight="405.0" prefWidth="605.0" style="-fx-background-color: #026;">
+      <Pane prefHeight="680.0" prefWidth="1080.0" style="-fx-background-color: #026;">
          <children>
-            <TextField fx:id="txBxCourseName" layoutX="46.0" layoutY="88.0" promptText="ej. Calculo III" style="-fx-background-radius: 0;" />
-            <TextField fx:id="txBxInitialsCourse" layoutX="44.0" layoutY="149.0" promptText="ej. MAT1230" style="-fx-background-radius: 0;" />
-            <TextField fx:id="txBxCourseCredits" layoutX="46.0" layoutY="212.0" promptText="ej. 10" style="-fx-background-radius: 0;" />
-            <TextField fx:id="txBxCourseSection" layoutX="44.0" layoutY="274.0" promptText="ej. 2" style="-fx-background-radius: 0;" />
-            <ComboBox fx:id="chBxShcools" layoutX="45.0" layoutY="329.0" prefWidth="150.0" style="-fx-background-radius: 0;" />
-            <ChoiceBox fx:id="chBxAcademicSemesters" layoutX="217.0" layoutY="89.0" prefWidth="150.0" style="-fx-background-radius: 0;" />
-            <TextArea fx:id="txArCourseDetails" layoutX="217.0" layoutY="150.0" prefHeight="200.0" prefWidth="200.0" promptText="ej. Contenidos: Integrales, " style="-fx-background-radius: 0;" wrapText="true" />
-            <Button fx:id="btnSaveCourse" layoutX="475.0" layoutY="329.0" mnemonicParsing="false" onAction="#btnSaveCourse_Pressed" text="Guardar Curso" />
-            <Label fx:id="labelNameCourse" layoutX="46.0" layoutY="71.0" text="Nombre curso" textFill="WHITE" />
-            <Label fx:id="labelCourseInitials" layoutX="44.0" layoutY="131.0" text="Sigla curso" textFill="WHITE" />
-            <Label fx:id="labelCourseCredits" layoutX="46.0" layoutY="194.0" text="Creditos curso" textFill="WHITE" />
-            <Label fx:id="labelCourseSection" layoutX="44.0" layoutY="257.0" text="Seccion curso" textFill="WHITE" />
-            <Label fx:id="labelCourseSchool" layoutX="46.0" layoutY="312.0" text="Escuela curso" textFill="WHITE" />
-            <Label fx:id="labelSemesterDictated" layoutX="217.0" layoutY="72.0" text="Semestre dictado" textFill="WHITE" />
-            <Label fx:id="labelCourseDetails" layoutX="217.0" layoutY="132.0" text="Detalles curso" textFill="WHITE" />
-            <ChoiceBox fx:id="chBxCoordination" layoutX="411.0" layoutY="88.0" prefHeight="25.0" prefWidth="170.0" style="-fx-background-radius: 0;" />
-            <Label fx:id="labelCoordination" layoutX="411.0" layoutY="71.0" text="Cordinacion con otras secciones" textFill="WHITE" />
-            <Button fx:id="btnShowCourses" layoutX="443.0" layoutY="149.0" mnemonicParsing="false" onAction="#btnShowCourses_Pressed" style="-fx-background-radius: 0;" text="Ver Clases" />
-            <Button fx:id="btnShowEvaluations" layoutX="443.0" layoutY="182.0" mnemonicParsing="false" onAction="#btnShowEvaluations_Pressed" style="-fx-background-radius: 0;" text="Ver Evaluaciones" />
-            <Button fx:id="btnShowRequirements" layoutX="443.0" layoutY="212.0" mnemonicParsing="false" onAction="#btnShowRequirements_Pressed" style="-fx-background-radius: 0;" text="Ver Requisitos" />
-            <Button fx:id="btnShowCoRequirements" layoutX="443.0" layoutY="245.0" mnemonicParsing="false" onAction="#btnShowCoRequirements_Pressed" style="-fx-background-radius: 0;" text="Ver CoRequisitos" />
+            <TextField fx:id="txBxCourseName" layoutX="74.0" layoutY="151.0" prefHeight="25.0" prefWidth="383.0" promptText="ej. Calculo III" style="-fx-background-radius: 0;" />
+            <TextField fx:id="txBxInitialsCourse" layoutX="70.0" layoutY="257.0" prefHeight="25.0" prefWidth="170.0" promptText="ej. MAT1230" style="-fx-background-radius: 0;" />
+            <TextField fx:id="txBxCourseCredits" layoutX="74.0" layoutY="372.0" promptText="ej. 10" style="-fx-background-radius: 0;" />
+            <TextField fx:id="txBxCourseSection" layoutX="74.0" layoutY="471.0" promptText="ej. 2" style="-fx-background-radius: 0;" />
+            <ComboBox fx:id="chBxShcools" layoutX="73.0" layoutY="585.0" prefHeight="25.0" prefWidth="373.0" style="-fx-background-radius: 0;" />
+            <ChoiceBox fx:id="chBxAcademicSemesters" layoutX="525.0" layoutY="151.0" prefWidth="150.0" style="-fx-background-radius: 0;" />
+            <TextArea fx:id="txArCourseDetails" layoutX="405.0" layoutY="235.0" prefHeight="317.0" prefWidth="390.0" promptText="ej. Contenidos: Integrales, " style="-fx-background-radius: 0;" wrapText="true" />
+            <Button fx:id="btnSaveCourse" layoutX="910.0" layoutY="585.0" mnemonicParsing="false" onAction="#btnSaveCourse_Pressed" text="Guardar Curso" />
+            <Label fx:id="labelNameCourse" layoutX="74.0" layoutY="128.0" text="Nombre curso" textFill="WHITE" />
+            <Label fx:id="labelCourseInitials" layoutX="73.0" layoutY="240.0" text="Sigla curso" textFill="WHITE" />
+            <Label fx:id="labelCourseCredits" layoutX="74.0" layoutY="354.0" text="Creditos curso" textFill="WHITE" />
+            <Label fx:id="labelCourseSection" layoutX="72.0" layoutY="450.0" text="Seccion curso" textFill="WHITE" />
+            <Label fx:id="labelCourseSchool" layoutX="73.0" layoutY="561.0" text="Escuela curso" textFill="WHITE" />
+            <Label fx:id="labelSemesterDictated" layoutX="525.0" layoutY="128.0" text="Semestre dictado" textFill="WHITE" />
+            <Label fx:id="labelCourseDetails" layoutX="405.0" layoutY="217.0" text="Detalles curso" textFill="WHITE" />
+            <ChoiceBox fx:id="chBxCoordination" layoutX="825.0" layoutY="151.0" prefHeight="25.0" prefWidth="170.0" style="-fx-background-radius: 0;" />
+            <Label fx:id="labelCoordination" layoutX="824.0" layoutY="128.0" text="Cordinacion con otras secciones" textFill="WHITE" />
+            <Button fx:id="btnShowCourses" layoutX="875.0" layoutY="297.0" mnemonicParsing="false" onAction="#btnShowCourses_Pressed" style="-fx-background-radius: 0;" text="Ver Clases" />
+            <Button fx:id="btnShowEvaluations" layoutX="858.0" layoutY="360.0" mnemonicParsing="false" onAction="#btnShowEvaluations_Pressed" style="-fx-background-radius: 0;" text="Ver Evaluaciones" />
+            <Button fx:id="btnShowRequirements" layoutX="864.0" layoutY="425.0" mnemonicParsing="false" onAction="#btnShowRequirements_Pressed" style="-fx-background-radius: 0;" text="Ver Requisitos" />
+            <Button fx:id="btnShowCoRequirements" layoutX="856.0" layoutY="484.0" mnemonicParsing="false" onAction="#btnShowCoRequirements_Pressed" style="-fx-background-radius: 0;" text="Ver CoRequisitos" />
+            <Button fx:id="btnLanguage" layoutX="1037.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnLanguage_Pressed" style="-fx-background-radius: 0;" text="ES" />
+            <Button fx:id="btnReload" layoutX="1003.0" layoutY="11.0" mnemonicParsing="false" onAction="#btnReload_Pressed" style="-fx-background-radius: 0;" text="R" />
+            <Button fx:id="btnBack" layoutX="9.0" layoutY="15.0" mnemonicParsing="false" onAction="#btnBack_Pressed" style="-fx-background-radius: 0;" text="Back" />
+            <Button fx:id="btnLogout" layoutX="1013.0" layoutY="646.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
          </children>
       </Pane>
-      <Button fx:id="btnLogout" layoutX="501.0" layoutY="370.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
-      <Button fx:id="btnBack" layoutY="1.0" mnemonicParsing="false" onAction="#btnBack_Pressed" style="-fx-background-radius: 0;" text="Back" />
-      <Button fx:id="btnReload" layoutX="531.0" layoutY="1.0" mnemonicParsing="false" onAction="#btnReload_Pressed" style="-fx-background-radius: 0;" text="R" />
-      <Button fx:id="btnLanguage" layoutX="565.0" layoutY="1.0" mnemonicParsing="false" onAction="#btnLanguage_Pressed" style="-fx-background-radius: 0;" text="ES" />
    </children>
 </AnchorPane>

@@ -5,28 +5,28 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.admin.AEvaluationManagerEditingViewController">
+<AnchorPane prefHeight="680.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.admin.AEvaluationManagerEditingViewController">
    <children>
-      <Pane prefHeight="405.0" prefWidth="605.0" style="-fx-background-color: #026;">
+      <Pane prefHeight="680.0" prefWidth="1080.0" style="-fx-background-color: #026;">
          <children>
-            <ComboBox fx:id="chBxClassroom" layoutX="33.0" layoutY="134.0" prefWidth="150.0" style="-fx-background-radius: 0;" />
-            <Label fx:id="labelClassroom" layoutX="33.0" layoutY="113.0" text="Sala" textFill="WHITE" />
-            <TextField fx:id="txBxDay" layoutX="34.0" layoutY="200.0" prefHeight="25.0" prefWidth="43.0" promptText="ej. 05" style="-fx-background-radius: 0;" />
-            <TextField fx:id="txBxMonth" layoutX="87.0" layoutY="200.0" prefHeight="25.0" prefWidth="43.0" promptText="ej. 02" style="-fx-background-radius: 0;" />
-            <TextField fx:id="txBxYear" layoutX="146.0" layoutY="200.0" prefHeight="25.0" prefWidth="64.0" promptText="ej. 2014" style="-fx-background-radius: 0;" />
-            <TextField fx:id="txBxHour" layoutX="34.0" layoutY="254.0" prefHeight="25.0" prefWidth="64.0" promptText="ej. 18:30" style="-fx-background-radius: 0;" />
-            <Label fx:id="labelDay" layoutX="33.0" layoutY="182.0" text="Dia" textFill="WHITE" />
-            <Label fx:id="labelMonth" layoutX="87.0" layoutY="182.0" text="Mes" textFill="WHITE" />
-            <Label fx:id="labelYear" layoutX="146.0" layoutY="182.0" text="Año" textFill="WHITE" />
-            <Label fx:id="labelHour" layoutX="33.0" layoutY="237.0" text="Hora" textFill="WHITE" />
-            <ChoiceBox fx:id="chBxEvaluationType" layoutX="254.0" layoutY="134.0" prefWidth="150.0" style="-fx-background-radius: 0;" />
-            <Label fx:id="labelEvaluationType" layoutX="254.0" layoutY="113.0" text="Tipo evaluacion" textFill="WHITE" />
-            <Button fx:id="btnSaveEvaluation" layoutX="396.0" layoutY="307.0" mnemonicParsing="false" onAction="#btnSaveEvaluation_Pressed" text="Guardar Evaluacion" />
+            <ComboBox fx:id="chBxClassroom" layoutX="142.0" layoutY="196.0" prefWidth="150.0" style="-fx-background-radius: 0;" />
+            <Label fx:id="labelClassroom" layoutX="146.0" layoutY="179.0" text="Sala" textFill="WHITE" />
+            <TextField fx:id="txBxDay" layoutX="148.0" layoutY="393.0" prefHeight="25.0" prefWidth="43.0" promptText="ej. 05" style="-fx-background-radius: 0;" />
+            <TextField fx:id="txBxMonth" layoutX="217.0" layoutY="393.0" prefHeight="25.0" prefWidth="43.0" promptText="ej. 02" style="-fx-background-radius: 0;" />
+            <TextField fx:id="txBxYear" layoutX="297.0" layoutY="393.0" prefHeight="25.0" prefWidth="64.0" promptText="ej. 2014" style="-fx-background-radius: 0;" />
+            <TextField fx:id="txBxHour" layoutX="146.0" layoutY="495.0" prefHeight="25.0" prefWidth="64.0" promptText="ej. 18:30" style="-fx-background-radius: 0;" />
+            <Label fx:id="labelDay" layoutX="148.0" layoutY="376.0" text="Dia" textFill="WHITE" />
+            <Label fx:id="labelMonth" layoutX="217.0" layoutY="376.0" text="Mes" textFill="WHITE" />
+            <Label fx:id="labelYear" layoutX="297.0" layoutY="376.0" text="Año" textFill="WHITE" />
+            <Label fx:id="labelHour" layoutX="144.0" layoutY="478.0" text="Hora" textFill="WHITE" />
+            <ChoiceBox fx:id="chBxEvaluationType" layoutX="540.0" layoutY="196.0" prefWidth="150.0" style="-fx-background-radius: 0;" />
+            <Label fx:id="labelEvaluationType" layoutX="540.0" layoutY="179.0" text="Tipo evaluacion" textFill="WHITE" />
+            <Button fx:id="btnSaveEvaluation" layoutX="776.0" layoutY="507.0" mnemonicParsing="false" onAction="#btnSaveEvaluation_Pressed" text="Guardar Evaluacion" />
+            <Button fx:id="btnBack" layoutX="13.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnBack_Pressed" style="-fx-background-radius: 0;" text="Back" />
+            <Button fx:id="btnLanguage" layoutX="1037.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnLanguage_Pressed" style="-fx-background-radius: 0;" text="ES" />
+            <Button fx:id="btnReload" layoutX="997.0" layoutY="15.0" mnemonicParsing="false" onAction="#btnReload_Pressed" style="-fx-background-radius: 0;" text="R" />
+            <Button fx:id="btnLogout" layoutX="1007.0" layoutY="641.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
          </children>
       </Pane>
-      <Button fx:id="btnLogout" layoutX="501.0" layoutY="370.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
-      <Button fx:id="btnBack" layoutY="1.0" mnemonicParsing="false" onAction="#btnBack_Pressed" style="-fx-background-radius: 0;" text="Back" />
-      <Button fx:id="btnReload" layoutX="531.0" layoutY="1.0" mnemonicParsing="false" onAction="#btnReload_Pressed" style="-fx-background-radius: 0;" text="R" />
-      <Button fx:id="btnLanguage" layoutX="565.0" layoutY="1.0" mnemonicParsing="false" onAction="#btnLanguage_Pressed" style="-fx-background-radius: 0;" text="ES" />
    </children>
 </AnchorPane>

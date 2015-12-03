@@ -5,20 +5,20 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.admin.AEvaluationManagerMainViewController">
+<AnchorPane prefHeight="680.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.admin.AEvaluationManagerMainViewController">
    <children>
-      <Pane prefHeight="405.0" prefWidth="605.0" style="-fx-background-color: #026;">
+      <Pane prefHeight="680.0" prefWidth="1080.0" style="-fx-background-color: #026;">
          <children>
-            <Label fx:id="labelEvaluationsEditor" layoutX="34.0" layoutY="80.0" prefHeight="42.0" prefWidth="272.0" text="Editor de Evaluaciones, selecciona una evaluacion para editar o crea una nueva" textFill="WHITE" wrapText="true" />
-            <ChoiceBox fx:id="chBxEvaluations" layoutX="71.0" layoutY="144.0" prefWidth="150.0" style="-fx-background-radius: 0;" />
-            <Button fx:id="btnEditEvaluation" layoutX="71.0" layoutY="187.0" mnemonicParsing="false" onAction="#btnEditEvaluation_Pressed" style="-fx-background-radius: 0;" text="Editar evaluacion" />
-            <Button fx:id="btnCreateEvaluation" layoutX="71.0" layoutY="307.0" mnemonicParsing="false" onAction="#btnCreateEvaluation_Pressed" style="-fx-background-radius: 0;" text="Crear nueva evaluacion" />
-            <Button fx:id="btnRemoveEvaluation" layoutX="71.0" layoutY="224.0" mnemonicParsing="false" onAction="#btnRemoveEvaluation_Pressed" style="-fx-background-radius: 0;" text="Eliminar evaluacion" />
+            <Label fx:id="labelEvaluationsEditor" layoutX="423.0" layoutY="118.0" prefHeight="42.0" prefWidth="272.0" text="Editor de Evaluaciones, selecciona una evaluacion para editar o crea una nueva" textFill="WHITE" wrapText="true" />
+            <ChoiceBox fx:id="chBxEvaluations" layoutX="353.0" layoutY="242.0" prefHeight="25.0" prefWidth="412.0" style="-fx-background-radius: 0;" />
+            <Button fx:id="btnEditEvaluation" layoutX="506.0" layoutY="315.0" mnemonicParsing="false" onAction="#btnEditEvaluation_Pressed" style="-fx-background-radius: 0;" text="Editar evaluacion" />
+            <Button fx:id="btnCreateEvaluation" layoutX="131.0" layoutY="561.0" mnemonicParsing="false" onAction="#btnCreateEvaluation_Pressed" style="-fx-background-radius: 0;" text="Crear nueva evaluacion" />
+            <Button fx:id="btnRemoveEvaluation" layoutX="500.0" layoutY="397.0" mnemonicParsing="false" onAction="#btnRemoveEvaluation_Pressed" style="-fx-background-radius: 0;" text="Eliminar evaluacion" />
+            <Button fx:id="btnBack" layoutX="13.0" layoutY="15.0" mnemonicParsing="false" onAction="#btnBack_Pressed" style="-fx-background-radius: 0;" text="Back" />
+            <Button fx:id="btnLanguage" layoutX="1037.0" layoutY="11.0" mnemonicParsing="false" onAction="#btnLanguage_Pressed" style="-fx-background-radius: 0;" text="ES" />
+            <Button fx:id="btnReload" layoutX="995.0" layoutY="11.0" mnemonicParsing="false" onAction="#btnReload_Pressed" style="-fx-background-radius: 0;" text="R" />
+            <Button fx:id="btnLogout" layoutX="1010.0" layoutY="641.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
          </children>
       </Pane>
-      <Button fx:id="btnLogout" layoutX="501.0" layoutY="370.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
-      <Button fx:id="btnBack" layoutY="1.0" mnemonicParsing="false" onAction="#btnBack_Pressed" style="-fx-background-radius: 0;" text="Back" />
-      <Button fx:id="btnReload" layoutX="531.0" layoutY="1.0" mnemonicParsing="false" onAction="#btnReload_Pressed" style="-fx-background-radius: 0;" text="R" />
-      <Button fx:id="btnLanguage" layoutX="565.0" layoutY="1.0" mnemonicParsing="false" onAction="#btnLanguage_Pressed" style="-fx-background-radius: 0;" text="ES" />
    </children>
 </AnchorPane>
