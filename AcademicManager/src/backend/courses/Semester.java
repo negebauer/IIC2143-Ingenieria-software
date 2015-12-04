@@ -98,9 +98,9 @@ public class Semester {
 			response = new AddOrRemoveCourseResponse(false, Messages
 					.getMessage(Message.COURSE_WASNT_ADDED_TO_SEMESTER_EVALUATION_CLASH, Integer.toString(Eclashes)));
 
-		} else if (scheduleClash(course)) {
+		} else if (!scheduleClash(course).equals("")) {
 			response = new AddOrRemoveCourseResponse(false,
-					Messages.getMessage(Message.COURSE_WASNT_ADDED_TO_SEMESTER_SCHEDULE_CLASH));
+					Messages.getMessage(Message.COURSE_WASNT_ADDED_TO_SEMESTER_SCHEDULE_CLASH, scheduleClash(course)));
 
 		} else if (notValidatedCoRequirements.size() > 0) {
 			String notValidatedCourses = "";
@@ -159,17 +159,22 @@ public class Semester {
 	 * @param course
 	 *            The course that wants to be checked.
 	 */
-	public boolean scheduleClash(Course course) {
+	public String scheduleClash(Course course) {
+		String clashes = "";
 		for (Course courseInSemester : this.getCourses()) {
 			for (ICourse iCourseInSemester : courseInSemester.getCourses()) {
 				for (ICourse iCourse : course.getCourses()) {
 					if (iCourse.getSchedule().scheduleClash(iCourseInSemester.getSchedule())) {
-						return true;
+						if (clashes.equals("")) {
+							clashes += courseInSemester.getInitials();
+						} else {
+							clashes += ", " + courseInSemester.getInitials();
+						}
 					}
 				}
 			}
 		}
-		return false;
+		return clashes;
 	}
 
 	/**

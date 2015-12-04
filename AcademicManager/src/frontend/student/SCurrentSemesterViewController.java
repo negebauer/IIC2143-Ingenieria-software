@@ -149,9 +149,6 @@ public class SCurrentSemesterViewController extends MCourseSearcherSelectorViewC
 			}	
 		}
 	
-		if(sp.size() > 1 && currentSemester != null)
-			currentSemester.setMaxCredits(currentSemester.getMaxCredits() * sp.size());
-
 		chBxCarreer.getSelectionModel().selectFirst();
 		
 		if (firstLoad) {
@@ -266,7 +263,23 @@ public class SCurrentSemesterViewController extends MCourseSearcherSelectorViewC
 					}
 					count++;
 				}
-				if(Validate.exceedCredits(course, courses.get(count), carreer)) {
+				int all = 0;
+				int tot = 0;
+				for(ArrayList<Course> a1 : courses) {
+					for(Course a2 : a1) {
+						all += a2.getCredits();
+					}
+				}		
+				for(String c : sp) {
+					for(StudyProgram prog : Manager.INSTANCE.studyPrograms) {
+						if(c.equals(prog.getName())) {
+							if(prog.getMaxCreditsPerSemester() > tot) {
+								tot = prog.getMaxCreditsPerSemester();
+							}
+						}
+					}
+				}				
+				if(Validate.exceedCredits(course, courses.get(count), carreer, all, tot)) {
 					labelModificationResult.setText(Messages.getUILabel(UILabel.SEMESTER_CURRENT_SEMESTER_MODIFICATION_FAILED) + " excess credits");
 					return;
 				}
@@ -384,11 +397,5 @@ public class SCurrentSemesterViewController extends MCourseSearcherSelectorViewC
 		ViewUtilities.setButtonText(btnAddCourse, UILabel.ADD);	
 		ViewUtilities.setButtonText(btnRemoveCourse, UILabel.REMOVE);
 		ViewUtilities.setButtonText(btnEditSemester, UILabel.EDIT_SEMESTER);
-		
-		ViewUtilities.setButtonText(btnEditSemester, UILabel.STUDENT_EDIT_SEMESTER);
-		ViewUtilities.setButtonText(btnCurricularAdvance, UILabel.STUDENT_CURRICULAR_ADVANCE);
-		ViewUtilities.setButtonText(btnShowSchedule, UILabel.STUDENT_SEE_SCHEDULE);
-		ViewUtilities.setButtonText(btnAcademicHistory, UILabel.STUDENT_ACADEMIC_HISTORY);
-		ViewUtilities.setButtonText(btnForums, UILabel.STUDENT_SHOW_FORUM);
 	}
 }

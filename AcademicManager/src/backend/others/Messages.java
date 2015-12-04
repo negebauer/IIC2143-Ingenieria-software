@@ -108,9 +108,9 @@ public class Messages {
 		String additionalInfoReal = "\n" + additionalInfo != null ? additionalInfo : "";
 		switch (LANGUAGE()) {
 		case ENGLISH:
-			return ENGLISH.get(message) + additionalInfoReal;
+			return ENGLISH.get(message) + ": " +additionalInfoReal;
 		case SPANISH:
-			return SPANISH.get(message) + additionalInfoReal;
+			return SPANISH.get(message) + ": " + additionalInfoReal;
 		default:
 			return ERROR_MESSAGE;
 		}
