@@ -48,12 +48,7 @@ public class SMainViewController extends MViewController {
 		ViewUtilities.setButtonText(btnStudyProgram, UILabel.STUDENT_STUDY_PROGRAM);
 		ViewUtilities.setButtonText(btnCourseFinder, UILabel.STUDENT_SEARCH_COURSE);
 		ViewUtilities.setButtonText(btnAcademicHistory, UILabel.STUDENT_ACADEMIC_HISTORY);
-		
-		// TODO: [STUDENT] Create UILabel
-//		ViewUtilities.setButtonText(btnCoursedSemesters, UILabel.STUDENT_COURSED_SEMESTER);
-//		ViewUtilities.setButtonText(btnAcademicHistory, UILabel.STUDENT_ACADEMIC_HISTORY);
-//		ViewUtilities.setButtonText(btnChangeStudyProgram, UILabel.STUDENT_CHANGE_STUDY_PROGRAM);
-//		ViewUtilities.setButtonText(btnForums, UILabel.STUDENT_SHOW_FORUM);
+		ViewUtilities.setButtonText(btnForums, UILabel.STUDENT_SHOW_FORUM);
 		
 		labelWhatDoNext.setText(Messages.getUILabel(UILabel.WHAT_TO_DO_NEXT_QUESTION));
 		labelWelcomeMessage.setText(Messages.getUILabel(UILabel.WELCOME_MESSAGE));
