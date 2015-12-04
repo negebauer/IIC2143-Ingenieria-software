@@ -64,6 +64,7 @@ public class PQualifyStudentsViewController extends MViewController {
 			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 				if (newValue != null) {
 					currentStudent = Parser.getStudentForParsed(newValue, studentsToShow);
+					showGradeStudent(currentStudent);
 				} else {
 					currentStudent = null;
 				}
@@ -77,12 +78,10 @@ public class PQualifyStudentsViewController extends MViewController {
 	}
 	
 	public void showGradeStudent(Student student) {
-		if (student.getCurriculum().getCurrentCoursedSemester().getCoursedCourses().size() > 0) {
-			for (Coursed coursed : student.getCurriculum().getCurrentCoursedSemester().getCoursedCourses()) {
-				if (coursed.getInitials().equals(currentCourse.getInitials()) && coursed.getSection() == currentCourse.getSection()) {
-					txBxGrade.setText(String.valueOf(coursed.getGrade()));
-					return;
-				}
+		for (Coursed coursed : student.getCurriculum().getCurrentCoursedSemester().getCoursedCourses()) {
+			if (coursed.getInitials().equals(currentCourse.getInitials()) && coursed.getSection() == currentCourse.getSection()) {
+				txBxGrade.setText(String.valueOf(coursed.getGrade()));
+				return;
 			}
 		}
 		txBxGrade.setText("0.0");
