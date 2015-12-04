@@ -259,6 +259,17 @@ public class SCurrentSemesterViewController extends MCourseSearcherSelectorViewC
 		for (Course course : coursesToShow) {
 			if (course.getInitials().equals(initials) && course.getSection() == section
 					&& course.getName().equals(name)) {
+				int count = 0;
+				for (String prog : sp) {
+					if (prog == carreer) {
+						break;
+					}
+					count++;
+				}
+				if(Validate.exceedCredits(course, courses.get(count), carreer)) {
+					labelModificationResult.setText(Messages.getUILabel(UILabel.SEMESTER_CURRENT_SEMESTER_MODIFICATION_FAILED) + " excess credits");
+					return;
+				}
 				AddOrRemoveCourseResponse response = user.getCurriculum().getCurrentSemester().addCourse(course);
 				if (response.success) {
 					ObservableList<String> currentCourses = listSelectedCourses.getItems();
@@ -267,14 +278,7 @@ public class SCurrentSemesterViewController extends MCourseSearcherSelectorViewC
 					responseToAddOrRemoveCourse = "";
 					labelModificationResult
 							.setText(Messages.getUILabel(UILabel.SEMESTER_CURRENT_SEMESTER_MODIFICATION_SUCCESS) + "\n"
-									+ responseToAddOrRemoveCourse);
-					int count = 0;
-					for (String prog : sp) {
-						if (prog == carreer) {
-							break;
-						}
-						count++;
-					}	
+									+ responseToAddOrRemoveCourse);					
 					courses.get(count).add(course);
 					schedule.add(course);
 				} else {

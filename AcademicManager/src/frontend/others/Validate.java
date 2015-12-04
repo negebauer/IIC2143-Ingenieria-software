@@ -139,4 +139,21 @@ public final class Validate {
 		}
 		return null;
 	}
+	
+	public static boolean exceedCredits(Course course, ArrayList<Course> courses, String carreer)
+	{
+		int max = 0;
+		for(Course c : courses) {
+			max += c.getCredits();			
+		}
+		max += course.getCredits();
+		
+		StudyProgram sp = null;
+		for(StudyProgram program : Manager.INSTANCE.studyPrograms) {
+			if(program.getName().equals(carreer)) {
+				sp = program;
+			}
+		}		
+		return max > sp.getMaxCreditsPerSemester();
+	}
 }
