@@ -88,6 +88,7 @@ public class ACourseManagerMainViewController extends MCourseSearcherSelectorVie
 
 			if (Manager.INSTANCE.courses.contains(Manager.INSTANCE.currentEditignCourse)) {
 				Manager.INSTANCE.courses.remove(Manager.INSTANCE.currentEditignCourse);
+				super.updateCoursesShow();
 			}
 		} else {
 			ViewUtilities.showAlert(Messages.getUILabel(UILabel.ERROR_SELECTION) + "(" + Messages.getUILabel(UILabel.DELETE_COURSE) + ")");
