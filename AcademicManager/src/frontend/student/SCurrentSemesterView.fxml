@@ -30,7 +30,7 @@
 	            <Label fx:id="labelModificationResult" alignment="CENTER" contentDisplay="CENTER" layoutX="567.0" layoutY="560.0" prefHeight="112.0" prefWidth="372.0" style="-fx-text-fill: #fff;" text="Resultado modificacion" textAlignment="CENTER" wrapText="true" />
 	            <Label fx:id="labelSearchCourse" alignment="CENTER" layoutX="120.0" layoutY="118.0" prefWidth="120.0" style="-fx-text-fill: #fff;" text="Curso" />
 	            <Label fx:id="labelCarreer" alignment="CENTER" layoutX="120.0" layoutY="178.0" prefWidth="120.0" style="-fx-text-fill: #fff;" text="Carrera" />
-             	<Label fx:id="labelCoursesList" alignment="CENTER" layoutX="840.0" layoutY="118.0" prefWidth="120.0" text="Cursos" textFill="WHITE" />
+             	<Label fx:id="labelCoursesList" alignment="CENTER" layoutX="880.0" layoutY="118.0" prefWidth="120.0" text="Cursos" textFill="WHITE" />
               	<Label fx:id="labelDetails" alignment="CENTER" layoutX="120.0" layoutY="238.0" prefWidth="120.0" text="Detalles" textFill="WHITE" />
               	<Label fx:id="labelCoursesInfo" alignment="CENTER" layoutX="80.0" layoutY="622.0" prefWidth="320.0" text="Info cursos" textFill="WHITE" />
       	      	<Label fx:id="labelSchedule" alignment="CENTER" layoutX="460.0" layoutY="258.0" prefWidth="120.0" text="Horario" textFill="WHITE" />

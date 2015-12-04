@@ -449,7 +449,10 @@ public class Messages {
 		SAVE,
 		SEMESTER,
 		CARREER,
-		SCHEDULE
+		SCHEDULE, 
+		OTHER_CARREERS, 
+		ALL_COURSES, 
+		COURSES_BY_CARREER
 	}
 
 	public static String getUILabel(UILabel label) {
@@ -617,6 +620,9 @@ public class Messages {
 		result.put(UILabel.SEMESTER, 										"Semester");
 		result.put(UILabel.CARREER, 										"Carreer");
 		result.put(UILabel.SCHEDULE, 										"Schedule");
+		result.put(UILabel.OTHER_CARREERS, 									"Other Carreers");
+		result.put(UILabel.ALL_COURSES, 									"All courses");
+		result.put(UILabel.COURSES_BY_CARREER, 								"Courses by carreer");
 		return Collections.unmodifiableMap(result);
 	}
 
@@ -768,7 +774,10 @@ public class Messages {
 		result.put(UILabel.SEMESTER, 										"Semestre");
 		result.put(UILabel.CARREER, 										"Carrera");
 		result.put(UILabel.SCHEDULE, 										"Horario");
-		return Collections.unmodifiableMap(result);
+		result.put(UILabel.OTHER_CARREERS, 									"Otras Carreras");
+		result.put(UILabel.ALL_COURSES, 									"Todos los cursos");
+		result.put(UILabel.COURSES_BY_CARREER, 								"Cursos por carrera");
+		return Collections.unmodifiableMap(result); 
 	}
 
 }
