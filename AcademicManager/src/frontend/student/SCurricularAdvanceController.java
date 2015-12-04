@@ -123,5 +123,7 @@ public class SCurricularAdvanceController extends MViewController {
 		labelTitle.setText(Messages.getUILabel(UILabel.STUDENT_CURRICULAR_ADVANCE).toUpperCase());
 		labelStudyProgram.setText(Messages.getUILabel(UILabel.STUDENT_STUDY_PROGRAM));
 		ViewUtilities.setButtonText(btnAddStudyProgram, UILabel.EDIT_STUDY_PROGRAM);
+		labelCurricularAdvanceWelcomeMessage.setText(Messages.getUILabel(UILabel.CURRICULAR_ADVANCE_WELCOME));
+		labelCurricularAdvanceWelcomeMessage2.setText(Messages.getUILabel(UILabel.CURRICULAR_ADVANCE_WELCOME_2));
 	}
 }
