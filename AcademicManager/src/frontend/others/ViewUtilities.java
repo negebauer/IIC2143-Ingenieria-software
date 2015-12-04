@@ -6,9 +6,11 @@ import java.util.ArrayList;
 
 import backend.courses.Assistantship;
 import backend.courses.Course;
+import backend.courses.Coursed;
 import backend.courses.CoursedSemester;
 import backend.courses.Laboratory;
 import backend.courses.Lecture;
+import backend.courses.Semester;
 import backend.courses.StudyProgram;
 import backend.courses.Schedule.DayModuleTuple;
 import backend.manager.Manager;
@@ -378,5 +380,56 @@ public final class ViewUtilities {
 			}
 		}
 		return details;
+	}
+	
+	public static ArrayList<Coursed> getOFGs(Student user, String carreer) {
+		
+		ArrayList<Course> pc = new ArrayList<Course>();
+		for (StudyProgram sp : Manager.INSTANCE.studyPrograms) {
+			if (sp.getName().equals(carreer)) {
+				for (Semester semester : sp.getSemesters()) {
+					for (Course course : semester.getCourses()) {
+						pc.add(course);
+					}
+				}
+				break;
+			}
+		}
+		ArrayList<Coursed> ofgs = new ArrayList<Coursed>();
+		for (Coursed coursed : user.getCurriculum().getCoursedCourses()) {
+			boolean ofg = true;
+			for (Course course : pc) {
+				if (course.getInitials().equals(coursed.getInitials())) {
+					ofg = false;
+					break;
+				}
+			}
+			if(ofg) {
+				ofgs.add(coursed);
+			}
+		}			
+		if (ofgs.size() < 6) {
+			return ofgs;
+		}
+		
+		ArrayList<Coursed> best = new ArrayList<Coursed>();		
+		for (int i = 0; i < 5; i++) {			
+			best.add(getBest(ofgs));
+			ofgs.remove(getBest(ofgs));		
+		}
+		return best;
+	}
+
+	public static Coursed getBest(ArrayList<Coursed> courses) {
+		
+		double max = 0;
+		Coursed best = null;
+		for (Coursed coursed : courses) {
+			if (coursed.getGrade() > max) {
+				best = coursed;
+				max = coursed.getGrade();
+			}
+		}
+		return best;
 	}
 }

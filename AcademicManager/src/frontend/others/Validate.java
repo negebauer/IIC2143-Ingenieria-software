@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import backend.courses.Course;
+import backend.courses.Coursed;
 import backend.courses.Semester;
 import backend.courses.StudyProgram;
 import backend.courses.Schedule.DayModuleTuple;
@@ -156,5 +157,14 @@ public final class Validate {
 		}		
 		
 		return max > sp.getMaxCreditsPerSemester() || size + course.getCredits() > tot;
+	}
+	
+	public static boolean checkOFG(Coursed coursed, ArrayList<Coursed> courses) {
+		for (Coursed c : courses) {
+			if (coursed.getInitials().equals(c.getInitials())) {
+				return true;
+			}
+		}
+		return false;
 	}
 }

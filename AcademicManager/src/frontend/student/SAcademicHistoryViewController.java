@@ -11,6 +11,7 @@ import backend.manager.Manager;
 import backend.users.Student;
 import frontend.main.MViewController;
 import frontend.others.Validate;
+import frontend.others.ViewUtilities;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -72,9 +73,11 @@ public class SAcademicHistoryViewController extends MViewController {
 		double totalGrade = 0;
 		double totalCarreerGrade = 0;
 		int totalCourses = 0;
+		
+		ArrayList<Coursed> ofgs = ViewUtilities.getOFGs(user, carreer);			
 		for (Coursed coursed : user.getCurriculum().getCoursedCourses()) {
 			totalGrade += coursed.getGrade();		
-			if (Validate.checkCourse(coursed.getInitials(), carreer)) {
+			if (Validate.checkCourse(coursed.getInitials(), carreer) || Validate.checkOFG(coursed, ofgs)) {
 				totalCarreerGrade += coursed.getGrade();
 				totalCourses++;
 			}
@@ -97,9 +100,13 @@ public class SAcademicHistoryViewController extends MViewController {
 			for (Coursed coursed : coursedSemester.getCoursedCourses()) {
 				fullText += coursed.getInitials() + "-" + coursed.getSection() + " " + coursed.getName() + ": "
 						+ coursed.getGrade() + "\n\t";
-				if (Validate.checkCourse(coursed.getInitials(), carreer)) {
+				if (Validate.checkCourse(coursed.getInitials(), carreer) || Validate.checkOFG(coursed, ofgs)) {
+					String ofg = "";
+					if(Validate.checkOFG(coursed, ofgs)) {
+						ofg = " **OFG";
+					}	
 					aux += coursed.getInitials() + "-" + coursed.getSection() + " " + coursed.getName() + ": "
-							+ coursed.getGrade() + "\n\t";
+							+ coursed.getGrade() + ofg +"\n\t";
 					sum += coursed.getGrade();
 					count++;
 				}
@@ -114,9 +121,14 @@ public class SAcademicHistoryViewController extends MViewController {
 					+ prom + "\n\t" + aux + "\n";
 			fullText += "\n";
 		}
+		
+		
+		
 		txAAcademicHistory.setText(fullText);
 		txAAcademic.setText(academic);
 	}
+	
+	
 	
 	private ObservableList<String> generateCoursedSemesters() {
 		ArrayList<String> coursedSemesters = new ArrayList<String>();
