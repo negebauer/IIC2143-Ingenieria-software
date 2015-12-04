@@ -59,12 +59,11 @@ public class SAcademicHistoryViewController extends MViewController {
 			@Override
 			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 				carreer = chBxCarreer.getSelectionModel().getSelectedItem().trim();
-				chBxCoursedSemesters.getSelectionModel().selectFirst();
-				chBxCoursedSemesters.getSelectionModel().selectLast();
 				refresh();
 			}
 		});
 		chBxCarreer.getSelectionModel().selectFirst();
+		chBxCoursedSemesters.getSelectionModel().selectLast();
 	}
 	
 	public void refresh() {
