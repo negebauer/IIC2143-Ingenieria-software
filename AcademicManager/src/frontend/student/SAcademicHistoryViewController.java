@@ -11,6 +11,8 @@ import backend.manager.Manager;
 import backend.users.Student;
 import frontend.main.MViewController;
 import frontend.others.Validate;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -47,16 +49,21 @@ public class SAcademicHistoryViewController extends MViewController {
 		}
 		chBxCarreer.setItems(FXCollections.observableArrayList(sp));
 		chBxCoursedSemesters.setItems(generateCoursedSemesters());
-		chBxCoursedSemesters.setOnAction((event) -> {
-			showCoursedSemesterGrades(chBxCoursedSemesters.getSelectionModel().getSelectedItem());
+		chBxCoursedSemesters.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+			@Override
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+				showCoursedSemesterGrades(chBxCoursedSemesters.getSelectionModel().getSelectedItem());
+			}
 		});	
-		chBxCarreer.setOnAction((event) -> {
-			carreer = chBxCarreer.getSelectionModel().getSelectedItem().trim();
-			chBxCoursedSemesters.getSelectionModel().selectFirst();
-			chBxCoursedSemesters.getSelectionModel().selectLast();
-			refresh();
+		chBxCarreer.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+			@Override
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+				carreer = chBxCarreer.getSelectionModel().getSelectedItem().trim();
+				refresh();
+			}
 		});
 		chBxCarreer.getSelectionModel().selectFirst();
+		chBxCoursedSemesters.getSelectionModel().selectLast();
 	}
 	
 	public void refresh() {

@@ -140,20 +140,21 @@ public final class Validate {
 		return null;
 	}
 	
-	public static boolean exceedCredits(Course course, ArrayList<Course> courses, String carreer)
+	public static boolean exceedCredits(Course course, ArrayList<Course> courses, String carreer, int size, int tot)
 	{
 		int max = 0;
 		for(Course c : courses) {
 			max += c.getCredits();			
 		}
 		max += course.getCredits();
-		
+				
 		StudyProgram sp = null;
 		for(StudyProgram program : Manager.INSTANCE.studyPrograms) {
 			if(program.getName().equals(carreer)) {
 				sp = program;
 			}
 		}		
-		return max > sp.getMaxCreditsPerSemester();
+		
+		return max > sp.getMaxCreditsPerSemester() || size + course.getCredits() > tot;
 	}
 }

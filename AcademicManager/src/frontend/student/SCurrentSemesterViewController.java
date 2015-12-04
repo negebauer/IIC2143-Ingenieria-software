@@ -126,40 +126,47 @@ public class SCurrentSemesterViewController extends MCourseSearcherSelectorViewC
 			labelModificationResult.setText(Messages.getUILabel(UILabel.SEMESTER_CURRENT_SEMESTER_MODIFICATION_FAILED)
 					+ "\n" + responseToAddOrRemoveCourse);
 		}
-
-		Semester currentSemester = user.getCurriculum().getCurrentSemester();
-		if (currentSemester != null && currentSemester.getCourses().size() != 0) {
-			String semesterInfo = currentSemester.getYear() + "-" + currentSemester.getSemester().getSemesterNumber();
-			labelCurrentSemester.setText(Messages.getUILabel(UILabel.SEMESTER_CURRENT_SEMESTER_INFO) + semesterInfo);
 			
-			ObservableList<String> currentCourses = listSelectedCourses.getItems();
-			for (int i = 0; i < sp.size(); i++) {
-				courses.add(new ArrayList<Course>());
-			}				
-			for (Course course : currentSemester.getCourses()) {
+		if (firstLoad) {		
+			Semester currentSemester = user.getCurriculum().getCurrentSemester();
+			if (currentSemester != null && currentSemester.getCourses().size() != 0) {
+				String semesterInfo = currentSemester.getYear() + "-" + currentSemester.getSemester().getSemesterNumber();
+				labelCurrentSemester.setText(Messages.getUILabel(UILabel.SEMESTER_CURRENT_SEMESTER_INFO) + semesterInfo);
+				
+				ObservableList<String> currentCourses = listSelectedCourses.getItems();
 				for (int i = 0; i < sp.size(); i++) {
-					if (Validate.checkCourse(course.getInitials(), sp.get(i))) {
-						currentCourses.add(getParsedCourse(course.getInitials(), course.getSection(), course.getName()));
-						courses.get(i).add(course);
-						schedule.add(course);
-						break;
+					courses.add(new ArrayList<Course>());
+				}				
+				for (Course course : currentSemester.getCourses()) {
+					for (int i = 0; i < sp.size(); i++) {
+						if (Validate.checkCourse(course.getInitials(), sp.get(i))) {
+							currentCourses.add(getParsedCourse(course.getInitials(), course.getSection(), course.getName()));
+							courses.get(i).add(course);
+							schedule.add(course);
+							break;
+						}
 					}
-				}
-				listSelectedCourses.setItems(FXCollections.observableArrayList(currentCourses));
-			}	
-		}
-	
-		if(sp.size() > 1 && currentSemester != null)
-			currentSemester.setMaxCredits(currentSemester.getMaxCredits() * sp.size());
-
-		chBxCarreer.getSelectionModel().selectFirst();
-		
-		if (firstLoad) {
+					listSelectedCourses.setItems(FXCollections.observableArrayList(currentCourses));
+				}	
+			}
 			showInfoOfSemesterOrEditor();
 			firstLoad = false;
 		}
+		else {
+			showSchedule();
+		}
+		chBxCarreer.getSelectionModel().selectFirst();
 	}
 
+	public void showSchedule() {		
+		schedule.clear();
+		for (ArrayList<Course> a1 : courses) {
+			for (Course a2 : a1) {
+				schedule.add(a2);
+			}
+		}	
+	}
+	
 	public void showInfoOfSemesterOrEditor() {
 		Semester currentSemester = user.getCurriculum().getCurrentSemester();
 		if (currentSemester == null || currentSemester.getCourses().size() == 0) {
@@ -180,15 +187,17 @@ public class SCurrentSemesterViewController extends MCourseSearcherSelectorViewC
 					break;
 				}
 				count++;
-			}			
-			for (Course course : currentSemester.getCourses()) {
-				for (Course c : courses.get(count)) {
-					if (course.getInitials().equals(c.getInitials())) {
-						String courseName = course.getInitials() + "-" + course.getSection() + ": " + course.getName();
-						names = names == "" ? courseName : names + courseName;
-						names += "\n";
-					}			
-				}				
+			}
+			if(!carreer.equals("")) {
+				for (Course course : currentSemester.getCourses()) {
+					for (Course c : courses.get(count)) {
+						if (course.getInitials().equals(c.getInitials())) {
+							String courseName = course.getInitials() + "-" + course.getSection() + ": " + course.getName();
+							names = names == "" ? courseName : names + courseName;
+							names += "\n";
+						}			
+					}				
+				}
 			}
 			labelCurrentCoursesNames.setText(names);
 			showSemesterInfo();
@@ -266,7 +275,23 @@ public class SCurrentSemesterViewController extends MCourseSearcherSelectorViewC
 					}
 					count++;
 				}
-				if(Validate.exceedCredits(course, courses.get(count), carreer)) {
+				int all = 0;
+				int tot = 0;
+				for(ArrayList<Course> a1 : courses) {
+					for(Course a2 : a1) {
+						all += a2.getCredits();
+					}
+				}		
+				for(String c : sp) {
+					for(StudyProgram prog : Manager.INSTANCE.studyPrograms) {
+						if(c.equals(prog.getName())) {
+							if(prog.getMaxCreditsPerSemester() > tot) {
+								tot = prog.getMaxCreditsPerSemester();
+							}
+						}
+					}
+				}				
+				if(Validate.exceedCredits(course, courses.get(count), carreer, all, tot)) {
 					labelModificationResult.setText(Messages.getUILabel(UILabel.SEMESTER_CURRENT_SEMESTER_MODIFICATION_FAILED) + " excess credits");
 					return;
 				}
@@ -384,8 +409,6 @@ public class SCurrentSemesterViewController extends MCourseSearcherSelectorViewC
 		ViewUtilities.setButtonText(btnAddCourse, UILabel.ADD);	
 		ViewUtilities.setButtonText(btnRemoveCourse, UILabel.REMOVE);
 		ViewUtilities.setButtonText(btnEditSemester, UILabel.EDIT_SEMESTER);
-		
-		ViewUtilities.setButtonText(btnEditSemester, UILabel.STUDENT_EDIT_SEMESTER);
 		ViewUtilities.setButtonText(btnCurricularAdvance, UILabel.STUDENT_CURRICULAR_ADVANCE);
 		ViewUtilities.setButtonText(btnShowSchedule, UILabel.STUDENT_SEE_SCHEDULE);
 		ViewUtilities.setButtonText(btnAcademicHistory, UILabel.STUDENT_ACADEMIC_HISTORY);
