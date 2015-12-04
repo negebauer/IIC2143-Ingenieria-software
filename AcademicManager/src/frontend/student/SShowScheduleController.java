@@ -68,7 +68,7 @@ public class SShowScheduleController extends MViewController {
 	public void setUp() {
 		super.setUp();
 		
-		schedule = new ViewSchedule(gridSchedule);	
+		schedule = new ViewSchedule(gridSchedule);
 		
 		chBxCarreer.setCursor(Cursor.HAND);
 		chBxCarreer.setItems(ViewUtilities.getCarreersList(user));
@@ -103,7 +103,8 @@ public class SShowScheduleController extends MViewController {
 		
 		chBxSemester.getSelectionModel().selectLast();
 		chBxCarreer.getSelectionModel().selectFirst();
-
+		showSchedule();
+		
 		if (ViewUtilities.getSemestersList(user).size() > 0 && load) {
 			load = false;
 		}
@@ -155,12 +156,13 @@ public class SShowScheduleController extends MViewController {
 		labelDetails1.setText(Messages.getUILabel(UILabel.COURSE_DETAILS));
 		labelDetails2.setText(Messages.getUILabel(UILabel.COURSE_DETAILS));
 		labelSchedule.setText(Messages.getUILabel(UILabel.SCHEDULE));
-		//		labelCoursesByCarreer.setText(Messages.getUILabel(UILabel.STUDENT_COURSES_BY_CARREER));
-		//	labelAllCourses.setText(Messages.getUILabel(UILabel.STUDENT_ALL_COURSES));
+		labelCoursesByCarreer.setText(Messages.getUILabel(UILabel.COURSES_BY_CARREER));
+		labelAllCourses.setText(Messages.getUILabel(UILabel.ALL_COURSES));
 		labelTitle.setText(Messages.getUILabel(UILabel.SCHEDULE).toUpperCase());
 		labelLecture.setText(Messages.getUILabel(UILabel.LECTURE));
 		labelAssistantship.setText(Messages.getUILabel(UILabel.ASSISTANTSHIP));
 		labelLaboratory.setText(Messages.getUILabel(UILabel.LABORATORY));
 		labelWelcomeMessage.setText(Messages.getUILabel(UILabel.SCHEDULE_MAIN_MESSAGE));
+		checkShowOthers.setText(Messages.getUILabel(UILabel.OTHER_CARREERS));
 	}
 }
