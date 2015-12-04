@@ -6,6 +6,7 @@ import backend.courses.Assistantship;
 import backend.courses.Classroom;
 import backend.courses.Course;
 import backend.courses.Evaluation;
+import backend.courses.Evaluation.CourseEvaluation;
 import backend.courses.Laboratory;
 import backend.courses.Lecture;
 import backend.courses.Schedule;
@@ -200,7 +201,28 @@ public class CourseModificationChecker {
 		}
 		return classRoomClash;
 	}
-
+	
+	public static String evaluationClash(Evaluation evaluation) {
+		String clash = "";
+		for (Course course : Manager.INSTANCE.courses) {
+			for (Evaluation clashEvaluation : course.getEvaluations()) {
+				if (clashEvaluation != evaluation) {
+					if (clashEvaluation.getDate().equals(evaluation.getDate()) && clashEvaluation.getClassroom().equals(evaluation.getClassroom())) {
+						if (clash.equals("")) {
+							clash += " " + course.getInitials() + "-" + CourseEvaluation.getCourseEvaluationMessage(clashEvaluation.getCourseEvaluation());
+						} else {
+							clash += ", " + course.getInitials() + "-" + CourseEvaluation.getCourseEvaluationMessage(clashEvaluation.getCourseEvaluation());
+						}
+					}
+				}
+				
+			}
+		}
+		
+		
+		return clash;
+	}
+	
 	/**
 	 * Checks for professor clash (a professor doing two classes at the same
 	 * day:module).

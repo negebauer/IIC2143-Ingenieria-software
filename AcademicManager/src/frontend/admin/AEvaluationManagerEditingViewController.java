@@ -8,6 +8,7 @@ import java.util.Locale;
 import backend.courses.Classroom;
 import backend.courses.Evaluation;
 import backend.courses.Evaluation.CourseEvaluation;
+import backend.manager.CourseModificationChecker;
 import backend.manager.Manager;
 import backend.others.Messages;
 import backend.others.Messages.UILabel;
@@ -114,19 +115,27 @@ public class AEvaluationManagerEditingViewController extends MViewController {
 			evaluationType = CourseEvaluation
 					.getCourseEvaluation(chBxEvaluationType.getSelectionModel().getSelectedItem());
 		}
-
+		
 		Evaluation selectedEvaluation = Manager.INSTANCE.currentEditingEvaluation;
-
-		if (isCreating) {
+		if (selectedEvaluation == null) {
 			selectedEvaluation = new Evaluation(evaluationType, classroom, dateString);
-			Manager.INSTANCE.currentEditignCourse.getEvaluations().add(selectedEvaluation);
-		} else {
-			selectedEvaluation.setClassroom(classroom);
-			selectedEvaluation.setDate(Utilities.getDateFromString(dateString));
-			selectedEvaluation.setCourseEvaluation(evaluationType);
 		}
-
-		Manager.INSTANCE.currentEditingEvaluation = null;
-		super.btnBack_Pressed();
+		String clash = CourseModificationChecker.evaluationClash(selectedEvaluation);
+				
+		if (!clash.equals("")) {
+			ViewUtilities.showAlert("La Evaluacion tiene tope con otra:" + clash);
+		} else {
+			if (isCreating) {
+				Manager.INSTANCE.currentEditignCourse.getEvaluations().add(selectedEvaluation);
+			} else {
+				selectedEvaluation.setClassroom(classroom);
+				selectedEvaluation.setDate(Utilities.getDateFromString(dateString));
+				selectedEvaluation.setCourseEvaluation(evaluationType);
+			}
+	
+			Manager.INSTANCE.currentEditingEvaluation = null;
+			super.btnBack_Pressed();
+		}
+		
 	}
 }
