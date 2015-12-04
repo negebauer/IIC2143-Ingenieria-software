@@ -397,5 +397,10 @@ public class SCurrentSemesterViewController extends MCourseSearcherSelectorViewC
 		ViewUtilities.setButtonText(btnAddCourse, UILabel.ADD);	
 		ViewUtilities.setButtonText(btnRemoveCourse, UILabel.REMOVE);
 		ViewUtilities.setButtonText(btnEditSemester, UILabel.EDIT_SEMESTER);
+		ViewUtilities.setButtonText(btnEditSemester, UILabel.STUDENT_EDIT_SEMESTER);
+		ViewUtilities.setButtonText(btnCurricularAdvance, UILabel.STUDENT_CURRICULAR_ADVANCE);
+		ViewUtilities.setButtonText(btnShowSchedule, UILabel.STUDENT_SEE_SCHEDULE);
+		ViewUtilities.setButtonText(btnAcademicHistory, UILabel.STUDENT_ACADEMIC_HISTORY);
+		ViewUtilities.setButtonText(btnForums, UILabel.STUDENT_SHOW_FORUM);
 	}
 }
