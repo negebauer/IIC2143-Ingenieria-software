@@ -53,7 +53,7 @@
                   <Insets />
                </opaqueInsets>
             </GridPane>
-            <Label fx:id="labelStatusBar" layoutX="27.0" layoutY="382.0" text="" />
+            <Label fx:id="labelStatusBar" layoutX="31.0" layoutY="614.0" prefHeight="55.0" prefWidth="540.0" text="" textFill="WHITE" wrapText="true" />
             <Button fx:id="btnSaveSemester" layoutX="771.0" layoutY="568.0" mnemonicParsing="false" onAction="#btnSaveSemester_Pressed" style="-fx-background-radius: 0;" text="Guardar Semestre" />
             <Button fx:id="btnLogout" layoutX="925.0" layoutY="641.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
          </children>
