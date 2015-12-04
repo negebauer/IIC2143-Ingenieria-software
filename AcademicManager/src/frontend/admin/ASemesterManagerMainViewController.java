@@ -68,6 +68,14 @@ public class ASemesterManagerMainViewController extends MViewController {
 		Semester semester = Manager.INSTANCE.currentEditingStudyProgram.getSemesters().get(indexChoosed);
 		if (semester.getCourses().size() == 0) {
 			Manager.INSTANCE.currentEditingStudyProgram.getSemesters().remove(semester);
+			int size = Manager.INSTANCE.currentEditingStudyProgram.getSemesters().size();
+			if (size > 0) {
+				ArrayList<String> semesters = new ArrayList<String>();
+				for (int i = 1; i <= size; i++) {
+					semesters.add(i + "");
+				}
+				chBxSemesters.setItems(FXCollections.observableArrayList(semesters));
+			}
 		} else {
 			 ViewUtilities.showAlert(Messages.getUILabel(UILabel.ERROR_REMOVING_SEMESTER));
 		}
