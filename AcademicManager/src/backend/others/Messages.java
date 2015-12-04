@@ -299,6 +299,7 @@ public class Messages {
 	}
 
 	public enum UILabel {
+		STUDENT_ACADEMIC_HISTORY,
 		REGISTRATION_FAILED,
 		REMOVE_ICOURSE,
 		STUDENT_EDIT_SEMESTER, 
@@ -464,6 +465,7 @@ public class Messages {
 
 	private static Map<UILabel, String> createMapUILabelEnglish() {
 		Map<UILabel, String> result = new HashMap<UILabel, String>();
+		result.put(UILabel.STUDENT_ACADEMIC_HISTORY, 						"Academic History");
 		result.put(UILabel.REGISTRATION_FAILED, 							"Registration failed, RUT invalid");
 		result.put(UILabel.STUDENT_EDIT_SEMESTER, 							"Semester Manager");
 		result.put(UILabel.STUDENT_QUALIFY_SEMESTER, 						"Qualify a Semester");
@@ -614,6 +616,7 @@ public class Messages {
 
 	private static Map<UILabel, String> createMapUILabelSpanish() {
 		Map<UILabel, String> result = new HashMap<UILabel, String>();
+		result.put(UILabel.STUDENT_ACADEMIC_HISTORY, 						"Historial Academico");
 		result.put(UILabel.REGISTRATION_FAILED, 							"Registro fallo, RUT invalido");
 		result.put(UILabel.STUDENT_EDIT_SEMESTER, 							"Manager de Semestres");
 		result.put(UILabel.STUDENT_QUALIFY_SEMESTER,  						"Calificar Semestre");

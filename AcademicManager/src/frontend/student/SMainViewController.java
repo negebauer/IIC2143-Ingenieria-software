@@ -47,6 +47,7 @@ public class SMainViewController extends MViewController {
 		ViewUtilities.setButtonText(btnShowSchedule, UILabel.STUDENT_SEE_SCHEDULE);
 		ViewUtilities.setButtonText(btnStudyProgram, UILabel.STUDENT_STUDY_PROGRAM);
 		ViewUtilities.setButtonText(btnCourseFinder, UILabel.STUDENT_SEARCH_COURSE);
+		ViewUtilities.setButtonText(btnAcademicHistory, UILabel.STUDENT_ACADEMIC_HISTORY);
 		
 		// TODO: [STUDENT] Create UILabel
 //		ViewUtilities.setButtonText(btnCoursedSemesters, UILabel.STUDENT_COURSED_SEMESTER);
