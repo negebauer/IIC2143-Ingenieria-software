@@ -11,7 +11,7 @@
             <Button fx:id="btnLanguage" layoutX="1037.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnLanguage_Pressed" style="-fx-background-radius: 0;" text="ES" />
             <Button fx:id="btnReload" layoutX="1000.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnReload_Pressed" style="-fx-background-radius: 0;" text="R" />
             <Button fx:id="btnBack" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnBack_Pressed" style="-fx-background-radius: 0;" text="Back" />
-            <Button fx:id="btnLogout" layoutX="1012.0" layoutY="641.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
+            <Button fx:id="btnLogout" layoutX="925.0" layoutY="641.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
             <TextField fx:id="txBxNameStudyProgram" layoutX="134.0" layoutY="136.0" prefHeight="25.0" prefWidth="324.0" promptText="ej. Ingenieria Civil" />
             <TextField fx:id="txBxYearStudyProgram" layoutX="138.0" layoutY="283.0" promptText="ej. 2013" />
             <TextField fx:id="txBxMaxCreditsPerSemester" layoutX="138.0" layoutY="463.0" promptText="ej. 50" />

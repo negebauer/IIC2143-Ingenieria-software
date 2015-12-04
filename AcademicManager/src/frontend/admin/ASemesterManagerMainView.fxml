@@ -14,7 +14,7 @@
             <ChoiceBox fx:id="chBxSemesters" layoutX="376.0" layoutY="271.0" prefHeight="25.0" prefWidth="365.0" style="-fx-background-radius: 0;" />
             <Button fx:id="btnEditSemester" layoutX="509.0" layoutY="351.0" mnemonicParsing="false" onAction="#btnEditSemester_Pressed" style="-fx-background-radius: 0;" text="Editar Semestre" />
             <Button fx:id="btnRemoveLastSemester" layoutX="484.0" layoutY="445.0" mnemonicParsing="false" onAction="#btnRemoveLastSemester_Pressed" style="-fx-background-radius: 0;" text="Eliminar Ultimo Semestre" />
-            <Button fx:id="btnLogout" layoutX="1012.0" layoutY="639.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
+            <Button fx:id="btnLogout" layoutX="925.0" layoutY="641.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
             <Button fx:id="btnLanguage" layoutX="1036.0" layoutY="16.0" mnemonicParsing="false" onAction="#btnLanguage_Pressed" style="-fx-background-radius: 0;" text="ES" />
             <Button fx:id="btnReload" layoutX="994.0" layoutY="16.0" mnemonicParsing="false" onAction="#btnReload_Pressed" style="-fx-background-radius: 0;" text="R" />
             <Button fx:id="btnBack" layoutX="14.0" layoutY="16.0" mnemonicParsing="false" onAction="#btnBack_Pressed" style="-fx-background-radius: 0;" text="Back" />

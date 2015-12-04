@@ -55,7 +55,7 @@
             </GridPane>
             <Label fx:id="labelStatusBar" layoutX="27.0" layoutY="382.0" text="" />
             <Button fx:id="btnSaveSemester" layoutX="771.0" layoutY="568.0" mnemonicParsing="false" onAction="#btnSaveSemester_Pressed" style="-fx-background-radius: 0;" text="Guardar Semestre" />
-            <Button fx:id="btnLogout" layoutX="1014.0" layoutY="639.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
+            <Button fx:id="btnLogout" layoutX="925.0" layoutY="641.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
          </children>
       </Pane>
       <Button fx:id="btnBack" layoutX="10.0" layoutY="11.0" mnemonicParsing="false" onAction="#btnBack_Pressed" style="-fx-background-radius: 0;" text="Back" />
