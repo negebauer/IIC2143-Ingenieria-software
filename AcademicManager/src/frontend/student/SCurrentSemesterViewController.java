@@ -413,5 +413,5 @@ public class SCurrentSemesterViewController extends MCourseSearcherSelectorViewC
 		ViewUtilities.setButtonText(btnShowSchedule, UILabel.STUDENT_SEE_SCHEDULE);
 		ViewUtilities.setButtonText(btnAcademicHistory, UILabel.STUDENT_ACADEMIC_HISTORY);
 		ViewUtilities.setButtonText(btnForums, UILabel.STUDENT_SHOW_FORUM);
-	}
+	} 
 }
