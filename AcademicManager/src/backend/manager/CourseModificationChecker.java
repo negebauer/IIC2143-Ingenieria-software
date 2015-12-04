@@ -3,6 +3,7 @@ package backend.manager;
 import java.util.ArrayList;
 
 import backend.courses.Assistantship;
+import backend.courses.Classroom;
 import backend.courses.Course;
 import backend.courses.Evaluation;
 import backend.courses.Laboratory;
@@ -276,6 +277,21 @@ public class CourseModificationChecker {
 		return clash;
 	}
 	
+	public static String classroomClash(Classroom classroom, Schedule schedule) {
+		String clashes = "";
+		for (Course course : Manager.INSTANCE.courses) {
+			for (ICourse iCourse : course.getCourses()) {
+				if (iCourse.getSchedule().scheduleClash(schedule)) {
+					if (clashes != "") {
+						clashes += ", " + course.getInitials() + "-" + iCourse.toString();	
+					} else {
+						clashes += " " + course.getInitials() + "-" + iCourse.toString();	
+					}
+				}
+			}
+		}
+		return clashes; 
+	}
 	
 	/**
 	 * Class used as a data container for answering create course call. Contains
