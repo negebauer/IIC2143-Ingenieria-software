@@ -1,0 +1,25 @@
+Patrones de Diseño GoF:
+De Creacion:
+    - Singleton: Clase Manager, unica instancia para cada ejecucion del programa.
+    - Fabrica:
+
+Estructurales:
+    - Adaptador:
+    - Compuesto:
+    - Fachada: 
+
+De Comportamiento:
+    - Memento:
+    - Observador:
+    - Estrategia: IAssistants (Assistantship) y IProfessors (Lecture, Laboratory),
+      		  abmas son una extension de ICourse que implementa toString, y las clases que 
+      		  implementan las interfaces (LEcture, LAboratory y Assistantship), implementan 
+      		  este metodo de diferente manera.
+
+
+Principios GRASP:
+ - Controlador: Todos los controladores de cada vista del Frontend.
+
+ - Creador: 
+
+ - Experto: 
