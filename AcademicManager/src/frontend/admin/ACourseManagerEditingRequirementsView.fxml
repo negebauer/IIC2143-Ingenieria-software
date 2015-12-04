@@ -17,7 +17,7 @@
             <Label fx:id="labelSelectCourseAsRequirement" layoutX="411.0" layoutY="15.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-radius: 0;" text="Selecciona un curso para agregarlo o eliminarlo como CoRequisito" textFill="WHITE" wrapText="true" />
             <Label fx:id="labelModificationResult" layoutX="354.0" layoutY="298.0" prefHeight="73.0" prefWidth="295.0" text="Status" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
             <Label fx:id="labelSearchCourse" layoutX="469.0" layoutY="97.0" text="Buscar ramo" textFill="WHITE" />
-            <Button fx:id="btnLogout" layoutX="1013.0" layoutY="637.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
+            <Button fx:id="btnLogout" layoutX="925.0" layoutY="641.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
             <Button fx:id="btnLanguage" layoutX="1037.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnLanguage_Pressed" style="-fx-background-radius: 0;" text="ES" />
             <Button fx:id="btnReload" layoutX="1001.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnReload_Pressed" style="-fx-background-radius: 0;" text="R" />
             <Button fx:id="btnBack" layoutX="13.0" layoutY="15.0" mnemonicParsing="false" onAction="#btnBack_Pressed" style="-fx-background-radius: 0;" text="Back" />

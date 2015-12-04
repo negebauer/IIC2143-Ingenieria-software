@@ -84,9 +84,13 @@ public class Semester {
 		} else if (notApprovedRequirements.size() > 0) {
 			String notApprovedCourses = "";
 			for (String requisito : notApprovedRequirements) {
-				notApprovedCourses += requisito + ", \n";
+				if (notApprovedRequirements.indexOf(requisito) == 0) {
+					notApprovedCourses += requisito;
+				} else {
+					notApprovedCourses += ", " + requisito;
+				}
 			}
-			notApprovedCourses = notApprovedCourses.substring(0, notApprovedCourses.length() - 2) + ".";
+			notApprovedCourses = notApprovedCourses + ".";
 			response = new AddOrRemoveCourseResponse(false, Messages
 					.getMessage(Message.COURSE_WASNT_ADDED_TO_SEMESTER_REQUIREMENTS, "\n" + notApprovedCourses));
 
@@ -101,9 +105,13 @@ public class Semester {
 		} else if (notValidatedCoRequirements.size() > 0) {
 			String notValidatedCourses = "";
 			for (String coRequisito : notValidatedCoRequirements) {
-				notValidatedCourses += coRequisito + ", \n";
+				if (notValidatedCoRequirements.indexOf(coRequisito) == 0) {
+					notValidatedCourses += coRequisito;
+				} else {
+					notValidatedCourses += ", " + coRequisito;
+				}
 			}
-			notValidatedCourses = notValidatedCourses.substring(0, notValidatedCourses.length() - 2) + ".";
+			notValidatedCourses = notValidatedCourses + ".";
 			response = new AddOrRemoveCourseResponse(false, Messages
 					.getMessage(Message.COURSE_WASNT_ADDED_TO_SEMESTER_COREQUIREMENTS, "\n" + notValidatedCourses));
 
