@@ -73,8 +73,10 @@ public class SAcademicHistoryViewController extends MViewController {
 			}
 		}
 		totalGrade = totalGrade / user.getCurriculum().getCoursedCourses().size();
+		totalGrade = Math.rint(totalGrade*100)/100;
 		if (totalCourses > 0) {
 			totalCarreerGrade = totalCarreerGrade / totalCourses;
+			totalCarreerGrade = Math.rint(totalCarreerGrade*100)/100;
 		}
 		fullText += totalGrade + "\n\n";
 		academic += totalCarreerGrade + "\n\n";

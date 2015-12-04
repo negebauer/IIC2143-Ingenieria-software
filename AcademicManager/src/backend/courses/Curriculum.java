@@ -39,7 +39,19 @@ public class Curriculum {
 	 *            The semester in which the course was coursed.
 	 */
 	public void addCoursedCourse(Course course, boolean approved, double grade, int year) {
-		this.coursedCourses.add(new Coursed(course, approved, grade, currentSemester.getSemester(), year));
+		for (Coursed coursed : coursedCourses) {
+			if (coursed.getInitials().equals(course.getInitials()) && coursed.getSection() == course.getSection()) {
+				coursed.setApproved(approved);
+				coursed.setGrade(grade);
+				return; 
+			}
+		}
+		Coursed newCoursed = new Coursed(course, approved, grade, currentSemester.getSemester(), year);
+		if (currentCoursedSemester == null) {
+			currentCoursedSemester = new CoursedSemester(Manager.INSTANCE.currentSemester.getSemester(), year);
+		}
+		currentCoursedSemester.addCoursedCourse(newCoursed);
+		coursedCourses.add(newCoursed);
 	}
 
 	public void addCoursedCourse(Coursed course) {
@@ -48,7 +60,7 @@ public class Curriculum {
 		} else if (course.getYear() == Manager.getYear() && course.getSemester() == Manager.INSTANCE.currentSemester.getSemester()) {
 			currentCoursedSemester.addCoursedCourse(course);
 		}
-		coursedCourses.add(course);
+		this.coursedCourses.add(course);
 	}
 
 	/**

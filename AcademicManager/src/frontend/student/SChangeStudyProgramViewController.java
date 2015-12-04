@@ -6,9 +6,12 @@ import backend.courses.Course;
 import backend.courses.Semester;
 import backend.courses.StudyProgram;
 import backend.manager.Manager;
+import backend.others.Messages;
+import backend.others.Messages.UILabel;
 import backend.users.Student;
 import frontend.main.MViewController;
 import frontend.others.Parser;
+import frontend.others.ViewUtilities;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -44,6 +47,10 @@ public class SChangeStudyProgramViewController extends MViewController {
 	@Override
 	public void setUp() {
 		super.setUp();
+		
+		ViewUtilities.setButtonText(btnAddStudyProgram, Messages.UILabel.ADD);
+		ViewUtilities.setButtonText(btnRemoveStudyProgram, Messages.UILabel.REMOVE);
+		labelMyStudyPrograms.setText(Messages.getUILabel(UILabel.STUDENT_STUDY_PROGRAM));
 		
 		updateList();
 		cmBxStudyProgram.setItems(Parser.generateParsedStudyPrograms(Manager.INSTANCE.studyPrograms));

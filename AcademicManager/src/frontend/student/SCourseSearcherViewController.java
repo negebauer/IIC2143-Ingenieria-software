@@ -33,6 +33,8 @@ public class SCourseSearcherViewController extends MCourseSearcherSelectorViewCo
 	@FXML
 	Button btnCleanCourses;
 	@FXML
+	Button btnDetails;
+	@FXML
 	Label labelSearchCourses;
 	@FXML
 	Label labelSemester;
