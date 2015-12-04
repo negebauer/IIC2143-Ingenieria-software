@@ -43,7 +43,7 @@ public class Curriculum {
 			if (coursed.getInitials().equals(course.getInitials()) && coursed.getSection() == course.getSection()) {
 				coursed.setApproved(approved);
 				coursed.setGrade(grade);
-				return;
+				return; 
 			}
 		}
 		Coursed newCoursed = new Coursed(course, approved, grade, currentSemester.getSemester(), year);
