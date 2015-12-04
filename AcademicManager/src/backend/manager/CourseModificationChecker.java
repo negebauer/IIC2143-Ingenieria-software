@@ -224,11 +224,12 @@ public class CourseModificationChecker {
 		return professorClash;
 	}
 	
-	public static String professorClash(Professor professor, Schedule schedule) {
+	public static String professorClash(Professor professor, Schedule schedule, ICourse icourse) {
 		String clash = "";
 		for (Course course : Manager.INSTANCE.courses) {
 			for (ICourse iCourse : course.getCourses()) {
-				if (iCourse instanceof Laboratory) {
+				if (icourse != iCourse) {
+					if (iCourse instanceof Laboratory) {
 					if (((Laboratory)iCourse).getProfessors().contains(professor)) {
 						if (iCourse.getSchedule().scheduleClash(schedule)) {
 							if (clash != "") {
@@ -238,54 +239,61 @@ public class CourseModificationChecker {
 							}
 						}
 					}
-				} else if (iCourse instanceof Lecture) {
-					if (((Lecture)iCourse).getProfessors().contains(professor)) {
-						if (iCourse.getSchedule().scheduleClash(schedule)) {
-							if (clash != "") {
-								clash += ", " + course.getInitials() + "-" + iCourse.toString();	
-							} else {
-								clash += " " + course.getInitials() + "-" + iCourse.toString();	
+					} else if (iCourse instanceof Lecture) {
+						if (((Lecture)iCourse).getProfessors().contains(professor)) {
+							if (iCourse.getSchedule().scheduleClash(schedule)) {
+								if (clash != "") {
+									clash += ", " + course.getInitials() + "-" + iCourse.toString();	
+								} else {
+									clash += " " + course.getInitials() + "-" + iCourse.toString();	
+								}
 							}
 						}
 					}
 				}
-				
 			}
 		}
 		
 		return clash;
 	}
 	
-	public static String assistantClash(Assistant assistant, Schedule schedule) {
+	public static String assistantClash(Assistant assistant, Schedule schedule, ICourse icourse) {
 		String clash = "";
 		for (Course course : Manager.INSTANCE.courses) {
 			for (ICourse iCourse : course.getCourses()) {
-				if (iCourse instanceof Assistantship) {
-					if (((Assistantship)iCourse).getAssistants().contains(assistant)) {
-						if (iCourse.getSchedule().scheduleClash(schedule)) {
-							if (clash != "") {
-								clash += ", " + course.getInitials() + "-" + iCourse.toString();	
-							} else {
-								clash += " " + course.getInitials() + "-" + iCourse.toString();	
+				if (icourse != iCourse) {
+					if (iCourse instanceof Assistantship) {
+						if (((Assistantship)iCourse).getAssistants().contains(assistant)) {
+							if (iCourse.getSchedule().scheduleClash(schedule)) {
+								if (clash != "") {
+									clash += ", " + course.getInitials() + "-" + iCourse.toString();	
+								} else {
+									clash += " " + course.getInitials() + "-" + iCourse.toString();	
+								}
 							}
 						}
 					}
-				} 				
+				}		
 			}
 		}
 		
 		return clash;
 	}
 	
-	public static String classroomClash(Classroom classroom, Schedule schedule) {
+	public static String classroomClash(Classroom classroom, Schedule schedule, ICourse icourse) {
 		String clashes = "";
 		for (Course course : Manager.INSTANCE.courses) {
 			for (ICourse iCourse : course.getCourses()) {
-				if (iCourse.getSchedule().scheduleClash(schedule)) {
-					if (clashes != "") {
-						clashes += ", " + course.getInitials() + "-" + iCourse.toString();	
-					} else {
-						clashes += " " + course.getInitials() + "-" + iCourse.toString();	
+				if (icourse != iCourse) {
+					if (iCourse.getSchedule().scheduleClash(schedule)) {
+						if (iCourse.getClassroom() == classroom) {
+							if (clashes != "") {
+							clashes += ", " + course.getInitials() + "-" + iCourse.toString();	
+							} else {
+								clashes += " " + course.getInitials() + "-" + iCourse.toString();	
+							}
+						}
+						
 					}
 				}
 			}

@@ -107,11 +107,12 @@ public class AICourseManagerAssistantshipEditingViewController extends MViewCont
 			if (courses.contains(Manager.INSTANCE.currentEditignICourse)) {
 				courses.remove(Manager.INSTANCE.currentEditignICourse);
 				Manager.INSTANCE.currentEditignCourse.setCourses(courses);
+				super.btnBack_Pressed();
 			} else {
-				ViewUtilities.showAlert("The class is not in the classes of the course");
+				ViewUtilities.showAlert("Primero debes guardar la clase, para poder removerla despues");
 			}
 		} else {
-			ViewUtilities.showAlert("The ICourse is null");
+			ViewUtilities.showAlert("La clase no existe");
 		}
 	}
 	
@@ -129,22 +130,17 @@ public class AICourseManagerAssistantshipEditingViewController extends MViewCont
 			for (Assistant assistant : Manager.INSTANCE.assistants) {
 				if (rut == assistant.getRut()) {
 					if (!((Assistantship)Manager.INSTANCE.currentEditignICourse).getAssistants().contains(assistant)) {
-						String clash = CourseModificationChecker.assistantClash(assistant, Manager.INSTANCE.currentEditignICourse.getSchedule());
-						if (clash == "") {
-							((Assistantship)Manager.INSTANCE.currentEditignICourse).addAssistant(assistant);
-							updatedElements.add(valueSelected);
-							listAssistantsOrProfessors.setItems(updatedElements);
-						} else {
-							ViewUtilities.showAlert("El profesor no puede ser agregado, debido a que tiene un tope con otra(s) clase(s):" + clash);
-						}
+						((Assistantship)Manager.INSTANCE.currentEditignICourse).addAssistant(assistant);
+						updatedElements.add(valueSelected);
+						listAssistantsOrProfessors.setItems(updatedElements);
 					} else {
-						ViewUtilities.showAlert("The professor is already in that course");
+						ViewUtilities.showAlert("Este profesor ya se encuentra en la clase");
 					}
 					break;
 				}
 			}
 		} else {
-			ViewUtilities.showAlert("Select a professor to add");
+			ViewUtilities.showAlert("Selecciona un profesor para agregar");
 		}
 	}
 
@@ -163,13 +159,13 @@ public class AICourseManagerAssistantshipEditingViewController extends MViewCont
 						listAssistantsOrProfessors.setItems(updatedElements);
 						break;
 					} else {
-						ViewUtilities.showAlert("The professor is not contained in the class");
+						ViewUtilities.showAlert("El profesor no esta en la clase");
 						break;
 					}
 				}
 			}
 		} else {
-			ViewUtilities.showAlert("Select a professor to remove");
+			ViewUtilities.showAlert("Primero selecciona un profesor para quitar");
 		}
 	}
 
@@ -186,10 +182,31 @@ public class AICourseManagerAssistantshipEditingViewController extends MViewCont
 				}
 			}
 			
+			String alertMessage = "";
 			
-			String clashes = CourseModificationChecker.classroomClash(classroom, schedule);
+			String clashes = "";
+			ICourse iCourse = Manager.INSTANCE.currentEditignICourse;
+
+			for (Assistant assistant : ((Assistantship)iCourse).getAssistants()) {
+				String aClash = CourseModificationChecker.assistantClash(assistant, schedule, iCourse);
+				if (!aClash.equals("")) {
+					clashes += assistant.getName() + " " + assistant.getLastnameFather() + ":" +
+						   aClash + "\n";
+				}
+			}
+			
+			if (!clashes.equals("")) {
+				alertMessage += "No se puede usar este horario, ya que tiene problemas de topes de horarios de ayudantes:\n" + clashes;
+			}
+			
+			clashes = CourseModificationChecker.classroomClash(classroom, schedule, Manager.INSTANCE.currentEditignICourse);
+			
 			if (clashes != "") {
-				ViewUtilities.showAlert("No se puede crear la clase debido a que la sala esta ocupada en ese horario:\n" + clashes);
+				alertMessage += "No se puede crear la clase debido a que la sala esta ocupada en ese horario por otro(s) curso(s):\n" + clashes;
+			}
+			
+			if (!alertMessage.equals("")) {
+				ViewUtilities.showAlert(alertMessage);
 			} else {
 				Manager.INSTANCE.currentEditignICourse.setSchedule(schedule);
 				Manager.INSTANCE.currentEditignICourse.setClassroom(classroom);
@@ -203,7 +220,7 @@ public class AICourseManagerAssistantshipEditingViewController extends MViewCont
 				super.btnBack_Pressed();
 			}
 		} else {
-			ViewUtilities.showAlert("Select a classroom first");
+			ViewUtilities.showAlert("Debes seleccionar una sala");
 		}		
 	}
 }

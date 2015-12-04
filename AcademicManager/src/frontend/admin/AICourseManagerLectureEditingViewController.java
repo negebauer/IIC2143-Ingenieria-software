@@ -3,6 +3,7 @@ package frontend.admin;
 import java.net.URL;
 import java.util.ArrayList;
 
+
 import backend.courses.Classroom;
 import backend.courses.Lecture;
 import backend.courses.Schedule;
@@ -103,6 +104,7 @@ public class AICourseManagerLectureEditingViewController extends MViewController
 			if (courses.contains(Manager.INSTANCE.currentEditignICourse)) {
 				courses.remove(Manager.INSTANCE.currentEditignICourse);
 				Manager.INSTANCE.currentEditignCourse.setCourses(courses);
+				super.btnBack_Pressed();
 			} else {
 				ViewUtilities.showAlert("The class is not in the classes of the course");
 			}
@@ -125,14 +127,9 @@ public class AICourseManagerLectureEditingViewController extends MViewController
 			for (Professor professor : Manager.INSTANCE.professors) {
 				if (rut.equals(professor.getRut())) {
 					if (!((Lecture)Manager.INSTANCE.currentEditignICourse).getProfessors().contains(professor)) {
-						String clash = CourseModificationChecker.professorClash(professor, Manager.INSTANCE.currentEditignICourse.getSchedule());
-						if (clash == "") {
-							((Lecture)Manager.INSTANCE.currentEditignICourse).addProfessor(professor);
-							updatedElements.add(valueSelected);
-							listAssistantsOrProfessors.setItems(FXCollections.observableArrayList(updatedElements));
-						} else {
-							ViewUtilities.showAlert("El profesor no puede ser agregado, debido a que tiene un tope con otra(s) clase(s):" + clash);
-						}
+						((Lecture)Manager.INSTANCE.currentEditignICourse).addProfessor(professor);
+						updatedElements.add(valueSelected);
+						listAssistantsOrProfessors.setItems(FXCollections.observableArrayList(updatedElements));
 					} else {
 						ViewUtilities.showAlert("El profesor ya se encuentra en ese curso");
 					}
@@ -183,11 +180,31 @@ public class AICourseManagerLectureEditingViewController extends MViewController
 			}
 			
 			
+			String alertMessage = "";
 			
-			String clashes = CourseModificationChecker.classroomClash(classroom, schedule);
+			String clashes = "";
+			ICourse iCourse = Manager.INSTANCE.currentEditignICourse;
+			for (Professor professor : ((Lecture)iCourse).getProfessors()) {
+				String pClash = CourseModificationChecker.professorClash(professor, schedule, iCourse);
+				if (!pClash.equals("")) {
+					clashes += professor.getName() + " " + professor.getLastnameFather() + ":" +
+						   pClash + "\n";
+				}
+			}
+			
+			if (!clashes.equals("")) {
+				alertMessage += "No se puede usar este horario, ya que tiene problemas de topes de horarios de profesores:\n" + clashes;
+			}
+			
+			clashes = CourseModificationChecker.classroomClash(classroom, schedule, Manager.INSTANCE.currentEditignICourse);
+			
 			if (clashes != "") {
-				ViewUtilities.showAlert("No se puede crear la clase debido a que la sala esta ocupada en ese horario por otro(s) curso(s):\n" + clashes);
-			} else {
+				alertMessage += "No se puede crear la clase debido a que la sala esta ocupada en ese horario por otro(s) curso(s):\n" + clashes;
+			}
+			
+			if (!alertMessage.equals("")) {
+				ViewUtilities.showAlert(alertMessage);
+			} else {				
 				Manager.INSTANCE.currentEditignICourse.setSchedule(schedule);
 				Manager.INSTANCE.currentEditignICourse.setClassroom(classroom);
 				
