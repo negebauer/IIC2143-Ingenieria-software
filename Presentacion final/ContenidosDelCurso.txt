@@ -6,7 +6,7 @@ De Creacion:
 Estructurales:
     - Adaptador:
     - Compuesto:
-    - Fachada: 
+    - Fachada: Manager
 
 De Comportamiento:
     - Memento:
