@@ -134,7 +134,7 @@ public class SCurrentSemesterViewController extends MCourseSearcherSelectorViewC
 				labelCurrentSemester.setText(Messages.getUILabel(UILabel.SEMESTER_CURRENT_SEMESTER_INFO) + semesterInfo);
 				
 				ObservableList<String> currentCourses = listSelectedCourses.getItems();
-				for (int i = 0; i < sp.size(); i++) {
+				for (int i = 0; i < sp.size() + 1; i++) {
 					courses.add(new ArrayList<Course>());
 				}				
 				for (Course course : currentSemester.getCourses()) {
@@ -291,7 +291,7 @@ public class SCurrentSemesterViewController extends MCourseSearcherSelectorViewC
 						}
 					}
 				}				
-				if(Validate.exceedCredits(course, courses.get(count), carreer, all, tot)) {
+				if (courses.size() >= 1 && Validate.exceedCredits(course, courses.get(count), carreer, all, tot)) {
 					labelModificationResult.setText(Messages.getUILabel(UILabel.SEMESTER_CURRENT_SEMESTER_MODIFICATION_FAILED) + " excess credits");
 					return;
 				}
