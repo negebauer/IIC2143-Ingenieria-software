@@ -130,10 +130,12 @@ public class AICourseManagerLectureEditingViewController extends MViewController
 						((Lecture)Manager.INSTANCE.currentEditignICourse).addProfessor(professor);
 						updatedElements.add(valueSelected);
 						listAssistantsOrProfessors.setItems(FXCollections.observableArrayList(updatedElements));
+						break;
 					} else {
 						ViewUtilities.showAlert("El profesor ya se encuentra en ese curso");
+						break;
 					}
-					break;
+					
 				}
 			}
 		} else {

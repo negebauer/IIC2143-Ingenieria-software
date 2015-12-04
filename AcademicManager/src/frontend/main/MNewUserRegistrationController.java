@@ -169,7 +169,7 @@ public class MNewUserRegistrationController extends MViewController {
 			Manager.INSTANCE.professors.add(newProfessor);
 		} else if (isStudent) {
 			ArrayList<StudyProgram> studyPrograms = new ArrayList<StudyProgram>();
-			for (String studyProgram : chBxCarreers.getItems()) {
+			for (String studyProgram : listCarreers.getItems()) {
 				studyPrograms.add(Manager.INSTANCE.getStudyProgramForName(studyProgram));
 			}
 			int id = Manager.INSTANCE.getNewStudentID();
