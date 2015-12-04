@@ -3,19 +3,29 @@ package frontend.admin;
 import java.net.URL;
 import java.util.ArrayList;
 
+import backend.courses.Assistantship;
+import backend.courses.Laboratory;
+import backend.courses.Lecture;
 import backend.courses.Schedule;
 import backend.courses.Schedule.Day;
 import backend.courses.Schedule.DayModuleTuple;
 import backend.courses.Schedule.Module;
+import backend.interfaces.ICourse;
+import backend.manager.CourseModificationChecker;
 import backend.manager.Manager;
 import backend.others.Messages;
 import backend.others.Messages.UILabel;
+import backend.users.Assistant;
+import backend.users.Professor;
 import frontend.main.MViewController;
+import frontend.others.ViewUtilities;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 public class AScheduleViewController extends MViewController {
 
@@ -189,6 +199,13 @@ public class AScheduleViewController extends MViewController {
 
 		Schedule editingSchedule = Manager.INSTANCE.currentEditingSchedule;
 		setCheckBoxes(editingSchedule);
+		
+		btnSaveSchedule.getScene().getWindow().setOnCloseRequest(new EventHandler<WindowEvent>() {
+          public void handle(WindowEvent we) {
+              btnSaveSchedule_Pressed();
+          }
+		});
+		
 	}
 
 	public void btnSaveSchedule_Pressed() {
@@ -364,15 +381,40 @@ public class AScheduleViewController extends MViewController {
 			modules.add(editingSchedule.new DayModuleTuple(Day.SUNDAY, Module._5));
 		}
 
-		Manager.INSTANCE.currentEditingSchedule = new Schedule(modules);
-		Manager.INSTANCE.currentEditignICourse.setSchedule(Manager.INSTANCE.currentEditingSchedule);
+		Schedule schedule = new Schedule(modules);
 		
-		Stage stage = (Stage) btnSaveSchedule.getScene().getWindow();
-		stage.close();
-	}
-	
-	public void CloseWindow() {
+		String clashes = "";
+		ICourse iCourse = Manager.INSTANCE.currentEditignICourse;
+		if (iCourse instanceof Lecture) {
+			for (Professor professor : ((Lecture)iCourse).getProfessors()) {
+				if (clashes == "") { clashes = "Topes de Horario para Profesores:\n"; }
+				clashes += professor.getName() + " " + professor.getLastnameFather() + ":" +
+						   CourseModificationChecker.professorClash(professor, schedule) + "\n";
+			}
+		} else if (iCourse instanceof Laboratory) {
+			if (clashes == "") { clashes = "Topes de Horario para Profesores:\n"; }
+			for (Professor professor : ((Laboratory)iCourse).getProfessors()) {
+				clashes += professor.getName() + " " + professor.getLastnameFather() + ":" +
+						   CourseModificationChecker.professorClash(professor, schedule) + "\n";
+			}
+		} else if (iCourse instanceof Assistantship) {
+			if (clashes == "") { clashes = "Topes de Horario para Ayudantes:\n"; }
+			for (Assistant assistant : ((Assistantship)iCourse).getAssistants()) {
+				clashes += assistant.getName() + " " + assistant.getLastnameFather() + ":" +
+						   CourseModificationChecker.assistantClash(assistant, schedule) + "\n";
+			}
+		}
 		
+		
+		if (clashes != ""){
+			ViewUtilities.showAlert("No se puede usar este horario, ya que tiene problemas de topes:\n");
+		} else {
+			Manager.INSTANCE.currentEditingSchedule = schedule;
+			Manager.INSTANCE.currentEditignICourse.setSchedule(Manager.INSTANCE.currentEditingSchedule);
+			
+			Stage stage = (Stage) btnSaveSchedule.getScene().getWindow();
+			stage.close();
+		}
 	}
 	
 	public void setCheckBoxes(Schedule editingSchedule) {

@@ -748,9 +748,9 @@ public class Messages {
 		result.put(UILabel.ADD_ASSISTANT, 									"Agregar Ayudante");
 		result.put(UILabel.REMOVE_ASSISTANT, 								"Remover Ayudante");
 		result.put(UILabel.PICK_ASSISTANT, 									"Elegir Ayudante");
-		result.put(UILabel.LABORATORY, 										"Laboratory");
-		result.put(UILabel.LECTURE, 										"Lecture");
-		result.put(UILabel.ASSISTANTSHIP, 									"Assistantship");
+		result.put(UILabel.LABORATORY, 										"Laboratorio");
+		result.put(UILabel.LECTURE, 										"Catedra");
+		result.put(UILabel.ASSISTANTSHIP, 									"Ayudantia");
 		result.put(UILabel.CLEAN, 											"Limpiar");
 		result.put(UILabel.SAVE, 											"Guardar");
 		result.put(UILabel.SEMESTER, 										"Semestre");

@@ -7,6 +7,7 @@ import backend.courses.Classroom;
 import backend.courses.Lecture;
 import backend.courses.Schedule;
 import backend.interfaces.ICourse;
+import backend.manager.CourseModificationChecker;
 import backend.manager.Manager;
 import backend.others.Messages;
 import backend.others.Messages.UILabel;
@@ -124,14 +125,18 @@ public class AICourseManagerLectureEditingViewController extends MViewController
 			for (Professor professor : Manager.INSTANCE.professors) {
 				if (rut.equals(professor.getRut())) {
 					if (!((Lecture)Manager.INSTANCE.currentEditignICourse).getProfessors().contains(professor)) {
-						((Lecture)Manager.INSTANCE.currentEditignICourse).addProfessor(professor);
-						updatedElements.add(valueSelected);
-						listAssistantsOrProfessors.setItems(updatedElements);
-						break;
+						String clash = CourseModificationChecker.professorClash(professor, Manager.INSTANCE.currentEditignICourse.getSchedule());
+						if (clash == "") {
+							((Lecture)Manager.INSTANCE.currentEditignICourse).addProfessor(professor);
+							updatedElements.add(valueSelected);
+							listAssistantsOrProfessors.setItems(FXCollections.observableArrayList(updatedElements));
+						} else {
+							ViewUtilities.showAlert("El profesor no puede ser agregado, debido a que tiene un tope con otra(s) clase(s):" + clash);
+						}
 					} else {
-						ViewUtilities.showAlert("The professor is already in that course");
-						break;
+						ViewUtilities.showAlert("El profesor ya se encuentra en ese curso");
 					}
+					break;
 				}
 			}
 		} else {
@@ -154,13 +159,13 @@ public class AICourseManagerLectureEditingViewController extends MViewController
 						listAssistantsOrProfessors.setItems(updatedElements);
 						break;
 					} else {
-						ViewUtilities.showAlert("The professor is not contained in the class");
+						ViewUtilities.showAlert("El profesor no se encuentra registrado en la clase");
 						break;
 					}
 				}
 			}
 		} else {
-			ViewUtilities.showAlert("Select a professor to remove");
+			ViewUtilities.showAlert("Primero debes seleccionar un profesor para quitar");
 		}
 	}
 
@@ -188,7 +193,7 @@ public class AICourseManagerLectureEditingViewController extends MViewController
 			Manager.INSTANCE.currentEditingSchedule = null;
 			super.btnBack_Pressed();
 		} else {
-			ViewUtilities.showAlert("Select a classroom first");
+			ViewUtilities.showAlert("Primero debes asignar una sala a la clase");
 		}		
 	}
 

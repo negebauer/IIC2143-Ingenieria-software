@@ -3,6 +3,8 @@ package backend.courses;
 import java.util.ArrayList;
 
 import backend.interfaces.IProfessors;
+import backend.others.Messages;
+import backend.others.Messages.UILabel;
 import backend.users.Professor;
 
 /**
@@ -71,5 +73,8 @@ public class Lecture implements IProfessors {
 	public void setSchedule(Schedule schedule) {
 		this.schedule = schedule;
 	}
-
+	
+	public String toString() {
+		return Messages.getUILabel(UILabel.LECTURE);
+	}
 }

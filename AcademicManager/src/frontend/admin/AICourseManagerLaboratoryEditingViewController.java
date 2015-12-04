@@ -5,8 +5,10 @@ import java.util.ArrayList;
 
 import backend.courses.Classroom;
 import backend.courses.Laboratory;
+import backend.courses.Lecture;
 import backend.courses.Schedule;
 import backend.interfaces.ICourse;
+import backend.manager.CourseModificationChecker;
 import backend.manager.Manager;
 import backend.others.Messages;
 import backend.others.Messages.UILabel;
@@ -105,6 +107,7 @@ public class AICourseManagerLaboratoryEditingViewController extends MViewControl
 		} else {
 			ViewUtilities.showAlert("The ICourse is null");
 		}
+		super.btnBack_Pressed();
 	}
 	
 	public void btnSeeSchedule_Pressed() {
@@ -121,14 +124,18 @@ public class AICourseManagerLaboratoryEditingViewController extends MViewControl
 			for (Professor professor : Manager.INSTANCE.professors) {
 				if (rut == professor.getRut()) {
 					if (!((Laboratory)Manager.INSTANCE.currentEditignICourse).getProfessors().contains(professor)) {
-						((Laboratory)Manager.INSTANCE.currentEditignICourse).addProfessor(professor);
-						updatedElements.add(valueSelected);
-						listAssistantsOrProfessors.setItems(updatedElements);
-						break;
+						String clash = CourseModificationChecker.professorClash(professor, Manager.INSTANCE.currentEditignICourse.getSchedule());
+						if (clash == "") {
+							((Lecture)Manager.INSTANCE.currentEditignICourse).addProfessor(professor);
+							updatedElements.add(valueSelected);
+							listAssistantsOrProfessors.setItems(updatedElements);
+						} else {
+							ViewUtilities.showAlert("El profesor no puede ser agregado, debido a que tiene un tope con otra(s) clase(s):" + clash);
+						}
 					} else {
 						ViewUtilities.showAlert("The professor is already in that course");
-						break;
 					}
+					break;
 				}
 			}
 		} else {
@@ -148,7 +155,7 @@ public class AICourseManagerLaboratoryEditingViewController extends MViewControl
 					if (((Laboratory)Manager.INSTANCE.currentEditignICourse).getProfessors().contains(professor)) {
 						((Laboratory)Manager.INSTANCE.currentEditignICourse).removeProfessor(professor);
 						updatedElements.remove(valueSelected);
-						listAssistantsOrProfessors.setItems(updatedElements);
+						listAssistantsOrProfessors.setItems(FXCollections.observableArrayList(updatedElements));
 						break;
 					} else {
 						ViewUtilities.showAlert("The professor is not contained in the class");

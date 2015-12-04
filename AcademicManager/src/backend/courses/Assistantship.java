@@ -3,6 +3,8 @@ package backend.courses;
 import java.util.ArrayList;
 
 import backend.interfaces.IAssistants;
+import backend.others.Messages;
+import backend.others.Messages.UILabel;
 import backend.users.Assistant;
 
 /**
@@ -70,6 +72,10 @@ public class Assistantship implements IAssistants {
 	@Override
 	public void setSchedule(Schedule schedule) {
 		this.schedule = schedule;
+	}
+	
+	public String toString() {
+		return Messages.getUILabel(UILabel.ASSISTANTSHIP);
 	}
 
 }

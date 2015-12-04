@@ -2,13 +2,18 @@ package backend.manager;
 
 import java.util.ArrayList;
 
+import backend.courses.Assistantship;
 import backend.courses.Course;
 import backend.courses.Evaluation;
+import backend.courses.Laboratory;
+import backend.courses.Lecture;
+import backend.courses.Schedule;
 import backend.interfaces.ICourse;
 import backend.interfaces.IProfessors;
 import backend.others.Messages;
 import backend.others.Messages.Message;
 import backend.others.Utilities;
+import backend.users.Assistant;
 import backend.users.Professor;
 
 /**
@@ -217,7 +222,61 @@ public class CourseModificationChecker {
 		}
 		return professorClash;
 	}
-
+	
+	public static String professorClash(Professor professor, Schedule schedule) {
+		String clash = "";
+		for (Course course : Manager.INSTANCE.courses) {
+			for (ICourse iCourse : course.getCourses()) {
+				if (iCourse instanceof Laboratory) {
+					if (((Laboratory)iCourse).getProfessors().contains(professor)) {
+						if (iCourse.getSchedule().scheduleClash(schedule)) {
+							if (clash != "") {
+								clash += ", " + course.getInitials() + "-" + iCourse.toString();	
+							} else {
+								clash += " " + course.getInitials() + "-" + iCourse.toString();	
+							}
+						}
+					}
+				} else if (iCourse instanceof Lecture) {
+					if (((Lecture)iCourse).getProfessors().contains(professor)) {
+						if (iCourse.getSchedule().scheduleClash(schedule)) {
+							if (clash != "") {
+								clash += ", " + course.getInitials() + "-" + iCourse.toString();	
+							} else {
+								clash += " " + course.getInitials() + "-" + iCourse.toString();	
+							}
+						}
+					}
+				}
+				
+			}
+		}
+		
+		return clash;
+	}
+	
+	public static String assistantClash(Assistant assistant, Schedule schedule) {
+		String clash = "";
+		for (Course course : Manager.INSTANCE.courses) {
+			for (ICourse iCourse : course.getCourses()) {
+				if (iCourse instanceof Assistantship) {
+					if (((Assistantship)iCourse).getAssistants().contains(assistant)) {
+						if (iCourse.getSchedule().scheduleClash(schedule)) {
+							if (clash != "") {
+								clash += ", " + course.getInitials() + "-" + iCourse.toString();	
+							} else {
+								clash += " " + course.getInitials() + "-" + iCourse.toString();	
+							}
+						}
+					}
+				} 				
+			}
+		}
+		
+		return clash;
+	}
+	
+	
 	/**
 	 * Class used as a data container for answering create course call. Contains
 	 * the Course that is trying to be created, deleted or modified.

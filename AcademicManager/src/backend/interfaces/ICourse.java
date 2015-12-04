@@ -34,5 +34,7 @@ public interface ICourse {
 	 *            This Course's new Schedule.
 	 */
 	public void setSchedule(Schedule schedule);
+	
+	public String toString();
 
 }
