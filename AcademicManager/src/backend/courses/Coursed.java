@@ -163,8 +163,12 @@ public class Coursed {
 	 * @param grade
 	 *            The new grade obtained in the Course.
 	 */
-	public void setGrade(int grade) {
+	public void setGrade(double grade) {
 		this.grade = grade;
+	}
+	
+	public void setApproved(boolean approved) {
+		this.approved = approved;
 	}
 
 	public void setDetails(String details) {
