@@ -777,7 +777,7 @@ public class Messages {
 		result.put(UILabel.OTHER_CARREERS, 									"Otras Carreras");
 		result.put(UILabel.ALL_COURSES, 									"Todos los cursos");
 		result.put(UILabel.COURSES_BY_CARREER, 								"Cursos por carrera");
-		return Collections.unmodifiableMap(result);
+		return Collections.unmodifiableMap(result); 
 	}
 
 }
