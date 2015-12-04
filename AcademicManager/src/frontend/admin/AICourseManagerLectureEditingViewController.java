@@ -182,16 +182,23 @@ public class AICourseManagerLectureEditingViewController extends MViewController
 				}
 			}
 			
-			Manager.INSTANCE.currentEditignICourse.setClassroom(classroom);
-			Manager.INSTANCE.currentEditignICourse.setSchedule(schedule);
 			
-			if (isCreating) {
-				Manager.INSTANCE.currentEditignCourse.addCourse(Manager.INSTANCE.currentEditignICourse);
+			
+			String clashes = CourseModificationChecker.classroomClash(classroom, schedule);
+			if (clashes != "") {
+				ViewUtilities.showAlert("No se puede crear la clase debido a que la sala esta ocupada en ese horario por otro(s) curso(s):\n" + clashes);
+			} else {
+				Manager.INSTANCE.currentEditignICourse.setSchedule(schedule);
+				Manager.INSTANCE.currentEditignICourse.setClassroom(classroom);
+				
+				if (isCreating) {
+					Manager.INSTANCE.currentEditignCourse.addCourse(Manager.INSTANCE.currentEditignICourse);
+				}
+				
+				Manager.INSTANCE.currentEditignICourse = null;
+				Manager.INSTANCE.currentEditingSchedule = null;
+				super.btnBack_Pressed();
 			}
-			
-			Manager.INSTANCE.currentEditignICourse = null;
-			Manager.INSTANCE.currentEditingSchedule = null;
-			super.btnBack_Pressed();
 		} else {
 			ViewUtilities.showAlert("Primero debes asignar una sala a la clase");
 		}		

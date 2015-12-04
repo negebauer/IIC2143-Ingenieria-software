@@ -48,7 +48,8 @@ public class AICourseManagerAssistantshipEditingViewController extends MViewCont
 	
 	
 	static URL view = Object.class.getResource("/frontend/admin/AICourseManageAssistantshipEditingView.fxml");
-
+	boolean isCreating = false;
+	
 	@Override
 	public void setUp() {
 		super.setUp();
@@ -69,7 +70,9 @@ public class AICourseManagerAssistantshipEditingViewController extends MViewCont
 		ViewUtilities.autoComplete(chBxClassrooms);
 		
 		
-		if (Manager.INSTANCE.currentEditignICourse instanceof Assistantship & Manager.INSTANCE.currentEditignICourse != null) {
+		if (Manager.INSTANCE.currentEditignICourse != null && Manager.INSTANCE.currentEditignICourse instanceof Assistantship ) {
+			isCreating = false;
+			
 			Assistantship selectedAssistantship = (Assistantship) Manager.INSTANCE.currentEditignICourse;
 
 			Manager.INSTANCE.currentEditingSchedule = selectedAssistantship.getSchedule();
@@ -83,6 +86,7 @@ public class AICourseManagerAssistantshipEditingViewController extends MViewCont
 			chBxClassrooms.getSelectionModel().select(selectedAssistantship.getClassroom().getInitials());
 
 		} else {
+			isCreating = true;
 			Manager.INSTANCE.currentEditignICourse = new Assistantship(null, null, new Schedule());
 			Manager.INSTANCE.currentEditingSchedule = Manager.INSTANCE.currentEditignICourse.getSchedule();
 		}
@@ -182,12 +186,22 @@ public class AICourseManagerAssistantshipEditingViewController extends MViewCont
 				}
 			}
 			
-			Manager.INSTANCE.currentEditignICourse.setClassroom(classroom);
-			Manager.INSTANCE.currentEditignICourse.setSchedule(schedule);
-
-			Manager.INSTANCE.currentEditignICourse = null;
-			Manager.INSTANCE.currentEditingSchedule = null;
-			super.btnBack_Pressed();
+			
+			String clashes = CourseModificationChecker.classroomClash(classroom, schedule);
+			if (clashes != "") {
+				ViewUtilities.showAlert("No se puede crear la clase debido a que la sala esta ocupada en ese horario:\n" + clashes);
+			} else {
+				Manager.INSTANCE.currentEditignICourse.setSchedule(schedule);
+				Manager.INSTANCE.currentEditignICourse.setClassroom(classroom);
+				
+				if (isCreating) {
+					Manager.INSTANCE.currentEditignCourse.addCourse(Manager.INSTANCE.currentEditignICourse);
+				}
+				
+				Manager.INSTANCE.currentEditignICourse = null;
+				Manager.INSTANCE.currentEditingSchedule = null;
+				super.btnBack_Pressed();
+			}
 		} else {
 			ViewUtilities.showAlert("Select a classroom first");
 		}		

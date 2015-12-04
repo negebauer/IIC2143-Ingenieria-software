@@ -299,6 +299,10 @@ public class Messages {
 	}
 
 	public enum UILabel {
+		CURRICULAR_ADVANCE_WELCOME,
+		CURRICULAR_ADVANCE_WELCOME_2,
+		STUDENT_SHOW_FORUM,
+		STUDENT_ACADEMIC_HISTORY,
 		REGISTRATION_FAILED,
 		REMOVE_ICOURSE,
 		STUDENT_EDIT_SEMESTER, 
@@ -464,6 +468,10 @@ public class Messages {
 
 	private static Map<UILabel, String> createMapUILabelEnglish() {
 		Map<UILabel, String> result = new HashMap<UILabel, String>();
+		result.put(UILabel.CURRICULAR_ADVANCE_WELCOME, 						"This is your curricular progress. Select another study program to see your progress...");
+		result.put(UILabel.CURRICULAR_ADVANCE_WELCOME_2, 					"Add or delete a study program to make parallel carrers");
+		result.put(UILabel.STUDENT_SHOW_FORUM, 								"Forum");
+		result.put(UILabel.STUDENT_ACADEMIC_HISTORY, 						"Academic History");
 		result.put(UILabel.REGISTRATION_FAILED, 							"Registration failed, RUT invalid");
 		result.put(UILabel.STUDENT_EDIT_SEMESTER, 							"Semester Manager");
 		result.put(UILabel.STUDENT_QUALIFY_SEMESTER, 						"Qualify a Semester");
@@ -614,6 +622,10 @@ public class Messages {
 
 	private static Map<UILabel, String> createMapUILabelSpanish() {
 		Map<UILabel, String> result = new HashMap<UILabel, String>();
+		result.put(UILabel.CURRICULAR_ADVANCE_WELCOME, 						"Este es tu avance curricular, selecciona otra malla curricular para ver tu avance...");
+		result.put(UILabel.CURRICULAR_ADVANCE_WELCOME_2, 					"Agrega o elimina una malla para hacer carreras paralelas");
+		result.put(UILabel.STUDENT_SHOW_FORUM, 								"Foro");
+		result.put(UILabel.STUDENT_ACADEMIC_HISTORY, 						"Historial Academico");
 		result.put(UILabel.REGISTRATION_FAILED, 							"Registro fallo, RUT invalido");
 		result.put(UILabel.STUDENT_EDIT_SEMESTER, 							"Manager de Semestres");
 		result.put(UILabel.STUDENT_QUALIFY_SEMESTER,  						"Calificar Semestre");

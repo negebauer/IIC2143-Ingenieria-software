@@ -11,7 +11,7 @@
             <Button fx:id="btnLanguage" layoutX="1037.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnLanguage_Pressed" style="-fx-background-radius: 0;" text="ES" />
             <Button fx:id="btnReload" layoutX="998.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnReload_Pressed" style="-fx-background-radius: 0;" text="R" />
             <Button fx:id="btnBack" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnBack_Pressed" style="-fx-background-radius: 0;" text="Back" />
-            <Button fx:id="btnLogout" layoutX="1010.0" layoutY="641.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
+            <Button fx:id="btnLogout" layoutX="925.0" layoutY="641.0" mnemonicParsing="false" onAction="#btnLogout_Pressed" style="-fx-background-radius: 0;" text="Logout" />
             <Label fx:id="labelEditStudyProgram" layoutX="314.0" layoutY="67.0" text="Si deseas editar una malla anterior, seleccionala de la lista." textFill="WHITE" />
             <Label fx:id="labelCreateStudyProgram" layoutX="302.0" layoutY="84.0" text="Si deseas crear una malla nueva, presiona en crear nueva malla" textFill="WHITE" />
             <Button fx:id="btnEditStudyProgram" layoutX="415.0" layoutY="321.0" mnemonicParsing="false" onAction="#btnEditStudyProgram_Pressed" text="Edit Stuty Program" />

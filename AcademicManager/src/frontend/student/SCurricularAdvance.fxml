@@ -15,7 +15,7 @@
 	            <ListView fx:id="listAdvance" layoutX="140.0" layoutY="210.0" prefHeight="150.0" prefWidth="390.0" />
 	            <ListView fx:id="listUnfinished" layoutX="550.0" layoutY="210.0" prefHeight="150.0" prefWidth="390.0" />
 	            <TextArea fx:id="txASemestersAndCourses" editable="false" layoutX="230.0" layoutY="380.0" prefHeight="210.0" prefWidth="480.0" />
-	            <Button fx:id="btnAddStudyProgram" layoutX="780.0" layoutY="535.0" mnemonicParsing="false" onAction="#btnAddStudyProgram_Pressed" prefWidth="100.0" text="Editar" />
+	            <Button fx:id="btnAddStudyProgram" layoutX="750.0" layoutY="535.0" mnemonicParsing="false" onAction="#btnAddStudyProgram_Pressed" prefHeight="27.0" prefWidth="160.0" text="Editar" />
 		        <Label fx:id="labelCurricularAdvanceWelcomeMessage" layoutX="750.0" layoutY="385.0" prefHeight="90.0" prefWidth="160.0" style="-fx-text-fill: #fff;" text="Este es tu avance curricular, selecciona otra malla curricular para ver tu avance..." textAlignment="CENTER" wrapText="true" />
 	            <Label fx:id="labelApproved" alignment="CENTER" contentDisplay="CENTER" layoutX="140.0" layoutY="188.0" prefHeight="17.0" prefWidth="390.0" style="-fx-text-fill: #fff;" text="Cursos aprobados" textAlignment="CENTER" />
 	            <Label fx:id="labelNotApproved" alignment="CENTER" contentDisplay="CENTER" layoutX="550.0" layoutY="188.0" prefHeight="17.0" prefWidth="390.0" style="-fx-text-fill: #fff;" text="Cursos faltantes" textAlignment="CENTER" />
